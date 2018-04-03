@@ -13,8 +13,9 @@ public class LuaBuilder {
 
     public String build(){
         StringBuilder builder = new StringBuilder();
+        builder.append("---@class ").append(infoModel.getName()).append("\n");
         builder.append("--[[").append(infoModel.getBrief()).append("--]]").append("\n");
-        builder.append("local ").append(infoModel.getNameSpace()).append(" = {}\n");
+        builder.append("local ").append(infoModel.getName()).append(" = {}\n");
         for(ElementModel var:vars){
             builder.append("    ").append(var.getName()).append(" = nil").append("\n");
         }
@@ -31,7 +32,7 @@ public class LuaBuilder {
             builder.setLength(builder.length()-2);
             builder.append(") end\n");
         }
-        builder.append("return ").append(infoModel.getNameSpace());
+        builder.append("return ").append(infoModel.getName());
         return builder.toString();
     }
 
