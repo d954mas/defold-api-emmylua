@@ -1,0 +1,15 @@
+group 'DefoldApi'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "io.reactivex.rxjava2:rxjava:2.1.12"
+    compile "com.google.code.gson:gson:2.8.2"
+}
