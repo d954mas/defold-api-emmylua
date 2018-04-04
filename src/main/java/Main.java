@@ -112,7 +112,11 @@ public class Main {
                     jsonStr += reader.readLine();
                 }
                 JsonElement element = new JsonParser().parse(jsonStr);
-                return element.getAsJsonObject().get("sha1").getAsString();
+                String sha =  element.getAsJsonObject().get("sha1").getAsString();
+                String version =  element.getAsJsonObject().get("version").getAsString();
+                System.out.println("version:" + version);
+                System.out.println("sha1:" + sha);
+                return sha;
             }
         }).subscribeOn(Schedulers.io());
     }
