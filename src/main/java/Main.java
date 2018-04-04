@@ -92,7 +92,7 @@ public class Main {
 
                 }
             }
-            try (PrintWriter writer = new PrintWriter(new File("C:\\Users\\d954mas\\Desktop\\defold_api",
+            try (PrintWriter writer = new PrintWriter(new File(apiDir,
                     d.getInfoModel().getName().replaceAll(" ", "_").toLowerCase() + ".lua"))) {
                 writer.write(luaBuilder.build());
             }
