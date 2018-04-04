@@ -3,7 +3,7 @@ package models;
 import java.util.List;
 import java.util.Objects;
 
-public class ElementModel implements Comparable<ElementModel>{
+public class ElementModel implements Comparable<ElementModel> {
     private String replaces;
     private String description;
     private String brief;
@@ -48,6 +48,10 @@ public class ElementModel implements Comparable<ElementModel>{
 
     public List<ParameterModel> getReturnvalues() {
         return returnvalues;
+    }
+
+    public String getClassName() {
+        return name.split("\\.")[0];
     }
 
 

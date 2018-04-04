@@ -10,4 +10,15 @@ public class ParameterModel {
     public String getName() {
         return name;
     }
+
+    public String getFormatName(){
+        if(name.endsWith("...]")){
+            return "...";
+        }
+        return name;
+    }
+
+    public String getClassName(){
+        return name.split("\\.")[0];
+    }
 }

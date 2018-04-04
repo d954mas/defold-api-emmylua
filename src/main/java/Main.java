@@ -3,9 +3,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import io.reactivex.Flowable;
-import io.reactivex.Notification;
 import io.reactivex.Single;
-import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import models.DocModel;
@@ -13,7 +11,8 @@ import models.ElementModel;
 
 import java.io.*;
 import java.net.URL;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -28,12 +27,31 @@ public class Main {
 
     static {
         IGNORE_DOCS.add("base_doc.json");
+        IGNORE_DOCS.add("buffer_doc.json");
+        IGNORE_DOCS.add("camera_doc.json");
+        IGNORE_DOCS.add("coroutine_doc.json");
+        IGNORE_DOCS.add("crash_doc.json");
+        IGNORE_DOCS.add("debug_doc.json");
+        IGNORE_DOCS.add("dmAlign_doc.json");
+        IGNORE_DOCS.add("dmArray_doc.json");
+        IGNORE_DOCS.add("dmBuffer_doc.json");
+        IGNORE_DOCS.add("dmConfigFile_doc.json");
+        IGNORE_DOCS.add("dmExtension_doc.json");
+        IGNORE_DOCS.add("dmGraphics_doc.json");
+        IGNORE_DOCS.add("dmHash_doc.json");
+        IGNORE_DOCS.add("dmLog_doc.json");
+        IGNORE_DOCS.add("dmScript_doc.json");
+        IGNORE_DOCS.add("package_doc.json");
+        IGNORE_DOCS.add("sharedlibrary_doc.json");
+        IGNORE_DOCS.add("table_doc.json");
+        IGNORE_DOCS.add("dmScript_doc.json");
+
     }
 
     public static void main(String[] args) {
         File apiDir = new File(new File(System.getProperty("java.io.tmpdir")), FOLDER + "/api");
         File[] files = apiDir.listFiles();
-        if(files != null){
+        if (files != null) {
             for (File f : files) {
                 f.delete();
             }
@@ -42,7 +60,8 @@ public class Main {
         Gson gson = new Gson();
         Single<String> lastShaSingle = args.length == 0 ? getLastDefoldSha() : Single.just(args[0]);
         lastShaSingle.flatMap(Main::downloadDocs).toFlowable()
-                .flatMap(file -> Flowable.fromArray(file.listFiles())).filter(file -> !IGNORE_DOCS.contains(file.getName()))
+                .flatMap(file -> Flowable.fromArray(file.listFiles()))
+                .filter(file -> !IGNORE_DOCS.contains(file.getName()))
                 .map((Function<File, DocModel>) file -> {
                     try (JsonReader reader = new JsonReader(new FileReader(file))) {
                         return gson.fromJson(reader, DocModel.class);
@@ -73,11 +92,13 @@ public class Main {
 
                 }
             }
-            try (PrintWriter writer = new PrintWriter(new File(apiDir, d.getInfoModel().getName() + ".lua"))) {
+            try (PrintWriter writer = new PrintWriter(new File("C:\\Users\\d954mas\\Desktop\\defold_api",
+                    d.getInfoModel().getName().replaceAll(" ", "_").toLowerCase() + ".lua"))) {
                 writer.write(luaBuilder.build());
             }
         }).toList().toFlowable().blockingSubscribe(docModel -> {
-            System.out.println("Saved to:" + new File(new File(System.getProperty("java.io.tmpdir")), FOLDER + "/api").getAbsolutePath());
+            System.out.println("Saved to:" + new File(new File(System.getProperty("java.io.tmpdir")), FOLDER + "/api")
+                    .getAbsolutePath());
         }, Throwable::printStackTrace);
 
     }
