@@ -12,4 +12,6 @@ repositories {
 dependencies {
     compile "io.reactivex.rxjava2:rxjava:2.1.12"
     compile "com.google.code.gson:gson:2.8.2"
+    compile 'org.jsoup:jsoup:1.11.2'
 }
+

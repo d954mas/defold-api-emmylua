@@ -17,13 +17,14 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 /*
-Parse defold docs, and generate lua files for IntelliJ. Ignore members param.Looks it is for c++ structures.
+Parse defold docs, and generate lua files for IntelliJ. Ignore c++ and messages.
  */
 
 public class Main {
     public static final String GET_LAST_VERSION_URL = "http://d.defold.com/stable/info.json";
     public static final Set<String> IGNORE_DOCS = new HashSet<>();
-    public static final String FOLDER = "DefoldDocs";
+    public static final File TEMP_FOLDER = new File(System.getProperty("java.io.tmpdir"), "DefoldDocs");
+    public static final File API_FOLDER = new File(TEMP_FOLDER, "api");
 
     static {
         IGNORE_DOCS.add("base_doc.json");
@@ -45,18 +46,24 @@ public class Main {
         IGNORE_DOCS.add("sharedlibrary_doc.json");
         IGNORE_DOCS.add("table_doc.json");
         IGNORE_DOCS.add("dmScript_doc.json");
-
     }
 
-    public static void main(String[] args) {
-        File apiDir = new File(new File(System.getProperty("java.io.tmpdir")), FOLDER + "/api");
-        File[] files = apiDir.listFiles();
+    private static void clearFolder(File folder) {
+        File[] files = folder.listFiles();
         if (files != null) {
             for (File f : files) {
+                if (f.isDirectory()) {
+                    clearFolder(f);
+                }
                 f.delete();
             }
         }
-        apiDir.mkdirs();
+    }
+
+    public static void main(String[] args) {
+        clearFolder(TEMP_FOLDER);
+        TEMP_FOLDER.mkdirs();
+        API_FOLDER.mkdirs();
         Gson gson = new Gson();
         Single<String> lastShaSingle = args.length == 0 ? getLastDefoldSha() : Single.just(args[0]);
         lastShaSingle.flatMap(Main::downloadDocs).toFlowable()
@@ -72,33 +79,15 @@ public class Main {
             }
             DocModel d = docModelNotification.getValue();
             LuaBuilder luaBuilder = new LuaBuilder();
-            luaBuilder.setInfoModel(d.getInfoModel());
-            for (ElementModel elementModel : d.getElements()) {
-                if (elementModel.getType().equals("FUNCTION")) {
-                    luaBuilder.addFun(elementModel);
-                } else if (elementModel.getType().equals("VARIABLE")) {
-                    luaBuilder.addVar(elementModel);
-                } else if (elementModel.getType().equals("MESSAGE")) {
-
-                } else if (elementModel.getType().equals("MACRO")) {
-
-                } else if (elementModel.getType().equals("ENUM")) {
-
-                } else if (elementModel.getType().equals("TYPEDEF")) {
-
-                } else if (elementModel.getType().equals("STRUCT")) {
-
-                } else if (elementModel.getType().equals("PROPERTY")) {
-
-                }
-            }
-            try (PrintWriter writer = new PrintWriter(new File(apiDir,
+            //luaBuilder.setInfoModel(d.getInfoModel());
+            try (PrintWriter writer = new PrintWriter(new File(API_FOLDER,
                     d.getInfoModel().getName().replaceAll(" ", "_").toLowerCase() + ".lua"))) {
-                writer.write(luaBuilder.build());
+                writer.write(luaBuilder.build(d));
             }
         }).toList().toFlowable().blockingSubscribe(docModel -> {
-            System.out.println("Saved to:" + new File(new File(System.getProperty("java.io.tmpdir")), FOLDER + "/api")
-                    .getAbsolutePath());
+            System.out.println(
+                    "Saved to:" + new File(new File(System.getProperty("java.io.tmpdir")), TEMP_FOLDER + "/api")
+                            .getAbsolutePath());
         }, Throwable::printStackTrace);
 
     }
@@ -112,8 +101,8 @@ public class Main {
                     jsonStr += reader.readLine();
                 }
                 JsonElement element = new JsonParser().parse(jsonStr);
-                String sha =  element.getAsJsonObject().get("sha1").getAsString();
-                String version =  element.getAsJsonObject().get("version").getAsString();
+                String sha = element.getAsJsonObject().get("sha1").getAsString();
+                String version = element.getAsJsonObject().get("version").getAsString();
                 System.out.println("version:" + version);
                 System.out.println("sha1:" + sha);
                 return sha;
@@ -126,14 +115,12 @@ public class Main {
         return Single.fromCallable(() -> {
             URL website = new URL("http://d.defold.com/archive/" + sha + "/engine/share/ref-doc.zip");
             try (ZipInputStream io = new ZipInputStream((website.openStream()))) {
-                File tempDir = new File(new File(System.getProperty("java.io.tmpdir")), FOLDER);
-                tempDir.mkdirs();
                 ZipEntry ze = io.getNextEntry();
                 byte[] buffer = new byte[1024];
                 while (ze != null) {
                     String fileName = ze.getName();
                     if (fileName.endsWith(".json")) {
-                        File newFile = new File(tempDir, fileName);
+                        File newFile = new File(TEMP_FOLDER, fileName);
                         newFile.getParentFile().mkdirs();
                         newFile.createNewFile();
                         try (FileOutputStream fos = new FileOutputStream(newFile)) {
@@ -146,7 +133,7 @@ public class Main {
                     ze = io.getNextEntry();
                 }
                 io.closeEntry();
-                return new File(tempDir, "doc");
+                return new File(TEMP_FOLDER,"/doc");
             }
         }).subscribeOn(Schedulers.io()).observeOn(Schedulers.io());
 

@@ -11,14 +11,17 @@ public class ParameterModel {
         return name;
     }
 
-    public String getFormatName(){
-        if(name.endsWith("...]")){
+    public String getFormatName() {
+        if (name.endsWith("...]")) {
             return "...";
+        }
+        if (name.contains("[")) {
+            return name.replaceAll("\\[|\\]", "");
         }
         return name;
     }
 
-    public String getClassName(){
+    public String getClassName() {
         return name.split("\\.")[0];
     }
 }

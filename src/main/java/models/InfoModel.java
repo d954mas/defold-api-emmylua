@@ -2,7 +2,7 @@ package models;
 
 public class InfoModel {
     private String description;
-    private String nameSpace;
+    private String namespace;
     private String name;
     private String brief;
 
@@ -11,7 +11,7 @@ public class InfoModel {
     }
 
     public String getNameSpace() {
-        return nameSpace;
+        return namespace;
     }
 
     public String getName() {
