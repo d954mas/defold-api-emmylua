@@ -2,55 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6926a29-d113-4666-8150-3bcefe119bb8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/bitop.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/built-ins.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/collection_factory.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/collection_proxy.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/collision_object.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/facebook.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/factory.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/game_object.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/gui.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/html5.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/http.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/image.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/in-app_purchases.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/inter-app_communication.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/io.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/json.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/label.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/luasocket.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/math.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/message.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/model.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/os.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/particle_effects.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/profiler.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/push_notifications.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/render.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/resource.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/sound.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/spine.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/sprite.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/string.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/system.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/tilemap.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/vector_math.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/webview.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/window.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/api/zlib.lua" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/LuaBuilder.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/Main.class" afterPath="$PROJECT_DIR$/out/production/classes/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/DefoldApi_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/DefoldApi_main.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/DefoldApi_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/DefoldApi_test.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/LuaBuilder.class" afterPath="$PROJECT_DIR$/out/production/classes/LuaBuilder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/models/InfoModel.class" afterPath="$PROJECT_DIR$/out/production/classes/models/InfoModel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/models/ParameterModel.class" afterPath="$PROJECT_DIR$/out/production/classes/models/ParameterModel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/LuaBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/LuaBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Main.java" afterPath="$PROJECT_DIR$/src/main/java/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/models/InfoModel.java" afterPath="$PROJECT_DIR$/src/main/java/models/InfoModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/models/ParameterModel.java" afterPath="$PROJECT_DIR$/src/main/java/models/ParameterModel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -132,8 +87,8 @@
       <file leaf-file-name="ParameterModel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/ParameterModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+            <state relative-caret-position="105">
+              <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
               <folding>
                 <element signature="e#162#163#0" expanded="true" />
                 <element signature="e#189#190#0" expanded="true" />
@@ -770,7 +725,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522844241535</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fixed formating">
+      <created>1522940661409</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1522940661410</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -786,8 +748,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="LuaCheck" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.057991512" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3903819" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58557284" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3903819" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -842,7 +804,8 @@
     <MESSAGE value="fixed test path" />
     <MESSAGE value="add version to log" />
     <MESSAGE value="add api for 1.2.124" />
-    <option name="LAST_COMMIT_MESSAGE" value="add api for 1.2.124" />
+    <MESSAGE value="fixed formating" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed formating" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1145,8 +1108,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/ParameterModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        <state relative-caret-position="105">
+          <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
           <folding>
             <element signature="e#162#163#0" expanded="true" />
             <element signature="e#189#190#0" expanded="true" />
