@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6926a29-d113-4666-8150-3bcefe119bb8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/LuaBuilder.class" afterPath="$PROJECT_DIR$/out/production/classes/LuaBuilder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/models/InfoModel.class" afterPath="$PROJECT_DIR$/out/production/classes/models/InfoModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/models/ParameterModel.class" afterPath="$PROJECT_DIR$/out/production/classes/models/ParameterModel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/LuaBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/LuaBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Main.java" afterPath="$PROJECT_DIR$/src/main/java/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -41,11 +40,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+            <state relative-caret-position="124">
+              <caret line="80" column="53" lean-forward="false" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,26 +68,26 @@
       <file leaf-file-name="LuaBuilder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/LuaBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1674">
-              <caret line="311" column="22" lean-forward="false" selection-start-line="311" selection-start-column="22" selection-end-line="311" selection-end-column="22" />
+            <state relative-caret-position="231">
+              <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="class#ClassBuilder#0;class#LuaBuilder#0" expanded="false" />
-                <element signature="method#formatString#0;class#LuaBuilder#0" expanded="false" />
-                <element signature="e#13354#13355#0" expanded="true" />
-                <element signature="e#13405#13406#0" expanded="true" />
-                <element signature="e#15016#15017#0" expanded="true" />
-                <element signature="e#15071#15072#0" expanded="true" />
+                <element signature="class#HtmlToPlainText#0;class#LuaBuilder#0" expanded="false" />
+                <element signature="class#FormattingVisitor#0;class#HtmlToPlainText#0;class#LuaBuilder#0" expanded="false" />
+                <element signature="e#7831#7832#0" expanded="true" />
+                <element signature="e#7882#7883#0" expanded="true" />
+                <element signature="e#9493#9494#0" expanded="true" />
+                <element signature="e#9548#9549#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParameterModel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ParameterModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/ParameterModel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+              <caret line="7" column="5" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
               <folding>
                 <element signature="e#162#163#0" expanded="true" />
                 <element signature="e#189#190#0" expanded="true" />
@@ -502,11 +501,11 @@
         <option value="$PROJECT_DIR$/src/main/java/models/DocModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/LuaGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/ElementModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/models/InfoModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/LuaBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/ParameterModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/LuaBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
       </list>
     </option>
   </component>
@@ -732,7 +731,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522940661410</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="update api with new formatting">
+      <created>1522940915714</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1522940915714</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -805,18 +811,11 @@
     <MESSAGE value="add version to log" />
     <MESSAGE value="add api for 1.2.124" />
     <MESSAGE value="fixed formating" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed formating" />
+    <MESSAGE value="update api with new formatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="update api with new formatting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/LuaBuilder.java</url>
-          <line>151</line>
-          <properties />
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="41" />
     </breakpoint-manager>
     <watches-manager>
@@ -856,12 +855,12 @@
           <caret line="75" column="73" lean-forward="false" selection-start-line="75" selection-start-column="73" selection-end-line="75" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#ClassBuilder#0;class#LuaBuilder#0" expanded="false" />
-            <element signature="method#formatString#0;class#LuaBuilder#0" expanded="false" />
-            <element signature="e#13354#13355#0" expanded="true" />
-            <element signature="e#13405#13406#0" expanded="true" />
-            <element signature="e#15016#15017#0" expanded="true" />
-            <element signature="e#15071#15072#0" expanded="true" />
+            <element signature="class#HtmlToPlainText#0;class#LuaBuilder#0" expanded="false" />
+            <element signature="class#FormattingVisitor#0;class#HtmlToPlainText#0;class#LuaBuilder#0" expanded="false" />
+            <element signature="e#7831#7832#0" expanded="true" />
+            <element signature="e#7882#7883#0" expanded="true" />
+            <element signature="e#9493#9494#0" expanded="true" />
+            <element signature="e#9548#9549#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -902,12 +901,12 @@
           <caret line="38" column="33" lean-forward="false" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#ClassBuilder#0;class#LuaBuilder#0" expanded="false" />
-            <element signature="method#formatString#0;class#LuaBuilder#0" expanded="false" />
-            <element signature="e#13354#13355#0" expanded="true" />
-            <element signature="e#13405#13406#0" expanded="true" />
-            <element signature="e#15016#15017#0" expanded="true" />
-            <element signature="e#15071#15072#0" expanded="true" />
+            <element signature="class#HtmlToPlainText#0;class#LuaBuilder#0" expanded="false" />
+            <element signature="class#FormattingVisitor#0;class#HtmlToPlainText#0;class#LuaBuilder#0" expanded="false" />
+            <element signature="e#7831#7832#0" expanded="true" />
+            <element signature="e#7882#7883#0" expanded="true" />
+            <element signature="e#9493#9494#0" expanded="true" />
+            <element signature="e#9548#9549#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -928,12 +927,12 @@
           <caret line="20" column="9" lean-forward="false" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#ClassBuilder#0;class#LuaBuilder#0" expanded="false" />
-            <element signature="method#formatString#0;class#LuaBuilder#0" expanded="false" />
-            <element signature="e#13354#13355#0" expanded="true" />
-            <element signature="e#13405#13406#0" expanded="true" />
-            <element signature="e#15016#15017#0" expanded="true" />
-            <element signature="e#15071#15072#0" expanded="true" />
+            <element signature="class#HtmlToPlainText#0;class#LuaBuilder#0" expanded="false" />
+            <element signature="class#FormattingVisitor#0;class#HtmlToPlainText#0;class#LuaBuilder#0" expanded="false" />
+            <element signature="e#7831#7832#0" expanded="true" />
+            <element signature="e#7882#7883#0" expanded="true" />
+            <element signature="e#9493#9494#0" expanded="true" />
+            <element signature="e#9548#9549#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -984,12 +983,12 @@
           <caret line="21" column="90" lean-forward="true" selection-start-line="21" selection-start-column="90" selection-end-line="21" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#ClassBuilder#0;class#LuaBuilder#0" expanded="false" />
-            <element signature="method#formatString#0;class#LuaBuilder#0" expanded="false" />
-            <element signature="e#13354#13355#0" expanded="true" />
-            <element signature="e#13405#13406#0" expanded="true" />
-            <element signature="e#15016#15017#0" expanded="true" />
-            <element signature="e#15071#15072#0" expanded="true" />
+            <element signature="class#HtmlToPlainText#0;class#LuaBuilder#0" expanded="false" />
+            <element signature="class#FormattingVisitor#0;class#HtmlToPlainText#0;class#LuaBuilder#0" expanded="false" />
+            <element signature="e#7831#7832#0" expanded="true" />
+            <element signature="e#7882#7883#0" expanded="true" />
+            <element signature="e#9493#9494#0" expanded="true" />
+            <element signature="e#9548#9549#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1050,16 +1049,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/ElementModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -1079,22 +1068,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LuaBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1674">
-          <caret line="311" column="22" lean-forward="false" selection-start-line="311" selection-start-column="22" selection-end-line="311" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#ClassBuilder#0;class#LuaBuilder#0" expanded="false" />
-            <element signature="method#formatString#0;class#LuaBuilder#0" expanded="false" />
-            <element signature="e#13354#13355#0" expanded="true" />
-            <element signature="e#13405#13406#0" expanded="true" />
-            <element signature="e#15016#15017#0" expanded="true" />
-            <element signature="e#15071#15072#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/InfoModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1109,11 +1082,37 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/models/ParameterModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+          <caret line="7" column="5" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
           <folding>
             <element signature="e#162#163#0" expanded="true" />
             <element signature="e#189#190#0" expanded="true" />
             <element signature="e#457#458#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/LuaBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#HtmlToPlainText#0;class#LuaBuilder#0" expanded="false" />
+            <element signature="class#FormattingVisitor#0;class#HtmlToPlainText#0;class#LuaBuilder#0" expanded="false" />
+            <element signature="e#7831#7832#0" expanded="true" />
+            <element signature="e#7882#7883#0" expanded="true" />
+            <element signature="e#9493#9494#0" expanded="true" />
+            <element signature="e#9548#9549#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="80" column="53" lean-forward="false" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -79,7 +79,6 @@ public class Main {
             }
             DocModel d = docModelNotification.getValue();
             LuaBuilder luaBuilder = new LuaBuilder();
-            //luaBuilder.setInfoModel(d.getInfoModel());
             try (PrintWriter writer = new PrintWriter(new File(API_FOLDER,
                     d.getInfoModel().getName().replaceAll(" ", "_").toLowerCase() + ".lua"))) {
                 writer.write(luaBuilder.build(d));
