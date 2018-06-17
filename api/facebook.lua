@@ -81,7 +81,7 @@ facebook.STATE_OPEN = nil
 ---This function returns the currently stored access token after a previous
 ---sucessful login. If it returns nil no access token exists and you need
 ---to perform a login to get the wanted permissions.
----@return token string the access token or nil if the user is not logged in
+---@return  string the access token or nil if the user is not logged in
 function facebook.access_token() end
 ---This function will disable event usage for Facebook Analytics which means
 ---that Facebook won't be able to use event data for ad-tracking. Events will
@@ -132,7 +132,7 @@ function facebook.login_with_read_permissions(permissions, callback) end
 ---Logout from Facebook.
 function facebook.logout() end
 ---This function returns a table with all the currently granted permission strings.
----@return permissions table the permissions
+---@return  table the permissions
 function facebook.permissions() end
 ---This function will post an event to Facebook Analytics where it can be used
 ---in the Facebook Insights system.

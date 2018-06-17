@@ -223,12 +223,12 @@ function gui.cancel_spine(node) end
 ---This function does not clone the supplied node's children nodes.
 ---Use gui.clone_tree for that purpose.
 ---@param node node node to clone
----@return clone node the cloned node
+---@return  node the cloned node
 function gui.clone(node) end
 ---Make a clone instance of a node and all its children.
 ---Use gui.clone to clone a node excluding its children.
 ---@param node node root node to clone
----@return clones table a table mapping node ids to the corresponding cloned nodes
+---@return  table a table mapping node ids to the corresponding cloned nodes
 function gui.clone_tree(node) end
 ---Deletes the specified node. Any child nodes of the specified node will be
 ---recursively deleted.
@@ -241,24 +241,24 @@ function gui.delete_texture(texture) end
 ---The adjust mode defines how the node will adjust itself to screen
 ---resolutions that differs from the one in the project settings.
 ---@param node node node from which to get the adjust mode (node)
----@return adjust_mode constant the current adjust mode
+---@return  constant the current adjust mode
 function gui.get_adjust_mode(node) end
 ---Returns the blend mode of a node.
 ---Blend mode defines how the node will be blended with the background.
 ---@param node node node from which to get the blend mode
----@return blend_mode constant blend mode
+---@return  constant blend mode
 function gui.get_blend_mode(node) end
 ---If node is set as an inverted clipping node, it will clip anything inside as opposed to outside.
 ---@param node node node from which to get the clipping inverted state
----@return inverted boolean true or false
+---@return  boolean true or false
 function gui.get_clipping_inverted(node) end
 ---Clipping mode defines how the node will clipping it's children nodes
 ---@param node node node from which to get the clipping mode
----@return clipping_mode constant clipping mode 
+---@return  constant clipping mode 
 function gui.get_clipping_mode(node) end
 ---If node is set as visible clipping node, it will be shown as well as clipping. Otherwise, it will only clip but not show visually.
 ---@param node node node from which to get the clipping visibility state
----@return visible boolean true or false
+---@return  boolean true or false
 function gui.get_clipping_visible(node) end
 ---Returns the color of the supplied node. The components
 ---of the returned vector4 contains the color channel values:
@@ -269,149 +269,155 @@ function gui.get_clipping_visible(node) end
 ---z                             Blue value
 ---w                             Alpha value
 ---@param node node node to get the color from
----@return color vector4 node color
+---@return  vector4 node color
 function gui.get_color(node) end
 ---Returns the sector angle of a pie node.
 ---@param node node node from which to get the fill angle
----@return angle number sector angle
+---@return  number sector angle
 function gui.get_fill_angle(node) end
 ---Get node flipbook animation.
 ---@param node node node to get flipbook animation from
----@return animation hash animation id
+---@return  hash animation id
 function gui.get_flipbook(node) end
 ---This is only useful for text nodes. The font must be mapped to the gui scene in the gui editor.
 ---@param node node node from which to get the font
----@return font hash font id
+---@return  hash font id
 function gui.get_font(node) end
 ---Returns the scene height.
----@return height number scene height
+---@return  number scene height
 function gui.get_height() end
 ---Retrieves the id of the specified node.
 ---@param node node the node to retrieve the id from
----@return id hash the id of the node
+---@return  hash the id of the node
 function gui.get_id(node) end
 ---Retrieve the index of the specified node.
 ---The index defines the order in which a node appear in a GUI scene.
 ---Higher index means the node is drawn on top of lower indexed nodes.
 ---@param node node the node to retrieve the id from
----@return index number the index of the node
+---@return  number the index of the node
 function gui.get_index(node) end
 ---@param node node node from which to get the inherit alpha state
 function gui.get_inherit_alpha(node) end
 ---Returns the inner radius of a pie node.
 ---The radius is defined along the x-axis.
 ---@param node node node from where to get the inner radius
----@return radius number inner radius
+---@return  number inner radius
 function gui.get_inner_radius(node) end
 ---The layer must be mapped to the gui scene in the gui editor.
 ---@param node node node from which to get the layer
----@return layer hash layer id
+---@return  hash layer id
 function gui.get_layer(node) end
----@return layout hash layout id
+---@return  hash layout id
 function gui.get_layout() end
 ---Returns the leading value for a text node.
 ---@param node node node from where to get the leading
----@return leading number leading scaling value (default=1)
+---@return  number leading scaling value (default=1)
 function gui.get_leading(node) end
 ---Returns whether a text node is in line-break mode or not.
 ---This is only useful for text nodes.
 ---@param node node node from which to get the line-break for
----@return line-break boolean 
+---@return  boolean 
 function gui.get_line_break(node) end
 ---Retrieves the node with the specified id.
 ---@param id string | hash id of the node to retrieve
----@return instance node a new node instance
+---@return  node a new node instance
 function gui.get_node(id) end
 ---Returns the outer bounds mode for a pie node.
 ---@param node node node from where to get the outer bounds mode
----@return bounds_mode constant the outer bounds mode of the pie node:
+---@return  constant the outer bounds mode of the pie node:
 function gui.get_outer_bounds(node) end
 ---Returns the outline color of the supplied node.
 ---See gui.get_color <> for info how vectors encode color values.
 ---@param node node node to get the outline color from
----@return color vector4 outline color
+---@return  vector4 outline color
 function gui.get_outline(node) end
 ---Returns the parent node of the specified node.
 ---If the supplied node does not have a parent, nil is returned.
 ---@param node node the node from which to retrieve its parent
----@return parent node parent instance or nil
+---@return  node parent instance or nil
 function gui.get_parent(node) end
 ---Get the paricle fx for a gui node
 ---@param node node node to get particle fx for
----@return [type:hash] [type:hash]particle fx id
+---@return  [type:hash]particle fx id
 function gui.get_particlefx(node) end
 ---Returns the number of generated vertices around the perimeter
 ---of a pie node.
 ---@param node node pie node
----@return vertices number vertex count
+---@return  number vertex count
 function gui.get_perimeter_vertices(node) end
 ---The pivot specifies how the node is drawn and rotated from its position.
 ---@param node node node to get pivot from
----@return pivot constant pivot constant 
+---@return  constant pivot constant 
 function gui.get_pivot(node) end
 ---Returns the position of the supplied node.
 ---@param node node node to get the position from
----@return position vector3 node position
+---@return  vector3 node position
 function gui.get_position(node) end
 ---Returns the rotation of the supplied node.
 ---The rotation is expressed in degree Euler angles.
 ---@param node node node to get the rotation from
----@return rotation vector3 node rotation
+---@return  vector3 node rotation
 function gui.get_rotation(node) end
 ---Returns the scale of the supplied node.
 ---@param node node node to get the scale from
----@return scale vector3 node scale
+---@return  vector3 node scale
 function gui.get_scale(node) end
----Returns the screen position of the supplied node.
+---Returns the screen position of the supplied node. This function returns the
+---calculated transformed position of the node, taking into account any parent node
+---transforms.
 ---@param node node node to get the screen position from
----@return position vector3 node screen position
+---@return  vector3 node screen position
 function gui.get_screen_position(node) end
 ---Returns the shadow color of the supplied node.
 ---See gui.get_color <> for info how vectors encode color values.
 ---@param node node node to get the shadow color from
----@return color vector4 node shadow color
+---@return  vector4 node shadow color
 function gui.get_shadow(node) end
 ---Returns the size of the supplied node.
 ---@param node node node to get the size from
----@return size vector3 node size
+---@return  vector3 node size
 function gui.get_size(node) end
 ---Returns the size of a node.
 ---The size mode defines how the node will adjust itself in size. Automatic
 ---size mode alters the node size based on the node's content.
 ---@param node node node from which to get the size mode (node)
----@return size_mode constant the current size mode
+---@return  constant the current size mode
 function gui.get_size_mode(node) end
 ---Returns the slice9 configuration values for the node.
 ---@param node node node to manipulate
----@return values vector4 configuration values
+---@return  vector4 configuration values
 function gui.get_slice9(node) end
+---Gets the playing animation on a spine node
+---@param node node node to get spine skin from
+---@return  hash spine animation id, 0 if no animation is playing
+function gui.get_spine_animation(node) end
 ---The returned node can be used for parenting and transform queries.
 ---This function has complexity O(n), where n is the number of bones in the spine model skeleton.
 ---@param node node spine node to query for bone node
 ---@param bone_id string | hash id of the corresponding bone
----@return bone node node corresponding to the spine bone
+---@return  node node corresponding to the spine bone
 function gui.get_spine_bone(node, bone_id) end
 ---This is only useful for spine nodes. Gets the normalized cursor of the animation on a spine node.
 ---@param node nodespine node to set the cursor for (node)
----@return cursor number cursor value
+---@return  number cursor value
 function gui.get_spine_cursor(node) end
 ---This is only useful for spine nodes. Gets the playback rate of the animation on a spine node.
 ---@param node node spine node to set the cursor for
----@return rate number playback rate
+---@return  number playback rate
 function gui.get_spine_playback_rate(node) end
 ---Returns the spine scene id of the supplied node.
 ---This is currently only useful for spine nodes.
 ---The returned spine scene must be mapped to the gui scene in the gui editor.
 ---@param node node node to get texture from
----@return spine_scene hash spine scene id
+---@return  hash spine scene id
 function gui.get_spine_scene(node) end
 ---Gets the spine skin of a spine node
 ---@param node node node to get spine skin from
----@return id hash spine skin id, 0 if no explicit skin is set
+---@return  hash spine skin id, 0 if no explicit skin is set
 function gui.get_spine_skin(node) end
 ---Returns the text value of a text node. This is only useful for text nodes.
 ---@param node node node from which to get the text
----@return text string text value
+---@return  string text value
 function gui.get_text(node) end
 ---Get text metrics given the provided font, text and parameters.
 ---@param font string | hash font id
@@ -420,39 +426,39 @@ function gui.get_text(node) end
 ---@param line_breaks boolean true to break lines accordingly to width (default=false)
 ---@param leading number scale value for line spacing (default=1)
 ---@param tracking number scale value for letter spacing (default=0)
----@return metrics table a table with the following fields:
+---@return  table a table with the following fields:
 function gui.get_text_metrics(font, text, width, line_breaks, leading, tracking) end
 ---Get the text metrics from a text node.
 ---@param node node text node to measure text from
----@return metrics table a table with the following fields:
+---@return  table a table with the following fields:
 function gui.get_text_metrics_from_node(node) end
 ---Returns the texture of a node.
 ---This is currently only useful for box or pie nodes.
 ---The texture must be mapped to the gui scene in the gui editor.
 ---@param node node node to get texture from
----@return texture hash texture id
+---@return  hash texture id
 function gui.get_texture(node) end
 ---Returns the tracking value of a text node.
 ---@param node node node from where to get the tracking
----@return tracking number tracking scaling number (default=0)
+---@return  number tracking scaling number (default=0)
 function gui.get_tracking(node) end
 ---Returns the scene width.
----@return width number scene width
+---@return  number scene width
 function gui.get_width() end
 ---The x-anchor specifies how the node is moved when the game is run in a different resolution.
 ---@param node node node to get x-anchor from
----@return anchor constant anchor constant
+---@return  constant anchor constant
 function gui.get_xanchor(node) end
 ---The y-anchor specifies how the node is moved when the game is run in a different resolution.
 ---@param node node node to get y-anchor from
----@return anchor constant anchor constant
+---@return  constant anchor constant
 function gui.get_yanchor(node) end
 ---Hides the on-display touch keyboard on the device.
 function gui.hide_keyboard() end
 ---Returns true if a node is enabled and false if it's not.
 ---Disabled nodes are not rendered and animations acting on them are not evaluated.
 ---@param node node node to query
----@return enabled boolean whether the node is enabled or not
+---@return  boolean whether the node is enabled or not
 function gui.is_enabled(node) end
 ---Alters the ordering of the two supplied nodes by moving the first node
 ---above the second.
@@ -469,27 +475,27 @@ function gui.move_below(node, node) end
 ---Dynamically create a new box node.
 ---@param pos vector3 | vector4 node position
 ---@param size vector3 node size
----@return node node new box node
+---@return  node new box node
 function gui.new_box_node(pos, size) end
 ---Dynamically create a particle fx node.
 ---@param pos vector3 | vector4 node position
 ---@param particlefx hash | string particle fx resource name
----@return node node new particle fx node
+---@return  node new particle fx node
 function gui.new_particlefx_node(pos, particlefx) end
 ---Dynamically create a new pie node.
 ---@param pos vector3 | vector4 node position
 ---@param size vector3 node size
----@return node node new box node
+---@return  node new box node
 function gui.new_pie_node(pos, size) end
 ---Dynamically create a new spine node.
 ---@param pos vector3 | vector4 node position
 ---@param spine_scene string | hash spine scene id
----@return node node new spine node
+---@return  node new spine node
 function gui.new_spine_node(pos, spine_scene) end
 ---Dynamically create a new text node.
 ---@param pos vector3 | vector4 node position
 ---@param text string node text
----@return node node new text node
+---@return  node new text node
 function gui.new_text_node(pos, text) end
 ---Dynamically create a new texture.
 ---@param texture string | hash texture id
@@ -498,14 +504,14 @@ function gui.new_text_node(pos, text) end
 ---@param type string | constant texture type
 ---@param buffer string texture data
 ---@param flip boolean flip texture vertically
----@return success boolean texture creation was successful
+---@return  boolean texture creation was successful
 function gui.new_texture(texture, width, height, type, buffer, flip) end
 ---Tests whether a coordinate is within the bounding box of a
 ---node.
 ---@param node node node to be tested for picking
 ---@param x number x-coordinate (see 
 ---@param y number y-coordinate (see 
----@return pickable boolean pick result
+---@return  boolean pick result
 function gui.pick_node(node, x, y) end
 ---Play flipbook animation on a box or pie node.
 ---The current node texture must contain the animation.
@@ -693,7 +699,8 @@ function gui.set_spine_scene(node, spine_scene) end
 ---Sets the spine skin on a spine node.
 ---@param node node node to set the spine skin on
 ---@param spine_skin string | hash spine skin id
-function gui.set_spine_skin(node, spine_skin) end
+---@param spine_slot string | hash optional slot id to only change a specific slot
+function gui.set_spine_skin(node, spine_skin, spine_slot) end
 ---Set the text value of a text node. This is only useful for text nodes.
 ---@param node node node to set text for
 ---@param text string text to set
@@ -714,7 +721,7 @@ function gui.set_texture(node, texture) end
 ---@param type string | constant texture type 
 ---@param buffer string texture data
 ---@param flip boolean flip texture vertically
----@return success boolean setting the data was successful
+---@return  boolean setting the data was successful
 function gui.set_texture_data(texture, width, height, type, buffer, flip) end
 ---Sets the tracking value of a text node. This value is used to
 ---adjust the vertical spacing of characters in the text.
@@ -801,7 +808,7 @@ function init(self) end
 ---@param self object reference to the script state to be used for storing data
 ---@param action_id hash id of the received input action, as mapped in the input_binding-file
 ---@param action table a table containing the input data, see above for a description
----@return [consume] boolean optional boolean to signal if the input should be consumed (not passed on to others) or not, default is false
+---@return  boolean optional boolean to signal if the input should be consumed (not passed on to others) or not, default is false
 function on_input(self, action_id, action) end
 ---This is a callback-function, which is called by the engine whenever a message has been sent to the gui component.
 ---It can be used to take action on the message, e.g. update the gui or send a response back to the sender of the message.

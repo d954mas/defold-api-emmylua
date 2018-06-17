@@ -33,13 +33,13 @@ collectionfactory.STATUS_UNLOADED = nil
 ---@param rotation quaternion rotation to assign to the newly spawned collection
 ---@param properties table table of script properties to propagate to any new game object instances
 ---@param scale number uniform scaling to apply to the newly spawned collection (must be greater than 0).
----@return ids table a table mapping the id:s from the collection to the new instance id:s
+---@return  table a table mapping the id:s from the collection to the new instance id:s
 function collectionfactory.create(url, position, rotation, properties, scale) end
 ---This returns status of the collection factory.
 ---
 ---Calling this function when the factory is not marked as dynamic loading always returns COMP_COLLECTION_FACTORY_STATUS_LOADED.
 ---@param url string | hash | url the collection factory component to get status from
----@return status constant status of the collection factory component
+---@return  constant status of the collection factory component
 function collectionfactory.get_status(url) end
 ---Resources loaded are referenced by the collection factory component until the existing (parent) collection is destroyed or collectionfactory.unload is called.
 ---

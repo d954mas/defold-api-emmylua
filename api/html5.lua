@@ -8,7 +8,7 @@ local html5 = {}
 ---A call to this function is blocking, the result is returned as-is, as a string.
 ---(Internally this will execute the string using the eval() JavaScript function.)
 ---@param code string Javascript code to run
----@return result string result as string
+---@return  string result as string
 function html5.run(code) end
 
 return html5

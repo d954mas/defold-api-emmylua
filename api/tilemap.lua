@@ -9,10 +9,10 @@ local tilemap = {}
 ---The resulting values take all tile map layers into account, meaning that
 ---the bounds are calculated as if all layers were collapsed into one.
 ---@param url string | hash | url the tile map
----@return x number x coordinate of the bottom left corner
----@return y number y coordinate of the bottom left corner
----@return w number number of columns (width) in the tile map
----@return h number number of rows (height) in the tile map
+---@return  number x coordinate of the bottom left corner
+---@return  number y coordinate of the bottom left corner
+---@return  number number of columns (width) in the tile map
+---@return  number number of rows (height) in the tile map
 function tilemap.get_bounds(url) end
 ---Get the tile set at the specified position in the tilemap.
 ---The position is identified by the tile index starting at origo
@@ -23,7 +23,7 @@ function tilemap.get_bounds(url) end
 ---@param layer string | hash name of the layer for the tile
 ---@param x number x-coordinate of the tile
 ---@param y number y-coordinate of the tile
----@return tile number index of the tile
+---@return  number index of the tile
 function tilemap.get_tile(url, layer, x, y) end
 ---Resets a shader constant for a tile map component.
 ---The constant must be defined in the material assigned to the tile map.
@@ -47,7 +47,7 @@ function tilemap.set_constant(url, constant, value) end
 ---Tiles to the left of and below origo are indexed 0, -1, -2 and so forth.
 ---
 ---+-------+-------+------+------+
----|  0,3  |  1,3  | 1,2  | 3,3  |
+---|  0,3  |  1,3  | 2,3  | 3,3  |
 ---+-------+-------+------+------+
 ---|  0,2  |  1,2  | 2,2  | 3,2  |
 ---+-------+-------+------+------+

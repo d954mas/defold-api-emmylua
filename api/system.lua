@@ -17,40 +17,40 @@ sys.NETWORK_DISCONNECTED = nil
 ---
 --- On Android, the app_string is the package identifier for the app.
 ---@param app_string string platform specific string with application package or query, see above for details.
----@return app_info table table with application information in the following fields:
+---@return  table table with application information in the following fields:
 function sys.get_application_info(app_string) end
 ---Get config value from the game.project configuration file.
 ---@param key string key to get value for. The syntax is SECTION.KEY
----@return value string config value as a string. nil if the config key doesn't exists
+---@return  string config value as a string. nil if the config key doesn't exists
 function sys.get_config(key) end
 ---Get config value from the game.project configuration file with default value
 ---@param key string key to get value for. The syntax is SECTION.KEY
 ---@param default_value string default value to return if the value does not exist
----@return value string config value as a string. default_value if the config key does not exist
+---@return  string config value as a string. default_value if the config key does not exist
 function sys.get_config(key, default_value) end
 ---  Returns the current network connectivity status
 ---on mobile platforms.
 ---
 ---On desktop, this function always return sys.NETWORK_CONNECTED.
----@return status constant network connectivity status:
+---@return  constant network connectivity status:
 function sys.get_connectivity() end
 ---Returns a table with engine information.
----@return engine_info table table with engine information in the following fields:
+---@return  table table with engine information in the following fields:
 function sys.get_engine_info() end
 ---Returns an array of tables with information on network interfaces.
----@return ifaddrs table an array of tables. Each table entry contain the following fields:
+---@return  table an array of tables. Each table entry contain the following fields:
 function sys.get_ifaddrs() end
 ---The save-file path is operating system specific and is typically located under the user's home directory.
 ---@param application_id string user defined id of the application, which helps define the location of the save-file
 ---@param file_name string file-name to get path for
----@return path string path to save-file
+---@return  string path to save-file
 function sys.get_save_file(application_id, file_name) end
 ---Returns a table with system information.
----@return sys_info table table with system information in the following fields:
+---@return  table table with system information in the following fields:
 function sys.get_sys_info() end
 ---If the file exists, it must have been created by sys.save to be loaded.
 ---@param filename string file to read from
----@return loaded table lua table, which is empty if the file could not be found
+---@return  table lua table, which is empty if the file could not be found
 function sys.load(filename) end
 ---Loads a custom resource. Specify the full filename of the resource that you want
 ---to load. When loaded, the file data is returned as a string.
@@ -64,11 +64,11 @@ function sys.load(filename) end
 ---
 ---For example "main/data/,assets/level_data.json".
 ---@param filename string resource to load, full path
----@return data string loaded data, or nil if the resource could not be loaded
+---@return  string loaded data, or nil if the resource could not be loaded
 function sys.load_resource(filename) end
 ---Open URL in default application, typically a browser
 ---@param url string url to open
----@return success boolean a boolean indicating if the url could be opened or not
+---@return  boolean a boolean indicating if the url could be opened or not
 function sys.open_url(url) end
 ---The table can later be loaded by sys.load.
 ---Use sys.get_save_file to obtain a valid location for the file.
@@ -80,7 +80,7 @@ function sys.open_url(url) end
 ---the limit on the total number of rows remains in effect.
 ---@param filename string file to write to
 ---@param table table lua table to save
----@return success boolean a boolean indicating if the table could be saved or not
+---@return  boolean a boolean indicating if the table could be saved or not
 function sys.save(filename, table) end
 ---Sets the host that is used to check for network connectivity against.
 ---@param host string hostname to check against

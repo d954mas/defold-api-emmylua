@@ -45,13 +45,13 @@ public class LuaBuilder {
                         String types = "";
                         String desc = "";
                         if (spanElement != null) {
-                            types = spanElement.text();
+                            types = spanElement.text().replaceAll(" ", "");
                             desc = spanElement.nextSibling().toString();
                         } else {
                             types = pm.getName();
                             desc = f.getPlainText(pm.getDoc());
                         }
-                        sb.append("---@return ").append(pm.getName()).append(" ").append(types).append(desc)
+                        sb.append("---@return ").append(" ").append(types).append(desc)
                                 .append("\n");
                     }
                 }

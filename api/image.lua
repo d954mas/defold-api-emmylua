@@ -11,7 +11,7 @@ image.TYPE_RGBA = nil
 ---Load image (PNG or JPEG) from buffer.
 ---@param buffer string image data buffer
 ---@param premult boolean optional flag if alpha should be premultiplied. Defaults to 
----@return image table object or 
+---@return  table object or 
 function image.load(buffer, premult) end
 
 return image

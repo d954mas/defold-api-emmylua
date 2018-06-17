@@ -21,7 +21,7 @@ local msg = {}
 function msg.post(receiver, message_id, message) end
 ---This is equivalent to msg.url(nil) or msg.url("#"), which creates an url to the current
 ---script component.
----@return url url a new URL
+---@return  url a new URL
 function msg.url() end
 ---The format of the string must be [socket:][path][#fragment], which is similar to a HTTP URL.
 ---When addressing instances:
@@ -42,12 +42,12 @@ function msg.url() end
 --- * "#" the current component
 
 ---@param urlstring string string to create the url from
----@return url url a new URL
+---@return  url a new URL
 function msg.url(urlstring) end
 ---@param socket string | hash socket of the URL
 ---@param path string | hash path of the URL
 ---@param fragment string | hash fragment of the URL
----@return url url a new URL
+---@return  url a new URL
 function msg.url(socket, path, fragment) end
 
 return msg

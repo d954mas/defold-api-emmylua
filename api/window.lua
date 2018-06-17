@@ -20,7 +20,7 @@ window.WINDOW_EVENT_RESIZED = nil
 ---The dimming mode specifies whether or not a mobile device should dim the screen after a period without user interaction.
 ---
 ---On platforms that does not support dimming, window.DIMMING_UNKNOWN is always returned.
----@return mode constant The mode for screen dimming
+---@return  constant The mode for screen dimming
 function window.get_dim_mode() end
 ---  Sets the dimming mode on a mobile device.
 ---

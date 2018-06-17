@@ -4,6 +4,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
+import io.reactivex.functions.Action;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import models.DocModel;
@@ -87,7 +88,11 @@ public class Main {
             System.out.println(
                     "Saved to:" + new File(new File(System.getProperty("java.io.tmpdir")), TEMP_FOLDER + "/api")
                             .getAbsolutePath());
-        }, Throwable::printStackTrace);
+        }, Throwable::printStackTrace, () -> {
+            try (PrintWriter writer = new PrintWriter(new File(API_FOLDER, "base.lua"))) {
+                writer.write(BaseLua.BASE);
+            }
+        });
 
     }
 
@@ -132,7 +137,7 @@ public class Main {
                     ze = io.getNextEntry();
                 }
                 io.closeEntry();
-                return new File(TEMP_FOLDER,"/doc");
+                return new File(TEMP_FOLDER, "/doc");
             }
         }).subscribeOn(Schedulers.io()).observeOn(Schedulers.io());
 

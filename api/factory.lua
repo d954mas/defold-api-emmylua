@@ -15,21 +15,21 @@ factory.STATUS_UNLOADED = nil
 ---Properties defined in scripts in the created game object can be overridden through the properties-parameter below.
 ---See go.property for more information on script properties.
 ---
---- Calling factory.create <> create on a factory that is marked as dynamic without having loaded resources
+--- Calling factory.create <> on a factory that is marked as dynamic without having loaded resources
 ---using factory.load <> will synchronously load and create resources which may affect application performance.
 ---@param url string | hash | url the factory that should create a game object.
 ---@param position vector3 the position of the new game object, the position of the game object calling 
 ---@param rotation quaternion the rotation of the new game object, the rotation of the game object calling 
 ---@param properties table the properties defined in a script attached to the new game object.
 ---@param scale number | vector3 the scale of the new game object (must be greater than 0), the scale of the game object containing the factory is used by default, or if the value is 
----@return id hash the global id of the spawned game object
+---@return  hash the global id of the spawned game object
 function factory.create(url, position, rotation, properties, scale) end
 ---This returns status of the factory.
 ---
 ---Calling this function when the factory is not marked as dynamic loading always returns
 ---factory.STATUS_LOADED.
 ---@param url string | hash | url the factory component to get status from
----@return status constant status of the factory component
+---@return  constant status of the factory component
 function factory.get_status(url) end
 ---Resources are referenced by the factory component until the existing (parent) collection is destroyed or factory.unload is called.
 ---

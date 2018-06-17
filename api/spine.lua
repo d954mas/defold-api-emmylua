@@ -12,7 +12,7 @@ function spine.cancel(url) end
 ---Game objects corresponding to a spine model skeleton bone can not be individually deleted.
 ---@param url string | hash | url the spine model to query
 ---@param bone_id string | hash id of the corresponding bone
----@return id hash id of the game object
+---@return  hash id of the game object
 function spine.get_go(url, bone_id) end
 ---Plays a specified animation on a spine model component with specified playback
 ---mode and parameters.
@@ -45,6 +45,11 @@ function spine.play_anim(url, anim_id, playback, play_properties, complete_funct
 ---@param url string | hash | url the spine model that should have a constant reset
 ---@param constant string | hash name of the constant
 function spine.reset_constant(url, constant) end
+---Resets any previously set IK target of a spine model, the position will be reset
+---to the original position from the spine scene.
+---@param url string | hash | url the spine model containing the object
+---@param ik_constraint_id string | hash id of the corresponding IK constraint object
+function spine.reset_ik_target(url, ik_constraint_id) end
 ---Sets a shader constant for a spine model component.
 ---The constant must be defined in the material assigned to the spine model.
 ---Setting a constant through this function will override the value set for that constant in the material.
@@ -66,5 +71,10 @@ function spine.set_ik_target(url, ik_constraint_id, target_url) end
 ---@param ik_constraint_id string | hash id of the corresponding IK constraint object
 ---@param position vector3 target position
 function spine.set_ik_target_position(url, ik_constraint_id, position) end
+---Sets the spine skin on a spine model.
+---@param url string | hash | url the spine model for which to set skin
+---@param spine_skin string | hash spine skin id
+---@param spine_slot string | hash optional slot id to only change a specific slot
+function spine.set_skin(url, spine_skin, spine_slot) end
 
 return spine

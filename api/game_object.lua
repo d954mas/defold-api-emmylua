@@ -136,7 +136,7 @@ function go.cancel_animations(url, property) end
 function go.delete(id, recursive) end
 ---@param url string | hash | url url of the game object or component having the property
 ---@param property string | hash id of the property to retrieve
----@return value any the value of the specified property
+---@return  any the value of the specified property
 function go.get(url, property) end
 ---Returns or constructs an instance identifier. The instance id is a hash
 ---of the absolute path to the instance.
@@ -147,41 +147,41 @@ function go.get(url, property) end
 --- * If path is not specified, the id of the game object instance the script is attached to will be returned.
 
 ---@param path string path of the instance for which to return the id
----@return id hash instance id
+---@return  hash instance id
 function go.get_id(path) end
 ---The position is relative the parent (if any). Use go.get_world_position <> to retrieve the global world position.
 ---@param id string | hash | url optional id of the game object instance to get the position for, by default the instance of the calling script
----@return position vector3 instance position
+---@return  vector3 instance position
 function go.get_position(id) end
 ---The rotation is relative to the parent (if any). Use go.get_world_rotation <> to retrieve the global world position.
 ---@param id string | hash | url optional id of the game object instance to get the rotation for, by default the instance of the calling script
----@return rotation quaternion instance rotation
+---@return  quaternion instance rotation
 function go.get_rotation(id) end
 ---The scale is relative the parent (if any). Use go.get_world_scale <> to retrieve the global world 3D scale factor.
 ---@param id string | hash | url optional id of the game object instance to get the scale for, by default the instance of the calling script
----@return scale vector3 instance scale factor
+---@return  vector3 instance scale factor
 function go.get_scale(id) end
 ---The uniform scale is relative the parent (if any). If the underlying scale vector is non-uniform the min element of the vector is returned as the uniform scale factor.
 ---@param id string | hash | url optional id of the game object instance to get the uniform scale for, by default the instance of the calling script
----@return scale number uniform instance scale factor
+---@return  number uniform instance scale factor
 function go.get_scale_uniform(id) end
 ---Use go.get_position <> to retrieve the position relative to the parent.
 ---@param id string | hash | url optional id of the game object instance to get the world position for, by default the instance of the calling script
----@return position vector3 instance world position
+---@return  vector3 instance world position
 function go.get_world_position(id) end
 ---Use go.get_rotation to retrieve the rotation relative to the parent.
 ---@param id string | hash | url optional id of the game object instance to get the world rotation for, by default the instance of the calling script
----@return rotation quaternion instance world rotation
+---@return  quaternion instance world rotation
 function go.get_world_rotation(id) end
 ---Use go.get_scale to retrieve the 3D scale factor relative to the parent.
 ---This vector is derived by decomposing the transformation matrix and should be used with care.
 ---For most cases it should be fine to use go.get_world_scale_uniform <> instead.
 ---@param id string | hash | url optional id of the game object instance to get the world scale for, by default the instance of the calling script
----@return scale vector3 instance world 3D scale factor
+---@return  vector3 instance world 3D scale factor
 function go.get_world_scale(id) end
 ---Use go.get_scale_uniform to retrieve the scale factor relative to the parent.
 ---@param id string | hash | url optional id of the game object instance to get the world scale for, by default the instance of the calling script
----@return scale number instance world scale factor
+---@return  number instance world scale factor
 function go.get_world_scale_uniform(id) end
 ---This function defines a property which can then be used in the script through the self-reference.
 ---The properties defined this way are automatically exposed in the editor in game objects and collections which use the script.
@@ -268,7 +268,7 @@ function init(self) end
 ---@param self object reference to the script state to be used for storing data
 ---@param action_id hash id of the received input action, as mapped in the input_binding-file
 ---@param action table a table containing the input data, see above for a description
----@return [consume] boolean optional boolean to signal if the input should be consumed (not passed on to others) or not, default is false
+---@return  boolean optional boolean to signal if the input should be consumed (not passed on to others) or not, default is false
 function on_input(self, action_id, action) end
 ---This is a callback-function, which is called by the engine whenever a message has been sent to the script component.
 ---It can be used to take action on the message, e.g. send a response back to the sender of the message.

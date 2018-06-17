@@ -11,11 +11,11 @@ resource.TEXTURE_FORMAT_RGBA = nil
 ---2D texture type
 resource.TEXTURE_TYPE_2D = nil
 ---Return a reference to the Manifest that is currently loaded.
----@return manifest_reference number reference to the Manifest that is currently loaded
+---@return  number reference to the Manifest that is currently loaded
 function resource.get_current_manifest() end
 ---Loads the resource data for a specific resource.
 ---@param path string | hash The path to the resource
----@return buffer buffer Returns the buffer stored on disc
+---@return  buffer Returns the buffer stored on disc
 function resource.load(path) end
 ---Sets the resource data for a specific resource
 ---@param path string | hash The path to the resource
