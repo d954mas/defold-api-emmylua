@@ -17,6 +17,15 @@ File/Project structure/libraries/lua zip library.
 
 5)Use it 
 
+# How to generate headers.
+
+1)Download jar from releases
+
+2)Run it. It will create a folder DefoldDocs
+
+3)Compress DefoldDocs/api to zip 
+
+
 # Example 
 render.lua
 ```lua
