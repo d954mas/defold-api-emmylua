@@ -1,0 +1,44 @@
+{
+  "info": {
+    "description": "<p>Functions for getting profiling data in runtime.\nMore detailed profiling and debugging information can be found under the <a href=\"http://www.defold.com/manuals/debugging/\">Debugging</a> section in the manuals.</p>", 
+    "namespace": "profiler", 
+    "name": "Profiler", 
+    "brief": "<p>Profiler API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Get the percent of CPU usage by the application, as reported by the OS.</p>\n<p><span class=\"icon-attention\"></span> This function is not available on <span class=\"icon-html5\"></span> HTML5.</p>\n<p>For some platforms (<span class=\"icon-android\"></span> Android, <span class=\"icon-linux\"></span> Linux and <span class=\"icon-windows\"></span> Windows), this information is only available\nby default in the debug version of the engine. It can be enabled in release version as well\nby checking <code>track_cpu</code> under <code>profiler</code> in the <code>game.project</code> file.\n(This means that the engine will sample the CPU usage in intervalls during execution even in release mode.)</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> of CPU used by the application</p>", 
+          "name": "percent"
+        }
+      ], 
+      "brief": "<p>get current CPU usage for app reported by OS</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "profiler.get_cpu_usage"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get the amount of memory used (resident/working set) by the application in bytes, as reported by the OS.</p>\n<p><span class=\"icon-attention\"></span> This function is not available on <span class=\"icon-html5\"></span> HTML5.</p>\n<p>The values are gathered from internal OS functions which correspond to the following;</p>\n<table>\n<thead>\n<tr>\n<th>OS</th>\n<th>Value</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><span class=\"icon-ios\"></span> iOS<br/><span class=\"icon-macos\"></span> MacOS<br/><span class=\"icon-android\"></span><br/>Androd<br/><span class=\"icon-linux\"></span> Linux</td>\n<td><a href=\"https://en.wikipedia.org/wiki/Resident_set_size\">Resident memory</a></td>\n</tr>\n<tr>\n<td><span class=\"icon-windows\"></span> Windows</td>\n<td><a href=\"https://en.wikipedia.org/wiki/Working_set\">Working set</a></td>\n</tr>\n<tr>\n<td><span class=\"icon-html5\"></span> HTML5</td>\n<td><span class=\"icon-attention\"></span> Not available</td>\n</tr>\n</tbody>\n</table>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> used by the application</p>", 
+          "name": "bytes"
+        }
+      ], 
+      "brief": "<p>get current memory usage for app reported by OS</p>", 
+      "examples": "<p>Get memory usage before and after loading a collection:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">get_memory_usage</span><span class=\"p\">())</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#collectionproxy&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">load&quot;</span><span class=\"p\">)</span>\n<span class=\"o\">...</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">get_memory_usage</span><span class=\"p\">())</span> <span class=\"c1\">-- will report a higher number than the initial call</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "profiler.get_memory_usage"
+    }
+  ]
+}

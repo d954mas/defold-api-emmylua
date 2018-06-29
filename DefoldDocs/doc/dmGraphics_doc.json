@@ -1,0 +1,248 @@
+{
+  "info": {
+    "description": "<p><span class=\"file\">&lt;dmsdk/graphics/graphics_native.h&gt;</span></p>\n<p>Platform specific native graphics functions.</p>", 
+    "namespace": "dmGraphics", 
+    "name": "Graphics", 
+    "brief": "<p>SDK Graphics API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Get Android native jobject. Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">jobject</span> native handle</p>", 
+          "name": "jobject"
+        }
+      ], 
+      "brief": "<p>get Android native jobject</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeAndroidActivity"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get Android EGLContext native handle (EGLContext). Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">EGLContext</span> native handle</p>", 
+          "name": "EGLContext"
+        }
+      ], 
+      "brief": "<p>get Android EGLContext</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeAndroidEGLContext"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get Android EGLSurface native handle (EGLSurface). Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">EGLSurface</span> native handle</p>", 
+          "name": "EGLSurface"
+        }
+      ], 
+      "brief": "<p>get Android EGLSurface</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeAndroidEGLSurface"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get Android JavaVM ptr. Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">JavaVM*</span> native handle</p>", 
+          "name": "JavaVM*"
+        }
+      ], 
+      "brief": "<p>get Android native JavaVM</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeAndroidJavaVM"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get OSX NSOpenGLContext native handle (id). Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">id</span> native handle</p>", 
+          "name": "id"
+        }
+      ], 
+      "brief": "<p>get OSX NSOpenGLContext</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeOSXNSOpenGLContext"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get OSX NSView native handle (id). Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">id</span> native handle</p>", 
+          "name": "id"
+        }
+      ], 
+      "brief": "<p>get OSX NSView</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeOSXNSView"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get OSX NSWindow native handle (id). Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">id</span> native handle</p>", 
+          "name": "id"
+        }
+      ], 
+      "brief": "<p>get OSX NSWindow</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeOSXNSWindow"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get Win32 gl rendercontext native handle (HGLRC). Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">HGLRC</span> native handle</p>", 
+          "name": "HGLRC"
+        }
+      ], 
+      "brief": "<p>get Win32 HGLRC</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeWindowsHGLRC"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get Win32 windows native handle (HWND). Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">HWND</span> native handle</p>", 
+          "name": "HWND"
+        }
+      ], 
+      "brief": "<p>get Win32 HWND</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeWindowsHWND"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get Linux X11GLXContext native handle (GLXContext). Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">GLXContext</span> native handle</p>", 
+          "name": "GLXContext"
+        }
+      ], 
+      "brief": "<p>get Linux X11GLXContext</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeX11GLXContext"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get Linux X11Window windows native handle (Window). Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">Window</span> native handle</p>", 
+          "name": "Window"
+        }
+      ], 
+      "brief": "<p>get Linux X11Window</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeX11Window"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get iOS EAGLContext native handle (id). Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">id</span> native handle</p>", 
+          "name": "id"
+        }
+      ], 
+      "brief": "<p>get iOS EAGLContext</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeiOSEAGLContext"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get iOS UIView native handle (id). Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">id</span> native handle</p>", 
+          "name": "id"
+        }
+      ], 
+      "brief": "<p>get iOS UIView</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeiOSUIView"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get iOS UIWindow native handle (id). Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">id</span> native handle</p>", 
+          "name": "id"
+        }
+      ], 
+      "brief": "<p>get iOS UIWindow</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeiOSUIWindow"
+    }
+  ]
+}

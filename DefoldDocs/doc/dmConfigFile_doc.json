@@ -1,0 +1,112 @@
+{
+  "info": {
+    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/configfile.h&gt;</span></p>\n<p>Configuration file access functions.\nThe configuration file is compiled version of the <span class=\"file\">game.project</span> file.</p>", 
+    "namespace": "dmConfigFile", 
+    "name": "ConfigFile", 
+    "brief": "<p>SDK ConfigFile API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Get config value as float, returns default if the key isn't found\nNote: default_value is returned for invalid float values</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmBuffer::HConfig</span> Config file handle</p>", 
+          "name": "config"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">const char*</span> Key in format section.key (.key for no section)</p>", 
+          "name": "key"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">float</span> Default value to return if key isn't found</p>", 
+          "name": "default_value"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">float</span> found value or default value</p>", 
+          "name": "value"
+        }
+      ], 
+      "brief": "<p>get config value as float</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmConfigFile::GetFloat"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get config value as int, returns default if the key isn't found\nNote: default_value is returned for invalid integer values</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmBuffer::HConfig</span> Config file handle</p>", 
+          "name": "config"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">const char*</span> Key in format section.key (.key for no section)</p>", 
+          "name": "key"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int32_t</span> Default value to return if key isn't found</p>", 
+          "name": "default_value"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">int32_t</span> found value or default value</p>", 
+          "name": "value"
+        }
+      ], 
+      "brief": "<p>get config value as int</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmConfigFile::GetInt"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get config value as string, returns default if the key isn't found</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmBuffer::HConfig</span> Config file handle</p>", 
+          "name": "config"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">const char*</span> Key in format section.key (.key for no section)</p>", 
+          "name": "key"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">const char*</span> Default value to return if key isn't found</p>", 
+          "name": "default_value"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">const char*</span> found value or default value</p>", 
+          "name": "value"
+        }
+      ], 
+      "brief": "<p>get config value as string</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmConfigFile::GetString"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">typedef</span> <span class=\"k\">struct</span> <span class=\"n\">Config</span><span class=\"o\">*</span> <span class=\"n\">HConfig</span><span class=\"p\">;</span>\n</pre></div>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>HConfig type definition</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "TYPEDEF", 
+      "name": "dmConfigFile::HConfig"
+    }
+  ]
+}

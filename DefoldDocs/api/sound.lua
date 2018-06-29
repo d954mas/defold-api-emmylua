@@ -63,6 +63,15 @@ function sound.is_music_playing() end
 ---this function always return false.
 ---@return  boolean 
 function sound.is_phone_call_active() end
+---Make the sound component play its sound. Multiple voices is supported. The limit is set to 32 voices per sound component.
+---
+--- Note that gain is in linear scale, between 0 and 1.
+---To get the dB value from the gain, use the formula 20 * log(gain).
+---Inversely, to find the linear value from a dB value, use the formula
+---10db/20.
+---@param url string | hash | url the sound that should play
+---@param play_properties table optional table with properties:
+function sound.play(url, play_properties) end
 ---Set mixer group gain
 ---
 --- Note that gain is in linear scale, between 0 and 1.
@@ -72,5 +81,8 @@ function sound.is_phone_call_active() end
 ---@param group string | hash group name
 ---@param gain number gain in linear scale
 function sound.set_group_gain(group, gain) end
+---Stop playing all active voices
+---@param url string | hash | url the sound that should stop
+function sound.stop(url) end
 
 return sound

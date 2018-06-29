@@ -1,0 +1,165 @@
+{
+  "info": {
+    "description": "<p>Functions and messages used to manipulate tile map components.</p>", 
+    "namespace": "tilemap", 
+    "name": "Tilemap", 
+    "brief": "<p>Tilemap API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Get the bounds for a tile map. This function returns multiple values:\nThe lower left corner index x and y coordinates (1-indexed),\nthe tile map width and the tile map height.</p>\n<p>The resulting values take all tile map layers into account, meaning that\nthe bounds are calculated as if all layers were collapsed into one.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the tile map</p>", 
+          "name": "url"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> x coordinate of the bottom left corner</p>", 
+          "name": "x"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> y coordinate of the bottom left corner</p>", 
+          "name": "y"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> number of columns (width) in the tile map</p>", 
+          "name": "w"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> number of rows (height) in the tile map</p>", 
+          "name": "h"
+        }
+      ], 
+      "brief": "<p>get the bounds of a tile map</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- get the level bounds.</span>\n<span class=\"kd\">local</span> <span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"n\">y</span><span class=\"p\">,</span> <span class=\"n\">w</span><span class=\"p\">,</span> <span class=\"n\">h</span> <span class=\"o\">=</span> <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">get_bounds</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/level#tilemap&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "tilemap.get_bounds"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get the tile set at the specified position in the tilemap.\nThe position is identified by the tile index starting at origo\nwith index 1, 1. (see <a href=\"/ref/tilemap#tilemap.set_tile()\">tilemap.set_tile()</a>)\nWhich tile map and layer to query is identified by the URL and the\nlayer name parameters.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the tile map</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> name of the layer for the tile</p>", 
+          "name": "layer"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> x-coordinate of the tile</p>", 
+          "name": "x"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> y-coordinate of the tile</p>", 
+          "name": "y"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> index of the tile</p>", 
+          "name": "tile"
+        }
+      ], 
+      "brief": "<p>get a tile from a tile map</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- get the tile under the player.</span>\n<span class=\"kd\">local</span> <span class=\"n\">tileno</span> <span class=\"o\">=</span> <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">get_tile</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/level#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">foreground&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">player_x</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">player_y</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "tilemap.get_tile"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Resets a shader constant for a tile map component.\nThe constant must be defined in the material assigned to the tile map.\nResetting a constant through this function implies that the value defined in the material will be used.\nWhich tile map to reset a constant for is identified by the URL.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the tile map that should have a constant reset</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> name of the constant</p>", 
+          "name": "constant"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>reset a shader constant for a tile map</p>", 
+      "examples": "<p>The following examples assumes that the tile map has id \"tilemap\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the tile map, you can reset the constants defined there in the same manner.</p>\n<p>How to reset the tinting of a tile map:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">reset_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "tilemap.reset_constant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets a shader constant for a tile map component.\nThe constant must be defined in the material assigned to the tile map.\nSetting a constant through this function will override the value set for that constant in the material.\nThe value will be overridden until tilemap.reset_constant is called.\nWhich tile map to set a constant for is identified by the URL.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the tile map that should have a constant set</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> name of the constant</p>", 
+          "name": "constant"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector4</span> value of the constant</p>", 
+          "name": "value"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set a shader constant for a tile map</p>", 
+      "examples": "<p>The following examples assumes that the tile map has id \"tile map\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the tile map, you can set the constants defined there in the same manner.</p>\n<p>How to tint a tile map to red:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">set_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "tilemap.set_constant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Replace a tile in a tile map with a new tile.\nThe coordinates of the tiles are indexed so that the \"first\" tile just\nabove and to the right of origo has coordinates 1,1.\nTiles to the left of and below origo are indexed 0, -1, -2 and so forth.</p>\n<pre>\n+-------+-------+------+------+\n|  0,3  |  1,3  | 2,3  | 3,3  |\n+-------+-------+------+------+\n|  0,2  |  1,2  | 2,2  | 3,2  |\n+-------+-------+------+------+\n|  0,1  |  1,1  | 2,1  | 3,1  |\n+-------O-------+------+------+\n|  0,0  |  1,0  | 2,0  | 3,0  |\n+-------+-------+------+------+\n</pre>\n\n<p>The coordinates must be within the bounds of the tile map as it were created.\nThat is, it is not possible to extend the size of a tile map by setting tiles outside the edges.\nTo clear a tile, set the tile to number 0. Which tile map and layer to manipulate is identified by the URL and the layer name parameters.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the tile map</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> name of the layer for the tile</p>", 
+          "name": "layer"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> x-coordinate of the tile</p>", 
+          "name": "x"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> y-coordinate of the tile</p>", 
+          "name": "y"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> index of new tile to set</p>", 
+          "name": "tile"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> optional if the tile should be horizontally flipped</p>", 
+          "name": "[h-flipped]"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> optional i the tile should be vertically flipped</p>", 
+          "name": "[v-flipped]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set a tile in a tile map</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Clear the tile under the player.</span>\n<span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">set_tile</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/level#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">foreground&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">player_x</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">player_y</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "tilemap.set_tile"
+    }
+  ]
+}

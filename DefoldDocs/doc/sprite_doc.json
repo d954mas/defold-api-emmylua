@@ -1,0 +1,197 @@
+{
+  "info": {
+    "description": "<p>Functions, messages and properties used to manipulate sprite components.</p>", 
+    "namespace": "sprite", 
+    "name": "Sprite", 
+    "brief": "<p>Sprite API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>This message is sent to the sender of a <code>play_animation</code> message when the\nanimation has completed.</p>\n<p>Note that this message is sent only for animations that play with the following\nplayback modes:</p>\n<ul>\n<li>Once Forward</li>\n<li>Once Backward</li>\n<li>Once Ping Pong</li>\n</ul>\n<p>See <a href=\"#play_animation\">play_animation</a> for more information and examples of how to use\nthis message.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> the current tile of the sprite</p>", 
+          "name": "current_tile"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">hash</span> id of the animation that was completed</p>", 
+          "name": "id"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>reports that an animation has completed</p>", 
+      "examples": "<p>How to sequence two animations together.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- play jump animation at init</span>\n  <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">play_animation&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">jump&quot;</span><span class=\"p\">)})</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- check for animation done response</span>\n  <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">animation_done&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- start the walk animation</span>\n    <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">play_animation&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">walk&quot;</span><span class=\"p\">)</span> <span class=\"p\">})</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MESSAGE", 
+      "name": "animation_done"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Post this message to a sprite component to make it play an animation from its tile set.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> the id of the animation to play</p>", 
+          "name": "id"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>play a sprite animation</p>", 
+      "examples": "<p>In the example, it is assumed that the instance of the script has a sprite-component with id \"sprite\". The sprite itself is assumed to be bound to a tile set with animations \"walk\" and \"jump\".</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">play_animation&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">jump&quot;</span><span class=\"p\">)})</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MESSAGE", 
+      "name": "play_animation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The non-uniform scale of the sprite. The type of the property is vector3.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">vector3</span> sprite scale</p>", 
+      "examples": "<p>How to scale a sprite independently along the X and Y axis:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Double the y-axis scaling on component &quot;sprite&quot;</span>\n     <span class=\"kd\">local</span> <span class=\"n\">yscale</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">scale.y&quot;</span><span class=\"p\">)</span>\n     <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">scale.y&quot;</span><span class=\"p\">,</span> <span class=\"n\">yscale</span> <span class=\"o\">*</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "scale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p><span class=\"mark\">READ ONLY</span> Returns the size of the sprite, not allowing for any additional scaling that may be applied.\nThe type of the property is vector3.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">vector3</span> sprite size</p>", 
+      "examples": "<p>How to query a sprite's size, either as a vector or selecting a specific dimension:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- get size from component &quot;sprite&quot;</span>\n  <span class=\"kd\">local</span> <span class=\"n\">size</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">size&quot;</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">sx</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">size.x&quot;</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- do something useful</span>\n  <span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">size</span><span class=\"p\">.</span><span class=\"n\">x</span> <span class=\"o\">==</span> <span class=\"n\">sx</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "size"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Play an animation on a sprite component from its tile set</p>\n<p>An optional completion callback function can be provided that will be called when\nthe animation has completed playing. If no function is provided,\na <a href=\"#animation_done\">animation_done</a> message is sent to the script that started the animation.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the sprite that should play the animation</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p>hash name hash of the animation to play</p>", 
+          "name": "id"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">function(self, message_id, message, sender))</span> function to call when the animation has completed.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>message_id</code></dt>\n<dd><span class=\"type\">hash</span> The name of the completion message, <code>\"animation_done\"</code>.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">table</span> Information about the completion:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>current_tile</code> - the current tile of the sprite.</li>\n<li><span class=\"type\">hash</span> <code>id</code> - id of the animation that was completed.</li>\n</ul>\n<dl>\n<dt><code>sender</code></dt>\n<dd><span class=\"type\">url</span> The invoker of the callback: the sprite component.</dd>\n</dl>", 
+          "name": "[complete_function]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>Play an animation on a sprite component</p>", 
+      "examples": "<p>The following examples assumes that the model has id \"sprite\".</p>\n<p>How to play the \"jump\" animation followed by the \"run\" animation:</p>\n<p>local function anim_done(self, message_id, message, sender)\n  if message_id == hash(\"model_animation_done\") then\n    if message.id == hash(\"jump\") then\n      -- open animation done, chain with \"run\"\n      sprite.play_flipbook(url, \"run\")\n    end\n  end\nend</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">url</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">sprite</span><span class=\"p\">.</span><span class=\"n\">play_flipbook</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">jump&quot;</span><span class=\"p\">,</span> <span class=\"n\">anim_done</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sprite.play_flipbook"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Resets a shader constant for a sprite component.\nThe constant must be defined in the material assigned to the sprite.\nResetting a constant through this function implies that the value defined in the material will be used.\nWhich sprite to reset a constant for is identified by the URL.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the sprite that should have a constant reset</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> name of the constant</p>", 
+          "name": "constant"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>reset a shader constant for a sprite</p>", 
+      "examples": "<p>The following examples assumes that the sprite has id \"sprite\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the sprite, you can reset the constants defined there in the same manner.</p>\n<p>How to reset the tinting of a sprite:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">sprite</span><span class=\"p\">.</span><span class=\"n\">reset_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sprite.reset_constant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets a shader constant for a sprite component.\nThe constant must be defined in the material assigned to the sprite.\nSetting a constant through this function will override the value set for that constant in the material.\nThe value will be overridden until <code>sprite.reset_constant</code> is called.\nWhich sprite to set a constant for is identified by the URL.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the sprite that should have a constant set</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> name of the constant</p>", 
+          "name": "constant"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector4</span> of the constant</p>", 
+          "name": "value"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set a shader constant for a sprite</p>", 
+      "examples": "<p>The following examples assumes that the sprite has id \"sprite\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the sprite, you can set the constants defined there in the same manner.</p>\n<p>How to tint a sprite red:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">sprite</span><span class=\"p\">.</span><span class=\"n\">set_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sprite.set_constant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets horizontal flipping of the provided sprite's animations.\nThe sprite is identified by its URL.\nIf the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the sprite that should flip its animations</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> <code>true</code> if the sprite should flip its animations, <code>false</code> if not</p>", 
+          "name": "flip"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set horizontal flipping on a sprite's animations</p>", 
+      "examples": "<p>How to flip a sprite so it faces the horizontal movement:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- calculate self.velocity somehow</span>\n  <span class=\"n\">sprite</span><span class=\"p\">.</span><span class=\"n\">set_hflip</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">velocity</span><span class=\"p\">.</span><span class=\"n\">x</span> <span class=\"o\">&lt;</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>It is assumed that the sprite component has id \"sprite\" and that the original animations faces right.</p>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sprite.set_hflip"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets vertical flipping of the provided sprite's animations.\nThe sprite is identified by its URL.\nIf the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the sprite that should flip its animations</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> <code>true</code> if the sprite should flip its animations, <code>false</code> if not</p>", 
+          "name": "flip"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set vertical flipping on a sprite's animations</p>", 
+      "examples": "<p>How to flip a sprite in a game which negates gravity as a game mechanic:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- calculate self.up_side_down somehow, then:</span>\n  <span class=\"n\">sprite</span><span class=\"p\">.</span><span class=\"n\">set_vflip</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">up_side_down</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>It is assumed that the sprite component has id \"sprite\" and that the original animations are up-right.</p>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sprite.set_vflip"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p><span class=\"mark\">READ ONLY</span> Returns the texture path hash of the sprite. Used for getting/setting resource data</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">hash</span> sprite texture0</p>", 
+      "examples": "<p>How to overwrite a sprite's original texture</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- get texture resource from one sprite and set it on another</span>\n  <span class=\"kd\">local</span> <span class=\"n\">resource_path1</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite1&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">texture0&quot;</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">buffer</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"n\">resource_path1</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">resource_path2</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite2&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">texture0&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">resource_path2</span><span class=\"p\">,</span> <span class=\"n\">buffer</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "texture0"
+    }
+  ]
+}

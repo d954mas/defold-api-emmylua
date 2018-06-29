@@ -2,6 +2,15 @@
 ---Functions, messages and properties used to manipulate sprite components.
 ---@class sprite
 local sprite = {}
+---Play an animation on a sprite component from its tile set
+---
+---An optional completion callback function can be provided that will be called when
+---the animation has completed playing. If no function is provided,
+---a animation_done <> message is sent to the script that started the animation.
+---@param url string | hash | url the sprite that should play the animation
+---@param id idhash name hash of the animation to play
+---@param complete_function function(self, message_id, message, sender)) function to call when the animation has completed.
+function sprite.play_flipbook(url, id, complete_function) end
 ---Resets a shader constant for a sprite component.
 ---The constant must be defined in the material assigned to the sprite.
 ---Resetting a constant through this function implies that the value defined in the material will be used.

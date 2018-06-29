@@ -133,10 +133,10 @@ function connected:setoption(option, value) end
 ---For connected objects, outgoing datagrams will be sent to the specified peer, and datagrams received from other peers will be discarded by the OS. Connected UDP objects must use the send and receive methods instead of sendto and receivefrom.
 ---
 --- Since the address of the peer does not have to be passed to and from the OS, the use of connected UDP objects is recommended when the same peer is used for several transmissions and can result in up to 30% performance gains.
----@param "*" string if address is "*"" and the object is connected, the peer association is removed and the object becomes an unconnected object again.
+---@param _ string if address is "*"" and the object is connected, the peer association is removed and the object becomes an unconnected object again.
 ---@return  number the value 
 ---@return  string the error message, or 
-function connected:setpeername("*") end
+function connected:setpeername(_) end
 ---Changes the timeout values for the object. By default, the receive and receivefrom  operations are blocking. That is, any call to the methods will block indefinitely, until data arrives. The settimeout function defines a limit on the amount of time the functions can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.
 ---
 --- In UDP, the send and sendto methods never block (the datagram is just passed to the OS and the call returns immediately). Therefore, the settimeout method has no effect on them.

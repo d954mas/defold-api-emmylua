@@ -1,0 +1,452 @@
+{
+  "info": {
+    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/array.h&gt;</span></p>\n<p>Templatized array with bounds checking.<br/>template <code>&lt;typename T&gt;</code> class dmArray<br/></p>\n<p>The backing storage is either auto-allocated (dynamically allocated) or user-allocated (supplied by user).\nWith exception of changing the size and capacity, all operations are guaranteed to be O(1).</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmArray</span><span class=\"o\">&lt;</span><span class=\"kt\">int</span><span class=\"o\">&gt;</span> <span class=\"n\">a</span><span class=\"p\">;</span>\n<span class=\"n\">a</span><span class=\"p\">.</span><span class=\"n\">Push</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">);</span>\n</pre></div>", 
+    "namespace": "dmArray", 
+    "name": "Array", 
+    "brief": "<p>SDK Array API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Last element of the array</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">T&amp;</span> reference to the last element</p>", 
+          "name": "reference"
+        }
+      ], 
+      "brief": "<p>array back</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::Back"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Last element of the array (const)</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">const T&amp;</span> const-reference to the last element</p>", 
+          "name": "reference"
+        }
+      ], 
+      "brief": "<p>array back (const)</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::Back"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Pointer to the start of the backing storage</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">T*</span> pointer to start of memory</p>", 
+          "name": "pointer"
+        }
+      ], 
+      "brief": "<p>array begin</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::Begin"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Capacity is currently allocated storage.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> array capacity</p>", 
+          "name": "number"
+        }
+      ], 
+      "brief": "<p>capacity of array</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::Capacity"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Check if the array is empty.\nThe array is empty when the size is zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> true if the array is empty</p>", 
+          "name": "boolean"
+        }
+      ], 
+      "brief": "<p>array empty</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::Empty"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Pointer to the end of the backing storage\nThe end is essentially outside of the used storage.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">T*</span> pointer to end of memory</p>", 
+          "name": "pointer"
+        }
+      ], 
+      "brief": "<p>array end</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::End"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Remove the element at the specified index.\nThe removed element is replaced by the element at the end (if any), thus potentially altering the order.\nWhile operation changes the array size, it is guaranteed to be O(1).</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> index of the element to remove</p>", 
+          "name": "index"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">T&amp;</span> reference to the new element at index</p>", 
+          "name": "reference"
+        }
+      ], 
+      "brief": "<p>array eraseswap</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::EraseSwap"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Remove the element by reference\nThe removed element is replaced by the element at the end (if any), thus potentially altering the order.\nWhile operation changes the array size, it is guaranteed to be O(1).</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">T&amp;</span> reference to the element to remove.</p>", 
+          "name": "element"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">T&amp;</span> reference to the new referenced element</p>", 
+          "name": "reference"
+        }
+      ], 
+      "brief": "<p>array reference eraseswap</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::EraseSwapRef"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>First element of the array</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">T&amp;</span> reference to the first element</p>", 
+          "name": "reference"
+        }
+      ], 
+      "brief": "<p>array front</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::Front"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>First element of the array (const)</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">const T&amp;</span> const-reference to the first element</p>", 
+          "name": "reference"
+        }
+      ], 
+      "brief": "<p>array front (const)</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::Front"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Check if the array is full.\nThe array is full when the size is equal to the capacity.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> true if the array is full</p>", 
+          "name": "boolean"
+        }
+      ], 
+      "brief": "<p>array full</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::Full"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Relative change of capacity\nEquivalent to SetCapacity(Capacity() + offset).\nOnly allowed for auto-allocated arrays and will result in a new dynamic allocation followed by memcpy of the elements.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> relative amount of elements to change the capacity</p>", 
+          "name": "offset"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>array offset capacity</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::OffsetCapacity"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Remove the last element of the array\nOnly allowed when the size is larger than zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>array pop</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::Pop"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Add an element to the end of the array\nOnly allowed when the capacity is larger than size.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const T&amp;</span> element element to add</p>", 
+          "name": "element"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>array push</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::Push"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Add an array of elements to the end of the array\nOnly allowed when the capacity is larger than size + count</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const T&amp;</span> array of elements to add</p>", 
+          "name": "array"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> amount of elements in the array</p>", 
+          "name": "count"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>array push array</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::PushArray"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Amount of additional elements that can be stored</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> amount of additional elements that can be stored</p>", 
+          "name": "number"
+        }
+      ], 
+      "brief": "<p>remaining size of array</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::Remaining"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set the capacity of the array.\nIf the size is less than the capacity, the array is truncated.\nIf it is larger, the array is extended.\nOnly allowed for auto-allocated arrays and will result in a new dynamic allocation followed by memcpy of the elements.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> capacity of the array</p>", 
+          "name": "capacity"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>array set capacity</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::SetCapacity"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set size of the array</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> size of the array, must be less or equal to the capacity</p>", 
+          "name": "size"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>array set size</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::SetSize"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Size of the array in elements</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> array size</p>", 
+          "name": "number"
+        }
+      ], 
+      "brief": "<p>size of array</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::Size"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Swap the content of two arrays</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmArray<code>&lt;T&gt;</code>&amp;</span> reference to array to swap content with</p>", 
+          "name": "rhs"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>array swap</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::Swap"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>empty auto-allocated array</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmArray</span><span class=\"o\">&lt;</span><span class=\"kt\">int</span><span class=\"o\">&gt;*</span> <span class=\"n\">a</span> <span class=\"o\">=</span> <span class=\"k\">new</span> <span class=\"n\">dmArray</span><span class=\"o\">&lt;</span><span class=\"kt\">int</span><span class=\"o\">&gt;</span><span class=\"p\">();</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::dmArray"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>user-allocated array with initial size and capacity</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">T*</span> User-allocated array to be used as storage.</p>", 
+          "name": "user_array"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> Initial size</p>", 
+          "name": "size"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> Initial capacity</p>", 
+          "name": "capacity"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>user-allocated array</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::dmArray"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Retrieve an element by index</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> array index</p>", 
+          "name": "index"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">T&amp;</span> reference to the element at the specified index</p>", 
+          "name": "reference"
+        }
+      ], 
+      "brief": "<p>array operator[]</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::operator[]"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Retrieve an element by index (const)</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> array index</p>", 
+          "name": "index"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">const T&amp;</span> const-reference to the element at the specified index</p>", 
+          "name": "reference"
+        }
+      ], 
+      "brief": "<p>array operator[] (const)</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::operator[]"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Only frees memory when auto-allocated.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>array destructor</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmArray::~dmArray"
+    }
+  ]
+}

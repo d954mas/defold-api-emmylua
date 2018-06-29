@@ -1,0 +1,133 @@
+{
+  "info": {
+    "description": "<p>Functions and constants to access the window, window event listeners\nand screen dimming.</p>", 
+    "namespace": "window", 
+    "name": "Window", 
+    "brief": "<p>Window API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>dimming mode off</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "window.DIMMING_OFF"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>dimming mode on</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "window.DIMMING_ON"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction.\nThis mode indicates that the dim mode can't be determined, or that the platform doesn't support dimming.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>dimming mode unknown</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "window.DIMMING_UNKNOWN"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This event is sent to a window event listener when the game window or app screen has\ngained focus.\nThis event is also sent at game startup and the engine gives focus to the game.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>focus gained window event</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "window.WINDOW_EVENT_FOCUS_GAINED"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This event is sent to a window event listener when the game window or app screen has lost focus.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>focus lost window event</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "window.WINDOW_EVENT_FOCUS_LOST"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This event is sent to a window event listener when the game window or app screen is resized.\nThe new size is passed along in the data field to the event listener.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>resized window event</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "window.WINDOW_EVENT_RESIZED"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p><span class=\"icon-ios\"></span> <span class=\"icon-android\"></span> Returns the current dimming mode set on a mobile device.</p>\n<p>The dimming mode specifies whether or not a mobile device should dim the screen after a period without user interaction.</p>\n<p>On platforms that does not support dimming, <code>window.DIMMING_UNKNOWN</code> is always returned.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> The mode for screen dimming</p>\n<ul>\n<li><code>window.DIMMING_UNKNOWN</code></li>\n<li><code>window.DIMMING_ON</code></li>\n<li><code>window.DIMMING_OFF</code></li>\n</ul>", 
+          "name": "mode"
+        }
+      ], 
+      "brief": "<p>get the mode for screen dimming</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "window.get_dim_mode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p><span class=\"icon-ios\"></span> <span class=\"icon-android\"></span> Sets the dimming mode on a mobile device.</p>\n<p>The dimming mode specifies whether or not a mobile device should dim the screen after a period without user interaction. The dimming mode will only affect the mobile device while the game is in focus on the device, but not when the game is running in the background.</p>\n<p>This function has no effect on platforms that does not support dimming.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> The mode for screen dimming</p>\n<ul>\n<li><code>window.DIMMING_ON</code></li>\n<li><code>window.DIMMING_OFF</code></li>\n</ul>", 
+          "name": "mode"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set the mode for screen dimming</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "window.set_dim_mode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets a window event listener.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">function(self, event, data)</span> A callback which receives info about window events. Pass an empty function if you no longer wish to receive callbacks.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The calling script</dd>\n<dt><code>event</code></dt>\n<dd><span class=\"type\">constant</span> The type of event. Can be one of these:</dd>\n</dl>\n<ul>\n<li><code>window.WINDOW_EVENT_FOCUS_LOST</code></li>\n<li><code>window.WINDOW_EVENT_FOCUS_GAINED</code></li>\n<li><code>window.WINDOW_EVENT_RESIZED</code></li>\n</ul>\n<dl>\n<dt><code>data</code></dt>\n<dd><span class=\"type\">table</span> The callback value <code>data</code> is a table which currently holds these values</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>width</code>: The width of a resize event. nil otherwise.</li>\n<li><span class=\"type\">number</span> <code>height</code>: The height of a resize event. nil otherwise.</li>\n</ul>", 
+          "name": "callback"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets a window event listener</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">window_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">event</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">window</span><span class=\"p\">.</span><span class=\"n\">WINDOW_EVENT_FOCUS_LOST</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">window.WINDOW_EVENT_FOCUS_LOST&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">elseif</span> <span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">window</span><span class=\"p\">.</span><span class=\"n\">WINDOW_EVENT_FOCUS_GAINED</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">window.WINDOW_EVENT_FOCUS_GAINED&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">elseif</span> <span class=\"n\">event</span> <span class=\"o\">==</span> <span class=\"n\">window</span><span class=\"p\">.</span><span class=\"n\">WINDOW_EVENT_RESIZED</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Window resized: &quot;</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">width</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">height</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">window</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"n\">window_callback</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "window.set_listener"
+    }
+  ]
+}

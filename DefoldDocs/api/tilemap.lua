@@ -66,8 +66,8 @@ function tilemap.set_constant(url, constant, value) end
 ---@param x number x-coordinate of the tile
 ---@param y number y-coordinate of the tile
 ---@param tile number index of new tile to set
----@param h-flipped boolean optional if the tile should be horizontally flipped
----@param v-flipped boolean optional i the tile should be vertically flipped
-function tilemap.set_tile(url, layer, x, y, tile, h-flipped, v-flipped) end
+---@param h_flipped boolean optional if the tile should be horizontally flipped
+---@param v_flipped boolean optional i the tile should be vertically flipped
+function tilemap.set_tile(url, layer, x, y, tile, h_flipped, v_flipped) end
 
 return tilemap

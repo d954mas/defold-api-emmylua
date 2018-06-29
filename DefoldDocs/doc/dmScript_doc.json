@@ -1,0 +1,275 @@
+{
+  "info": {
+    "description": "<p><span class=\"file\">&lt;dmsdk/script/script.h&gt;</span></p>\n<p>Built-in scripting functions.</p>", 
+    "namespace": "dmScript", 
+    "name": "Script", 
+    "brief": "<p>SDK Script API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>This macro will verify that the Lua stack size hasn't been changed before\nthrowing a Lua error, which will long-jump out of the current function.\nThis macro can only be used together with <a href=\"#DM_LUA_STACK_CHECK\">DM_LUA_STACK_CHECK</a> and should\nbe prefered over manual checking of the stack.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const char*</span> Format string that contains error information.</p>", 
+          "name": "fmt"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">...</span> Format string args (variable arg list)</p>", 
+          "name": "args"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>helper macro to validate the Lua stack state and throw a lua error.</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">static</span> <span class=\"kt\">int</span> <span class=\"nf\">ModuleFunc</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span> <span class=\"n\">L</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">);</span>\n    <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">some_error_check</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">))</span>\n    <span class=\"p\">{</span>\n        <span class=\"k\">return</span> <span class=\"n\">DM_LUA_ERROR</span><span class=\"p\">(</span><span class=\"s\">&quot;some error message&quot;</span><span class=\"p\">);</span>\n    <span class=\"p\">}</span>\n    <span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">42</span><span class=\"p\">);</span>\n    <span class=\"k\">return</span> <span class=\"mi\">1</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MACRO", 
+      "name": "DM_LUA_ERROR"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Diff is the expected difference of the stack size.\nIf luaL_error, or another function that executes a long-jump, is part of the executed code,\nthe stack guard cannot be guaranteed to execute at the end of the function.\nIn that case you should manually check the stack using <code>lua_gettop</code>.\nIn the case of luaL_error, see <a href=\"#DM_LUA_ERROR\">DM_LUA_ERROR</a>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Number of expected items to be on the Lua stack once this struct goes out of scope</p>", 
+          "name": "diff"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>helper macro to validate the Lua stack state before leaving a function.</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">);</span>\n<span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">42</span><span class=\"p\">);</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MACRO", 
+      "name": "DM_LUA_STACK_CHECK"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Check if the value in the supplied index on the lua stack is a HBuffer and returns it.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Index of the value</p>", 
+          "name": "index"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">LuaHBuffer*</span> pointer to dmScript::LuaHBuffer</p>", 
+          "name": "buffer"
+        }
+      ], 
+      "brief": "<p>retrieve a HBuffer from the supplied lua state</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::CheckBuffer"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Retrieve current script instance from the global table and place it on the top of the stack, only valid when set.\n(see <a href=\"#dmScript::GetMainThread\">dmScript::GetMainThread</a>)</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> lua state</p>", 
+          "name": "L"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::GetInstance"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Retrieve the main thread lua state from any lua state (main thread or coroutine).</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> lua state</p>", 
+          "name": "L"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> the main thread lua state</p>", 
+          "name": "lua_State"
+        }
+      ], 
+      "brief": "", 
+      "examples": "<p>How to create a Lua callback</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">struct</span> <span class=\"n\">LuaCallbackInfo</span>\n<span class=\"p\">{</span>\n    <span class=\"n\">LuaCallbackInfo</span><span class=\"p\">()</span> <span class=\"o\">:</span> <span class=\"n\">m_L</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">m_Callback</span><span class=\"p\">(</span><span class=\"n\">LUA_NOREF</span><span class=\"p\">),</span> <span class=\"n\">m_Self</span><span class=\"p\">(</span><span class=\"n\">LUA_NOREF</span><span class=\"p\">)</span> <span class=\"p\">{}</span>\n    <span class=\"n\">lua_State</span><span class=\"o\">*</span> <span class=\"n\">m_L</span><span class=\"p\">;</span>\n    <span class=\"kt\">int</span>        <span class=\"n\">m_Callback</span><span class=\"p\">;</span>\n    <span class=\"kt\">int</span>        <span class=\"n\">m_Self</span><span class=\"p\">;</span>\n<span class=\"p\">};</span>\n\n<span class=\"k\">static</span> <span class=\"kt\">void</span> <span class=\"nf\">RegisterCallback</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span> <span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"kt\">int</span> <span class=\"n\">index</span><span class=\"p\">,</span> <span class=\"n\">LuaCallbackInfo</span><span class=\"o\">*</span> <span class=\"n\">cbk</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"k\">if</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Callback</span> <span class=\"o\">!=</span> <span class=\"n\">LUA_NOREF</span><span class=\"p\">)</span>\n    <span class=\"p\">{</span>\n        <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">Unref</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_L</span><span class=\"p\">,</span> <span class=\"n\">LUA_REGISTRYINDEX</span><span class=\"p\">,</span> <span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Callback</span><span class=\"p\">);</span>\n        <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">Unref</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_L</span><span class=\"p\">,</span> <span class=\"n\">LUA_REGISTRYINDEX</span><span class=\"p\">,</span> <span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Self</span><span class=\"p\">);</span>\n    <span class=\"p\">}</span>\n\n    <span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_L</span> <span class=\"o\">=</span> <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">GetMainThread</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">);</span>\n\n    <span class=\"n\">luaL_checktype</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">index</span><span class=\"p\">,</span> <span class=\"n\">LUA_TFUNCTION</span><span class=\"p\">);</span>\n    <span class=\"n\">lua_pushvalue</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">index</span><span class=\"p\">);</span>\n    <span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Callback</span> <span class=\"o\">=</span> <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">Ref</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">LUA_REGISTRYINDEX</span><span class=\"p\">);</span>\n\n    <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">GetInstance</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">);</span>\n    <span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Self</span> <span class=\"o\">=</span> <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">Ref</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">LUA_REGISTRYINDEX</span><span class=\"p\">);</span>\n<span class=\"p\">}</span>\n\n<span class=\"k\">static</span> <span class=\"kt\">void</span> <span class=\"nf\">UnregisterCallback</span><span class=\"p\">(</span><span class=\"n\">LuaCallbackInfo</span><span class=\"o\">*</span> <span class=\"n\">cbk</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"k\">if</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Callback</span> <span class=\"o\">!=</span> <span class=\"n\">LUA_NOREF</span><span class=\"p\">)</span>\n    <span class=\"p\">{</span>\n        <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">Unref</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_L</span><span class=\"p\">,</span> <span class=\"n\">LUA_REGISTRYINDEX</span><span class=\"p\">,</span> <span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Callback</span><span class=\"p\">);</span>\n        <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">Unref</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_L</span><span class=\"p\">,</span> <span class=\"n\">LUA_REGISTRYINDEX</span><span class=\"p\">,</span> <span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Self</span><span class=\"p\">);</span>\n        <span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Callback</span> <span class=\"o\">=</span> <span class=\"n\">LUA_NOREF</span><span class=\"p\">;</span>\n    <span class=\"p\">}</span>\n<span class=\"p\">}</span>\n\n<span class=\"n\">LuaCallbackInfo</span> <span class=\"n\">g_MyCallbackInfo</span><span class=\"p\">;</span>\n\n<span class=\"k\">static</span> <span class=\"kt\">void</span> <span class=\"nf\">InvokeCallback</span><span class=\"p\">(</span><span class=\"n\">LuaCallbackInfo</span><span class=\"o\">*</span> <span class=\"n\">cbk</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"k\">if</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Callback</span> <span class=\"o\">==</span> <span class=\"n\">LUA_NOREF</span><span class=\"p\">)</span>\n    <span class=\"p\">{</span>\n        <span class=\"k\">return</span><span class=\"p\">;</span>\n    <span class=\"p\">}</span>\n\n    <span class=\"n\">lua_State</span><span class=\"o\">*</span> <span class=\"n\">L</span> <span class=\"o\">=</span> <span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_L</span><span class=\"p\">;</span>\n    <span class=\"kt\">int</span> <span class=\"n\">top</span> <span class=\"o\">=</span> <span class=\"n\">lua_gettop</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">);</span>\n\n    <span class=\"n\">lua_rawgeti</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">LUA_REGISTRYINDEX</span><span class=\"p\">,</span> <span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Callback</span><span class=\"p\">);</span>\n\n    <span class=\"c1\">// Setup self (the script instance)</span>\n    <span class=\"n\">lua_rawgeti</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">LUA_REGISTRYINDEX</span><span class=\"p\">,</span> <span class=\"n\">cbk</span><span class=\"o\">-&gt;</span><span class=\"n\">m_Self</span><span class=\"p\">);</span>\n    <span class=\"n\">lua_pushvalue</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">);</span>\n\n    <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">SetInstance</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">);</span>\n\n    <span class=\"n\">lua_pushstring</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"s\">&quot;Hello from extension!&quot;</span><span class=\"p\">);</span>\n    <span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">76</span><span class=\"p\">);</span>\n\n    <span class=\"kt\">int</span> <span class=\"n\">number_of_arguments</span> <span class=\"o\">=</span> <span class=\"mi\">3</span><span class=\"p\">;</span> <span class=\"c1\">// instance + 2</span>\n    <span class=\"kt\">int</span> <span class=\"n\">ret</span> <span class=\"o\">=</span> <span class=\"n\">lua_pcall</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">number_of_arguments</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">);</span>\n    <span class=\"k\">if</span><span class=\"p\">(</span><span class=\"n\">ret</span> <span class=\"o\">!=</span> <span class=\"mi\">0</span><span class=\"p\">)</span> <span class=\"p\">{</span>\n        <span class=\"n\">dmLogError</span><span class=\"p\">(</span><span class=\"s\">&quot;Error running callback: %s&quot;</span><span class=\"p\">,</span> <span class=\"n\">lua_tostring</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">));</span>\n        <span class=\"n\">lua_pop</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">);</span>\n    <span class=\"p\">}</span>\n    <span class=\"n\">assert</span><span class=\"p\">(</span><span class=\"n\">top</span> <span class=\"o\">==</span> <span class=\"n\">lua_gettop</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">));</span>\n<span class=\"p\">}</span>\n\n<span class=\"k\">static</span> <span class=\"kt\">int</span> <span class=\"nf\">Start</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span> <span class=\"n\">L</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">);</span>\n\n    <span class=\"n\">RegisterCallback</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">g_MyCallbackInfo</span><span class=\"p\">);</span>\n\n    <span class=\"k\">return</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n\n<span class=\"k\">static</span> <span class=\"kt\">int</span> <span class=\"nf\">Update</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span> <span class=\"n\">L</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">);</span>\n\n    <span class=\"k\">static</span> <span class=\"kt\">int</span> <span class=\"n\">count</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n    <span class=\"k\">if</span><span class=\"p\">(</span> <span class=\"n\">count</span><span class=\"o\">++</span> <span class=\"o\">==</span> <span class=\"mi\">5</span> <span class=\"p\">)</span>\n    <span class=\"p\">{</span>\n        <span class=\"n\">InvokeCallback</span><span class=\"p\">(</span><span class=\"o\">&amp;</span><span class=\"n\">g_MyCallbackInfo</span><span class=\"p\">);</span>\n        <span class=\"n\">UnregisterCallback</span><span class=\"p\">(</span><span class=\"o\">&amp;</span><span class=\"n\">g_MyCallbackInfo</span><span class=\"p\">);</span>\n    <span class=\"p\">}</span>\n    <span class=\"k\">return</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::GetMainThread"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Index of the value</p>", 
+          "name": "index"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> true if value at #index is a LuaHBuffer</p>", 
+          "name": "boolean"
+        }
+      ], 
+      "brief": "<p>check if the value at #index is a dmScript::LuaHBuffer</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::IsBuffer"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Check if the script instance in the lua state is valid. The instance is assumed to have been previously set by <a href=\"#dmScript::SetInstance\">dmScript::SetInstance</a>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> lua state</p>", 
+          "name": "L"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">bool</span> Returns true if the instance is valid</p>", 
+          "name": "boolean"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::IsInstanceValid"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Holds info about the buffer and who owns it.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>Lua wrapper for a dmBuffer::HBuffer</p>", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "<p><span class=\"type\">dmBuffer::HBuffer</span>    The buffer</p>", 
+          "name": "m_Buffer"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">bool</span>               If true, it will be garbage collected by Lua. If false, the C++ extension still owns the reference.</p>", 
+          "name": "m_UseLuaGC"
+        }
+      ], 
+      "error": "", 
+      "type": "STRUCT", 
+      "name": "dmScript::LuaHBuffer"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Will increase the stack by 1.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmScript::LuaHBuffer</span> buffer to push</p>", 
+          "name": "buffer"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>push a LuaHBuffer onto the supplied lua state</p>", 
+      "examples": "<p>How to push a buffer and give Lua ownership of the buffer (GC)</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span> <span class=\"n\">luabuf</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"nb\">true</span> <span class=\"p\">};</span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">luabuf</span><span class=\"p\">);</span>\n</pre></div>\n\n\n<p>How to push a buffer and keep ownership in C++</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span> <span class=\"n\">luabuf</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"nb\">false</span> <span class=\"p\">};</span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">luabuf</span><span class=\"p\">);</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::PushBuffer"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Creates and returns a reference, in the table at index t, for the object at the\ntop of the stack (and pops the object).\nIt also tracks number of global references kept.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> table the lua table that stores the references. E.g LUA_REGISTRYINDEX</p>", 
+          "name": "table"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">int</span> the new reference</p>", 
+          "name": "reference"
+        }
+      ], 
+      "brief": "<p>wrapper for luaL_ref.</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::Ref"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the current script instance\nSet the value on the top of the stack as the instance into the global table and pops it from the stack.\n(see <a href=\"#dmScript::GetMainThread\">dmScript::GetMainThread</a>)</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> lua state</p>", 
+          "name": "L"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::SetInstance"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Releases reference ref from the table at index t (see luaL_ref).\nThe entry is removed from the table, so that the referred object can be collected.\nIt also decreases the number of global references kept</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> table the lua table that stores the references. E.g LUA_REGISTRYINDEX</p>", 
+          "name": "table"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> the reference to the object</p>", 
+          "name": "reference"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>wrapper for luaL_unref.</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::Unref"
+    }
+  ]
+}

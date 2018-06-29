@@ -1,0 +1,48 @@
+{
+  "info": {
+    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/align.h&gt;</span></p>\n<p>Alignment macros. Use for compiler compatibility</p>", 
+    "namespace": "dmAlign", 
+    "name": "Align", 
+    "brief": "<p>SDK Align API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Align a value to a boundary</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">int</span> value to align</p>", 
+          "name": "x"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> alignment boundary</p>", 
+          "name": "a"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>value alignment macro</p>", 
+      "examples": "<p>Align 24 to 16 alignment boundary. results is 16:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kt\">int</span> <span class=\"n\">result</span> <span class=\"o\">=</span> <span class=\"n\">DM_ALIGN</span><span class=\"p\">(</span><span class=\"mi\">24</span><span class=\"p\">,</span> <span class=\"mi\">16</span><span class=\"p\">);</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MACRO", 
+      "name": "DM_ALIGN"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Data structure alignment</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">int</span> number of bytes to align to</p>", 
+          "name": "a"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>data structure alignment macro</p>", 
+      "examples": "<p>Align m_Data to 16 bytes alignment boundary:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kt\">int</span> <span class=\"nf\">DM_ALIGNED</span><span class=\"p\">(</span><span class=\"mi\">16</span><span class=\"p\">)</span> <span class=\"n\">m_Data</span><span class=\"p\">;</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MACRO", 
+      "name": "DM_ALIGNED"
+    }
+  ]
+}

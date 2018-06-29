@@ -1,0 +1,632 @@
+{
+  "info": {
+    "description": "<p>Functions and constants for interacting with Facebook APIs.</p>", 
+    "namespace": "facebook", 
+    "name": "Facebook", 
+    "brief": "<p>Facebook API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>publish permission to reach everyone</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.AUDIENCE_EVERYONE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>publish permission to reach user friends</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.AUDIENCE_FRIENDS"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>publish permission to reach no audience</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.AUDIENCE_NONE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>publish permission to reach only me (private to current user)</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.AUDIENCE_ONLYME"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>log this event when the user has entered their payment info</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.EVENT_ADDED_PAYMENT_INFO"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The value_to_sum passed to facebook.post_event should be the item's price.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>log this event when the user has added an item to their cart</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.EVENT_ADDED_TO_CART"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The value_to_sum passed to facebook.post_event should be the item's price.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>log this event when the user has added an item to their wish list</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.EVENT_ADDED_TO_WISHLIST"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>log this event when a user has completed registration with the app</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.EVENT_COMPLETED_REGISTRATION"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>log this event when the user has completed a tutorial in the app</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.EVENT_COMPLETED_TUTORIAL"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The value_to_sum passed to facebook.post_event should be the total price in\nthe cart.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>log this event when the user has entered the checkout process</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.EVENT_INITIATED_CHECKOUT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>Log this event when the user has completed a purchase.</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.EVENT_PURCHASED"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The value_to_sum passed to facebook.post_event should be the numeric rating.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>log this event when the user has rated an item in the app</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.EVENT_RATED"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>log this event when a user has performed a search within the app</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.EVENT_SEARCHED"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The value_to_sum passed to facebook.post_event should be the number of\ncredits spent.</p>\n<p><span class=\"icon-attention\"></span> This event is currently an undocumented event in the Facebook\nSDK.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>log this event when the user has spent app credits</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.EVENT_SPENT_CREDITS"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>log this event when measuring the time between user sessions</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.EVENT_TIME_BETWEEN_SESSIONS"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>log this event when the user has unlocked an achievement in the app</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.EVENT_UNLOCKED_ACHIEVEMENT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>log this event when a user has viewed a form of content in the app</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.EVENT_VIEWED_CONTENT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>game request action type \"askfor\" for \"apprequests\" dialog</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.GAMEREQUEST_ACTIONTYPE_ASKFOR"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>game request action type \"none\" for \"apprequests\" dialog</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.GAMEREQUEST_ACTIONTYPE_NONE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>game request action type \"send\" for \"apprequests\" dialog</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.GAMEREQUEST_ACTIONTYPE_SEND"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>game request action type \"turn\" for \"apprequests\" dialog</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.GAMEREQUEST_ACTIONTYPE_TURN"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>game request filter type \"app_non_users\" for \"apprequests\" dialog</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.GAMEREQUEST_FILTER_APPNONUSERS"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>game request filter type \"app_users\" for \"apprequests\" dialog</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.GAMEREQUEST_FILTER_APPUSERS"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>game request filter type \"none\" for \"apprequests\" dialog</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.GAMEREQUEST_FILTER_NONE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The parameter key could be an EAN, article identifier, etc., depending\non the nature of the app.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>parameter key used to specify an ID for the content being logged about</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.PARAM_CONTENT_ID"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The key is an arbitrary type/family (e.g. \"music\", \"photo\", \"video\") depending\non the nature of the app.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>parameter key used to specify a generic content type/family for the logged event</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.PARAM_CONTENT_TYPE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Use a currency value key, e.g. \"USD\", \"EUR\", \"GBP\" etc.\nSee ISO-4217 for specific values.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>parameter key used to specify currency used with logged event</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.PARAM_CURRENCY"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Use this for app specific event description, for instance the name of the achievement\nunlocked in the facebook.EVENT_UNLOCKED_ACHIEVEMENT event.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>parameter key used to specify a description appropriate to the event being logged</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.PARAM_DESCRIPTION"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>parameter key used to specify the level achieved</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.PARAM_LEVEL"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set to specify the max rating available for the facebook.EVENT_RATED event.\nE.g., \"5\" or \"10\".</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>parameter key used to specify the maximum rating available</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.PARAM_MAX_RATING_VALUE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set to specify the number of items being processed for an\nfacebook.EVENT_INITIATED_CHECKOUT or facebook.EVENT_PURCHASED event.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>parameter key used to specify how many items are being processed</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.PARAM_NUM_ITEMS"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set to specify if payment info is available for the\nfacebook.EVENT_INITIATED_CHECKOUT event.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>parameter key used to specify whether payment info is available</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.PARAM_PAYMENT_INFO_AVAILABLE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set to specify what registation method a user used for the app, e.g.\n\"Facebook\", \"email\", \"Twitter\", etc.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>parameter key used to specify method user has used to register for the app</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.PARAM_REGISTRATION_METHOD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set this to the the string that the user provided for a search\noperation.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>parameter key used to specify user search string</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.PARAM_SEARCH_STRING"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>parameter key used to specify source application package</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.PARAM_SOURCE_APPLICATION"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set this key to indicate whether the activity being logged about was\nsuccessful or not.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>parameter key used to specify activity success</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.PARAM_SUCCESS"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>the Facebook login session has closed because login failed</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.STATE_CLOSED_LOGIN_FAILED"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>the Facebook login session is open</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.STATE_OPEN"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This function returns the currently stored access token after a previous\nsucessful login. If it returns nil no access token exists and you need\nto perform a login to get the wanted permissions.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">string</span> the access token or nil if the user is not logged in</p>", 
+          "name": "token"
+        }
+      ], 
+      "brief": "<p>get the current Facebook access token</p>", 
+      "examples": "<p>Get the current access token, then use it to perform a graph API request.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">get_name_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- do something with the response</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- assuming we are already logged in.</span>\n    <span class=\"kd\">local</span> <span class=\"n\">token</span> <span class=\"o\">=</span> <span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">access_token</span><span class=\"p\">()</span>\n    <span class=\"k\">if</span> <span class=\"n\">token</span> <span class=\"k\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">url</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">https://graph.facebook.com/me/?access_token=&quot;</span><span class=\"o\">..</span> <span class=\"n\">token</span>\n        <span class=\"n\">http</span><span class=\"p\">.</span><span class=\"n\">request</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">GET&quot;</span><span class=\"p\">,</span> <span class=\"n\">get_name_callback</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "facebook.access_token"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This function will disable event usage for Facebook Analytics which means\nthat Facebook won't be able to use event data for ad-tracking. Events will\nstill be sent to Facebook for insights.</p>\n<p><span class=\"icon-attention\"></span> Event usage cannot be controlled and is always enabled for the\nFacebook Canvas platform, therefore this function has no effect on Facebook\nCanvas.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>disable event usage with Facebook Analytics</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "facebook.disable_event_usage"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This function will enable event usage for Facebook Analytics which means\nthat Facebook will be able to use event data for ad-tracking.</p>\n<p><span class=\"icon-attention\"></span> Event usage cannot be controlled and is always enabled for the\nFacebook Canvas platform, therefore this function has no effect on Facebook\nCanvas.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>enable event usage with Facebook Analytics</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "facebook.enable_event_usage"
+    }, 
+    {
+      "replaces": "<p>facebook.login facebook.request_publish_permissions</p>", 
+      "description": "<p>Login to Facebook and request a set of publish permissions. The user is\nprompted to authorize the application using the login dialog of the specific\nplatform. Even if the user is already logged in to Facebook this function\ncan still be used to request additional publish permissions.</p>\n<p><span class=\"icon-attention\"></span> Note that this function cannot be used to request read permissions.\nIf the application requires both publish and read permissions, individual\ncalls to both <a href=\"#login_with_publish_permissions\">login_with_publish_permissions</a>\nand <a href=\"#login_with_read_permissions\">login_with_read_permissions</a> has to be made.</p>\n<p>A comprehensive list of permissions can be found in the <a href=\"https://developers.facebook.com/docs/facebook-login/permissions\">Facebook documentation</a>,\nas well as a <a href=\"https://developers.facebook.com/docs/facebook-login/best-practices\">guide to best practises for login management</a>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">table</span> Table with the requested publish permission strings.</p>", 
+          "name": "permissions"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant | number</span> The audience that should be able to see the publications.</p>\n<ul>\n<li><code>facebook.AUDIENCE_NONE</code></li>\n<li><code>facebook.AUDIENCE_ONLYME</code></li>\n<li><code>facebook.AUDIENCE_FRIENDS</code></li>\n<li><code>facebook.AUDIENCE_EVERYONE</code></li>\n</ul>", 
+          "name": "audience"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">function(self, data)</span> Callback function that is executed when the permission request dialog is closed.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The context of the calling script</dd>\n<dt><code>data</code></dt>\n<dd><span class=\"type\">table</span> A table that contains the response</dd>\n</dl>", 
+          "name": "callback"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>Login to Facebook and request a set of publish permissions</p>", 
+      "examples": "<p>Log in to Facebook with a set of publish permissions:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">permissions</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s2\">&quot;</span><span class=\"s\">publish_actions&quot;</span><span class=\"p\">}</span>\n<span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">login_with_publish_permissions</span><span class=\"p\">(</span><span class=\"n\">permissions</span><span class=\"p\">,</span> <span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">AUDIENCE_FRIENDS</span><span class=\"p\">,</span> <span class=\"k\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">STATE_OPEN</span> <span class=\"ow\">and</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">error</span> <span class=\"o\">==</span> <span class=\"kc\">nil</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Successfully logged into Facebook&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">permissions</span><span class=\"p\">())</span>\n    <span class=\"k\">else</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Failed to get permissions (&quot;</span> <span class=\"o\">..</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">..</span> <span class=\"s2\">&quot;</span><span class=\"s\">)&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "facebook.login_with_publish_permissions"
+    }, 
+    {
+      "replaces": "<p>facebook.login facebook.request_read_permissions</p>", 
+      "description": "<p>Login to Facebook and request a set of read permissions. The user is\nprompted to authorize the application using the login dialog of the specific\nplatform. Even if the user is already logged in to Facebook this function\ncan still be used to request additional read permissions.</p>\n<p><span class=\"icon-attention\"></span> Note that this function cannot be used to request publish permissions.\nIf the application requires both read and publish permissions, individual\ncalls to both <a href=\"#login_with_publish_permissions\">login_with_publish_permissions</a>\nand <a href=\"#login_with_read_permissions\">login_with_read_permissions</a> has to be made.</p>\n<p>A comprehensive list of permissions can be found in the <a href=\"https://developers.facebook.com/docs/facebook-login/permissions\">Facebook documentation</a>,\nas well as a <a href=\"https://developers.facebook.com/docs/facebook-login/best-practices\">guide to best practises for login management</a>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">table</span> Table with the requested read permission strings.</p>", 
+          "name": "permissions"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">function(self, data)</span> callback function that is executed when the permission request dialog is closed.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The context of the calling script</dd>\n<dt><code>data</code></dt>\n<dd><span class=\"type\">table</span> A table that contains the response</dd>\n</dl>", 
+          "name": "callback"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>Login to Facebook and request a set of read permissions</p>", 
+      "examples": "<p>Log in to Facebook with a set of read permissions:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">permissions</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s2\">&quot;</span><span class=\"s\">public_profile&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">email&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">user_friends&quot;</span><span class=\"p\">}</span>\n<span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">login_with_read_permissions</span><span class=\"p\">(</span><span class=\"n\">permissions</span><span class=\"p\">,</span> <span class=\"k\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">STATE_OPEN</span> <span class=\"ow\">and</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">error</span> <span class=\"o\">==</span> <span class=\"kc\">nil</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Successfully logged into Facebook&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">permissions</span><span class=\"p\">())</span>\n    <span class=\"k\">else</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Failed to get permissions (&quot;</span> <span class=\"o\">..</span> <span class=\"n\">data</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">..</span> <span class=\"s2\">&quot;</span><span class=\"s\">)&quot;</span><span class=\"p\">)</span>\n        <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "facebook.login_with_read_permissions"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Logout from Facebook.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>logout from Facebook</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "facebook.logout"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This function returns a table with all the currently granted permission strings.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">table</span> the permissions</p>", 
+          "name": "permissions"
+        }
+      ], 
+      "brief": "<p>get the currently granted permissions</p>", 
+      "examples": "<p>Check the currently granted permissions for a particular permission:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span><span class=\"n\">permission</span> <span class=\"k\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">permissions</span><span class=\"p\">())</span> <span class=\"k\">do</span>\n    <span class=\"k\">if</span> <span class=\"n\">permission</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;</span><span class=\"s\">user_likes&quot;</span> <span class=\"k\">then</span>\n        <span class=\"c1\">-- &quot;user_likes&quot; granted...</span>\n        <span class=\"k\">break</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "facebook.permissions"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This function will post an event to Facebook Analytics where it can be used\nin the Facebook Insights system.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">constant | string</span> An event can either be one of the predefined\nconstants below or a text string which can be used to define a custom event that is\nregistered with Facebook Analytics.</p>\n<ul>\n<li><code>facebook.EVENT_ACHIEVED_LEVEL</code></li>\n<li><code>facebook.EVENT_ACTIVATED_APP</code></li>\n<li><code>facebook.EVENT_ADDED_PAYMENT_INFO</code></li>\n<li><code>facebook.EVENT_ADDED_TO_CART</code></li>\n<li><code>facebook.EVENT_ADDED_TO_WISHLIST</code></li>\n<li><code>facebook.EVENT_COMPLETED_REGISTRATION</code></li>\n<li><code>facebook.EVENT_COMPLETED_TUTORIAL</code></li>\n<li><code>facebook.EVENT_DEACTIVATED_APP</code></li>\n<li><code>facebook.EVENT_INITIATED_CHECKOUT</code></li>\n<li><code>facebook.EVENT_PURCHASED</code></li>\n<li><code>facebook.EVENT_RATED</code></li>\n<li><code>facebook.EVENT_SEARCHED</code></li>\n<li><code>facebook.EVENT_SESSION_INTERRUPTIONS</code></li>\n<li><code>facebook.EVENT_SPENT_CREDITS</code></li>\n<li><code>facebook.EVENT_TIME_BETWEEN_SESSIONS</code></li>\n<li><code>facebook.EVENT_UNLOCKED_ACHIEVEMENT</code></li>\n<li><code>facebook.EVENT_VIEWED_CONTENT</code></li>\n</ul>", 
+          "name": "event"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> a numeric value for the event. This should\nrepresent the value of the event, such as the level achieved, price for an\nitem or number of orcs killed.</p>", 
+          "name": "value"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">table</span> optional table with parameters and their values. A key in the\ntable can either be one of the predefined constants below or a text which\ncan be used to define a custom parameter.</p>\n<ul>\n<li><code>facebook.PARAM_CONTENT_ID</code></li>\n<li><code>facebook.PARAM_CONTENT_TYPE</code></li>\n<li><code>facebook.PARAM_CURRENCY</code></li>\n<li><code>facebook.PARAM_DESCRIPTION</code></li>\n<li><code>facebook.PARAM_LEVEL</code></li>\n<li><code>facebook.PARAM_MAX_RATING_VALUE</code></li>\n<li><code>facebook.PARAM_NUM_ITEMS</code></li>\n<li><code>facebook.PARAM_PAYMENT_INFO_AVAILABLE</code></li>\n<li><code>facebook.PARAM_REGISTRATION_METHOD</code></li>\n<li><code>facebook.PARAM_SEARCH_STRING</code></li>\n<li><code>facebook.PARAM_SOURCE_APPLICATION</code></li>\n<li><code>facebook.PARAM_SUCCESS</code></li>\n</ul>", 
+          "name": "[params]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>post an event to Facebook Analytics</p>", 
+      "examples": "<p>Post a spent credits event to Facebook Analytics:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">params</span> <span class=\"o\">=</span> <span class=\"p\">{[</span><span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">PARAM_LEVEL</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mi\">30</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">PARAM_NUM_ITEMS</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mi\">2</span><span class=\"p\">}</span>\n<span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">post_event</span><span class=\"p\">(</span><span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">EVENT_SPENT_CREDITS</span><span class=\"p\">,</span> <span class=\"mi\">25</span><span class=\"p\">,</span> <span class=\"n\">params</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "facebook.post_event"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Display a Facebook web dialog of the type specified in the <code>dialog</code> parameter.\nThe <code>param</code> table should be set up according to the requirements of each dialog\ntype. Note that some parameters are mandatory. Below is the list of available dialogs and\nwhere to find Facebook's developer documentation on parameters and response data.</p>\n<h3>\"apprequests\"</h3>\n<p>Shows a Game Request dialog. Game Requests allows players to invite their friends to play a\ngame. Available parameters:</p>\n<ul>\n<li><span class=\"type\">string</span> <code>title</code></li>\n<li><span class=\"type\">string</span> <code>message</code></li>\n<li><span class=\"type\">number</span> <code>action_type</code></li>\n<li><span class=\"type\">number</span> <code>filters</code></li>\n<li><span class=\"type\">string</span> <code>data</code></li>\n<li><span class=\"type\">string</span> <code>object_id</code></li>\n<li><span class=\"type\">table</span> <code>suggestions</code></li>\n<li><span class=\"type\">table</span> <code>recipients</code></li>\n<li><span class=\"type\">string</span> <code>to</code></li>\n</ul>\n<p>On success, the \"result\" table parameter passed to the callback function will include the following fields:</p>\n<ul>\n<li><span class=\"type\">string</span> <code>request_id</code></li>\n<li><span class=\"type\">table</span> <code>to</code></li>\n</ul>\n<p>Details for each parameter: <a href='https://developers.facebook.com/docs/games/services/gamerequests/v2.6#dialogparameters'>https://developers.facebook.com/docs/games/services/gamerequests/v2.6#dialogparameters</a></p>\n<h3>\"feed\"</h3>\n<p>The Feed Dialog allows people to publish individual stories to their timeline.</p>\n<ul>\n<li><span class=\"type\">string</span> <code>caption</code></li>\n<li><span class=\"type\">string</span> <code>description</code></li>\n<li><span class=\"type\">string</span> <code>picture</code></li>\n<li><span class=\"type\">string</span> <code>link</code></li>\n<li><span class=\"type\">table</span> <code>people_ids</code></li>\n<li><span class=\"type\">string</span> <code>place_id</code></li>\n<li><span class=\"type\">string</span> <code>ref</code></li>\n</ul>\n<p>On success, the \"result\" table parameter passed to the callback function will include the following fields:</p>\n<ul>\n<li><span class=\"type\">string</span> <code>post_id</code></li>\n</ul>\n<p>Details for each parameter: <a href='https://developers.facebook.com/docs/sharing/reference/feed-dialog/v2.6#params'>https://developers.facebook.com/docs/sharing/reference/feed-dialog/v2.6#params</a></p>\n<h3>\"appinvite\"</h3>\n<p>The App Invite dialog is available only on iOS and Android.\nNote that the <code>url</code> parameter\ncorresponds to the appLinkURL (iOS) and setAppLinkUrl (Android) properties.</p>\n<ul>\n<li><span class=\"type\">string</span> <code>url</code></li>\n<li><span class=\"type\">string</span> <code>preview_image</code></li>\n</ul>\n<p>Details for each parameter: <a href='https://developers.facebook.com/docs/reference/ios/current/class/FBSDKAppInviteContent/'>https://developers.facebook.com/docs/reference/ios/current/class/FBSDKAppInviteContent/</a></p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string</span> dialog to show.\n- <code>\"apprequests\"</code>\n- <code>\"feed\"</code>\n- <code>\"appinvite\"</code></p>", 
+          "name": "dialog"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">table</span> table with dialog parameters</p>", 
+          "name": "param"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">function(self, result, error)</span> callback function that is called when the dialog is closed.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The context of the calling script</dd>\n<dt><code>result</code></dt>\n<dd><span class=\"type\">table</span> Table with dialog specific results. See above.</dd>\n<dt><code>error</code></dt>\n<dd><span class=\"type\">table</span> Error message. If there is no error, <code>error</code> is <code>nil</code>.</dd>\n</dl>", 
+          "name": "callback"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>show facebook web dialog</p>", 
+      "examples": "<p>Show a dialog allowing the user to share a post to their timeline:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">fb_share</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">,</span> <span class=\"nb\">error</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"nb\">error</span> <span class=\"k\">then</span>\n        <span class=\"c1\">-- something did not go right...</span>\n    <span class=\"k\">else</span>\n        <span class=\"c1\">-- do something sensible</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- assuming we have logged in with publish permissions</span>\n    <span class=\"kd\">local</span> <span class=\"n\">param</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">link</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">http://www.mygame.com&quot;</span><span class=\"p\">,</span><span class=\"n\">picture</span><span class=\"o\">=</span><span class=\"s2\">&quot;</span><span class=\"s\">http://www.mygame.com/image.jpg&quot;</span> <span class=\"p\">}</span>\n    <span class=\"n\">facebook</span><span class=\"p\">.</span><span class=\"n\">show_dialog</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">feed&quot;</span><span class=\"p\">,</span> <span class=\"n\">param</span><span class=\"p\">,</span> <span class=\"n\">fb_share</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "facebook.show_dialog"
+    }
+  ]
+}

@@ -1,0 +1,3677 @@
+{
+  "info": {
+    "description": "<p>GUI core hooks, functions, messages, properties and constants for\ncreation and manipulation of GUI nodes. The \"gui\" namespace is\naccessible only from gui scripts.</p>", 
+    "namespace": "gui", 
+    "name": "GUI", 
+    "brief": "<p>GUI API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>This is a callback-function, which is called by the engine when a gui component is finalized (destroyed). It can\nbe used to e.g. take some last action, report the finalization to other game object instances\nor release user input focus (see <code>release_input_focus</code>). There is no use in starting any animations or similar\nfrom this function since the gui component is about to be destroyed.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">object</span> reference to the script state to be used for storing data</p>", 
+          "name": "self"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>called when a gui component is finalized</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">final</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- report finalization</span>\n    <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_friend_instance&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">im_dead&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">my_stats</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">some_value</span><span class=\"p\">})</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "final"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Adjust mode is used when the screen resolution differs from the project settings.\nThe fit mode ensures that the entire node is visible in the adjusted gui scene.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>fit adjust mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.ADJUST_FIT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Adjust mode is used when the screen resolution differs from the project settings.\nThe stretch mode ensures that the node is displayed as is in the adjusted gui scene, which might scale it non-uniformally.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>stretch adjust mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.ADJUST_STRETCH"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Adjust mode is used when the screen resolution differs from the project settings.\nThe zoom mode ensures that the node fills its entire area and might make the node exceed it.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>zoom adjust mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.ADJUST_ZOOM"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>bottom y-anchor</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.ANCHOR_BOTTOM"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>left x-anchor</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.ANCHOR_LEFT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>right x-anchor</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.ANCHOR_RIGHT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>top y-anchor</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.ANCHOR_TOP"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>additive blending</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.BLEND_ADD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>additive alpha blending</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.BLEND_ADD_ALPHA"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>alpha blending</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.BLEND_ALPHA"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>multiply blending</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.BLEND_MULT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>clipping mode none</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.CLIPPING_MODE_NONE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>clipping mode stencil</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.CLIPPING_MODE_STENCIL"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-back</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INBACK"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-bounce</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INBOUNCE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-circlic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INCIRC"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-cubic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INCUBIC"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-elastic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INELASTIC"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-exponential</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INEXPO"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-out-back</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INOUTBACK"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-out-bounce</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INOUTBOUNCE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-out-circlic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INOUTCIRC"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-out-cubic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INOUTCUBIC"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-out-elastic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INOUTELASTIC"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-out-exponential</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INOUTEXPO"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-out-quadratic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INOUTQUAD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-out-quartic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INOUTQUART"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-out-quintic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INOUTQUINT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-out-sine</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INOUTSINE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-quadratic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INQUAD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-quartic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INQUART"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-quintic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INQUINT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>in-sine</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_INSINE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>linear interpolation</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_LINEAR"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-back</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTBACK"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-bounce</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTBOUNCE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-circlic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTCIRC"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-cubic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTCUBIC"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-elastic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTELASTIC"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-exponential</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTEXPO"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-in-back</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTINBACK"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-in-bounce</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTINBOUNCE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-in-circlic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTINCIRC"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-in-cubic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTINCUBIC"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-in-elastic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTINELASTIC"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-in-exponential</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTINEXPO"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-in-quadratic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTINQUAD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-in-quartic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTINQUART"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-in-quintic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTINQUINT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-in-sine</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTINSINE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-quadratic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTQUAD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-quartic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTQUART"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-quintic</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTQUINT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>out-sine</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.EASING_OUTSINE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>default keyboard</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.KEYBOARD_TYPE_DEFAULT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>email keyboard</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.KEYBOARD_TYPE_EMAIL"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>number input keyboard</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.KEYBOARD_TYPE_NUMBER_PAD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>password keyboard</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.KEYBOARD_TYPE_PASSWORD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>elliptical pie node bounds</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PIEBOUNDS_ELLIPSE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>rectangular pie node bounds</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PIEBOUNDS_RECTANGLE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>center pivor</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PIVOT_CENTER"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>east pivot</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PIVOT_E"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>north pivot</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PIVOT_N"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>north-east pivot</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PIVOT_NE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>north-west pivot</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PIVOT_NW"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>south pivot</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PIVOT_S"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>south-east pivot</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PIVOT_SE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>south-west pivot</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PIVOT_SW"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>west pivot</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PIVOT_W"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>loop backward</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PLAYBACK_LOOP_BACKWARD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>loop forward</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PLAYBACK_LOOP_FORWARD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>ping pong loop</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PLAYBACK_LOOP_PINGPONG"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>once backward</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PLAYBACK_ONCE_BACKWARD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>once forward</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PLAYBACK_ONCE_FORWARD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>once forward and then backward</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PLAYBACK_ONCE_PINGPONG"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>color property</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PROP_COLOR"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>fill_angle property</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PROP_FILL_ANGLE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>inner_radius property</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PROP_INNER_RADIUS"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>outline color property</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PROP_OUTLINE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>position property</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PROP_POSITION"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>rotation property</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PROP_ROTATION"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>scale property</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PROP_SCALE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>shadow color property</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PROP_SHADOW"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>size property</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PROP_SIZE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>slice9 property</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.PROP_SLICE9"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The size of the node is determined by the currently assigned texture.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>automatic size mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.SIZE_MODE_AUTO"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The size of the node is determined by the size set in the editor, the constructor or by gui.set_size()</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>manual size mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "gui.SIZE_MODE_MANUAL"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This starts an animation of a node property according to the specified parameters.\nIf the node property is already being animated, that animation will be canceled and\nreplaced by the new one. Note however that several different node properties\ncan be animated simultaneously. Use <code>gui.cancel_animation</code> to stop the animation\nbefore it has completed.</p>\n<p>Composite properties of type vector3, vector4 or quaternion\nalso expose their sub-components (x, y, z and w).\nYou can address the components individually by suffixing the name with a dot '.'\nand the name of the component.\nFor instance, <code>\"position.x\"</code> (the position x coordinate) or <code>\"color.w\"</code>\n(the color alpha value).</p>\n<p>If a <code>complete_function</code> (Lua function) is specified, that function will be called\nwhen the animation has completed.\nBy starting a new animation in that function, several animations can be sequenced\ntogether. See the examples below for more information.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to animate</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | constant</span> property to animate</p>\n<ul>\n<li><code>\"position\"</code></li>\n<li><code>\"rotation\"</code></li>\n<li><code>\"scale\"</code></li>\n<li><code>\"color\"</code></li>\n<li><code>\"outline\"</code></li>\n<li><code>\"shadow\"</code></li>\n<li><code>\"size\"</code></li>\n<li><code>\"fill_angle\"</code> (pie)</li>\n<li><code>\"inner_radius\"</code> (pie)</li>\n<li><code>\"slice9\"</code> (slice9)</li>\n</ul>\n<p>The following property constants are defined equaling the corresponding property string names.</p>\n<ul>\n<li><code>gui.PROP_POSITION</code></li>\n<li><code>gui.PROP_ROTATION</code></li>\n<li><code>gui.PROP_SCALE</code></li>\n<li><code>gui.PROP_COLOR</code></li>\n<li><code>gui.PROP_OUTLINE</code></li>\n<li><code>gui.PROP_SHADOW</code></li>\n<li><code>gui.PROP_SIZE</code></li>\n<li><code>gui.PROP_FILL_ANGLE</code></li>\n<li><code>gui.PROP_INNER_RADIUS</code></li>\n<li><code>gui.PROP_SLICE9</code></li>\n</ul>", 
+          "name": "property"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector3 | vector4</span> target property value</p>", 
+          "name": "to"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant | vector</span> easing to use during animation.\n     Either specify one of the <code>gui.EASING_*</code> constants or provide a\n     <span class=\"type\">vector</span> with a custom curve.</p>", 
+          "name": "easing"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> duration of the animation in seconds.</p>", 
+          "name": "duration"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> delay before the animation starts in seconds.</p>", 
+          "name": "[delay]"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">function(self, node)</span> function to call when the\n     animation has completed</p>", 
+          "name": "[complete_function]"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> playback mode</p>\n<ul>\n<li><code>gui.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>gui.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>gui.PLAYBACK_ONCE_PINGPONG</code></li>\n<li><code>gui.PLAYBACK_LOOP_FORWARD</code></li>\n<li><code>gui.PLAYBACK_LOOP_BACKWARD</code></li>\n<li><code>gui.PLAYBACK_LOOP_PINGPONG</code></li>\n</ul>", 
+          "name": "[playback]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>animates a node property</p>", 
+      "examples": "<p>How to start a simple color animation, where the node fades in to white during 0.5 seconds:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_color</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">))</span> <span class=\"c1\">-- node is fully transparent</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">PROP_COLOR</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">EASING_INOUTQUAD</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span> <span class=\"c1\">-- start animation</span>\n</pre></div>\n\n\n<p>How to start a sequenced animation where the node fades in to white during 0.5 seconds, stays visible for 2 seconds and then fades out:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">on_animation_done</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">node</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- fade out node, but wait 2 seconds before the animation starts</span>\n    <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">PROP_COLOR</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">EASING_OUTQUAD</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">2.0</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- fetch the node we want to animate</span>\n    <span class=\"kd\">local</span> <span class=\"n\">my_node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_node&quot;</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- node is initially set to fully transparent</span>\n    <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_color</span><span class=\"p\">(</span><span class=\"n\">my_node</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">))</span>\n    <span class=\"c1\">-- animate the node immediately and call on_animation_done when the animation has completed</span>\n    <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"n\">my_node</span><span class=\"p\">,</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">PROP_COLOR</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">EASING_INOUTQUAD</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mf\">0.0</span><span class=\"p\">,</span> <span class=\"n\">on_animation_done</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>How to animate a node's y position using a crazy custom easing curve:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">values</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span>\n                     <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span>\n                     <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span>\n                     <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span>\n                     <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span>\n                     <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span>\n                     <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span>\n                     <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span> <span class=\"p\">}</span>\n    <span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector</span><span class=\"p\">(</span><span class=\"n\">values</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">box&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">position.y&quot;</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"n\">vec</span><span class=\"p\">,</span> <span class=\"mf\">4.0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"kc\">nil</span><span class=\"p\">,</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_PINGPONG</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.animate"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>If an animation of the specified node is currently running (started by <code>gui.animate</code>), it will immediately be canceled.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node that should have its animation canceled</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | constant</span> property for which the animation should be canceled</p>\n<ul>\n<li><code>\"position\"</code></li>\n<li><code>\"rotation\"</code></li>\n<li><code>\"scale\"</code></li>\n<li><code>\"color\"</code></li>\n<li><code>\"outline\"</code></li>\n<li><code>\"shadow\"</code></li>\n<li><code>\"size\"</code></li>\n<li><code>\"fill_angle\"</code> (pie)</li>\n<li><code>\"inner_radius\"</code> (pie)</li>\n<li><code>\"slice9\"</code> (slice9)</li>\n</ul>", 
+          "name": "property"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>cancels an ongoing animation</p>", 
+      "examples": "<p>Start an animation of the position property of a node, then cancel parts of\nthe animation:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_node&quot;</span><span class=\"p\">)</span>\n<span class=\"c1\">-- animate to new position</span>\n<span class=\"kd\">local</span> <span class=\"n\">pos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">position&quot;</span><span class=\"p\">,</span> <span class=\"n\">pos</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_LINEAR</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"o\">...</span>\n<span class=\"c1\">-- cancel animation of the x component.</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">cancel_animation</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">position.x&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.cancel_animation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Cancels any running flipbook animation on the specified node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node cancel flipbook animation for</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>cancel a node flipbook animation</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">anim_node&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">cancel_flipbook</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.cancel_flipbook"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> spine node that should cancel its animation</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>cancel a spine animation</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.cancel_spine"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Make a clone instance of a node.\nThis function does not clone the supplied node's children nodes.\nUse gui.clone_tree for that purpose.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to clone</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">node</span> the cloned node</p>", 
+          "name": "clone"
+        }
+      ], 
+      "brief": "<p>clone a node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.clone"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Make a clone instance of a node and all its children.\nUse gui.clone to clone a node excluding its children.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> root node to clone</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">table</span> a table mapping node ids to the corresponding cloned nodes</p>", 
+          "name": "clones"
+        }
+      ], 
+      "brief": "<p>clone a node including its children</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.clone_tree"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Deletes the specified node. Any child nodes of the specified node will be\nrecursively deleted.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to delete</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>deletes a node</p>", 
+      "examples": "<p>Delete a particular node and any child nodes it might have:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_node&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">delete_node</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.delete_node"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Delete a dynamically created texture.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> texture id</p>", 
+          "name": "texture"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>delete texture</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n     <span class=\"c1\">-- Create a texture.</span>\n     <span class=\"k\">if</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">new_texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">temp_tx&quot;</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">rgb&quot;</span><span class=\"p\">,</span> <span class=\"nb\">string.rep</span><span class=\"p\">(</span><span class=\"s1\">&#39;</span><span class=\"se\">\\0</span><span class=\"s\">&#39;</span><span class=\"p\">,</span> <span class=\"mi\">10</span> <span class=\"o\">*</span> <span class=\"mi\">10</span> <span class=\"o\">*</span> <span class=\"mi\">3</span><span class=\"p\">))</span> <span class=\"k\">then</span>\n         <span class=\"c1\">-- Do something with the texture.</span>\n         <span class=\"o\">...</span>\n\n         <span class=\"c1\">-- Delete the texture</span>\n         <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">delete_texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">temp_tx&quot;</span><span class=\"p\">)</span>\n     <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.delete_texture"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the adjust mode of a node.\nThe adjust mode defines how the node will adjust itself to screen\nresolutions that differs from the one in the project settings.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from which to get the adjust mode (node)</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> the current adjust mode</p>\n<ul>\n<li><code>gui.ADJUST_FIT</code></li>\n<li><code>gui.ADJUST_ZOOM</code></li>\n<li><code>gui.ADJUST_STRETCH</code></li>\n</ul>", 
+          "name": "adjust_mode"
+        }
+      ], 
+      "brief": "<p>gets the node adjust mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_adjust_mode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the blend mode of a node.\nBlend mode defines how the node will be blended with the background.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from which to get the blend mode</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> blend mode</p>\n<ul>\n<li><code>gui.BLEND_ALPHA</code></li>\n<li><code>gui.BLEND_ADD</code></li>\n<li><code>gui.BLEND_ADD_ALPHA</code></li>\n<li><code>gui.BLEND_MULT</code></li>\n</ul>", 
+          "name": "blend_mode"
+        }
+      ], 
+      "brief": "<p>gets the node blend mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_blend_mode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>If node is set as an inverted clipping node, it will clip anything inside as opposed to outside.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from which to get the clipping inverted state</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> true or false</p>", 
+          "name": "inverted"
+        }
+      ], 
+      "brief": "<p>gets node clipping inverted state</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_clipping_inverted"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Clipping mode defines how the node will clipping it's children nodes</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from which to get the clipping mode</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> clipping mode\n<ul>\n  <li><code>gui.CLIPPING_MODE_NONE</code></li>\n  <li><code>gui.CLIPPING_MODE_STENCIL</code></li>\n</ul></p>", 
+          "name": "clipping_mode"
+        }
+      ], 
+      "brief": "<p>gets the node clipping mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_clipping_mode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>If node is set as visible clipping node, it will be shown as well as clipping. Otherwise, it will only clip but not show visually.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from which to get the clipping visibility state</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> true or false</p>", 
+          "name": "visible"
+        }
+      ], 
+      "brief": "<p>gets node clipping visibility state</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_clipping_visible"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the color of the supplied node. The components\nof the returned vector4 contains the color channel values:</p>\n<table>\n<thead>\n<tr>\n<th>Component</th>\n<th>Color value</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>x</td>\n<td>Red value</td>\n</tr>\n<tr>\n<td>y</td>\n<td>Green value</td>\n</tr>\n<tr>\n<td>z</td>\n<td>Blue value</td>\n</tr>\n<tr>\n<td>w</td>\n<td>Alpha value</td>\n</tr>\n</tbody>\n</table>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get the color from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">vector4</span> node color</p>", 
+          "name": "color"
+        }
+      ], 
+      "brief": "<p>gets the node color</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_color"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the sector angle of a pie node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from which to get the fill angle</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> sector angle</p>", 
+          "name": "angle"
+        }
+      ], 
+      "brief": "<p>gets the angle for the filled pie sector</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_fill_angle"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get node flipbook animation.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get flipbook animation from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> animation id</p>", 
+          "name": "animation"
+        }
+      ], 
+      "brief": "<p>gets the node flipbook animation</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_flipbook"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This is only useful for text nodes. The font must be mapped to the gui scene in the gui editor.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from which to get the font</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> font id</p>", 
+          "name": "font"
+        }
+      ], 
+      "brief": "<p>gets the node font</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_font"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the scene height.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> scene height</p>", 
+          "name": "height"
+        }
+      ], 
+      "brief": "<p>gets the scene height</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_height"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Retrieves the id of the specified node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> the node to retrieve the id from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> the id of the node</p>", 
+          "name": "id"
+        }
+      ], 
+      "brief": "<p>gets the id of the specified node</p>", 
+      "examples": "<p>Gets the id of a node:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_node&quot;</span><span class=\"p\">)</span>\n\n<span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_id</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">id</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; hash: [my_node]</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_id"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Retrieve the index of the specified node.\nThe index defines the order in which a node appear in a GUI scene.\nHigher index means the node is drawn on top of lower indexed nodes.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> the node to retrieve the id from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> the index of the node</p>", 
+          "name": "index"
+        }
+      ], 
+      "brief": "<p>gets the index of the specified node</p>", 
+      "examples": "<p>Compare the index order of two nodes:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">node1</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_node_1&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">node2</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_node_2&quot;</span><span class=\"p\">)</span>\n\n<span class=\"k\">if</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_index</span><span class=\"p\">(</span><span class=\"n\">node1</span><span class=\"p\">)</span> <span class=\"o\">&lt;</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_index</span><span class=\"p\">(</span><span class=\"n\">node2</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- node1 is drawn below node2</span>\n<span class=\"k\">else</span>\n    <span class=\"c1\">-- node2 is drawn below node1</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_index"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from which to get the inherit alpha state</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>gets the node inherit alpha state</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_inherit_alpha"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the inner radius of a pie node.\nThe radius is defined along the x-axis.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from where to get the inner radius</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> inner radius</p>", 
+          "name": "radius"
+        }
+      ], 
+      "brief": "<p>gets the pie inner radius</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_inner_radius"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The layer must be mapped to the gui scene in the gui editor.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from which to get the layer</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> layer id</p>", 
+          "name": "layer"
+        }
+      ], 
+      "brief": "<p>gets the node layer</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_layer"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> layout id</p>", 
+          "name": "layout"
+        }
+      ], 
+      "brief": "<p>gets the scene current layout</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_layout"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the leading value for a text node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from where to get the leading</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> leading scaling value (default=1)</p>", 
+          "name": "leading"
+        }
+      ], 
+      "brief": "<p>gets the leading of the text node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_leading"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns whether a text node is in line-break mode or not.\nThis is only useful for text nodes.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from which to get the line-break for</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> <code>true</code> or <code>false</code></p>", 
+          "name": "line-break"
+        }
+      ], 
+      "brief": "<p>get line-break mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_line_break"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Retrieves the node with the specified id.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> id of the node to retrieve</p>", 
+          "name": "id"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">node</span> a new node instance</p>", 
+          "name": "instance"
+        }
+      ], 
+      "brief": "<p>gets the node with the specified id</p>", 
+      "examples": "<p>Gets a node by id and change its color:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_node&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">red</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mf\">1.0</span><span class=\"p\">,</span> <span class=\"mf\">0.0</span><span class=\"p\">,</span> <span class=\"mf\">0.0</span><span class=\"p\">,</span> <span class=\"mf\">1.0</span><span class=\"p\">)</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_color</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"n\">red</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_node"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the outer bounds mode for a pie node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from where to get the outer bounds mode</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> the outer bounds mode of the pie node:</p>\n<ul>\n<li><code>gui.PIEBOUNDS_RECTANGLE</code></li>\n<li><code>gui.PIEBOUNDS_ELLIPSE</code></li>\n</ul>", 
+          "name": "bounds_mode"
+        }
+      ], 
+      "brief": "<p>gets the pie outer bounds mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_outer_bounds"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the outline color of the supplied node.\nSee <a href=\"/ref/gui#gui.get_color\">gui.get_color</a> for info how vectors encode color values.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get the outline color from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">vector4</span> outline color</p>", 
+          "name": "color"
+        }
+      ], 
+      "brief": "<p>gets the node outline color</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_outline"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the parent node of the specified node.\nIf the supplied node does not have a parent, <code>nil</code> is returned.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> the node from which to retrieve its parent</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">node</span> parent instance or nil</p>", 
+          "name": "parent"
+        }
+      ], 
+      "brief": "<p>gets the parent of the specified node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_parent"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get the paricle fx for a gui node</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get particle fx for</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>particle fx id</p>", 
+          "name": "[type:hash]"
+        }
+      ], 
+      "brief": "<p>Gets a particle fx</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_particlefx"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the number of generated vertices around the perimeter\nof a pie node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> pie node</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> vertex count</p>", 
+          "name": "vertices"
+        }
+      ], 
+      "brief": "<p>gets the number of generated vertices around the perimeter</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_perimeter_vertices"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The pivot specifies how the node is drawn and rotated from its position.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get pivot from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> pivot constant\n<ul>\n  <li><code>gui.PIVOT_CENTER</code></li>\n  <li><code>gui.PIVOT_N</code></li>\n  <li><code>gui.PIVOT_NE</code></li>\n  <li><code>gui.PIVOT_E</code></li>\n  <li><code>gui.PIVOT_SE</code></li>\n  <li><code>gui.PIVOT_S</code></li>\n  <li><code>gui.PIVOT_SW</code></li>\n  <li><code>gui.PIVOT_W</code></li>\n  <li><code>gui.PIVOT_NW</code></li>\n</ul></p>", 
+          "name": "pivot"
+        }
+      ], 
+      "brief": "<p>gets the pivot of a node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_pivot"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the position of the supplied node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get the position from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">vector3</span> node position</p>", 
+          "name": "position"
+        }
+      ], 
+      "brief": "<p>gets the node position</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_position"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the rotation of the supplied node.\nThe rotation is expressed in degree Euler angles.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get the rotation from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">vector3</span> node rotation</p>", 
+          "name": "rotation"
+        }
+      ], 
+      "brief": "<p>gets the node rotation</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_rotation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the scale of the supplied node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get the scale from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">vector3</span> node scale</p>", 
+          "name": "scale"
+        }
+      ], 
+      "brief": "<p>gets the node scale</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_scale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the screen position of the supplied node. This function returns the\ncalculated transformed position of the node, taking into account any parent node\ntransforms.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get the screen position from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">vector3</span> node screen position</p>", 
+          "name": "position"
+        }
+      ], 
+      "brief": "<p>gets the node screen position</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_screen_position"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the shadow color of the supplied node.\nSee <a href=\"/ref/gui#gui.get_color\">gui.get_color</a> for info how vectors encode color values.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get the shadow color from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">vector4</span> node shadow color</p>", 
+          "name": "color"
+        }
+      ], 
+      "brief": "<p>gets the node shadow color</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_shadow"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the size of the supplied node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get the size from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">vector3</span> node size</p>", 
+          "name": "size"
+        }
+      ], 
+      "brief": "<p>gets the node size</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_size"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the size of a node.\nThe size mode defines how the node will adjust itself in size. Automatic\nsize mode alters the node size based on the node's content.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from which to get the size mode (node)</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> the current size mode</p>\n<ul>\n<li><code>gui.SIZE_MODE_MANUAL</code></li>\n<li><code>gui.SIZE_MODE_AUTO</code></li>\n</ul>", 
+          "name": "size_mode"
+        }
+      ], 
+      "brief": "<p>gets the node size mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_size_mode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the slice9 configuration values for the node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to manipulate</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">vector4</span> configuration values</p>", 
+          "name": "values"
+        }
+      ], 
+      "brief": "<p>get the slice9 values for the node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_slice9"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Gets the playing animation on a spine node</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get spine skin from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> spine animation id, 0 if no animation is playing</p>", 
+          "name": "id"
+        }
+      ], 
+      "brief": "<p>gets the playing animation on a spine node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_spine_animation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The returned node can be used for parenting and transform queries.\nThis function has complexity O(n), where n is the number of bones in the spine model skeleton.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> spine node to query for bone node</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> id of the corresponding bone</p>", 
+          "name": "bone_id"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node corresponding to the spine bone</p>", 
+          "name": "bone"
+        }
+      ], 
+      "brief": "<p>retrieve the GUI node corresponding to a spine skeleton bone</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_spine_bone"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This is only useful for spine nodes. Gets the normalized cursor of the animation on a spine node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p>spine node to set the cursor for (node)</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>value <span class=\"type\">number</span> cursor value</p>", 
+          "name": "cursor"
+        }
+      ], 
+      "brief": "<p>gets the normalized cursor of the animation on a spine node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_spine_cursor"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This is only useful for spine nodes. Gets the playback rate of the animation on a spine node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> spine node to set the cursor for</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> playback rate</p>", 
+          "name": "rate"
+        }
+      ], 
+      "brief": "<p>gets the playback rate of the animation on a spine node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_spine_playback_rate"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the spine scene id of the supplied node.\nThis is currently only useful for spine nodes.\nThe returned spine scene must be mapped to the gui scene in the gui editor.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get texture from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> spine scene id</p>", 
+          "name": "spine_scene"
+        }
+      ], 
+      "brief": "<p>gets the spine scene of a node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_spine_scene"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Gets the spine skin of a spine node</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get spine skin from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> spine skin id, 0 if no explicit skin is set</p>", 
+          "name": "id"
+        }
+      ], 
+      "brief": "<p>gets the skin of a spine node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_spine_skin"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the text value of a text node. This is only useful for text nodes.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from which to get the text</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">string</span> text value</p>", 
+          "name": "text"
+        }
+      ], 
+      "brief": "<p>gets the node text</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_text"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get text metrics given the provided font, text and parameters.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> font id</p>", 
+          "name": "font"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> text to measure</p>", 
+          "name": "text"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> max-width. Use for line-breaks (default=FLT_MAX)</p>", 
+          "name": "width"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> true to break lines accordingly to width (default=false)</p>", 
+          "name": "line_breaks"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> scale value for line spacing (default=1)</p>", 
+          "name": "leading"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> scale value for letter spacing (default=0)</p>", 
+          "name": "tracking"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">table</span> a table with the following fields:</p>\n<ul>\n<li>width</li>\n<li>height</li>\n<li>max_ascent</li>\n<li>max_descent</li>\n</ul>", 
+          "name": "metrics"
+        }
+      ], 
+      "brief": "<p>get text metrics</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_text_metrics"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get the text metrics from a text node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> text node to measure text from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">table</span> a table with the following fields:</p>\n<ul>\n<li>width</li>\n<li>height</li>\n<li>max_ascent</li>\n<li>max_descent</li>\n</ul>", 
+          "name": "metrics"
+        }
+      ], 
+      "brief": "<p>get text metrics from node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_text_metrics_from_node"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the texture of a node.\nThis is currently only useful for box or pie nodes.\nThe texture must be mapped to the gui scene in the gui editor.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get texture from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> texture id</p>", 
+          "name": "texture"
+        }
+      ], 
+      "brief": "<p>gets node texture</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_texture"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the tracking value of a text node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from where to get the tracking</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> tracking scaling number (default=0)</p>", 
+          "name": "tracking"
+        }
+      ], 
+      "brief": "<p>gets the tracking of the text node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_tracking"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the scene width.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> scene width</p>", 
+          "name": "width"
+        }
+      ], 
+      "brief": "<p>gets the scene width</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_width"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The x-anchor specifies how the node is moved when the game is run in a different resolution.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get x-anchor from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> anchor constant</p>\n<ul>\n<li><code>gui.ANCHOR_NONE</code></li>\n<li><code>gui.ANCHOR_LEFT</code></li>\n<li><code>gui.ANCHOR_RIGHT</code></li>\n</ul>", 
+          "name": "anchor"
+        }
+      ], 
+      "brief": "<p>gets the x-anchor of a node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_xanchor"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The y-anchor specifies how the node is moved when the game is run in a different resolution.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to get y-anchor from</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> anchor constant</p>\n<ul>\n<li><code>gui.ANCHOR_NONE</code></li>\n<li><code>gui.ANCHOR_TOP</code></li>\n<li><code>gui.ANCHOR_BOTTOM</code></li>\n</ul>", 
+          "name": "anchor"
+        }
+      ], 
+      "brief": "<p>gets the y-anchor of a node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.get_yanchor"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Hides the on-display touch keyboard on the device.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>hides on-display keyboard if available</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.hide_keyboard"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns <code>true</code> if a node is enabled and <code>false</code> if it's not.\nDisabled nodes are not rendered and animations acting on them are not evaluated.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to query</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> whether the node is enabled or not</p>", 
+          "name": "enabled"
+        }
+      ], 
+      "brief": "<p>returns if a node is enabled or not</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.is_enabled"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Alters the ordering of the two supplied nodes by moving the first node\nabove the second.\nIf the second argument is <code>nil</code> the first node is moved to the top.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> to move</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">node | nil</span> reference node above which the first node should be moved</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>moves the first node above the second</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.move_above"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Alters the ordering of the two supplied nodes by moving the first node\nbelow the second.\nIf the second argument is <code>nil</code> the first node is moved to the bottom.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> to move</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">node | nil</span> reference node below which the first node should be moved</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>moves the first node below the second</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.move_below"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Dynamically create a new box node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">vector3 | vector4</span> node position</p>", 
+          "name": "pos"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector3</span> node size</p>", 
+          "name": "size"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">node</span> new box node</p>", 
+          "name": "node"
+        }
+      ], 
+      "brief": "<p>creates a new box node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.new_box_node"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Dynamically create a particle fx node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">vector3 | vector4</span> node position</p>", 
+          "name": "pos"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">hash | string</span> particle fx resource name</p>", 
+          "name": "particlefx"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">node</span> new particle fx node</p>", 
+          "name": "node"
+        }
+      ], 
+      "brief": "<p>creates a new particle fx node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.new_particlefx_node"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Dynamically create a new pie node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">vector3 | vector4</span> node position</p>", 
+          "name": "pos"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector3</span> node size</p>", 
+          "name": "size"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">node</span> new box node</p>", 
+          "name": "node"
+        }
+      ], 
+      "brief": "<p>creates a new pie node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.new_pie_node"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Dynamically create a new spine node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">vector3 | vector4</span> node position</p>", 
+          "name": "pos"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> spine scene id</p>", 
+          "name": "spine_scene"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">node</span> new spine node</p>", 
+          "name": "node"
+        }
+      ], 
+      "brief": "<p>creates a new spine node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.new_spine_node"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Dynamically create a new text node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">vector3 | vector4</span> node position</p>", 
+          "name": "pos"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> node text</p>", 
+          "name": "text"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">node</span> new text node</p>", 
+          "name": "node"
+        }
+      ], 
+      "brief": "<p>creates a new text node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.new_text_node"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Dynamically create a new texture.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> texture id</p>", 
+          "name": "texture"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> texture width</p>", 
+          "name": "width"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> texture height</p>", 
+          "name": "height"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | constant</span> texture type</p>\n<ul>\n<li><code>\"rgb\"</code> - RGB</li></li>\n<li><code>\"rgba\"</code> - RGBA</li></li>\n<li><code>\"l\"</code> - LUMINANCE</li></li>\n</ul>", 
+          "name": "type"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> texture data</p>", 
+          "name": "buffer"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> flip texture vertically</p>", 
+          "name": "flip"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> texture creation was successful</p>", 
+          "name": "success"
+        }
+      ], 
+      "brief": "<p>create new texture</p>", 
+      "examples": "<p>How to create a texture and apply it to a new box node:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n     <span class=\"kd\">local</span> <span class=\"n\">w</span> <span class=\"o\">=</span> <span class=\"mi\">200</span>\n     <span class=\"kd\">local</span> <span class=\"n\">h</span> <span class=\"o\">=</span> <span class=\"mi\">300</span>\n\n     <span class=\"c1\">-- A nice orange. String with the RGB values.</span>\n     <span class=\"kd\">local</span> <span class=\"n\">orange</span> <span class=\"o\">=</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0xff</span><span class=\"p\">)</span> <span class=\"o\">..</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0x80</span><span class=\"p\">)</span> <span class=\"o\">..</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0x10</span><span class=\"p\">)</span>\n\n     <span class=\"c1\">-- Create the texture. Repeat the color string for each pixel.</span>\n     <span class=\"k\">if</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">new_texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">orange_tx&quot;</span><span class=\"p\">,</span> <span class=\"n\">w</span><span class=\"p\">,</span> <span class=\"n\">h</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">rgb&quot;</span><span class=\"p\">,</span> <span class=\"nb\">string.rep</span><span class=\"p\">(</span><span class=\"n\">orange</span><span class=\"p\">,</span> <span class=\"n\">w</span> <span class=\"o\">*</span> <span class=\"n\">h</span><span class=\"p\">))</span> <span class=\"k\">then</span>\n         <span class=\"c1\">-- Create a box node and apply the texture to it.</span>\n         <span class=\"kd\">local</span> <span class=\"n\">n</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">new_box_node</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"n\">w</span><span class=\"p\">,</span> <span class=\"n\">h</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">))</span>\n         <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_texture</span><span class=\"p\">(</span><span class=\"n\">n</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">orange_tx&quot;</span><span class=\"p\">)</span>\n     <span class=\"k\">else</span>\n         <span class=\"c1\">-- Could not create texture...</span>\n         <span class=\"o\">...</span>\n     <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.new_texture"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Tests whether a coordinate is within the bounding box of a\nnode.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to be tested for picking</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> x-coordinate (see <a href=\"#on_input\">on_input</a> )</p>", 
+          "name": "x"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> y-coordinate (see <a href=\"#on_input\">on_input</a> )</p>", 
+          "name": "y"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> pick result</p>", 
+          "name": "pickable"
+        }
+      ], 
+      "brief": "<p>determines if the node is pickable by the supplied coordinates</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.pick_node"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Play flipbook animation on a box or pie node.\nThe current node texture must contain the animation.\nUse this function to set one-frame still images on the node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set animation for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> animation id</p>", 
+          "name": "animation"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">function(self, node)</span> optional function to call when the animation has completed</p>\n<dl>\n<dt><code>self</code></dt>\n<dd>\n<p><span class=\"type\">object</span> The current object.</p>\n</dd>\n<dt><code>node</code></dt>\n<dd>\n<p><span class=\"type\">node</span> The node that is animated.</p>\n</dd>\n</dl>", 
+          "name": "[complete_function]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>play node flipbook animation</p>", 
+      "examples": "<p>Set the texture of a node to a flipbook animation from an atlas:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">anim_callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">node</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- Take action after animation has played.</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- Create a new node and set the texture to a flipbook animation</span>\n    <span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">button_node&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_texture</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">gui_sprites&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">play_flipbook</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">animated_button&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>Set the texture of a node to an image from an atlas:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Create a new node and set the texture to a &quot;button.png&quot; from atlas</span>\n<span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">button_node&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_texture</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">gui_sprites&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">play_flipbook</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">button&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.play_flipbook"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Plays the paricle fx for a gui node</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to play particle fx for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">function(self, node, emitter, state)</span> optional callback function that will be called when an emitter attached to this particlefx changes state.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The id of the particle fx component</dd>\n<dt><code>emitter</code></dt>\n<dd><span class=\"type\">hash</span> The id of the emitter</dd>\n<dt><code>state</code></dt>\n<dd><span class=\"type\">constant</span> the new state of the emitter:</dd>\n</dl>\n<ul>\n<li><code>gui.EMITTER_STATE_SLEEPING</code></li>\n<li><code>gui.EMITTER_STATE_PRESPAWN</code></li>\n<li><code>gui.EMITTER_STATE_SPAWNING</code></li>\n<li><code>gui.EMITTER_STATE_POSTSPAWN</code></li>\n</ul>", 
+          "name": "[emitter_state_function]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>Plays a particle fx</p>", 
+      "examples": "<p>How to play a particle fx when a gui node is created.\nThe callback receives the gui node, the hash of the id\nof the emitter, and the new state of the emitter as gui.EMITTER_STATE_<STATE>.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">emitter_state_change</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"n\">emitter</span><span class=\"p\">,</span> <span class=\"n\">state</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">emitter</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">exhaust&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">state</span> <span class=\"o\">==</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">EMITTER_STATE_POSTSPAWN</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- exhaust is done spawning particles...</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">play_particlefx</span><span class=\"p\">(</span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">particlefx&quot;</span><span class=\"p\">),</span> <span class=\"n\">emitter_state_change</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.play_particlefx"
+    }, 
+    {
+      "replaces": "<p>gui.play_spine</p>", 
+      "description": "<p>Starts a spine animation.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> spine node that should play the animation</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> id of the animation to play</p>", 
+          "name": "animation_id"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> playback mode</p>\n<ul>\n<li><code>gui.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>gui.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>gui.PLAYBACK_ONCE_PINGPONG</code></li>\n<li><code>gui.PLAYBACK_LOOP_FORWARD</code></li>\n<li><code>gui.PLAYBACK_LOOP_BACKWARD</code></li>\n<li><code>gui.PLAYBACK_LOOP_PINGPONG</code></li>\n</ul>", 
+          "name": "playback"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">table</span> optional table with properties</p>\n<dl>\n<dt><code>blend_duration</code></dt>\n<dd><span class=\"type\">number</span> The duration of a linear blend between the current and new animation</dd>\n<dt><code>offset</code></dt>\n<dd><span class=\"type\">number</span> The normalized initial value of the animation cursor when the animation starts playing</dd>\n<dt><code>playback_rate</code></dt>\n<dd><span class=\"type\">number</span> The rate with which the animation will be played. Must be positive</dd>\n</dl>", 
+          "name": "[play_properties]"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">function(self, node)</span> function to call when the animation has completed</p>", 
+          "name": "[complete_function]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>play a spine animation</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.play_spine_anim"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Resets the input context of keyboard. This will clear marked text.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>resets on-display keyboard if available</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.reset_keyboard"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Resets all nodes in the current GUI scene to their initial state.\nThe reset only applies to static node loaded from the scene.\nNodes that are created dynamically from script are not affected.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>resets all nodes to initial state</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.reset_nodes"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the adjust mode on a node.\nThe adjust mode defines how the node will adjust itself to screen\nresolutions that differs from the one in the project settings.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set adjust mode for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> adjust mode to set</p>\n<ul>\n<li><code>gui.ADJUST_FIT</code></li>\n<li><code>gui.ADJUST_ZOOM</code></li>\n<li><code>gui.ADJUST_STRETCH</code></li>\n</ul>", 
+          "name": "adjust_mode"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets node adjust mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_adjust_mode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set the blend mode of a node.\nBlend mode defines how the node will be blended with the background.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set blend mode for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> blend mode to set</p>\n<ul>\n<li><code>gui.BLEND_ALPHA</code></li>\n<li><code>gui.BLEND_ADD</code></li>\n<li><code>gui.BLEND_ADD_ALPHA</code></li>\n<li><code>gui.BLEND_MULT</code></li>\n</ul>", 
+          "name": "blend_mode"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets node blend mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_blend_mode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>If node is set as an inverted clipping node, it will clip anything inside as opposed to outside.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set clipping inverted state for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> true or false</p>", 
+          "name": "inverted"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets node clipping inversion</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_clipping_inverted"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Clipping mode defines how the node will clipping it's children nodes</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set clipping mode for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> clipping mode to set\n<ul>\n  <li><code>gui.CLIPPING_MODE_NONE</code></li>\n  <li><code>gui.CLIPPING_MODE_STENCIL</code></li>\n</ul></p>", 
+          "name": "clipping_mode"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets node clipping mode state</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_clipping_mode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>If node is set as an visible clipping node, it will be shown as well as clipping. Otherwise, it will only clip but not show visually.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set clipping visibility for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> true or false</p>", 
+          "name": "visible"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets node clipping visibility</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_clipping_visible"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the color of the supplied node. The components\nof the supplied vector3 or vector4 should contain the color channel values:</p>\n<table>\n<thead>\n<tr>\n<th>Component</th>\n<th>Color value</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>x</td>\n<td>Red value</td>\n</tr>\n<tr>\n<td>y</td>\n<td>Green value</td>\n</tr>\n<tr>\n<td>z</td>\n<td>Blue value</td>\n</tr>\n<tr>\n<td>w <span class=\"type\">vector4</span></td>\n<td>Alpha value</td>\n</tr>\n</tbody>\n</table>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set the color for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector3 | vector4</span> new color</p>", 
+          "name": "color"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the node color</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_color"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets a node to the disabled or enabled state.\nDisabled nodes are not rendered and animations acting on them are not evaluated.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to be enabled/disabled</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> whether the node should be enabled or not</p>", 
+          "name": "enabled"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>enables/disables a node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_enabled"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set the sector angle of a pie node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set the fill angle for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> sector angle</p>", 
+          "name": "angle"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the angle for the filled pie sector</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_fill_angle"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This is only useful for text nodes.\nThe font must be mapped to the gui scene in the gui editor.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node for which to set the font</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> font id</p>", 
+          "name": "font"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the node font</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_font"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set the id of the specicied node to a new value.\nNodes created with the gui.new_*_node() functions get\nan empty id. This function allows you to give dynamically\ncreated nodes an id.</p>\n<p><span class=\"icon-attention\"></span> No checking is done on the uniqueness of supplied ids.\nIt is up to you to make sure you use unique ids.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set the id for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> id to set</p>", 
+          "name": "id"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the id of the specified node</p>", 
+      "examples": "<p>Create a new node and set its id:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">pos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">size</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">new_box_node</span><span class=\"p\">(</span><span class=\"n\">pos</span><span class=\"p\">,</span> <span class=\"n\">size</span><span class=\"p\">)</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_id</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_new_node&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_id"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node from which to set the inherit alpha state</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> true or false</p>", 
+          "name": "inherit_alpha"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the node inherit alpha state</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_inherit_alpha"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the inner radius of a pie node.\nThe radius is defined along the x-axis.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set the inner radius for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> inner radius</p>", 
+          "name": "radius"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the pie inner radius</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_inner_radius"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The layer must be mapped to the gui scene in the gui editor.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node for which to set the layer</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> layer id</p>", 
+          "name": "layer"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the node layer</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_layer"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the leading value for a text node. This value is used to\nscale the line spacing of text.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node for which to set the leading</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> a scaling value for the line spacing (default=1)</p>", 
+          "name": "leading"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the leading of the text node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_leading"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the line-break mode on a text node.\nThis is only useful for text nodes.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set line-break for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> true or false</p>", 
+          "name": "line-break"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set line-break mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_line_break"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the outer bounds mode for a pie node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node for which to set the outer bounds mode</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> the outer bounds mode of the pie node:</p>\n<ul>\n<li><code>gui.PIEBOUNDS_RECTANGLE</code></li>\n<li><code>gui.PIEBOUNDS_ELLIPSE</code></li>\n</ul>", 
+          "name": "bounds_mode"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the pie node outer bounds mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_outer_bounds"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the outline color of the supplied node.\nSee <a href=\"/ref/gui#gui.set_color\">gui.set_color</a> for info how vectors encode color values.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set the outline color for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector3 | vector4</span> new outline color</p>", 
+          "name": "color"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the node outline color</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_outline"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the parent node of the specified node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node for which to set its parent</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">node</span> parent node to set</p>", 
+          "name": "parent"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the parent of the node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_parent"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set the paricle fx for a gui node</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set particle fx for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">hash | string</span> particle fx id</p>", 
+          "name": "particlefx"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>Sets a particle fx</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_particlefx"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the number of generated vertices around the perimeter of a pie node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> pie node</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> vertex count</p>", 
+          "name": "vertices"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the number of generated vertices around the perimeter</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_perimeter_vertices"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The pivot specifies how the node is drawn and rotated from its position.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set pivot for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> pivot constant\n<ul>\n  <li><code>gui.PIVOT_CENTER</code></li>\n  <li><code>gui.PIVOT_N</code></li>\n  <li><code>gui.PIVOT_NE</code></li>\n  <li><code>gui.PIVOT_E</code></li>\n  <li><code>gui.PIVOT_SE</code></li>\n  <li><code>gui.PIVOT_S</code></li>\n  <li><code>gui.PIVOT_SW</code></li>\n  <li><code>gui.PIVOT_W</code></li>\n  <li><code>gui.PIVOT_NW</code></li>\n</ul></p>", 
+          "name": "pivot"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the pivot of a node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_pivot"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the position of the supplied node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set the position for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector3 | vector4</span> new position</p>", 
+          "name": "position"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the node position</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_position"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set the order number for the current GUI scene.\nThe number dictates the sorting of the \"gui\" render predicate,\nin other words in which order the scene will be rendered in relation\nto other currently rendered GUI scenes.</p>\n<p>The number must be in the range 0 to 15.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> rendering order (0-15)</p>", 
+          "name": "order"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the render ordering for the current GUI scene</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_render_order"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the rotation of the supplied node.\nThe rotation is expressed in degree Euler angles.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set the rotation for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector3 | vector4</span> new rotation</p>", 
+          "name": "rotation"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the node rotation</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_rotation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the scaling of the supplied node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set the scale for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector3 | vector4</span> new scale</p>", 
+          "name": "scale"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the node scale</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_scale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the shadow color of the supplied node.\nSee <a href=\"/ref/gui#gui.set_color\">gui.set_color</a> for info how vectors encode color values.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set the shadow color for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector3 | vector4</span> new shadow color</p>", 
+          "name": "color"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the node shadow color</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_shadow"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the size of the supplied node.</p>\n<p><span class=\"icon-attention\"></span> You can only set size on nodes with size mode set to SIZE_MODE_MANUAL</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set the size for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector3 | vector4</span> new size</p>", 
+          "name": "size"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the node size</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_size"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the size mode of a node.\nThe size mode defines how the node will adjust itself in size. Automatic\nsize mode alters the node size based on the node's content.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set size mode for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> size mode to set</p>\n<ul>\n<li><code>gui.SIZE_MODE_MANUAL</code></li>\n<li><code>gui.SIZE_MODE_AUTO</code></li>\n</ul>", 
+          "name": "size_mode"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets node size mode</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_size_mode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set the slice9 configuration values for the node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to manipulate</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector4</span> new values</p>", 
+          "name": "values"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set the slice9 configuration for the node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_slice9"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This is only useful for spine nodes. The cursor is normalized.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> spine node to set the cursor for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> cursor value</p>", 
+          "name": "cursor"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the normalized cursor of the animation on a spine node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_spine_cursor"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This is only useful for spine nodes. Sets the playback rate of the animation on a spine node. Must be positive.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> spine node to set the cursor for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> playback rate</p>", 
+          "name": "playback_rate"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the playback rate of the animation on a spine node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_spine_playback_rate"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set the spine scene on a spine node. The spine scene must be mapped to the gui scene in the gui editor.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set spine scene for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> spine scene id</p>", 
+          "name": "spine_scene"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the spine scene of a node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_spine_scene"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the spine skin on a spine node.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set the spine skin on</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> spine skin id</p>", 
+          "name": "spine_skin"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> optional slot id to only change a specific slot</p>", 
+          "name": "[spine_slot]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the spine skin</p>", 
+      "examples": "<p>Change skin of a Spine node</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_spine_skin</span><span class=\"p\">(</span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">spine_node&quot;</span><span class=\"p\">),</span> <span class=\"s2\">&quot;</span><span class=\"s\">monster&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>Change only part of the Spine to a different skin.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">monster_transform_arm</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- The player is transforming into a monster, begin with changing the arm.</span>\n  <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_spine_skin</span><span class=\"p\">(</span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">spine_node&quot;</span><span class=\"p\">),</span> <span class=\"s2\">&quot;</span><span class=\"s\">monster&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">left_arm_slot&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_spine_skin"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set the text value of a text node. This is only useful for text nodes.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set text for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> text to set</p>", 
+          "name": "text"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the node text</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_text"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set the texture on a box or pie node. The texture must be mapped to\nthe gui scene in the gui editor. The function points out which texture\nthe node should render from. If the texture is an atlas, further\ninformation is needed to select which image/animation in the atlas\nto render. In such cases, use <code>gui.play_flipbook()</code> in\naddition to this function.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set texture for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> texture id</p>", 
+          "name": "texture"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the node texture</p>", 
+      "examples": "<p>To set a texture (or animation) from an atlas:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">box_node&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_texture</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_atlas&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">play_flipbook</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">image&quot;</span><span class=\"p\">)</span>\n</pre></div>\n\n\n<p>Set a dynamically created texture to a node. Note that there is only\none texture image in this case so <code>gui.set_texture()</code> is\nsufficient.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">w</span> <span class=\"o\">=</span> <span class=\"mi\">200</span>\n<span class=\"kd\">local</span> <span class=\"n\">h</span> <span class=\"o\">=</span> <span class=\"mi\">300</span>\n<span class=\"c1\">-- A nice orange. String with the RGB values.</span>\n<span class=\"kd\">local</span> <span class=\"n\">orange</span> <span class=\"o\">=</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0xff</span><span class=\"p\">)</span> <span class=\"o\">..</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0x80</span><span class=\"p\">)</span> <span class=\"o\">..</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0x10</span><span class=\"p\">)</span>\n<span class=\"c1\">-- Create the texture. Repeat the color string for each pixel.</span>\n<span class=\"k\">if</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">new_texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">orange_tx&quot;</span><span class=\"p\">,</span> <span class=\"n\">w</span><span class=\"p\">,</span> <span class=\"n\">h</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">rgb&quot;</span><span class=\"p\">,</span> <span class=\"nb\">string.rep</span><span class=\"p\">(</span><span class=\"n\">orange</span><span class=\"p\">,</span> <span class=\"n\">w</span> <span class=\"o\">*</span> <span class=\"n\">h</span><span class=\"p\">))</span> <span class=\"k\">then</span>\n    <span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">box_node&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_texture</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">orange_tx&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_texture"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set the texture buffer data for a dynamically created texture.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> texture id</p>", 
+          "name": "texture"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> texture width</p>", 
+          "name": "width"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> texture height</p>", 
+          "name": "height"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | constant</span> texture type\n<ul>\n  <li><code>\"rgb\"</code> - RGB</li>\n  <li><code>\"rgba\"</code> - RGBA</li>\n  <li><code>\"l\"</code> - LUMINANCE</li>\n</ul></p>", 
+          "name": "type"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> texture data</p>", 
+          "name": "buffer"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> flip texture vertically</p>", 
+          "name": "flip"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> setting the data was successful</p>", 
+          "name": "success"
+        }
+      ], 
+      "brief": "<p>set the buffer data for a texture</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n     <span class=\"kd\">local</span> <span class=\"n\">w</span> <span class=\"o\">=</span> <span class=\"mi\">200</span>\n     <span class=\"kd\">local</span> <span class=\"n\">h</span> <span class=\"o\">=</span> <span class=\"mi\">300</span>\n\n     <span class=\"c1\">-- Create a dynamic texture, all white.</span>\n     <span class=\"k\">if</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">new_texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">dynamic_tx&quot;</span><span class=\"p\">,</span> <span class=\"n\">w</span><span class=\"p\">,</span> <span class=\"n\">h</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">rgb&quot;</span><span class=\"p\">,</span> <span class=\"nb\">string.rep</span><span class=\"p\">(</span><span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0xff</span><span class=\"p\">),</span> <span class=\"n\">w</span> <span class=\"o\">*</span> <span class=\"n\">h</span> <span class=\"o\">*</span> <span class=\"mi\">3</span><span class=\"p\">))</span> <span class=\"k\">then</span>\n         <span class=\"c1\">-- Create a box node and apply the texture to it.</span>\n         <span class=\"kd\">local</span> <span class=\"n\">n</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">new_box_node</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"n\">w</span><span class=\"p\">,</span> <span class=\"n\">h</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">))</span>\n         <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_texture</span><span class=\"p\">(</span><span class=\"n\">n</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">dynamic_tx&quot;</span><span class=\"p\">)</span>\n\n         <span class=\"o\">...</span>\n\n         <span class=\"c1\">-- Change the data in the texture to a nice orange.</span>\n         <span class=\"kd\">local</span> <span class=\"n\">orange</span> <span class=\"o\">=</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0xff</span><span class=\"p\">)</span> <span class=\"o\">..</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0x80</span><span class=\"p\">)</span> <span class=\"o\">..</span> <span class=\"nb\">string.char</span><span class=\"p\">(</span><span class=\"mh\">0x10</span><span class=\"p\">)</span>\n         <span class=\"k\">if</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_texture_data</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">dynamic_tx&quot;</span><span class=\"p\">,</span> <span class=\"n\">w</span><span class=\"p\">,</span> <span class=\"n\">h</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">rgb&quot;</span><span class=\"p\">,</span> <span class=\"nb\">string.rep</span><span class=\"p\">(</span><span class=\"n\">orange</span><span class=\"p\">,</span> <span class=\"n\">w</span> <span class=\"o\">*</span> <span class=\"n\">h</span><span class=\"p\">))</span> <span class=\"k\">then</span>\n             <span class=\"c1\">-- Go on and to more stuff</span>\n             <span class=\"o\">...</span>\n         <span class=\"k\">end</span>\n     <span class=\"k\">else</span>\n         <span class=\"c1\">-- Something went wrong</span>\n         <span class=\"o\">...</span>\n     <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_texture_data"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the tracking value of a text node. This value is used to\nadjust the vertical spacing of characters in the text.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node for which to set the tracking</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> a scaling number for the letter spacing (default=0)</p>", 
+          "name": "tracking"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the tracking of the text node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_tracking"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The x-anchor specifies how the node is moved when the game is run in a different resolution.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set x-anchor for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> anchor constant</p>\n<ul>\n<li><code>gui.ANCHOR_NONE</code></li>\n<li><code>gui.ANCHOR_LEFT</code></li>\n<li><code>gui.ANCHOR_RIGHT</code></li>\n</ul>", 
+          "name": "anchor"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the x-anchor of a node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_xanchor"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The y-anchor specifies how the node is moved when the game is run in a different resolution.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to set y-anchor for</p>", 
+          "name": "node"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> anchor constant</p>\n<ul>\n<li><code>gui.ANCHOR_NONE</code></li>\n<li><code>gui.ANCHOR_TOP</code></li>\n<li><code>gui.ANCHOR_BOTTOM</code></li>\n</ul>", 
+          "name": "anchor"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the y-anchor of a node</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.set_yanchor"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Shows the on-display touch keyboard.\nThe specified type of keyboard is displayed if it is available on\nthe device.</p>\n<p>This function is only available on iOS and Android. <span class=\"icon-ios\"></span> <span class=\"icon-android\"></span>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> keyboard type</p>\n<ul>\n<li><code>gui.KEYBOARD_TYPE_DEFAULT</code></li>\n<li><code>gui.KEYBOARD_TYPE_EMAIL</code></li>\n<li><code>gui.KEYBOARD_TYPE_NUMBER_PAD</code></li>\n<li><code>gui.KEYBOARD_TYPE_PASSWORD</code></li>\n</ul>", 
+          "name": "type"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> if the keyboard should automatically close when clicking outside</p>", 
+          "name": "autoclose"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>shows the on-display keyboard if available <span class=\"icon-ios\"></span> <span class=\"icon-android\"></span></p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.show_keyboard"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Stops the paricle fx for a gui node</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">node</span> node to stop particle fx for</p>", 
+          "name": "node"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>Stops a particle fx</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "gui.stop_particlefx"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This is a callback-function, which is called by the engine when a gui component is initialized. It can be used\nto set the initial state of the script and gui scene.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">object</span> reference to the script state to be used for storing data</p>", 
+          "name": "self"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>called when a gui component is initialized</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- set up useful data</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_value</span> <span class=\"o\">=</span> <span class=\"mi\">1</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "init"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This message is broadcast to every GUI component when a layout change has been initiated\non device.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> the id of the layout the engine is changing to</p>", 
+          "name": "id"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">hash</span> the id of the layout the engine is changing from</p>", 
+          "name": "previous_id"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>reports a layout change</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n   <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">layout_changed&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Landscape&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n       <span class=\"c1\">-- switching layout to &quot;Landscape&quot;...</span>\n       <span class=\"o\">...</span>\n   <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MESSAGE", 
+      "name": "layout_changed"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This is a callback-function, which is called by the engine when user input is sent to the instance of the gui component.\nIt can be used to take action on the input, e.g. modify the gui according to the input.</p>\n<p>For an instance to obtain user input, it must first acquire input\nfocus through the message <code>acquire_input_focus</code>.</p>\n<p>Any instance that has obtained input will be put on top of an\ninput stack. Input is sent to all listeners on the stack until the\nend of stack is reached, or a listener returns <code>true</code>\nto signal that it wants input to be consumed.</p>\n<p>See the documentation of <a href=\"/ref/go/#acquire_input_focus\">acquire_input_focus</a> for more\ninformation.</p>\n<p>The <code>action</code> parameter is a table containing data about the input mapped to the\n<code>action_id</code>.\nFor mapped actions it specifies the value of the input and if it was just pressed or released.\nActions are mapped to input in an input_binding-file.</p>\n<p>Mouse movement is specifically handled and uses <code>nil</code> as its <code>action_id</code>.\nThe <code>action</code> only contains positional parameters in this case, such as x and y of the pointer.</p>\n<p>Here is a brief description of the available table fields:</p>\n<table>\n<thead>\n<tr>\n<th>Field</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>value</code></td>\n<td>The amount of input given by the user. This is usually 1 for buttons and 0-1 for analogue inputs. This is not present for mouse movement.</td>\n</tr>\n<tr>\n<td><code>pressed</code></td>\n<td>If the input was pressed this frame, 0 for false and 1 for true. This is not present for mouse movement.</td>\n</tr>\n<tr>\n<td><code>released</code></td>\n<td>If the input was released this frame, 0 for false and 1 for true. This is not present for mouse movement.</td>\n</tr>\n<tr>\n<td><code>repeated</code></td>\n<td>If the input was repeated this frame, 0 for false and 1 for true. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement.</td>\n</tr>\n<tr>\n<td><code>x</code></td>\n<td>The x value of a pointer device, if present.</td>\n</tr>\n<tr>\n<td><code>y</code></td>\n<td>The y value of a pointer device, if present.</td>\n</tr>\n<tr>\n<td><code>screen_x</code></td>\n<td>The screen space x value of a pointer device, if present.</td>\n</tr>\n<tr>\n<td><code>screen_y</code></td>\n<td>The screen space y value of a pointer device, if present.</td>\n</tr>\n<tr>\n<td><code>dx</code></td>\n<td>The change in x value of a pointer device, if present.</td>\n</tr>\n<tr>\n<td><code>dy</code></td>\n<td>The change in y value of a pointer device, if present.</td>\n</tr>\n<tr>\n<td><code>screen_dx</code></td>\n<td>The change in screen space x value of a pointer device, if present.</td>\n</tr>\n<tr>\n<td><code>screen_dy</code></td>\n<td>The change in screen space y value of a pointer device, if present.</td>\n</tr>\n<tr>\n<td><code>gamepad</code></td>\n<td>The index of the gamepad device that provided the input.</td>\n</tr>\n<tr>\n<td><code>touch</code></td>\n<td>List of touch input, one element per finger, if present. See table below about touch input</td>\n</tr>\n</tbody>\n</table>\n<p>Touch input table:</p>\n<table>\n<thead>\n<tr>\n<th>Field</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>id</code></td>\n<td>A number identifying the touch input during its duration.</td>\n</tr>\n<tr>\n<td><code>pressed</code></td>\n<td>True if the finger was pressed this frame.</td>\n</tr>\n<tr>\n<td><code>released</code></td>\n<td>True if the finger was released this frame.</td>\n</tr>\n<tr>\n<td><code>tap_count</code></td>\n<td>Number of taps, one for single, two for double-tap, etc</td>\n</tr>\n<tr>\n<td><code>x</code></td>\n<td>The x touch location.</td>\n</tr>\n<tr>\n<td><code>y</code></td>\n<td>The y touch location.</td>\n</tr>\n<tr>\n<td><code>dx</code></td>\n<td>The change in x value.</td>\n</tr>\n<tr>\n<td><code>dy</code></td>\n<td>The change in y value.</td>\n</tr>\n<tr>\n<td><code>acc_x</code></td>\n<td>Accelerometer x value (if present).</td>\n</tr>\n<tr>\n<td><code>acc_y</code></td>\n<td>Accelerometer y value (if present).</td>\n</tr>\n<tr>\n<td><code>acc_z</code></td>\n<td>Accelerometer z value (if present).</td>\n</tr>\n</tbody>\n</table>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">object</span> reference to the script state to be used for storing data</p>", 
+          "name": "self"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">hash</span> id of the received input action, as mapped in the input_binding-file</p>", 
+          "name": "action_id"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">table</span> a table containing the input data, see above for a description</p>", 
+          "name": "action"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> optional boolean to signal if the input should be consumed (not passed on to others) or not, default is false</p>", 
+          "name": "[consume]"
+        }
+      ], 
+      "brief": "<p>called when user input is received</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_input</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">action_id</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- check for input</span>\n    <span class=\"k\">if</span> <span class=\"n\">action_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_action&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"c1\">-- take appropritate action</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_value</span> <span class=\"o\">=</span> <span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">value</span>\n    <span class=\"k\">end</span>\n    <span class=\"c1\">-- consume input</span>\n    <span class=\"k\">return</span> <span class=\"kc\">true</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "on_input"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This is a callback-function, which is called by the engine whenever a message has been sent to the gui component.\nIt can be used to take action on the message, e.g. update the gui or send a response back to the sender of the message.</p>\n<p>The <code>message</code> parameter is a table containing the message data. If the message is sent from the engine, the\ndocumentation of the message specifies which data is supplied.</p>\n<p>See the <a href=\"#update\">update</a> function for examples on how to use this callback-function.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">object</span> reference to the script state to be used for storing data</p>", 
+          "name": "self"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">hash</span> id of the received message</p>", 
+          "name": "message_id"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">table</span> a table containing the message data</p>", 
+          "name": "message"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>called when a message has been sent to the gui component</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "on_message"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>\nThis is a callback-function, which is called by the engine when the gui script is reloaded, e.g. from the editor.\nIt can be used for live development, e.g. to tweak constants or set up the state properly for the script.\n</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">object</span> reference to the script state to be used for storing data</p>", 
+          "name": "self"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>called when the gui script is reloaded</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_reload</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- restore some color (or similar)</span>\n    <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_color</span><span class=\"p\">(</span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_node&quot;</span><span class=\"p\">),</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_original_color</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "on_reload"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This is a callback-function, which is called by the engine every frame to update the state of a gui component.\nIt can be used to perform any kind of gui related tasks, e.g. animating nodes.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">object</span> reference to the script state to be used for storing data</p>", 
+          "name": "self"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> the time-step of the frame update</p>", 
+          "name": "dt"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>called every frame to update the gui component</p>", 
+      "examples": "<p>This example demonstrates how to update a text node that displays game score in a counting fashion.\nIt is assumed that the gui component receives messages from the game when a new score is to be shown.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- fetch the score text node for later use (assumes it is called &quot;score&quot;)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">score_node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">score&quot;</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- keep track of the current score counted up so far</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">current_score</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n    <span class=\"c1\">-- keep track of the target score we should count up to</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">target_score</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n    <span class=\"c1\">-- how fast we will update the score, in score/second</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">score_update_speed</span> <span class=\"o\">=</span> <span class=\"mi\">1</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- check if target score is more than current score</span>\n    <span class=\"k\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">current_score</span> <span class=\"o\">&lt;</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">target_score</span>\n        <span class=\"c1\">-- increment current score according to the speed</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">current_score</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">current_score</span> <span class=\"o\">+</span> <span class=\"n\">dt</span> <span class=\"o\">*</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">score_update_speed</span>\n        <span class=\"c1\">-- check if we went past the target score, clamp current score in that case</span>\n        <span class=\"k\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">current_score</span> <span class=\"o\">&gt;</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">target_score</span> <span class=\"k\">then</span>\n            <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">current_score</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">target_score</span>\n        <span class=\"k\">end</span>\n        <span class=\"c1\">-- update the score text node</span>\n        <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_text</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">score_node</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">&quot;</span> <span class=\"o\">..</span> <span class=\"nb\">math.floor</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">current_score</span><span class=\"p\">))</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- check the message</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">set_score&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">target_score</span> <span class=\"o\">=</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">score</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "update"
+    }
+  ]
+}

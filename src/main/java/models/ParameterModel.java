@@ -12,6 +12,7 @@ public class ParameterModel {
     }
 
     public String getFormatName() {
+        name = name.replaceAll("-|(\"\\*\")", "_");
         if (name.endsWith("...]")) {
             return "...";
         }
@@ -21,7 +22,4 @@ public class ParameterModel {
         return name;
     }
 
-    public String getClassName() {
-        return name.split("\\.")[0];
-    }
 }

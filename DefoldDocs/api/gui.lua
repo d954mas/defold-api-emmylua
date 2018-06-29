@@ -615,8 +615,8 @@ function gui.set_leading(node, leading) end
 ---Sets the line-break mode on a text node.
 ---This is only useful for text nodes.
 ---@param node node node to set line-break for
----@param line-break boolean true or false
-function gui.set_line_break(node, line-break) end
+---@param line_break boolean true or false
+function gui.set_line_break(node, line_break) end
 ---Sets the outer bounds mode for a pie node.
 ---@param node node node for which to set the outer bounds mode
 ---@param bounds_mode constant the outer bounds mode of the pie node:

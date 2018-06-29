@@ -1,0 +1,295 @@
+{
+  "info": {
+    "description": "<p>Functions and messages for controlling sound components and\nmixer groups.</p>", 
+    "namespace": "sound", 
+    "name": "Sound", 
+    "brief": "<p>Sound API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Post this message to a sound-component to make it play its sound. Multiple voices is support. The limit is set to 32 voices per sound component.</p>\n<p><span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> delay in seconds before the sound starts playing, default is 0.</p>", 
+          "name": "[delay]"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> sound gain between 0 and 1, default is 1.</p>", 
+          "name": "[gain]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>plays a sound</p>", 
+      "examples": "<p>Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component play its sound after 1 second:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">play_sound&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">delay</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">})</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MESSAGE", 
+      "name": "play_sound"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Post this message to a sound-component to set gain on all active playing voices.</p>\n<p><span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> sound gain between 0 and 1, default is 1.</p>", 
+          "name": "[gain]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set sound gain</p>", 
+      "examples": "<p>Assuming the script belongs to an instance with a sound-component with id \"sound\", this will set the gain to 0.5</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">set_gain&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">})</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MESSAGE", 
+      "name": "set_gain"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get mixer group gain</p>\n<p><span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> group name</p>", 
+          "name": "group"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> gain in linear scale</p>", 
+          "name": "gain"
+        }
+      ], 
+      "brief": "<p>get mixer group gain</p>", 
+      "examples": "<p>Get the mixer group gain for the \"soundfx\" and convert to dB:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">get_group_gain</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">soundfx&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">gain_db</span> <span class=\"o\">=</span> <span class=\"mi\">20</span> <span class=\"o\">*</span> <span class=\"n\">log</span><span class=\"p\">(</span><span class=\"n\">gain</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sound.get_group_gain"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get a mixer group name as a string.</p>\n<p><span class=\"icon-attention\"></span> This function is to be used for debugging and\ndevelopment tooling only. The function does a reverse hash lookup, which does not\nreturn a proper string value when the game is built in release mode.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> group name</p>", 
+          "name": "group"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">string</span> group name</p>", 
+          "name": "name"
+        }
+      ], 
+      "brief": "<p>get mixer group name string</p>", 
+      "examples": "<p>Get the mixer group string names so we can show them as labels on a dev mixer overlay:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">groups</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">get_groups</span><span class=\"p\">()</span>\n<span class=\"k\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span><span class=\"n\">group</span> <span class=\"k\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">groups</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n    <span class=\"kd\">local</span> <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">get_group_name</span><span class=\"p\">(</span><span class=\"n\">group</span><span class=\"p\">)</span>\n    <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/mixer_overlay#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">set_mixer_label&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">group</span> <span class=\"o\">=</span> <span class=\"n\">group</span><span class=\"p\">,</span> <span class=\"n\">label</span> <span class=\"o\">=</span> <span class=\"n\">name</span><span class=\"p\">})</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sound.get_group_name"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get a table of all mixer group names (hashes).</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">table</span> table of mixer group names</p>", 
+          "name": "groups"
+        }
+      ], 
+      "brief": "<p>get all mixer group names</p>", 
+      "examples": "<p>Get the mixer groups, set all gains to 0 except for \"master\" and \"soundfx\"\nwhere gain is set to 1:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">groups</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">get_groups</span><span class=\"p\">()</span>\n<span class=\"k\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span><span class=\"n\">group</span> <span class=\"k\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">groups</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n    <span class=\"k\">if</span> <span class=\"n\">group</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">master&quot;</span><span class=\"p\">)</span> <span class=\"ow\">or</span> <span class=\"n\">group</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">soundfx&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_group_gain</span><span class=\"p\">(</span><span class=\"n\">group</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n    <span class=\"k\">else</span>\n        <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_group_gain</span><span class=\"p\">(</span><span class=\"n\">group</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sound.get_groups"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get peak value from mixer group.</p>\n<p><span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.\nAlso note that the returned value might be an approximation and in particular\nthe effective window might be larger than specified.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> group name</p>", 
+          "name": "group"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> window length in seconds</p>", 
+          "name": "window"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> peak value for left channel</p>", 
+          "name": "peak_l"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> peak value for right channel</p>", 
+          "name": "peak_r"
+        }
+      ], 
+      "brief": "<p>get peak gain value from mixer group</p>", 
+      "examples": "<p>Get the peak gain from the \"master\" group and convert to dB for displaying:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">left_p</span><span class=\"p\">,</span> <span class=\"n\">right_p</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">get_peak</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">master&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.1</span><span class=\"p\">)</span>\n<span class=\"n\">left_p_db</span> <span class=\"o\">=</span> <span class=\"mi\">20</span> <span class=\"o\">*</span> <span class=\"n\">log</span><span class=\"p\">(</span><span class=\"n\">left_p</span><span class=\"p\">)</span>\n<span class=\"n\">right_p_db</span> <span class=\"o\">=</span> <span class=\"mi\">20</span> <span class=\"o\">*</span> <span class=\"n\">log</span><span class=\"p\">(</span><span class=\"n\">right_p</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sound.get_peak"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get RMS (Root Mean Square) value from mixer group. This value is the\nsquare root of the mean (average) value of the squared function of\nthe instantaneous values.</p>\n<p>For instance: for a sinewave signal with a peak gain of -1.94 dB (0.8 linear),\nthe RMS is <code>0.8 &times; 1/sqrt(2)</code> which is about 0.566.</p>\n<p><span class=\"icon-attention\"></span> Note the returned value might be an approximation and in particular\nthe effective window might be larger than specified.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> group name</p>", 
+          "name": "group"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> window length in seconds</p>", 
+          "name": "window"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> RMS value for left channel</p>", 
+          "name": "rms_l"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> RMS value for right channel</p>", 
+          "name": "rms_r"
+        }
+      ], 
+      "brief": "<p>get RMS value from mixer group</p>", 
+      "examples": "<p>Get the RMS from the \"master\" group where a mono -1.94 dB sinewave is playing:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">rms</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">get_rms</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">master&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.1</span><span class=\"p\">)</span> <span class=\"c1\">-- throw away right channel.</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">rms</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; 0.56555819511414</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sound.get_rms"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Checks if background music is playing, e.g. from iTunes.</p>\n<p><span class=\"icon-macos\"></span><span class=\"icon-windows\"></span><span class=\"icon-linux\"></span><span class=\"icon-html5\"></span> On non mobile platforms,\nthis function always return <code>false</code>.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> <code>true</code> if music is playing, otherwise <code>false</code>.</p>", 
+          "name": "playing"
+        }
+      ], 
+      "brief": "<p>check if background music is playing</p>", 
+      "examples": "<p>If music is playing, mute \"master\":</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">is_music_playing</span><span class=\"p\">()</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- mute &quot;master&quot;</span>\n    <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_group_gain</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">master&quot;</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sound.is_music_playing"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Checks if a phone call is active. If there is an active phone call all\nother sounds will be muted until the phone call is finished.</p>\n<p><span class=\"icon-macos\"></span><span class=\"icon-windows\"></span><span class=\"icon-linux\"></span><span class=\"icon-html5\"></span> On non mobile platforms,\nthis function always return <code>false</code>.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> <code>true</code> if there is an active phone call, <code>false</code> otherwise.</p>", 
+          "name": "call_active"
+        }
+      ], 
+      "brief": "<p>check if a phone call is active</p>", 
+      "examples": "<p>Test if a phone call is on-going:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">is_phone_call_active</span><span class=\"p\">()</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- do something sensible.</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sound.is_phone_call_active"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Make the sound component play its sound. Multiple voices is supported. The limit is set to 32 voices per sound component.</p>\n<p><span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the sound that should play</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<dl>\n<dt><span class=\"type\">table</span> optional table with properties:</dt>\n<dt><code>delay</code></dt>\n<dd><span class=\"type\">number</span> delay in seconds before the sound starts playing, default is 0.</dd>\n<dt><code>gain</code></dt>\n<dd><span class=\"type\">number</span> sound gain between 0 and 1, default is 1. The final gain of the sound will be a combination of this gain, the group gain and the master gain.</dd>\n</dl>", 
+          "name": "[play_properties]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>plays a sound</p>", 
+      "examples": "<p>Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component play its sound after 1 second:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">delay</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sound.play"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set gain on all active playing voices of a sound.</p>\n<p><span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the sound to set the gain of</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> sound gain between 0 and 1. The final gain of the sound will be a combination of this gain, the group gain and the master gain.</p>", 
+          "name": "[gain]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set sound gain</p>", 
+      "examples": "<p>Assuming the script belongs to an instance with a sound-component with id \"sound\", this will set the gain to 0.5</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_gain</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MESSAGE", 
+      "name": "sound.set_gain"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set mixer group gain</p>\n<p><span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> group name</p>", 
+          "name": "group"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> gain in linear scale</p>", 
+          "name": "gain"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set mixer group gain</p>", 
+      "examples": "<p>Set mixer group gain on the \"soundfx\" group to -4 dB:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">gain_db</span> <span class=\"o\">=</span> <span class=\"o\">-</span><span class=\"mi\">4</span>\n<span class=\"kd\">local</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mi\">10</span><span class=\"o\">^</span><span class=\"n\">gain_db</span><span class=\"o\">/</span><span class=\"mi\">20</span> <span class=\"c1\">-- 0.63095734448019</span>\n<span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_group_gain</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">soundfx&quot;</span><span class=\"p\">,</span> <span class=\"n\">gain</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sound.set_group_gain"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Stop playing all active voices</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the sound that should stop</p>", 
+          "name": "url"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>stop a playing a sound(s)</p>", 
+      "examples": "<p>Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component stop all playing voices:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">stop</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sound.stop"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Post this message to a sound-component to make it stop playing all active voices</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>stop a playing a sound(s)</p>", 
+      "examples": "<p>Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component stop all playing voices:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">stop_sound&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MESSAGE", 
+      "name": "stop_sound"
+    }
+  ]
+}

@@ -24,7 +24,7 @@ Parse defold docs, and generate lua files for IntelliJ. Ignore c++ and messages.
 public class Main {
     public static final String GET_LAST_VERSION_URL = "http://d.defold.com/stable/info.json";
     public static final Set<String> IGNORE_DOCS = new HashSet<>();
-    public static final File TEMP_FOLDER = new File(System.getProperty("java.io.tmpdir"), "DefoldDocs");
+    public static final File TEMP_FOLDER = new File("./", "DefoldDocs");
     public static final File API_FOLDER = new File(TEMP_FOLDER, "api");
 
     static {
@@ -86,11 +86,14 @@ public class Main {
             }
         }).toList().toFlowable().blockingSubscribe(docModel -> {
             System.out.println(
-                    "Saved to:" + new File(new File(System.getProperty("java.io.tmpdir")), TEMP_FOLDER + "/api")
+                    "Saved to:" + new File(TEMP_FOLDER + "/api")
                             .getAbsolutePath());
         }, Throwable::printStackTrace, () -> {
             try (PrintWriter writer = new PrintWriter(new File(API_FOLDER, "base.lua"))) {
                 writer.write(BaseLua.BASE);
+            }
+            try (PrintWriter writer = new PrintWriter(new File(API_FOLDER, "timer.lua"))) {
+                writer.write(BaseLua.TIMER_TMP);
             }
         });
 

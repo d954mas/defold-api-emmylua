@@ -1,0 +1,70 @@
+{
+  "info": {
+    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/hash.h&gt;</span></p>\n<p>Hash functions.</p>", 
+    "namespace": "dmHash", 
+    "name": "Hash", 
+    "brief": "<p>SDK Hash API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const void*</span> Buffer</p>", 
+          "name": "buffer"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> Length of buffer</p>", 
+          "name": "buffer_len"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">uint64_t</span> hash value</p>", 
+          "name": "hash"
+        }
+      ], 
+      "brief": "<p>calculate 64-bit hash value from buffer</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmHashBuffer64"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const char*</span> Null terminated string</p>", 
+          "name": "string"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">uint64_t</span> hash value</p>", 
+          "name": "hash"
+        }
+      ], 
+      "brief": "<p>calculate 64-bit hash value from string</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmHashString64"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">typedef</span> <span class=\"kt\">uint64_t</span> <span class=\"n\">dmhash_t</span>\n</pre></div>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>dmhash_t type definition</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "TYPEDEF", 
+      "name": "dmhash_t"
+    }
+  ]
+}

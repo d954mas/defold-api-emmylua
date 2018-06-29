@@ -2,8 +2,9 @@ group 'DefoldApi'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
-
+apply plugin: 'application'
 sourceCompatibility = 1.8
+
 
 repositories {
     mavenCentral()
@@ -15,3 +16,11 @@ dependencies {
     compile 'org.jsoup:jsoup:1.11.2'
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

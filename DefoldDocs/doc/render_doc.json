@@ -1,0 +1,1446 @@
+{
+  "info": {
+    "description": "<p>Rendering functions, messages and constants. The \"render\" namespace is\naccessible only from render scripts.</p>\n<p>The rendering API is built on top of OpenGL ES 2.0, is a subset of the\nOpenGL computer graphics rendering API for rendering 2D and 3D computer\ngraphics. OpenGL ES 2.0 is supported on all our target platforms.</p>\n<p><span class=\"icon-attention\"></span> It is possible to create materials and write shaders that\nrequire features not in OpenGL ES 2.0, but those will not work cross platform.</p>", 
+    "namespace": "render", 
+    "name": "Render", 
+    "brief": "<p>Rendering API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Set render clear color. This is the color that appears on the screen where nothing is rendered, i.e. background.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">vector4</span> color to use as clear color</p>", 
+          "name": "color"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set clear color</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">@render:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">clear_color&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">color</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MESSAGE", 
+      "name": "clear_color"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Draw a line on the screen. This should mostly be used for debugging purposes.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">vector3</span> start point of the line</p>", 
+          "name": "start_point"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector3</span> end point of the line</p>", 
+          "name": "end_point"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector4</span> color of the line</p>", 
+          "name": "color"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>draw a line on the screen</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- draw a white line from (200, 200) to (200, 300)</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">@render:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">draw_line&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">start_point</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">end_point</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">300</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">color</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MESSAGE", 
+      "name": "draw_line"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Draw a text on the screen. This should mostly be used for debugging purposes.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">vector3</span> position of the text</p>", 
+          "name": "position"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> the text to draw</p>", 
+          "name": "text"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>draw a text on the screen</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">@render:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">draw_text&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">Hello world!&quot;</span><span class=\"p\">,</span> <span class=\"n\">position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MESSAGE", 
+      "name": "draw_text"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_CONSTANT_ALPHA"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_CONSTANT_COLOR"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_DST_ALPHA"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_DST_COLOR"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_ONE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_ONE_MINUS_CONSTANT_ALPHA"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_ONE_MINUS_CONSTANT_COLOR"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_ONE_MINUS_DST_ALPHA"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_ONE_MINUS_DST_COLOR"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_ONE_MINUS_SRC_ALPHA"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_ONE_MINUS_SRC_COLOR"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_SRC_ALPHA"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_SRC_ALPHA_SATURATE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_SRC_COLOR"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BLEND_ZERO"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BUFFER_COLOR_BIT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BUFFER_DEPTH_BIT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.BUFFER_STENCIL_BIT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.COMPARE_FUNC_ALWAYS"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.COMPARE_FUNC_EQUAL"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.COMPARE_FUNC_GEQUAL"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.COMPARE_FUNC_GREATER"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.COMPARE_FUNC_LEQUAL"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.COMPARE_FUNC_LESS"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.COMPARE_FUNC_NEVER"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.COMPARE_FUNC_NOTEQUAL"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.FACE_BACK"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.FACE_FRONT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.FACE_FRONT_AND_BACK"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.FILTER_LINEAR"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.FILTER_NEAREST"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.FORMAT_DEPTH"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.FORMAT_LUMINANCE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.FORMAT_RGB"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.FORMAT_RGBA"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.FORMAT_RGBA_DXT1"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.FORMAT_RGBA_DXT3"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.FORMAT_RGBA_DXT5"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.FORMAT_RGB_DXT1"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.FORMAT_STENCIL"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.STATE_BLEND"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.STATE_CULL_FACE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.STATE_DEPTH_TEST"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.STATE_POLYGON_OFFSET_FILL"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.STATE_STENCIL_TEST"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.STENCIL_OP_DECR"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.STENCIL_OP_DECR_WRAP"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.STENCIL_OP_INCR"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.STENCIL_OP_INCR_WRAP"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.STENCIL_OP_INVERT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.STENCIL_OP_KEEP"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.STENCIL_OP_REPLACE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.STENCIL_OP_ZERO"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.WRAP_CLAMP_TO_BORDER"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.WRAP_CLAMP_TO_EDGE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.WRAP_MIRRORED_REPEAT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "render.WRAP_REPEAT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Clear buffers in the currently enabled render target with specified value.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">table</span> table with keys specifying which buffers to clear and values set to clear values. Available keys are:</p>\n<ul>\n<li><code>render.BUFFER_COLOR_BIT</code></li>\n<li><code>render.BUFFER_DEPTH_BIT</code></li>\n<li><code>render.BUFFER_STENCIL_BIT</code></li>\n</ul>", 
+          "name": "buffers"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>clears the active render target</p>", 
+      "examples": "<p>Clear the color buffer and the depth buffer.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">clear</span><span class=\"p\">({[</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BUFFER_COLOR_BIT</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"p\">[</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BUFFER_DEPTH_BIT</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">})</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.clear"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Constant buffers are used to set shader program variables and are optionally passed to the <code>render.draw()</code> function. The buffer's constant elements can be indexed like an ordinary Lua table, but you can't iterate over them with pairs() or ipairs().</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">constant_buffer</span> new constant buffer</p>", 
+          "name": "buffer"
+        }
+      ], 
+      "brief": "<p>create a new constant buffer.</p>", 
+      "examples": "<p>Set a \"tint\" constant in a constant buffer in the render script:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">constant_buffer</span><span class=\"p\">()</span>\n<span class=\"n\">constants</span><span class=\"p\">.</span><span class=\"n\">tint</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n</pre></div>\n\n\n<p>Then use the constant buffer when drawing a predicate:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">,</span> <span class=\"n\">constants</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.constant_buffer"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Deletes a previously created render target.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">render_target</span> render target to delete</p>", 
+          "name": "render_target"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>deletes a render target</p>", 
+      "examples": "<p>How to delete a render target:</p>\n<div class=\"codehilite\"><pre><span></span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">delete_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.delete_render_target"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>If a material is currently enabled, disable it.</p>\n<p>The name of the material must be specified in the \".render\" resource set\nin the \"game.project\" setting.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>disables the currently enabled material</p>", 
+      "examples": "<p>Enable material named \"glow\", then draw my_pred with it.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_material</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">glow&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">disable_material</span><span class=\"p\">()</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.disable_material"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Disables a previously enabled render target. Subsequent draw operations\nwill be drawn to the frame buffer unless another render target is\nenabled.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">render_target</span> render target to disable</p>", 
+          "name": "render_target"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>disables a render target</p>", 
+      "examples": "<p>How to disable a render target so we can draw to the screen:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- enable target so all drawing is done to it</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- draw a predicate to the render target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- disable target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">disable_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- draw a predicate to the screen</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_other_pred</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.disable_render_target"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Disables a render state.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> state to disable</p>\n<ul>\n<li><code>render.STATE_DEPTH_TEST</code></li>\n<li><code>render.STATE_STENCIL_TEST</code></li>\n<li><code>render.STATE_BLEND</code></li>\n<li><code>render.STATE_ALPHA_TEST</code> (<span class=\"icon-ios\"></span><span class=\"icon-android\"></span> not available on iOS and Android)</li>\n<li><code>render.STATE_CULL_FACE</code></li>\n<li><code>render.STATE_POLYGON_OFFSET_FILL</code></li>\n</ul>", 
+          "name": "state"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>disables a render state</p>", 
+      "examples": "<p>Disable face culling when drawing the tile predicate:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">disable_state</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">STATE_CULL_FACE</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">tile_pred</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.disable_state"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Disables a texture unit for a render target that has previourly been enabled.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> texture unit to disable</p>", 
+          "name": "unit"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>disables a texture for a render target</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_texture</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BUFFER_COLOR_BIT</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- draw a predicate with the render target available as texture 0 in the predicate</span>\n    <span class=\"c1\">-- material shader.</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- done, disable the texture</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">disable_texture</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.disable_texture"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Draws all objects that match a specified predicate. An optional constant buffer can be\nprovided to override the default constants. If no constants buffer is provided, a default\nsystem constants buffer is used containing constants as defined in materials and set through\n<code>*.set_constant()</code> and <code>*.reset_constant()</code> on visual components.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">predicate</span> predicate to draw for</p>", 
+          "name": "predicate"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant_buffer</span> optional constants to use while rendering</p>", 
+          "name": "[constants]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>draws all objects matching a predicate</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- define a predicate matching anything with material tag &quot;my_tag&quot;</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">predicate</span><span class=\"p\">({</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_tag&quot;</span><span class=\"p\">)})</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- draw everything in the my_pred predicate</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>Draw predicate with constant:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">constant_buffer</span><span class=\"p\">()</span>\n<span class=\"n\">constants</span><span class=\"p\">.</span><span class=\"n\">tint</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">,</span> <span class=\"n\">constants</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.draw"
+    }, 
+    {
+      "replaces": "<p>render.draw_debug2d</p>", 
+      "description": "<p>Draws all 3d debug graphics such as lines drawn with \"draw_line\" messages and physics visualization.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>draws all 3d debug graphics</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- draw debug visualization</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw_debug3d</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.draw_debug3d"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>If another material was already enabled, it will be automatically disabled\nand the specified material is used instead.</p>\n<p>The name of the material must be specified in the \".render\" resource set\nin the \"game.project\" setting.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> material id to enable</p>", 
+          "name": "material_id"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>enables a material</p>", 
+      "examples": "<p>Enable material named \"glow\", then draw my_pred with it.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_material</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">glow&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">disable_material</span><span class=\"p\">()</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.enable_material"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Enables a render target. Subsequent draw operations will be to the\nenabled render target until it is disabled.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">render_target</span> render target to enable</p>", 
+          "name": "render_target"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>enables a render target</p>", 
+      "examples": "<p>How to enable a render target and draw to it:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- enable target so all drawing is done to it</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- draw a predicate to the render target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.enable_render_target"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Enables a particular render state. The state will be enabled until disabled.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> state to enable</p>\n<ul>\n<li><code>render.STATE_DEPTH_TEST</code></li>\n<li><code>render.STATE_STENCIL_TEST</code></li>\n<li><code>render.STATE_BLEND</code></li>\n<li><code>render.STATE_ALPHA_TEST</code> (<span class=\"icon-ios\"></span><span class=\"icon-android\"></span> not available on iOS and Android)</li>\n<li><code>render.STATE_CULL_FACE</code></li>\n<li><code>render.STATE_POLYGON_OFFSET_FILL</code></li>\n</ul>", 
+          "name": "state"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>enables a render state</p>", 
+      "examples": "<p>Enable stencil test when drawing the gui predicate, then disable it:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_state</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">STATE_STENCIL_TEST</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">gui_pred</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">disable_state</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">STATE_STENCIL_TEST</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.enable_state"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the specified render target's specified buffer to be\nused as texture with the specified unit.\nA material shader can then use the texture to sample from.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> texture unit to enable texture for</p>", 
+          "name": "unit"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">render_target</span> render target from which to enable the specified texture unit</p>", 
+          "name": "render_target"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> buffer type from which to enable the texture</p>\n<ul>\n<li><code>render.BUFFER_COLOR_BIT</code></li>\n<li><code>render.BUFFER_DEPTH_BIT</code></li>\n<li><code>render.BUFFER_STENCIL_BIT</code></li>\n</ul>", 
+          "name": "buffer_type"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>enables a texture for a render target</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- enable target so all drawing is done to it</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- draw a predicate to the render target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- disable target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">disable_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">)</span>\n\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_texture</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BUFFER_COLOR_BIT</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- draw a predicate with the render target available as texture 0 in the predicate</span>\n    <span class=\"c1\">-- material shader.</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.enable_texture"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the logical window height that is set in the \"game.project\" settings.\nNote that the actual window pixel size can change, either by device constraints\nor user input.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> specified window height</p>", 
+          "name": "height"
+        }
+      ], 
+      "brief": "<p>gets the window height, as specified for the project</p>", 
+      "examples": "<p>Get the height of the window</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">h</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_height</span><span class=\"p\">()</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.get_height"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the specified buffer height from a render target.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">render_target</span> render target from which to retrieve the buffer height</p>", 
+          "name": "render_target"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> which type of buffer to retrieve the height from</p>\n<ul>\n<li><code>render.BUFFER_COLOR_BIT</code></li>\n<li><code>render.BUFFER_DEPTH_BIT</code></li>\n<li><code>render.BUFFER_STENCIL_BIT</code></li>\n</ul>", 
+          "name": "buffer_type"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> the height of the render target buffer texture</p>", 
+          "name": "height"
+        }
+      ], 
+      "brief": "<p>retrieve a buffer height from a render target</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- get the height of the render target color buffer</span>\n<span class=\"kd\">local</span> <span class=\"n\">h</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_render_target_height</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">target_right</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BUFFER_COLOR_BIT</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.get_render_target_height"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the specified buffer width from a render target.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">render_target</span> render target from which to retrieve the buffer width</p>", 
+          "name": "render_target"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> which type of buffer to retrieve the width from</p>\n<ul>\n<li><code>render.BUFFER_COLOR_BIT</code></li>\n<li><code>render.BUFFER_DEPTH_BIT</code></li>\n<li><code>render.BUFFER_STENCIL_BIT</code></li>\n</ul>", 
+          "name": "buffer_type"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> the width of the render target buffer texture</p>", 
+          "name": "width"
+        }
+      ], 
+      "brief": "<p>retrieve the buffer width from a render target</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- get the width of the render target color buffer</span>\n<span class=\"kd\">local</span> <span class=\"n\">w</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_render_target_width</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">target_right</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BUFFER_COLOR_BIT</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.get_render_target_width"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the logical window width that is set in the \"game.project\" settings.\nNote that the actual window pixel size can change, either by device constraints\nor user input.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> specified window width (number)</p>", 
+          "name": "width"
+        }
+      ], 
+      "brief": "<p>gets the window width, as specified for the project</p>", 
+      "examples": "<p>Get the width of the window.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">w</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_width</span><span class=\"p\">()</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.get_width"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the actual physical window height.\nNote that this value might differ from the logical height that is set in the\n\"game.project\" settings.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> actual window height</p>", 
+          "name": "height"
+        }
+      ], 
+      "brief": "<p>gets the actual window height</p>", 
+      "examples": "<p>Get the actual height of the window</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">h</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_height</span><span class=\"p\">()</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.get_window_height"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Returns the actual physical window width.\nNote that this value might differ from the logical width that is set in the\n\"game.project\" settings.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">number</span> actual window width</p>", 
+          "name": "width"
+        }
+      ], 
+      "brief": "<p>gets the actual window width</p>", 
+      "examples": "<p>Get the actual width of the window</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">w</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_width</span><span class=\"p\">()</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.get_window_width"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This function returns a new render predicate for objects with materials matching\nthe provided material tags. The provided tags are combined into a bit mask\nfor the predicate. If multiple tags are provided, the predicate matches materials\nwith all tags ANDed together.</p>\n<p>The current limit to the number of tags that can be defined is <code>32</code>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">table</span> table of tags that the predicate should match. The tags can be of either hash or string type</p>", 
+          "name": "tags"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">predicate</span> new predicate</p>", 
+          "name": "predicate"
+        }
+      ], 
+      "brief": "<p>creates a new render predicate</p>", 
+      "examples": "<p>Create a new render predicate containing all visual objects that\nhave a material with material tags \"opaque\" AND \"smoke\".</p>\n<div class=\"codehilite\"><pre><span></span>local p = render.predicate({hash(&quot;opaque&quot;), hash(&quot;smoke&quot;)})\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.predicate"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Creates a new render target according to the supplied\nspecification table.</p>\n<p>The table should contain keys specifying which buffers should be created\nwith what parameters. Each buffer key should have a table value consisting\nof parameters. The following parameter keys are available:</p>\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Values</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>format</code></td>\n<td><code>render.FORMAT_LUMINANCE</code><br/><code>render.FORMAT_RGB</code><br/><code>render.FORMAT_RGBA</code><br/> <code>render.FORMAT_RGB_DXT1</code><br/><code>render.FORMAT_RGBA_DXT1</code><br/><code>render.FORMAT_RGBA_DXT3</code><br/> <code>render.FORMAT_RGBA_DXT5</code><br/><code>render.FORMAT_DEPTH</code><br/><code>render.FORMAT_STENCIL</code><br/></td>\n</tr>\n<tr>\n<td><code>width</code></td>\n<td>number</td>\n</tr>\n<tr>\n<td><code>height</code></td>\n<td>number</td>\n</tr>\n<tr>\n<td><code>min_filter</code></td>\n<td><code>render.FILTER_LINEAR</code><br/><code>render.FILTER_NEAREST</code></td>\n</tr>\n<tr>\n<td><code>mag_filter</code></td>\n<td><code>render.FILTER_LINEAR</code><br/><code>render.FILTER_NEAREST</code></td>\n</tr>\n<tr>\n<td><code>u_wrap</code></td>\n<td><code>render.WRAP_CLAMP_TO_BORDER</code><br/><code>render.WRAP_CLAMP_TO_EDGE</code><br/><code>render.WRAP_MIRRORED_REPEAT</code><br/><code>render.WRAP_REPEAT</code><br/></td>\n</tr>\n<tr>\n<td><code>v_wrap</code></td>\n<td><code>render.WRAP_CLAMP_TO_BORDER</code><br/><code>render.WRAP_CLAMP_TO_EDGE</code><br/><code>render.WRAP_MIRRORED_REPEAT</code><br/><code>render.WRAP_REPEAT</code></td>\n</tr>\n</tbody>\n</table>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string</span> render target name</p>", 
+          "name": "name"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">table</span> table of buffer parameters, see the description for available keys and values</p>", 
+          "name": "parameters"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">render_target</span> new render target</p>", 
+          "name": "render_target"
+        }
+      ], 
+      "brief": "<p>creates a new render target</p>", 
+      "examples": "<p>How to create a new render target and draw to it:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- render target buffer parameters</span>\n    <span class=\"kd\">local</span> <span class=\"n\">color_params</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">format</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">FORMAT_RGBA</span><span class=\"p\">,</span>\n                           <span class=\"n\">width</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_width</span><span class=\"p\">(),</span>\n                           <span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_height</span><span class=\"p\">(),</span>\n                           <span class=\"n\">min_filter</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">FILTER_LINEAR</span><span class=\"p\">,</span>\n                           <span class=\"n\">mag_filter</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">FILTER_LINEAR</span><span class=\"p\">,</span>\n                           <span class=\"n\">u_wrap</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">WRAP_CLAMP_TO_EDGE</span><span class=\"p\">,</span>\n                           <span class=\"n\">v_wrap</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">WRAP_CLAMP_TO_EDGE</span> <span class=\"p\">}</span>\n    <span class=\"kd\">local</span> <span class=\"n\">depth_params</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">format</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">FORMAT_DEPTH</span><span class=\"p\">,</span>\n                           <span class=\"n\">width</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_width</span><span class=\"p\">(),</span>\n                           <span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_height</span><span class=\"p\">(),</span>\n                           <span class=\"n\">u_wrap</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">WRAP_CLAMP_TO_EDGE</span><span class=\"p\">,</span>\n                           <span class=\"n\">v_wrap</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">WRAP_CLAMP_TO_EDGE</span> <span class=\"p\">}</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">render_target</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_target&quot;</span><span class=\"p\">,</span> <span class=\"p\">{[</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BUFFER_COLOR_BIT</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">color_params</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BUFFER_DEPTH_BIT</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">depth_params</span> <span class=\"p\">})</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- enable target so all drawing is done to it</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- draw a predicate to the render target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.render_target"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Specifies the arithmetic used when computing pixel values that are written to the frame\nbuffer. In RGBA mode, pixels can be drawn using a function that blends the source RGBA\npixel values with the destination pixel values already in the frame buffer.\nBlending is initially disabled.</p>\n<p><code>source_factor</code> specifies which method is used to scale the source color components.\n<code>destination_factor</code> specifies which method is used to scale the destination color\ncomponents.</p>\n<p>Source color components are referred to as (R<sub>s</sub>,G<sub>s</sub>,B<sub>s</sub>,A<sub>s</sub>).\nDestination color components are referred to as (R<sub>d</sub>,G<sub>d</sub>,B<sub>d</sub>,A<sub>d</sub>).\nThe color specified by setting the blendcolor is referred to as (R<sub>c</sub>,G<sub>c</sub>,B<sub>c</sub>,A<sub>c</sub>).</p>\n<p>The source scale factor is referred to as (s<sub>R</sub>,s<sub>G</sub>,s<sub>B</sub>,s<sub>A</sub>).\nThe destination scale factor is referred to as (d<sub>R</sub>,d<sub>G</sub>,d<sub>B</sub>,d<sub>A</sub>).</p>\n<p>The color values have integer values between 0 and (k<sub>R</sub>,k<sub>G</sub>,k<sub>B</sub>,k<sub>A</sub>), where k<sub>c</sub> = 2<sup>m<sub>c</sub></sup> - 1 and m<sub>c</sub> is the number of bitplanes for that color. I.e for 8 bit color depth, color values are between <code>0</code> and <code>255</code>.</p>\n<p>Available factor constants and corresponding scale factors:</p>\n<table>\n<thead>\n<tr>\n<th>Factor constant</th>\n<th>Scale factor (f<sub>R</sub>,f<sub>G</sub>,f<sub>B</sub>,f<sub>A</sub>)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>render.BLEND_ZERO</code></td>\n<td>(0,0,0,0)</td>\n</tr>\n<tr>\n<td><code>render.BLEND_ONE</code></td>\n<td>(1,1,1,1)</td>\n</tr>\n<tr>\n<td><code>render.BLEND_SRC_COLOR</code></td>\n<td>(R<sub>s</sub>/k<sub>R</sub>,G<sub>s</sub>/k<sub>G</sub>,B<sub>s</sub>/k<sub>B</sub>,A<sub>s</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>render.BLEND_ONE_MINUS_SRC_COLOR</code></td>\n<td>(1,1,1,1) - (R<sub>s</sub>/k<sub>R</sub>,G<sub>s</sub>/k<sub>G</sub>,B<sub>s</sub>/k<sub>B</sub>,A<sub>s</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>render.BLEND_DST_COLOR</code></td>\n<td>(R<sub>d</sub>/k<sub>R</sub>,G<sub>d</sub>/k<sub>G</sub>,B<sub>d</sub>/k<sub>B</sub>,A<sub>d</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>render.BLEND_ONE_MINUS_DST_COLOR</code></td>\n<td>(1,1,1,1) - (R<sub>d</sub>/k<sub>R</sub>,G<sub>d</sub>/k<sub>G</sub>,B<sub>d</sub>/k<sub>B</sub>,A<sub>d</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>render.BLEND_SRC_ALPHA</code></td>\n<td>(A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>render.BLEND_ONE_MINUS_SRC_ALPHA</code></td>\n<td>(1,1,1,1) - (A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>,A<sub>s</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>render.BLEND_DST_ALPHA</code></td>\n<td>(A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>render.BLEND_ONE_MINUS_DST_ALPHA</code></td>\n<td>(1,1,1,1) - (A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>,A<sub>d</sub>/k<sub>A</sub>)</td>\n</tr>\n<tr>\n<td><code>render.BLEND_CONSTANT_COLOR</code></td>\n<td>(R<sub>c</sub>,G<sub>c</sub>,B<sub>c</sub>,A<sub>c</sub>)</td>\n</tr>\n<tr>\n<td><code>render.BLEND_ONE_MINUS_CONSTANT_COLOR</code></td>\n<td>(1,1,1,1) - (R<sub>c</sub>,G<sub>c</sub>,B<sub>c</sub>,A<sub>c</sub>)</td>\n</tr>\n<tr>\n<td><code>render.BLEND_CONSTANT_ALPHA</code></td>\n<td>(A<sub>c</sub>,A<sub>c</sub>,A<sub>c</sub>,A<sub>c</sub>)</td>\n</tr>\n<tr>\n<td><code>render.BLEND_ONE_MINUS_CONSTANT_ALPHA</code></td>\n<td>(1,1,1,1) - (A<sub>c</sub>,A<sub>c</sub>,A<sub>c</sub>,A<sub>c</sub>)</td>\n</tr>\n<tr>\n<td><code>render.BLEND_SRC_ALPHA_SATURATE</code></td>\n<td>(i,i,i,1) where i = min(A<sub>s</sub>, k<sub>A</sub> - A<sub>d</sub>) /k<sub>A</sub></td>\n</tr>\n</tbody>\n</table>\n<p>The blended RGBA values of a pixel comes from the following equations:</p>\n<ul>\n<li>R<sub>d</sub> = min(k<sub>R</sub>, R<sub>s</sub> * s<sub>R</sub> + R<sub>d</sub> * d<sub>R</sub>)</li>\n<li>G<sub>d</sub> = min(k<sub>G</sub>, G<sub>s</sub> * s<sub>G</sub> + G<sub>d</sub> * d<sub>R</sub>)</li>\n<li>B<sub>d</sub> = min(k<sub>B</sub>, B<sub>s</sub> * s<sub>B</sub> + B<sub>d</sub> * d<sub>B</sub>)</li>\n<li>A<sub>d</sub> = min(k<sub>A</sub>, A<sub>s</sub> * s<sub>B</sub> + A<sub>d</sub> * d<sub>A</sub>)</li>\n</ul>\n<p>Blend function <code>(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)</code> is useful for\ndrawing with transparency when the drawn objects are sorted from farthest to nearest.\nIt is also useful for drawing antialiased points and lines in arbitrary order.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> source factor</p>", 
+          "name": "source_factor"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> destination factor</p>", 
+          "name": "destination_factor"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the blending function</p>", 
+      "examples": "<p>Set the blend func to the most common one:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_blend_func</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BLEND_SRC_ALPHA</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BLEND_ONE_MINUS_SRC_ALPHA</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.set_blend_func"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Specifies whether the individual color components in the frame buffer is enabled for writing (<code>true</code>) or disabled (<code>false</code>). For example, if <code>blue</code> is <code>false</code>, nothing is written to the blue component of any pixel in any of the color buffers, regardless of the drawing operation attempted. Note that writing are either enabled or disabled for entire color components, not the individual bits of a component.</p>\n<p>The component masks are all initially <code>true</code>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> red mask</p>", 
+          "name": "red"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> green mask</p>", 
+          "name": "green"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> blue mask</p>", 
+          "name": "blue"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> alpha mask</p>", 
+          "name": "alpha"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the color mask</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- alpha cannot be written to frame buffer</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_color_mask</span><span class=\"p\">(</span><span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.set_color_mask"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Specifies whether front- or back-facing polygons can be culled\nwhen polygon culling is enabled. Polygon culling is initially disabled.</p>\n<p>If mode is <code>render.FACE_FRONT_AND_BACK</code>, no polygons are drawn, but other\nprimitives such as points and lines are drawn. The initial value for\n<code>face_type</code> is <code>render.FACE_BACK</code>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> face type</p>\n<ul>\n<li><code>render.FACE_FRONT</code></li>\n<li><code>render.FACE_BACK</code></li>\n<li><code>render.FACE_FRONT_AND_BACK</code></li>\n</ul>", 
+          "name": "face_type"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the cull face</p>", 
+      "examples": "<p>How to enable polygon culling and set front face culling:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_state</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">STATE_CULL_FACE</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_cull_face</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">FACE_FRONT</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.set_cull_face"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Specifies the function that should be used to compare each incoming pixel\ndepth value with the value present in the depth buffer.\nThe comparison is performed only if depth testing is enabled and specifies\nthe conditions under which a pixel will be drawn.</p>\n<p>Function constants:</p>\n<ul>\n<li><code>render.COMPARE_FUNC_NEVER</code> (never passes)</li>\n<li><code>render.COMPARE_FUNC_LESS</code> (passes if the incoming depth value is less than the stored value)</li>\n<li><code>render.COMPARE_FUNC_LEQUAL</code> (passes if the incoming depth value is less than or equal to the stored value)</li>\n<li><code>render.COMPARE_FUNC_GREATER</code> (passes if the incoming depth value is greater than the stored value)</li>\n<li><code>render.COMPARE_FUNC_GEQUAL</code> (passes if the incoming depth value is greater than or equal to the stored value)</li>\n<li><code>render.COMPARE_FUNC_EQUAL</code> (passes if the incoming depth value is equal to the stored value)</li>\n<li><code>render.COMPARE_FUNC_NOTEQUAL</code> (passes if the incoming depth value is not equal to the stored value)</li>\n<li><code>render.COMPARE_FUNC_ALWAYS</code> (always passes)</li>\n</ul>\n<p>The depth function is initially set to <code>render.COMPARE_FUNC_LESS</code>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> depth test function, see the description for available values</p>", 
+          "name": "func"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the depth test function</p>", 
+      "examples": "<p>Enable depth test and set the depth test function to \"not equal\".</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_state</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">STATE_DEPTH_TEST</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_depth_func</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">COMPARE_FUNC_NOTEQUAL</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.set_depth_func"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Specifies whether the depth buffer is enabled for writing. The supplied mask governs\nif depth buffer writing is enabled (<code>true</code>) or disabled (<code>false</code>).</p>\n<p>The mask is initially <code>true</code>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">boolean</span> depth mask</p>", 
+          "name": "depth"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the depth mask</p>", 
+      "examples": "<p>How to turn off writing to the depth buffer:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_depth_mask</span><span class=\"p\">(</span><span class=\"kc\">false</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.set_depth_mask"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the scale and units used to calculate depth values.\nIf <code>render.STATE_POLYGON_OFFSET_FILL</code> is enabled, each fragment's depth value\nis offset from its interpolated value (depending on the depth value of the\nappropriate vertices). Polygon offset can be used when drawing decals, rendering\nhidden-line images etc.</p>\n<p><code>factor</code> specifies a scale factor that is used to create a variable depth\noffset for each polygon. The initial value is <code>0</code>.</p>\n<p><code>units</code> is multiplied by an implementation-specific value to create a\nconstant depth offset. The initial value is <code>0</code>.</p>\n<p>The value of the offset is computed as <code>factor</code> &times; <code>DZ</code> + <code>r</code> &times; <code>units</code></p>\n<p><code>DZ</code> is a measurement of the depth slope of the polygon which is the change in z (depth)\nvalues divided by the change in either x or y coordinates, as you traverse a polygon.\nThe depth values are in window coordinates, clamped to the range [0, 1].</p>\n<p><code>r</code> is the smallest value that is guaranteed to produce a resolvable difference.\nIt's value is an implementation-specific constant.</p>\n<p>The offset is added before the depth test is performed and before the\nvalue is written into the depth buffer.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> polygon offset factor</p>", 
+          "name": "factor"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> polygon offset units</p>", 
+          "name": "units"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the polygon offset</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_state</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">STATE_POLYGON_OFFSET_FILL</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_polygon_offset</span><span class=\"p\">(</span><span class=\"mf\">1.0</span><span class=\"p\">,</span> <span class=\"mf\">1.0</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.set_polygon_offset"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the projection matrix to use when rendering.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">matrix4</span> projection matrix</p>", 
+          "name": "matrix"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the projection matrix</p>", 
+      "examples": "<p>How to set the projection to orthographic with world origo at lower left,\nwidth and height as set in project settings and depth (z) between -1 and 1:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_projection</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_orthographic</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_width</span><span class=\"p\">(),</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_height</span><span class=\"p\">(),</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">))</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.set_projection"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">render_target</span> render target to set size for</p>", 
+          "name": "render_target"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> new render target width</p>", 
+          "name": "width"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> new render target height</p>", 
+          "name": "height"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the render target size</p>", 
+      "examples": "<p>Set the render target size to the window size:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_render_target_size</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_width</span><span class=\"p\">(),</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_height</span><span class=\"p\">())</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.set_render_target_size"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Stenciling is similar to depth-buffering as it enables and disables drawing on a\nper-pixel basis. First, GL drawing primitives are drawn into the stencil planes.\nSecond, geometry and images are rendered but using the stencil planes to mask out\nwhere to draw.</p>\n<p>The stencil test discards a pixel based on the outcome of a comparison between the\nreference value <code>ref</code> and the corresponding value in the stencil buffer.</p>\n<p><code>func</code> specifies the comparison function. See the table below for values.\nThe initial value is <code>render.COMPARE_FUNC_ALWAYS</code>.</p>\n<p><code>ref</code> specifies the reference value for the stencil test. The value is clamped to\nthe range [0, 2<sup>n</sup>-1], where n is the number of bitplanes in the stencil buffer.\nThe initial value is <code>0</code>.</p>\n<p><code>mask</code> is ANDed with both the reference value and the stored stencil value when the test\nis done. The initial value is all <code>1</code>'s.</p>\n<p>Function constant:</p>\n<ul>\n<li><code>render.COMPARE_FUNC_NEVER</code> (never passes)</li>\n<li><code>render.COMPARE_FUNC_LESS</code> (passes if (ref &amp; mask) &lt; (stencil &amp; mask))</li>\n<li><code>render.COMPARE_FUNC_LEQUAL</code> (passes if (ref &amp; mask) &lt;= (stencil &amp; mask))</li>\n<li><code>render.COMPARE_FUNC_GREATER</code> (passes if (ref &amp; mask) &gt; (stencil &amp; mask))</li>\n<li><code>render.COMPARE_FUNC_GEQUAL</code> (passes if (ref &amp; mask) &gt;= (stencil &amp; mask))</li>\n<li><code>render.COMPARE_FUNC_EQUAL</code> (passes if (ref &amp; mask) = (stencil &amp; mask))</li>\n<li><code>render.COMPARE_FUNC_NOTEQUAL</code> (passes if (ref &amp; mask) != (stencil &amp; mask))</li>\n<li><code>render.COMPARE_FUNC_ALWAYS</code> (always passes)</li>\n</ul>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> stencil test function, see the description for available values</p>", 
+          "name": "func"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> reference value for the stencil test</p>", 
+          "name": "ref"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> mask that is ANDed with both the reference value and the stored stencil value when the test is done</p>", 
+          "name": "mask"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the stencil test function</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- let only 0&#39;s pass the stencil test</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_stencil_func</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">COMPARE_FUNC_EQUAL</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.set_stencil_func"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The stencil mask controls the writing of individual bits in the stencil buffer.\nThe least significant <code>n</code> bits of the parameter <code>mask</code>, where <code>n</code> is the number of\nbits in the stencil buffer, specify the mask.</p>\n<p>Where a <code>1</code> bit appears in the mask, the corresponding\nbit in the stencil buffer can be written. Where a <code>0</code> bit appears in the mask,\nthe corresponding bit in the stencil buffer is never written.</p>\n<p>The mask is initially all <code>1</code>'s.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> stencil mask</p>", 
+          "name": "mask"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the stencil mask</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- set the stencil mask to all 1:s</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_stencil_mask</span><span class=\"p\">(</span><span class=\"mh\">0xff</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.set_stencil_mask"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The stencil test discards a pixel based on the outcome of a comparison between the\nreference value <code>ref</code> and the corresponding value in the stencil buffer.\nTo control the test, call <a href=\"/ref/render#render.set_stencil_func\">render.set_stencil_func</a>.</p>\n<p>This function takes three arguments that control what happens to the stored stencil\nvalue while stenciling is enabled. If the stencil test fails, no change is made to the\npixel's color or depth buffers, and <code>sfail</code> specifies what happens to the stencil buffer\ncontents.</p>\n<p>Operator constants:</p>\n<ul>\n<li><code>render.STENCIL_OP_KEEP</code> (keeps the current value)</li>\n<li><code>render.STENCIL_OP_ZERO</code> (sets the stencil buffer value to 0)</li>\n<li><code>render.STENCIL_OP_REPLACE</code> (sets the stencil buffer value to <code>ref</code>, as specified by <a href=\"/ref/render#render.set_stencil_func\">render.set_stencil_func</a>)</li>\n<li><code>render.STENCIL_OP_INCR</code> (increments the stencil buffer value and clamp to the maximum representable unsigned value)</li>\n<li><code>render.STENCIL_OP_INCR_WRAP</code> (increments the stencil buffer value and wrap to zero when incrementing the maximum representable unsigned value)</li>\n<li><code>render.STENCIL_OP_DECR</code> (decrements the current stencil buffer value and clamp to 0)</li>\n<li><code>render.STENCIL_OP_DECR_WRAP</code> (decrements the current stencil buffer value and wrap to the maximum representable unsigned value when decrementing zero)</li>\n<li><code>render.STENCIL_OP_INVERT</code> (bitwise inverts the current stencil buffer value)</li>\n</ul>\n<p><code>dppass</code> and <code>dpfail</code> specify the stencil buffer actions depending on whether subsequent\ndepth buffer tests succeed (dppass) or fail (dpfail).</p>\n<p>The initial value for all operators is <code>render.STENCIL_OP_KEEP</code>.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">constant</span> action to take when the stencil test fails</p>", 
+          "name": "sfail"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> the stencil action when the stencil test passes</p>", 
+          "name": "dpfail"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> the stencil action when both the stencil test and the depth test pass, or when the stencil test passes and either there is no depth buffer or depth testing is not enabled</p>", 
+          "name": "dppass"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the stencil operator</p>", 
+      "examples": "<p>Set the stencil function to never pass and operator to always draw 1's\non test fail.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_stencil_func</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">COMPARE_FUNC_NEVER</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mh\">0xFF</span><span class=\"p\">)</span>\n<span class=\"c1\">-- always draw 1&#39;s on test fail</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_stencil_op</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">STENCIL_OP_REPLACE</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">STENCIL_OP_KEEP</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">STENCIL_OP_KEEP</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.set_stencil_op"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the view matrix to use when rendering.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">matrix4</span> view matrix to set</p>", 
+          "name": "matrix"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the view matrix</p>", 
+      "examples": "<p>How to set the view and projection matrices according to\nthe values supplied by a camera.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">view</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4</span><span class=\"p\">()</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">projection</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- set the view to the stored view value</span>\n  <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_view</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">view</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- now we can draw with this view</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">set_view_projection&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n     <span class=\"c1\">-- camera view and projection arrives here.</span>\n     <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">view</span> <span class=\"o\">=</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">view</span>\n     <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">projection</span> <span class=\"o\">=</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">projection</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.set_view"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set the render viewport to the specified rectangle.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> left corner</p>", 
+          "name": "x"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> bottom corner</p>", 
+          "name": "y"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> viewport width</p>", 
+          "name": "width"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> viewport height</p>", 
+          "name": "height"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets the render viewport</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Set the viewport to the window dimensions.</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_viewport</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_width</span><span class=\"p\">(),</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_window_height</span><span class=\"p\">())</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.set_viewport"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Reports a change in window size. This is initiated on window resize on desktop or by orientation changes\non mobile devices.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> the new window height</p>", 
+          "name": "height"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> the new window width</p>", 
+          "name": "width"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>reports a window size change</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- check for the message</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">window_resized&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"c1\">-- the window was resized.</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MESSAGE", 
+      "name": "window_resized"
+    }
+  ]
+}

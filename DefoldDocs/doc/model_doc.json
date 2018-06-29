@@ -1,0 +1,201 @@
+{
+  "info": {
+    "description": "<p>Functions and messages for interacting with model components.</p>", 
+    "namespace": "model", 
+    "name": "Model", 
+    "brief": "<p>Model API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>The current animation set on the component. The type of the property is hash.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">hash</span> model animation</p>", 
+      "examples": "<p>How to read the current animation from a model component:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Get the current animation on component &quot;model&quot;</span>\n  <span class=\"kd\">local</span> <span class=\"n\">animation</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">animation&quot;</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">animation</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">run_left&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- Running left. Do something...</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "animation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The normalized animation cursor. The type of the property is number.</p>\n<p><span class=\"icon-attention\"></span> Please note that model events may not fire as expected when the cursor is manipulated directly.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">number</span> model cursor</p>", 
+      "examples": "<p>How to get the normalized cursor value:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Get the cursor value on component &quot;model&quot;</span>\n  <span class=\"n\">cursor</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">cursor&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>How to animate the cursor from 0.0 to 1.0 using linear easing for 2.0 seconds:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Get the current value on component &quot;model&quot;</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">cursor&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.0</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Animate the cursor value</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">cursor&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_FORWARD</span><span class=\"p\">,</span> <span class=\"mf\">1.0</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_LINEAR</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "cursor"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Cancels all animation on a model component.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the model for which to cancel the animation</p>", 
+          "name": "url"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>cancel all animation on a model</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "model.cancel"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Gets the id of the game object that corresponds to a model skeleton bone.\nThe returned game object can be used for parenting and transform queries.\nThis function has complexity <code>O(n)</code>, where <code>n</code> is the number of bones in the model skeleton.\nGame objects corresponding to a model skeleton bone can not be individually deleted.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the model to query</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> id of the corresponding bone</p>", 
+          "name": "bone_id"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> id of the game object</p>", 
+          "name": "id"
+        }
+      ], 
+      "brief": "<p>retrieve the game object corresponding to a model skeleton bone</p>", 
+      "examples": "<p>The following examples assumes that the model component has id \"model\".</p>\n<p>How to parent the game object of the calling script to the \"right_hand\" bone of the model in a player game object:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">parent</span> <span class=\"o\">=</span> <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">get_go</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">player#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">right_hand&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">.&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">set_parent&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">parent_id</span> <span class=\"o\">=</span> <span class=\"n\">parent</span><span class=\"p\">})</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "model.get_go"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Plays an animation on a model component with specified playback\nmode and parameters.</p>\n<p>An optional completion callback function can be provided that will be called when\nthe animation has completed playing. If no function is provided,\na <a href=\"#model_animation_done\">model_animation_done</a> message is sent to the script that started the animation.</p>\n<p><span class=\"icon-attention\"></span> The callback is not called (or message sent) if the animation is\ncancelled with <a href=\"/ref/model#model.cancel\">model.cancel</a>. The callback is called (or message sent) only for\nanimations that play with the following playback modes:</p>\n<ul>\n<li><code>go.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>\n</ul>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the model for which to play the animation</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> id of the animation to play</p>", 
+          "name": "anim_id"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> playback mode of the animation</p>\n<ul>\n<li><code>go.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>\n<li><code>go.PLAYBACK_LOOP_FORWARD</code></li>\n<li><code>go.PLAYBACK_LOOP_BACKWARD</code></li>\n<li><code>go.PLAYBACK_LOOP_PINGPONG</code></li>\n</ul>", 
+          "name": "playback"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">table</span> optional table with properties</p>\n<p>Play properties table:</p>\n<dl>\n<dt><code>blend_duration</code></dt>\n<dd><span class=\"type\">number</span> Duration of a linear blend between the current and new animation.</dd>\n<dt><code>offset</code></dt>\n<dd><span class=\"type\">number</span> The normalized initial value of the animation cursor when the animation starts playing.</dd>\n<dt><code>playback_rate</code></dt>\n<dd><span class=\"type\">number</span> The rate with which the animation will be played. Must be positive.</dd>\n</dl>", 
+          "name": "[play_properties]"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">function(self, message_id, message, sender))</span> function to call when the animation has completed.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>message_id</code></dt>\n<dd><span class=\"type\">hash</span> The name of the completion message, <code>\"model_animation_done\"</code>.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">table</span> Information about the completion:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">hash</span> <code>animation_id</code> - the animation that was completed.</li>\n<li><span class=\"type\">constant</span> <code>playback</code> - the playback mode for the animation.</li>\n</ul>\n<dl>\n<dt><code>sender</code></dt>\n<dd><span class=\"type\">url</span> The invoker of the callback: the model component.</dd>\n</dl>", 
+          "name": "[complete_function]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>play an animation on a model</p>", 
+      "examples": "<p>The following examples assumes that the model has id \"model\".</p>\n<p>How to play the \"jump\" animation followed by the \"run\" animation:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">anim_done</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">model_animation_done&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">animation_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">jump&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n      <span class=\"c1\">-- open animation done, chain with &quot;run&quot;</span>\n      <span class=\"kd\">local</span> <span class=\"n\">properties</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">blend_duration</span> <span class=\"o\">=</span> <span class=\"mf\">0.2</span> <span class=\"p\">}</span>\n      <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">play_anim</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">run&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_FORWARD</span><span class=\"p\">,</span> <span class=\"n\">properties</span><span class=\"p\">,</span> <span class=\"n\">anim_done</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">url</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model&quot;</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">play_properties</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">blend_duration</span> <span class=\"o\">=</span> <span class=\"mf\">0.1</span> <span class=\"p\">}</span>\n    <span class=\"c1\">-- first blend during 0.1 sec into the jump, then during 0.2 s into the run animation</span>\n    <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">play_anim</span><span class=\"p\">(</span><span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">jump&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_ONCE_FORWARD</span><span class=\"p\">,</span> <span class=\"n\">play_properties</span><span class=\"p\">,</span> <span class=\"n\">anim_done</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "model.play_anim"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Resets a shader constant for a model component.\nThe constant must be defined in the material assigned to the model.\nResetting a constant through this function implies that the value defined in the material will be used.\nWhich model to reset a constant for is identified by the URL.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the model that should have a constant reset.</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> name of the constant.</p>", 
+          "name": "constant"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>reset a shader constant for a model</p>", 
+      "examples": "<p>The following examples assumes that the model has id \"model\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the model, you can reset the constants defined there in the same manner.</p>\n<p>How to reset the tinting of a model:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">reset_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "model.reset_constant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets a shader constant for a model component.\nThe constant must be defined in the material assigned to the model.\nSetting a constant through this function will override the value set for that constant in the material.\nThe value will be overridden until model.reset_constant is called.\nWhich model to set a constant for is identified by the URL.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the model that should have a constant set</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> name of the constant</p>", 
+          "name": "constant"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector4</span> value of the constant</p>", 
+          "name": "value"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set a shader constant for a model</p>", 
+      "examples": "<p>The following examples assumes that the model has id \"model\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the model, you can set the constants defined there in the same manner.</p>\n<p>How to tint a model to red:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">model</span><span class=\"p\">.</span><span class=\"n\">set_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "model.set_constant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This message is sent when a Model animation has finished playing back to the script\nthat started the animation.</p>\n<p><span class=\"icon-attention\"></span> No message is sent if a completion callback function was supplied\nwhen the animation was started. No message is sent if the animation is cancelled with\nmodel.cancel(). This message is sent only for animations that play with\nthe following playback modes:</p>\n<ul>\n<li><code>go.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>\n</ul>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> the id of the completed animation</p>", 
+          "name": "animation_id"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">constant</span> the playback mode of the completed animation</p>", 
+          "name": "playback"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>reports the completion of a Model animation</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">model_animation_done&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">animation_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">run&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">playback</span> <span class=\"o\">==</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_ONCE_FORWARD</span> <span class=\"k\">then</span>\n      <span class=\"c1\">-- The animation &quot;run&quot; has finished running forward.</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MESSAGE", 
+      "name": "model_animation_done"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">number</span> model playback_rate</p>", 
+      "examples": "<p>How to set the playback_rate on component \"model\" to play at double the current speed:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Get the current value on component &quot;model&quot;</span>\n  <span class=\"n\">playback_rate</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">playback_rate&quot;</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Set the playback_rate to double the previous value.</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">playback_rate&quot;</span><span class=\"p\">,</span> <span class=\"n\">playback_rate</span> <span class=\"o\">*</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>The playback_rate is a non-negative number, a negative value will be clamped to 0.</p>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "playback_rate"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p><span class=\"mark\">READ ONLY</span> Returns the texture path hash of the model. Used for getting/setting resource data</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">hash</span> model texture0</p>", 
+      "examples": "<p>How to overwrite a model's original texture</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- get texture resource from one model and set it on another</span>\n  <span class=\"kd\">local</span> <span class=\"n\">resource_path1</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model1&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">texture0&quot;</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">buffer</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"n\">resource_path1</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">resource_path2</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model2&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">texture0&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"n\">resource_path2</span><span class=\"p\">,</span> <span class=\"n\">buffer</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "texture0"
+    }
+  ]
+}

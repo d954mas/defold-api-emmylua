@@ -1,0 +1,47 @@
+{
+  "info": {
+    "description": "<p>Functions for performing HTTP and HTTPS requests.</p>", 
+    "namespace": "http", 
+    "name": "HTTP", 
+    "brief": "<p>HTTP API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "<p>facebook.me</p>", 
+      "description": "<p>Perform a HTTP/HTTPS request.</p>\n<p><span class=\"icon-attention\"></span> If no timeout value is passed, the configuration value \"network.http_timeout\" is used. If that is not set, the timeout value is <code>0</code> (which blocks indefinitely).</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string</span> target url</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> HTTP/HTTPS method, e.g. \"GET\", \"PUT\", \"POST\" etc.</p>", 
+          "name": "method"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">function(self, id, response)</span> response callback function</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> Internal message identifier. Do not use!</dd>\n<dt><code>response</code></dt>\n<dd><span class=\"type\">table</span> The response data. Contains the fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>status</code>: the status of the response</li>\n<li><span class=\"type\">string</span> <code>response</code>: the response data</li>\n<li><span class=\"type\">table</span> <code>headers</code>: all the returned headers</li>\n</ul>", 
+          "name": "callback"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">table</span> optional table with custom headers</p>", 
+          "name": "[headers]"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> optional data to send</p>", 
+          "name": "[post_data]"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">table</span> optional table with request parameters. Supported entries:</p>\n<ul>\n<li><span class=\"type\">number</span> <code>timeout</code>: timeout in seconds</li>\n</ul>", 
+          "name": "[options]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>perform a HTTP/HTTPS request</p>", 
+      "examples": "<p>Basic HTTP-GET request. The callback receives a table with the response\nin the fields status, the response (the data) and headers (a table).</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">http_result</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">status</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">response</span><span class=\"p\">)</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">headers</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">http</span><span class=\"p\">.</span><span class=\"n\">request</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">http://www.google.com&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">GET&quot;</span><span class=\"p\">,</span> <span class=\"n\">http_result</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "http.request"
+    }
+  ]
+}
