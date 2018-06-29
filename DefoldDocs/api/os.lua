@@ -8,7 +8,7 @@
 ---
 ---Freely available under the terms of the Lua license <https://www.lua.org/license.html>.
 ---@class os
-local os = {}
+os = {}
 ---Returns an approximation of the amount in seconds of CPU time
 ---used by the program.
 function os.clock() end

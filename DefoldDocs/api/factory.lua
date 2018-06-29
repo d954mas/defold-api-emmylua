@@ -2,7 +2,7 @@
 ---Functions for controlling factory components which are used to
 ---dynamically spawn game objects into the runtime.
 ---@class factory
-local factory = {}
+factory = {}
 ---loaded
 factory.STATUS_LOADED = nil
 ---loading

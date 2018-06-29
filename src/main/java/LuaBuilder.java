@@ -16,7 +16,7 @@ public class LuaBuilder {
         sb.append("---").append(f.getPlainText(docModel.getInfoModel().getBrief())).append("\n");
         sb.append("---").append(f.getPlainText(docModel.getInfoModel().getDescription())).append("\n");
         sb.append("---@class ").append(docModel.getInfoModel().getNameSpace()).append("\n");
-        sb.append("local ").append(docModel.getInfoModel().getNameSpace()).append(" = {}").append("\n");
+        sb.append("").append(docModel.getInfoModel().getNameSpace()).append(" = {}").append("\n");
         for (ElementModel em : docModel.getElements()) {
             if (em.getType().equals("FUNCTION")) {
                 String funDesc = f.getPlainText(em.getDescription());

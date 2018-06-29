@@ -1,7 +1,7 @@
 ---Facebook API documentation
 ---Functions and constants for interacting with Facebook APIs.
 ---@class facebook
-local facebook = {}
+facebook = {}
 ---publish permission to reach everyone
 facebook.AUDIENCE_EVERYONE = nil
 ---publish permission to reach user friends

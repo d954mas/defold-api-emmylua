@@ -1,7 +1,7 @@
 ---Tilemap API documentation
 ---Functions and messages used to manipulate tile map components.
 ---@class tilemap
-local tilemap = {}
+tilemap = {}
 ---Get the bounds for a tile map. This function returns multiple values:
 ---The lower left corner index x and y coordinates (1-indexed),
 ---the tile map width and the tile map height.

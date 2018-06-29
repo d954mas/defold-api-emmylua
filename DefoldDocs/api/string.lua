@@ -8,7 +8,7 @@
 ---
 ---Freely available under the terms of the Lua license <https://www.lua.org/license.html>.
 ---@class string
-local string = {}
+string = {}
 ---Returns the internal numerical codes of the characters s[i],
 ---s[i+1], ..., s[j].
 ---The default value for i is 1;

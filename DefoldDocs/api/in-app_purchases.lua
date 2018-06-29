@@ -2,7 +2,7 @@
 ---Functions and constants for interacting with Apple's In-app purchases
 ---and Google's In-app billing.
 ---@class iap
-local iap = {}
+iap = {}
 ---provider id for Amazon
 iap.PROVIDER_ID_AMAZON = nil
 ---provider id for Apple

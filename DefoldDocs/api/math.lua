@@ -8,7 +8,7 @@
 ---
 ---Freely available under the terms of the Lua license <https://www.lua.org/license.html>.
 ---@class math
-local math = {}
+math = {}
 ---Returns the absolute value of x.
 ---@param x x
 function math.abs(x) end

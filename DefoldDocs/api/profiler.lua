@@ -2,7 +2,7 @@
 ---Functions for getting profiling data in runtime.
 ---More detailed profiling and debugging information can be found under the Debugging <http://www.defold.com/manuals/debugging/> section in the manuals.
 ---@class profiler
-local profiler = {}
+profiler = {}
 ---Get the percent of CPU usage by the application, as reported by the OS.
 ---
 --- This function is not available on  HTML5.

@@ -3,7 +3,7 @@
 ---or evaluate javascript. These API:s only exist on mobile platforms.
 --- 
 ---@class webview
-local webview = {}
+webview = {}
 ---Creates a webview instance. It can show HTML pages as well as evaluate Javascript.
 ---The view remains hidden until the first call.
 ---

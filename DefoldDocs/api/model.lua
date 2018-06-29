@@ -1,7 +1,7 @@
 ---Model API documentation
 ---Functions and messages for interacting with model components.
 ---@class model
-local model = {}
+model = {}
 ---Cancels all animation on a model component.
 ---@param url string | hash | url the model for which to cancel the animation
 function model.cancel(url) end

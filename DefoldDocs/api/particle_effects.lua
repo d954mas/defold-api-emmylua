@@ -2,7 +2,7 @@
 ---Functions for controlling particle effect component playback and
 ---shader constants.
 ---@class particlefx
-local particlefx = {}
+particlefx = {}
 ---postspawn state
 particlefx.EMITTER_STATE_POSTSPAWN = nil
 ---prespawn state

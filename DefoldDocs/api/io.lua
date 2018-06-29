@@ -8,7 +8,7 @@
 ---
 ---Freely available under the terms of the Lua license <https://www.lua.org/license.html>.
 ---@class io
-local io = {}
+io = {}
 ---Closes file.
 ---Note that files are automatically closed when
 ---their handles are garbage collected,

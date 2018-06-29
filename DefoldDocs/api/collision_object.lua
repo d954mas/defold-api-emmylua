@@ -3,7 +3,7 @@
 ---with other objects (collisions and ray-casting) and control of
 ---physical behaviors.
 ---@class physics
-local physics = {}
+physics = {}
 ---Ray casts are used to test for intersections against collision objects in the physics world.
 ---Collision objects of types kinematic, dynamic and static are tested against. Trigger objects
 ---do not intersect with ray casts.

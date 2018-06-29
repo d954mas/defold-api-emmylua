@@ -1,7 +1,7 @@
 ---Sprite API documentation
 ---Functions, messages and properties used to manipulate sprite components.
 ---@class sprite
-local sprite = {}
+sprite = {}
 ---Play an animation on a sprite component from its tile set
 ---
 ---An optional completion callback function can be provided that will be called when

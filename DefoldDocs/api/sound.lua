@@ -2,7 +2,7 @@
 ---Functions and messages for controlling sound components and
 ---mixer groups.
 ---@class sound
-local sound = {}
+sound = {}
 ---Get mixer group gain
 ---
 --- Note that gain is in linear scale, between 0 and 1.

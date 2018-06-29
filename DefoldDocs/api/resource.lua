@@ -1,7 +1,7 @@
 ---Resource API documentation
 ---Functions and constants to access resources.
 ---@class resource
-local resource = {}
+resource = {}
 ---luminance type texture format
 resource.TEXTURE_FORMAT_LUMINANCE = nil
 ---RGB type texture format

@@ -2,7 +2,7 @@
 ---Functions and constants to access the window, window event listeners
 ---and screen dimming.
 ---@class window
-local window = {}
+window = {}
 ---dimming mode off
 window.DIMMING_OFF = nil
 ---dimming mode on

@@ -1,7 +1,7 @@
 ---Messaging API documentation
 ---Functions for passing messages and constructing URL objects.
 ---@class msg
-local msg = {}
+msg = {}
 ---Post a message to a receiving URL. The most common case is to send messages
 ---to a component. If the component part of the receiver is omitted, the message
 ---is broadcast to all components in the game object.

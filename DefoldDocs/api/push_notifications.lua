@@ -3,7 +3,7 @@
 ---Apple's and Google's push notification services. These API:s only exist on mobile platforms.
 --- 
 ---@class push
-local push = {}
+push = {}
 ---alert notification type
 push.NOTIFICATION_ALERT = nil
 ---badge notification type

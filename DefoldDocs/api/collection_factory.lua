@@ -2,7 +2,7 @@
 ---Functions for controlling collection factory components which are
 ---used to dynamically spawn collections into the runtime.
 ---@class collectionfactory
-local collectionfactory = {}
+collectionfactory = {}
 ---loaded
 collectionfactory.STATUS_LOADED = nil
 ---loading

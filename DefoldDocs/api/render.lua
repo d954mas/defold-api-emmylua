@@ -9,7 +9,7 @@
 --- It is possible to create materials and write shaders that
 ---require features not in OpenGL ES 2.0, but those will not work cross platform.
 ---@class render
-local render = {}
+render = {}
 render.BLEND_CONSTANT_ALPHA = nil
 render.BLEND_CONSTANT_COLOR = nil
 render.BLEND_DST_ALPHA = nil

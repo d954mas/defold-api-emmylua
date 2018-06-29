@@ -1,7 +1,7 @@
 ---Label API documentation
 ---Functions to manipulate a label component.
 ---@class label
-local label = {}
+label = {}
 ---Gets the text metrics from a label component
 ---@param url string | hash | url the label to get the (unscaled) metrics from
 ---@return  table a table with the following fields:

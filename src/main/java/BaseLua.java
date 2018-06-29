@@ -26,7 +26,7 @@ public class BaseLua {
             "\n--]]" +
             "\n---@class timer\n" +
             "---@field INVALID_TIMER_HANDLE number\n" +
-            "local timer = {}\n" +
+            "timer = {}\n" +
             "\n" +
             "---Create timer\n" +
             "---@param delay number time interval in seconds\n" +

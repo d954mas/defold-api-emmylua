@@ -1,7 +1,7 @@
 ---Image API documentation
 ---Functions for creating image objects.
 ---@class image
-local image = {}
+image = {}
 ---luminance image type
 image.TYPE_LUMINANCE = nil
 ---RGB image type

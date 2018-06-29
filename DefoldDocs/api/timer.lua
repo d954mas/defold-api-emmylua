@@ -13,7 +13,7 @@ Timers created within a script will automatically die when the script is deleted
 --]]
 ---@class timer
 ---@field INVALID_TIMER_HANDLE number
-local timer = {}
+timer = {}
 
 ---Create timer
 ---@param delay number time interval in seconds

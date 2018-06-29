@@ -3,7 +3,7 @@
 ---game objects. The "go" namespace is accessible from game object script
 ---files.
 ---@class go
-local go = {}
+go = {}
 ---This is a callback-function, which is called by the engine when a script component is finalized (destroyed). It can
 ---be used to e.g. take some last action, report the finalization to other game object instances, delete spawned objects
 ---or release user input focus (see release_input_focus <>).

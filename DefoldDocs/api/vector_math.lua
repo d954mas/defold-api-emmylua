@@ -30,7 +30,7 @@
 ---indexed by number 1 to the vector length. Example: v[3]
 
 ---@class vmath
-local vmath = {}
+vmath = {}
 ---Calculates the conjugate of a quaternion. The result is a
 ---quaternion with the same magnitudes but with the sign of
 ---the imaginary (vector) parts changed:

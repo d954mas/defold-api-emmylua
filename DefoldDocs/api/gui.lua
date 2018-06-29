@@ -3,7 +3,7 @@
 ---creation and manipulation of GUI nodes. The "gui" namespace is
 ---accessible only from gui scripts.
 ---@class gui
-local gui = {}
+gui = {}
 ---This is a callback-function, which is called by the engine when a gui component is finalized (destroyed). It can
 ---be used to e.g. take some last action, report the finalization to other game object instances
 ---or release user input focus (see release_input_focus). There is no use in starting any animations or similar

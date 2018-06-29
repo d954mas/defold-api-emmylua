@@ -3,7 +3,7 @@
 ---
 ---  These API:s only exist on mobile platforms.
 ---@class iac
-local iac = {}
+iac = {}
 ---iac type
 iac.TYPE_INVOCATION = nil
 ---Sets the listener function for inter-app communication events.

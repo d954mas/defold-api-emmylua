@@ -1,7 +1,7 @@
 ---Zlib compression API documentation
 ---Functions for compression and decompression of string buffers.
 ---@class zlib
-local zlib = {}
+zlib = {}
 ---A lua error is raised is on error
 ---@param buf string buffer to deflate
 ---@return  string deflated buffer

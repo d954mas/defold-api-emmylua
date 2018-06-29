@@ -15,7 +15,7 @@
 ---LuaSocket is Copyright © 2004-2007 Diego Nehab. All rights reserved.
 ---LuaSocket is free software, released under the MIT license (same license as the Lua core).
 ---@class socket
-local socket = {}
+socket = {}
 ---Closes the TCP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.
 ---
 --- It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.

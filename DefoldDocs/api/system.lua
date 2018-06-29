@@ -2,7 +2,7 @@
 ---Functions and messages for using system resources, controlling the engine,
 ---error handling and debugging.
 ---@class sys
-local sys = {}
+sys = {}
 ---network connected through other, non cellular, connection
 sys.NETWORK_CONNECTED = nil
 ---network connected through mobile cellular

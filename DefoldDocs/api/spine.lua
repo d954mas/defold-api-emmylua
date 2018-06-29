@@ -2,7 +2,7 @@
 ---Functions and messages for interacting with the 'Spine' 2D bone
 ---animation system.
 ---@class spine
-local spine = {}
+spine = {}
 ---Cancels all running animations on a specified spine model component.
 ---@param url string | hash | url the spine model for which to cancel the animation
 function spine.cancel(url) end

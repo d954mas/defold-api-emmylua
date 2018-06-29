@@ -2,7 +2,7 @@
 ---Messages for controlling and interacting with collection proxies
 ---which are used to dynamically load collections into the runtime.
 ---@class collectionproxy
-local collectionproxy = {}
+collectionproxy = {}
 ---return an indexed table of missing resources for a collection proxy. Each
 ---entry is a hexadecimal string that represents the data of the specific
 ---resource. This representation corresponds with the filename for each
