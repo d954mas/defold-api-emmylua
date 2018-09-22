@@ -20,6 +20,9 @@ sys.NETWORK_DISCONNECTED = nil
 ---@return  table table with application information in the following fields:
 function sys.get_application_info(app_string) end
 ---Get config value from the game.project configuration file.
+---
+---In addition to the project file, configuration values can also be passed
+---to the runtime as command line arguments with the --config argument.
 ---@param key string key to get value for. The syntax is SECTION.KEY
 ---@return  string config value as a string. nil if the config key doesn't exists
 function sys.get_config(key) end

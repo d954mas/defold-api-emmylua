@@ -238,7 +238,7 @@
       "examples": "<p>Assuming the script belongs to an instance with a sound-component with id \"sound\", this will set the gain to 0.5</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">set_gain</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
-      "type": "MESSAGE", 
+      "type": "FUNCTION", 
       "name": "sound.set_gain"
     }, 
     {

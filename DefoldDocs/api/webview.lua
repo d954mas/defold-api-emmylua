@@ -5,7 +5,7 @@
 ---@class webview
 webview = {}
 ---Creates a webview instance. It can show HTML pages as well as evaluate Javascript.
----The view remains hidden until the first call.
+---The view remains hidden until the first call. There can exist a maximum of 4 webviews at the same time.
 ---
 --- On iOS, the callback will never get a webview.CALLBACK_RESULT_EVAL_ERROR,
 ---due to the iOS SDK implementation.
@@ -40,6 +40,13 @@ function webview.open(webview_id, url, options) end
 ---@param options table A table of options for the request. See webview.open()
 ---@return  number The id number of the request
 function webview.open_raw(webview_id, html, options) end
+---Sets the position and size of the webview
+---@param webview_id number The webview id (returned by the webview.create() call)
+---@param x number The x position of the webview
+---@param y number The y position of the webview
+---@param width number The width of the webview (-1 to match screen width)
+---@param height number The height of the webview (-1 to match screen height)
+function webview.set_position(webview_id, x, y, width, height) end
 ---Shows or hides a web view
 ---@param webview_id number The webview id (returned by the 
 ---@param visible number If 0, hides the webview. If non zero, shows the view

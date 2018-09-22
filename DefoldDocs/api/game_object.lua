@@ -130,7 +130,10 @@ function go.animate(url, property, playback, to, easing, duration, delay, comple
 ---@param url string | hash | url url of the game object or component having the property
 ---@param property string | hash ide of the property to animate
 function go.cancel_animations(url, property) end
----Delete one or more game objects identified by id.
+---Delete one or more game objects identified by id. Deletion is asynchronous meaning that
+---the game object(s) are scheduled for deletion which will happen at the end of the current
+---frame. Note that game objects scheduled for deletion will be counted against
+---max_instances in "game.project" until they are actually removed.
 ---@param id string | hash | url | table optional id or table of id's of the instance(s) to delete, the instance of the calling script is deleted by default
 ---@param recursive boolean optional boolean, set to true to recursively delete child hiearchy in child to parent order
 function go.delete(id, recursive) end

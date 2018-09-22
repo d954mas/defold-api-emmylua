@@ -480,7 +480,7 @@
       "description": "<p>Changes the peer of a UDP object. This method turns an unconnected UDP object into a connected UDP object or vice versa.</p>\n<p>For connected objects, outgoing datagrams will be sent to the specified peer, and datagrams received from other peers will be discarded by the OS. Connected UDP objects must use the <code>send</code> and <code>receive</code> methods instead of <code>sendto</code> and <code>receivefrom</code>.</p>\n<p><span class=\"icon-attention\"></span> Since the address of the peer does not have to be passed to and from the OS, the use of connected UDP objects is recommended when the same peer is used for several transmissions and can result in up to 30% performance gains.</p>", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string</span> if address is \"*\"\" and the object is connected, the peer association is removed and the object becomes an unconnected object again.</p>", 
+          "doc": "<p><span class=\"type\">string</span> if address is \"*\" and the object is connected, the peer association is removed and the object becomes an unconnected object again.</p>", 
           "name": "\"*\""
         }
       ], 

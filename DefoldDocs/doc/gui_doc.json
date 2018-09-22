@@ -1616,7 +1616,7 @@
       "returnvalues": [
         {
           "doc": "<p><span class=\"type\">boolean</span> <code>true</code> or <code>false</code></p>", 
-          "name": "line-break"
+          "name": "line_break"
         }
       ], 
       "brief": "<p>get line-break mode</p>", 
@@ -2132,7 +2132,7 @@
         }, 
         {
           "doc": "<p><span class=\"type\">boolean</span> true to break lines accordingly to width (default=false)</p>", 
-          "name": "line_breaks"
+          "name": "line_break"
         }, 
         {
           "doc": "<p><span class=\"type\">number</span> scale value for line spacing (default=1)</p>", 
@@ -2968,7 +2968,7 @@
         }, 
         {
           "doc": "<p><span class=\"type\">boolean</span> true or false</p>", 
-          "name": "line-break"
+          "name": "line_break"
         }
       ], 
       "returnvalues": [], 
@@ -3032,6 +3032,10 @@
         {
           "doc": "<p><span class=\"type\">node</span> parent node to set</p>", 
           "name": "parent"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> optional flag to make the scene position being perserved</p>", 
+          "name": "keep_scene_transform"
         }
       ], 
       "returnvalues": [], 

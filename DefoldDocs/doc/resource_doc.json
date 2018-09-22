@@ -8,6 +8,78 @@
   "elements": [
     {
       "replaces": "", 
+      "description": "<p>Mismatch between running engine version and engine versions supported by manifest.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>LIVEUPDATE_ENGINE_VERSION_MISMATCH</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "resource.LIVEUPDATE_ENGINE_VERSION_MISMATCH"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The handled resource is invalid.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>LIVEUPDATE_INVALID_RESOURCE</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "resource.LIVEUPDATE_INVALID_RESOURCE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>LIVEUPDATE_OK</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "resource.LIVEUPDATE_OK"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Mismatch between scheme used to load resources. Resources are loaded with a different scheme than from manifest, for example over HTTP or directly from file. This is typically the case when running the game directly from the editor instead of from a bundle.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>LIVEUPDATE_SCHEME_MISMATCH</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "resource.LIVEUPDATE_SCHEME_MISMATCH"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Mismatch between manifest expected signature and actual signature.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>LIVEUPDATE_SIGNATURE_MISMATCH</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "resource.LIVEUPDATE_SIGNATURE_MISMATCH"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Mismatch between manifest expected version and actual version.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>LIVEUPDATE_VERSION_MISMATCH</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "resource.LIVEUPDATE_VERSION_MISMATCH"
+    }, 
+    {
+      "replaces": "", 
       "description": "", 
       "parameters": [], 
       "returnvalues": [], 
@@ -138,6 +210,27 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "resource.set_texture"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Create a new manifest from a buffer. The created manifest is verified\nby ensuring that the manifest was signed using the bundled public/private\nkey-pair during the bundle process and that the manifest supports the current\nrunning engine version. Once the manifest is verified it is stored on device.\nThe next time the engine starts (or is rebooted) it will look for the stored\nmanifest before loading resources. Storing a new manifest allows the\ndeveloper to update the game, modify existing resources, or add new\nresources to the game through LiveUpdate.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string</span> the binary data that represents the manifest</p>", 
+          "name": "manifest_buffer"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">function(self, status)</span> the callback function\nexecuted once the engine has attempted to store the manifest.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>status</code></dt>\n<dd><span class=\"type\">constant</span> the status of the store operation:</dd>\n</dl>\n<ul>\n<li><code>resource.LIVEUPATE_OK</code></li>\n<li><code>resource.LIVEUPATE_INVALID_RESOURCE</code></li>\n<li><code>resource.LIVEUPATE_VERSION_MISMATCH</code></li>\n<li><code>resource.LIVEUPATE_ENGINE_VERSION_MISMATCH</code></li>\n<li><code>resource.LIVEUPATE_SIGNATURE_MISMATCH</code></li>\n</ul>", 
+          "name": "callback"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>create, verify, and store a manifest to device</p>", 
+      "examples": "<p>How to download a manifest with HTTP and store it on device.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">store_manifest_cb</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">status</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">LIVEUPATE_OK</span> <span class=\"k\">then</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Successfully stored manifest. This manifest will be loaded instead of the bundled manifest the next time the engine starts.&quot;</span><span class=\"p\">)</span>\n  <span class=\"k\">else</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Failed to store manifest&quot;</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">download_and_store_manifest</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">http</span><span class=\"p\">.</span><span class=\"n\">request</span><span class=\"p\">(</span><span class=\"n\">MANIFEST_URL</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">GET&quot;</span><span class=\"p\">,</span> <span class=\"k\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">)</span>\n      <span class=\"k\">if</span> <span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"mi\">200</span> <span class=\"k\">then</span>\n        <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">store_manifest</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">response</span><span class=\"p\">,</span> <span class=\"n\">store_manifest_cb</span><span class=\"p\">)</span>\n      <span class=\"k\">end</span>\n    <span class=\"k\">end</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "resource.store_manifest"
     }, 
     {
       "replaces": "", 

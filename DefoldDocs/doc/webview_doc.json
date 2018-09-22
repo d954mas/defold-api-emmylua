@@ -8,7 +8,7 @@
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Creates a webview instance. It can show HTML pages as well as evaluate Javascript.\nThe view remains hidden until the first call.</p>\n<p><span class=\"icon-ios\"></span> On iOS, the callback will never get a webview.CALLBACK_RESULT_EVAL_ERROR,\ndue to the iOS SDK implementation.</p>", 
+      "description": "<p>Creates a webview instance. It can show HTML pages as well as evaluate Javascript.\nThe view remains hidden until the first call. There can exist a maximum of 4 webviews at the same time.</p>\n<p><span class=\"icon-ios\"></span> On iOS, the callback will never get a webview.CALLBACK_RESULT_EVAL_ERROR,\ndue to the iOS SDK implementation.</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">function(self, webview_id, request_id, type, data)</span> A callback which receives info about finished requests taking the following parameters</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The calling script</dd>\n<dt><code>webview_id</code></dt>\n<dd><span class=\"type\">number</span> The webview id</dd>\n<dt><code>request_id</code></dt>\n<dd><span class=\"type\">number</span> The request id</dd>\n<dt><code>type</code></dt>\n<dd><span class=\"type\">number</span> The type of the callback. Can be one of these:</dd>\n</dl>\n<ul>\n<li><code>webview.CALLBACK_RESULT_URL_OK</code></li>\n<li><code>webview.CALLBACK_RESULT_URL_ERROR</code></li>\n<li><code>webview.CALLBACK_RESULT_EVAL_OK</code></li>\n<li><code>webview.CALLBACK_RESULT_EVAL_ERROR</code></li>\n</ul>\n<dl>\n<dt><code>data</code></dt>\n<dd><span class=\"type\">table</span> A table holding the data. The table has these fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">string</span> <code>url</code>: The url used in the webview.open() call. <code>nil</code> otherwise.</li>\n<li><span class=\"type\">string</span> <code>result</code>: Holds the result of either: a failed url open, a successful eval request or a failed eval. <code>nil</code> otherwise</li>\n</ul>", 
@@ -152,6 +152,39 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "webview.open_raw"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the position and size of the webview</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> The webview id (returned by the webview.create() call)</p>", 
+          "name": "webview_id"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The x position of the webview</p>", 
+          "name": "x"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The y position of the webview</p>", 
+          "name": "y"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The width of the webview (-1 to match screen width)</p>", 
+          "name": "width"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The height of the webview (-1 to match screen height)</p>", 
+          "name": "height"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>Sets the position and size of the webview</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "webview.set_position"
     }, 
     {
       "replaces": "", 

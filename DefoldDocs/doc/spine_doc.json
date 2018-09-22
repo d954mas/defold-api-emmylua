@@ -8,7 +8,7 @@
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>The current animation set on the component. The type of the property is hash.</p>", 
+      "description": "<p><span class=\"mark\">READ ONLY</span> The current animation set on the component.\nThe type of the property is <span class=\"type\">hash</span>.</p>", 
       "parameters": [], 
       "returnvalues": [], 
       "brief": "<p><span class=\"type\">hash</span> spine animation</p>", 
@@ -32,7 +32,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.</p>\n<p>The playback_rate is a non-negative number, a negative value will be clamped to 0.</p>", 
+      "description": "<p>The animation playback rate. A multiplier to the animation playback rate. The type of the property is <span class=\"type\">number</span>.</p>\n<p>The playback_rate is a non-negative number, a negative value will be clamped to 0.</p>", 
       "parameters": [], 
       "returnvalues": [], 
       "brief": "<p><span class=\"type\">number</span> spine playback_rate</p>", 

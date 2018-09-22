@@ -2,6 +2,18 @@
 ---Functions and constants to access resources.
 ---@class resource
 resource = {}
+---LIVEUPDATE_ENGINE_VERSION_MISMATCH
+resource.LIVEUPDATE_ENGINE_VERSION_MISMATCH = nil
+---LIVEUPDATE_INVALID_RESOURCE
+resource.LIVEUPDATE_INVALID_RESOURCE = nil
+---LIVEUPDATE_OK
+resource.LIVEUPDATE_OK = nil
+---LIVEUPDATE_SCHEME_MISMATCH
+resource.LIVEUPDATE_SCHEME_MISMATCH = nil
+---LIVEUPDATE_SIGNATURE_MISMATCH
+resource.LIVEUPDATE_SIGNATURE_MISMATCH = nil
+---LIVEUPDATE_VERSION_MISMATCH
+resource.LIVEUPDATE_VERSION_MISMATCH = nil
 ---luminance type texture format
 resource.TEXTURE_FORMAT_LUMINANCE = nil
 ---RGB type texture format
@@ -26,6 +38,17 @@ function resource.set(path, buffer) end
 ---@param table table A table containing info about the texture. Supported entries:
 ---@param buffer buffer The buffer of precreated pixel data
 function resource.set_texture(path, table, buffer) end
+---Create a new manifest from a buffer. The created manifest is verified
+---by ensuring that the manifest was signed using the bundled public/private
+---key-pair during the bundle process and that the manifest supports the current
+---running engine version. Once the manifest is verified it is stored on device.
+---The next time the engine starts (or is rebooted) it will look for the stored
+---manifest before loading resources. Storing a new manifest allows the
+---developer to update the game, modify existing resources, or add new
+---resources to the game through LiveUpdate.
+---@param manifest_buffer string the binary data that represents the manifest
+---@param callback function(self, status) the callback function executed once the engine has attempted to store the manifest.
+function resource.store_manifest(manifest_buffer, callback) end
 ---add a resource to the data archive and runtime index. The resource will be verified
 ---internally before being added to the data archive.
 ---@param manifest_reference number The manifest to check against.

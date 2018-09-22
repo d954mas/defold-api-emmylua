@@ -715,7 +715,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Delete one or more game objects identified by id.</p>", 
+      "description": "<p>Delete one or more game objects identified by id. Deletion is asynchronous meaning that\nthe game object(s) are scheduled for deletion which will happen at the end of the current\nframe. Note that game objects scheduled for deletion will be counted against\n<code>max_instances</code> in \"game.project\" until they are actually removed.</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">string | hash | url | table</span> optional id or table of id's of the instance(s) to delete, the instance of the calling script is deleted by default</p>", 

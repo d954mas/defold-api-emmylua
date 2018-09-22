@@ -92,6 +92,27 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Debug messages are temporary log instances used when debugging a certain behavior\nUse dmLogOnceUserDebug for one-shot logging</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const char*</span> Format string</p>", 
+          "name": "format"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">...</span> Format string args (variable arg list)</p>", 
+          "name": "args"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>macro for debug category logging</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "MACRO", 
+      "name": "dmLogUserDebug"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Warning messages are used to inform the developers about potential problems which can cause errors.\nUse dmLogOnceWarning for one-shot logging</p>", 
       "parameters": [
         {

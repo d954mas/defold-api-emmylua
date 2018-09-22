@@ -25,6 +25,23 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Get Android app object. Any other platform return zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">struct android_app*</span> native handle</p>", 
+          "name": "app"
+        }
+      ], 
+      "brief": "<p>get Android app object</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmGraphics::GetNativeAndroidApp"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Get Android EGLContext native handle (EGLContext). Any other platform return zero.</p>", 
       "parameters": [], 
       "returnvalues": [

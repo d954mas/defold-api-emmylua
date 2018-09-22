@@ -72,6 +72,15 @@ function sound.is_phone_call_active() end
 ---@param url string | hash | url the sound that should play
 ---@param play_properties table optional table with properties:
 function sound.play(url, play_properties) end
+---Set gain on all active playing voices of a sound.
+---
+--- Note that gain is in linear scale, between 0 and 1.
+---To get the dB value from the gain, use the formula 20 * log(gain).
+---Inversely, to find the linear value from a dB value, use the formula
+---10db/20.
+---@param url string | hash | url the sound to set the gain of
+---@param gain number sound gain between 0 and 1. The final gain of the sound will be a combination of this gain, the group gain and the master gain.
+function sound.set_gain(url, gain) end
 ---Set mixer group gain
 ---
 --- Note that gain is in linear scale, between 0 and 1.

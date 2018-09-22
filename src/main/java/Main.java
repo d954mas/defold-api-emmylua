@@ -46,7 +46,6 @@ public class Main {
         IGNORE_DOCS.add("package_doc.json");
         IGNORE_DOCS.add("sharedlibrary_doc.json");
         IGNORE_DOCS.add("table_doc.json");
-        IGNORE_DOCS.add("dmScript_doc.json");
     }
 
     private static void clearFolder(File folder) {
@@ -91,9 +90,6 @@ public class Main {
         }, Throwable::printStackTrace, () -> {
             try (PrintWriter writer = new PrintWriter(new File(API_FOLDER, "base.lua"))) {
                 writer.write(BaseLua.BASE);
-            }
-            try (PrintWriter writer = new PrintWriter(new File(API_FOLDER, "timer.lua"))) {
-                writer.write(BaseLua.TIMER_TMP);
             }
         });
 

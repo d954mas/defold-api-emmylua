@@ -423,11 +423,11 @@ function gui.get_text(node) end
 ---@param font string | hash font id
 ---@param text string text to measure
 ---@param width number max-width. Use for line-breaks (default=FLT_MAX)
----@param line_breaks boolean true to break lines accordingly to width (default=false)
+---@param line_break boolean true to break lines accordingly to width (default=false)
 ---@param leading number scale value for line spacing (default=1)
 ---@param tracking number scale value for letter spacing (default=0)
 ---@return  table a table with the following fields:
-function gui.get_text_metrics(font, text, width, line_breaks, leading, tracking) end
+function gui.get_text_metrics(font, text, width, line_break, leading, tracking) end
 ---Get the text metrics from a text node.
 ---@param node node text node to measure text from
 ---@return  table a table with the following fields:
@@ -629,7 +629,8 @@ function gui.set_outline(node, color) end
 ---Sets the parent node of the specified node.
 ---@param node node node for which to set its parent
 ---@param parent node parent node to set
-function gui.set_parent(node, parent) end
+---@param keep_scene_transform boolean optional flag to make the scene position being perserved
+function gui.set_parent(node, parent, keep_scene_transform) end
 ---Set the paricle fx for a gui node
 ---@param node node node to set particle fx for
 ---@param particlefx hash | string particle fx id
