@@ -35,7 +35,11 @@ public class LuaBuilder {
                             types = pm.getFormatName();
                             desc = f.getPlainText(pm.getDoc());
                         }
-                        sb.append("---@param ").append(pm.getFormatName()).append(" ").append(types).append(desc)
+                        sb.append("---@param ").append(pm.getFormatName()).append(" ").append(types);
+                                if (desc.length() >0 && desc.charAt(0) != ' ' ){
+                                    sb.append(" ");
+                                }
+                                sb.append(desc)
                                 .append("\n");
                     }
                 }
@@ -51,8 +55,12 @@ public class LuaBuilder {
                             types = pm.getName();
                             desc = f.getPlainText(pm.getDoc());
                         }
-                        sb.append("---@return ").append(" ").append(types).append(desc)
-                                .append("\n");
+                        sb.append("---@return ").append(" ").append(types);
+                            if (desc.length() >0 && desc.charAt(0) != ' ' ){
+                                sb.append(" ");
+                            }
+                            sb.append(desc)
+                            .append("\n");
                     }
                 }
                 sb.append("function ").append(em.getName()).append("(");

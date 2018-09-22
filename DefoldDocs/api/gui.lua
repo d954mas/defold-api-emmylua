@@ -338,7 +338,7 @@ function gui.get_outline(node) end
 function gui.get_parent(node) end
 ---Get the paricle fx for a gui node
 ---@param node node node to get particle fx for
----@return  [type:hash]particle fx id
+---@return  [type:hash] particle fx id
 function gui.get_particlefx(node) end
 ---Returns the number of generated vertices around the perimeter
 ---of a pie node.
@@ -398,7 +398,7 @@ function gui.get_spine_animation(node) end
 ---@return  node node corresponding to the spine bone
 function gui.get_spine_bone(node, bone_id) end
 ---This is only useful for spine nodes. Gets the normalized cursor of the animation on a spine node.
----@param node nodespine node to set the cursor for (node)
+---@param node node spine node to set the cursor for (node)
 ---@return  number cursor value
 function gui.get_spine_cursor(node) end
 ---This is only useful for spine nodes. Gets the playback rate of the animation on a spine node.

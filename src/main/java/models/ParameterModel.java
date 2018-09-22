@@ -13,12 +13,16 @@ public class ParameterModel {
 
     public String getFormatName() {
         name = name.replaceAll("-|(\"\\*\")", "_");
+        if (name.equals("repeat")) {
+            name = "_repeat";
+        }
         if (name.endsWith("...]")) {
             return "...";
         }
         if (name.contains("[")) {
             return name.replaceAll("\\[|\\]", "");
         }
+
         return name;
     }
 
