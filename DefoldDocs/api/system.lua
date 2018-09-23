@@ -49,7 +49,7 @@ function sys.get_ifaddrs() end
 ---@return  string path to save-file
 function sys.get_save_file(application_id, file_name) end
 ---Returns a table with system information.
----@return  table table with system information in the following fields:
+---@return  SysInfo table with system information in the following fields:
 function sys.get_sys_info() end
 ---If the file exists, it must have been created by sys.save to be loaded.
 ---@param filename string file to read from

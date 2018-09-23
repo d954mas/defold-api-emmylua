@@ -55,7 +55,8 @@ public class LuaBuilder {
                             types = pm.getName();
                             desc = f.getPlainText(pm.getDoc());
                         }
-                        sb.append("---@return ").append(" ").append(types);
+                        sb.append("---@return ").append(" ").append(BaseLua.get_param_class(docModel.getInfoModel().getNameSpace(),
+                                em.getName(),types,types));//.append(types);
                             if (desc.length() >0 && desc.charAt(0) != ' ' ){
                                 sb.append(" ");
                             }
