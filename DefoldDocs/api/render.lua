@@ -50,6 +50,7 @@ render.FORMAT_RGBA_DXT3 = nil
 render.FORMAT_RGBA_DXT5 = nil
 render.FORMAT_RGB_DXT1 = nil
 render.FORMAT_STENCIL = nil
+render.RENDER_TARGET_DEFAULT = nil
 render.STATE_BLEND = nil
 render.STATE_CULL_FACE = nil
 render.STATE_DEPTH_TEST = nil
@@ -81,11 +82,6 @@ function render.delete_render_target(render_target) end
 ---The name of the material must be specified in the ".render" resource set
 ---in the "game.project" setting.
 function render.disable_material() end
----Disables a previously enabled render target. Subsequent draw operations
----will be drawn to the frame buffer unless another render target is
----enabled.
----@param render_target render_target render target to disable
-function render.disable_render_target(render_target) end
 ---Disables a render state.
 ---@param state constant state to disable
 function render.disable_state(state) end
@@ -108,10 +104,6 @@ function render.draw_debug3d() end
 ---in the "game.project" setting.
 ---@param material_id string | hash material id to enable
 function render.enable_material(material_id) end
----Enables a render target. Subsequent draw operations will be to the
----enabled render target until it is disabled.
----@param render_target render_target render target to enable
-function render.enable_render_target(render_target) end
 ---Enables a particular render state. The state will be enabled until disabled.
 ---@param state constant state to enable
 function render.enable_state(state) end
@@ -314,6 +306,11 @@ function render.set_polygon_offset(factor, units) end
 ---Sets the projection matrix to use when rendering.
 ---@param matrix matrix4 projection matrix
 function render.set_projection(matrix) end
+---Sets a render target. Subsequent draw operations will be to the
+---render target until it is replaced by a subsequent call to set_render_target.
+---@param render_target render_target render target to set. render.RENDER_TARGET_DEFAULT to set the default render target
+---@param options table optional table with behaviour parameters
+function render.set_render_target(render_target, options) end
 ---@param render_target render_target render target to set size for
 ---@param width number new render target width
 ---@param height number new render target height

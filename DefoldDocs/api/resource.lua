@@ -26,7 +26,7 @@ resource.TEXTURE_TYPE_2D = nil
 ---@return  number reference to the Manifest that is currently loaded
 function resource.get_current_manifest() end
 ---Loads the resource data for a specific resource.
----@param path string | hash The path to the resource
+---@param path string The path to the resource
 ---@return  buffer Returns the buffer stored on disc
 function resource.load(path) end
 ---Sets the resource data for a specific resource

@@ -14,8 +14,6 @@ push.NOTIFICATION_SOUND = nil
 push.ORIGIN_LOCAL = nil
 ---remote push origin
 push.ORIGIN_REMOTE = nil
----remote push origin
-push.ORIGIN_REMOTE = nil
 ---default notification priority 
 push.PRIORITY_DEFAULT = nil
 ---higher notification priority 

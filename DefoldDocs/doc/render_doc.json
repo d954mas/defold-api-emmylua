@@ -559,6 +559,18 @@
       "members": [], 
       "error": "", 
       "type": "VARIABLE", 
+      "name": "render.RENDER_TARGET_DEFAULT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
       "name": "render.STATE_BLEND"
     }, 
     {
@@ -818,23 +830,6 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Disables a previously enabled render target. Subsequent draw operations\nwill be drawn to the frame buffer unless another render target is\nenabled.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">render_target</span> render target to disable</p>", 
-          "name": "render_target"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>disables a render target</p>", 
-      "examples": "<p>How to disable a render target so we can draw to the screen:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- enable target so all drawing is done to it</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- draw a predicate to the render target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- disable target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">disable_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- draw a predicate to the screen</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_other_pred</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "render.disable_render_target"
-    }, 
-    {
-      "replaces": "", 
       "description": "<p>Disables a render state.</p>", 
       "parameters": [
         {
@@ -916,23 +911,6 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "render.enable_material"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Enables a render target. Subsequent draw operations will be to the\nenabled render target until it is disabled.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">render_target</span> render target to enable</p>", 
-          "name": "render_target"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>enables a render target</p>", 
-      "examples": "<p>How to enable a render target and draw to it:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- enable target so all drawing is done to it</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">enable_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- draw a predicate to the render target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "render.enable_render_target"
     }, 
     {
       "replaces": "", 
@@ -1282,6 +1260,27 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "render.set_projection"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets a render target. Subsequent draw operations will be to the\nrender target until it is replaced by a subsequent call to set_render_target.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">render_target</span> render target to set. render.RENDER_TARGET_DEFAULT to set the default render target</p>", 
+          "name": "render_target"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">table</span> optional table with behaviour parameters</p>\n<dl>\n<dt><code>transient</code></dt>\n<dd><span class=\"type\">number</span> Transient frame buffer types are only valid while the render target is active, i.e becomes undefined when a new target is set by a subsequent call to set_render_target.\n Default is all non-transient. Be aware that some hardware uses a combined depth stencil buffer and when this is the case both are considered non-transient if exclusively selected!\n A buffer type defined that doesn't exist in the render target is silently ignored.</dd>\n</dl>\n<ul>\n<li><code>render.BUFFER_COLOR_BIT</code></li>\n<li><code>render.BUFFER_DEPTH_BIT</code></li>\n<li><code>render.BUFFER_STENCIL_BIT</code></li>\n</ul>", 
+          "name": "[options]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>sets a render target</p>", 
+      "examples": "<p>How to set a render target and draw to it and then switch back to the default render target\nThe render target defines the depth/stencil buffers as transient, when set_render_target is called the next time the buffers may be invalidated and allow for optimisations depending on driver support</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- set render target so all drawing is done to it</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_render_target</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_render_target</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">transient</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BUFFER_DEPTH_BIT</span><span class=\"p\">,</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">BUFFER_STENCIL_BIT</span><span class=\"p\">]</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n\n    <span class=\"c1\">-- draw a predicate to the render target</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n\n    <span class=\"c1\">-- set default render target. This also invalidates the depth and stencil buffers of the current target (self.my_render_target)</span>\n    <span class=\"c1\">--  which can be an optimisation on some hardware</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_render_target</span><span class=\"p\">(</span><span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">RENDER_TARGET_DEFAULT</span><span class=\"p\">)</span>\n\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "render.set_render_target"
     }, 
     {
       "replaces": "", 

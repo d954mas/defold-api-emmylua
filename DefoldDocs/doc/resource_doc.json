@@ -148,7 +148,7 @@
       "description": "<p>Loads the resource data for a specific resource.</p>", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string | hash</span> The path to the resource</p>", 
+          "doc": "<p><span class=\"type\">string</span> The path to the resource</p>", 
           "name": "path"
         }
       ], 

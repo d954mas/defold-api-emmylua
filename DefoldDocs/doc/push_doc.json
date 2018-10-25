@@ -68,18 +68,6 @@
     }, 
     {
       "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>remote push origin</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "push.ORIGIN_REMOTE"
-    }, 
-    {
-      "replaces": "", 
       "description": "<p>The default notification priority. Only available on Android. <span class=\"icon-android\"></span></p>", 
       "parameters": [], 
       "returnvalues": [], 
