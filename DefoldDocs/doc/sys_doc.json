@@ -62,7 +62,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Set game update-frequency. This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time.</p>\n<p>This message can only be sent to the designated <code>@system</code> socket.</p>", 
+      "description": "<p>Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.</p>\n<p>This message can only be sent to the designated <code>@system</code> socket.</p>", 
       "parameters": [
         {
           "doc": "<p>target frequency. 60 for 60 fps</p>", 
@@ -79,7 +79,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Set the vsync swap interval. The interval with which to swap the front and back buffers\nin sync with vertical blanks (v-blank), the hardware event where the screen image is updated\nwith data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of\n2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank\nbefore swapping the buffers. Default value is 1.</p>\n<p>When setting the swap interval to 0 on desktop platforms and having <code>variable_dt</code> disabled in\n\"game.project\", the engine will try to respect the set <code>update_frequency</code> value from\n\"game.project\" in software instead.</p>\n<p>This setting may be overridden by driver settings.</p>\n<p>This message can only be sent to the designated <code>@system</code> socket.</p>", 
+      "description": "<p>Set the vsync swap interval. The interval with which to swap the front and back buffers\nin sync with vertical blanks (v-blank), the hardware event where the screen image is updated\nwith data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of\n2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank\nbefore swapping the buffers. Default value is 1.</p>\n<p>When setting the swap interval to 0 and having <code>vsync</code> disabled in\n\"game.project\", the engine will try to respect the set frame cap value from\n\"game.project\" in software instead.</p>\n<p>This setting may be overridden by driver settings.</p>\n<p>This message can only be sent to the designated <code>@system</code> socket.</p>", 
       "parameters": [
         {
           "doc": "<p>target swap interval.</p>", 

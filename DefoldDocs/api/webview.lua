@@ -10,7 +10,7 @@ webview = {}
 --- On iOS, the callback will never get a webview.CALLBACK_RESULT_EVAL_ERROR,
 ---due to the iOS SDK implementation.
 ---@param callback function(self, webview_id, request_id, type, data) A callback which receives info about finished requests taking the following parameters
----@return  number The id number of the webview
+---@return number The id number of the webview
 function webview.create(callback) end
 ---Destroys an instance of a webview.
 ---@param webview_id number The webview id (returned by the webview.create() call)
@@ -20,25 +20,25 @@ function webview.destroy(webview_id) end
 ---is invoked. The callback will get the result in the data["result"] field.
 ---@param webview_id number The webview id
 ---@param code string The java script code to evaluate
----@return  number The id number of the request
+---@return number The id number of the request
 function webview.eval(webview_id, code) end
 ---Returns the visibility state of the webview.
 ---@param webview_id number The webview id (returned by the webview.create() call)
----@return  number Returns 0 if not visible, 1 if it is visible
+---@return number Returns 0 if not visible, 1 if it is visible
 function webview.is_visible(webview_id) end
 ---Opens a web page in the webview, using an url. Once the request is done, the
 ---callback (registered in webview.create()) is invoked.
 ---@param webview_id number The webview id
 ---@param url string The url to open
 ---@param options table A table of options for the request. Currently it holds these options
----@return  number The id number of the request
+---@return number The id number of the request
 function webview.open(webview_id, url, options) end
 ---Opens a web page in the webview, using html data. Once the request is done,
 ---the callback (registered in webview.create()) is invoked.
 ---@param webview_id number The webview id
 ---@param html string The html data to display
 ---@param options table A table of options for the request. See webview.open()
----@return  number The id number of the request
+---@return number The id number of the request
 function webview.open_raw(webview_id, html, options) end
 ---Sets the position and size of the webview
 ---@param webview_id number The webview id (returned by the webview.create() call)
@@ -51,5 +51,7 @@ function webview.set_position(webview_id, x, y, width, height) end
 ---@param webview_id number The webview id (returned by the 
 ---@param visible number If 0, hides the webview. If non zero, shows the view
 function webview.set_visible(webview_id, visible) end
+
+
 
 return webview

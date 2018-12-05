@@ -130,4 +130,6 @@ function math.tan(x) end
 ---@param x x
 function math.tanh(x) end
 
+
+
 return math

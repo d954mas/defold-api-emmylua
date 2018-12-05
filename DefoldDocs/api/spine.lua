@@ -12,7 +12,7 @@ function spine.cancel(url) end
 ---Game objects corresponding to a spine model skeleton bone can not be individually deleted.
 ---@param url string | hash | url the spine model to query
 ---@param bone_id string | hash id of the corresponding bone
----@return  hash id of the game object
+---@return hash id of the game object
 function spine.get_go(url, bone_id) end
 ---Plays a specified animation on a spine model component with specified playback
 ---mode and parameters.
@@ -76,5 +76,7 @@ function spine.set_ik_target_position(url, ik_constraint_id, position) end
 ---@param spine_skin string | hash spine skin id
 ---@param spine_slot string | hash optional slot id to only change a specific slot
 function spine.set_skin(url, spine_skin, spine_slot) end
+
+
 
 return spine

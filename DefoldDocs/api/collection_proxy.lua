@@ -11,7 +11,9 @@ collectionproxy = {}
 ---check whether or not there are any missing resources in a collection proxy
 ---before attempting to load the collection proxy.
 ---@param collectionproxy url the collectionproxy to check for missing resources.
----@return  table the missing resources
+---@return table the missing resources
 function collectionproxy.missing_resources(collectionproxy) end
+
+
 
 return collectionproxy

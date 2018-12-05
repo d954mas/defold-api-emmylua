@@ -9,10 +9,10 @@ tilemap = {}
 ---The resulting values take all tile map layers into account, meaning that
 ---the bounds are calculated as if all layers were collapsed into one.
 ---@param url string | hash | url the tile map
----@return  number x coordinate of the bottom left corner
----@return  number y coordinate of the bottom left corner
----@return  number number of columns (width) in the tile map
----@return  number number of rows (height) in the tile map
+---@return number x coordinate of the bottom left corner
+---@return number y coordinate of the bottom left corner
+---@return number number of columns (width) in the tile map
+---@return number number of rows (height) in the tile map
 function tilemap.get_bounds(url) end
 ---Get the tile set at the specified position in the tilemap.
 ---The position is identified by the tile index starting at origo
@@ -23,7 +23,7 @@ function tilemap.get_bounds(url) end
 ---@param layer string | hash name of the layer for the tile
 ---@param x number x-coordinate of the tile
 ---@param y number y-coordinate of the tile
----@return  number index of the tile
+---@return number index of the tile
 function tilemap.get_tile(url, layer, x, y) end
 ---Resets a shader constant for a tile map component.
 ---The constant must be defined in the material assigned to the tile map.
@@ -69,5 +69,7 @@ function tilemap.set_constant(url, constant, value) end
 ---@param h_flipped boolean optional if the tile should be horizontally flipped
 ---@param v_flipped boolean optional i the tile should be vertically flipped
 function tilemap.set_tile(url, layer, x, y, tile, h_flipped, v_flipped) end
+
+
 
 return tilemap

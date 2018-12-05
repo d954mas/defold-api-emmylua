@@ -158,6 +158,23 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Registers an activity result callback. Multiple listeners are allowed.</p>", 
+      "parameters": [
+        {
+          "doc": "<p>listener</p>", 
+          "name": "[type:OnActivityResult]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>register Android activity result callback</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "RegisterAndroidOnActivityResultListener"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)</p>\n<p>This function is only available on iOS. <span class=\"icon-ios\"></span></p>", 
       "parameters": [
         {
@@ -172,6 +189,23 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "RegisteriOSUIApplicationDelegate"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Unregisters an activity result callback</p>", 
+      "parameters": [
+        {
+          "doc": "<p>listener</p>", 
+          "name": "[type:OnActivityResult]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>unregister Android activity result callback</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "UnregisterAndroidOnActivityResultListener"
     }, 
     {
       "replaces": "", 

@@ -49,7 +49,7 @@ function iap.buy_premium() end
 ---The transaction.state field must equal iap.TRANS_STATE_PURCHASED.
 ---@param transaction table transaction table parameter as supplied in listener callback
 function iap.finish(transaction) end
----@return  constant provider id.
+---@return constant provider id.
 function iap.get_provider_id() end
 --- Checks if a license for the game has been purchased by the user.
 ---You should provide a callback function that will be called with the result of the check.
@@ -82,7 +82,7 @@ function iap.has_premium(callback) end
 ---@param callback function(self, products, error) result callback
 function iap.list(ids, callback) end
 ---Restore previously purchased products.
----@return  boolean 
+---@return boolean 
 function iap.restore() end
 ---Set the callback function to receive purchase transaction events. Transactions are
 ---described as a table with the following fields:
@@ -131,5 +131,7 @@ function iap.restore() end
 
 ---@param listener function(self, transaction, error) listener callback function. Pass an empty function if you no longer wish to receive callbacks.
 function iap.set_listener(listener) end
+
+
 
 return iap

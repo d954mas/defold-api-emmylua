@@ -2,8 +2,12 @@
 ---Functions and constants to access resources.
 ---@class resource
 resource = {}
+---LIVEUPDATE_BUNDLED_RESOURCE_MISMATCH
+resource.LIVEUPDATE_BUNDLED_RESOURCE_MISMATCH = nil
 ---LIVEUPDATE_ENGINE_VERSION_MISMATCH
 resource.LIVEUPDATE_ENGINE_VERSION_MISMATCH = nil
+---LIVEUPDATE_FORMAT_ERROR
+resource.LIVEUPDATE_FORMAT_ERROR = nil
 ---LIVEUPDATE_INVALID_RESOURCE
 resource.LIVEUPDATE_INVALID_RESOURCE = nil
 ---LIVEUPDATE_OK
@@ -23,11 +27,11 @@ resource.TEXTURE_FORMAT_RGBA = nil
 ---2D texture type
 resource.TEXTURE_TYPE_2D = nil
 ---Return a reference to the Manifest that is currently loaded.
----@return  number reference to the Manifest that is currently loaded
+---@return number reference to the Manifest that is currently loaded
 function resource.get_current_manifest() end
 ---Loads the resource data for a specific resource.
 ---@param path string The path to the resource
----@return  buffer Returns the buffer stored on disc
+---@return buffer Returns the buffer stored on disc
 function resource.load(path) end
 ---Sets the resource data for a specific resource
 ---@param path string | hash The path to the resource
@@ -56,5 +60,7 @@ function resource.store_manifest(manifest_buffer, callback) end
 ---@param hexdigest string The expected hash for the resource, retrieved through collectionproxy.missing_resources.
 ---@param callback function(self, hexdigest, status) The callback function that is executed once the engine has been attempted to store the resource.
 function resource.store_resource(manifest_reference, data, hexdigest, callback) end
+
+
 
 return resource

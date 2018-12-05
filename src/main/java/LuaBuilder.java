@@ -6,12 +6,14 @@ import org.jsoup.helper.StringUtil;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
+import org.jsoup.select.Elements;
 import org.jsoup.select.NodeTraversor;
 import org.jsoup.select.NodeVisitor;
 
 public class LuaBuilder {
     public String build(DocModel docModel) {
         StringBuilder sb = new StringBuilder();
+        StringBuilder inlineTables = new StringBuilder().append("\n");
         HtmlToPlainText f = new HtmlToPlainText();
         sb.append("---").append(f.getPlainText(docModel.getInfoModel().getBrief())).append("\n");
         sb.append("---").append(f.getPlainText(docModel.getInfoModel().getDescription())).append("\n");
@@ -55,13 +57,37 @@ public class LuaBuilder {
                             types = pm.getName();
                             desc = f.getPlainText(pm.getDoc());
                         }
-                        sb.append("---@return ").append(" ").append(BaseLua.get_param_class(docModel.getInfoModel().getNameSpace(),
-                                em.getName(),types,types));//.append(types);
-                            if (desc.length() >0 && desc.charAt(0) != ' ' ){
-                                sb.append(" ");
+                        //add autocompleate for return tables
+                        String returnName = types;
+                        if (types.equals("table")){
+                            Elements dl =  Jsoup.parseBodyFragment(pm.getDoc()).body().select("dl");
+                            //some table do not have descr
+                            if (dl.first() != null) {
+                                returnName = pm.getFormatName();
+                                inlineTables.append("---@class ").append(returnName).append("\n");
+                                Elements dt = dl.first().select("dt");
+                                Elements dd = dl.select("dd");
+                                for (int i = 0; i < dd.size(); i++) {
+                                    Element dte = dt.get(i);
+                                    Element dde = dd.get(i);
+                                    String name = dte.selectFirst("code").text();
+                                    String type = dde.selectFirst("span").text();
+                                    String inDesc = dde.after("span").text();
+                                    inlineTables.append("---@field ").append(name).append(" ").append(type).append(" ")
+                                            .append(inDesc).append("\n");
+                                }
+                                inlineTables.append("\n");
                             }
-                            sb.append(desc)
-                            .append("\n");
+                            if (pm.getDoc().contains("an array of tables")){
+                                returnName=returnName + "[]";
+                            }
+                        }
+
+                        sb.append("---@return ").append(returnName);
+                        if (desc.length() > 0 && desc.charAt(0) != ' ') {
+                            sb.append(" ");
+                        }
+                        sb.append(desc).append("\n");
                     }
                 }
                 sb.append("function ").append(em.getName()).append("(");
@@ -82,6 +108,9 @@ public class LuaBuilder {
 
             }
         }
+
+        sb.append(inlineTables.toString()).append("\n");
+
         sb.append("\n").append("return ").append(docModel.getInfoModel().getNameSpace());
         return sb.toString();
     }

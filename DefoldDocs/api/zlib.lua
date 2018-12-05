@@ -4,11 +4,13 @@
 zlib = {}
 ---A lua error is raised is on error
 ---@param buf string buffer to deflate
----@return  string deflated buffer
+---@return string deflated buffer
 function zlib.deflate(buf) end
 ---A lua error is raised is on error
 ---@param buf string buffer to inflate
----@return  string inflated buffer
+---@return string inflated buffer
 function zlib.inflate(buf) end
+
+
 
 return zlib

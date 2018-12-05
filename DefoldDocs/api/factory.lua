@@ -22,14 +22,14 @@ factory.STATUS_UNLOADED = nil
 ---@param rotation quaternion the rotation of the new game object, the rotation of the game object calling 
 ---@param properties table the properties defined in a script attached to the new game object.
 ---@param scale number | vector3 the scale of the new game object (must be greater than 0), the scale of the game object containing the factory is used by default, or if the value is 
----@return  hash the global id of the spawned game object
+---@return hash the global id of the spawned game object
 function factory.create(url, position, rotation, properties, scale) end
 ---This returns status of the factory.
 ---
 ---Calling this function when the factory is not marked as dynamic loading always returns
 ---factory.STATUS_LOADED.
 ---@param url string | hash | url the factory component to get status from
----@return  constant status of the factory component
+---@return constant status of the factory component
 function factory.get_status(url) end
 ---Resources are referenced by the factory component until the existing (parent) collection is destroyed or factory.unload is called.
 ---
@@ -42,5 +42,7 @@ function factory.load(url, complete_function) end
 ---Calling this function when the factory is not marked as dynamic loading does nothing.
 ---@param url string | hash | url the factory component to unload
 function factory.unload(url) end
+
+
 
 return factory

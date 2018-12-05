@@ -72,7 +72,7 @@ render.WRAP_REPEAT = nil
 ---@param buffers table table with keys specifying which buffers to clear and values set to clear values. Available keys are:
 function render.clear(buffers) end
 ---Constant buffers are used to set shader program variables and are optionally passed to the render.draw() function. The buffer's constant elements can be indexed like an ordinary Lua table, but you can't iterate over them with pairs() or ipairs().
----@return  constant_buffer new constant buffer
+---@return constant_buffer new constant buffer
 function render.constant_buffer() end
 ---Deletes a previously created render target.
 ---@param render_target render_target render target to delete
@@ -117,32 +117,32 @@ function render.enable_texture(unit, render_target, buffer_type) end
 ---Returns the logical window height that is set in the "game.project" settings.
 ---Note that the actual window pixel size can change, either by device constraints
 ---or user input.
----@return  number specified window height
+---@return number specified window height
 function render.get_height() end
 ---Returns the specified buffer height from a render target.
 ---@param render_target render_target render target from which to retrieve the buffer height
 ---@param buffer_type constant which type of buffer to retrieve the height from
----@return  number the height of the render target buffer texture
+---@return number the height of the render target buffer texture
 function render.get_render_target_height(render_target, buffer_type) end
 ---Returns the specified buffer width from a render target.
 ---@param render_target render_target render target from which to retrieve the buffer width
 ---@param buffer_type constant which type of buffer to retrieve the width from
----@return  number the width of the render target buffer texture
+---@return number the width of the render target buffer texture
 function render.get_render_target_width(render_target, buffer_type) end
 ---Returns the logical window width that is set in the "game.project" settings.
 ---Note that the actual window pixel size can change, either by device constraints
 ---or user input.
----@return  number specified window width (number)
+---@return number specified window width (number)
 function render.get_width() end
 ---Returns the actual physical window height.
 ---Note that this value might differ from the logical height that is set in the
 ---"game.project" settings.
----@return  number actual window height
+---@return number actual window height
 function render.get_window_height() end
 ---Returns the actual physical window width.
 ---Note that this value might differ from the logical width that is set in the
 ---"game.project" settings.
----@return  number actual window width
+---@return number actual window width
 function render.get_window_width() end
 ---This function returns a new render predicate for objects with materials matching
 ---the provided material tags. The provided tags are combined into a bit mask
@@ -151,7 +151,7 @@ function render.get_window_width() end
 ---
 ---The current limit to the number of tags that can be defined is 32.
 ---@param tags table table of tags that the predicate should match. The tags can be of either hash or string type
----@return  predicate new predicate
+---@return predicate new predicate
 function render.predicate(tags) end
 ---Creates a new render target according to the supplied
 ---specification table.
@@ -170,7 +170,7 @@ function render.predicate(tags) end
 ---v_wrap                        render.WRAP_CLAMP_TO_BORDERrender.WRAP_CLAMP_TO_EDGErender.WRAP_MIRRORED_REPEATrender.WRAP_REPEAT
 ---@param name string render target name
 ---@param parameters table table of buffer parameters, see the description for available keys and values
----@return  render_target new render target
+---@return render_target new render target
 function render.render_target(name, parameters) end
 ---Specifies the arithmetic used when computing pixel values that are written to the frame
 ---buffer. In RGBA mode, pixels can be drawn using a function that blends the source RGBA
@@ -413,5 +413,7 @@ function render.set_view(matrix) end
 ---@param width number viewport width
 ---@param height number viewport height
 function render.set_viewport(x, y, width, height) end
+
+
 
 return render

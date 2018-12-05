@@ -95,6 +95,18 @@
       "description": "", 
       "parameters": [], 
       "returnvalues": [], 
+      "brief": "<p>The max number of sysfields.</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "crash.SYSFIELD_MAX"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
       "brief": "<p>system name as reported by sys.get_sys_info</p>", 
       "examples": "", 
       "members": [], 
@@ -125,6 +137,30 @@
       "error": "", 
       "type": "VARIABLE", 
       "name": "crash.SYSFIELD_TERRITORY"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>The max number of user fields.</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "crash.USERFIELD_MAX"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>The max size of a single user field.</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "crash.USERFIELD_SIZE"
     }, 
     {
       "replaces": "", 
@@ -223,13 +259,13 @@
           "name": "handle"
         }, 
         {
-          "doc": "<p><span class=\"type\">number</span> system field enum</p>", 
+          "doc": "<p><span class=\"type\">number</span> system field enum. Must be less than <a href=\"/ref/ crash# crash.SYSFIELD_MAX\"> crash.SYSFIELD_MAX</a></p>", 
           "name": "index"
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">string</span> value recorded in the crash dump</p>", 
+          "doc": "<p><span class=\"type\">string</span> value recorded in the crash dump, or nil if it didn't exist</p>", 
           "name": "value"
         }
       ], 

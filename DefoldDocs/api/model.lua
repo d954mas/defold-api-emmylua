@@ -11,7 +11,7 @@ function model.cancel(url) end
 ---Game objects corresponding to a model skeleton bone can not be individually deleted.
 ---@param url string | hash | url the model to query
 ---@param bone_id string | hash id of the corresponding bone
----@return  hash id of the game object
+---@return hash id of the game object
 function model.get_go(url, bone_id) end
 ---Plays an animation on a model component with specified playback
 ---mode and parameters.
@@ -53,5 +53,7 @@ function model.reset_constant(url, constant) end
 ---@param constant string | hash name of the constant
 ---@param value vector4 value of the constant
 function model.set_constant(url, constant, value) end
+
+
 
 return model

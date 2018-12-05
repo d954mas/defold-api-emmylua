@@ -11,7 +11,7 @@ profiler = {}
 ---by default in the debug version of the engine. It can be enabled in release version as well
 ---by checking track_cpu under profiler in the game.project file.
 ---(This means that the engine will sample the CPU usage in intervalls during execution even in release mode.)
----@return  number of CPU used by the application
+---@return number of CPU used by the application
 function profiler.get_cpu_usage() end
 ---Get the amount of memory used (resident/working set) by the application in bytes, as reported by the OS.
 ---
@@ -23,7 +23,9 @@ function profiler.get_cpu_usage() end
 --- iOS MacOSAndrod Linux <https://en.wikipedia.org/wiki/Resident_set_size>        Resident memory
 --- Windows <https://en.wikipedia.org/wiki/Working_set>                      Working set
 --- HTML5                         Not available
----@return  number used by the application
+---@return number used by the application
 function profiler.get_memory_usage() end
+
+
 
 return profiler

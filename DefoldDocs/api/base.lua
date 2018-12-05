@@ -9,17 +9,7 @@
 ---@field z number
 ---@field w number
 
----@class SysInfo
----@field device_model string 
----@field manufacturer string
----@field system_name string
----@field system_version string
----@field api_version string
----@field language string
----@field device_language string
----@field territory string
----@field gmt_offset string
----@field device_ident string
----@field ad_ident string
----@field ad_tracking_enabled string
----@field user_agent string
+---@class url
+---@field socket
+---@field path
+---@field fragment

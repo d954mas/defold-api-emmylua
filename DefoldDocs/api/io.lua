@@ -213,4 +213,6 @@ function io.type(obj) end
 ---@param ... ...
 function io.write(...) end
 
+
+
 return io

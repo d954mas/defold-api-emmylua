@@ -129,4 +129,6 @@ function os.time(table) end
 ---which automatically removes the file when the program ends.
 function os.tmpname() end
 
+
+
 return os
