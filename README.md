@@ -10,7 +10,7 @@ To use Idea with lua and defold your need.
 
 2)Edit file associations. Press ctrl + shift + a. Then enter command Edit file associations. To lua language add .*script .*render_script .*gui_script.
 
-3)Download zip file with defold api from releases.
+3)Download zip file with defold api from [releases](https://github.com/d954mas/IntelliJ-Defold-Api/releases).
 
 4)Add library to your project.
 File/Project structure/libraries/lua zip library.
@@ -19,7 +19,7 @@ File/Project structure/libraries/lua zip library.
 
 # How to generate headers.
 
-1)Download jar from releases
+1)Download jar from [releases](https://github.com/d954mas/IntelliJ-Defold-Api/releases)
 
 2)Run it. It will create a folder DefoldDocs
 
