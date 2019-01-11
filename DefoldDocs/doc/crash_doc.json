@@ -35,18 +35,6 @@
       "description": "", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>device manufacturer as reported by sys.get_sys_info</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "crash.SYSFIELD_DEVICE_MANUFACTURER"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
       "brief": "<p>device model as reported by sys.get_sys_info</p>", 
       "examples": "", 
       "members": [], 
@@ -89,6 +77,18 @@
       "error": "", 
       "type": "VARIABLE", 
       "name": "crash.SYSFIELD_LANGUAGE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>device manufacturer as reported by sys.get_sys_info</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "crash.SYSFIELD_MANUFACTURER"
     }, 
     {
       "replaces": "", 

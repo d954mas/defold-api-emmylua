@@ -15,5 +15,18 @@ public class BaseLua {
             "---@class url\n"+
             "---@field socket\n"+
             "---@field path\n"+
-            "---@field fragment\n";
+            "---@field fragment\n"
+            + "\n" +
+            "--- Calls error if the value of its argument `v` is false (i.e., **nil** or\n" +
+            "--- **false**); otherwise, returns all its arguments. In case of error,\n" +
+            "--- `message` is the error object; when absent, it defaults to \"assertion\n" +
+            "--- failed!\"\n" +
+            "---@generic ANY\n" +
+            "---@overload fun(v:any):any\n" +
+            "---@param v ANY\n" +
+            "---@param message string\n" +
+            "---@return ANY\n" +
+            "function assert(v,message)" +
+            " return v " +
+            "end";
 }

@@ -46,6 +46,7 @@ public class Main {
         IGNORE_DOCS.add("package_doc.json");
         IGNORE_DOCS.add("sharedlibrary_doc.json");
         IGNORE_DOCS.add("table_doc.json");
+        IGNORE_DOCS.add("string_doc.json"); //lua plugin already have it
     }
 
     private static void clearFolder(File folder) {
