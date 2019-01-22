@@ -149,7 +149,7 @@ function render.get_window_width() end
 ---for the predicate. If multiple tags are provided, the predicate matches materials
 ---with all tags ANDed together.
 ---
----The current limit to the number of tags that can be defined is 32.
+---The current limit to the number of tags that can be defined is 64.
 ---@param tags table table of tags that the predicate should match. The tags can be of either hash or string type
 ---@return predicate new predicate
 function render.predicate(tags) end

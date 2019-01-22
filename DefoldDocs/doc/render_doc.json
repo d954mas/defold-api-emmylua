@@ -1076,7 +1076,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>This function returns a new render predicate for objects with materials matching\nthe provided material tags. The provided tags are combined into a bit mask\nfor the predicate. If multiple tags are provided, the predicate matches materials\nwith all tags ANDed together.</p>\n<p>The current limit to the number of tags that can be defined is <code>32</code>.</p>", 
+      "description": "<p>This function returns a new render predicate for objects with materials matching\nthe provided material tags. The provided tags are combined into a bit mask\nfor the predicate. If multiple tags are provided, the predicate matches materials\nwith all tags ANDed together.</p>\n<p>The current limit to the number of tags that can be defined is <code>64</code>.</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">table</span> table of tags that the predicate should match. The tags can be of either hash or string type</p>", 
