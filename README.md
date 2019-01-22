@@ -15,6 +15,8 @@ To use Idea with lua and defold your need.
 4)Add library to your project.
 File/Project structure/libraries/lua zip library.
 
+![2019-01-22_10-13-33](https://user-images.githubusercontent.com/2655263/51518291-7e6e5680-1e2e-11e9-81ad-9988cf9918ae.png)
+
 5)Use it 
 
 # How to generate headers.
