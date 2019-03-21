@@ -10,6 +10,8 @@ facebook.AUDIENCE_FRIENDS = nil
 facebook.AUDIENCE_NONE = nil
 ---publish permission to reach only me (private to current user)
 facebook.AUDIENCE_ONLYME = nil
+---log this event when a person achieves specific levels you define within your application, business, or organization
+facebook.EVENT_ACHIEVED_LEVEL = nil
 ---log this event when the user has entered their payment info
 facebook.EVENT_ADDED_PAYMENT_INFO = nil
 ---log this event when the user has added an item to their cart

@@ -8,6 +8,23 @@
   "elements": [
     {
       "replaces": "", 
+      "description": "<p>Terminates the game application and reports the specified <code>code</code> to the OS.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> exit code to report to the OS, 0 means clean exit</p>", 
+          "name": "code"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>exits application</p>", 
+      "examples": "<p>This examples demonstrates how to exit the application when some kind of quit messages is received (maybe from gui or similar):</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">quit&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">exit</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "exit"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Terminates the game application and reports the specified <code>code</code> to the OS.\nThis message can only be sent to the designated <code>@system</code> socket.</p>", 
       "parameters": [
         {
@@ -22,6 +39,43 @@
       "error": "", 
       "type": "MESSAGE", 
       "name": "exit"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Reboots the game engine with a specified set of arguments.\nArguments will be translated into command line arguments. Calling reboot\nfunction is equivalent to starting the engine with the same arguments.</p>\n<p>On startup the engine reads configuration from \"game.project\" in the\nproject root.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string</span> argument 1</p>", 
+          "name": "arg1"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> argument 2</p>", 
+          "name": "arg2"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> argument 3</p>", 
+          "name": "arg3"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> argument 4</p>", 
+          "name": "arg4"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> argument 5</p>", 
+          "name": "arg5"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> argument 6</p>", 
+          "name": "arg6"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>reboot engine with arguments</p>", 
+      "examples": "<p>How to reboot engine with a specific bootstrap collection.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;</span><span class=\"s\">--config=bootstrap.main_collection=/my.collectionc&#39;</span>\n<span class=\"kd\">local</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;</span><span class=\"s\">build/default/game.projectc&#39;</span>\n<span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">reboot</span><span class=\"p\">(</span><span class=\"n\">arg1</span><span class=\"p\">,</span> <span class=\"n\">arg2</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "reboot"
     }, 
     {
       "replaces": "", 
@@ -62,6 +116,23 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.</p>", 
+      "parameters": [
+        {
+          "doc": "<p>target frequency. 60 for 60 fps</p>", 
+          "name": "frequency"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set update frequency</p>", 
+      "examples": "<p>Setting the update frequency to 60 frames per second</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_update_frequency</span><span class=\"p\">(</span><span class=\"mi\">60</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "set_update_frequency"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.</p>\n<p>This message can only be sent to the designated <code>@system</code> socket.</p>", 
       "parameters": [
         {
@@ -96,7 +167,24 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Starts video recording of the game frame-buffer to file. Current video format is the\nopen vp8 codec in the ivf container. It's possible to upload this format directly\nto YouTube. The VLC video player has native support but with the known issue that\nnot the entire file is played back. It's probably an issue with VLC.\nThe Miro Video Converter has support for vp8/ivf.</p>\n<p><span class=\"icon-macos\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span> Video recording is only supported on desktop platforms.</p>\n<p><span class=\"icon-attention\"></span> Audio is currently not supported</p>\n<p>This message can only be sent to the designated <code>@system</code> socket.</p>", 
+      "description": "<p>Set the vsync swap interval. The interval with which to swap the front and back buffers\nin sync with vertical blanks (v-blank), the hardware event where the screen image is updated\nwith data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of\n2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank\nbefore swapping the buffers. Default value is 1.</p>\n<p>When setting the swap interval to 0 and having <code>vsync</code> disabled in\n\"game.project\", the engine will try to respect the set frame cap value from\n\"game.project\" in software instead.</p>\n<p>This setting may be overridden by driver settings.</p>", 
+      "parameters": [
+        {
+          "doc": "<p>target swap interval.</p>", 
+          "name": "swap_interval"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set vsync swap interval</p>", 
+      "examples": "<p>Setting the swap intervall to swap every v-blank</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_vsync_swap_interval</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "set_vsync_swap_interval"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Starts video recording of the game frame-buffer to file. Current video format is the\nopen vp8 codec in the ivf container. It's possible to upload this format directly\nto YouTube. The VLC video player has native support but with the known issue that\nnot the entire file is played back. It's probably an issue with VLC.\nThe Miro Video Converter has support for vp8/ivf.</p>\n<p><span class=\"icon-macos\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span> Video recording is only supported on desktop platforms.</p>\n<p><span class=\"icon-attention\"></span> Audio is currently not supported</p>\n<p><span class=\"icon-attention\"></span> Window width and height must be a multiple of 8 to be able to record video.</p>\n<p>This message can only be sent to the designated <code>@system</code> socket.</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">string</span> file name to write the video to</p>", 
@@ -355,7 +443,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Loads a custom resource. Specify the full filename of the resource that you want\nto load. When loaded, the file data is returned as a string.\nIf loading fails, the function returns nil.</p>\n<p>In order for the engine to include custom resources in the build process, you need\nto specify them in the \"custom_resources\" key in your \"game.project\" settings file.\nYou can specify single resource files or directories. If a directory is is included\nin the resource list, all files and directories in that directory is recursively\nincluded:</p>\n<p>For example \"main/data/,assets/level_data.json\".</p>", 
+      "description": "<p>Loads a custom resource. Specify the full filename of the resource that you want\nto load. When loaded, the file data is returned as a string.\nIf loading fails, the function returns nil.</p>\n<p>In order for the engine to include custom resources in the build process, you need\nto specify them in the \"custom_resources\" key in your \"game.project\" settings file.\nYou can specify single resource files or directories. If a directory is included\nin the resource list, all files and directories in that directory is recursively\nincluded:</p>\n<p>For example \"main/data/,assets/level_data.json\".</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">string</span> resource to load, full path</p>", 

@@ -121,7 +121,7 @@
       "members": [], 
       "error": "", 
       "type": "MACRO", 
-      "name": "DM_PLATFORM_WIN32"
+      "name": "DM_PLATFORM_WINDOWS"
     }, 
     {
       "replaces": "", 
@@ -149,7 +149,7 @@
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>onActivityResult callback typedef</p>", 
+      "brief": "<p>OnActivityResult callback typedef</p>", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -162,7 +162,7 @@
       "parameters": [
         {
           "doc": "<p>listener</p>", 
-          "name": "[type:OnActivityResult]"
+          "name": "[type:dmExtension::OnActivityResult]"
         }
       ], 
       "returnvalues": [], 
@@ -184,7 +184,7 @@
       ], 
       "returnvalues": [], 
       "brief": "<p>Register application delegate</p>", 
-      "examples": "<p>```cpp</p>\n<p>// myextension_ios.mm</p>\n<p>id<UIApplicationDelegate> g_MyApplicationDelegate;</p>", 
+      "examples": "<p>```objective-c</p>\n<p>// myextension_ios.mm</p>\n<p>id<UIApplicationDelegate> g_MyApplicationDelegate;</p>", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 
@@ -196,7 +196,7 @@
       "parameters": [
         {
           "doc": "<p>listener</p>", 
-          "name": "[type:OnActivityResult]"
+          "name": "[type:dmExtension::OnActivityResult]"
         }
       ], 
       "returnvalues": [], 

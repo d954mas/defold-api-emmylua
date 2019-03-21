@@ -1,0 +1,203 @@
+{
+  "info": {
+    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/json.h&gt;</span></p>\n<p>API for platform independent parsing of json files</p>", 
+    "namespace": "dmJson", 
+    "name": "Json", 
+    "brief": "<p>SDK Json Parser API documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Deallocates a previously created dmJson::Document</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmJson::Document*</span> The document</p>", 
+          "name": "document"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>deallocates json document</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "Free"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Parses an (utf-8) string into a dmJson::Document\nThe document must later be freed with dmJson::Free()</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const char*</span> The input data (Utf-8)</p>", 
+          "name": "buffer"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">uint32_t</span> The size of the json buffer (in bytes)</p>", 
+          "name": "buffer_length"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmJson::Document*</span> The output document</p>", 
+          "name": "document"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "dmJson::RESULT_OK"
+        }
+      ], 
+      "brief": "<p>parse json data</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "Parse"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Parses a null terminated (utf-8) string into a dmJson::Document\nThe document must later be freed with dmJson::Free()</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">const char*</span> The input data (Utf-8)</p>", 
+          "name": "buffer"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmJson::Document*</span> The output document</p>", 
+          "name": "document"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>on success</p>", 
+          "name": "dmJson::RESULT_OK"
+        }
+      ], 
+      "brief": "<p>parse json data</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "Parse"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Holds a full json document</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>Json document</p>", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "<p><span class=\"type\">dmJson::Node</span> Array of nodes. First node is root</p>", 
+          "name": "m_Nodes"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Total number of nodes</p>", 
+          "name": "m_NodeCount"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">char*</span> Json-data (unescaped)</p>", 
+          "name": "m_Json"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">void*</span> User-data</p>", 
+          "name": "m_UserData"
+        }
+      ], 
+      "error": "", 
+      "type": "STRUCT", 
+      "name": "dmJson::Document"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Nodes are in depth-first order with sibling\nlinks for simplified traversal.</p>\n<p>NOTE: Siblings were added to support a read-only\nlua-view of json-data. It's currently not used and\ncould potentially be removed for increased performance.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>Json node representation.</p>", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "<p><span class=\"type\">dmJson::Type</span> Node type</p>", 
+          "name": "m_Type"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Start index inclusive into document json-data</p>", 
+          "name": "m_Start"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> End index exclusive into document json-data</p>", 
+          "name": "m_End"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Size. Only applicable for arrays and objects</p>", 
+          "name": "m_Size"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Sibling index. -1 if no sibling</p>", 
+          "name": "m_Sibling"
+        }
+      ], 
+      "error": "", 
+      "type": "STRUCT", 
+      "name": "dmJson::Node"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Result enumeration.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>result enumeration</p>", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "name": "dmJson::RESULT_OK"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmJson::RESULT_SYNTAX_ERROR"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmJson::RESULT_INCOMPLETE"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmJson::RESULT_UNKNOWN"
+        }
+      ], 
+      "error": "", 
+      "type": "ENUM", 
+      "name": "dmJson::Result"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Token type enumeration.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>token type enumeration</p>", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "<p>Number or boolean</p>", 
+          "name": "dmJson::TYPE_PRIMITIVE"
+        }, 
+        {
+          "doc": "<p>Json object</p>", 
+          "name": "dmJson::TYPE_OBJECT"
+        }, 
+        {
+          "doc": "<p>Json array</p>", 
+          "name": "dmJson::TYPE_ARRAY"
+        }, 
+        {
+          "doc": "<p>String</p>", 
+          "name": "dmJson::TYPE_STRING"
+        }
+      ], 
+      "error": "", 
+      "type": "ENUM", 
+      "name": "dmJson::Type"
+    }
+  ]
+}

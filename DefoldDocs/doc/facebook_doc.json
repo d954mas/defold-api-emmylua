@@ -59,6 +59,18 @@
       "description": "", 
       "parameters": [], 
       "returnvalues": [], 
+      "brief": "<p>log this event when a person achieves specific levels you define within your application, business, or organization</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "facebook.EVENT_ACHIEVED_LEVEL"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
       "brief": "<p>log this event when the user has entered their payment info</p>", 
       "examples": "", 
       "members": [], 
@@ -583,7 +595,7 @@
       "description": "<p>This function will post an event to Facebook Analytics where it can be used\nin the Facebook Insights system.</p>", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">constant | string</span> An event can either be one of the predefined\nconstants below or a text string which can be used to define a custom event that is\nregistered with Facebook Analytics.</p>\n<ul>\n<li><code>facebook.EVENT_ACHIEVED_LEVEL</code></li>\n<li><code>facebook.EVENT_ACTIVATED_APP</code></li>\n<li><code>facebook.EVENT_ADDED_PAYMENT_INFO</code></li>\n<li><code>facebook.EVENT_ADDED_TO_CART</code></li>\n<li><code>facebook.EVENT_ADDED_TO_WISHLIST</code></li>\n<li><code>facebook.EVENT_COMPLETED_REGISTRATION</code></li>\n<li><code>facebook.EVENT_COMPLETED_TUTORIAL</code></li>\n<li><code>facebook.EVENT_DEACTIVATED_APP</code></li>\n<li><code>facebook.EVENT_INITIATED_CHECKOUT</code></li>\n<li><code>facebook.EVENT_PURCHASED</code></li>\n<li><code>facebook.EVENT_RATED</code></li>\n<li><code>facebook.EVENT_SEARCHED</code></li>\n<li><code>facebook.EVENT_SESSION_INTERRUPTIONS</code></li>\n<li><code>facebook.EVENT_SPENT_CREDITS</code></li>\n<li><code>facebook.EVENT_TIME_BETWEEN_SESSIONS</code></li>\n<li><code>facebook.EVENT_UNLOCKED_ACHIEVEMENT</code></li>\n<li><code>facebook.EVENT_VIEWED_CONTENT</code></li>\n</ul>", 
+          "doc": "<p><span class=\"type\">constant | string</span> An event can either be one of the predefined\nconstants below or a text string which can be used to define a custom event that is\nregistered with Facebook Analytics.</p>\n<ul>\n<li><code>facebook.EVENT_ACHIEVED_LEVEL</code></li>\n<li><code>facebook.EVENT_ADDED_PAYMENT_INFO</code></li>\n<li><code>facebook.EVENT_ADDED_TO_CART</code></li>\n<li><code>facebook.EVENT_ADDED_TO_WISHLIST</code></li>\n<li><code>facebook.EVENT_COMPLETED_REGISTRATION</code></li>\n<li><code>facebook.EVENT_COMPLETED_TUTORIAL</code></li>\n<li><code>facebook.EVENT_INITIATED_CHECKOUT</code></li>\n<li><code>facebook.EVENT_PURCHASED</code></li>\n<li><code>facebook.EVENT_RATED</code></li>\n<li><code>facebook.EVENT_SEARCHED</code></li>\n<li><code>facebook.EVENT_SPENT_CREDITS</code></li>\n<li><code>facebook.EVENT_TIME_BETWEEN_SESSIONS</code></li>\n<li><code>facebook.EVENT_UNLOCKED_ACHIEVEMENT</code></li>\n<li><code>facebook.EVENT_VIEWED_CONTENT</code></li>\n</ul>", 
           "name": "event"
         }, 
         {

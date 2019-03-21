@@ -59,6 +59,14 @@ function os.execute(command) end
 ---with an optional code,
 ---to terminate the host program.
 ---The default value for code is the success code.
+---
+---Calling os.exit will do a hard exit which will not run
+---the engine shutdown code. This may cause crashes on exit.
+---
+---The recommended way to terminate your game is by using
+---the exit message which does a graceful shutdown.
+---
+---msg.post("@system:", "exit", {code = 0})
 ---@param code code
 function os.exit(code) end
 ---Returns the value of the process environment variable varname,

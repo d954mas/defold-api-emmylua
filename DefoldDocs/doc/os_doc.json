@@ -79,7 +79,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Calls the C function exit,\nwith an optional code,\nto terminate the host program.\nThe default value for code is the success code.</p>", 
+      "description": "<p>Calls the C function exit,\nwith an optional code,\nto terminate the host program.\nThe default value for code is the success code.</p>\n<p>Calling os.exit will do a hard exit which will not run\nthe engine shutdown code. This may cause crashes on exit.</p>\n<p>The recommended way to terminate your game is by using\nthe exit message which does a graceful shutdown.</p>\n<p><code>msg.post(\"@system:\", \"exit\", {code = 0})</code></p>", 
       "parameters": [
         {
           "doc": "", 

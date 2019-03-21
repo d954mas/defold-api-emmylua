@@ -55,7 +55,7 @@
           "name": "[position]"
         }, 
         {
-          "doc": "<p><span class=\"type\">quaternion</span> the rotation of the new game object, the rotation of the game object calling <code>factory.create()</code> is is used by default, or if the value is <code>nil</code>.</p>", 
+          "doc": "<p><span class=\"type\">quaternion</span> the rotation of the new game object, the rotation of the game object calling <code>factory.create()</code> is used by default, or if the value is <code>nil</code>.</p>", 
           "name": "[rotation]"
         }, 
         {

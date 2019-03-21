@@ -196,6 +196,12 @@ function go.property(name, value) end
 ---@param property string | hash id of the property to set
 ---@param value any the value to set
 function go.set(url, property, value) end
+---Sets the parent for a game object instance. This means that the instance will exist in the geometrical space of its parent,
+---like a basic transformation hierarchy or scene graph. If no parent is specified, the instance will be detached from any parent and exist in world space.
+---@param id string | hash | url optional id of the game object instance to set parent for, defaults to the instance containing the calling script
+---@param parent_id string | hash | url optional id of the new parent game object, defaults to detaching game object from its parent
+---@param keep_world_transform boolean optional boolean, set to true to maintain the world transform when changing spaces. Defaults to false.
+function go.set_parent(id, parent_id, keep_world_transform) end
 ---The position is relative to the parent (if any). The global world position cannot be manually set.
 ---@param position vector3 position to set
 ---@param id string | hash | url optional id of the game object instance to set the position for, by default the instance of the calling script
@@ -240,9 +246,9 @@ function init(self) end
 ---
 ---Field                         Description
 ---value                         The amount of input given by the user. This is usually 1 for buttons and 0-1 for analogue inputs. This is not present for mouse movement.
----pressed                       If the input was pressed this frame, 0 for false and 1 for true. This is not present for mouse movement.
----released                      If the input was released this frame, 0 for false and 1 for true. This is not present for mouse movement.
----repeated                      If the input was repeated this frame, 0 for false and 1 for true. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement.
+---pressed                       If the input was pressed this frame. This is not present for mouse movement.
+---released                      If the input was released this frame. This is not present for mouse movement.
+---repeated                      If the input was repeated this frame. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement.
 ---x                             The x value of a pointer device, if present.
 ---y                             The y value of a pointer device, if present.
 ---screen_x                      The screen space x value of a pointer device, if present.

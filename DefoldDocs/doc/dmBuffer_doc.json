@@ -359,7 +359,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">typedef</span> <span class=\"k\">struct</span> <span class=\"n\">Buffer</span><span class=\"o\">*</span> <span class=\"n\">HBuffer</span><span class=\"p\">;</span>\n</pre></div>", 
+      "description": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">typedef</span> <span class=\"kt\">uint32_t</span> <span class=\"n\">HBuffer</span><span class=\"p\">;</span>\n</pre></div>", 
       "parameters": [], 
       "returnvalues": [], 
       "brief": "<p>HBuffer type definition</p>", 

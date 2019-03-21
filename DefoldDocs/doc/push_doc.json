@@ -267,7 +267,7 @@
       "description": "<p>Sets a listener function to listen to push notifications.</p>", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">function(self, payload, origin, activated)</span> listener callback function.\nPass an empty function if you no longer wish to receive callbacks.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>payload</code></dt>\n<dd><span class=\"type\">function</span> the push payload</dd>\n<dt><code>origin</code></dt>\n<dd><span class=\"type\">constant</span> push.ORIGIN_LOCAL or push.ORIGIN_REMOTE</dd>\n<dt><code>activated</code></dt>\n<dd><span class=\"type\">boolean</span> true or false depending on if the application was\n activated via the notification.</dd>\n</dl>", 
+          "doc": "<p><span class=\"type\">function(self, payload, origin, activated)</span> listener callback function.\nPass an empty function if you no longer wish to receive callbacks.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>payload</code></dt>\n<dd><span class=\"type\">table</span> the push payload</dd>\n<dt><code>origin</code></dt>\n<dd><span class=\"type\">constant</span> push.ORIGIN_LOCAL or push.ORIGIN_REMOTE</dd>\n<dt><code>activated</code></dt>\n<dd><span class=\"type\">boolean</span> true or false depending on if the application was\n activated via the notification.</dd>\n</dl>", 
           "name": "listener"
         }
       ], 

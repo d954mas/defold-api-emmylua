@@ -167,7 +167,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Checks if background music is playing, e.g. from iTunes.</p>\n<p><span class=\"icon-macos\"></span><span class=\"icon-windows\"></span><span class=\"icon-linux\"></span><span class=\"icon-html5\"></span> On non mobile platforms,\nthis function always return <code>false</code>.</p>", 
+      "description": "<p>Checks if background music is playing, e.g. from iTunes.</p>\n<p><span class=\"icon-macos\"></span><span class=\"icon-windows\"></span><span class=\"icon-linux\"></span><span class=\"icon-html5\"></span> On non mobile platforms,\nthis function always return <code>false</code>.</p>\n<p><span class=\"icon-attention\"></span><span class=\"icon-android\"></span> On Android you can only get a correct reading\nof this state if your game is not playing any sounds itself. This is a limitation\nin the Android SDK. If your game is playing any sounds, <em>even with a gain of zero</em>, this\nfunction will return <code>false</code>.</p>\n<p>The best time to call this function is:</p>\n<ul>\n<li>In the <code>init</code> function of your main collection script before any sounds are triggered</li>\n<li>In a window listener callback when the window.WINDOW_EVENT_FOCUS_GAINED event is received</li>\n</ul>\n<p>Both those times will give you a correct reading of the state even when your application is\nswapped out and in while playing sounds and it works equally well on Android and iOS.</p>", 
       "parameters": [], 
       "returnvalues": [
         {

@@ -745,7 +745,7 @@ function gui.set_yanchor(node, anchor) end
 ---@param type constant keyboard type
 ---@param autoclose boolean if the keyboard should automatically close when clicking outside
 function gui.show_keyboard(type, autoclose) end
----Stops the paricle fx for a gui node
+---Stops the particle fx for a gui node
 ---@param node node node to stop particle fx for
 function gui.stop_particlefx(node) end
 ---This is a callback-function, which is called by the engine when a gui component is initialized. It can be used
@@ -778,9 +778,9 @@ function init(self) end
 ---
 ---Field                         Description
 ---value                         The amount of input given by the user. This is usually 1 for buttons and 0-1 for analogue inputs. This is not present for mouse movement.
----pressed                       If the input was pressed this frame, 0 for false and 1 for true. This is not present for mouse movement.
----released                      If the input was released this frame, 0 for false and 1 for true. This is not present for mouse movement.
----repeated                      If the input was repeated this frame, 0 for false and 1 for true. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement.
+---pressed                       If the input was pressed this frame. This is not present for mouse movement.
+---released                      If the input was released this frame. This is not present for mouse movement.
+---repeated                      If the input was repeated this frame. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement.
 ---x                             The x value of a pointer device, if present.
 ---y                             The y value of a pointer device, if present.
 ---screen_x                      The screen space x value of a pointer device, if present.

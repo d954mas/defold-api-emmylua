@@ -214,11 +214,11 @@ function render.render_target(name, parameters) end
 ---
 --- * Rd = min(kR, Rs * sR + Rd * dR)
 ---
---- * Gd = min(kG, Gs * sG + Gd * dR)
+--- * Gd = min(kG, Gs * sG + Gd * dG)
 ---
 --- * Bd = min(kB, Bs * sB + Bd * dB)
 ---
---- * Ad = min(kA, As * sB + Ad * dA)
+--- * Ad = min(kA, As * sA + Ad * dA)
 ---
 ---
 ---Blend function (render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA) is useful for
