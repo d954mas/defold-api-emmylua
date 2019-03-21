@@ -33,7 +33,7 @@ function profiler.get_cpu_usage() end
 ---@return number used by the application
 function profiler.get_memory_usage() end
 ---Get the number of recorded frames in the on-screen profiler ui recording buffer
----@return [type:number] the number of recorded frames, zero if on-screen profiler is disabled
+---@return number the number of recorded frames, zero if on-screen profiler is disabled
 function profiler.recorded_frame_count() end
 ---Set the on-screen profile mode - run, pause, record or show peak frame
 ---@param mode constant the mode to set the ui profiler in
