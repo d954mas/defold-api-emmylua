@@ -50,6 +50,44 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Convert a dmJson::Document document to Lua table.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmJson::Document</span> JSON document</p>", 
+          "name": "doc"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> index of JSON node</p>", 
+          "name": "index"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">char*</span> if an error is encountered, the error string is written to this argument</p>", 
+          "name": "error_str_out"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">size_t</span> size of error_str_out</p>", 
+          "name": "error_str_size"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">int</span> &lt;0 if it fails. &gt;=0 if it succeeds.</p>", 
+          "name": "int"
+        }
+      ], 
+      "brief": "<p>convert a dmJson::Document to a Lua table</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmJson::Type"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Check if the value in the supplied index on the lua stack is a HBuffer and returns it.</p>", 
       "parameters": [
         {
@@ -73,6 +111,110 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "dmScript::CheckBuffer"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Check if the value in the supplied index on the lua stack is a Vectormath::Aos::Matrix4.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> Lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Index of the value</p>", 
+          "name": "index"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Matrix4</span> The value</p>", 
+          "name": "matrix"
+        }
+      ], 
+      "brief": "<p>check if the value is a Vectormath::Aos::Matrix4</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::CheckMatrix4"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Check if the value in the supplied index on the lua stack is a Vectormath::Aos::Quat.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> Lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Index of the value</p>", 
+          "name": "index"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Quat</span> The value</p>", 
+          "name": "quat"
+        }
+      ], 
+      "brief": "<p>check if the value is a Vectormath::Aos::Vector3</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::CheckQuat"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Check if the value in the supplied index on the lua stack is a Vectormath::Aos::Vector3.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> Lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Index of the value</p>", 
+          "name": "index"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Vector3</span> The value</p>", 
+          "name": "vector3"
+        }
+      ], 
+      "brief": "<p>check if the value is a Vectormath::Aos::Vector3</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::CheckVector3"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Check if the value in the supplied index on the lua stack is a Vectormath::Aos::Vector3.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> Lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Index of the value</p>", 
+          "name": "index"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Vector4</span> The value</p>", 
+          "name": "vector4"
+        }
+      ], 
+      "brief": "<p>check if the value is a Vectormath::Aos::Vector3</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::CheckVector4"
     }, 
     {
       "replaces": "", 
@@ -115,7 +257,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "", 
+      "description": "<p>Check if the value is a dmScript::LuaHBuffer</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">lua_State*</span> lua state</p>", 
@@ -128,11 +270,11 @@
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">boolean</span> true if value at #index is a LuaHBuffer</p>", 
+          "doc": "<p><span class=\"type\">boolean</span> True if value at index is a LuaHBuffer</p>", 
           "name": "boolean"
         }
       ], 
-      "brief": "<p>check if the value at #index is a dmScript::LuaHBuffer</p>", 
+      "brief": "<p>check if the value is a dmScript::LuaHBuffer</p>", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -205,6 +347,90 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Push a matrix4 value onto the Lua stack. Will increase the stack by 1.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> Lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Matrix4</span> Vectormath::Aos::Matrix4 value to push</p>", 
+          "name": "matrix"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>push a Vectormath::Aos::Matrix4 onto the Lua stack</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::PushMatrix4"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Push a quaternion value onto Lua stack. Will increase the stack by 1.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> Lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Quat</span> Vectormath::Aos::Quat value to push</p>", 
+          "name": "quat"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>push a Vectormath::Aos::Quat onto the Lua stack</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::PushQuat"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Push a Vectormath::Aos::Vector3 value onto the supplied lua state, will increase the stack by 1.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> Lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Vector3</span> Vector3 value to push</p>", 
+          "name": "v"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>push a Vectormath::Aos::Vector3 onto the Lua stack</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::PushVector3"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Push a Vectormath::Aos::Vector4 value onto the supplied lua state, will increase the stack by 1.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> Lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Vector4</span> Vectormath::Aos::Vector4 value to push</p>", 
+          "name": "v"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>push a Vectormath::Aos::Vector4 on the stack</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::PushVector4"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Creates and returns a reference, in the table at index t, for the object at the\ntop of the stack (and pops the object).\nIt also tracks number of global references kept.</p>", 
       "parameters": [
         {
@@ -245,6 +471,110 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "dmScript::SetInstance"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get the value at index as a Vectormath::Aos::Matrix4*</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> Lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Index of the value</p>", 
+          "name": "index"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Matrix4*</span> The pointer to the value, or 0 if not correct type</p>", 
+          "name": "quat"
+        }
+      ], 
+      "brief": "<p>get the value at index as a Vectormath::Aos::Matrix4*</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::ToMatrix4"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get the value at index as a Vectormath::Aos::Quat*</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> Lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Index of the value</p>", 
+          "name": "index"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Quat*</span> The pointer to the value, or 0 if not correct type</p>", 
+          "name": "quat"
+        }
+      ], 
+      "brief": "<p>get the value at index as a Vectormath::Aos::Quat*</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::ToQuat"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get the value at index as a Vectormath::Aos::Vector3*</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> Lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Index of the value</p>", 
+          "name": "index"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Vector3*</span> The pointer to the value, or 0 if not correct type</p>", 
+          "name": "v"
+        }
+      ], 
+      "brief": "<p>get the value at index as a Vectormath::Aos::Vector3*</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::ToVector3"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get the value at index as a Vectormath::Aos::Vector4*</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">lua_State*</span> Lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">int</span> Index of the value</p>", 
+          "name": "index"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Vector4*</span> The pointer to the value, or 0 if not correct type</p>", 
+          "name": "v"
+        }
+      ], 
+      "brief": "<p>get the value at index as a Vectormath::Aos::Vector4*</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::ToVector4"
     }, 
     {
       "replaces": "", 

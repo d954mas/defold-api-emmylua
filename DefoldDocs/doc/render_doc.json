@@ -1422,6 +1422,27 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Set the size of the game window. Only works on desktop platforms.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> the new window height</p>", 
+          "name": "height"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> the new window width</p>", 
+          "name": "width"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>resizes the window</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">@render:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">resize&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">width</span> <span class=\"o\">=</span> <span class=\"mi\">1024</span><span class=\"p\">,</span> <span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"mi\">768</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MESSAGE", 
+      "name": "resize"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Reports a change in window size. This is initiated on window resize on desktop or by orientation changes\non mobile devices.</p>", 
       "parameters": [
         {

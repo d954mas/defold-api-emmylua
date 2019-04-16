@@ -10,7 +10,8 @@ sprite = {}
 ---@param url string | hash | url the sprite that should play the animation
 ---@param id id hash name hash of the animation to play
 ---@param complete_function function(self, message_id, message, sender)) function to call when the animation has completed.
-function sprite.play_flipbook(url, id, complete_function) end
+---@param play_properties table optional table with properties:
+function sprite.play_flipbook(url, id, complete_function, play_properties) end
 ---Resets a shader constant for a sprite component.
 ---The constant must be defined in the material assigned to the sprite.
 ---Resetting a constant through this function implies that the value defined in the material will be used.

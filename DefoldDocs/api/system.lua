@@ -3,48 +3,15 @@
 ---error handling and debugging.
 ---@class sys
 sys = {}
----Terminates the game application and reports the specified code to the OS.
----@param code number exit code to report to the OS, 0 means clean exit
-function exit(code) end
----Reboots the game engine with a specified set of arguments.
----Arguments will be translated into command line arguments. Calling reboot
----function is equivalent to starting the engine with the same arguments.
----
----On startup the engine reads configuration from "game.project" in the
----project root.
----@param arg1 string argument 1
----@param arg2 string argument 2
----@param arg3 string argument 3
----@param arg4 string argument 4
----@param arg5 string argument 5
----@param arg6 string argument 6
-function reboot(arg1, arg2, arg3, arg4, arg5, arg6) end
----Set game update-frequency (frame cap). This option is equivalent to display.update_frequency in
----the "game.project" settings but set in run-time. If Vsync checked in "game.project", the rate will
----be clamped to a swap interval that matches any detected main monitor refresh rate. If Vsync is
----unchecked the engine will try to respect the rate in software using timers. There is no
----guarantee that the frame cap will be achieved depending on platform specifics and hardware settings.
----@param frequency frequency target frequency. 60 for 60 fps
-function set_update_frequency(frequency) end
----Set the vsync swap interval. The interval with which to swap the front and back buffers
----in sync with vertical blanks (v-blank), the hardware event where the screen image is updated
----with data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of
----2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank
----before swapping the buffers. Default value is 1.
----
----When setting the swap interval to 0 and having vsync disabled in
----"game.project", the engine will try to respect the set frame cap value from
----"game.project" in software instead.
----
----This setting may be overridden by driver settings.
----@param swap_interval swap_interval target swap interval.
-function set_vsync_swap_interval(swap_interval) end
 ---network connected through other, non cellular, connection
 sys.NETWORK_CONNECTED = nil
 ---network connected through mobile cellular
 sys.NETWORK_CONNECTED_CELLULAR = nil
 ---no network connection found
 sys.NETWORK_DISCONNECTED = nil
+---Terminates the game application and reports the specified code to the OS.
+---@param code number exit code to report to the OS, 0 means clean exit
+function sys.exit(code) end
 ---Returns a table with application information for the requested app.
 ---
 --- On iOS, the app_string is an url scheme for the app that is queried. Your
@@ -109,6 +76,19 @@ function sys.load_resource(filename) end
 ---@param url string url to open
 ---@return boolean a boolean indicating if the url could be opened or not
 function sys.open_url(url) end
+---Reboots the game engine with a specified set of arguments.
+---Arguments will be translated into command line arguments. Calling reboot
+---function is equivalent to starting the engine with the same arguments.
+---
+---On startup the engine reads configuration from "game.project" in the
+---project root.
+---@param arg1 string argument 1
+---@param arg2 string argument 2
+---@param arg3 string argument 3
+---@param arg4 string argument 4
+---@param arg5 string argument 5
+---@param arg6 string argument 6
+function sys.reboot(arg1, arg2, arg3, arg4, arg5, arg6) end
 ---The table can later be loaded by sys.load.
 ---Use sys.get_save_file to obtain a valid location for the file.
 ---Internally, this function uses a workspace buffer sized output file sized 512kb.
@@ -128,6 +108,26 @@ function sys.set_connectivity_host(host) end
 ---The error handler is a function which is called whenever a lua runtime error occurs.
 ---@param error_handler function(source, message, traceback) the function to be called on error
 function sys.set_error_handler(error_handler) end
+---Set game update-frequency (frame cap). This option is equivalent to display.update_frequency in
+---the "game.project" settings but set in run-time. If Vsync checked in "game.project", the rate will
+---be clamped to a swap interval that matches any detected main monitor refresh rate. If Vsync is
+---unchecked the engine will try to respect the rate in software using timers. There is no
+---guarantee that the frame cap will be achieved depending on platform specifics and hardware settings.
+---@param frequency frequency target frequency. 60 for 60 fps
+function sys.set_update_frequency(frequency) end
+---Set the vsync swap interval. The interval with which to swap the front and back buffers
+---in sync with vertical blanks (v-blank), the hardware event where the screen image is updated
+---with data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of
+---2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank
+---before swapping the buffers. Default value is 1.
+---
+---When setting the swap interval to 0 and having vsync disabled in
+---"game.project", the engine will try to respect the set frame cap value from
+---"game.project" in software instead.
+---
+---This setting may be overridden by driver settings.
+---@param swap_interval swap_interval target swap interval.
+function sys.set_vsync_swap_interval(swap_interval) end
 
 ---@class app_info
 ---@field installed boolean boolean true if the application is installed, false otherwise.

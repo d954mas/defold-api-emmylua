@@ -279,6 +279,14 @@ function gui.get_fill_angle(node) end
 ---@param node node node to get flipbook animation from
 ---@return hash animation id
 function gui.get_flipbook(node) end
+---This is only useful nodes with flipbook animations. Gets the normalized cursor of the flipbook animation on a node.
+---@param node node node to get the cursor for (node)
+---@return number cursor value
+function gui.get_flipbook_cursor(node) end
+---This is only useful nodes with flipbook animations. Gets the playback rate of the flipbook animation on a node.
+---@param node node node to set the cursor for
+---@return number playback rate
+function gui.get_flipbook_playback_rate(node) end
 ---This is only useful for text nodes. The font must be mapped to the gui scene in the gui editor.
 ---@param node node node from which to get the font
 ---@return hash font id
@@ -398,7 +406,7 @@ function gui.get_spine_animation(node) end
 ---@return node node corresponding to the spine bone
 function gui.get_spine_bone(node, bone_id) end
 ---This is only useful for spine nodes. Gets the normalized cursor of the animation on a spine node.
----@param node node spine node to set the cursor for (node)
+---@param node node spine node to get the cursor for (node)
 ---@return number cursor value
 function gui.get_spine_cursor(node) end
 ---This is only useful for spine nodes. Gets the playback rate of the animation on a spine node.
@@ -519,7 +527,8 @@ function gui.pick_node(node, x, y) end
 ---@param node node node to set animation for
 ---@param animation string | hash animation id
 ---@param complete_function function(self, node) optional function to call when the animation has completed
-function gui.play_flipbook(node, animation, complete_function) end
+---@param play_properties table optional table with properties
+function gui.play_flipbook(node, animation, complete_function, play_properties) end
 ---Plays the paricle fx for a gui node
 ---@param node node node to play particle fx for
 ---@param emitter_state_function function(self, node, emitter, state) optional callback function that will be called when an emitter attached to this particlefx changes state.
@@ -580,6 +589,14 @@ function gui.set_enabled(node, enabled) end
 ---@param node node node to set the fill angle for
 ---@param angle number sector angle
 function gui.set_fill_angle(node, angle) end
+---This is only useful nodes with flipbook animations. The cursor is normalized.
+---@param node node node to set the cursor for
+---@param cursor number cursor value
+function gui.set_flipbook_cursor(node, cursor) end
+---This is only useful nodes with flipbook animations. Sets the playback rate of the flipbook animation on a node. Must be positive.
+---@param node node node to set the cursor for
+---@param playback_rate number playback rate
+function gui.set_flipbook_playback_rate(node, playback_rate) end
 ---This is only useful for text nodes.
 ---The font must be mapped to the gui scene in the gui editor.
 ---@param node node node for which to set the font

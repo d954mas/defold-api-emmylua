@@ -29,6 +29,18 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>The normalized animation cursor. The type of the property is number.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">number</span> sprite cursor</p>", 
+      "examples": "<p>How to get the normalized cursor value:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Get the cursor value on component &quot;sprite&quot;</span>\n  <span class=\"n\">cursor</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">cursor&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>How to animate the cursor from 0.0 to 1.0 using linear easing for 2.0 seconds:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Get the current value on component &quot;sprite&quot;</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">cursor&quot;</span><span class=\"p\">,</span> <span class=\"mf\">0.0</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Animate the cursor value</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">cursor&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_FORWARD</span><span class=\"p\">,</span> <span class=\"mf\">1.0</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_LINEAR</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "cursor"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Post this message to a sprite component to make it play an animation from its tile set.</p>", 
       "parameters": [
         {
@@ -43,6 +55,18 @@
       "error": "", 
       "type": "MESSAGE", 
       "name": "play_animation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The animation playback rate. A multiplier to the animation playback rate. The type of the property is <span class=\"type\">number</span>.</p>\n<p>The playback_rate is a non-negative number, a negative value will be clamped to 0.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">number</span> sprite playback_rate</p>", 
+      "examples": "<p>How to set the playback_rate on component \"sprite\" to play at double the current speed:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Get the current value on component &quot;sprite&quot;</span>\n  <span class=\"n\">playback_rate</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">playback_rate&quot;</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Set the playback_rate to double the previous value.</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">playback_rate&quot;</span><span class=\"p\">,</span> <span class=\"n\">playback_rate</span> <span class=\"o\">*</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "playback_rate"
     }, 
     {
       "replaces": "", 
@@ -83,6 +107,10 @@
         {
           "doc": "<p><span class=\"type\">function(self, message_id, message, sender))</span> function to call when the animation has completed.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>message_id</code></dt>\n<dd><span class=\"type\">hash</span> The name of the completion message, <code>\"animation_done\"</code>.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">table</span> Information about the completion:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>current_tile</code> - the current tile of the sprite.</li>\n<li><span class=\"type\">hash</span> <code>id</code> - id of the animation that was completed.</li>\n</ul>\n<dl>\n<dt><code>sender</code></dt>\n<dd><span class=\"type\">url</span> The invoker of the callback: the sprite component.</dd>\n</dl>", 
           "name": "[complete_function]"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">table</span> optional table with properties:</p>\n<dl>\n<dt><code>offset</code></dt>\n<dd><span class=\"type\">number</span> the normalized initial value of the animation cursor when the animation starts playing.</dd>\n<dt><code>playback_rate</code></dt>\n<dd><span class=\"type\">number</span> the rate with which the animation will be played. Must be positive.</dd>\n</dl>", 
+          "name": "[play_properties]"
         }
       ], 
       "returnvalues": [], 

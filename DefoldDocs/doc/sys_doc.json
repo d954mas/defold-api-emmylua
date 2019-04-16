@@ -8,23 +8,6 @@
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Terminates the game application and reports the specified <code>code</code> to the OS.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> exit code to report to the OS, 0 means clean exit</p>", 
-          "name": "code"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>exits application</p>", 
-      "examples": "<p>This examples demonstrates how to exit the application when some kind of quit messages is received (maybe from gui or similar):</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">quit&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">exit</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "exit"
-    }, 
-    {
-      "replaces": "", 
       "description": "<p>Terminates the game application and reports the specified <code>code</code> to the OS.\nThis message can only be sent to the designated <code>@system</code> socket.</p>", 
       "parameters": [
         {
@@ -39,43 +22,6 @@
       "error": "", 
       "type": "MESSAGE", 
       "name": "exit"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Reboots the game engine with a specified set of arguments.\nArguments will be translated into command line arguments. Calling reboot\nfunction is equivalent to starting the engine with the same arguments.</p>\n<p>On startup the engine reads configuration from \"game.project\" in the\nproject root.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> argument 1</p>", 
-          "name": "arg1"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> argument 2</p>", 
-          "name": "arg2"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> argument 3</p>", 
-          "name": "arg3"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> argument 4</p>", 
-          "name": "arg4"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> argument 5</p>", 
-          "name": "arg5"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> argument 6</p>", 
-          "name": "arg6"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>reboot engine with arguments</p>", 
-      "examples": "<p>How to reboot engine with a specific bootstrap collection.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;</span><span class=\"s\">--config=bootstrap.main_collection=/my.collectionc&#39;</span>\n<span class=\"kd\">local</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;</span><span class=\"s\">build/default/game.projectc&#39;</span>\n<span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">reboot</span><span class=\"p\">(</span><span class=\"n\">arg1</span><span class=\"p\">,</span> <span class=\"n\">arg2</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "reboot"
     }, 
     {
       "replaces": "", 
@@ -116,23 +62,6 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.</p>", 
-      "parameters": [
-        {
-          "doc": "<p>target frequency. 60 for 60 fps</p>", 
-          "name": "frequency"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>set update frequency</p>", 
-      "examples": "<p>Setting the update frequency to 60 frames per second</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_update_frequency</span><span class=\"p\">(</span><span class=\"mi\">60</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "set_update_frequency"
-    }, 
-    {
-      "replaces": "", 
       "description": "<p>Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.</p>\n<p>This message can only be sent to the designated <code>@system</code> socket.</p>", 
       "parameters": [
         {
@@ -164,23 +93,6 @@
       "error": "", 
       "type": "MESSAGE", 
       "name": "set_vsync"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Set the vsync swap interval. The interval with which to swap the front and back buffers\nin sync with vertical blanks (v-blank), the hardware event where the screen image is updated\nwith data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of\n2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank\nbefore swapping the buffers. Default value is 1.</p>\n<p>When setting the swap interval to 0 and having <code>vsync</code> disabled in\n\"game.project\", the engine will try to respect the set frame cap value from\n\"game.project\" in software instead.</p>\n<p>This setting may be overridden by driver settings.</p>", 
-      "parameters": [
-        {
-          "doc": "<p>target swap interval.</p>", 
-          "name": "swap_interval"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>set vsync swap interval</p>", 
-      "examples": "<p>Setting the swap intervall to swap every v-blank</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_vsync_swap_interval</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "set_vsync_swap_interval"
     }, 
     {
       "replaces": "", 
@@ -254,6 +166,23 @@
       "error": "", 
       "type": "VARIABLE", 
       "name": "sys.NETWORK_DISCONNECTED"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Terminates the game application and reports the specified <code>code</code> to the OS.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> exit code to report to the OS, 0 means clean exit</p>", 
+          "name": "code"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>exits application</p>", 
+      "examples": "<p>This examples demonstrates how to exit the application when some kind of quit messages is received (maybe from gui or similar):</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">quit&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">exit</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sys.exit"
     }, 
     {
       "replaces": "", 
@@ -487,6 +416,43 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Reboots the game engine with a specified set of arguments.\nArguments will be translated into command line arguments. Calling reboot\nfunction is equivalent to starting the engine with the same arguments.</p>\n<p>On startup the engine reads configuration from \"game.project\" in the\nproject root.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string</span> argument 1</p>", 
+          "name": "arg1"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> argument 2</p>", 
+          "name": "arg2"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> argument 3</p>", 
+          "name": "arg3"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> argument 4</p>", 
+          "name": "arg4"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> argument 5</p>", 
+          "name": "arg5"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> argument 6</p>", 
+          "name": "arg6"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>reboot engine with arguments</p>", 
+      "examples": "<p>How to reboot engine with a specific bootstrap collection.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;</span><span class=\"s\">--config=bootstrap.main_collection=/my.collectionc&#39;</span>\n<span class=\"kd\">local</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;</span><span class=\"s\">build/default/game.projectc&#39;</span>\n<span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">reboot</span><span class=\"p\">(</span><span class=\"n\">arg1</span><span class=\"p\">,</span> <span class=\"n\">arg2</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sys.reboot"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>The table can later be loaded by <code>sys.load</code>.\nUse <code>sys.get_save_file</code> to obtain a valid location for the file.\nInternally, this function uses a workspace buffer sized output file sized 512kb.\nThis size reflects the output file size which must not exceed this limit.\nAdditionally, the total number of rows that any one table may contain is limited to 65536\n(i.e. a 16 bit range). When tables are used to represent arrays, the values of\nkeys are permitted to fall within a 32 bit range, supporting sparse arrays, however\nthe limit on the total number of rows remains in effect.</p>", 
       "parameters": [
         {
@@ -544,6 +510,40 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "sys.set_error_handler"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.</p>", 
+      "parameters": [
+        {
+          "doc": "<p>target frequency. 60 for 60 fps</p>", 
+          "name": "frequency"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set update frequency</p>", 
+      "examples": "<p>Setting the update frequency to 60 frames per second</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_update_frequency</span><span class=\"p\">(</span><span class=\"mi\">60</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sys.set_update_frequency"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set the vsync swap interval. The interval with which to swap the front and back buffers\nin sync with vertical blanks (v-blank), the hardware event where the screen image is updated\nwith data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of\n2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank\nbefore swapping the buffers. Default value is 1.</p>\n<p>When setting the swap interval to 0 and having <code>vsync</code> disabled in\n\"game.project\", the engine will try to respect the set frame cap value from\n\"game.project\" in software instead.</p>\n<p>This setting may be overridden by driver settings.</p>", 
+      "parameters": [
+        {
+          "doc": "<p>target swap interval.</p>", 
+          "name": "swap_interval"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set vsync swap interval</p>", 
+      "examples": "<p>Setting the swap intervall to swap every v-blank</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_vsync_swap_interval</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sys.set_vsync_swap_interval"
     }, 
     {
       "replaces": "", 

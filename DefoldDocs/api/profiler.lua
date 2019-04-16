@@ -1,8 +1,20 @@
 ---Profiler API documentation
 ---Functions for getting profiling data in runtime.
----More detailed profiling and debugging information can be found under the Debugging <http://www.defold.com/manuals/debugging/> section in the manuals.
+---More detailed profiling <https://www.defold.com/manuals/profiling/> and debugging <http://www.defold.com/manuals/debugging/> information available in the manuals.
 ---@class profiler
 profiler = {}
+---pause on current frame
+profiler.MODE_PAUSE = nil
+---start recording
+profiler.MODE_RECORD = nil
+---continously show latest frame
+profiler.MODE_RUN = nil
+---pause at peak frame
+profiler.MODE_SHOW_PEAK_FRAME = nil
+---show full profiler ui
+profiler.VIEW_MODE_FULL = nil
+---show mimimal profiler ui
+profiler.VIEW_MODE_MINIMIZED = nil
 ---Creates and shows or hides and destroys the on-sceen profiler ui
 ---
 ---The profiler is a real-time tool that shows the numbers of milliseconds spent

@@ -1,11 +1,83 @@
 {
   "info": {
-    "description": "<p>Functions for getting profiling data in runtime.\nMore detailed profiling and debugging information can be found under the <a href=\"http://www.defold.com/manuals/debugging/\">Debugging</a> section in the manuals.</p>", 
+    "description": "<p>Functions for getting profiling data in runtime.\nMore detailed <a href=\"https://www.defold.com/manuals/profiling/\">profiling</a> and <a href=\"http://www.defold.com/manuals/debugging/\">debugging</a> information available in the manuals.</p>", 
     "namespace": "profiler", 
     "name": "Profiler", 
     "brief": "<p>Profiler API documentation</p>"
   }, 
   "elements": [
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>pause on current frame</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "profiler.MODE_PAUSE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>start recording</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "profiler.MODE_RECORD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>continously show latest frame</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "profiler.MODE_RUN"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>pause at peak frame</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "profiler.MODE_SHOW_PEAK_FRAME"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>show full profiler ui</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "profiler.VIEW_MODE_FULL"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>show mimimal profiler ui</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "profiler.VIEW_MODE_MINIMIZED"
+    }, 
     {
       "replaces": "", 
       "description": "<p>Creates and shows or hides and destroys the on-sceen profiler ui</p>\n<p>The profiler is a real-time tool that shows the numbers of milliseconds spent\nin each scope per frame as well as counters. The profiler is very useful for\ntracking down performance and resource problems.</p>", 
@@ -17,7 +89,7 @@
       ], 
       "returnvalues": [], 
       "brief": "<p>enables or disables the on-screen profiler ui</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span>     <span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">enable_ui</span><span class=\"p\">(</span><span class=\"kc\">true</span><span class=\"p\">)</span>\n</pre></div>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Show the profiler UI</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">enable_ui</span><span class=\"p\">(</span><span class=\"kc\">true</span><span class=\"p\">)</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 
@@ -63,12 +135,12 @@
       "parameters": [], 
       "returnvalues": [
         {
-          "doc": "<p>the number of recorded frames, zero if on-screen profiler is disabled</p>", 
-          "name": "[type:number]"
+          "doc": "<p><span class=\"type\">number</span> the number of recorded frames, zero if on-screen profiler is disabled</p>", 
+          "name": "frame_count"
         }
       ], 
       "brief": "<p>get the number of recorded frames in the on-screen profiler ui</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span>     <span class=\"c1\">-- Show the last recorded frame</span>\n     <span class=\"kd\">local</span> <span class=\"n\">recorded_frame_count</span> <span class=\"o\">=</span> <span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">recorded_frame_count</span><span class=\"p\">()</span>\n     <span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">view_recorded_frame</span><span class=\"p\">(</span><span class=\"n\">recorded_frame_count</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Show the last recorded frame</span>\n<span class=\"kd\">local</span> <span class=\"n\">recorded_frame_count</span> <span class=\"o\">=</span> <span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">recorded_frame_count</span><span class=\"p\">()</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">view_recorded_frame</span><span class=\"p\">(</span><span class=\"n\">recorded_frame_count</span><span class=\"p\">)</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 
@@ -102,7 +174,7 @@
       ], 
       "returnvalues": [], 
       "brief": "<p>sets the the on-screen profiler ui view mode</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span>     <span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">set_ui_view_mode</span><span class=\"p\">(</span><span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">VIEW_MODE_MINIMIZED</span><span class=\"p\">)</span>\n</pre></div>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Minimize the profiler view</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">set_ui_view_mode</span><span class=\"p\">(</span><span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">VIEW_MODE_MINIMIZED</span><span class=\"p\">)</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 
@@ -119,7 +191,7 @@
       ], 
       "returnvalues": [], 
       "brief": "<p>Shows or hides the vsync wait time in the on-screen profiler ui</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span>     <span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">set_ui_vsync_wait_visible</span><span class=\"p\">(</span><span class=\"kc\">false</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Exclude frame wait time form the profiler ui</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">set_ui_vsync_wait_visible</span><span class=\"p\">(</span><span class=\"kc\">false</span><span class=\"p\">)</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 
@@ -136,7 +208,7 @@
       ], 
       "returnvalues": [], 
       "brief": "<p>displays a previously recorded frame in the on-screen profiler ui</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span>     <span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">view_recorded_frame</span><span class=\"p\">({</span><span class=\"n\">distance</span> <span class=\"o\">=</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Go back one frame</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">view_recorded_frame</span><span class=\"p\">({</span><span class=\"n\">distance</span> <span class=\"o\">=</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 
