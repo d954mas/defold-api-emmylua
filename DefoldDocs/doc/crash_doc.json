@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "SYSTEM", 
     "description": "<p>Native crash logging functions and constants.</p>", 
     "namespace": "crash", 
     "name": "Crash", 

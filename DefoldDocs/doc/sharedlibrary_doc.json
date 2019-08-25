@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "DEFOLD SDK", 
     "description": "<p><span class=\"file\">&lt;dmsdk/dlib/shared_library.h&gt;</span></p>\n<p>Utility functions for shared library export/import</p>", 
     "namespace": "sharedlibrary", 
     "name": "Shared Library", 

@@ -387,7 +387,10 @@ function gui.get_shadow(node) end
 function gui.get_size(node) end
 ---Returns the size of a node.
 ---The size mode defines how the node will adjust itself in size. Automatic
----size mode alters the node size based on the node's content.
+---size mode alters the node size based on the node's content. Automatic size
+---mode works for Box nodes and Pie nodes which will both adjust their size
+---to match the assigned image. Spine, Particle fx and Text nodes will ignore
+---any size mode setting.
 ---@param node node node from which to get the size mode (node)
 ---@return constant the current size mode
 function gui.get_size_mode(node) end
@@ -694,7 +697,10 @@ function gui.set_shadow(node, color) end
 function gui.set_size(node, size) end
 ---Sets the size mode of a node.
 ---The size mode defines how the node will adjust itself in size. Automatic
----size mode alters the node size based on the node's content.
+---size mode alters the node size based on the node's content. Automatic size
+---mode works for Box nodes and Pie nodes which will both adjust their size
+---to match the assigned image. Spine, Particle fx and Text nodes will ignore
+---any size mode setting.
 ---@param node node node to set size mode for
 ---@param size_mode constant size mode to set
 function gui.set_size_mode(node, size_mode) end

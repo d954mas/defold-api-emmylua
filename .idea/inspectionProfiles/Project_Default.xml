@@ -1,0 +1,9 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="AssignType" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="MatchFunctionSignature" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="ReturnType" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="UndeclaredVariable" enabled="true" level="WARNING" enabled_by_default="true" />
+  </profile>
+</component>

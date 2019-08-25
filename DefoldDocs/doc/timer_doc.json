@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "SCRIPT", 
     "description": "<p>Timers allow you to set a delay and a callback to be called when the timer completes.</p>\n<p>The timers created with this API are updated with the collection timer where they\nare created. If you pause or speed up the collection (using <code>set_time_step</code>) it will\nalso affect the new timer.</p>", 
     "namespace": "timer", 
     "name": "Timer", 

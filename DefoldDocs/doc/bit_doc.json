@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "LUA STANDARD LIBS", 
     "description": "<p><a href=\"http://bitop.luajit.org/api.html\">Lua BitOp</a> is a C extension module for Lua 5.1/5.2 which adds bitwise operations on numbers.</p>\n<p>Lua BitOp is Copyright &copy; 2008-2012 Mike Pall.\nLua BitOp is free software, released under the MIT license (same license as the Lua core).</p>\n<p>Lua BitOp is compatible with the built-in bitwise operations in LuaJIT 2.0 and is used\non platforms where Defold runs without LuaJIT.</p>\n<p>For clarity the examples assume the definition of a helper function <code>printx()</code>.\nThis prints its argument as an unsigned 32 bit hexadecimal number on all platforms:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">printx</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">)</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">0x&quot;</span><span class=\"o\">..</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tohex</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n</pre></div>", 
     "namespace": "bit", 
     "name": "BitOp", 

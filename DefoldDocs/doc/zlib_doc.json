@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "SCRIPT", 
     "description": "<p>Functions for compression and decompression of string buffers.</p>", 
     "namespace": "zlib", 
     "name": "Zlib", 

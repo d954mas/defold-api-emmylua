@@ -29,6 +29,8 @@ public class Main {
 
     static {
         IGNORE_DOCS.add("base_doc.json");
+        IGNORE_DOCS.add("engine_doc.json");
+        IGNORE_DOCS.add("dmTime_doc.json");
         IGNORE_DOCS.add("buffer_doc.json");
         IGNORE_DOCS.add("camera_doc.json");
         IGNORE_DOCS.add("coroutine_doc.json");

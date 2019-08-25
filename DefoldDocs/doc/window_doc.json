@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "SYSTEM", 
     "description": "<p>Functions and constants to access the window, window event listeners\nand screen dimming.</p>", 
     "namespace": "window", 
     "name": "Window", 

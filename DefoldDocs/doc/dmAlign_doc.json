@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "DEFOLD SDK", 
     "description": "<p><span class=\"file\">&lt;dmsdk/dlib/align.h&gt;</span></p>\n<p>Alignment macros. Use for compiler compatibility</p>", 
     "namespace": "dmAlign", 
     "name": "Align", 

@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "SCRIPT", 
     "description": "<p>Functions for creating image objects.</p>", 
     "namespace": "image", 
     "name": "Image", 

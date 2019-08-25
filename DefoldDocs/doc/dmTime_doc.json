@@ -1,0 +1,9 @@
+{
+  "info": {
+    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/time.h&gt;</span></p>\n<p>Time functions.</p>", 
+    "namespace": "dmTime", 
+    "name": "Time", 
+    "brief": "<p>SDK Time API documentation</p>"
+  }, 
+  "elements": []
+}

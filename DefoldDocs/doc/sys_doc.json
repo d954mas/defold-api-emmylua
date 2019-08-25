@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "SYSTEM", 
     "description": "<p>Functions and messages for using system resources, controlling the engine,\nerror handling and debugging.</p>", 
     "namespace": "sys", 
     "name": "System", 
@@ -208,6 +209,23 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>The path from which the application is run.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">string</span> path to application executable</p>", 
+          "name": "path"
+        }
+      ], 
+      "brief": "<p>gets the application path</p>", 
+      "examples": "<p>Find a path where we can store data (the example path is on the macOS platform):</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">application_path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_application_path</span><span class=\"p\">()</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">application_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; /Applications/my_game.app</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sys.get_application_path"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Get config value from the game.project configuration file.</p>\n<p>In addition to the project file, configuration values can also be passed\nto the runtime as command line arguments with the <code>--config</code> argument.</p>", 
       "parameters": [
         {
@@ -372,7 +390,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Loads a custom resource. Specify the full filename of the resource that you want\nto load. When loaded, the file data is returned as a string.\nIf loading fails, the function returns nil.</p>\n<p>In order for the engine to include custom resources in the build process, you need\nto specify them in the \"custom_resources\" key in your \"game.project\" settings file.\nYou can specify single resource files or directories. If a directory is included\nin the resource list, all files and directories in that directory is recursively\nincluded:</p>\n<p>For example \"main/data/,assets/level_data.json\".</p>", 
+      "description": "<p>Loads a custom resource. Specify the full filename of the resource that you want\nto load. When loaded, the file data is returned as a string.\nIf loading fails, the function returns nil plus the error message.</p>\n<p>In order for the engine to include custom resources in the build process, you need\nto specify them in the \"custom_resources\" key in your \"game.project\" settings file.\nYou can specify single resource files or directories. If a directory is included\nin the resource list, all files and directories in that directory is recursively\nincluded:</p>\n<p>For example \"main/data/,assets/level_data.json\".</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">string</span> resource to load, full path</p>", 
@@ -381,12 +399,16 @@
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">string</span> loaded data, or nil if the resource could not be loaded</p>", 
+          "doc": "<p><span class=\"type\">string</span> loaded data, or <code>nil</code> if the resource could not be loaded</p>", 
           "name": "data"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred</p>", 
+          "name": "error"
         }
       ], 
       "brief": "<p>loads resource from game data</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Load level data into a string</span>\n<span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load_resource</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/assets/level_data.json&quot;</span><span class=\"p\">)</span>\n<span class=\"c1\">-- Decode json string to a Lua table</span>\n<span class=\"kd\">local</span> <span class=\"n\">data_table</span> <span class=\"o\">=</span> <span class=\"n\">json</span><span class=\"p\">.</span><span class=\"n\">decode</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n<span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data_table</span><span class=\"p\">)</span>\n</pre></div>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Load level data into a string</span>\n<span class=\"kd\">local</span> <span class=\"n\">data</span><span class=\"p\">,</span> <span class=\"nb\">error</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load_resource</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/assets/level_data.json&quot;</span><span class=\"p\">)</span>\n<span class=\"c1\">-- Decode json string to a Lua table</span>\n<span class=\"k\">if</span> <span class=\"n\">data</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">data_table</span> <span class=\"o\">=</span> <span class=\"n\">json</span><span class=\"p\">.</span><span class=\"n\">decode</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n  <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data_table</span><span class=\"p\">)</span>\n<span class=\"k\">else</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"nb\">error</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 

@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "DEFOLD SDK", 
     "description": "<p><span class=\"file\">&lt;dmsdk/script/script.h&gt;</span></p>\n<p>Built-in scripting functions.</p>", 
     "namespace": "dmScript", 
     "name": "Script", 
@@ -127,7 +128,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">Vectormath::Aos::Matrix4</span> The value</p>", 
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Matrix4*</span> The pointer to the value</p>", 
           "name": "matrix"
         }
       ], 
@@ -153,7 +154,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">Vectormath::Aos::Quat</span> The value</p>", 
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Quat*</span> The pointer to the value</p>", 
           "name": "quat"
         }
       ], 
@@ -179,7 +180,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">Vectormath::Aos::Vector3</span> The value</p>", 
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Vector3*</span> The pointer to the value</p>", 
           "name": "vector3"
         }
       ], 
@@ -205,7 +206,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">Vectormath::Aos::Vector4</span> The value</p>", 
+          "doc": "<p><span class=\"type\">Vectormath::Aos::Vector4*</span> The pointer to the value</p>", 
           "name": "vector4"
         }
       ], 

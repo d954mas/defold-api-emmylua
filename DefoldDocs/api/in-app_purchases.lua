@@ -9,8 +9,6 @@ iap.PROVIDER_ID_AMAZON = nil
 iap.PROVIDER_ID_APPLE = nil
 ---provider id for Facebook
 iap.PROVIDER_ID_FACEBOOK = nil
----provider id for Facebook Gameroom
-iap.PROVIDER_ID_GAMEROOM = nil
 ---iap provider id for Google
 iap.PROVIDER_ID_GOOGLE = nil
 ---unspecified error reason
@@ -34,13 +32,6 @@ iap.TRANS_STATE_UNVERIFIED = nil
 ---@param id string product to buy
 ---@param options table optional parameters as properties. The following parameters can be set:
 function iap.buy(id, options) end
---- Performs a purchase of a premium game license. The purchase transaction
----is handled like regular iap purchases; calling the currently set iap_listener with the
----transaction results.
----
---- This function does not work when testing the application
----locally in the Gameroom client.
-function iap.buy_premium() end
 ---Explicitly finish a product transaction.
 ---
 --- Calling iap.finish is required on a successful transaction
@@ -51,13 +42,6 @@ function iap.buy_premium() end
 function iap.finish(transaction) end
 ---@return constant provider id.
 function iap.get_provider_id() end
---- Checks if a license for the game has been purchased by the user.
----You should provide a callback function that will be called with the result of the check.
----
---- This function does not work when testing the application
----locally in the Gameroom client.
----@param callback function(self, has_premium) result callback
-function iap.has_premium(callback) end
 ---Get a list of all avaliable iap products. Products are described as a table
 ---with the following fields:
 ---
@@ -108,15 +92,6 @@ function iap.restore() end
 ---  request_id 
 ---Facebook only. This field is set to the optional custom unique request id request_id
 ---if set in the iap.buy() call parameters.
----  purchase_token 
----Facebook Gameroom only. The purchase token.
----  currency 
----Facebook Gameroom only. The currency used for the purchase.
----  amount 
----Facebook Gameroom only. The amount the player will be charged for a single unit
----of this product.
----  quantity 
----Facebook Gameroom only. The quantity of this item the user is purchasing.
 ---  user_id 
 ---Amazon Pay only. The user ID.
 ---  is_sandbox_mode 

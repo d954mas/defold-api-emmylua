@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "LUA STANDARD LIBS", 
     "description": "<p>Documentation for the Lua package standard library.</p>\n<p>From <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.</p>\n<p>Copyright &copy; 2006-2012 Lua.org, PUC-Rio.</p>\n<p>Freely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.</p>", 
     "namespace": "package", 
     "name": "Package", 

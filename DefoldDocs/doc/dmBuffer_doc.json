@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "DEFOLD SDK", 
     "description": "<p><span class=\"file\">&lt;dmsdk/dlib/buffer.h&gt;</span></p>\n<p>Buffer API for data buffers as the main way to communicate between systems.</p>", 
     "namespace": "dmBuffer", 
     "name": "Buffer", 

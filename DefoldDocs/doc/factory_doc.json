@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "COMPONENTS", 
     "description": "<p>Functions for controlling factory components which are used to\ndynamically spawn game objects into the runtime.</p>", 
     "namespace": "factory", 
     "name": "Factory", 

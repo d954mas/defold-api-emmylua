@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "COMPONENTS", 
     "description": "<p>Messages to control camera components and camera focus.</p>", 
     "namespace": "camera", 
     "name": "Camera", 

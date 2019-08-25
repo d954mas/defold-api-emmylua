@@ -4,7 +4,7 @@
 ---From Lua 5.1 Reference Manual <https://www.lua.org/manual/5.1/>
 ---by Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.
 ---
----Copyright Â© 2006-2012 Lua.org, PUC-Rio.
+---Copyright © 2006-2012 Lua.org, PUC-Rio.
 ---
 ---Freely available under the terms of the Lua license <https://www.lua.org/license.html>.
 ---@class io

@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "LUA STANDARD LIBS", 
     "description": "<p><a href=\"https://github.com/diegonehab/luasocket\">LuaSocket</a> is a Lua extension library that provides\nsupport for the TCP and UDP transport layers. Defold provides the \"socket\" namespace in\nruntime, which contain the core C functionality. Additional LuaSocket support modules for\nSMTP, HTTP, FTP etc are not part of the core included, but can be easily added to a project\nand used.</p>\n<p>Note the included helper module \"socket.lua\" in \"builtins/scripts/socket.lua\". Require this\nmodule to add some additional functions and shortcuts to the namespace:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"nb\">require</span> <span class=\"s2\">&quot;</span><span class=\"s\">builtins.scripts.socket&quot;</span>\n</pre></div>\n\n\n<p>LuaSocket is Copyright &copy; 2004-2007 Diego Nehab. All rights reserved.\nLuaSocket is free software, released under the MIT license (same license as the Lua core).</p>", 
     "namespace": "socket", 
     "name": "LuaSocket", 
@@ -1371,7 +1372,7 @@
       "returnvalues": [
         {
           "doc": "<p><span class=\"type\">unconnected</span> a new unconnected IPv4 UDP object, or <code>nil</code> in case of error.</p>", 
-          "name": "upd_unconnected"
+          "name": "udp_unconnected"
         }, 
         {
           "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 

@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "COMPONENTS", 
     "description": "<p>Messages for controlling and interacting with collection proxies\nwhich are used to dynamically load collections into the runtime.</p>", 
     "namespace": "collectionproxy", 
     "name": "Collection proxy", 

@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "SCRIPT", 
     "description": "<p>HTML5 platform specific functions.</p>\n<p><span class=\"icon-html5\"></span> The following functions are only available on HTML5 builds, the <code>html5.*</code> Lua namespace will not be available on other platforms.</p>", 
     "namespace": "html5", 
     "name": "HTML5", 

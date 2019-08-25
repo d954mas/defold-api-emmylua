@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "DEFOLD SDK", 
     "description": "<p><span class=\"file\">&lt;dmsdk/dlib/hash.h&gt;</span></p>\n<p>Hash functions.</p>", 
     "namespace": "dmHash", 
     "name": "Hash", 

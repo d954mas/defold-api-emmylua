@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "COMPONENTS", 
     "description": "<p>Functions to manipulate a label component.</p>", 
     "namespace": "label", 
     "name": "Label", 
@@ -20,6 +21,28 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Gets the text from a label component</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the label to get the text from</p>", 
+          "name": "url"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">string</span> the label text</p>", 
+          "name": "metrics"
+        }
+      ], 
+      "brief": "<p>gets the text for a label</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"n\">label</span><span class=\"p\">.</span><span class=\"n\">get_text</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">text</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "label.get_text"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Gets the text metrics from a label component</p>", 
       "parameters": [
         {
@@ -29,12 +52,12 @@
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">table</span> a table with the following fields:</p>\n<ul>\n<li>width</li>\n<li>height</li>\n<li>max_ascent</li>\n<li>max_descent</li>\n</ul>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">metrics</span> <span class=\"o\">=</span> <span class=\"n\">label</span><span class=\"p\">.</span><span class=\"n\">get_text_metrics</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">metrics</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+          "doc": "<p><span class=\"type\">table</span> a table with the following fields:</p>\n<ul>\n<li>width</li>\n<li>height</li>\n<li>max_ascent</li>\n<li>max_descent</li>\n</ul>", 
           "name": "metrics"
         }
       ], 
       "brief": "<p>gets the text metrics for a label</p>", 
-      "examples": "", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">metrics</span> <span class=\"o\">=</span> <span class=\"n\">label</span><span class=\"p\">.</span><span class=\"n\">get_text_metrics</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">metrics</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 
@@ -42,7 +65,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Sets the text of a label component</p>", 
+      "description": "<p>Sets the text of a label component</p>\n<p><span class=\"icon-attention\"></span> This method uses the message passing that means the value will be set after <code>dispatch messages</code> step.\nMore information is available in the <a href=\"/manuals/application-lifecycle\">Application Lifecycle manual</a>.</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">string | hash | url</span> the label that should have a constant set</p>", 

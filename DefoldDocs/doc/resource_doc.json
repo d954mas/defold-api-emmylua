@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "SYSTEM", 
     "description": "<p>Functions and constants to access resources.</p>", 
     "namespace": "resource", 
     "name": "Resource", 

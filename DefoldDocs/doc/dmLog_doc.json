@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "DEFOLD SDK", 
     "description": "<p><span class=\"file\">&lt;dmsdk/dlib/log.h&gt;</span></p>\n<p>Logging functions.\nIf DLIB_LOG_DOMAIN is defined the value of the defined is printed after severity.\nOtherwise DEFAULT will be printed.\n<br/>Log functions will be omitted (NOP) for release builds.<br/></p>\n<div class=\"codehilite\"><pre><span></span><span class=\"cp\">#define DLIB_LOG_DOMAIN &quot;MyOwnDomain&quot;</span>\n<span class=\"cp\">#include</span> <span class=\"cpf\">&lt;dmsdk/dlib/log.h&gt;</span><span class=\"cp\"></span>\n</pre></div>", 
     "namespace": "dmLog", 
     "name": "Log", 

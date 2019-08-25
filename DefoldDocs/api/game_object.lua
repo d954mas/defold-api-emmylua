@@ -134,6 +134,9 @@ function go.cancel_animations(url, property) end
 ---the game object(s) are scheduled for deletion which will happen at the end of the current
 ---frame. Note that game objects scheduled for deletion will be counted against
 ---max_instances in "game.project" until they are actually removed.
+---
+--- Deleting a game object containing a particle FX component emitting particles will not immediately stop the particle FX from emitting particles. You need to manually stop the particle FX using particlefx.stop().
+--- Deleting a game object containing a sound component that is playing will not immediately stop the sound from playing. You need to manually stop the sound using sound.stop().
 ---@param id string | hash | url | table optional id or table of id's of the instance(s) to delete, the instance of the calling script is deleted by default
 ---@param recursive boolean optional boolean, set to true to recursively delete child hiearchy in child to parent order
 function go.delete(id, recursive) end
@@ -186,6 +189,9 @@ function go.get_world_scale(id) end
 ---@param id string | hash | url optional id of the game object instance to get the world scale for, by default the instance of the calling script
 ---@return number instance world scale factor
 function go.get_world_scale_uniform(id) end
+---@param id string | hash | url optional id of the game object instance to get the world transform for, by default the instance of the calling script
+---@return matrix4 instance world transform
+function go.get_world_transform(id) end
 ---This function defines a property which can then be used in the script through the self-reference.
 ---The properties defined this way are automatically exposed in the editor in game objects and collections which use the script.
 ---Note that you can only use this function outside any callback-functions like init and update.

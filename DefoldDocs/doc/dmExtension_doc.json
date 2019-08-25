@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "DEFOLD SDK", 
     "description": "<p><span class=\"file\">&lt;dmsdk/extension/extension.h&gt;</span></p>\n<p>Functions for creating and controlling engine native extension libraries.</p>", 
     "namespace": "dmExtension", 
     "name": "Extension", 

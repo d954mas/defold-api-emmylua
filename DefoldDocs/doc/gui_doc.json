@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "SYSTEM", 
     "description": "<p>GUI core hooks, functions, messages, properties and constants for\ncreation and manipulation of GUI nodes. The \"gui\" namespace is\naccessible only from gui scripts.</p>", 
     "namespace": "gui", 
     "name": "GUI", 
@@ -1958,7 +1959,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the size of a node.\nThe size mode defines how the node will adjust itself in size. Automatic\nsize mode alters the node size based on the node's content.</p>", 
+      "description": "<p>Returns the size of a node.\nThe size mode defines how the node will adjust itself in size. Automatic\nsize mode alters the node size based on the node's content. Automatic size\nmode works for Box nodes and Pie nodes which will both adjust their size\nto match the assigned image. Spine, Particle fx and Text nodes will ignore\nany size mode setting.</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">node</span> node from which to get the size mode (node)</p>", 
@@ -2643,7 +2644,7 @@
           "name": "node"
         }, 
         {
-          "doc": "<p><span class=\"type\">function(self, node, emitter, state)</span> optional callback function that will be called when an emitter attached to this particlefx changes state.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The id of the particle fx component</dd>\n<dt><code>emitter</code></dt>\n<dd><span class=\"type\">hash</span> The id of the emitter</dd>\n<dt><code>state</code></dt>\n<dd><span class=\"type\">constant</span> the new state of the emitter:</dd>\n</dl>\n<ul>\n<li><code>particlefx.EMITTER_STATE_SLEEPING</code></li>\n<li><code>particlefx.EMITTER_STATE_PRESPAWN</code></li>\n<li><code>particlefx.EMITTER_STATE_SPAWNING</code></li>\n<li><code>particlefx.EMITTER_STATE_POSTSPAWN</code></li>\n</ul>", 
+          "doc": "<p><span class=\"type\">function(self, node, emitter, state)</span> optional callback function that will be called when an emitter attached to this particlefx changes state.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>node</code></dt>\n<dd><span class=\"type\">hash</span> The particle fx node, or <code>nil</code> if the node was deleted</dd>\n<dt><code>emitter</code></dt>\n<dd><span class=\"type\">hash</span> The id of the emitter</dd>\n<dt><code>state</code></dt>\n<dd><span class=\"type\">constant</span> the new state of the emitter:</dd>\n</dl>\n<ul>\n<li><code>particlefx.EMITTER_STATE_SLEEPING</code></li>\n<li><code>particlefx.EMITTER_STATE_PRESPAWN</code></li>\n<li><code>particlefx.EMITTER_STATE_SPAWNING</code></li>\n<li><code>particlefx.EMITTER_STATE_POSTSPAWN</code></li>\n</ul>", 
           "name": "[emitter_state_function]"
         }
       ], 
@@ -3323,7 +3324,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Sets the size mode of a node.\nThe size mode defines how the node will adjust itself in size. Automatic\nsize mode alters the node size based on the node's content.</p>", 
+      "description": "<p>Sets the size mode of a node.\nThe size mode defines how the node will adjust itself in size. Automatic\nsize mode alters the node size based on the node's content. Automatic size\nmode works for Box nodes and Pie nodes which will both adjust their size\nto match the assigned image. Spine, Particle fx and Text nodes will ignore\nany size mode setting.</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">node</span> node to set size mode for</p>", 

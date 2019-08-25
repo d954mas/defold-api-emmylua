@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "SYSTEM", 
     "description": "<p>Functions and messages for collision object physics interaction\nwith other objects (collisions and ray-casting) and control of\nphysical behaviors.</p>", 
     "namespace": "physics", 
     "name": "Collision object", 
@@ -179,7 +180,308 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Ray casts are used to test for intersections against collision objects in the physics world.\nCollision objects of types kinematic, dynamic and static are tested against. Trigger objects\ndo not intersect with ray casts.\nWhich collision objects to hit is filtered by their collision groups and can be configured\nthrough <code>groups</code>.\nThe actual ray cast will be performed during the physics-update.</p>", 
+      "description": "<p>The following properties are available when connecting a joint of <code>JOINT_TYPE_FIXED</code> type:</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> The maximum length of the rope.</p>", 
+          "name": "max_length"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>fixed joint type</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "physics.JOINT_TYPE_FIXED"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The following properties are available when connecting a joint of <code>JOINT_TYPE_HINGE</code> type:</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> The bodyB angle minus bodyA angle in the reference state (radians).</p>", 
+          "name": "reference_angle"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The lower angle for the joint limit (radians).</p>", 
+          "name": "lower_angle"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The upper angle for the joint limit (radians).</p>", 
+          "name": "upper_angle"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The maximum motor torque used to achieve the desired motor speed. Usually in N-m.</p>", 
+          "name": "max_motor_torque"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The desired motor speed. Usually in radians per second.</p>", 
+          "name": "motor_speed"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> A flag to enable joint limits.</p>", 
+          "name": "enable_limit"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> A flag to enable the joint motor.</p>", 
+          "name": "enable_motor"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> <span class=\"mark\">READ ONLY</span>Current joint angle in radians.\n(Read only field, available from <code>physics.get_joint_properties()</code>)</p>", 
+          "name": "joint_angle"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> <span class=\"mark\">READ ONLY</span>Current joint angle speed in radians per second.\n(Read only field, available from <code>physics.get_joint_properties()</code>)</p>", 
+          "name": "joint_speed"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>hinge joint type</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "physics.JOINT_TYPE_HINGE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The following properties are available when connecting a joint of <code>JOINT_TYPE_SLIDER</code> type:</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">vector3</span> The local translation unit axis in bodyA.</p>", 
+          "name": "local_axis_a"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The constrained angle between the bodies: bodyB_angle - bodyA_angle.</p>", 
+          "name": "reference_angle"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> Enable/disable the joint limit.</p>", 
+          "name": "enable_limit"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The lower translation limit, usually in meters.</p>", 
+          "name": "lower_translation"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The upper translation limit, usually in meters.</p>", 
+          "name": "upper_translation"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> Enable/disable the joint motor.</p>", 
+          "name": "enable_motor"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The maximum motor torque, usually in N-m.</p>", 
+          "name": "max_motor_force"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The desired motor speed in radians per second.</p>", 
+          "name": "motor_speed"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> <span class=\"mark\">READ ONLY</span>Current joint translation, usually in meters.\n(Read only field, available from <code>physics.get_joint_properties()</code>)</p>", 
+          "name": "joint_translation"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> <span class=\"mark\">READ ONLY</span>Current joint translation speed, usually in meters per second.\n(Read only field, available from <code>physics.get_joint_properties()</code>)</p>", 
+          "name": "joint_speed"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>hinge joint type</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "physics.JOINT_TYPE_SLIDER"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The following properties are available when connecting a joint of <code>JOINT_TYPE_SPRING</code> type:</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> The natural length between the anchor points.</p>", 
+          "name": "length"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The mass-spring-damper frequency in Hertz. A value of 0 disables softness.</p>", 
+          "name": "frequency"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">number</span> The damping ratio. 0 = no damping, 1 = critical damping.</p>", 
+          "name": "damping"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>spring joint type</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "VARIABLE", 
+      "name": "physics.JOINT_TYPE_SPRING"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Create a physics joint between two collision object components.</p>\n<p>Note: Currently only supported in 2D physics.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">number</span> the joint type</p>", 
+          "name": "joint_type"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> first collision object</p>", 
+          "name": "collisionobject_a"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> id of the joint</p>", 
+          "name": "joint_id"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector3</span> local position where to attach the joint on the first collision object</p>", 
+          "name": "position_a"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> second collision object</p>", 
+          "name": "collisionobject_b"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector3</span> local position where to attach the joint on the second collision object</p>", 
+          "name": "position_b"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">table</span> optional joint specific properties table</p>\n<p>See each joint type for possible properties field. The one field that is accepted for all joint types is:\n- <span class=\"type\">boolean</span> <code>collide_connected</code>: Set this flag to true if the attached bodies should collide.</p>", 
+          "name": "[properties]"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>create a physics joint</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "physics.create_joint"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Destroy an already physics joint. The joint has to be created before a\ndestroy can be issued.</p>\n<p>Note: Currently only supported in 2D physics.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> collision object where the joint exist</p>", 
+          "name": "collisionobject"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> id of the joint</p>", 
+          "name": "joint_id"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>destroy a physics joint</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "physics.destroy_joint"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get the gravity in runtime. The gravity returned is not global, it will return\nthe gravity for the collection that the function is called from.</p>\n<p>Note: For 2D physics the z component will always be zero.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p>gravity vector of collection</p>", 
+          "name": "[type:vector3]"
+        }
+      ], 
+      "brief": "<p>get the gravity for collection</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">gravity</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">get_gravity</span><span class=\"p\">()</span>\n    <span class=\"c1\">-- Inverse gravity!</span>\n    <span class=\"n\">gravity</span> <span class=\"o\">=</span> <span class=\"o\">-</span><span class=\"n\">gravity</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_gravity</span><span class=\"p\">(</span><span class=\"n\">gravity</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "physics.get_gravity"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get a table for properties for a connected joint. The joint has to be created before\nproperties can be retrieved.</p>\n<p>Note: Currently only supported in 2D physics.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> collision object where the joint exist</p>", 
+          "name": "collisionobject"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> id of the joint</p>", 
+          "name": "joint_id"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>properties table. See the joint types for what fields are available, the only field available for all types is:</p>\n<ul>\n<li><span class=\"type\">boolean</span> <code>collide_connected</code>: Set this flag to true if the attached bodies should collide.</li>\n</ul>", 
+          "name": "[type:table]"
+        }
+      ], 
+      "brief": "<p>get properties for a joint</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "physics.get_joint_properties"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get the reaction force for a joint. The joint has to be created before\nthe reaction force can be calculated.</p>\n<p>Note: Currently only supported in 2D physics.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> collision object where the joint exist</p>", 
+          "name": "collisionobject"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> id of the joint</p>", 
+          "name": "joint_id"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">vector3</span> reaction force for the joint</p>", 
+          "name": "force"
+        }
+      ], 
+      "brief": "<p>get the reaction force for a joint</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "physics.get_joint_reaction_force"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Get the reaction torque for a joint. The joint has to be created before\nthe reaction torque can be calculated.</p>\n<p>Note: Currently only supported in 2D physics.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> collision object where the joint exist</p>", 
+          "name": "collisionobject"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> id of the joint</p>", 
+          "name": "joint_id"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">float</span> the reaction torque on bodyB in N*m.</p>", 
+          "name": "torque"
+        }
+      ], 
+      "brief": "<p>get the reaction torque for a joint</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "physics.get_joint_reaction_torque"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Ray casts are used to test for intersections against collision objects in the physics world.\nCollision objects of types kinematic, dynamic and static are tested against. Trigger objects\ndo not intersect with ray casts.\nWhich collision objects to hit is filtered by their collision groups and can be configured\nthrough <code>groups</code>.</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">vector3</span> the world position of the start of the ray</p>", 
@@ -196,8 +498,8 @@
       ], 
       "returnvalues": [
         {
-          "doc": "<p>It returns a table. If asynchronous it returns nil. See <code>ray_cast_response</code> for details on the returned values.</p>", 
-          "name": "[type:table]"
+          "doc": "<p><span class=\"type\">table</span> It returns a table. If missed it returns nil. See <code>ray_cast_response</code> for details on the returned values.</p>", 
+          "name": "result"
         }
       ], 
       "brief": "<p>requests a ray cast to be performed</p>", 
@@ -235,6 +537,48 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "physics.raycast_async"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Set the gravity in runtime. The gravity change is not global, it will only affect\nthe collection that the function is called from.</p>\n<p>Note: For 2D physics the z component of the gravity vector will be ignored.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">vector3</span> the new gravity vector</p>", 
+          "name": "gravity"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set the gravity for collection</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- Set &quot;upside down&quot; gravity for this collection.</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_gravity</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mf\">10.0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "physics.set_gravity"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Updates the properties for an already connected joint. The joint has to be created before\nproperties can be changed.</p>\n<p>Note: Currently only supported in 2D physics.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> collision object where the joint exist</p>", 
+          "name": "collisionobject"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> id of the joint</p>", 
+          "name": "joint_id"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">table</span> joint specific properties table</p>\n<p>Note: The <code>collide_connected</code> field cannot be updated/changed after a connection has been made.</p>", 
+          "name": "properties"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set properties for a joint</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "physics.set_joint_properties"
     }, 
     {
       "replaces": "", 

@@ -1,0 +1,95 @@
+{
+  "info": {
+    "group": "SYSTEM", 
+    "description": "", 
+    "namespace": "engine", 
+    "name": "Engine runtime", 
+    "brief": "<p>Engine runtime documentation</p>"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Override game properties with the format <code>--config=section.key=value</code></p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>override game property</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span>$ ./dmengine --config<span class=\"o\">=</span>project.mode<span class=\"o\">=</span>TEST --config<span class=\"o\">=</span>project.server<span class=\"o\">=</span>http://testserver.com\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MACRO", 
+      "name": "--config="
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Disables OpenGL error checking.\nThis is especially beneficial for running debug builds in the Chrome browser,\nin which the calls to <code>glGetError()</code> is notoriously slow.</p>\n<p>Default value is \"true\" for debug builds, and \"false\" for release builds.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>disables OpenGL error checking</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span>$ ./dmengine --verify-graphics-calls<span class=\"o\">=</span><span class=\"nb\">false</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MACRO", 
+      "name": "--verify-graphics-calls="
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Enables receiving the log on a designated port (e.g. using telnet)\nValid values are integers between [0, 65535]</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>sets the logging port</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "MACRO", 
+      "name": "DM_LOG_PORT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Enables quitting the app directly by pressing the <code>ESCAPE</code> key.\nSet to \"1\" to enable this feature.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>enables quit on escape key</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "MACRO", 
+      "name": "DM_QUIT_ON_ESC"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Overrides the save directory when using <code>sys.get_save_file()</code></p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>override the save directory</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "MACRO", 
+      "name": "DM_SAVE_HOME"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Overrides the engine service port, when creating the internal http server (e.g web profiler)</p>\n<p>Valid values are integers between [0, 65535] and the string \"dynamic\" (which translates to 0).\nDefault value is 8001.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>set the engine service port</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "MACRO", 
+      "name": "DM_SERVICE_PORT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Launch the engine with a specific project file</p>\n<p>If no project is specified, it will default to \"./game.projectc\", \"build/default/game.projectc\"</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>launch with a specific project</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span>$ ./dmengine some/folder/game.projectc\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MACRO", 
+      "name": "launch_project"
+    }
+  ]
+}

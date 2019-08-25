@@ -22,6 +22,9 @@ function sys.exit(code) end
 ---@param app_string string platform specific string with application package or query, see above for details.
 ---@return app_info table with application information in the following fields:
 function sys.get_application_info(app_string) end
+---The path from which the application is run.
+---@return string path to application executable
+function sys.get_application_path() end
 ---Get config value from the game.project configuration file.
 ---
 ---In addition to the project file, configuration values can also be passed
@@ -60,7 +63,7 @@ function sys.get_sys_info() end
 function sys.load(filename) end
 ---Loads a custom resource. Specify the full filename of the resource that you want
 ---to load. When loaded, the file data is returned as a string.
----If loading fails, the function returns nil.
+---If loading fails, the function returns nil plus the error message.
 ---
 ---In order for the engine to include custom resources in the build process, you need
 ---to specify them in the "custom_resources" key in your "game.project" settings file.
@@ -70,7 +73,8 @@ function sys.load(filename) end
 ---
 ---For example "main/data/,assets/level_data.json".
 ---@param filename string resource to load, full path
----@return string loaded data, or nil if the resource could not be loaded
+---@return string loaded data, or 
+---@return string the error message, or 
 function sys.load_resource(filename) end
 ---Open URL in default application, typically a browser
 ---@param url string url to open

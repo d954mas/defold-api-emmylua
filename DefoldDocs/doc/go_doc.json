@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "SYSTEM", 
     "description": "<p>Functions, core hooks, messages and constants for manipulation of\ngame objects. The \"go\" namespace is accessible from game object script\nfiles.</p>", 
     "namespace": "go", 
     "name": "Game object", 
@@ -715,7 +716,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Delete one or more game objects identified by id. Deletion is asynchronous meaning that\nthe game object(s) are scheduled for deletion which will happen at the end of the current\nframe. Note that game objects scheduled for deletion will be counted against\n<code>max_instances</code> in \"game.project\" until they are actually removed.</p>", 
+      "description": "<p>Delete one or more game objects identified by id. Deletion is asynchronous meaning that\nthe game object(s) are scheduled for deletion which will happen at the end of the current\nframe. Note that game objects scheduled for deletion will be counted against\n<code>max_instances</code> in \"game.project\" until they are actually removed.</p>\n<p><span class=\"icon-attention\"></span> Deleting a game object containing a particle FX component emitting particles will not immediately stop the particle FX from emitting particles. You need to manually stop the particle FX using <code>particlefx.stop()</code>.\n<span class=\"icon-attention\"></span> Deleting a game object containing a sound component that is playing will not immediately stop the sound from playing. You need to manually stop the sound using <code>sound.stop()</code>.</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">string | hash | url | table</span> optional id or table of id's of the instance(s) to delete, the instance of the calling script is deleted by default</p>", 
@@ -957,6 +958,28 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "go.get_world_scale_uniform"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> optional id of the game object instance to get the world transform for, by default the instance of the calling script</p>", 
+          "name": "[id]"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">matrix4</span> instance world transform</p>", 
+          "name": "transform"
+        }
+      ], 
+      "brief": "<p>gets the game object instance world transform matrix</p>", 
+      "examples": "<p>Get the world transform of the game object instance the script is attached to:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">m</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_transform</span><span class=\"p\">()</span>\n</pre></div>\n\n\n<p>Get the world transform of another game object instance with id \"x\":</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">m</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_transform</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">x&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "go.get_world_transform"
     }, 
     {
       "replaces": "", 

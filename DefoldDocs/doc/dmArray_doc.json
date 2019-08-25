@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "DEFOLD SDK", 
     "description": "<p><span class=\"file\">&lt;dmsdk/dlib/array.h&gt;</span></p>\n<p>Templatized array with bounds checking.<br/>template <code>&lt;typename T&gt;</code> class dmArray<br/></p>\n<p>The backing storage is either auto-allocated (dynamically allocated) or user-allocated (supplied by user).\nWith exception of changing the size and capacity, all operations are guaranteed to be O(1).</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmArray</span><span class=\"o\">&lt;</span><span class=\"kt\">int</span><span class=\"o\">&gt;</span> <span class=\"n\">a</span><span class=\"p\">;</span>\n<span class=\"n\">a</span><span class=\"p\">.</span><span class=\"n\">Push</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">);</span>\n</pre></div>", 
     "namespace": "dmArray", 
     "name": "Array", 

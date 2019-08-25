@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "COMPONENTS", 
     "description": "<p>Functions and messages used to manipulate tile map components.</p>", 
     "namespace": "tilemap", 
     "name": "Tilemap", 

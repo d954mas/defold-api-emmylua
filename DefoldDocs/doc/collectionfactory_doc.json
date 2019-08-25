@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "COMPONENTS", 
     "description": "<p>Functions for controlling collection factory components which are\nused to dynamically spawn collections into the runtime.</p>", 
     "namespace": "collectionfactory", 
     "name": "Collection factory", 

@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "EXTENSIONS", 
     "description": "<p>Functions and constants for interacting with Apple's In-app purchases\nand Google's In-app billing.</p>", 
     "namespace": "iap", 
     "name": "In-app purchases", 
@@ -41,18 +42,6 @@
       "error": "", 
       "type": "VARIABLE", 
       "name": "iap.PROVIDER_ID_FACEBOOK"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>provider id for Facebook Gameroom</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "iap.PROVIDER_ID_GAMEROOM"
     }, 
     {
       "replaces": "", 
@@ -173,18 +162,6 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p><span class=\"icon-gameroom\"></span> Performs a purchase of a premium game license. The purchase transaction\nis handled like regular iap purchases; calling the currently set iap_listener with the\ntransaction results.</p>\n<p><span class=\"icon-attention\"></span> This function does not work when testing the application\nlocally in the Gameroom client.</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>purchase a premium license</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">iap_listener</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">transaction</span><span class=\"p\">,</span> <span class=\"nb\">error</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"nb\">error</span> <span class=\"o\">==</span> <span class=\"kc\">nil</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- purchase is ok</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">transaction</span><span class=\"p\">.</span><span class=\"n\">date</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- required if auto finish transactions is disabled in project settings</span>\n    <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">transaction</span><span class=\"p\">.</span><span class=\"n\">state</span> <span class=\"o\">==</span> <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">TRANS_STATE_PURCHASED</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n      <span class=\"c1\">-- do server-side verification of purchase here..</span>\n      <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">finish</span><span class=\"p\">(</span><span class=\"n\">transaction</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">else</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">error</span><span class=\"p\">,</span> <span class=\"n\">error</span><span class=\"p\">.</span><span class=\"n\">reason</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- set the listener function for iap transactions</span>\n  <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"n\">iap_listener</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- purchase premium license</span>\n  <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">buy_premium</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "iap.buy_premium"
-    }, 
-    {
-      "replaces": "", 
       "description": "<p>Explicitly finish a product transaction.</p>\n<p><span class=\"icon-attention\"></span> Calling iap.finish is required on a successful transaction\nif <code>auto_finish_transactions</code> is disabled in project settings. Calling this function\nwith <code>auto_finish_transactions</code> set will be ignored and a warning is printed.\nThe <code>transaction.state</code> field must equal <code>iap.TRANS_STATE_PURCHASED</code>.</p>", 
       "parameters": [
         {
@@ -206,7 +183,7 @@
       "parameters": [], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">constant</span> provider id.</p>\n<ul>\n<li><code>iap.PROVIDER_ID_GOOGLE</code></li>\n<li><code>iap.PROVIDER_ID_AMAZON</code></li>\n<li><code>iap.PROVIDER_ID_APPLE</code></li>\n<li><code>iap.PROVIDER_ID_FACEBOOK</code></li>\n<li><code>iap.PROVIDER_ID_GAMEROOM</code></li>\n</ul>", 
+          "doc": "<p><span class=\"type\">constant</span> provider id.</p>\n<ul>\n<li><code>iap.PROVIDER_ID_GOOGLE</code></li>\n<li><code>iap.PROVIDER_ID_AMAZON</code></li>\n<li><code>iap.PROVIDER_ID_APPLE</code></li>\n<li><code>iap.PROVIDER_ID_FACEBOOK</code></li>\n</ul>", 
           "name": "id"
         }
       ], 
@@ -216,23 +193,6 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "iap.get_provider_id"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p><span class=\"icon-gameroom\"></span> Checks if a license for the game has been purchased by the user.\nYou should provide a callback function that will be called with the result of the check.</p>\n<p><span class=\"icon-attention\"></span> This function does not work when testing the application\nlocally in the Gameroom client.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">function(self, has_premium)</span> result callback</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>has_premium</code></dt>\n<dd><span class=\"type\">boolean</span> <code>true</code> if the user has premium license, <code>false</code> otherwise.</dd>\n</dl>", 
-          "name": "callback"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>check if user has already purchased premium license</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">premium_result</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">has_premium</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">has_premium</span> <span class=\"k\">then</span>\n     <span class=\"c1\">-- User has purchased this premium game.</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">()</span>\n  <span class=\"c1\">-- check is user has bought the game</span>\n  <span class=\"n\">iap</span><span class=\"p\">.</span><span class=\"n\">has_premium</span><span class=\"p\">(</span><span class=\"n\">premium_result</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "iap.has_premium"
     }, 
     {
       "replaces": "", 
@@ -274,7 +234,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Set the callback function to receive purchase transaction events. Transactions are\ndescribed as a <span class=\"type\">table</span> with the following fields:</p>\n<dl>\n<dt><code>ident</code></dt>\n<dd>The product identifier.</dd>\n<dt><code>state</code></dt>\n<dd>The transaction state. See <code>iap.TRANS_STATE_*</code>.</dd>\n<dt><code>date</code></dt>\n<dd>The date and time for the transaction.</dd>\n<dt><code>trans_ident</code></dt>\n<dd>The transaction identifier. This field is only set when <code>state</code> is TRANS_STATE_RESTORED,\nTRANS_STATE_UNVERIFIED or TRANS_STATE_PURCHASED.</dd>\n<dt><code>receipt</code></dt>\n<dd>The transaction receipt. This field is only set when <code>state</code> is TRANS_STATE_PURCHASED\nor TRANS_STATE_UNVERIFIED.</dd>\n<dt><code>original_trans</code> <span class=\"icon-apple\"></span></dt>\n<dd>Apple only. The original transaction. This field is only set when <code>state</code> is\nTRANS_STATE_RESTORED.</dd>\n<dt><code>signature</code> <span class=\"icon-googleplay\"></span></dt>\n<dd>Google Play only. A string containing the signature of the purchase data that was signed\nwith the private key of the developer.</dd>\n<dt><code>request_id</code> <span class=\"icon-facebook\"></span></dt>\n<dd>Facebook only. This field is set to the optional custom unique request id <code>request_id</code>\nif set in the <code>iap.buy()</code> call parameters.</dd>\n<dt><code>purchase_token</code> <span class=\"icon-gameroom\"></span></dt>\n<dd>Facebook Gameroom only. The purchase token.</dd>\n<dt><code>currency</code> <span class=\"icon-gameroom\"></span></dt>\n<dd>Facebook Gameroom only. The currency used for the purchase.</dd>\n<dt><code>amount</code> <span class=\"icon-gameroom\"></span></dt>\n<dd>Facebook Gameroom only. The amount the player will be charged for a single unit\nof this product.</dd>\n<dt><code>quantity</code> <span class=\"icon-gameroom\"></span></dt>\n<dd>Facebook Gameroom only. The quantity of this item the user is purchasing.</dd>\n<dt><code>user_id</code> <span class=\"icon-amazon\"></span></dt>\n<dd>Amazon Pay only. The user ID.</dd>\n<dt><code>is_sandbox_mode</code> <span class=\"icon-amazon\"></span></dt>\n<dd>Amazon Pay only. If <code>true</code>, the SDK is running in Sandbox mode. This only allows\ninteractions with the Amazon AppTester. Use this mode only for testing locally.</dd>\n<dt><code>cancel_date</code> <span class=\"icon-amazon\"></span></dt>\n<dd>Amazon Pay only. The cancel date for the purchase. This field is only set if the\npurchase is canceled.</dd>\n<dt><code>canceled</code> <span class=\"icon-amazon\"></span></dt>\n<dd>Amazon Pay only. Is set to <code>true</code> if the receipt was canceled or has expired;\notherwise <code>false</code>.</dd>\n</dl>", 
+      "description": "<p>Set the callback function to receive purchase transaction events. Transactions are\ndescribed as a <span class=\"type\">table</span> with the following fields:</p>\n<dl>\n<dt><code>ident</code></dt>\n<dd>The product identifier.</dd>\n<dt><code>state</code></dt>\n<dd>The transaction state. See <code>iap.TRANS_STATE_*</code>.</dd>\n<dt><code>date</code></dt>\n<dd>The date and time for the transaction.</dd>\n<dt><code>trans_ident</code></dt>\n<dd>The transaction identifier. This field is only set when <code>state</code> is TRANS_STATE_RESTORED,\nTRANS_STATE_UNVERIFIED or TRANS_STATE_PURCHASED.</dd>\n<dt><code>receipt</code></dt>\n<dd>The transaction receipt. This field is only set when <code>state</code> is TRANS_STATE_PURCHASED\nor TRANS_STATE_UNVERIFIED.</dd>\n<dt><code>original_trans</code> <span class=\"icon-apple\"></span></dt>\n<dd>Apple only. The original transaction. This field is only set when <code>state</code> is\nTRANS_STATE_RESTORED.</dd>\n<dt><code>signature</code> <span class=\"icon-googleplay\"></span></dt>\n<dd>Google Play only. A string containing the signature of the purchase data that was signed\nwith the private key of the developer.</dd>\n<dt><code>request_id</code> <span class=\"icon-facebook\"></span></dt>\n<dd>Facebook only. This field is set to the optional custom unique request id <code>request_id</code>\nif set in the <code>iap.buy()</code> call parameters.</dd>\n<dt><code>user_id</code> <span class=\"icon-amazon\"></span></dt>\n<dd>Amazon Pay only. The user ID.</dd>\n<dt><code>is_sandbox_mode</code> <span class=\"icon-amazon\"></span></dt>\n<dd>Amazon Pay only. If <code>true</code>, the SDK is running in Sandbox mode. This only allows\ninteractions with the Amazon AppTester. Use this mode only for testing locally.</dd>\n<dt><code>cancel_date</code> <span class=\"icon-amazon\"></span></dt>\n<dd>Amazon Pay only. The cancel date for the purchase. This field is only set if the\npurchase is canceled.</dd>\n<dt><code>canceled</code> <span class=\"icon-amazon\"></span></dt>\n<dd>Amazon Pay only. Is set to <code>true</code> if the receipt was canceled or has expired;\notherwise <code>false</code>.</dd>\n</dl>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">function(self, transaction, error)</span> listener callback function.\nPass an empty function if you no longer wish to receive callbacks.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>transaction</code></dt>\n<dd><span class=\"type\">table</span> a table describing the transaction. See above for details.</dd>\n<dt><code>error</code></dt>\n<dd><span class=\"type\">table</span> a table containing error information. <code>nil</code> if there is no error.\n- <code>error</code> (the error message)\n- <code>reason</code> (the reason for the error, see <code>iap.REASON_*</code>)</dd>\n</dl>", 

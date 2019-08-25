@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "DEFOLD SDK", 
     "description": "<p><span class=\"file\">&lt;dmsdk/graphics/graphics_native.h&gt;</span></p>\n<p>Platform specific native graphics functions.</p>", 
     "namespace": "dmGraphics", 
     "name": "Graphics", 

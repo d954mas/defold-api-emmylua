@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "COMPONENTS", 
     "description": "<p>Functions for controlling particle effect component playback and\nshader constants.</p>", 
     "namespace": "particlefx", 
     "name": "Particle effects", 
@@ -56,7 +57,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Starts playing a particle FX component.\nParticle FX started this way need to be manually stopped through <code>particlefx.stop()</code>.\nWhich particle FX to play is identified by the URL.</p>", 
+      "description": "<p>Starts playing a particle FX component.\nParticle FX started this way need to be manually stopped through <code>particlefx.stop()</code>.\nWhich particle FX to play is identified by the URL.</p>\n<p><span class=\"icon-attention\"></span> A particle FX will continue to emit particles even if the game object the particle FX component belonged to is deleted. You can call <code>particlefx.stop()</code> to stop it from emitting more particles.</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">string | hash | url</span> the particle fx that should start playing.</p>", 

@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "COMPONENTS", 
     "description": "<p>Functions and messages for interacting with model components.</p>", 
     "namespace": "model", 
     "name": "Model", 

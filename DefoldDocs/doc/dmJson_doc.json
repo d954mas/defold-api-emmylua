@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "DEFOLD SDK", 
     "description": "<p><span class=\"file\">&lt;dmsdk/dlib/json.h&gt;</span></p>\n<p>API for platform independent parsing of json files</p>", 
     "namespace": "dmJson", 
     "name": "Json", 

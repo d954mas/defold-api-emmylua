@@ -1,7 +1,7 @@
 ---Bitwise operations API documentation
 ---Lua BitOp <http://bitop.luajit.org/api.html> is a C extension module for Lua 5.1/5.2 which adds bitwise operations on numbers.
 ---
----Lua BitOp is Copyright Â© 2008-2012 Mike Pall.
+---Lua BitOp is Copyright © 2008-2012 Mike Pall.
 ---Lua BitOp is free software, released under the MIT license (same license as the Lua core).
 ---
 ---Lua BitOp is compatible with the built-in bitwise operations in LuaJIT 2.0 and is used

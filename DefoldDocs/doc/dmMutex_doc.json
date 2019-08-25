@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "DEFOLD SDK", 
     "description": "<p><span class=\"file\">&lt;dmsdk/dlib/mutex.h&gt;</span></p>\n<p>API for platform independent mutex synchronization primitive.</p>", 
     "namespace": "dmMutex", 
     "name": "Mutex", 

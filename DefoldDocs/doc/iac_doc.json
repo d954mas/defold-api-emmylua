@@ -1,5 +1,6 @@
 {
   "info": {
+    "group": "EXTENSIONS", 
     "description": "<p>Functions and constants for doing inter-app communication.</p>\n<p><span class=\"icon-ios\"></span> <span class=\"icon-android\"></span> These API:s only exist on mobile platforms.</p>", 
     "namespace": "iac", 
     "name": "Inter-app communication", 
