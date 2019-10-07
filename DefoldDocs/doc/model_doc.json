@@ -33,6 +33,18 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>The material used when rendering the model. The type of the property is hash.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">hash</span> model material</p>", 
+      "examples": "<p>How to set material using a script property (see <a href=\"/ref/resource#resource.material\">resource.material</a>):</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_material&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">material</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/material.material&quot;</span><span class=\"p\">))</span>\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">material&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_material</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "material"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Cancels all animation on a model component.</p>", 
       "parameters": [
         {
@@ -188,15 +200,15 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p><span class=\"mark\">READ ONLY</span> Returns the texture path hash of the model. Used for getting/setting resource data</p>", 
+      "description": "<p>The texture hash id of the model. Used for getting/setting model texture for unit 0-7</p>", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p><span class=\"type\">hash</span> model texture0</p>", 
-      "examples": "<p>See <a href=\"/ref/resource#resource.set_texture\">resource.set_texture</a> for an example on how to set the texture of an atlas.</p>", 
+      "brief": "<p><span class=\"type\">hash</span> model textureN where N is 0-7</p>", 
+      "examples": "<p>How to set texture using a script property (see <a href=\"/ref/resource#resource.texture\">resource.texture</a>):</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_texture&quot;</span><span class=\"p\">,</span> <span class=\"n\">texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/texture.png&quot;</span><span class=\"p\">))</span>\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">texture0&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_texture</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>See <a href=\"/ref/resource#resource.set_texture\">resource.set_texture</a> for an example on how to set the texture of an atlas.</p>", 
       "members": [], 
       "error": "", 
       "type": "PROPERTY", 
-      "name": "texture0"
+      "name": "textureN"
     }
   ]
 }

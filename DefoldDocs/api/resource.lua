@@ -26,6 +26,28 @@ resource.TEXTURE_FORMAT_RGB = nil
 resource.TEXTURE_FORMAT_RGBA = nil
 ---2D texture type
 resource.TEXTURE_TYPE_2D = nil
+---Constructor-like function with two purposes:
+---
+---
+--- * Load the specified resource as part of loading the script
+---
+--- * Return a hash to the run-time version of the resource
+---
+---
+--- This function can only be called within go.property <> function calls.
+---@return hash a path hash to the binary version of the resource
+function resource.atlas() end
+---Constructor-like function with two purposes:
+---
+---
+--- * Load the specified resource as part of loading the script
+---
+--- * Return a hash to the run-time version of the resource
+---
+---
+--- This function can only be called within go.property <> function calls.
+---@return hash a path hash to the binary version of the resource
+function resource.font() end
 ---Return a reference to the Manifest that is currently loaded.
 ---@return number reference to the Manifest that is currently loaded
 function resource.get_current_manifest() end
@@ -33,6 +55,17 @@ function resource.get_current_manifest() end
 ---@param path string The path to the resource
 ---@return buffer Returns the buffer stored on disc
 function resource.load(path) end
+---Constructor-like function with two purposes:
+---
+---
+--- * Load the specified resource as part of loading the script
+---
+--- * Return a hash to the run-time version of the resource
+---
+---
+--- This function can only be called within go.property <> function calls.
+---@return hash a path hash to the binary version of the resource
+function resource.material() end
 ---Sets the resource data for a specific resource
 ---@param path string | hash The path to the resource
 ---@param buffer buffer The buffer of precreated data, suitable for the intended resource type
@@ -60,6 +93,28 @@ function resource.store_manifest(manifest_buffer, callback) end
 ---@param hexdigest string The expected hash for the resource, retrieved through collectionproxy.missing_resources.
 ---@param callback function(self, hexdigest, status) The callback function that is executed once the engine has been attempted to store the resource.
 function resource.store_resource(manifest_reference, data, hexdigest, callback) end
+---Constructor-like function with two purposes:
+---
+---
+--- * Load the specified resource as part of loading the script
+---
+--- * Return a hash to the run-time version of the resource
+---
+---
+--- This function can only be called within go.property <> function calls.
+---@return hash a path hash to the binary version of the resource
+function resource.texture() end
+---Constructor-like function with two purposes:
+---
+---
+--- * Load the specified resource as part of loading the script
+---
+--- * Return a hash to the run-time version of the resource
+---
+---
+--- This function can only be called within go.property <> function calls.
+---@return hash a path hash to the binary version of the resource
+function resource.tile_source() end
 
 
 

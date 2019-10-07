@@ -42,6 +42,30 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>The image used when rendering the sprite. The type of the property is hash.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">hash</span> sprite image</p>", 
+      "examples": "<p>How to set image using a script property (see <a href=\"/ref/resource#resource.atlas\">resource.atlas</a>)</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_image&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">atlas</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/atlas.atlas&quot;</span><span class=\"p\">))</span>\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">image&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_image</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>See <a href=\"/ref/resource#resource.set_texture\">resource.set_texture</a> for an example on how to set the texture of an atlas.</p>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "image"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The material used when rendering the sprite. The type of the property is hash.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">hash</span> sprite material</p>", 
+      "examples": "<p>How to set material using a script property (see <a href=\"/ref/resource#resource.material\">resource.material</a>)</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_material&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">material</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/material.material&quot;</span><span class=\"p\">))</span>\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">material&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_material</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "material"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Post this message to a sprite component to make it play an animation from its tile set.</p>", 
       "parameters": [
         {
@@ -209,18 +233,6 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "sprite.set_vflip"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p><span class=\"mark\">READ ONLY</span> Returns the texture path hash of the sprite. Used for getting/setting resource data</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p><span class=\"type\">hash</span> sprite texture0</p>", 
-      "examples": "<p>See <a href=\"/ref/resource#resource.set_texture\">resource.set_texture</a> for an example on how to set the texture of an atlas.</p>", 
-      "members": [], 
-      "error": "", 
-      "type": "PROPERTY", 
-      "name": "texture0"
     }
   ]
 }

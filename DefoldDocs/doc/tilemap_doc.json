@@ -9,6 +9,30 @@
   "elements": [
     {
       "replaces": "", 
+      "description": "<p>The material used when rendering the tile map. The type of the property is hash.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">hash</span> tile map material</p>", 
+      "examples": "<p>How to set material using a script property (see <a href=\"/ref/resource#resource.material\">resource.material</a>)</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_material&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">material</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/material.material&quot;</span><span class=\"p\">))</span>\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">material&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_material</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "material"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The tile source used when rendering the tile map. The type of the property is hash.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">hash</span> tile source</p>", 
+      "examples": "<p>How to set tile source using a script property (see <a href=\"/ref/resource#resource.tile_source\">resource.tile_source</a>)</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_tile_source&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">tile_source</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/tilesource.tilesource&quot;</span><span class=\"p\">))</span>\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tile_source&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_tile_source</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "tile_source"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Get the bounds for a tile map. This function returns multiple values:\nThe lower left corner index x and y coordinates (1-indexed),\nthe tile map width and the tile map height.</p>\n<p>The resulting values take all tile map layers into account, meaning that\nthe bounds are calculated as if all layers were collapsed into one.</p>", 
       "parameters": [
         {
@@ -161,6 +185,31 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "tilemap.set_tile"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the visibility of the tilemap layer</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the tile map</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string | hash</span> name of the layer for the tile</p>", 
+          "name": "layer"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> should the layer be visible</p>", 
+          "name": "visible"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set the visibility of a layer</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Disable rendering of the layer</span>\n<span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">set_visible</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/level#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">foreground&quot;</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "tilemap.set_visible"
     }
   ]
 }

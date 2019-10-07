@@ -69,6 +69,11 @@ function tilemap.set_constant(url, constant, value) end
 ---@param h_flipped boolean optional if the tile should be horizontally flipped
 ---@param v_flipped boolean optional i the tile should be vertically flipped
 function tilemap.set_tile(url, layer, x, y, tile, h_flipped, v_flipped) end
+---Sets the visibility of the tilemap layer
+---@param url string | hash | url the tile map
+---@param layer string | hash name of the layer for the tile
+---@param visible boolean should the layer be visible
+function tilemap.set_visible(url, layer, visible) end
 
 
 

@@ -176,6 +176,32 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Register extra extension callbacks.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">CallbackType</span> Callback type enum</p>", 
+          "name": "callback_type"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">extension_callback_t</span> Function to register as callback</p>", 
+          "name": "func"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>Returns true if successfully registered the function, false otherwise.</p>", 
+          "name": "[type:bool]"
+        }
+      ], 
+      "brief": "<p>Register extra extension callbacks.</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "RegisterCallback"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)</p>\n<p>This function is only available on iOS. <span class=\"icon-ios\"></span></p>", 
       "parameters": [
         {
@@ -241,6 +267,27 @@
       "error": "", 
       "type": "STRUCT", 
       "name": "dmExtension::AppParams"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Extra callback enumeration for RegisterCallback function.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p>extra callback enumeration</p>", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "name": "dmExtension::CALLBACK_PRE_RENDER"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmExtension::CALLBACK_POST_RENDER"
+        }
+      ], 
+      "error": "", 
+      "type": "ENUM", 
+      "name": "dmExtension::CallbackType"
     }, 
     {
       "replaces": "", 
@@ -321,6 +368,28 @@
       "error": "", 
       "type": "ENUM", 
       "name": "dmExtension::Result"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Callback typedef for functions passed to RegisterCallback().</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">Params</span></p>", 
+          "name": "params"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "[type:Result]"
+        }
+      ], 
+      "brief": "<p>Extra extension callback typedef</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "TYPEDEF", 
+      "name": "extension_callback_t"
     }
   ]
 }

@@ -557,6 +557,27 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Flips the collision shapes horizontally for a collision object</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the collision object that should flip its shapes</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> <code>true</code> if the collision object should flip its shapes, <code>false</code> if not</p>", 
+          "name": "flip"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>flip the geometry horizontally for a collision object</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">fliph</span> <span class=\"o\">=</span> <span class=\"kc\">true</span> <span class=\"c1\">-- set on some condition</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_hflip</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">fliph</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "physics.set_hflip"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Updates the properties for an already connected joint. The joint has to be created before\nproperties can be changed.</p>\n<p>Note: Currently only supported in 2D physics.</p>", 
       "parameters": [
         {
@@ -579,6 +600,27 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "physics.set_joint_properties"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Flips the collision shapes vertically for a collision object</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the collision object that should flip its shapes</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">boolean</span> <code>true</code> if the collision object should flip its shapes, <code>false</code> if not</p>", 
+          "name": "flip"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>flip the geometry vertically for a collision object</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">flipv</span> <span class=\"o\">=</span> <span class=\"kc\">true</span> <span class=\"c1\">-- set on some condition</span>\n    <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">set_vflip</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">flipv</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "physics.set_vflip"
     }, 
     {
       "replaces": "", 

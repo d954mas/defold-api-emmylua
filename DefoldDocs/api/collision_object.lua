@@ -93,6 +93,10 @@ function physics.raycast_async(from, to, groups, request_id) end
 ---Note: For 2D physics the z component of the gravity vector will be ignored.
 ---@param gravity vector3 the new gravity vector
 function physics.set_gravity(gravity) end
+---Flips the collision shapes horizontally for a collision object
+---@param url string | hash | url the collision object that should flip its shapes
+---@param flip boolean 
+function physics.set_hflip(url, flip) end
 ---Updates the properties for an already connected joint. The joint has to be created before
 ---properties can be changed.
 ---
@@ -101,6 +105,10 @@ function physics.set_gravity(gravity) end
 ---@param joint_id string | hash id of the joint
 ---@param properties table joint specific properties table
 function physics.set_joint_properties(collisionobject, joint_id, properties) end
+---Flips the collision shapes vertically for a collision object
+---@param url string | hash | url the collision object that should flip its shapes
+---@param flip boolean 
+function physics.set_vflip(url, flip) end
 
 
 

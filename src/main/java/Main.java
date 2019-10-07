@@ -52,6 +52,7 @@ public class Main {
         IGNORE_DOCS.add("dmConditionVariable_doc.json");
         IGNORE_DOCS.add("dmJson_doc.json");
         IGNORE_DOCS.add("string_doc.json"); //lua plugin already have it
+        IGNORE_DOCS.add("dmStringFunc_doc.json");
     }
 
     private static void clearFolder(File folder) {

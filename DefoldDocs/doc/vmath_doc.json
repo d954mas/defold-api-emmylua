@@ -1,7 +1,7 @@
 {
   "info": {
     "group": "SCRIPT", 
-    "description": "<p>Functions for mathematical operations on vectors, matrices and quaternions.</p>\n<ul>\n<li>The vector types (<code>vmath.vector3</code> and <code>vmath.vector4</code>) supports addition and subtraction\n  with vectors of the same type. Vectors can be negated and multiplied with numbers\n  (scaled).</li>\n<li>The quaternion type (<code>vmath.quat</code>) supports multiplication with other quaternions.</li>\n<li>The matrix type (<code>vmath.matrix4</code>) can be multiplied with numbers, other matrices\n  and <code>vmath.vector4</code> values.</li>\n<li>All types performs equality comparison by each component value.</li>\n</ul>\n<p>The following components are available for the various types:</p>\n<dl>\n<dt>vector3</dt>\n<dd><code>x</code>, <code>y</code> and <code>z</code>. Example: <code>v.y</code></dd>\n<dt>vector4</dt>\n<dd><code>x</code>, <code>y</code>, <code>z</code>, and <code>w</code>. Example: <code>v.w</code></dd>\n<dt>quaternion</dt>\n<dd><code>x</code>, <code>y</code>, <code>z</code>, and <code>w</code>. Example: <code>q.w</code></dd>\n<dt>matrix4</dt>\n<dd><code>m00</code> to <code>m33</code> where the first number is the row (starting from 0) and the second\nnumber is the column. Columns can be accessed with <code>c0</code> to <code>c3</code>, returning a <code>vector4</code>.\nExample: <code>m.m21</code> which is equal to <code>m.c1.z</code></dd>\n<dt>vector</dt>\n<dd>indexed by number 1 to the vector length. Example: <code>v[3]</code></dd>\n</dl>", 
+    "description": "<p>Functions for mathematical operations on vectors, matrices and quaternions.</p>\n<ul>\n<li>The vector types (<code>vmath.vector3</code> and <code>vmath.vector4</code>) supports addition and subtraction\n  with vectors of the same type. Vectors can be negated and multiplied (scaled) or divided by numbers.</li>\n<li>The quaternion type (<code>vmath.quat</code>) supports multiplication with other quaternions.</li>\n<li>The matrix type (<code>vmath.matrix4</code>) can be multiplied with numbers, other matrices\n  and <code>vmath.vector4</code> values.</li>\n<li>All types performs equality comparison by each component value.</li>\n</ul>\n<p>The following components are available for the various types:</p>\n<dl>\n<dt>vector3</dt>\n<dd><code>x</code>, <code>y</code> and <code>z</code>. Example: <code>v.y</code></dd>\n<dt>vector4</dt>\n<dd><code>x</code>, <code>y</code>, <code>z</code>, and <code>w</code>. Example: <code>v.w</code></dd>\n<dt>quaternion</dt>\n<dd><code>x</code>, <code>y</code>, <code>z</code>, and <code>w</code>. Example: <code>q.w</code></dd>\n<dt>matrix4</dt>\n<dd><code>m00</code> to <code>m33</code> where the first number is the row (starting from 0) and the second\nnumber is the column. Columns can be accessed with <code>c0</code> to <code>c3</code>, returning a <code>vector4</code>.\nExample: <code>m.m21</code> which is equal to <code>m.c1.z</code></dd>\n<dt>vector</dt>\n<dd>indexed by number 1 to the vector length. Example: <code>v[3]</code></dd>\n</dl>", 
     "namespace": "vmath", 
     "name": "Vector math", 
     "brief": "<p>Vector math API documentation</p>"
@@ -537,6 +537,28 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "vmath.matrix4_rotation_z"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The resulting matrix describes a translation of a point\nin euclidean space.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">vector3 | type:vector4</span> position vector to create matrix from</p>", 
+          "name": "position"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">matrix4</span> matrix from the supplied position vector</p>", 
+          "name": "m"
+        }
+      ], 
+      "brief": "<p>creates a translation matrix from a position vector</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Set camera view from custom view and translation matrices</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat_trans</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_translation</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">))</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat_view</span>  <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_y</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mf\">3.141592</span><span class=\"o\">/</span><span class=\"mi\">4</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_view</span><span class=\"p\">(</span><span class=\"n\">mat_view</span> <span class=\"o\">*</span> <span class=\"n\">mat_trans</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "vmath.matrix4_translation"
     }, 
     {
       "replaces": "", 

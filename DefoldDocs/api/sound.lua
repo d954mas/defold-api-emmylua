@@ -41,7 +41,7 @@ function sound.get_peak(group, window) end
 ---the instantaneous values.
 ---
 ---For instance: for a sinewave signal with a peak gain of -1.94 dB (0.8 linear),
----the RMS is 0.8 ? 1/sqrt(2) which is about 0.566.
+---the RMS is 0.8 × 1/sqrt(2) which is about 0.566.
 ---
 --- Note the returned value might be an approximation and in particular
 ---the effective window might be larger than specified.
@@ -89,7 +89,8 @@ function sound.is_phone_call_active() end
 --- A sound will continue to play even if the game object the sound component belonged to is deleted. You can call sound.stop() to stop the sound.
 ---@param url string | hash | url the sound that should play
 ---@param play_properties table optional table with properties:
-function sound.play(url, play_properties) end
+---@param complete_function function(self, message_id, message, sender)) function to call when the sound has finished playing.
+function sound.play(url, play_properties, complete_function) end
 ---Set gain on all active playing voices of a sound.
 ---
 --- Note that gain is in linear scale, between 0 and 1.
@@ -108,6 +109,12 @@ function sound.set_gain(url, gain) end
 ---@param group string | hash group name
 ---@param gain number gain in linear scale
 function sound.set_group_gain(group, gain) end
+---Set panning on all active playing voices of a sound.
+---
+---The valid range is from -1.0 to 1.0, representing -45 degrees left, to +45 degrees right.
+---@param url string | hash | url the sound to set the panning value to
+---@param pan number sound panning between -1.0 and 1.0
+function sound.set_pan(url, pan) end
 ---Stop playing all active voices
 ---@param url string | hash | url the sound that should stop
 function sound.stop(url) end

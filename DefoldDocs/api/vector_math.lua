@@ -3,8 +3,7 @@
 ---
 ---
 --- * The vector types (vmath.vector3 and vmath.vector4) supports addition and subtraction
----  with vectors of the same type. Vectors can be negated and multiplied with numbers
----  (scaled).
+---  with vectors of the same type. Vectors can be negated and multiplied (scaled) or divided by numbers.
 ---
 --- * The quaternion type (vmath.quat) supports multiplication with other quaternions.
 ---
@@ -40,7 +39,7 @@ vmath = {}
 ---@return quatertion the conjugate
 function vmath.conj(q1) end
 ---Given two linearly independent vectors P and Q, the cross product,
----P ? Q, is a vector that is perpendicular to both P and Q and
+---P × Q, is a vector that is perpendicular to both P and Q and
 ---therefore normal to the plane containing them.
 ---
 ---If the two vectors have the same direction (or have the exact
@@ -52,9 +51,9 @@ function vmath.conj(q1) end
 function vmath.cross(v1, v2) end
 ---The returned value is a scalar defined as:
 ---
----P ? Q = |P| |Q| cos ?
+---P ⋅ Q = |P| |Q| cos θ
 ---
----where ? is the angle between the vectors P and Q.
+---where θ is the angle between the vectors P and Q.
 ---
 ---
 --- * If the dot product is positive then the angle between the vectors is below 90 degrees.
@@ -191,6 +190,11 @@ function vmath.matrix4_rotation_y(angle) end
 ---@param angle number angle in radians around z-axis
 ---@return matrix4 matrix from rotation around z-axis
 function vmath.matrix4_rotation_z(angle) end
+---The resulting matrix describes a translation of a point
+---in euclidean space.
+---@param position vector3 | type:vector4 position vector to create matrix from
+---@return matrix4 matrix from the supplied position vector
+function vmath.matrix4_translation(position) end
 ---Performs an element wise multiplication between two vectors of the same type
 ---The returned value is a vector defined as (e.g. for a vector3):
 ---
@@ -219,9 +223,9 @@ function vmath.ortho_inv(m1) end
 ---Calculates the extent the projection of the first vector onto the second.
 ---The returned value is a scalar p defined as:
 ---
----p = |P| cos ? / |Q|
+---p = |P| cos θ / |Q|
 ---
----where ? is the angle between the vectors P and Q.
+---where θ is the angle between the vectors P and Q.
 ---@param v1 vector3 vector to be projected on the second
 ---@param v2 vector3 vector onto which the first will be projected, must not have zero length
 ---@return number the projected extent of the first vector onto the second

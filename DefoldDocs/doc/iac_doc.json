@@ -1,40 +1,10 @@
 {
   "info": {
     "group": "EXTENSIONS", 
-    "description": "<p>Functions and constants for doing inter-app communication.</p>\n<p><span class=\"icon-ios\"></span> <span class=\"icon-android\"></span> These API:s only exist on mobile platforms.</p>", 
+    "description": "<p>The Inter-app communication module has been moved into an external extension library\navailable on <a href=\"https://defold.github.io/extension-iac/\">here</a>.</p>", 
     "namespace": "iac", 
     "name": "Inter-app communication", 
     "brief": "<p>Inter-app communication API documentation</p>"
   }, 
-  "elements": [
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>iac type</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "iac.TYPE_INVOCATION"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Sets the listener function for inter-app communication events.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">function(self, payload, type)</span> listener callback function.\nPass an empty function if you no longer wish to receive callbacks.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd>\n<p><span class=\"type\">object</span> The current object.</p>\n</dd>\n<dt><code>payload</code></dt>\n<dd>\n<p><span class=\"type\">table</span> The iac payload.</p>\n</dd>\n<dt><code>type</code></dt>\n<dd>\n<p><span class=\"type\">constant</span> The type of iac, an iac.TYPE_<TYPE> enumeration.</p>\n</dd>\n</dl>", 
-          "name": "listener"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>set iac listener</p>", 
-      "examples": "<p>Set the iac listener.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">iac_listener</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">payload</span><span class=\"p\">,</span> <span class=\"nb\">type</span><span class=\"p\">)</span>\n     <span class=\"k\">if</span> <span class=\"nb\">type</span> <span class=\"o\">==</span> <span class=\"n\">iac</span><span class=\"p\">.</span><span class=\"n\">TYPE_INVOCATION</span> <span class=\"k\">then</span>\n         <span class=\"c1\">-- This was an invocation</span>\n         <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">payload</span><span class=\"p\">.</span><span class=\"n\">origin</span><span class=\"p\">)</span> <span class=\"c1\">-- origin may be empty string if it could not be resolved</span>\n         <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">payload</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">)</span>\n     <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"n\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n     <span class=\"o\">...</span>\n     <span class=\"n\">iac</span><span class=\"p\">.</span><span class=\"n\">set_listener</span><span class=\"p\">(</span><span class=\"n\">iac_listener</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "iac.set_listener"
-    }
-  ]
+  "elements": []
 }

@@ -289,7 +289,7 @@ function render.set_depth_mask(depth) end
 ---units is multiplied by an implementation-specific value to create a
 ---constant depth offset. The initial value is 0.
 ---
----The value of the offset is computed as factor ? DZ + r ? units
+---The value of the offset is computed as factor × DZ + r × units
 ---
 ---DZ is a measurement of the depth slope of the polygon which is the change in z (depth)
 ---values divided by the change in either x or y coordinates, as you traverse a polygon.

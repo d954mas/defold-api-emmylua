@@ -158,9 +158,7 @@ function sys.set_vsync_swap_interval(swap_interval) end
 ---@field device_language string string Two character ISO-639 format (i.e. "sr") and, if applicable, followed by a dash (-) and an ISO 15924 script code (i.e. "sr-Cyrl" or "sr-Latn"). Reflects the device preferred language.
 ---@field territory string string Two character ISO-3166 format, i.e. "US".
 ---@field gmt_offset number number The current offset from GMT (Greenwich Mean Time), in minutes.
----@field device_ident string string "identifierForVendor" on iOS. "android_id" on Android.
----@field ad_ident string string "advertisingIdentifier" on iOS. advertising ID provided by Google Play on Android.
----@field ad_tracking_enabled boolean boolean true if ad tracking is enabled, false otherwise.
+---@field device_ident string string "identifierForVendor" on iOS. "android_id" on Android. On Android, you need to add READ_PHONE_STATE permission to be able to get this data. We don't use this permission in Defold.
 ---@field user_agent string string The HTTP user agent, i.e. "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8"
 
 

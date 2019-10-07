@@ -33,6 +33,18 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>The material used when rendering the spine model. The type of the property is hash.</p>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "brief": "<p><span class=\"type\">hash</span> spine material</p>", 
+      "examples": "<p>How to set material using a script property (see <a href=\"/ref/resource#resource.material\">resource.material</a>)</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_material&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">material</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/material.material&quot;</span><span class=\"p\">))</span>\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#spinemodel&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">material&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_material</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "PROPERTY", 
+      "name": "material"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>The animation playback rate. A multiplier to the animation playback rate. The type of the property is <span class=\"type\">number</span>.</p>\n<p>The playback_rate is a non-negative number, a negative value will be clamped to 0.</p>", 
       "parameters": [], 
       "returnvalues": [], 

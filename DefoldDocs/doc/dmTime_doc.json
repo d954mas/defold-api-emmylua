@@ -5,5 +5,23 @@
     "name": "Time", 
     "brief": "<p>SDK Time API documentation</p>"
   }, 
-  "elements": []
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<p>Get current time in microseconds since Jan. 1, 1970.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">uint64_t</span> Current time in microseconds</p>", 
+          "name": "result"
+        }
+      ], 
+      "brief": "<p>get current time in microseconds</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmTime::GetTime"
+    }
+  ]
 }

@@ -9,7 +9,7 @@
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Perform a HTTP/HTTPS request.</p>\n<p>The following cipher suites are supported for HTTPS requests:</p>\n<ul>\n<li>TLS_RSA_WITH_AES_128_CBC_SHA</li>\n<li>TLS_RSA_WITH_AES_256_CBC_SHA</li>\n<li>TLS_RSA_WITH_AES_128_CBC_SHA256</li>\n<li>TLS_RSA_WITH_AES_256_CBC_SHA256</li>\n</ul>\n<p><span class=\"icon-attention\"></span> If no timeout value is passed, the configuration value \"network.http_timeout\" is used. If that is not set, the timeout value is <code>0</code> (which blocks indefinitely).</p>", 
+      "description": "<p>Perform a HTTP/HTTPS request.</p>\n<p><span class=\"icon-attention\"></span> If no timeout value is passed, the configuration value \"network.http_timeout\" is used. If that is not set, the timeout value is <code>0</code> (which blocks indefinitely).</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">string</span> target url</p>", 

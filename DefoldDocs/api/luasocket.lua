@@ -12,7 +12,7 @@
 ---
 ---
 ---
----LuaSocket is Copyright © 2004-2007 Diego Nehab. All rights reserved.
+---LuaSocket is Copyright Â© 2004-2007 Diego Nehab. All rights reserved.
 ---LuaSocket is free software, released under the MIT license (same license as the Lua core).
 ---@class socket
 socket = {}

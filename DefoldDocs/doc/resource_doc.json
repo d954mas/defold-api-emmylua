@@ -153,6 +153,40 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Constructor-like function with two purposes:</p>\n<ul>\n<li>Load the specified resource as part of loading the script</li>\n<li>Return a hash to the run-time version of the resource</li>\n</ul>\n<p><span class=\"icon-attention\"></span> This function can only be called within <a href=\"/ref/go#go.property\">go.property</a> function calls.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> a path hash to the binary version of the resource</p>", 
+          "name": "path"
+        }
+      ], 
+      "brief": "<p>reference to atlas resource</p>", 
+      "examples": "<p>Load an atlas and set it to a sprite:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_atlas&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">atlas</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/atlas.atlas&quot;</span><span class=\"p\">))</span>\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">image&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_atlas</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "resource.atlas"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Constructor-like function with two purposes:</p>\n<ul>\n<li>Load the specified resource as part of loading the script</li>\n<li>Return a hash to the run-time version of the resource</li>\n</ul>\n<p><span class=\"icon-attention\"></span> This function can only be called within <a href=\"/ref/go#go.property\">go.property</a> function calls.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> a path hash to the binary version of the resource</p>", 
+          "name": "path"
+        }
+      ], 
+      "brief": "<p>reference to font resource</p>", 
+      "examples": "<p>Load a font and set it to a label:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_font&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">font</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/font.font&quot;</span><span class=\"p\">))</span>\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">font&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_font</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "resource.font"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Return a reference to the Manifest that is currently loaded.</p>", 
       "parameters": [], 
       "returnvalues": [
@@ -189,6 +223,23 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "resource.load"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Constructor-like function with two purposes:</p>\n<ul>\n<li>Load the specified resource as part of loading the script</li>\n<li>Return a hash to the run-time version of the resource</li>\n</ul>\n<p><span class=\"icon-attention\"></span> This function can only be called within <a href=\"/ref/go#go.property\">go.property</a> function calls.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> a path hash to the binary version of the resource</p>", 
+          "name": "path"
+        }
+      ], 
+      "brief": "<p>reference to material resource</p>", 
+      "examples": "<p>Load a material and set it to a sprite:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_material&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">material</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/material.material&quot;</span><span class=\"p\">))</span>\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">material&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_material</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "resource.material"
     }, 
     {
       "replaces": "", 
@@ -285,6 +336,40 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "resource.store_resource"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Constructor-like function with two purposes:</p>\n<ul>\n<li>Load the specified resource as part of loading the script</li>\n<li>Return a hash to the run-time version of the resource</li>\n</ul>\n<p><span class=\"icon-attention\"></span> This function can only be called within <a href=\"/ref/go#go.property\">go.property</a> function calls.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> a path hash to the binary version of the resource</p>", 
+          "name": "path"
+        }
+      ], 
+      "brief": "<p>reference to texture resource</p>", 
+      "examples": "<p>Load a texture and set it to a model:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_texture&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/texture.png&quot;</span><span class=\"p\">))</span>\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#model&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">texture0&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_texture</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "resource.texture"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Constructor-like function with two purposes:</p>\n<ul>\n<li>Load the specified resource as part of loading the script</li>\n<li>Return a hash to the run-time version of the resource</li>\n</ul>\n<p><span class=\"icon-attention\"></span> This function can only be called within <a href=\"/ref/go#go.property\">go.property</a> function calls.</p>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">hash</span> a path hash to the binary version of the resource</p>", 
+          "name": "path"
+        }
+      ], 
+      "brief": "<p>reference to tile source resource</p>", 
+      "examples": "<p>Load tile source and set it to a tile map:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_tile_source&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">tile_source</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/tilesource.tilesource&quot;</span><span class=\"p\">))</span>\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tile_source&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_tile_source</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "resource.tile_source"
     }
   ]
 }
