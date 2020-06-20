@@ -219,6 +219,71 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Stores the current Lua state plus references to the script instance (self) and the callback.\nExpects SetInstance() to have been called prior to using this method.</p>\n<p>The allocated data is created on the Lua stack and references are made against the\ninstances own context table.</p>\n<p>If the callback is not explicitly deleted with DestroyCallback() the references and\ndata will stay around until the script instance is deleted.</p>", 
+      "parameters": [
+        {
+          "doc": "<p>Lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p>Lua stack index of the function</p>", 
+          "name": "index"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>callback struct if successful, 0 otherwise</p>", 
+          "name": "Lua"
+        }
+      ], 
+      "brief": "<p>Register a Lua callback.</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::CreateCallback"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "<p>Lua callback struct</p>", 
+          "name": "cbk"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>Deletes the Lua callback</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::DestroyCallback"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "<p>Lua callback struct</p>", 
+          "name": "cbk"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>Lua state</p>", 
+          "name": "L"
+        }
+      ], 
+      "brief": "<p>Gets the Lua context from a callback struct</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::GetCallbackLuaContext"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Retrieve current script instance from the global table and place it on the top of the stack, only valid when set.\n(see <a href=\"#dmScript::GetMainThread\">dmScript::GetMainThread</a>)</p>", 
       "parameters": [
         {
@@ -284,6 +349,23 @@
     }, 
     {
       "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "<p>Lua callback struct</p>", 
+          "name": "cbk"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>Check if Lua callback is valid.</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::IsCallbackValid"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Check if the script instance in the lua state is valid. The instance is assumed to have been previously set by <a href=\"#dmScript::SetInstance\">dmScript::SetInstance</a>.</p>", 
       "parameters": [
         {
@@ -313,17 +395,47 @@
       "examples": "", 
       "members": [
         {
-          "doc": "<p><span class=\"type\">dmBuffer::HBuffer</span>    The buffer</p>", 
+          "doc": "<p><span class=\"type\">dmBuffer::HBuffer</span>            The buffer (or resource)</p>", 
           "name": "m_Buffer"
         }, 
         {
-          "doc": "<p><span class=\"type\">bool</span>               If true, it will be garbage collected by Lua. If false, the C++ extension still owns the reference.</p>", 
-          "name": "m_UseLuaGC"
+          "doc": "<p><span class=\"type\">dmScript::LuaBufferOwnership</span> What ownership the pointer has</p>", 
+          "name": "m_Owner"
         }
       ], 
       "error": "", 
       "type": "STRUCT", 
       "name": "dmScript::LuaHBuffer"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>This function wraps lua_pcall with the addition of specifying an error handler which produces a backtrace.\nIn the case of an error, the error is logged and popped from the stack.</p>", 
+      "parameters": [
+        {
+          "doc": "<p>lua state</p>", 
+          "name": "L"
+        }, 
+        {
+          "doc": "<p>number of arguments</p>", 
+          "name": "nargs"
+        }, 
+        {
+          "doc": "<p>number of results</p>", 
+          "name": "nresult"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>code from pcall</p>", 
+          "name": "error"
+        }
+      ], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::PCall"
     }, 
     {
       "replaces": "", 
@@ -340,7 +452,7 @@
       ], 
       "returnvalues": [], 
       "brief": "<p>push a LuaHBuffer onto the supplied lua state</p>", 
-      "examples": "<p>How to push a buffer and give Lua ownership of the buffer (GC)</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span> <span class=\"n\">luabuf</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"nb\">true</span> <span class=\"p\">};</span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">luabuf</span><span class=\"p\">);</span>\n</pre></div>\n\n\n<p>How to push a buffer and keep ownership in C++</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span> <span class=\"n\">luabuf</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"nb\">false</span> <span class=\"p\">};</span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">luabuf</span><span class=\"p\">);</span>\n</pre></div>", 
+      "examples": "<p>How to push a buffer and give Lua ownership of the buffer (GC)</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span> <span class=\"n\">luabuf</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">OWNER_LUA</span> <span class=\"p\">};</span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">luabuf</span><span class=\"p\">);</span>\n</pre></div>\n\n\n<p>How to push a buffer and keep ownership in C++</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span> <span class=\"n\">luabuf</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">OWNER_C</span> <span class=\"p\">};</span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">luabuf</span><span class=\"p\">);</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 
@@ -472,6 +584,45 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "dmScript::SetInstance"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>The Lua stack after a successful call:</p>\n<div class=\"codehilite\"><pre><span></span>   [-4] old instance\n   [-3] context table\n   [-2] callback\n   [-1] self\n</pre></div>\n\n\n<p>In the event of an unsuccessful call, the Lua stack is unchanged</p>", 
+      "parameters": [
+        {
+          "doc": "<p>Lua callback struct</p>", 
+          "name": "cbk"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p>if the setup was successful</p>", 
+          "name": "true"
+        }
+      ], 
+      "brief": "<p>Setups up the Lua callback prior to a call to dmScript::PCall()</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::SetupCallback"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>Sets the previous instance\nExpects Lua stack:</p>\n<div class=\"codehilite\"><pre><span></span>   [-2] old instance\n   [-1] context table\n</pre></div>\n\n\n<p>Both values are removed from the stack</p>", 
+      "parameters": [
+        {
+          "doc": "<p>Lua callback struct</p>", 
+          "name": "cbk"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>Cleans up the stack after SetupCallback+PCall calls</p>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmScript::TeardownCallback"
     }, 
     {
       "replaces": "", 

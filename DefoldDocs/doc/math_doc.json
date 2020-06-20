@@ -245,7 +245,7 @@
       "examples": "", 
       "members": [], 
       "error": "", 
-      "type": "FUNCTION", 
+      "type": "VARIABLE", 
       "name": "math.huge"
     }, 
     {

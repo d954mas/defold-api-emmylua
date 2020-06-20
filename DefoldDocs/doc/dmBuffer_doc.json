@@ -111,6 +111,32 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Copies the data from one buffer to another buffer. The stream declaration needs to be the same in both buffers.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">dmBuffer::HBuffer*</span> Pointer to HBuffer from where to copy buffer data.</p>", 
+          "name": "dst_buffer_handle"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">dmBuffer::HBuffer*</span> Pointer to HBuffer where to copy the buffer data.</p>", 
+          "name": "src_buffer_handle"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">dmBuffer::Result</span> BUFFER_OK if buffer was copied successfully</p>", 
+          "name": "result"
+        }
+      ], 
+      "brief": "<p>copy a Buffer</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">r</span> <span class=\"o\">=</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Copy</span><span class=\"p\">(</span><span class=\"n\">buffer_a</span><span class=\"p\">,</span> <span class=\"n\">buffer_b</span><span class=\"p\">);</span>\n\n<span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">r</span> <span class=\"o\">==</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span> <span class=\"p\">{</span>\n    <span class=\"c1\">// success</span>\n<span class=\"p\">}</span> <span class=\"k\">else</span> <span class=\"p\">{</span>\n    <span class=\"c1\">// handle error</span>\n<span class=\"p\">}</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "dmBuffer::Copy"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Creates a new HBuffer with a number of different streams.</p>", 
       "parameters": [
         {

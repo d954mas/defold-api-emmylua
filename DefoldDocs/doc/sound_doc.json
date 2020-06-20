@@ -206,6 +206,27 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Pause all active voices</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">string | hash | url</span> the sound that should pause</p>", 
+          "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">bool</span> true if the sound should pause</p>", 
+          "name": "pause"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>pause a playing a sound(s)</p>", 
+      "examples": "<p>Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component pause all playing voices:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">pause</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "sound.pause"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Make the sound component play its sound. Multiple voices are supported. The limit is set to 32 voices per sound component.</p>\n<p><span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.</p>\n<p><span class=\"icon-attention\"></span> A sound will continue to play even if the game object the sound component belonged to is deleted. You can call <code>sound.stop()</code> to stop the sound.</p>", 
       "parameters": [
         {

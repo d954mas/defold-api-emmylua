@@ -202,7 +202,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)</p>\n<p>This function is only available on iOS. <span class=\"icon-ios\"></span></p>", 
+      "description": "<p>Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">id&lt;UIApplicationDelegate&gt;</span> An UIApplicationDelegate, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc</p>", 
@@ -245,7 +245,7 @@
       ], 
       "returnvalues": [], 
       "brief": "<p>Unregister an application delegate</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">// myextension_ios.mm</span>\n<span class=\"kt\">void</span> <span class=\"nf\">ExtensionAppFinalizeiOS</span><span class=\"p\">(</span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">AppParams</span><span class=\"o\">*</span> <span class=\"n\">params</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">UnregisteriOSUIApplicationDelegate</span><span class=\"p\">(</span><span class=\"n\">g_MyApplicationDelegate</span><span class=\"p\">);</span>\n    <span class=\"p\">[</span><span class=\"n\">g_MyApplicationDelegate</span> <span class=\"n\">release</span><span class=\"p\">];</span>\n    <span class=\"n\">g_MyApplicationDelegate</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n</pre></div>", 
+      "examples": "", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 
@@ -308,7 +308,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Event id enumeration.</p>", 
+      "description": "<p>Event id enumeration.</p>\n<p>EVENT_ID_ICONIFYAPP and EVENT_ID_DEICONIFYAPP only available on <span class=\"icon-osx\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span></p>", 
       "parameters": [], 
       "returnvalues": [], 
       "brief": "<p>event id enumeration</p>", 
@@ -321,6 +321,14 @@
         {
           "doc": "", 
           "name": "dmExtension::EVENT_ID_DEACTIVATEAPP"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmExtension::EVENT_ID_ICONIFYAPP"
+        }, 
+        {
+          "doc": "", 
+          "name": "dmExtension::EVENT_ID_DEICONIFYAPP"
         }
       ], 
       "error": "", 

@@ -290,7 +290,7 @@
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>hinge joint type</p>", 
+      "brief": "<p>slider joint type</p>", 
       "examples": "", 
       "members": [], 
       "error": "", 

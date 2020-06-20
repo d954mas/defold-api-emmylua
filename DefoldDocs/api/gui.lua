@@ -496,7 +496,7 @@ function gui.new_particlefx_node(pos, particlefx) end
 ---Dynamically create a new pie node.
 ---@param pos vector3 | vector4 node position
 ---@param size vector3 node size
----@return node new box node
+---@return node new pie node
 function gui.new_pie_node(pos, size) end
 ---Dynamically create a new spine node.
 ---@param pos vector3 | vector4 node position

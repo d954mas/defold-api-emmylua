@@ -26,6 +26,31 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>Draw a text on the screen. This should be used for debugging purposes only.</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">vector3</span> position of the text</p>", 
+          "name": "position"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">string</span> the text to draw</p>", 
+          "name": "text"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">vector4</span> color of the text</p>", 
+          "name": "color"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>draw a text on the screen</p>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">@render:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">draw_debug_text&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">Hello world!&quot;</span><span class=\"p\">,</span> <span class=\"n\">position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">color</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "MESSAGE", 
+      "name": "draw_debug_text"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Draw a line on the screen. This should mostly be used for debugging purposes.</p>", 
       "parameters": [
         {
@@ -48,27 +73,6 @@
       "error": "", 
       "type": "MESSAGE", 
       "name": "draw_line"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Draw a text on the screen. This should mostly be used for debugging purposes.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">vector3</span> position of the text</p>", 
-          "name": "position"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the text to draw</p>", 
-          "name": "text"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>draw a text on the screen</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">@render:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">draw_text&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">Hello world!&quot;</span><span class=\"p\">,</span> <span class=\"n\">position</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">200</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "MESSAGE", 
-      "name": "draw_text"
     }, 
     {
       "replaces": "", 

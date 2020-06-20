@@ -17,7 +17,7 @@ msg = {}
 --- There is a 2 kilobyte limit to the message parameter table size.
 ---@param receiver string | url | hash The receiver must be a string in URL-format, a URL object or a hashed string.
 ---@param message_id string | hash The id must be a string or a hashed string.
----@param message table a lua table with message parameters to send.
+---@param message table | nil a lua table with message parameters to send.
 function msg.post(receiver, message_id, message) end
 ---This is equivalent to msg.url(nil) or msg.url("#"), which creates an url to the current
 ---script component.

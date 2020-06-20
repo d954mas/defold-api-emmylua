@@ -8,7 +8,7 @@ physics = {}
 physics.JOINT_TYPE_FIXED = nil
 ---hinge joint type
 physics.JOINT_TYPE_HINGE = nil
----hinge joint type
+---slider joint type
 physics.JOINT_TYPE_SLIDER = nil
 ---spring joint type
 physics.JOINT_TYPE_SPRING = nil

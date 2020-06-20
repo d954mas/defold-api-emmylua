@@ -421,6 +421,10 @@
         {
           "doc": "<p><span class=\"type\">string</span> url to open</p>", 
           "name": "url"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">table</span> table with attributes</p>\n<p><code>target</code>\n- <span class=\"type\">string</span> <span class=\"icon-html5\"></span>: Optional. Specifies the target attribute or the name of the window. The following values are supported:\n- <code>_self</code> - URL replaces the current page. This is default.\n- <code>_blank</code> - URL is loaded into a new window, or tab.\n- <code>_parent</code> - URL is loaded into the parent frame.\n- <code>_top</code> - URL replaces any framesets that may be loaded.\n- <code>name</code> - The name of the window (Note: the name does not specify the title of the new window).</p>", 
+          "name": "[attributes]"
         }
       ], 
       "returnvalues": [
@@ -430,7 +434,7 @@
         }
       ], 
       "brief": "<p>open url in default application</p>", 
-      "examples": "<p>Open an URL:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">success</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">open_url</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">http://www.defold.com&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">success</span> <span class=\"k\">then</span>\n  <span class=\"c1\">-- could not open the url...</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "examples": "<p>Open an URL:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">success</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">open_url</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">http://www.defold.com&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">target</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">_blank&quot;</span><span class=\"p\">})</span>\n<span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">success</span> <span class=\"k\">then</span>\n  <span class=\"c1\">-- could not open the url...</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "type": "FUNCTION", 

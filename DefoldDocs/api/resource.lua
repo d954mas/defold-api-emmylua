@@ -48,6 +48,10 @@ function resource.atlas() end
 --- This function can only be called within go.property <> function calls.
 ---@return hash a path hash to the binary version of the resource
 function resource.font() end
+---gets the buffer from a resource
+---@param path hash | string The path to the resource
+---@return buffer The resource buffer
+function resource.get_buffer(path) end
 ---Return a reference to the Manifest that is currently loaded.
 ---@return number reference to the Manifest that is currently loaded
 function resource.get_current_manifest() end
@@ -70,6 +74,10 @@ function resource.material() end
 ---@param path string | hash The path to the resource
 ---@param buffer buffer The buffer of precreated data, suitable for the intended resource type
 function resource.set(path, buffer) end
+---sets the buffer of a resource
+---@param path hash | string The path to the resource
+---@param buffer buffer The resource buffer
+function resource.set_buffer(path, buffer) end
 ---Sets the pixel data for a specific texture.
 ---@param path hash | string The path to the resource
 ---@param table table A table containing info about the texture. Supported entries:

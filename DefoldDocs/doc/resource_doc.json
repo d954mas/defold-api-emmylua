@@ -187,6 +187,28 @@
     }, 
     {
       "replaces": "", 
+      "description": "<p>gets the buffer from a resource</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">hash | string</span> The path to the resource</p>", 
+          "name": "path"
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "<p><span class=\"type\">buffer</span> The resource buffer</p>", 
+          "name": "buffer"
+        }
+      ], 
+      "brief": "<p>get resource buffer</p>", 
+      "examples": "<p>How to get the data from a buffer</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n\n    <span class=\"kd\">local</span> <span class=\"n\">res_path</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#mesh&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">vertices&quot;</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">buf</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">get_buffer</span><span class=\"p\">(</span><span class=\"n\">res_path</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">stream_positions</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">get_stream</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">position&quot;</span><span class=\"p\">)</span>\n\n    <span class=\"k\">for</span> <span class=\"n\">i</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"o\">#</span><span class=\"n\">stream_positions</span> <span class=\"k\">do</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">i</span><span class=\"p\">,</span> <span class=\"n\">stream_positions</span><span class=\"p\">[</span><span class=\"n\">i</span><span class=\"p\">])</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "resource.get_buffer"
+    }, 
+    {
+      "replaces": "", 
       "description": "<p>Return a reference to the Manifest that is currently loaded.</p>", 
       "parameters": [], 
       "returnvalues": [
@@ -261,6 +283,27 @@
       "error": "", 
       "type": "FUNCTION", 
       "name": "resource.set"
+    }, 
+    {
+      "replaces": "", 
+      "description": "<p>sets the buffer of a resource</p>", 
+      "parameters": [
+        {
+          "doc": "<p><span class=\"type\">hash | string</span> The path to the resource</p>", 
+          "name": "path"
+        }, 
+        {
+          "doc": "<p><span class=\"type\">buffer</span> The resource buffer</p>", 
+          "name": "buffer"
+        }
+      ], 
+      "returnvalues": [], 
+      "brief": "<p>set resource buffer</p>", 
+      "examples": "<p>How to set the data from a buffer</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">fill_stream</span><span class=\"p\">(</span><span class=\"n\">stream</span><span class=\"p\">,</span> <span class=\"n\">verts</span><span class=\"p\">)</span>\n    <span class=\"k\">for</span> <span class=\"n\">key</span><span class=\"p\">,</span> <span class=\"n\">value</span> <span class=\"k\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">verts</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n        <span class=\"n\">stream</span><span class=\"p\">[</span><span class=\"n\">key</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">verts</span><span class=\"p\">[</span><span class=\"n\">key</span><span class=\"p\">]</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n\n    <span class=\"kd\">local</span> <span class=\"n\">res_path</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#mesh&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">vertices&quot;</span><span class=\"p\">)</span>\n\n    <span class=\"kd\">local</span> <span class=\"n\">positions</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n         <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span>\n         <span class=\"mi\">1</span><span class=\"p\">,</span>  <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span>\n         <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span>\n    <span class=\"p\">}</span>\n\n    <span class=\"kd\">local</span> <span class=\"n\">num_verts</span> <span class=\"o\">=</span> <span class=\"o\">#</span><span class=\"n\">positions</span> <span class=\"o\">/</span> <span class=\"mi\">3</span>\n\n    <span class=\"c1\">-- create a new buffer</span>\n    <span class=\"kd\">local</span> <span class=\"n\">buf</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">create</span><span class=\"p\">(</span><span class=\"n\">num_verts</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n        <span class=\"p\">{</span> <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">position&quot;</span><span class=\"p\">),</span> <span class=\"nb\">type</span><span class=\"o\">=</span><span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">VALUE_TYPE_FLOAT32</span><span class=\"p\">,</span> <span class=\"n\">count</span> <span class=\"o\">=</span> <span class=\"mi\">3</span> <span class=\"p\">}</span>\n    <span class=\"p\">})</span>\n\n    <span class=\"kd\">local</span> <span class=\"n\">buf</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">get_buffer</span><span class=\"p\">(</span><span class=\"n\">res_path</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">stream_positions</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">get_stream</span><span class=\"p\">(</span><span class=\"n\">buf</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">position&quot;</span><span class=\"p\">)</span>\n\n    <span class=\"n\">fill_stream</span><span class=\"p\">(</span><span class=\"n\">stream_positions</span><span class=\"p\">,</span> <span class=\"n\">positions</span><span class=\"p\">)</span>\n\n    <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">set_buffer</span><span class=\"p\">(</span><span class=\"n\">res_path</span><span class=\"p\">,</span> <span class=\"n\">buf</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "type": "FUNCTION", 
+      "name": "resource.set_buffer"
     }, 
     {
       "replaces": "", 

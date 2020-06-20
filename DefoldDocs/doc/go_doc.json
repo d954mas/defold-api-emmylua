@@ -807,7 +807,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>The rotation is relative to the parent (if any). Use <a href=\"/ref/go#go.get_world_rotation\">go.get_world_rotation</a> to retrieve the global world position.</p>", 
+      "description": "<p>The rotation is relative to the parent (if any). Use <a href=\"/ref/go#go.get_world_rotation\">go.get_world_rotation</a> to retrieve the global world rotation.</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">string | hash | url</span> optional id of the game object instance to get the rotation for, by default the instance of the calling script</p>", 
@@ -990,7 +990,7 @@
           "name": "name"
         }, 
         {
-          "doc": "<p><span class=\"type\">number | hash | url | vector3 | vector4 | quaternion</span> default value of the property. In the case of a url, only the empty constructor msg.url() is allowed</p>", 
+          "doc": "<p><span class=\"type\">number | hash | url | vector3 | vector4 | quaternion | resource</span> default value of the property. In the case of a url, only the empty constructor msg.url() is allowed. In the case of a resource one of the resource constructors (eg resource.atlas(), resource.font() etc) is expected.</p>", 
           "name": "value"
         }
       ], 
@@ -1029,7 +1029,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "<p>Sets the parent for a game object instance. This means that the instance will exist in the geometrical space of its parent,\nlike a basic transformation hierarchy or scene graph. If no parent is specified, the instance will be detached from any parent and exist in world space.</p>", 
+      "description": "<p>Sets the parent for a game object instance. This means that the instance will exist in the geometrical space of its parent,\nlike a basic transformation hierarchy or scene graph. If no parent is specified, the instance will be detached from any parent and exist in world\nspace.\nThis function will generate a <code>set_parent</code> message. It is not until the message has been processed that the change actually takes effect. This\ntypically happens later in the same frame or the beginning of the next frame. Refer to the manual to learn how messages are processed by the\nengine.</p>", 
       "parameters": [
         {
           "doc": "<p><span class=\"type\">string | hash | url</span> optional id of the game object instance to set parent for, defaults to the instance containing the calling script</p>", 

@@ -79,6 +79,10 @@ function sound.is_music_playing() end
 ---this function always return false.
 ---@return boolean 
 function sound.is_phone_call_active() end
+---Pause all active voices
+---@param url string | hash | url the sound that should pause
+---@param pause bool true if the sound should pause
+function sound.pause(url, pause) end
 ---Make the sound component play its sound. Multiple voices are supported. The limit is set to 32 voices per sound component.
 ---
 --- Note that gain is in linear scale, between 0 and 1.

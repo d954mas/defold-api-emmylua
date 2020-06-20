@@ -159,7 +159,7 @@ function go.get_id(path) end
 ---@param id string | hash | url optional id of the game object instance to get the position for, by default the instance of the calling script
 ---@return vector3 instance position
 function go.get_position(id) end
----The rotation is relative to the parent (if any). Use go.get_world_rotation <> to retrieve the global world position.
+---The rotation is relative to the parent (if any). Use go.get_world_rotation <> to retrieve the global world rotation.
 ---@param id string | hash | url optional id of the game object instance to get the rotation for, by default the instance of the calling script
 ---@return quaternion instance rotation
 function go.get_rotation(id) end
@@ -196,14 +196,18 @@ function go.get_world_transform(id) end
 ---The properties defined this way are automatically exposed in the editor in game objects and collections which use the script.
 ---Note that you can only use this function outside any callback-functions like init and update.
 ---@param name string the id of the property
----@param value number | hash | url | vector3 | vector4 | quaternion default value of the property. In the case of a url, only the empty constructor msg.url() is allowed
+---@param value number | hash | url | vector3 | vector4 | quaternion | resource default value of the property. In the case of a url, only the empty constructor msg.url() is allowed. In the case of a resource one of the resource constructors (eg resource.atlas(), resource.font() etc) is expected.
 function go.property(name, value) end
 ---@param url string | hash | url url of the game object or component having the property
 ---@param property string | hash id of the property to set
 ---@param value any the value to set
 function go.set(url, property, value) end
 ---Sets the parent for a game object instance. This means that the instance will exist in the geometrical space of its parent,
----like a basic transformation hierarchy or scene graph. If no parent is specified, the instance will be detached from any parent and exist in world space.
+---like a basic transformation hierarchy or scene graph. If no parent is specified, the instance will be detached from any parent and exist in world
+---space.
+---This function will generate a set_parent message. It is not until the message has been processed that the change actually takes effect. This
+---typically happens later in the same frame or the beginning of the next frame. Refer to the manual to learn how messages are processed by the
+---engine.
 ---@param id string | hash | url optional id of the game object instance to set parent for, defaults to the instance containing the calling script
 ---@param parent_id string | hash | url optional id of the new parent game object, defaults to detaching game object from its parent
 ---@param keep_world_transform boolean optional boolean, set to true to maintain the world transform when changing spaces. Defaults to false.

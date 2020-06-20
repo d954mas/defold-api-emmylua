@@ -20,7 +20,7 @@
           "name": "message_id"
         }, 
         {
-          "doc": "<p><span class=\"type\">table</span> a lua table with message parameters to send.</p>", 
+          "doc": "<p><span class=\"type\">table | nil</span> a lua table with message parameters to send.</p>", 
           "name": "[message]"
         }
       ], 

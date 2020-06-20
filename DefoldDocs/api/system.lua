@@ -78,8 +78,9 @@ function sys.load(filename) end
 function sys.load_resource(filename) end
 ---Open URL in default application, typically a browser
 ---@param url string url to open
+---@param attributes table table with attributes
 ---@return boolean a boolean indicating if the url could be opened or not
-function sys.open_url(url) end
+function sys.open_url(url, attributes) end
 ---Reboots the game engine with a specified set of arguments.
 ---Arguments will be translated into command line arguments. Calling reboot
 ---function is equivalent to starting the engine with the same arguments.

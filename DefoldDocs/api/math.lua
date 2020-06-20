@@ -57,9 +57,8 @@ function math.fmod(x, y) end
 ---(or zero when x is zero).
 ---@param x x
 function math.frexp(x) end
----The value HUGE_VAL,
----a value larger than or equal to any other numerical value.
-function math.huge() end
+---a huge value
+math.huge = nil
 ---Returns m2e (e should be an integer).
 ---@param m m
 ---@param e e

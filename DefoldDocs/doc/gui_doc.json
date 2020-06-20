@@ -2471,7 +2471,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">node</span> new box node</p>", 
+          "doc": "<p><span class=\"type\">node</span> new pie node</p>", 
           "name": "node"
         }
       ], 
