@@ -17,8 +17,8 @@ public class LuaBuilder {
         HtmlToPlainText f = new HtmlToPlainText();
         sb.append("---").append(f.getPlainText(docModel.getInfoModel().getBrief())).append("\n");
         sb.append("---").append(f.getPlainText(docModel.getInfoModel().getDescription())).append("\n");
-        sb.append("---@class ").append(docModel.getInfoModel().getNameSpace()).append("\n");
-        sb.append("").append(docModel.getInfoModel().getNameSpace()).append(" = {}").append("\n");
+        sb.append("---@class ").append(docModel.getInfoModel().getNamespace()).append("\n");
+        sb.append("").append(docModel.getInfoModel().getNamespace()).append(" = {}").append("\n");
         for (ElementModel em : docModel.getElements()) {
             if (em.getType().equals("FUNCTION")) {
                 String funDesc = f.getPlainText(em.getDescription());
@@ -27,69 +27,37 @@ public class LuaBuilder {
                 }
                 if (em.getParameters().size() != 0) {
                     for (ParameterModel pm : em.getParameters()) {
-                        Element spanElement = Jsoup.parseBodyFragment(pm.getDoc()).body().select("span").first();
-                        String types = "";
-                        String desc = "";
-                        if (spanElement != null) {
-                            types = spanElement.text();
-                            desc = spanElement.nextSibling().toString();
-                        } else {
-                            types = pm.getFormatName();
-                            desc = f.getPlainText(pm.getDoc());
+                        //do not add annotation for ...
+                        if(!pm.getFormatName().equals("...")){
+                            sb.append("---@param ");
+                        }else{
+                            sb.append("--- ");
                         }
-                        sb.append("---@param ").append(pm.getFormatName()).append(" ").append(types);
-                                if (desc.length() >0 && desc.charAt(0) != ' ' ){
-                                    sb.append(" ");
-                                }
-                                sb.append(desc)
-                                .append("\n");
+                        sb.append(pm.getFormatName()).append(" ");
+                        for(int i=0;i<pm.getTypes().size();i++){
+                            sb.append(pm.getTypes().get(i));
+                            if(i!= pm.getTypes().size()-1){
+                                sb.append("|");
+                            }
+                        }
+                        sb.append(" ").append(pm.getDoc());
+                        sb.append("\n");
                     }
                 }
                 if (em.getReturnvalues().size() != 0) {
                     for (ParameterModel pm : em.getReturnvalues()) {
-                        Element spanElement = Jsoup.parseBodyFragment(pm.getDoc()).body().select("span").first();
-                        String types = "";
-                        String desc = "";
-                        if (spanElement != null) {
-                            types = spanElement.text().replaceAll(" ", "");
-                            desc = spanElement.nextSibling().toString();
-                        } else {
-                            types = pm.getName();
-                            desc = f.getPlainText(pm.getDoc());
-                        }
-                        //add autocompleate for return tables
-                        String returnName = types;
-                        if (types.equals("table")){
-                            Elements dl =  Jsoup.parseBodyFragment(pm.getDoc()).body().select("dl");
-                            //some table do not have descr
-                            if (dl.first() != null) {
-                                returnName = pm.getFormatName();
-                                inlineTables.append("---@class ").append(returnName).append("\n");
-                                Elements dt = dl.first().select("dt");
-                                Elements dd = dl.select("dd");
-                                for (int i = 0; i < dd.size(); i++) {
-                                    Element dte = dt.get(i);
-                                    Element dde = dd.get(i);
-                                    String name = dte.selectFirst("code").text();
-                                    String type = dde.selectFirst("span").text();
-                                    String inDesc = dde.after("span").text();
-                                    inlineTables.append("---@field ").append(name).append(" ").append(type).append(" ")
-                                            .append(inDesc).append("\n");
-                                }
-                                inlineTables.append("\n");
-                            }
-                            if (pm.getDoc().contains("an array of tables")){
-                                returnName=returnName + "[]";
+                        sb.append("---@return ");
+                        for(int i=0;i<pm.getTypes().size();i++){
+                            sb.append(pm.getTypes().get(i));
+                            if(i!= pm.getTypes().size()-1){
+                                sb.append("|");
                             }
                         }
-
-                        sb.append("---@return ").append(returnName);
-                        if (desc.length() > 0 && desc.charAt(0) != ' ') {
-                            sb.append(" ");
-                        }
-                        sb.append(desc).append("\n");
+                        sb.append(" ").append(pm.getDoc());
+                        sb.append("\n");
                     }
                 }
+
                 sb.append("function ").append(em.getName()).append("(");
                 for (ParameterModel pm : em.getParameters()) {
                     sb.append(pm.getFormatName()).append(", ");
@@ -97,13 +65,13 @@ public class LuaBuilder {
                 if (em.getParameters().size() != 0) {
                     sb.setLength(sb.length() - 2);
                 }
-                sb.append(") end\n");
+                sb.append(") end\n\n");
             } else if (em.getType().equals("VARIABLE")) {
                 String brief = f.getPlainText(em.getBrief());
                 if (!brief.equals("")) {
-                    sb.append("---").append(brief).append("\n");
+                    sb.append("---").append(brief).append("\n\n");
                 }
-                sb.append(em.getName()).append(" = nil").append("\n");
+                sb.append(em.getName()).append(" = nil").append("\n\n");
             } else if (em.getType().equals("MESSAGE")) {
 
             }
@@ -111,7 +79,7 @@ public class LuaBuilder {
 
         sb.append(inlineTables.toString()).append("\n");
 
-        sb.append("\n").append("return ").append(docModel.getInfoModel().getNameSpace());
+        sb.append("\n").append("return ").append(docModel.getInfoModel().getNamespace());
         return sb.toString();
     }
 

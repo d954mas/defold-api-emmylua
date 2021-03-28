@@ -53,6 +53,10 @@ public class Main {
         IGNORE_DOCS.add("dmJson_doc.json");
         IGNORE_DOCS.add("string_doc.json"); //lua plugin already have it
         IGNORE_DOCS.add("dmStringFunc_doc.json");
+        IGNORE_DOCS.add("iap_doc.json");
+        IGNORE_DOCS.add("webview_doc.json");
+        IGNORE_DOCS.add("dmCrypt_doc.json");
+        IGNORE_DOCS.add("dmThread_doc.json");
     }
 
     private static void clearFolder(File folder) {
@@ -80,7 +84,11 @@ public class Main {
                     try (JsonReader reader = new JsonReader(new FileReader(file))) {
                         return gson.fromJson(reader, DocModel.class);
                     }
-                }).doOnEach(docModelNotification -> {
+                })
+                .filter(docModel -> {
+                    return  !docModel.getInfoModel().getFile().endsWith(".h");
+                })
+                .doOnEach(docModelNotification -> {
             if (docModelNotification.isOnComplete()) {
                 return;
             }

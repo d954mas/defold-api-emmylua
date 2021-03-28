@@ -1,18 +1,25 @@
 package models;
 
+import com.google.gson.JsonArray;
+
 import java.util.List;
 import java.util.Objects;
 
 public class ElementModel implements Comparable<ElementModel> {
     private String replaces;
     private String description;
-    private String brief;
-    private String examples;
-    private String error;
-    private String type;
-    private String name;
     private List<ParameterModel> parameters;
     private List<ParameterModel> returnvalues;
+    private JsonArray notes;
+    private String brief;
+    private String examples;
+    private JsonArray members;
+    private String error;
+    private JsonArray tparams;
+    private String type;
+    private String name;
+
+
 
     public String getReplaces() {
         return replaces;
@@ -49,6 +56,12 @@ public class ElementModel implements Comparable<ElementModel> {
     public List<ParameterModel> getReturnvalues() {
         return returnvalues;
     }
+
+    public JsonArray getNotes() { return notes; }
+
+    public JsonArray getMembers() { return members; }
+
+    public JsonArray getTparams() { return tparams; }
 
     public String getClassName() {
         return name.split("\\.")[0];

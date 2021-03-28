@@ -12,11 +12,21 @@ public class BaseLua {
             "---@field z number\n" +
             "---@field w number\n" +
             "\n" +
-            "---@class url\n"+
-            "---@field socket\n"+
-            "---@field path\n"+
-            "---@field fragment\n"
-            + "\n" +
+            "---@class quaternion\n" +
+            "---@field x number\n" +
+            "---@field y number\n" +
+            "---@field z number\n" +
+            "---@field w number\n" +
+            "\n" +
+            "---@alias quat quaternion\n" +
+            "\n" +
+            "---@class url\n" +
+            "---@field socket\n" +
+            "---@field path\n" +
+            "---@field fragment\n" +
+            "\n" +
+            "---@alias hash userdata\n" +
+            "\n" +
             "--- Calls error if the value of its argument `v` is false (i.e., **nil** or\n" +
             "--- **false**); otherwise, returns all its arguments. In case of error,\n" +
             "--- `message` is the error object; when absent, it defaults to \"assertion\n" +
@@ -26,7 +36,5 @@ public class BaseLua {
             "---@param v ANY\n" +
             "---@param message string\n" +
             "---@return ANY\n" +
-            "function assert(v,message)" +
-            " return v " +
-            "end";
+            "function assert(v,message) return v end";
 }
