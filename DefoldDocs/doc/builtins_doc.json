@@ -1,72 +1,95 @@
 {
   "info": {
     "group": "SCRIPT", 
-    "description": "<p>Built-in scripting functions.</p>", 
+    "description": "Built-in scripting functions.", 
     "namespace": "builtins", 
-    "name": "Built-ins", 
-    "brief": "<p>Built-ins API documentation</p>"
+    "brief": "Built-ins API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Built-ins"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>All ids in the engine are represented as hashes, so a string needs to be hashed\nbefore it can be compared with an id.</p>", 
+      "description": "Pretty printing of Lua values. This function prints Lua values\nin a manner similar to +print()+, but will also recurse into tables\nand pretty print them. There is a limit to how deep the function\nwill recurse.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string</span> string to hash</p>", 
-          "name": "s"
+          "doc": "value to print", 
+          "name": "v", 
+          "types": [
+            "any"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "pretty printing", 
+      "examples": "Pretty printing a Lua table with a nested table:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">t2</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">4</span> <span class=\"p\">}</span>\n<span class=\"kd\">local</span> <span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">value&quot;</span><span class=\"p\">,</span> <span class=\"n\">key2</span> <span class=\"o\">=</span> <span class=\"mi\">1234</span><span class=\"p\">,</span> <span class=\"n\">key3</span> <span class=\"o\">=</span> <span class=\"n\">t2</span> <span class=\"p\">}</span>\n<span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">t</span><span class=\"p\">)</span>\n</pre></div>\n\n\nResulting in the following output (note that the key order in non array\nLua tables is undefined):\n<div class=\"codehilite\"><pre><span></span>{\n  key3 = {\n    1 = 1,\n    2 = 2,\n    3 = 3,\n    4 = 4,\n  }\n  key2 = 1234,\n  key = value,\n}\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "pprint"
+    }, 
+    {
+      "replaces": "", 
+      "description": "All ids in the engine are represented as hashes, so a string needs to be hashed\nbefore it can be compared with an id.", 
+      "parameters": [
+        {
+          "doc": "string to hash", 
+          "name": "s", 
+          "types": [
+            "string"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">hash</span> a hashed string</p>", 
-          "name": "hash"
+          "doc": "a hashed string", 
+          "name": "hash", 
+          "types": [
+            "hash"
+          ]
         }
       ], 
-      "brief": "<p>hashes a string</p>", 
-      "examples": "<p>To compare a message_id in an on-message callback function:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_message&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"c1\">-- Act on the message here</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "notes": [], 
+      "brief": "hashes a string", 
+      "examples": "To compare a message_id in an on-message callback function:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_message&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"c1\">-- Act on the message here</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "hash"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns a hexadecimal representation of a hash value.\nThe returned string is always padded with leading zeros.</p>", 
+      "description": "Returns a hexadecimal representation of a hash value.\nThe returned string is always padded with leading zeros.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">hash</span> hash value to get hex string for</p>", 
-          "name": "h"
+          "doc": "hash value to get hex string for", 
+          "name": "h", 
+          "types": [
+            "hash"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">string</span> hex representation of the hash</p>", 
-          "name": "hex"
+          "doc": "hex representation of the hash", 
+          "name": "hex", 
+          "types": [
+            "string"
+          ]
         }
       ], 
-      "brief": "<p>get hex representation of a hash value as a string</p>", 
+      "notes": [], 
+      "brief": "get hex representation of a hash value as a string", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">h</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_hash&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">hexstr</span> <span class=\"o\">=</span> <span class=\"n\">hash_to_hex</span><span class=\"p\">(</span><span class=\"n\">h</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">hexstr</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; a2bc06d97f580aab</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "hash_to_hex"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Pretty printing of Lua values. This function prints Lua values\nin a manner similar to +print()+, but will also recurse into tables\nand pretty print them. There is a limit to how deep the function\nwill recurse.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">any</span> value to print</p>", 
-          "name": "v"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>pretty printing</p>", 
-      "examples": "<p>Pretty printing a Lua table with a nested table:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">t2</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">4</span> <span class=\"p\">}</span>\n<span class=\"kd\">local</span> <span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">value&quot;</span><span class=\"p\">,</span> <span class=\"n\">key2</span> <span class=\"o\">=</span> <span class=\"mi\">1234</span><span class=\"p\">,</span> <span class=\"n\">key3</span> <span class=\"o\">=</span> <span class=\"n\">t2</span> <span class=\"p\">}</span>\n<span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">t</span><span class=\"p\">)</span>\n</pre></div>\n\n\n<p>Resulting in the following output (note that the key order in non array\nLua tables is undefined):</p>\n<div class=\"codehilite\"><pre><span></span>{\n  key3 = {\n    1 = 1,\n    2 = 2,\n    3 = 3,\n    4 = 4,\n  }\n  key2 = 1234,\n  key = value,\n}\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "pprint"
     }
   ]
 }

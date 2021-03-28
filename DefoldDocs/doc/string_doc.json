@@ -1,307 +1,424 @@
 {
   "info": {
     "group": "LUA STANDARD LIBS", 
-    "description": "<p>Documentation for the Lua string standard library.</p>\n<p>From <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.</p>\n<p>Copyright &copy; 2006-2012 Lua.org, PUC-Rio.</p>\n<p>Freely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.</p>\n<h3>Patterns</h3>\n<p><em>Character Class:</em></p>\n<p>A character class is used to represent a set of characters.\nThe following combinations are allowed in describing a character class:</p>\n<dl>\n<dt>x</dt>\n<dd>(where x is not one of the <em>magic characters</em> <code>^$()%.[]*+-?</code>)\n  represents the character <em>x</em> itself.</dd>\n<dt><code>.</code></dt>\n<dd>(a dot) represents all characters.</dd>\n<dt><code>%a</code></dt>\n<dd>represents all letters.</dd>\n<dt><code>%c</code></dt>\n<dd>represents all control characters.</dd>\n<dt><code>%d</code></dt>\n<dd>represents all digits.</dd>\n<dt><code>%l</code></dt>\n<dd>represents all lowercase letters.</dd>\n<dt><code>%p</code></dt>\n<dd>represents all punctuation characters.</dd>\n<dt><code>%s</code></dt>\n<dd>represents all space characters.</dd>\n<dt><code>%u</code></dt>\n<dd>represents all uppercase letters.</dd>\n<dt><code>%w</code></dt>\n<dd>represents all alphanumeric characters.</dd>\n<dt><code>%x</code></dt>\n<dd>represents all hexadecimal digits.</dd>\n<dt><code>%z</code></dt>\n<dd>represents the character with representation 0.</dd>\n<dt><code>%x</code></dt>\n<dd>(where x is any non-alphanumeric character) represents the character x.\n  This is the standard way to escape the magic characters.\n  Any punctuation character (even the non magic) can be preceded by a '%'\n  when used to represent itself in a pattern.</dd>\n<dt><code>[set]</code></dt>\n<dd>represents the class which is the union of all characters in set.\n  A range of characters can be specified by separating the end characters\n  of the range with a '-'.\n  All classes <code>%</code><em>x</em> described above can also be used as components in set.\n  All other characters in set represent themselves.\n  For example, <code>[%w_]</code> (or <code>[_%w]</code>) represents all alphanumeric characters\n  plus the underscore, <code>[0-7]</code> represents the octal digits,\n  and <code>[0-7%l%-]</code> represents the octal digits plus the lowercase letters\n  plus the '-' character.</dd>\n</dl>\n<p>The interaction between ranges and classes is not defined.\n  Therefore, patterns like <code>[%a-z]</code> or <code>[a-%%]</code> have no meaning.</p>\n<dl>\n<dt><code>[^set]</code></dt>\n<dd>represents the complement of set,\n  where set is interpreted as above.</dd>\n</dl>\n<p>For all classes represented by single letters (<code>%a</code>, <code>%c</code>, etc.),\nthe corresponding uppercase letter represents the complement of the class.\nFor instance, <code>%S</code> represents all non-space characters.</p>\n<p>The definitions of letter, space, and other character groups\ndepend on the current locale. In particular, the class <code>[a-z]</code> may not be\nequivalent to <code>%l</code>.</p>\n<p><em>Pattern Item:</em></p>\n<p>A pattern item can be</p>\n<ul>\n<li>\n<p>a single character class, which matches any single character in the class;</p>\n</li>\n<li>\n<p>a single character class followed by '*',\n  which matches 0 or more repetitions of characters in the class.\n  These repetition items will always match the longest possible sequence;</p>\n</li>\n<li>\n<p>a single character class followed by '+',\n  which matches 1 or more repetitions of characters in the class.\n  These repetition items will always match the longest possible sequence;</p>\n</li>\n<li>\n<p>a single character class followed by '-',\n  which also matches 0 or more repetitions of characters in the class.\n  Unlike '*', these repetition items will always match the <em>shortest</em>\n  possible sequence;</p>\n</li>\n<li>\n<p>a single character class followed by '?',\n  which matches 0 or 1 occurrence of a character in the class;</p>\n</li>\n<li>\n<p><code>%n</code>, for n between 1 and 9; such item matches a substring equal to the\n  n-th captured string (see below);</p>\n</li>\n<li>\n<p><code>%bxy</code>, where x and y are two distinct characters;\n  such item matches strings that start with x, end with y,\n  and where the x and y are <em>balanced</em>.\n  This means that, if one reads the string from left to right,\n  counting +1 for an x and -1 for a y,\n  the ending y is the first y where the count reaches 0.\n  For instance, the item <code>%b()</code> matches expressions with balanced parentheses.</p>\n</li>\n</ul>\n<p><em>Pattern:</em></p>\n<p>A pattern is a sequence of pattern items.\nA '^' at the beginning of a pattern anchors the match at the\nbeginning of the subject string.\nA '$' at the end of a pattern anchors the match at the\nend of the subject string.\nAt other positions, '^' and '$' have no special meaning and represent themselves.</p>\n<p><em>Captures:</em></p>\n<p>A pattern can contain sub-patterns enclosed in parentheses;\nthey describe captures.\nWhen a match succeeds, the substrings of the subject string\nthat match captures are stored (<em>captured</em>) for future use.\nCaptures are numbered according to their left parentheses.\nFor instance, in the pattern <code>\"(a*(.)%w(%s*))\"</code>,\nthe part of the string matching <code>\"a*(.)%w(%s*)\"</code> is\nstored as the first capture (and therefore has number 1);\nthe character matching \".\" is captured with number 2,\nand the part matching \"%s*\" has number 3.</p>\n<p>As a special case, the empty capture <code>()</code> captures\nthe current string position (a number).\nFor instance, if we apply the pattern <code>\"()aa()\"</code> on the\nstring <code>\"flaaap\"</code>, there will be two captures: 3 and 5.</p>\n<p>A pattern cannot contain embedded zeros.  Use <code>%z</code> instead.</p>", 
+    "description": "Documentation for the Lua string standard library.\nFrom <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.\nCopyright &copy; 2006-2012 Lua.org, PUC-Rio.\nFreely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.\n<h3>Patterns</h3>\n<em>Character Class:</em>\nA character class is used to represent a set of characters.\nThe following combinations are allowed in describing a character class:\n<dl>\n<dt>x</dt>\n<dd>(where x is not one of the <em>magic characters</em> <code>^$()%.[]*+-?</code>)\n  represents the character <em>x</em> itself.</dd>\n<dt><code>.</code></dt>\n<dd>(a dot) represents all characters.</dd>\n<dt><code>%a</code></dt>\n<dd>represents all letters.</dd>\n<dt><code>%c</code></dt>\n<dd>represents all control characters.</dd>\n<dt><code>%d</code></dt>\n<dd>represents all digits.</dd>\n<dt><code>%l</code></dt>\n<dd>represents all lowercase letters.</dd>\n<dt><code>%p</code></dt>\n<dd>represents all punctuation characters.</dd>\n<dt><code>%s</code></dt>\n<dd>represents all space characters.</dd>\n<dt><code>%u</code></dt>\n<dd>represents all uppercase letters.</dd>\n<dt><code>%w</code></dt>\n<dd>represents all alphanumeric characters.</dd>\n<dt><code>%x</code></dt>\n<dd>represents all hexadecimal digits.</dd>\n<dt><code>%z</code></dt>\n<dd>represents the character with representation 0.</dd>\n<dt><code>%x</code></dt>\n<dd>(where x is any non-alphanumeric character) represents the character x.\n  This is the standard way to escape the magic characters.\n  Any punctuation character (even the non magic) can be preceded by a '%'\n  when used to represent itself in a pattern.</dd>\n<dt><code>[set]</code></dt>\n<dd>represents the class which is the union of all characters in set.\n  A range of characters can be specified by separating the end characters\n  of the range with a '-'.\n  All classes <code>%</code><em>x</em> described above can also be used as components in set.\n  All other characters in set represent themselves.\n  For example, <code>[%w_]</code> (or <code>[_%w]</code>) represents all alphanumeric characters\n  plus the underscore, <code>[0-7]</code> represents the octal digits,\n  and <code>[0-7%l%-]</code> represents the octal digits plus the lowercase letters\n  plus the '-' character.</dd>\n</dl>\nThe interaction between ranges and classes is not defined.\n  Therefore, patterns like <code>[%a-z]</code> or <code>[a-%%]</code> have no meaning.\n<dl>\n<dt><code>[^set]</code></dt>\n<dd>represents the complement of set,\n  where set is interpreted as above.</dd>\n</dl>\nFor all classes represented by single letters (<code>%a</code>, <code>%c</code>, etc.),\nthe corresponding uppercase letter represents the complement of the class.\nFor instance, <code>%S</code> represents all non-space characters.\nThe definitions of letter, space, and other character groups\ndepend on the current locale. In particular, the class <code>[a-z]</code> may not be\nequivalent to <code>%l</code>.\n<em>Pattern Item:</em>\nA pattern item can be\n<ul>\n<li>\na single character class, which matches any single character in the class;\n</li>\n<li>\na single character class followed by '*',\n  which matches 0 or more repetitions of characters in the class.\n  These repetition items will always match the longest possible sequence;\n</li>\n<li>\na single character class followed by '+',\n  which matches 1 or more repetitions of characters in the class.\n  These repetition items will always match the longest possible sequence;\n</li>\n<li>\na single character class followed by '-',\n  which also matches 0 or more repetitions of characters in the class.\n  Unlike '*', these repetition items will always match the <em>shortest</em>\n  possible sequence;\n</li>\n<li>\na single character class followed by '?',\n  which matches 0 or 1 occurrence of a character in the class;\n</li>\n<li>\n<code>%n</code>, for n between 1 and 9; such item matches a substring equal to the\n  n-th captured string (see below);\n</li>\n<li>\n<code>%bxy</code>, where x and y are two distinct characters;\n  such item matches strings that start with x, end with y,\n  and where the x and y are <em>balanced</em>.\n  This means that, if one reads the string from left to right,\n  counting +1 for an x and -1 for a y,\n  the ending y is the first y where the count reaches 0.\n  For instance, the item <code>%b()</code> matches expressions with balanced parentheses.\n</li>\n</ul>\n<em>Pattern:</em>\nA pattern is a sequence of pattern items.\nA '^' at the beginning of a pattern anchors the match at the\nbeginning of the subject string.\nA '$' at the end of a pattern anchors the match at the\nend of the subject string.\nAt other positions, '^' and '$' have no special meaning and represent themselves.\n<em>Captures:</em>\nA pattern can contain sub-patterns enclosed in parentheses;\nthey describe captures.\nWhen a match succeeds, the substrings of the subject string\nthat match captures are stored (<em>captured</em>) for future use.\nCaptures are numbered according to their left parentheses.\nFor instance, in the pattern <code>\"(a*(.)%w(%s*))\"</code>,\nthe part of the string matching <code>\"a*(.)%w(%s*)\"</code> is\nstored as the first capture (and therefore has number 1);\nthe character matching \".\" is captured with number 2,\nand the part matching \"%s*\" has number 3.\nAs a special case, the empty capture <code>()</code> captures\nthe current string position (a number).\nFor instance, if we apply the pattern <code>\"()aa()\"</code> on the\nstring <code>\"flaaap\"</code>, there will be two captures: 3 and 5.\nA pattern cannot contain embedded zeros.  Use <code>%z</code> instead.", 
     "namespace": "string", 
-    "name": "String", 
-    "brief": "<p>Lua string standard library</p>"
+    "brief": "Lua string standard library", 
+    "file": "", 
+    "path": "", 
+    "name": "String"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Returns the internal numerical codes of the characters <code>s[i]</code>,\n<code>s[i+1]</code>, ..., <code>s[j]</code>.\nThe default value for i is 1;\nthe default value for j is i.</p>\n<p>Note that numerical codes are not necessarily portable across platforms.</p>", 
+      "description": "Returns the internal numerical codes of the characters <code>s[i]</code>,\n<code>s[i+1]</code>, ..., <code>s[j]</code>.\nThe default value for i is 1;\nthe default value for j is i.\nNote that numerical codes are not necessarily portable across platforms.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "s"
+          "name": "s", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "[i]"
+          "name": "[i]", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "[j]"
+          "name": "[j]", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>converts a character into its ASCII (decimal) equivalent</p>", 
+      "notes": [], 
+      "brief": "converts a character into its ASCII (decimal) equivalent", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "string.byte"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Receives zero or more integers.\nReturns a string with length equal to the number of arguments,\nin which each character has the internal numerical code equal\nto its corresponding argument.</p>\n<p>Note that numerical codes are not necessarily portable across platforms.</p>", 
+      "description": "Receives zero or more integers.\nReturns a string with length equal to the number of arguments,\nin which each character has the internal numerical code equal\nto its corresponding argument.\nNote that numerical codes are not necessarily portable across platforms.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "..."
+          "name": "...", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>converts ASCII codes into their equivalent characters</p>", 
+      "notes": [], 
+      "brief": "converts ASCII codes into their equivalent characters", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "string.char"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns a string containing a binary representation of the given function,\nso that a later loadstring on this string returns\na copy of the function.\nfunction must be a Lua function without upvalues.</p>", 
+      "description": "Returns a string containing a binary representation of the given function,\nso that a later loadstring on this string returns\na copy of the function.\nfunction must be a Lua function without upvalues.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "function"
+          "name": "function", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>converts a function into binary</p>", 
+      "notes": [], 
+      "brief": "converts a function into binary", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "string.dump"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Looks for the first match of\npattern in the string s.\nIf it finds a match, then find returns the indices of <code>s</code>\nwhere this occurrence starts and ends;\notherwise, it returns <span class=\"type\"> nil</span>.\nA third, optional numerical argument init specifies\nwhere to start the search;\nits default value is 1 and can be negative.\nA value of <span class=\"type\"> true</span> as a fourth, optional argument plain\nturns off the pattern matching facilities,\nso the function does a plain \"find substring\" operation,\nwith no characters in pattern being considered \"magic\".\nNote that if plain is given, then init must be given as well.</p>\n<p>If the pattern has captures,\nthen in a successful match\nthe captured values are also returned,\nafter the two indices.</p>", 
+      "description": "Looks for the first match of\npattern in the string s.\nIf it finds a match, then find returns the indices of <code>s</code>\nwhere this occurrence starts and ends;\notherwise, it returns <span class=\"type\"> nil</span>.\nA third, optional numerical argument init specifies\nwhere to start the search;\nits default value is 1 and can be negative.\nA value of <span class=\"type\"> true</span> as a fourth, optional argument plain\nturns off the pattern matching facilities,\nso the function does a plain \"find substring\" operation,\nwith no characters in pattern being considered \"magic\".\nNote that if plain is given, then init must be given as well.\nIf the pattern has captures,\nthen in a successful match\nthe captured values are also returned,\nafter the two indices.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "s"
+          "name": "s", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "pattern"
+          "name": "pattern", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "[init]"
+          "name": "[init]", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "[plain]"
+          "name": "[plain]", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>searches a string for a pattern</p>", 
+      "notes": [], 
+      "brief": "searches a string for a pattern", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "string.find"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns a formatted version of its variable number of arguments\nfollowing the description given in its first argument (which must be a string).\nThe format string follows the same rules as the printf family of\nstandard C functions.\nThe only differences are that the options/modifiers\n<code>*</code>, l, L, n, p,\nand h are not supported\nand that there is an extra option, q.\nThe q option formats a string in a form suitable to be safely read\nback by the Lua interpreter:\nthe string is written between double quotes,\nand all double quotes, newlines, embedded zeros,\nand backslashes in the string\nare correctly escaped when written.\nFor instance, the call</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"nb\">string.format</span><span class=\"p\">(</span><span class=\"s1\">&#39;</span><span class=\"s\">%q&#39;</span><span class=\"p\">,</span> <span class=\"s1\">&#39;</span><span class=\"s\">a string with &quot;quotes&quot; and </span><span class=\"se\">\\n</span><span class=\"s\"> new line&#39;</span><span class=\"p\">)</span>\n</pre></div>\n\n\n<p>will produce the string:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"s2\">&quot;</span><span class=\"s\">a string with </span><span class=\"se\">\\&quot;</span><span class=\"s\">quotes</span><span class=\"se\">\\&quot;</span><span class=\"s\"> and \\</span>\n <span class=\"n\">new</span> <span class=\"n\">line</span><span class=\"s2\">&quot;</span>\n</pre></div>\n\n\n<p>The options c, d, E, e, f,\ng, G, i, o, u, X, and x all\nexpect a number as argument,\nwhereas q and s expect a string.</p>\n<p>This function does not accept string values\ncontaining embedded zeros,\nexcept as arguments to the q option.</p>", 
+      "description": "Returns a formatted version of its variable number of arguments\nfollowing the description given in its first argument (which must be a string).\nThe format string follows the same rules as the printf family of\nstandard C functions.\nThe only differences are that the options/modifiers\n<code>*</code>, l, L, n, p,\nand h are not supported\nand that there is an extra option, q.\nThe q option formats a string in a form suitable to be safely read\nback by the Lua interpreter:\nthe string is written between double quotes,\nand all double quotes, newlines, embedded zeros,\nand backslashes in the string\nare correctly escaped when written.\nFor instance, the call\n<div class=\"codehilite\"><pre><span></span><span class=\"nb\">string.format</span><span class=\"p\">(</span><span class=\"s1\">&#39;</span><span class=\"s\">%q&#39;</span><span class=\"p\">,</span> <span class=\"s1\">&#39;</span><span class=\"s\">a string with &quot;quotes&quot; and </span><span class=\"se\">\\n</span><span class=\"s\"> new line&#39;</span><span class=\"p\">)</span>\n</pre></div>\n\n\nwill produce the string:\n<div class=\"codehilite\"><pre><span></span><span class=\"s2\">&quot;</span><span class=\"s\">a string with </span><span class=\"se\">\\&quot;</span><span class=\"s\">quotes</span><span class=\"se\">\\&quot;</span><span class=\"s\"> and \\</span>\n <span class=\"n\">new</span> <span class=\"n\">line</span><span class=\"s2\">&quot;</span>\n</pre></div>\n\n\nThe options c, d, E, e, f,\ng, G, i, o, u, X, and x all\nexpect a number as argument,\nwhereas q and s expect a string.\nThis function does not accept string values\ncontaining embedded zeros,\nexcept as arguments to the q option.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "formatstring"
+          "name": "formatstring", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "..."
+          "name": "...", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>formats a string</p>", 
+      "notes": [], 
+      "brief": "formats a string", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "string.format"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns an iterator function that,\neach time it is called,\nreturns the next captures from pattern over string s.\nIf pattern specifies no captures,\nthen the whole match is produced in each call.</p>\n<p>As an example, the following loop</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">hello world from Lua&quot;</span>\n<span class=\"k\">for</span> <span class=\"n\">w</span> <span class=\"k\">in</span> <span class=\"nb\">string.gmatch</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%a+&quot;</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">w</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>will iterate over all the words from string s,\nprinting one per line.\nThe next example collects all pairs <code>key=value</code> from the\ngiven string into a table:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n<span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">from=world, to=Lua&quot;</span>\n<span class=\"k\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"k\">in</span> <span class=\"nb\">string.gmatch</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">(%w+)=(%w+)&quot;</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"n\">t</span><span class=\"p\">[</span><span class=\"n\">k</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">v</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>For this function, a '^' at the start of a pattern does not\nwork as an anchor, as this would prevent the iteration.</p>", 
+      "description": "Returns an iterator function that,\neach time it is called,\nreturns the next captures from pattern over string s.\nIf pattern specifies no captures,\nthen the whole match is produced in each call.\nAs an example, the following loop\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">hello world from Lua&quot;</span>\n<span class=\"k\">for</span> <span class=\"n\">w</span> <span class=\"k\">in</span> <span class=\"nb\">string.gmatch</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%a+&quot;</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">w</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\nwill iterate over all the words from string s,\nprinting one per line.\nThe next example collects all pairs <code>key=value</code> from the\ngiven string into a table:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n<span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">from=world, to=Lua&quot;</span>\n<span class=\"k\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"k\">in</span> <span class=\"nb\">string.gmatch</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">(%w+)=(%w+)&quot;</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"n\">t</span><span class=\"p\">[</span><span class=\"n\">k</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">v</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\nFor this function, a '^' at the start of a pattern does not\nwork as an anchor, as this would prevent the iteration.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "s"
+          "name": "s", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "pattern"
+          "name": "pattern", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>iterate over a string</p>", 
+      "notes": [], 
+      "brief": "iterate over a string", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "string.gmatch"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns a copy of s\nin which all (or the first n, if given)\noccurrences of the pattern have been\nreplaced by a replacement string specified by repl,\nwhich can be a string, a table, or a function.\ngsub also returns, as its second value,\nthe total number of matches that occurred.</p>\n<p>If repl is a string, then its value is used for replacement.\nThe character <code>%</code> works as an escape character:\nany sequence in repl of the form <code>%n</code>,\nwith n between 1 and 9,\nstands for the value of the n-th captured substring (see below).\nThe sequence <code>%0</code> stands for the whole match.\nThe sequence <code>%%</code> stands for a single <code>%</code>.</p>\n<p>If repl is a table, then the table is queried for every match,\nusing the first capture as the key;\nif the pattern specifies no captures,\nthen the whole match is used as the key.</p>\n<p>If repl is a function, then this function is called every time a\nmatch occurs, with all captured substrings passed as arguments,\nin order;\nif the pattern specifies no captures,\nthen the whole match is passed as a sole argument.</p>\n<p>If the value returned by the table query or by the function call\nis a string or a number,\nthen it is used as the replacement string;\notherwise, if it is false or <span class=\"type\"> nil</span>,\nthen there is no replacement\n(that is, the original match is kept in the string).</p>\n<p>Here are some examples:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"nb\">string.gsub</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">hello world&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">(%w+)&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%1 %1&quot;</span><span class=\"p\">)</span>\n<span class=\"c1\">--&gt; x=&quot;hello hello world world&quot;</span>\n\n<span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"nb\">string.gsub</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">hello world&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%w+&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%0 %0&quot;</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"c1\">--&gt; x=&quot;hello hello world&quot;</span>\n\n<span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"nb\">string.gsub</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">hello world from Lua&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">(%w+)%s*(%w+)&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%2 %1&quot;</span><span class=\"p\">)</span>\n<span class=\"c1\">--&gt; x=&quot;world hello Lua from&quot;</span>\n\n<span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"nb\">string.gsub</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">home = $HOME, user = $USER&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%$(%w+)&quot;</span><span class=\"p\">,</span> <span class=\"nb\">os.getenv</span><span class=\"p\">)</span>\n<span class=\"c1\">--&gt; x=&quot;home = /home/roberto, user = roberto&quot;</span>\n\n<span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"nb\">string.gsub</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">4+5 = $return 4+5$&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%$(.-)%$&quot;</span><span class=\"p\">,</span> <span class=\"k\">function</span> <span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span>\n      <span class=\"k\">return</span> <span class=\"nb\">loadstring</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)()</span>\n    <span class=\"k\">end</span><span class=\"p\">)</span>\n<span class=\"c1\">--&gt; x=&quot;4+5 = 9&quot;</span>\n\n<span class=\"kd\">local</span> <span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"n\">name</span><span class=\"o\">=</span><span class=\"s2\">&quot;</span><span class=\"s\">lua&quot;</span><span class=\"p\">,</span> <span class=\"n\">version</span><span class=\"o\">=</span><span class=\"s2\">&quot;</span><span class=\"s\">5.1&quot;</span><span class=\"p\">}</span>\n<span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"nb\">string.gsub</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">$name-$version.tar.gz&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%$(%w+)&quot;</span><span class=\"p\">,</span> <span class=\"n\">t</span><span class=\"p\">)</span>\n<span class=\"c1\">--&gt; x=&quot;lua-5.1.tar.gz&quot;</span>\n</pre></div>", 
+      "description": "Returns a copy of s\nin which all (or the first n, if given)\noccurrences of the pattern have been\nreplaced by a replacement string specified by repl,\nwhich can be a string, a table, or a function.\ngsub also returns, as its second value,\nthe total number of matches that occurred.\nIf repl is a string, then its value is used for replacement.\nThe character <code>%</code> works as an escape character:\nany sequence in repl of the form <code>%n</code>,\nwith n between 1 and 9,\nstands for the value of the n-th captured substring (see below).\nThe sequence <code>%0</code> stands for the whole match.\nThe sequence <code>%%</code> stands for a single <code>%</code>.\nIf repl is a table, then the table is queried for every match,\nusing the first capture as the key;\nif the pattern specifies no captures,\nthen the whole match is used as the key.\nIf repl is a function, then this function is called every time a\nmatch occurs, with all captured substrings passed as arguments,\nin order;\nif the pattern specifies no captures,\nthen the whole match is passed as a sole argument.\nIf the value returned by the table query or by the function call\nis a string or a number,\nthen it is used as the replacement string;\notherwise, if it is false or <span class=\"type\"> nil</span>,\nthen there is no replacement\n(that is, the original match is kept in the string).\nHere are some examples:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"nb\">string.gsub</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">hello world&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">(%w+)&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%1 %1&quot;</span><span class=\"p\">)</span>\n<span class=\"c1\">--&gt; x=&quot;hello hello world world&quot;</span>\n\n<span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"nb\">string.gsub</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">hello world&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%w+&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%0 %0&quot;</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"c1\">--&gt; x=&quot;hello hello world&quot;</span>\n\n<span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"nb\">string.gsub</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">hello world from Lua&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">(%w+)%s*(%w+)&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%2 %1&quot;</span><span class=\"p\">)</span>\n<span class=\"c1\">--&gt; x=&quot;world hello Lua from&quot;</span>\n\n<span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"nb\">string.gsub</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">home = $HOME, user = $USER&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%$(%w+)&quot;</span><span class=\"p\">,</span> <span class=\"nb\">os.getenv</span><span class=\"p\">)</span>\n<span class=\"c1\">--&gt; x=&quot;home = /home/roberto, user = roberto&quot;</span>\n\n<span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"nb\">string.gsub</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">4+5 = $return 4+5$&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%$(.-)%$&quot;</span><span class=\"p\">,</span> <span class=\"k\">function</span> <span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span>\n      <span class=\"k\">return</span> <span class=\"nb\">loadstring</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)()</span>\n    <span class=\"k\">end</span><span class=\"p\">)</span>\n<span class=\"c1\">--&gt; x=&quot;4+5 = 9&quot;</span>\n\n<span class=\"kd\">local</span> <span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"n\">name</span><span class=\"o\">=</span><span class=\"s2\">&quot;</span><span class=\"s\">lua&quot;</span><span class=\"p\">,</span> <span class=\"n\">version</span><span class=\"o\">=</span><span class=\"s2\">&quot;</span><span class=\"s\">5.1&quot;</span><span class=\"p\">}</span>\n<span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"nb\">string.gsub</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">$name-$version.tar.gz&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">%$(%w+)&quot;</span><span class=\"p\">,</span> <span class=\"n\">t</span><span class=\"p\">)</span>\n<span class=\"c1\">--&gt; x=&quot;lua-5.1.tar.gz&quot;</span>\n</pre></div>", 
       "parameters": [
         {
           "doc": "", 
-          "name": "s"
+          "name": "s", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "pattern"
+          "name": "pattern", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "repl"
+          "name": "repl", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "[n]"
+          "name": "[n]", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>substitute strings inside another string</p>", 
+      "notes": [], 
+      "brief": "substitute strings inside another string", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "string.gsub"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Receives a string and returns its length.\nThe empty string <code>\"\"</code> has length 0.\nEmbedded zeros are counted,\nso <code>\"a\\000bc\\000\"</code> has length 5.</p>", 
+      "description": "Receives a string and returns its length.\nThe empty string <code>\"\"</code> has length 0.\nEmbedded zeros are counted,\nso <code>\"a\\000bc\\000\"</code> has length 5.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "s"
+          "name": "s", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>return the length of a string</p>", 
+      "notes": [], 
+      "brief": "return the length of a string", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "string.len"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Receives a string and returns a copy of this string with all\nuppercase letters changed to lowercase.\nAll other characters are left unchanged.\nThe definition of what an uppercase letter is depends on the current locale.</p>", 
+      "description": "Receives a string and returns a copy of this string with all\nuppercase letters changed to lowercase.\nAll other characters are left unchanged.\nThe definition of what an uppercase letter is depends on the current locale.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "s"
+          "name": "s", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>converts a string to lower-case</p>", 
+      "notes": [], 
+      "brief": "converts a string to lower-case", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "string.lower"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Looks for the first <em>match</em> of\npattern in the string s.\nIf it finds one, then match returns\nthe captures from the pattern;\notherwise it returns <span class=\"type\"> nil</span>.\nIf pattern specifies no captures,\nthen the whole match is returned.\nA third, optional numerical argument init specifies\nwhere to start the search;\nits default value is 1 and can be negative.</p>", 
+      "description": "Looks for the first <em>match</em> of\npattern in the string s.\nIf it finds one, then match returns\nthe captures from the pattern;\notherwise it returns <span class=\"type\"> nil</span>.\nIf pattern specifies no captures,\nthen the whole match is returned.\nA third, optional numerical argument init specifies\nwhere to start the search;\nits default value is 1 and can be negative.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "s"
+          "name": "s", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "pattern"
+          "name": "pattern", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "[init]"
+          "name": "[init]", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>searches a string for a pattern</p>", 
+      "notes": [], 
+      "brief": "searches a string for a pattern", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "string.match"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns a string that is the concatenation of n copies of\nthe string s.</p>", 
+      "description": "Returns a string that is the concatenation of n copies of\nthe string s.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "s"
+          "name": "s", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "n"
+          "name": "n", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>returns repeated copies of a string</p>", 
+      "notes": [], 
+      "brief": "returns repeated copies of a string", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "string.rep"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns a string that is the string s reversed.</p>", 
+      "description": "Returns a string that is the string s reversed.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "s"
+          "name": "s", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>reverses the order of characters in a string</p>", 
+      "notes": [], 
+      "brief": "reverses the order of characters in a string", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "string.reverse"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the substring of s that\nstarts at i  and continues until j;\ni and j can be negative.\nIf j is absent, then it is assumed to be equal to -1\n(which is the same as the string length).\nIn particular,\nthe call <code>string.sub(s,1,j)</code> returns a prefix of s\nwith length j,\nand <code>string.sub(s, -i)</code> returns a suffix of s\nwith length i.</p>", 
+      "description": "Returns the substring of s that\nstarts at i  and continues until j;\ni and j can be negative.\nIf j is absent, then it is assumed to be equal to -1\n(which is the same as the string length).\nIn particular,\nthe call <code>string.sub(s,1,j)</code> returns a prefix of s\nwith length j,\nand <code>string.sub(s, -i)</code> returns a suffix of s\nwith length i.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "s"
+          "name": "s", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "i"
+          "name": "i", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "[j]"
+          "name": "[j]", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>returns a substring of a string</p>", 
+      "notes": [], 
+      "brief": "returns a substring of a string", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "string.sub"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Receives a string and returns a copy of this string with all\nlowercase letters changed to uppercase.\nAll other characters are left unchanged.\nThe definition of what a lowercase letter is depends on the current locale.</p>", 
+      "description": "Receives a string and returns a copy of this string with all\nlowercase letters changed to uppercase.\nAll other characters are left unchanged.\nThe definition of what a lowercase letter is depends on the current locale.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "s"
+          "name": "s", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>converts a string to upper-case</p>", 
+      "notes": [], 
+      "brief": "converts a string to upper-case", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "string.upper"
     }

@@ -33,10 +33,11 @@ resource.TEXTURE_TYPE_2D = nil
 ---
 --- * Return a hash to the run-time version of the resource
 ---
----
 --- This function can only be called within go.property <> function calls.
+---@param path string optional resource path string to the resource
 ---@return hash a path hash to the binary version of the resource
-function resource.atlas() end
+function resource.atlas(path) end
+
 ---Constructor-like function with two purposes:
 ---
 ---
@@ -44,21 +45,42 @@ function resource.atlas() end
 ---
 --- * Return a hash to the run-time version of the resource
 ---
+--- This function can only be called within go.property <> function calls.
+---@param path string optional resource path string to the resource
+---@return hash a path hash to the binary version of the resource
+function resource.buffer(path) end
+
+---Constructor-like function with two purposes:
+---
+---
+--- * Load the specified resource as part of loading the script
+---
+--- * Return a hash to the run-time version of the resource
 ---
 --- This function can only be called within go.property <> function calls.
+---@param path string optional resource path string to the resource
 ---@return hash a path hash to the binary version of the resource
-function resource.font() end
+function resource.font(path) end
+
 ---gets the buffer from a resource
----@param path hash | string The path to the resource
+---@param path hash|string The path to the resource
 ---@return buffer The resource buffer
 function resource.get_buffer(path) end
+
 ---Return a reference to the Manifest that is currently loaded.
 ---@return number reference to the Manifest that is currently loaded
 function resource.get_current_manifest() end
+
+---Is any liveupdate data mounted and currently in use?
+---This can be used to determine if a new manifest or zip file should be downloaded.
+---@return bool true if a liveupdate archive (any format) has been loaded
+function resource.is_using_liveupdate_data() end
+
 ---Loads the resource data for a specific resource.
 ---@param path string The path to the resource
 ---@return buffer Returns the buffer stored on disc
 function resource.load(path) end
+
 ---Constructor-like function with two purposes:
 ---
 ---
@@ -66,23 +88,33 @@ function resource.load(path) end
 ---
 --- * Return a hash to the run-time version of the resource
 ---
----
 --- This function can only be called within go.property <> function calls.
+---@param path string optional resource path string to the resource
 ---@return hash a path hash to the binary version of the resource
-function resource.material() end
+function resource.material(path) end
+
 ---Sets the resource data for a specific resource
----@param path string | hash The path to the resource
+---@param path string|hash The path to the resource
 ---@param buffer buffer The buffer of precreated data, suitable for the intended resource type
 function resource.set(path, buffer) end
+
 ---sets the buffer of a resource
----@param path hash | string The path to the resource
+---@param path hash|string The path to the resource
 ---@param buffer buffer The resource buffer
 function resource.set_buffer(path, buffer) end
+
 ---Sets the pixel data for a specific texture.
----@param path hash | string The path to the resource
+---@param path hash|string The path to the resource
 ---@param table table A table containing info about the texture. Supported entries:
----@param buffer buffer The buffer of precreated pixel data
+---@param buffer buffer The buffer of precreated pixel data  Currently, only 1 mipmap is generated.
 function resource.set_texture(path, table, buffer) end
+
+---Stores a zip file and uses it for live update content.
+---The path is renamed and stored in the (internal) live update location
+---@param path string the path to the original file on disc
+---@param callback function(self, status) the callback function executed after the storage has completed
+function resource.store_archive(path, callback) end
+
 ---Create a new manifest from a buffer. The created manifest is verified
 ---by ensuring that the manifest was signed using the bundled public/private
 ---key-pair during the bundle process and that the manifest supports the current
@@ -94,6 +126,7 @@ function resource.set_texture(path, table, buffer) end
 ---@param manifest_buffer string the binary data that represents the manifest
 ---@param callback function(self, status) the callback function executed once the engine has attempted to store the manifest.
 function resource.store_manifest(manifest_buffer, callback) end
+
 ---add a resource to the data archive and runtime index. The resource will be verified
 ---internally before being added to the data archive.
 ---@param manifest_reference number The manifest to check against.
@@ -101,6 +134,7 @@ function resource.store_manifest(manifest_buffer, callback) end
 ---@param hexdigest string The expected hash for the resource, retrieved through collectionproxy.missing_resources.
 ---@param callback function(self, hexdigest, status) The callback function that is executed once the engine has been attempted to store the resource.
 function resource.store_resource(manifest_reference, data, hexdigest, callback) end
+
 ---Constructor-like function with two purposes:
 ---
 ---
@@ -108,10 +142,11 @@ function resource.store_resource(manifest_reference, data, hexdigest, callback) 
 ---
 --- * Return a hash to the run-time version of the resource
 ---
----
 --- This function can only be called within go.property <> function calls.
+---@param path string optional resource path string to the resource
 ---@return hash a path hash to the binary version of the resource
-function resource.texture() end
+function resource.texture(path) end
+
 ---Constructor-like function with two purposes:
 ---
 ---
@@ -119,10 +154,11 @@ function resource.texture() end
 ---
 --- * Return a hash to the run-time version of the resource
 ---
----
 --- This function can only be called within go.property <> function calls.
+---@param path string optional resource path string to the resource
 ---@return hash a path hash to the binary version of the resource
-function resource.tile_source() end
+function resource.tile_source(path) end
+
 
 
 

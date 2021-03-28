@@ -1,55 +1,73 @@
 {
   "info": {
     "group": "SCRIPT", 
-    "description": "<p>Functions for compression and decompression of string buffers.</p>", 
+    "description": "Functions for compression and decompression of string buffers.", 
     "namespace": "zlib", 
-    "name": "Zlib", 
-    "brief": "<p>Zlib compression API documentation</p>"
+    "brief": "Zlib compression API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Zlib"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>A lua error is raised is on error</p>", 
+      "description": "A lua error is raised is on error", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string</span> buffer to deflate</p>", 
-          "name": "buf"
+          "doc": "buffer to inflate", 
+          "name": "buf", 
+          "types": [
+            "string"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">string</span> deflated buffer</p>", 
-          "name": "buf"
+          "doc": "inflated buffer", 
+          "name": "buf", 
+          "types": [
+            "string"
+          ]
         }
       ], 
-      "brief": "<p>Deflate (compress) a buffer</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">This is a string with uncompressed data.&quot;</span>\n<span class=\"kd\">local</span> <span class=\"n\">compressed_data</span> <span class=\"o\">=</span> <span class=\"n\">zlib</span><span class=\"p\">.</span><span class=\"n\">deflate</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">&quot;</span>\n<span class=\"k\">for</span> <span class=\"n\">c</span> <span class=\"k\">in</span> <span class=\"nb\">string.gmatch</span><span class=\"p\">(</span><span class=\"n\">compressed_data</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">.&quot;</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n    <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">s</span> <span class=\"o\">..</span> <span class=\"s1\">&#39;</span><span class=\"se\">\\\\</span><span class=\"s\">&#39;</span> <span class=\"o\">..</span> <span class=\"nb\">string.byte</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; \\120\\94\\11\\201\\200\\44\\86\\0\\162\\68\\133\\226\\146\\162 ...</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "zlib.deflate"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>A lua error is raised is on error</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> buffer to inflate</p>", 
-          "name": "buf"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> inflated buffer</p>", 
-          "name": "buf"
-        }
-      ], 
-      "brief": "<p>Inflate (decompress) a buffer</p>", 
+      "notes": [], 
+      "brief": "Inflate (decompress) a buffer", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"se\">\\120\\94\\11\\201\\200\\44\\86\\0\\162\\68\\133\\226\\146\\162\\204\\188\\116\\133\\242\\204\\146\\12\\133\\210\\188\\228\\252\\220\\130\\162\\212\\226\\226\\212\\20\\133\\148\\196\\146\\68\\61\\0\\44\\67\\14\\201</span><span class=\"s\">&quot;</span>\n<span class=\"kd\">local</span> <span class=\"n\">uncompressed_data</span> <span class=\"o\">=</span> <span class=\"n\">zlib</span><span class=\"p\">.</span><span class=\"n\">inflate</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">uncompressed_data</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; This is a string with uncompressed data.</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "zlib.inflate"
+    }, 
+    {
+      "replaces": "", 
+      "description": "A lua error is raised is on error", 
+      "parameters": [
+        {
+          "doc": "buffer to deflate", 
+          "name": "buf", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "deflated buffer", 
+          "name": "buf", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Deflate (compress) a buffer", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">This is a string with uncompressed data.&quot;</span>\n<span class=\"kd\">local</span> <span class=\"n\">compressed_data</span> <span class=\"o\">=</span> <span class=\"n\">zlib</span><span class=\"p\">.</span><span class=\"n\">deflate</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">&quot;</span>\n<span class=\"k\">for</span> <span class=\"n\">c</span> <span class=\"k\">in</span> <span class=\"nb\">string.gmatch</span><span class=\"p\">(</span><span class=\"n\">compressed_data</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">.&quot;</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n    <span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">s</span> <span class=\"o\">..</span> <span class=\"s1\">&#39;</span><span class=\"se\">\\\\</span><span class=\"s\">&#39;</span> <span class=\"o\">..</span> <span class=\"nb\">string.byte</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; \\120\\94\\11\\201\\200\\44\\86\\0\\162\\68\\133\\226\\146\\162 ...</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "zlib.deflate"
     }
   ]
 }

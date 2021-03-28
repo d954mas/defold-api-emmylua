@@ -1,311 +1,436 @@
 {
   "info": {
     "group": "LUA STANDARD LIBS", 
-    "description": "<p><a href=\"http://bitop.luajit.org/api.html\">Lua BitOp</a> is a C extension module for Lua 5.1/5.2 which adds bitwise operations on numbers.</p>\n<p>Lua BitOp is Copyright &copy; 2008-2012 Mike Pall.\nLua BitOp is free software, released under the MIT license (same license as the Lua core).</p>\n<p>Lua BitOp is compatible with the built-in bitwise operations in LuaJIT 2.0 and is used\non platforms where Defold runs without LuaJIT.</p>\n<p>For clarity the examples assume the definition of a helper function <code>printx()</code>.\nThis prints its argument as an unsigned 32 bit hexadecimal number on all platforms:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">printx</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">)</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">0x&quot;</span><span class=\"o\">..</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tohex</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+    "description": "<a href=\"http://bitop.luajit.org/api.html\">Lua BitOp</a> is a C extension module for Lua 5.1/5.2 which adds bitwise operations on numbers.\nLua BitOp is Copyright &copy; 2008-2012 Mike Pall.\nLua BitOp is free software, released under the MIT license (same license as the Lua core).\nLua BitOp is compatible with the built-in bitwise operations in LuaJIT 2.0 and is used\non platforms where Defold runs without LuaJIT.\nFor clarity the examples assume the definition of a helper function <code>printx()</code>.\nThis prints its argument as an unsigned 32 bit hexadecimal number on all platforms:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">printx</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">)</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">0x&quot;</span><span class=\"o\">..</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tohex</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n</pre></div>", 
     "namespace": "bit", 
-    "name": "BitOp", 
-    "brief": "<p>Bitwise operations API documentation</p>"
+    "brief": "Bitwise operations API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "BitOp"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Returns the bitwise arithmetic right-shift of its first argument by the number of bits given by the second argument.\nArithmetic right-shift treats the most-significant bit as a sign bit and replicates it.\nOnly the lower 5 bits of the shift count are used (reduces to the range [0..31]).</p>", 
+      "description": "Normalizes a number to the numeric range for bit operations and returns it. This function is usually not needed since all bit operations already normalize all of their input arguments.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">number</span> number</p>", 
-          "name": "x"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> number of bits</p>", 
-          "name": "n"
+          "doc": "number to normalize", 
+          "name": "x", 
+          "types": [
+            "number"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">number</span> bitwise arithmetic right-shifted number</p>", 
-          "name": "y"
+          "doc": "normalized number", 
+          "name": "y", 
+          "types": [
+            "number"
+          ]
         }
       ], 
-      "brief": "<p>bitwise arithmetic right-shift</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">arshift</span><span class=\"p\">(</span><span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">8</span><span class=\"p\">))</span>           <span class=\"c1\">--&gt; 1</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">arshift</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">8</span><span class=\"p\">))</span>          <span class=\"c1\">--&gt; -1</span>\n<span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">arshift</span><span class=\"p\">(</span><span class=\"mh\">0x87654321</span><span class=\"p\">,</span> <span class=\"mi\">12</span><span class=\"p\">))</span>  <span class=\"c1\">--&gt; 0xfff87654</span>\n</pre></div>", 
+      "notes": [], 
+      "brief": "normalize number to the numeric range for bit operations", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"mh\">0xffffffff</span><span class=\"p\">)</span>                <span class=\"c1\">--&gt; 4294967295 (*)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tobit</span><span class=\"p\">(</span><span class=\"mh\">0xffffffff</span><span class=\"p\">))</span>     <span class=\"c1\">--&gt; -1</span>\n<span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tobit</span><span class=\"p\">(</span><span class=\"mh\">0xffffffff</span><span class=\"p\">))</span>    <span class=\"c1\">--&gt; 0xffffffff</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tobit</span><span class=\"p\">(</span><span class=\"mh\">0xffffffff</span> <span class=\"o\">+</span> <span class=\"mi\">1</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; 0</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tobit</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"o\">^</span><span class=\"mi\">40</span> <span class=\"o\">+</span> <span class=\"mi\">1234</span><span class=\"p\">))</span>    <span class=\"c1\">--&gt; 1234</span>\n</pre></div>\n\n\n(*) See the treatment of hex literals for an explanation why the printed numbers in the first two lines differ (if your Lua installation uses a double number type).", 
       "members": [], 
       "error": "", 
-      "type": "FUNCTION", 
-      "name": "bit.arshift"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the bitwise and of all of its arguments. Note that more than two arguments are allowed.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> number</p>", 
-          "name": "x1"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> number(s)</p>", 
-          "name": "[x2...]"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> bitwise and of the provided arguments</p>", 
-          "name": "y"
-        }
-      ], 
-      "brief": "<p>bitwise and</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">band</span><span class=\"p\">(</span><span class=\"mh\">0x12345678</span><span class=\"p\">,</span> <span class=\"mh\">0xff</span><span class=\"p\">))</span>        <span class=\"c1\">--&gt; 0x00000078</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "bit.band"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the bitwise not of its argument.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> number</p>", 
-          "name": "x"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> bitwise not of number x</p>", 
-          "name": "y"
-        }
-      ], 
-      "brief": "<p>bitwise not</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bnot</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">))</span>            <span class=\"c1\">--&gt; -1</span>\n<span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bnot</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">))</span>           <span class=\"c1\">--&gt; 0xffffffff</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bnot</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">))</span>           <span class=\"c1\">--&gt; 0</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bnot</span><span class=\"p\">(</span><span class=\"mh\">0xffffffff</span><span class=\"p\">))</span>   <span class=\"c1\">--&gt; 0</span>\n<span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bnot</span><span class=\"p\">(</span><span class=\"mh\">0x12345678</span><span class=\"p\">))</span>  <span class=\"c1\">--&gt; 0xedcba987</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "bit.bnot"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the bitwise or of all of its arguments. Note that more than two arguments are allowed.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> number</p>", 
-          "name": "x1"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> number(s)</p>", 
-          "name": "[x2...]"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> bitwise or of the provided arguments</p>", 
-          "name": "y"
-        }
-      ], 
-      "brief": "<p>bitwise or</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bor</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">,</span> <span class=\"mi\">8</span><span class=\"p\">))</span>                <span class=\"c1\">--&gt; 15</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "bit.bor"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Swaps the bytes of its argument and returns it. This can be used to convert little-endian 32 bit numbers to big-endian 32 bit numbers or vice versa.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> number</p>", 
-          "name": "x"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> bitwise swapped number</p>", 
-          "name": "y"
-        }
-      ], 
-      "brief": "<p>bitwise swap</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bswap</span><span class=\"p\">(</span><span class=\"mh\">0x12345678</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; 0x78563412</span>\n<span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bswap</span><span class=\"p\">(</span><span class=\"mh\">0x78563412</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; 0x12345678</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "bit.bswap"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the bitwise xor of all of its arguments. Note that more than two arguments are allowed.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> number</p>", 
-          "name": "x1"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> number(s)</p>", 
-          "name": "[x2...]"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> bitwise xor of the provided arguments</p>", 
-          "name": "y"
-        }
-      ], 
-      "brief": "<p>bitwise xor</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bxor</span><span class=\"p\">(</span><span class=\"mh\">0xa5a5f0f0</span><span class=\"p\">,</span> <span class=\"mh\">0xaa55ff00</span><span class=\"p\">))</span>  <span class=\"c1\">--&gt; 0x0ff00ff0</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "bit.bxor"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the bitwise logical left-shift of its first argument by the number of bits given by the second argument.\nLogical shifts treat the first argument as an unsigned number and shift in 0-bits.\nOnly the lower 5 bits of the shift count are used (reduces to the range [0..31]).</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> number</p>", 
-          "name": "x"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> number of bits</p>", 
-          "name": "n"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> bitwise logical left-shifted number</p>", 
-          "name": "y"
-        }
-      ], 
-      "brief": "<p>bitwise logical left-shift</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">lshift</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">))</span>              <span class=\"c1\">--&gt; 1</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">lshift</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">8</span><span class=\"p\">))</span>              <span class=\"c1\">--&gt; 256</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">lshift</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">40</span><span class=\"p\">))</span>             <span class=\"c1\">--&gt; 256</span>\n<span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">lshift</span><span class=\"p\">(</span><span class=\"mh\">0x87654321</span><span class=\"p\">,</span> <span class=\"mi\">12</span><span class=\"p\">))</span>   <span class=\"c1\">--&gt; 0x54321000</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "bit.lshift"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the bitwise left rotation of its first argument by the number of bits given by the second argument. Bits shifted out on one side are shifted back in on the other side.\nOnly the lower 5 bits of the rotate count are used (reduces to the range [0..31]).</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> number</p>", 
-          "name": "x"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> number of bits</p>", 
-          "name": "n"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> bitwise left-rotated number</p>", 
-          "name": "y"
-        }
-      ], 
-      "brief": "<p>bitwise left rotation</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">rol</span><span class=\"p\">(</span><span class=\"mh\">0x12345678</span><span class=\"p\">,</span> <span class=\"mi\">12</span><span class=\"p\">))</span>   <span class=\"c1\">--&gt; 0x45678123</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "bit.rol"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the bitwise right rotation of its first argument by the number of bits given by the second argument. Bits shifted out on one side are shifted back in on the other side.\nOnly the lower 5 bits of the rotate count are used (reduces to the range [0..31]).</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> number</p>", 
-          "name": "x"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> number of bits</p>", 
-          "name": "n"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> bitwise right-rotated number</p>", 
-          "name": "y"
-        }
-      ], 
-      "brief": "<p>bitwise right rotation</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">ror</span><span class=\"p\">(</span><span class=\"mh\">0x12345678</span><span class=\"p\">,</span> <span class=\"mi\">12</span><span class=\"p\">))</span>   <span class=\"c1\">--&gt; 0x67812345</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "bit.ror"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the bitwise logical right-shift of its first argument by the number of bits given by the second argument.\nLogical shifts treat the first argument as an unsigned number and shift in 0-bits.\nOnly the lower 5 bits of the shift count are used (reduces to the range [0..31]).</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> number</p>", 
-          "name": "x"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> number of bits</p>", 
-          "name": "n"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> bitwise logical right-shifted number</p>", 
-          "name": "y"
-        }
-      ], 
-      "brief": "<p>bitwise logical right-shift</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">rshift</span><span class=\"p\">(</span><span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">8</span><span class=\"p\">))</span>            <span class=\"c1\">--&gt; 1</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">rshift</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">8</span><span class=\"p\">))</span>           <span class=\"c1\">--&gt; 16777215</span>\n<span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">rshift</span><span class=\"p\">(</span><span class=\"mh\">0x87654321</span><span class=\"p\">,</span> <span class=\"mi\">12</span><span class=\"p\">))</span>   <span class=\"c1\">--&gt; 0x00087654</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "bit.rshift"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Normalizes a number to the numeric range for bit operations and returns it. This function is usually not needed since all bit operations already normalize all of their input arguments.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> number to normalize</p>", 
-          "name": "x"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> normalized number</p>", 
-          "name": "y"
-        }
-      ], 
-      "brief": "<p>normalize number to the numeric range for bit operations</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"mh\">0xffffffff</span><span class=\"p\">)</span>                <span class=\"c1\">--&gt; 4294967295 (*)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tobit</span><span class=\"p\">(</span><span class=\"mh\">0xffffffff</span><span class=\"p\">))</span>     <span class=\"c1\">--&gt; -1</span>\n<span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tobit</span><span class=\"p\">(</span><span class=\"mh\">0xffffffff</span><span class=\"p\">))</span>    <span class=\"c1\">--&gt; 0xffffffff</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tobit</span><span class=\"p\">(</span><span class=\"mh\">0xffffffff</span> <span class=\"o\">+</span> <span class=\"mi\">1</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; 0</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tobit</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"o\">^</span><span class=\"mi\">40</span> <span class=\"o\">+</span> <span class=\"mi\">1234</span><span class=\"p\">))</span>    <span class=\"c1\">--&gt; 1234</span>\n</pre></div>\n\n\n<p>(*) See the treatment of hex literals for an explanation why the printed numbers in the first two lines differ (if your Lua installation uses a double number type).</p>", 
-      "members": [], 
-      "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "bit.tobit"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Converts its first argument to a hex string. The number of hex digits is given by the absolute value of the optional second argument. Positive numbers between 1 and 8 generate lowercase hex digits. Negative numbers generate uppercase hex digits. Only the least-significant 4*|n| bits are used. The default is to generate 8 lowercase hex digits.</p>", 
+      "description": "Converts its first argument to a hex string. The number of hex digits is given by the absolute value of the optional second argument. Positive numbers between 1 and 8 generate lowercase hex digits. Negative numbers generate uppercase hex digits. Only the least-significant 4*|n| bits are used. The default is to generate 8 lowercase hex digits.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">number</span> number to convert</p>", 
-          "name": "x"
+          "doc": "number to convert", 
+          "name": "x", 
+          "types": [
+            "number"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">number</span> number of hex digits to return</p>", 
-          "name": "n"
+          "doc": "number of hex digits to return", 
+          "name": "n", 
+          "types": [
+            "number"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">string</span> hexadecimal string</p>", 
-          "name": "s"
+          "doc": "hexadecimal string", 
+          "name": "s", 
+          "types": [
+            "string"
+          ]
         }
       ], 
-      "brief": "<p>convert number to a hex string</p>", 
+      "notes": [], 
+      "brief": "convert number to a hex string", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tohex</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">))</span>              <span class=\"c1\">--&gt; 00000001</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tohex</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">))</span>             <span class=\"c1\">--&gt; ffffffff</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tohex</span><span class=\"p\">(</span><span class=\"mh\">0xffffffff</span><span class=\"p\">))</span>     <span class=\"c1\">--&gt; ffffffff</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tohex</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">8</span><span class=\"p\">))</span>         <span class=\"c1\">--&gt; FFFFFFFF</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tohex</span><span class=\"p\">(</span><span class=\"mh\">0x21</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">))</span>        <span class=\"c1\">--&gt; 0021</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">tohex</span><span class=\"p\">(</span><span class=\"mh\">0x87654321</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">))</span>  <span class=\"c1\">--&gt; 4321</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "bit.tohex"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the bitwise not of its argument.", 
+      "parameters": [
+        {
+          "doc": "number", 
+          "name": "x", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "bitwise not of number x", 
+          "name": "y", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "bitwise not", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bnot</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">))</span>            <span class=\"c1\">--&gt; -1</span>\n<span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bnot</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">))</span>           <span class=\"c1\">--&gt; 0xffffffff</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bnot</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">))</span>           <span class=\"c1\">--&gt; 0</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bnot</span><span class=\"p\">(</span><span class=\"mh\">0xffffffff</span><span class=\"p\">))</span>   <span class=\"c1\">--&gt; 0</span>\n<span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bnot</span><span class=\"p\">(</span><span class=\"mh\">0x12345678</span><span class=\"p\">))</span>  <span class=\"c1\">--&gt; 0xedcba987</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "bit.bnot"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the bitwise or of all of its arguments. Note that more than two arguments are allowed.", 
+      "parameters": [
+        {
+          "doc": "number", 
+          "name": "x1", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "number(s)", 
+          "name": "[x2...]", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "bitwise or of the provided arguments", 
+          "name": "y", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "bitwise or", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bor</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">,</span> <span class=\"mi\">8</span><span class=\"p\">))</span>                <span class=\"c1\">--&gt; 15</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "bit.bor"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the bitwise and of all of its arguments. Note that more than two arguments are allowed.", 
+      "parameters": [
+        {
+          "doc": "number", 
+          "name": "x1", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "number(s)", 
+          "name": "[x2...]", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "bitwise and of the provided arguments", 
+          "name": "y", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "bitwise and", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">band</span><span class=\"p\">(</span><span class=\"mh\">0x12345678</span><span class=\"p\">,</span> <span class=\"mh\">0xff</span><span class=\"p\">))</span>        <span class=\"c1\">--&gt; 0x00000078</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "bit.band"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the bitwise xor of all of its arguments. Note that more than two arguments are allowed.", 
+      "parameters": [
+        {
+          "doc": "number", 
+          "name": "x1", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "number(s)", 
+          "name": "[x2...]", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "bitwise xor of the provided arguments", 
+          "name": "y", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "bitwise xor", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bxor</span><span class=\"p\">(</span><span class=\"mh\">0xa5a5f0f0</span><span class=\"p\">,</span> <span class=\"mh\">0xaa55ff00</span><span class=\"p\">))</span>  <span class=\"c1\">--&gt; 0x0ff00ff0</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "bit.bxor"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the bitwise logical left-shift of its first argument by the number of bits given by the second argument.\nLogical shifts treat the first argument as an unsigned number and shift in 0-bits.\nOnly the lower 5 bits of the shift count are used (reduces to the range [0..31]).", 
+      "parameters": [
+        {
+          "doc": "number", 
+          "name": "x", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "number of bits", 
+          "name": "n", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "bitwise logical left-shifted number", 
+          "name": "y", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "bitwise logical left-shift", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">lshift</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">))</span>              <span class=\"c1\">--&gt; 1</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">lshift</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">8</span><span class=\"p\">))</span>              <span class=\"c1\">--&gt; 256</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">lshift</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">40</span><span class=\"p\">))</span>             <span class=\"c1\">--&gt; 256</span>\n<span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">lshift</span><span class=\"p\">(</span><span class=\"mh\">0x87654321</span><span class=\"p\">,</span> <span class=\"mi\">12</span><span class=\"p\">))</span>   <span class=\"c1\">--&gt; 0x54321000</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "bit.lshift"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the bitwise logical right-shift of its first argument by the number of bits given by the second argument.\nLogical shifts treat the first argument as an unsigned number and shift in 0-bits.\nOnly the lower 5 bits of the shift count are used (reduces to the range [0..31]).", 
+      "parameters": [
+        {
+          "doc": "number", 
+          "name": "x", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "number of bits", 
+          "name": "n", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "bitwise logical right-shifted number", 
+          "name": "y", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "bitwise logical right-shift", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">rshift</span><span class=\"p\">(</span><span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">8</span><span class=\"p\">))</span>            <span class=\"c1\">--&gt; 1</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">rshift</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">8</span><span class=\"p\">))</span>           <span class=\"c1\">--&gt; 16777215</span>\n<span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">rshift</span><span class=\"p\">(</span><span class=\"mh\">0x87654321</span><span class=\"p\">,</span> <span class=\"mi\">12</span><span class=\"p\">))</span>   <span class=\"c1\">--&gt; 0x00087654</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "bit.rshift"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the bitwise arithmetic right-shift of its first argument by the number of bits given by the second argument.\nArithmetic right-shift treats the most-significant bit as a sign bit and replicates it.\nOnly the lower 5 bits of the shift count are used (reduces to the range [0..31]).", 
+      "parameters": [
+        {
+          "doc": "number", 
+          "name": "x", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "number of bits", 
+          "name": "n", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "bitwise arithmetic right-shifted number", 
+          "name": "y", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "bitwise arithmetic right-shift", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">arshift</span><span class=\"p\">(</span><span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">8</span><span class=\"p\">))</span>           <span class=\"c1\">--&gt; 1</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">arshift</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">256</span><span class=\"p\">,</span> <span class=\"mi\">8</span><span class=\"p\">))</span>          <span class=\"c1\">--&gt; -1</span>\n<span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">arshift</span><span class=\"p\">(</span><span class=\"mh\">0x87654321</span><span class=\"p\">,</span> <span class=\"mi\">12</span><span class=\"p\">))</span>  <span class=\"c1\">--&gt; 0xfff87654</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "bit.arshift"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the bitwise left rotation of its first argument by the number of bits given by the second argument. Bits shifted out on one side are shifted back in on the other side.\nOnly the lower 5 bits of the rotate count are used (reduces to the range [0..31]).", 
+      "parameters": [
+        {
+          "doc": "number", 
+          "name": "x", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "number of bits", 
+          "name": "n", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "bitwise left-rotated number", 
+          "name": "y", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "bitwise left rotation", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">rol</span><span class=\"p\">(</span><span class=\"mh\">0x12345678</span><span class=\"p\">,</span> <span class=\"mi\">12</span><span class=\"p\">))</span>   <span class=\"c1\">--&gt; 0x45678123</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "bit.rol"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the bitwise right rotation of its first argument by the number of bits given by the second argument. Bits shifted out on one side are shifted back in on the other side.\nOnly the lower 5 bits of the rotate count are used (reduces to the range [0..31]).", 
+      "parameters": [
+        {
+          "doc": "number", 
+          "name": "x", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "number of bits", 
+          "name": "n", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "bitwise right-rotated number", 
+          "name": "y", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "bitwise right rotation", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">ror</span><span class=\"p\">(</span><span class=\"mh\">0x12345678</span><span class=\"p\">,</span> <span class=\"mi\">12</span><span class=\"p\">))</span>   <span class=\"c1\">--&gt; 0x67812345</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "bit.ror"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Swaps the bytes of its argument and returns it. This can be used to convert little-endian 32 bit numbers to big-endian 32 bit numbers or vice versa.", 
+      "parameters": [
+        {
+          "doc": "number", 
+          "name": "x", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "bitwise swapped number", 
+          "name": "y", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "bitwise swap", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bswap</span><span class=\"p\">(</span><span class=\"mh\">0x12345678</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; 0x78563412</span>\n<span class=\"n\">printx</span><span class=\"p\">(</span><span class=\"n\">bit</span><span class=\"p\">.</span><span class=\"n\">bswap</span><span class=\"p\">(</span><span class=\"mh\">0x78563412</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; 0x12345678</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "bit.bswap"
     }
   ]
 }

@@ -1,105 +1,152 @@
 {
   "info": {
     "group": "SCRIPT", 
-    "description": "<p>Functions for passing messages and constructing URL objects.</p>", 
+    "description": "Functions for passing messages and constructing URL objects.", 
     "namespace": "msg", 
-    "name": "Message", 
-    "brief": "<p>Messaging API documentation</p>"
+    "brief": "Messaging API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Message"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Post a message to a receiving URL. The most common case is to send messages\nto a component. If the component part of the receiver is omitted, the message\nis broadcast to all components in the game object.</p>\n<p>The following receiver shorthands are available:</p>\n<ul>\n<li><code>\".\"</code> the current game object</li>\n<li><code>\"#\"</code> the current component</li>\n</ul>\n<p><span class=\"icon-attention\"></span> There is a 2 kilobyte limit to the message parameter table size.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string | url | hash</span> The receiver must be a string in URL-format, a URL object or a hashed string.</p>", 
-          "name": "receiver"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string | hash</span> The id must be a string or a hashed string.</p>", 
-          "name": "message_id"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">table | nil</span> a lua table with message parameters to send.</p>", 
-          "name": "[message]"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>posts a message to a receiving URL</p>", 
-      "examples": "<p>Send \"enable\" to the sprite \"my_sprite\" in \"my_gameobject\":</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_gameobject#my_sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">enable&quot;</span><span class=\"p\">)</span>\n</pre></div>\n\n\n<p>Send a \"my_message\" to an url with some additional data:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">params</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"n\">my_parameter</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_value&quot;</span><span class=\"p\">}</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">my_url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_message&quot;</span><span class=\"p\">,</span> <span class=\"n\">params</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "msg.post"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>This is equivalent to <code>msg.url(nil)</code> or <code>msg.url(\"#\")</code>, which creates an url to the current\nscript component.</p>", 
+      "description": "This is equivalent to <code>msg.url(nil)</code> or <code>msg.url(\"#\")</code>, which creates an url to the current\nscript component.", 
       "parameters": [], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">url</span> a new URL</p>", 
-          "name": "url"
+          "doc": "a new URL", 
+          "name": "url", 
+          "types": [
+            "url"
+          ]
         }
       ], 
-      "brief": "<p>creates a new URL</p>", 
-      "examples": "<p>Create a new URL which will address the current script:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">my_url</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">()</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">my_url</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; url: [current_collection:/my_instance#my_component]</span>\n</pre></div>", 
+      "notes": [], 
+      "brief": "creates a new URL", 
+      "examples": "Create a new URL which will address the current script:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">my_url</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">()</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">my_url</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; url: [current_collection:/my_instance#my_component]</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "msg.url"
     }, 
     {
       "replaces": "", 
-      "description": "<p>The format of the string must be <code>[socket:][path][#fragment]</code>, which is similar to a HTTP URL.\nWhen addressing instances:</p>\n<ul>\n<li><code>socket</code> is the name of a valid world (a collection)</li>\n<li><code>path</code> is the id of the instance, which can either be relative the instance of the calling script or global</li>\n<li><code>fragment</code> would be the id of the desired component</li>\n</ul>\n<p>In addition, the following shorthands are available:</p>\n<ul>\n<li><code>\".\"</code> the current game object</li>\n<li><code>\"#\"</code> the current component</li>\n</ul>", 
+      "description": "The format of the string must be <code>[socket:][path][#fragment]</code>, which is similar to a HTTP URL.\nWhen addressing instances:\n<ul>\n<li><code>socket</code> is the name of a valid world (a collection)</li>\n<li><code>path</code> is the id of the instance, which can either be relative the instance of the calling script or global</li>\n<li><code>fragment</code> would be the id of the desired component</li>\n</ul>\nIn addition, the following shorthands are available:\n<ul>\n<li><code>\".\"</code> the current game object</li>\n<li><code>\"#\"</code> the current component</li>\n</ul>", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string</span> string to create the url from</p>", 
-          "name": "urlstring"
+          "doc": "string to create the url from", 
+          "name": "urlstring", 
+          "types": [
+            "string"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">url</span> a new URL</p>", 
-          "name": "url"
+          "doc": "a new URL", 
+          "name": "url", 
+          "types": [
+            "url"
+          ]
         }
       ], 
-      "brief": "<p>creates a new URL from a string</p>", 
+      "notes": [], 
+      "brief": "creates a new URL from a string", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">my_url</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#my_component&quot;</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">my_url</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; url: [current_collection:/my_instance#my_component]</span>\n\n<span class=\"kd\">local</span> <span class=\"n\">my_url</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_collection:/my_sub_collection/my_instance#my_component&quot;</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">my_url</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; url: [my_collection:/my_sub_collection/my_instance#my_component]</span>\n\n<span class=\"kd\">local</span> <span class=\"n\">my_url</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_socket:&quot;</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">my_url</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; url: [my_collection:]</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "msg.url"
     }, 
     {
       "replaces": "", 
-      "description": "", 
+      "description": "creates a new URL from separate arguments", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string | hash</span> socket of the URL</p>", 
-          "name": "[socket]"
+          "doc": "socket of the URL", 
+          "name": "[socket]", 
+          "types": [
+            "string", 
+            "hash"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">string | hash</span> path of the URL</p>", 
-          "name": "[path]"
+          "doc": "path of the URL", 
+          "name": "[path]", 
+          "types": [
+            "string", 
+            "hash"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">string | hash</span> fragment of the URL</p>", 
-          "name": "[fragment]"
+          "doc": "fragment of the URL", 
+          "name": "[fragment]", 
+          "types": [
+            "string", 
+            "hash"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">url</span> a new URL</p>", 
-          "name": "url"
+          "doc": "a new URL", 
+          "name": "url", 
+          "types": [
+            "url"
+          ]
         }
       ], 
-      "brief": "<p>creates a new URL from separate arguments</p>", 
+      "notes": [], 
+      "brief": "creates a new URL from separate arguments", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">my_socket</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">main&quot;</span> <span class=\"c1\">-- specify by valid name</span>\n<span class=\"kd\">local</span> <span class=\"n\">my_path</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/my_collection/my_gameobject&quot;</span><span class=\"p\">)</span> <span class=\"c1\">-- specify as string or hash</span>\n<span class=\"kd\">local</span> <span class=\"n\">my_fragment</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">component&quot;</span> <span class=\"c1\">-- specify as string or hash</span>\n<span class=\"kd\">local</span> <span class=\"n\">my_url</span> <span class=\"o\">=</span> <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">url</span><span class=\"p\">(</span><span class=\"n\">my_socket</span><span class=\"p\">,</span> <span class=\"n\">my_path</span><span class=\"p\">,</span> <span class=\"n\">my_fragment</span><span class=\"p\">)</span>\n\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">my_url</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; url: [main:/my_collection/my_gameobject#component]</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">my_url</span><span class=\"p\">.</span><span class=\"n\">socket</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; 786443 (internal numeric value)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">my_url</span><span class=\"p\">.</span><span class=\"n\">path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; hash: [/my_collection/my_gameobject]</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">my_url</span><span class=\"p\">.</span><span class=\"n\">fragment</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; hash: [component]</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "msg.url"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Post a message to a receiving URL. The most common case is to send messages\nto a component. If the component part of the receiver is omitted, the message\nis broadcast to all components in the game object.\nThe following receiver shorthands are available:\n<ul>\n<li><code>\".\"</code> the current game object</li>\n<li><code>\"#\"</code> the current component</li>\n</ul>\n<span class=\"icon-attention\"></span> There is a 2 kilobyte limit to the message parameter table size.", 
+      "parameters": [
+        {
+          "doc": "The receiver must be a string in URL-format, a URL object or a hashed string.", 
+          "name": "receiver", 
+          "types": [
+            "string", 
+            "url", 
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "The id must be a string or a hashed string.", 
+          "name": "message_id", 
+          "types": [
+            "string", 
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "a lua table with message parameters to send.", 
+          "name": "[message]", 
+          "types": [
+            "table", 
+            "nil"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "posts a message to a receiving URL", 
+      "examples": "Send \"enable\" to the sprite \"my_sprite\" in \"my_gameobject\":\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_gameobject#my_sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">enable&quot;</span><span class=\"p\">)</span>\n</pre></div>\n\n\nSend a \"my_message\" to an url with some additional data:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">params</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"n\">my_parameter</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_value&quot;</span><span class=\"p\">}</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">my_url</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_message&quot;</span><span class=\"p\">,</span> <span class=\"n\">params</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "msg.post"
     }
   ]
 }

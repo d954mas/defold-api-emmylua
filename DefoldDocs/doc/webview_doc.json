@@ -1,10 +1,11 @@
 {
   "info": {
-    "group": "EXTENSIONS", 
-    "description": "<p>The WebView module has been moved into an external extension library\navailable on <a href=\"https://defold.github.io/extension-webview/\">here</a>.</p>", 
+    "description": "The WebView module has been moved into an external extension library\navailable on <a href=\"https://defold.github.io/extension-webview/\">here</a>.", 
     "namespace": "webview", 
-    "name": "Webview", 
-    "brief": "<p>Webview API documentation</p>"
+    "brief": "Webview API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Webview"
   }, 
   "elements": []
 }

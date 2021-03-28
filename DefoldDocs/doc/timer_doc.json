@@ -1,75 +1,101 @@
 {
   "info": {
     "group": "SCRIPT", 
-    "description": "<p>Timers allow you to set a delay and a callback to be called when the timer completes.</p>\n<p>The timers created with this API are updated with the collection timer where they\nare created. If you pause or speed up the collection (using <code>set_time_step</code>) it will\nalso affect the new timer.</p>", 
+    "description": "Timers allow you to set a delay and a callback to be called when the timer completes.\nThe timers created with this API are updated with the collection timer where they\nare created. If you pause or speed up the collection (using <code>set_time_step</code>) it will\nalso affect the new timer.", 
     "namespace": "timer", 
-    "name": "Timer", 
-    "brief": "<p>Timer API documentation</p>"
+    "brief": "Timer API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Timer"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>Indicates an invalid timer handle</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "timer.INVALID_TIMER_HANDLE"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>You may cancel a timer from inside a timer callback.\nCancelling a timer that is already executed or cancelled is safe.</p>", 
+      "description": "Adds a timer and returns a unique handle\nYou may create more timers from inside a timer callback.\nUsing a delay of 0 will result in a timer that triggers at the next frame just before\nscript update functions.\nIf you want a timer that triggers on each frame, set delay to 0.0f and repeat to true.\nTimers created within a script will automatically die when the script is deleted.", 
       "parameters": [
         {
-          "doc": "<p>the timer handle returned by timer.delay()</p>", 
-          "name": "handle"
+          "doc": "time interval in seconds", 
+          "name": "delay", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "true = repeat timer until cancel, false = one-shot timer", 
+          "name": "repeat", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "timer callback function\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>handle</code></dt>\n<dd><span class=\"type\">number</span> The handle of the timer</dd>\n<dt><code>time_elapsed</code></dt>\n<dd><span class=\"type\">number</span> The elapsed time - on first trigger it is time since timer.delay call, otherwise time since last trigger</dd>\n</dl>", 
+          "name": "callback", 
+          "types": [
+            "function(self, handle, time_elapsed)"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p>if the timer was active, false if the timer is already cancelled / complete</p>", 
-          "name": "true"
+          "doc": "identifier for the create timer, returns timer.INVALID_TIMER_HANDLE if the timer can not be created", 
+          "name": "handle", 
+          "types": [
+            ""
+          ]
         }
       ], 
-      "brief": "<p>cancel a timer</p>", 
+      "notes": [], 
+      "brief": "create a timer", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "timer.delay"
+    }, 
+    {
+      "replaces": "", 
+      "description": "You may cancel a timer from inside a timer callback.\nCancelling a timer that is already executed or cancelled is safe.", 
+      "parameters": [
+        {
+          "doc": "the timer handle returned by timer.delay()", 
+          "name": "handle", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "if the timer was active, false if the timer is already cancelled / complete", 
+          "name": "true", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "cancel a timer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "timer.cancel"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Adds a timer and returns a unique handle</p>\n<p>You may create more timers from inside a timer callback.</p>\n<p>Using a delay of 0 will result in a timer that triggers at the next frame just before\nscript update functions.</p>\n<p>If you want a timer that triggers on each frame, set delay to 0.0f and repeat to true.</p>\n<p>Timers created within a script will automatically die when the script is deleted.</p>", 
-      "parameters": [
-        {
-          "doc": "<p>time interval in seconds</p>", 
-          "name": "delay"
-        }, 
-        {
-          "doc": "<p>true = repeat timer until cancel, false = one-shot timer</p>", 
-          "name": "repeat"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">function(self, handle, time_elapsed)</span> timer callback function</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>handle</code></dt>\n<dd><span class=\"type\">number</span> The handle of the timer</dd>\n<dt><code>time_elapsed</code></dt>\n<dd><span class=\"type\">number</span> The elapsed time - on first trigger it is time since timer.delay call, otherwise time since last trigger</dd>\n</dl>", 
-          "name": "callback"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p>identifier for the create timer, returns timer.INVALID_TIMER_HANDLE if the timer can not be created</p>", 
-          "name": "handle"
-        }
-      ], 
-      "brief": "<p>create a timer</p>", 
+      "description": "Indicates an invalid timer handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Indicates an invalid timer handle", 
       "examples": "", 
       "members": [], 
       "error": "", 
-      "type": "FUNCTION", 
-      "name": "timer.delay"
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "timer.INVALID_TIMER_HANDLE"
     }
   ]
 }

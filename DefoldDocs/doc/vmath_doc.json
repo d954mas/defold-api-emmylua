@@ -1,1175 +1,1682 @@
 {
   "info": {
     "group": "SCRIPT", 
-    "description": "<p>Functions for mathematical operations on vectors, matrices and quaternions.</p>\n<ul>\n<li>The vector types (<code>vmath.vector3</code> and <code>vmath.vector4</code>) supports addition and subtraction\n  with vectors of the same type. Vectors can be negated and multiplied (scaled) or divided by numbers.</li>\n<li>The quaternion type (<code>vmath.quat</code>) supports multiplication with other quaternions.</li>\n<li>The matrix type (<code>vmath.matrix4</code>) can be multiplied with numbers, other matrices\n  and <code>vmath.vector4</code> values.</li>\n<li>All types performs equality comparison by each component value.</li>\n</ul>\n<p>The following components are available for the various types:</p>\n<dl>\n<dt>vector3</dt>\n<dd><code>x</code>, <code>y</code> and <code>z</code>. Example: <code>v.y</code></dd>\n<dt>vector4</dt>\n<dd><code>x</code>, <code>y</code>, <code>z</code>, and <code>w</code>. Example: <code>v.w</code></dd>\n<dt>quaternion</dt>\n<dd><code>x</code>, <code>y</code>, <code>z</code>, and <code>w</code>. Example: <code>q.w</code></dd>\n<dt>matrix4</dt>\n<dd><code>m00</code> to <code>m33</code> where the first number is the row (starting from 0) and the second\nnumber is the column. Columns can be accessed with <code>c0</code> to <code>c3</code>, returning a <code>vector4</code>.\nExample: <code>m.m21</code> which is equal to <code>m.c1.z</code></dd>\n<dt>vector</dt>\n<dd>indexed by number 1 to the vector length. Example: <code>v[3]</code></dd>\n</dl>", 
+    "description": "Functions for mathematical operations on vectors, matrices and quaternions.\n<ul>\n<li>The vector types (<code>vmath.vector3</code> and <code>vmath.vector4</code>) supports addition and subtraction\n  with vectors of the same type. Vectors can be negated and multiplied (scaled) or divided by numbers.</li>\n<li>The quaternion type (<code>vmath.quat</code>) supports multiplication with other quaternions.</li>\n<li>The matrix type (<code>vmath.matrix4</code>) can be multiplied with numbers, other matrices\n  and <code>vmath.vector4</code> values.</li>\n<li>All types performs equality comparison by each component value.</li>\n</ul>\nThe following components are available for the various types:\n<dl>\n<dt>vector3</dt>\n<dd><code>x</code>, <code>y</code> and <code>z</code>. Example: <code>v.y</code></dd>\n<dt>vector4</dt>\n<dd><code>x</code>, <code>y</code>, <code>z</code>, and <code>w</code>. Example: <code>v.w</code></dd>\n<dt>quaternion</dt>\n<dd><code>x</code>, <code>y</code>, <code>z</code>, and <code>w</code>. Example: <code>q.w</code></dd>\n<dt>matrix4</dt>\n<dd><code>m00</code> to <code>m33</code> where the first number is the row (starting from 0) and the second\nnumber is the column. Columns can be accessed with <code>c0</code> to <code>c3</code>, returning a <code>vector4</code>.\nExample: <code>m.m21</code> which is equal to <code>m.c1.z</code></dd>\n<dt>vector</dt>\n<dd>indexed by number 1 to the vector length. Example: <code>v[3]</code></dd>\n</dl>", 
     "namespace": "vmath", 
-    "name": "Vector math", 
-    "brief": "<p>Vector math API documentation</p>"
+    "brief": "Vector math API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Vector math"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Calculates the conjugate of a quaternion. The result is a\nquaternion with the same magnitudes but with the sign of\nthe imaginary (vector) parts changed:</p>\n<p><code>q<super>*</super> = [w, -v]</code></p>", 
+      "description": "Creates a vector of arbitrary size. The vector is initialized\nwith numeric values from a table.\n<span class=\"icon-attention\"></span> The table values are converted to floating point\nvalues. If a value cannot be converted, a 0 is stored in that\nvalue position in the vector.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">quatertion</span> quaternion of which to calculate the conjugate</p>", 
-          "name": "q1"
+          "doc": "table of numbers", 
+          "name": "t", 
+          "types": [
+            "table"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">quatertion</span> the conjugate</p>", 
-          "name": "q"
+          "doc": "new vector", 
+          "name": "v", 
+          "types": [
+            "vector"
+          ]
         }
       ], 
-      "brief": "<p>calculates the conjugate of a quaternion</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">quat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">conj</span><span class=\"p\">(</span><span class=\"n\">quat</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.quat(-1, -2, -3, 4)</span>\n</pre></div>", 
+      "notes": [], 
+      "brief": "create a new vector from a table of values", 
+      "examples": "How to create a vector with custom data to be used for animation easing:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">values</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span> <span class=\"p\">}</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector</span><span class=\"p\">(</span><span class=\"n\">values</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector (size: 3)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">[</span><span class=\"mi\">2</span><span class=\"p\">])</span> <span class=\"c1\">--&gt; 0.5</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.conj"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Given two linearly independent vectors P and Q, the cross product,\nP &#x00D7; Q, is a vector that is perpendicular to both P and Q and\ntherefore normal to the plane containing them.</p>\n<p>If the two vectors have the same direction (or have the exact\nopposite direction from one another, i.e. are not linearly independent)\nor if either one has zero length, then their cross product is zero.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">vector3</span> first vector</p>", 
-          "name": "v1"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3</span> second vector</p>", 
-          "name": "v2"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">vector3</span> a new vector representing the cross product</p>", 
-          "name": "v"
-        }
-      ], 
-      "brief": "<p>calculates the cross-product of two vectors</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">cross</span><span class=\"p\">(</span><span class=\"n\">vec1</span><span class=\"p\">,</span> <span class=\"n\">vec2</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(0, 0, 1)</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec3</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">cross</span><span class=\"p\">(</span><span class=\"n\">vec1</span><span class=\"p\">,</span> <span class=\"n\">vec3</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(0, -0, 0)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.cross"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The returned value is a scalar defined as:</p>\n<p><code>P &#x22C5; Q = |P| |Q| cos &#x03B8;</code></p>\n<p>where &#x03B8; is the angle between the vectors P and Q.</p>\n<ul>\n<li>If the dot product is positive then the angle between the vectors is below 90 degrees.</li>\n<li>If the dot product is zero the vectors are perpendicular (at right-angles to each other).</li>\n<li>If the dot product is negative then the angle between the vectors is more than 90 degrees.</li>\n</ul>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4</span> first vector</p>", 
-          "name": "v1"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4</span> second vector</p>", 
-          "name": "v2"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> dot product</p>", 
-          "name": "n"
-        }
-      ], 
-      "brief": "<p>calculates the dot-product of two vectors</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">dot</span><span class=\"p\">(</span><span class=\"n\">vector1</span><span class=\"p\">,</span> <span class=\"n\">vector2</span><span class=\"p\">)</span> <span class=\"o\">==</span> <span class=\"mi\">0</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- The two vectors are perpendicular (at right-angles to each other)</span>\n    <span class=\"o\">...</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.dot"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting matrix is the inverse of the supplied matrix.</p>\n<p><span class=\"icon-attention\"></span> For ortho-normal matrices, e.g. regular object transformation,\nuse <code>vmath.ortho_inv()</code> instead.\nThe specialized inverse for ortho-normalized matrices is much faster\nthan the general inverse.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> matrix to invert</p>", 
-          "name": "m1"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> inverse of the supplied matrix</p>", 
-          "name": "m"
-        }
-      ], 
-      "brief": "<p>calculates the inverse matrix.</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">mat1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">inv</span><span class=\"p\">(</span><span class=\"n\">mat1</span><span class=\"p\">)</span>\n<span class=\"c1\">-- M * inv(M) = identity matrix</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat1</span> <span class=\"o\">*</span> <span class=\"n\">mat2</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.inv"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the length of the supplied vector or quaternion.</p>\n<p>If you are comparing the lengths of vectors or quaternions, you should compare\nthe length squared instead as it is slightly more efficient to calculate\n(it eliminates a square root calculation).</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4 | quat</span> value of which to calculate the length</p>", 
-          "name": "v"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> length</p>", 
-          "name": "n"
-        }
-      ], 
-      "brief": "<p>calculates the length of a vector or quaternion</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">length</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">velocity</span><span class=\"p\">)</span> <span class=\"o\">&lt;</span> <span class=\"n\">max_velocity</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- The speed (velocity vector) is below max.</span>\n\n    <span class=\"c1\">-- TODO: max_velocity can be expressed as squared</span>\n    <span class=\"c1\">-- so we can compare with length_sqr() instead.</span>\n    <span class=\"o\">...</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.length"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the squared length of the supplied vector or quaternion.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4 | quat</span> value of which to calculate the squared length</p>", 
-          "name": "v"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> squared length</p>", 
-          "name": "n"
-        }
-      ], 
-      "brief": "<p>calculates the squared length of a vector or quaternion</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">length_sqr</span><span class=\"p\">(</span><span class=\"n\">vector1</span><span class=\"p\">)</span> <span class=\"o\">&lt;</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">length_sqr</span><span class=\"p\">(</span><span class=\"n\">vector2</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- Vector 1 has less magnitude than vector 2</span>\n    <span class=\"o\">...</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.length_sqr"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Linearly interpolate between two vectors. The function\ntreats the vectors as positions and interpolates between\nthe positions in a straight line. Lerp is useful to describe\ntransitions from one place to another over time.</p>\n<p><span class=\"icon-attention\"></span> The function does not clamp t between 0 and 1.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> interpolation parameter, 0-1</p>", 
-          "name": "t"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4</span> vector to lerp from</p>", 
-          "name": "v1"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4</span> vector to lerp to</p>", 
-          "name": "v2"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4</span> the lerped vector</p>", 
-          "name": "v"
-        }
-      ], 
-      "brief": "<p>lerps between two vectors</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">+</span> <span class=\"n\">dt</span>\n    <span class=\"k\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">&lt;=</span> <span class=\"mi\">1</span> <span class=\"k\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">startpos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">600</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">endpos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">600</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">pos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">lerp</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span><span class=\"p\">,</span> <span class=\"n\">startpos</span><span class=\"p\">,</span> <span class=\"n\">endpos</span><span class=\"p\">)</span>\n        <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_position</span><span class=\"p\">(</span><span class=\"n\">pos</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">go&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.lerp"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Linearly interpolate between two quaternions. Linear\ninterpolation of rotations are only useful for small\nrotations. For interpolations of arbitrary rotations,\n<a href=\"/ref/vmath#vmath.slerp\">vmath.slerp</a> yields much better results.</p>\n<p><span class=\"icon-attention\"></span> The function does not clamp t between 0 and 1.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> interpolation parameter, 0-1</p>", 
-          "name": "t"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> quaternion to lerp from</p>", 
-          "name": "q1"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> quaternion to lerp to</p>", 
-          "name": "q2"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> the lerped quaternion</p>", 
-          "name": "q"
-        }
-      ], 
-      "brief": "<p>lerps between two quaternions</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">+</span> <span class=\"n\">dt</span>\n    <span class=\"k\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">&lt;=</span> <span class=\"mi\">1</span> <span class=\"k\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">startrot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">endrot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">lerp</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span><span class=\"p\">,</span> <span class=\"n\">startrot</span><span class=\"p\">,</span> <span class=\"n\">endrot</span><span class=\"p\">)</span>\n        <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_rotation</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">go&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.lerp"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Linearly interpolate between two values. Lerp is useful\nto describe transitions from one value to another over time.</p>\n<p><span class=\"icon-attention\"></span> The function does not clamp t between 0 and 1.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> interpolation parameter, 0-1</p>", 
-          "name": "t"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> number to lerp from</p>", 
-          "name": "n1"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> number to lerp to</p>", 
-          "name": "n2"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the lerped number</p>", 
-          "name": "n"
-        }
-      ], 
-      "brief": "<p>lerps between two numbers</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">+</span> <span class=\"n\">dt</span>\n    <span class=\"k\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">&lt;=</span> <span class=\"mi\">1</span> <span class=\"k\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">startx</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n        <span class=\"kd\">local</span> <span class=\"n\">endx</span> <span class=\"o\">=</span> <span class=\"mi\">600</span>\n        <span class=\"kd\">local</span> <span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">lerp</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span><span class=\"p\">,</span> <span class=\"n\">startx</span><span class=\"p\">,</span> <span class=\"n\">endx</span><span class=\"p\">)</span>\n        <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_position</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"s2\">&quot;</span><span class=\"s\">go&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.lerp"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting identity matrix describes a transform with\nno translation or rotation.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> identity matrix</p>", 
-          "name": "m"
-        }
-      ], 
-      "brief": "<p>creates a new identity matrix</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">mat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4</span><span class=\"p\">()</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)</span>\n<span class=\"c1\">-- get column 0:</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span><span class=\"p\">.</span><span class=\"n\">c0</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(1, 0, 0, 0)</span>\n<span class=\"c1\">-- get the value in row 3 and column 2:</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span><span class=\"p\">.</span><span class=\"n\">m32</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; 0</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.matrix4"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Creates a new matrix with all components set to the\ncorresponding values from the supplied matrix. I.e.\nthe function creates a copy of the given matrix.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> existing matrix</p>", 
-          "name": "m1"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> matrix which is a copy of the specified matrix</p>", 
-          "name": "m"
-        }
-      ], 
-      "brief": "<p>creates a new matrix from another existing matrix</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">mat1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_x</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4</span><span class=\"p\">(</span><span class=\"n\">mat1</span><span class=\"p\">)</span>\n<span class=\"k\">if</span> <span class=\"n\">mat1</span> <span class=\"o\">==</span> <span class=\"n\">mat2</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- yes, they are equal</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat2</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4(1, 0, 0, 0, 0, -1, 8.7422776573476e-08, 0, 0, -8.7422776573476e-08, -1, 0, 0, 0, 0, 1)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.matrix4"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting matrix describes a rotation around the axis by the specified angle.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">vector3</span> axis</p>", 
-          "name": "v"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> angle in radians</p>", 
-          "name": "angle"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> matrix represented by axis and angle</p>", 
-          "name": "m"
-        }
-      ], 
-      "brief": "<p>creates a matrix from an axis and an angle</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">axis</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"c1\">-- z-axis</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_axis_angle</span><span class=\"p\">(</span><span class=\"n\">axis</span><span class=\"p\">,</span> <span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span> <span class=\"o\">*</span> <span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(-0.99999994039536, -1.0000001192093, 0, 0)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.matrix4_axis_angle"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting matrix describes the same rotation as the quaternion, but does not have any translation (also like the quaternion).</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> quaternion to create matrix from</p>", 
-          "name": "q"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> matrix represented by quaternion</p>", 
-          "name": "m"
-        }
-      ], 
-      "brief": "<p>creates a matrix from a quaternion</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">quat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_from_quat</span><span class=\"p\">(</span><span class=\"n\">quat</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span> <span class=\"o\">*</span> <span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4_frustum(-1, 1, -1, 1, 1, 1000)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.matrix4_from_quat"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Constructs a frustum matrix from the given values. The left, right,\ntop and bottom coordinates of the view cone are expressed as distances\nfrom the center of the near clipping plane. The near and far coordinates\nare expressed as distances from the tip of the view frustum cone.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> coordinate for left clipping plane</p>", 
-          "name": "left"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> coordinate for right clipping plane</p>", 
-          "name": "right"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> coordinate for bottom clipping plane</p>", 
-          "name": "bottom"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> coordinate for top clipping plane</p>", 
-          "name": "top"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> coordinate for near clipping plane</p>", 
-          "name": "near"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> coordinate for far clipping plane</p>", 
-          "name": "far"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> matrix representing the frustum</p>", 
-          "name": "m"
-        }
-      ], 
-      "brief": "<p>creates a frustum matrix</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Construct a projection frustum with a vertical and horizontal</span>\n<span class=\"c1\">-- FOV of 45 degrees. Useful for rendering a square view.</span>\n<span class=\"kd\">local</span> <span class=\"n\">proj</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_frustum</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1000</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_projection</span><span class=\"p\">(</span><span class=\"n\">proj</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.matrix4_frustum"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting matrix is created from the supplied look-at parameters.\nThis is useful for constructing a view matrix for a camera or\nrendering in general.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">vector3</span> eye position</p>", 
-          "name": "eye"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3</span> look-at position</p>", 
-          "name": "look_at"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3</span> up vector</p>", 
-          "name": "up"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> look-at matrix</p>", 
-          "name": "m"
-        }
-      ], 
-      "brief": "<p>creates a look-at view matrix</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Set up a perspective camera at z 100 with 45 degrees (pi/2) FOV</span>\n<span class=\"c1\">-- Aspect ratio 4:3</span>\n<span class=\"kd\">local</span> <span class=\"n\">eye</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">look_at</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">up</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">view</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_look_at</span><span class=\"p\">(</span><span class=\"n\">eye</span><span class=\"p\">,</span> <span class=\"n\">look_at</span><span class=\"p\">,</span> <span class=\"n\">up</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_view</span><span class=\"p\">(</span><span class=\"n\">view</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">proj</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_perspective</span><span class=\"p\">(</span><span class=\"mf\">3.141592</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"o\">/</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1000</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_projection</span><span class=\"p\">(</span><span class=\"n\">proj</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.matrix4_look_at"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Creates an orthographic projection matrix.\nThis is useful to construct a projection matrix for a camera or rendering in general.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> coordinate for left clipping plane</p>", 
-          "name": "left"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> coordinate for right clipping plane</p>", 
-          "name": "right"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> coordinate for bottom clipping plane</p>", 
-          "name": "bottom"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> coordinate for top clipping plane</p>", 
-          "name": "top"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> coordinate for near clipping plane</p>", 
-          "name": "near"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> coordinate for far clipping plane</p>", 
-          "name": "far"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> orthographic projection matrix</p>", 
-          "name": "m"
-        }
-      ], 
-      "brief": "<p>creates an orthographic projection matrix</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Set up an orthographic projection based on the width and height</span>\n<span class=\"c1\">-- of the game window.</span>\n<span class=\"kd\">local</span> <span class=\"n\">w</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_width</span><span class=\"p\">()</span>\n<span class=\"kd\">local</span> <span class=\"n\">h</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_height</span><span class=\"p\">()</span>\n<span class=\"kd\">local</span> <span class=\"n\">proj</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_orthographic</span><span class=\"p\">(</span><span class=\"o\">-</span> <span class=\"n\">w</span> <span class=\"o\">/</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">w</span> <span class=\"o\">/</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"n\">h</span> <span class=\"o\">/</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">h</span> <span class=\"o\">/</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1000</span><span class=\"p\">,</span> <span class=\"mi\">1000</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_projection</span><span class=\"p\">(</span><span class=\"n\">proj</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.matrix4_orthographic"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Creates a perspective projection matrix.\nThis is useful to construct a projection matrix for a camera or rendering in general.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> angle of the full vertical field of view in radians</p>", 
-          "name": "fov"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> aspect ratio</p>", 
-          "name": "aspect"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> coordinate for near clipping plane</p>", 
-          "name": "near"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> coordinate for far clipping plane</p>", 
-          "name": "far"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> perspective projection matrix</p>", 
-          "name": "m"
-        }
-      ], 
-      "brief": "<p>creates a perspective projection matrix</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Set up a perspective camera at z 100 with 45 degrees (pi/2) FOV</span>\n<span class=\"c1\">-- Aspect ratio 4:3</span>\n<span class=\"kd\">local</span> <span class=\"n\">eye</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">look_at</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">up</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">view</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_look_at</span><span class=\"p\">(</span><span class=\"n\">eye</span><span class=\"p\">,</span> <span class=\"n\">look_at</span><span class=\"p\">,</span> <span class=\"n\">up</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_view</span><span class=\"p\">(</span><span class=\"n\">view</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">proj</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_perspective</span><span class=\"p\">(</span><span class=\"mf\">3.141592</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"o\">/</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1000</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_projection</span><span class=\"p\">(</span><span class=\"n\">proj</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.matrix4_perspective"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting matrix describes a rotation around the x-axis\nby the specified angle.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> angle in radians around x-axis</p>", 
-          "name": "angle"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> matrix from rotation around x-axis</p>", 
-          "name": "m"
-        }
-      ], 
-      "brief": "<p>creates a matrix from rotation around x-axis</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_x</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span> <span class=\"o\">*</span> <span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(1, -1, -8.7422776573476e-08, 0)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.matrix4_rotation_x"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting matrix describes a rotation around the y-axis\nby the specified angle.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> angle in radians around y-axis</p>", 
-          "name": "angle"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> matrix from rotation around y-axis</p>", 
-          "name": "m"
-        }
-      ], 
-      "brief": "<p>creates a matrix from rotation around y-axis</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_y</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span> <span class=\"o\">*</span> <span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(-1, 1, 8.7422776573476e-08, 0)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.matrix4_rotation_y"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting matrix describes a rotation around the z-axis\nby the specified angle.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> angle in radians around z-axis</p>", 
-          "name": "angle"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> matrix from rotation around z-axis</p>", 
-          "name": "m"
-        }
-      ], 
-      "brief": "<p>creates a matrix from rotation around z-axis</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span> <span class=\"o\">*</span> <span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(-0.99999994039536, -1.0000001192093, 0, 0)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.matrix4_rotation_z"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting matrix describes a translation of a point\nin euclidean space.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">vector3 | type:vector4</span> position vector to create matrix from</p>", 
-          "name": "position"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> matrix from the supplied position vector</p>", 
-          "name": "m"
-        }
-      ], 
-      "brief": "<p>creates a translation matrix from a position vector</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Set camera view from custom view and translation matrices</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat_trans</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_translation</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">))</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat_view</span>  <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_y</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mf\">3.141592</span><span class=\"o\">/</span><span class=\"mi\">4</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_view</span><span class=\"p\">(</span><span class=\"n\">mat_view</span> <span class=\"o\">*</span> <span class=\"n\">mat_trans</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.matrix4_translation"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Performs an element wise multiplication between two vectors of the same type\nThe returned value is a vector defined as (e.g. for a vector3):</p>\n<p><code>v = vmath.mul_per_elem(a, b) = vmath.vector3(a.x * b.x, a.y * b.y, a.z * b.z)</code></p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4</span> first vector</p>", 
-          "name": "v1"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4</span> second vector</p>", 
-          "name": "v2"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4</span> multiplied vector</p>", 
-          "name": "v"
-        }
-      ], 
-      "brief": "<p>performs an element wise multiplication of two vectors</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">blend_color</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">mul_per_elem</span><span class=\"p\">(</span><span class=\"n\">color1</span><span class=\"p\">,</span> <span class=\"n\">color2</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.mul_per_elem"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Normalizes a vector, i.e. returns a new vector with the same\ndirection as the input vector, but with length 1.</p>\n<p><span class=\"icon-attention\"></span> The length of the vector must be above 0, otherwise a\ndivision-by-zero will occur.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4 | quat</span> vector to normalize</p>", 
-          "name": "v1"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4 | quat</span> new normalized vector</p>", 
-          "name": "v"
-        }
-      ], 
-      "brief": "<p>normalizes a vector</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">norm_vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">normalize</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">norm_vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector3(0.26726123690605, 0.5345224738121, 0.80178368091583)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">length</span><span class=\"p\">(</span><span class=\"n\">norm_vec</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; 0.99999994039536</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.normalize"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting matrix is the inverse of the supplied matrix.\nThe supplied matrix has to be an ortho-normal matrix, e.g.\ndescribe a regular object transformation.</p>\n<p><span class=\"icon-attention\"></span> For matrices that are not ortho-normal\nuse the general inverse <code>vmath.inv()</code> instead.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> ortho-normalized matrix to invert</p>", 
-          "name": "m1"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">matrix4</span> inverse of the supplied matrix</p>", 
-          "name": "m"
-        }
-      ], 
-      "brief": "<p>calculates the inverse of an ortho-normal matrix.</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">mat1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">ortho_inv</span><span class=\"p\">(</span><span class=\"n\">mat1</span><span class=\"p\">)</span>\n<span class=\"c1\">-- M * inv(M) = identity matrix</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat1</span> <span class=\"o\">*</span> <span class=\"n\">mat2</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.ortho_inv"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Calculates the extent the projection of the first vector onto the second.\nThe returned value is a scalar p defined as:</p>\n<p><code>p = |P| cos &#x03B8; / |Q|</code></p>\n<p>where &#x03B8; is the angle between the vectors P and Q.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">vector3</span> vector to be projected on the second</p>", 
-          "name": "v1"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3</span> vector onto which the first will be projected, must not have zero length</p>", 
-          "name": "v2"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the projected extent of the first vector onto the second</p>", 
-          "name": "n"
-        }
-      ], 
-      "brief": "<p>projects a vector onto another vector</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">v1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">v2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">project</span><span class=\"p\">(</span><span class=\"n\">v1</span><span class=\"p\">,</span> <span class=\"n\">v2</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; 0.5</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.project"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Creates a new identity quaternion. The identity\nquaternion is equal to:</p>\n<p><code>vmath.quat(0, 0, 0, 1)</code></p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> new identity quaternion</p>", 
-          "name": "q"
-        }
-      ], 
-      "brief": "<p>creates a new identity quaternion</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">quat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">()</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">quat</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.quat(0, 0, 0, 1)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">quat</span><span class=\"p\">.</span><span class=\"n\">w</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; 1</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.quat"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Creates a new quaternion with all components set to the\ncorresponding values from the supplied quaternion. I.e.\nThis function creates a copy of the given quaternion.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> existing quaternion</p>", 
-          "name": "q1"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> new quaternion</p>", 
-          "name": "q"
-        }
-      ], 
-      "brief": "<p>creates a new quaternion from another existing quaternion</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">quat1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">quat2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(</span><span class=\"n\">quat1</span><span class=\"p\">)</span>\n<span class=\"k\">if</span> <span class=\"n\">quat1</span> <span class=\"o\">==</span> <span class=\"n\">quat2</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- yes, they are equal</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">quat2</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.quat(1, 2, 3, 4)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.quat"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Creates a new quaternion with the components set\naccording to the supplied parameter values.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> x coordinate</p>", 
-          "name": "x"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> y coordinate</p>", 
-          "name": "y"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> z coordinate</p>", 
-          "name": "z"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> w coordinate</p>", 
-          "name": "w"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> new quaternion</p>", 
-          "name": "q"
-        }
-      ], 
-      "brief": "<p>creates a new quaternion from its coordinates</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">quat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">quat</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.quat(1, 2, 3, 4)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.quat"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting quaternion describes a rotation of <code>angle</code>\nradians around the axis described by the unit vector <code>v</code>.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">vector3</span> axis</p>", 
-          "name": "v"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> angle</p>", 
-          "name": "angle"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> quaternion representing the axis-angle rotation</p>", 
-          "name": "q"
-        }
-      ], 
-      "brief": "<p>creates a quaternion to rotate around a unit vector</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">axis</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_axis_angle</span><span class=\"p\">(</span><span class=\"n\">axis</span><span class=\"p\">,</span> <span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">rotate</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"n\">vec</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(1, -1, -8.7422776573476e-08)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.quat_axis_angle"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting quaternion describes the rotation from the\nidentity quaternion (no rotation) to the coordinate system\nas described by the given x, y and z base unit vectors.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">vector3</span> x base vector</p>", 
-          "name": "x"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3</span> y base vector</p>", 
-          "name": "y"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3</span> z base vector</p>", 
-          "name": "z"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> quaternion representing the rotation of the specified base vectors</p>", 
-          "name": "q"
-        }
-      ], 
-      "brief": "<p>creates a quaternion from three base unit vectors</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Axis rotated 90 degrees around z.</span>\n<span class=\"kd\">local</span> <span class=\"n\">rot_x</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">rot_y</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">z</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">rot1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_basis</span><span class=\"p\">(</span><span class=\"n\">rot_x</span><span class=\"p\">,</span> <span class=\"n\">rot_y</span><span class=\"p\">,</span> <span class=\"n\">z</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">rot2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_from_to</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">))</span>\n<span class=\"k\">if</span> <span class=\"n\">rot1</span> <span class=\"o\">==</span> <span class=\"n\">rot2</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- These quaternions are equal!</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">rot2</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.quat(0, 0, -0.70710676908493, 0.70710676908493)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.quat_basis"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting quaternion describes the rotation that,\nif applied to the first vector, would rotate the first\nvector to the second. The two vectors must be unit\nvectors (of length 1).</p>\n<p><span class=\"icon-attention\"></span> The result is undefined if the two vectors point in opposite directions</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">vector3</span> first unit vector, before rotation</p>", 
-          "name": "v1"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3</span> second unit vector, after rotation</p>", 
-          "name": "v2"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> quaternion representing the rotation from first to second vector</p>", 
-          "name": "q"
-        }
-      ], 
-      "brief": "<p>creates a quaternion to rotate between two unit vectors</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">v1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">v2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_from_to</span><span class=\"p\">(</span><span class=\"n\">v1</span><span class=\"p\">,</span> <span class=\"n\">v2</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">rotate</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"n\">v1</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(0, 0.99999994039536, 0)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.quat_from_to"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting quaternion describes a rotation of <code>angle</code>\nradians around the x-axis.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> angle in radians around x-axis</p>", 
-          "name": "angle"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> quaternion representing the rotation around the x-axis</p>", 
-          "name": "q"
-        }
-      ], 
-      "brief": "<p>creates a quaternion from rotation around x-axis</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_x</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">rotate</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"n\">vec</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(1, -1, -8.7422776573476e-08)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.quat_rotation_x"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting quaternion describes a rotation of <code>angle</code>\nradians around the y-axis.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> angle in radians around y-axis</p>", 
-          "name": "angle"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> quaternion representing the rotation around the y-axis</p>", 
-          "name": "q"
-        }
-      ], 
-      "brief": "<p>creates a quaternion from rotation around y-axis</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_y</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">rotate</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"n\">vec</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(-1, 1, 8.7422776573476e-08)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.quat_rotation_y"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The resulting quaternion describes a rotation of <code>angle</code>\nradians around the z-axis.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> angle in radians around z-axis</p>", 
-          "name": "angle"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> quaternion representing the rotation around the z-axis</p>", 
-          "name": "q"
-        }
-      ], 
-      "brief": "<p>creates a quaternion from rotation around z-axis</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">rotate</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"n\">vec</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(-0.99999988079071, -1, 0)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.quat_rotation_z"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns a new vector from the supplied vector that is\nrotated by the rotation described by the supplied\nquaternion.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">quatertion</span> quaternion</p>", 
-          "name": "q"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3</span> vector to rotate</p>", 
-          "name": "v1"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">vector3</span> the rotated vector</p>", 
-          "name": "v"
-        }
-      ], 
-      "brief": "<p>rotates a vector by a quaternion</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592563</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">rotate</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"n\">vec</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(-1.0000002384186, -0.99999988079071, 0)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.rotate"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Spherically interpolates between two vectors. The difference to\nlerp is that slerp treats the vectors as directions instead of\npositions in space.</p>\n<p>The direction of the returned vector is interpolated by the angle\nand the magnitude is interpolated between the magnitudes of the\nfrom and to vectors.</p>\n<p><span class=\"icon-attention\"></span> Slerp is computationally more expensive than lerp.\nThe function does not clamp t between 0 and 1.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> interpolation parameter, 0-1</p>", 
-          "name": "t"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4</span> vector to slerp from</p>", 
-          "name": "v1"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4</span> vector to slerp to</p>", 
-          "name": "v2"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">vector3 | vector4</span> the slerped vector</p>", 
-          "name": "v"
-        }
-      ], 
-      "brief": "<p>slerps between two vectors</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">+</span> <span class=\"n\">dt</span>\n    <span class=\"k\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">&lt;=</span> <span class=\"mi\">1</span> <span class=\"k\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">startpos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">600</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">endpos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">600</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">pos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">slerp</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span><span class=\"p\">,</span> <span class=\"n\">startpos</span><span class=\"p\">,</span> <span class=\"n\">endpos</span><span class=\"p\">)</span>\n        <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_position</span><span class=\"p\">(</span><span class=\"n\">pos</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">go&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.slerp"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Slerp travels the torque-minimal path maintaining constant\nvelocity, which means it travels along the straightest path along\nthe rounded surface of a sphere. Slerp is useful for interpolation\nof rotations.</p>\n<p>Slerp travels the torque-minimal path, which means it travels\nalong the straightest path the rounded surface of a sphere.</p>\n<p><span class=\"icon-attention\"></span> The function does not clamp t between 0 and 1.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> interpolation parameter, 0-1</p>", 
-          "name": "t"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> quaternion to slerp from</p>", 
-          "name": "q1"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> quaternion to slerp to</p>", 
-          "name": "q2"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> the slerped quaternion</p>", 
-          "name": "q"
-        }
-      ], 
-      "brief": "<p>slerps between two quaternions</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">+</span> <span class=\"n\">dt</span>\n    <span class=\"k\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">&lt;=</span> <span class=\"mi\">1</span> <span class=\"k\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">startrot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">endrot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">slerp</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span><span class=\"p\">,</span> <span class=\"n\">startrot</span><span class=\"p\">,</span> <span class=\"n\">endrot</span><span class=\"p\">)</span>\n        <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_rotation</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">go&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "vmath.slerp"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Creates a vector of arbitrary size. The vector is initialized\nwith numeric values from a table.</p>\n<p><span class=\"icon-attention\"></span> The table values are converted to floating point\nvalues. If a value cannot be converted, a 0 is stored in that\nvalue position in the vector.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">table</span> table of numbers</p>", 
-          "name": "t"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">vector</span> new vector</p>", 
-          "name": "v"
-        }
-      ], 
-      "brief": "<p>create a new vector from a table of values</p>", 
-      "examples": "<p>How to create a vector with custom data to be used for animation easing:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">values</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span> <span class=\"p\">}</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector</span><span class=\"p\">(</span><span class=\"n\">values</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector (size: 3)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">[</span><span class=\"mi\">2</span><span class=\"p\">])</span> <span class=\"c1\">--&gt; 0.5</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "vmath.vector"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Creates a new zero vector with all components set to 0.</p>", 
+      "description": "Creates a new zero vector with all components set to 0.", 
       "parameters": [], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">vector3</span> new zero vector</p>", 
-          "name": "v"
+          "doc": "new zero vector", 
+          "name": "v", 
+          "types": [
+            "vector3"
+          ]
         }
       ], 
-      "brief": "<p>creates a new zero vector</p>", 
+      "notes": [], 
+      "brief": "creates a new zero vector", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">()</span>\n<span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector3(0, 0, 0)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">.</span><span class=\"n\">x</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; 0</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "vmath.vector3"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Creates a new vector with all components set to the\nsupplied scalar value.</p>", 
+      "description": "Creates a new vector with all components set to the\nsupplied scalar value.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">number</span> scalar value to splat</p>", 
-          "name": "n"
+          "doc": "scalar value to splat", 
+          "name": "n", 
+          "types": [
+            "number"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">vector3</span> new vector</p>", 
-          "name": "v"
+          "doc": "new vector", 
+          "name": "v", 
+          "types": [
+            "vector3"
+          ]
         }
       ], 
-      "brief": "<p>creates a new vector from scalar value</p>", 
+      "notes": [], 
+      "brief": "creates a new vector from scalar value", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">1.0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector3(1, 1, 1)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">.</span><span class=\"n\">x</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; 1</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "vmath.vector3"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Creates a new vector with all components set to the\ncorresponding values from the supplied vector. I.e.\nThis function creates a copy of the given vector.</p>", 
+      "description": "Creates a new vector with all components set to the\ncorresponding values from the supplied vector. I.e.\nThis function creates a copy of the given vector.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">vector3</span> existing vector</p>", 
-          "name": "v1"
+          "doc": "existing vector", 
+          "name": "v1", 
+          "types": [
+            "vector3"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">vector3</span> new vector</p>", 
-          "name": "v"
+          "doc": "new vector", 
+          "name": "v", 
+          "types": [
+            "vector3"
+          ]
         }
       ], 
-      "brief": "<p>creates a new vector from another existing vector</p>", 
+      "notes": [], 
+      "brief": "creates a new vector from another existing vector", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">1.0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"n\">vec1</span><span class=\"p\">)</span>\n<span class=\"k\">if</span> <span class=\"n\">vec1</span> <span class=\"o\">==</span> <span class=\"n\">vec2</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- yes, they are equal</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec2</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector3(1, 1, 1)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "vmath.vector3"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Creates a new vector with the components set to the\nsupplied values.</p>", 
+      "description": "Creates a new vector with the components set to the\nsupplied values.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">number</span> x coordinate</p>", 
-          "name": "x"
+          "doc": "x coordinate", 
+          "name": "x", 
+          "types": [
+            "number"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">number</span> y coordinate</p>", 
-          "name": "y"
+          "doc": "y coordinate", 
+          "name": "y", 
+          "types": [
+            "number"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">number</span> z coordinate</p>", 
-          "name": "z"
+          "doc": "z coordinate", 
+          "name": "z", 
+          "types": [
+            "number"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">vector3</span> new vector</p>", 
-          "name": "v"
+          "doc": "new vector", 
+          "name": "v", 
+          "types": [
+            "vector3"
+          ]
         }
       ], 
-      "brief": "<p>creates a new vector from its coordinates</p>", 
+      "notes": [], 
+      "brief": "creates a new vector from its coordinates", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">1.0</span><span class=\"p\">,</span> <span class=\"mf\">2.0</span><span class=\"p\">,</span> <span class=\"mf\">3.0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector3(1, 2, 3)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector3(-1, -2, -3)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span> <span class=\"o\">*</span> <span class=\"mi\">2</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector3(2, 4, 6)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span> <span class=\"o\">+</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">2.0</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(3, 4, 5)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span> <span class=\"o\">-</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mf\">2.0</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(-1, 0, 1)</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "vmath.vector3"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Creates a new zero vector with all components set to 0.</p>", 
+      "description": "Creates a new zero vector with all components set to 0.", 
       "parameters": [], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">vector4</span> new zero vector</p>", 
-          "name": "v"
+          "doc": "new zero vector", 
+          "name": "v", 
+          "types": [
+            "vector4"
+          ]
         }
       ], 
-      "brief": "<p>creates a new zero vector</p>", 
+      "notes": [], 
+      "brief": "creates a new zero vector", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">()</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(0, 0, 0, 0)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">.</span><span class=\"n\">w</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; 0</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "vmath.vector4"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Creates a new vector with all components set to the\nsupplied scalar value.</p>", 
+      "description": "Creates a new vector with all components set to the\nsupplied scalar value.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">number</span> scalar value to splat</p>", 
-          "name": "n"
+          "doc": "scalar value to splat", 
+          "name": "n", 
+          "types": [
+            "number"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">vector4</span> new vector</p>", 
-          "name": "v"
+          "doc": "new vector", 
+          "name": "v", 
+          "types": [
+            "vector4"
+          ]
         }
       ], 
-      "brief": "<p>creates a new vector from scalar value</p>", 
+      "notes": [], 
+      "brief": "creates a new vector from scalar value", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mf\">1.0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(1, 1, 1, 1)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">.</span><span class=\"n\">w</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; 1</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "vmath.vector4"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Creates a new vector with all components set to the\ncorresponding values from the supplied vector. I.e.\nThis function creates a copy of the given vector.</p>", 
+      "description": "Creates a new vector with all components set to the\ncorresponding values from the supplied vector. I.e.\nThis function creates a copy of the given vector.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">vector4</span> existing vector</p>", 
-          "name": "v1"
+          "doc": "existing vector", 
+          "name": "v1", 
+          "types": [
+            "vector4"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">vector4</span> new vector</p>", 
-          "name": "v"
+          "doc": "new vector", 
+          "name": "v", 
+          "types": [
+            "vector4"
+          ]
         }
       ], 
-      "brief": "<p>creates a new vector from another existing vector</p>", 
+      "notes": [], 
+      "brief": "creates a new vector from another existing vector", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vect1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mf\">1.0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">vect2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"n\">vec1</span><span class=\"p\">)</span>\n<span class=\"k\">if</span> <span class=\"n\">vec1</span> <span class=\"o\">==</span> <span class=\"n\">vec2</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- yes, they are equal</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec2</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(1, 1, 1, 1)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "vmath.vector4"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Creates a new vector with the components set to the\nsupplied values.</p>", 
+      "description": "Creates a new vector with the components set to the\nsupplied values.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">number</span> x coordinate</p>", 
-          "name": "x"
+          "doc": "x coordinate", 
+          "name": "x", 
+          "types": [
+            "number"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">number</span> y coordinate</p>", 
-          "name": "y"
+          "doc": "y coordinate", 
+          "name": "y", 
+          "types": [
+            "number"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">number</span> z coordinate</p>", 
-          "name": "z"
+          "doc": "z coordinate", 
+          "name": "z", 
+          "types": [
+            "number"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">number</span> w coordinate</p>", 
-          "name": "w"
+          "doc": "w coordinate", 
+          "name": "w", 
+          "types": [
+            "number"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">vector4</span> new vector</p>", 
-          "name": "v"
+          "doc": "new vector", 
+          "name": "v", 
+          "types": [
+            "vector4"
+          ]
         }
       ], 
-      "brief": "<p>creates a new vector from its coordinates</p>", 
+      "notes": [], 
+      "brief": "creates a new vector from its coordinates", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mf\">1.0</span><span class=\"p\">,</span> <span class=\"mf\">2.0</span><span class=\"p\">,</span> <span class=\"mf\">3.0</span><span class=\"p\">,</span> <span class=\"mf\">4.0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(1, 2, 3, 4)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(-1, -2, -3, -4)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span> <span class=\"o\">*</span> <span class=\"mi\">2</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(2, 4, 6, 8)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span> <span class=\"o\">+</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mf\">2.0</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector4(3, 4, 5, 6)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vec</span> <span class=\"o\">-</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mf\">2.0</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector4(-1, 0, 1, 2)</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "vmath.vector4"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Creates a new identity quaternion. The identity\nquaternion is equal to:\n<code>vmath.quat(0, 0, 0, 1)</code>", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "new identity quaternion", 
+          "name": "q", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a new identity quaternion", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">quat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">()</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">quat</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.quat(0, 0, 0, 1)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">quat</span><span class=\"p\">.</span><span class=\"n\">w</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; 1</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.quat"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Creates a new quaternion with all components set to the\ncorresponding values from the supplied quaternion. I.e.\nThis function creates a copy of the given quaternion.", 
+      "parameters": [
+        {
+          "doc": "existing quaternion", 
+          "name": "q1", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "new quaternion", 
+          "name": "q", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a new quaternion from another existing quaternion", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">quat1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">quat2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(</span><span class=\"n\">quat1</span><span class=\"p\">)</span>\n<span class=\"k\">if</span> <span class=\"n\">quat1</span> <span class=\"o\">==</span> <span class=\"n\">quat2</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- yes, they are equal</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">quat2</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.quat(1, 2, 3, 4)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.quat"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Creates a new quaternion with the components set\naccording to the supplied parameter values.", 
+      "parameters": [
+        {
+          "doc": "x coordinate", 
+          "name": "x", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "y coordinate", 
+          "name": "y", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "z coordinate", 
+          "name": "z", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "w coordinate", 
+          "name": "w", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "new quaternion", 
+          "name": "q", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a new quaternion from its coordinates", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">quat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">quat</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.quat(1, 2, 3, 4)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.quat"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting quaternion describes the rotation that,\nif applied to the first vector, would rotate the first\nvector to the second. The two vectors must be unit\nvectors (of length 1).\n<span class=\"icon-attention\"></span> The result is undefined if the two vectors point in opposite directions", 
+      "parameters": [
+        {
+          "doc": "first unit vector, before rotation", 
+          "name": "v1", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "second unit vector, after rotation", 
+          "name": "v2", 
+          "types": [
+            "vector3"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "quaternion representing the rotation from first to second vector", 
+          "name": "q", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a quaternion to rotate between two unit vectors", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">v1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">v2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_from_to</span><span class=\"p\">(</span><span class=\"n\">v1</span><span class=\"p\">,</span> <span class=\"n\">v2</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">rotate</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"n\">v1</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(0, 0.99999994039536, 0)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.quat_from_to"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting quaternion describes a rotation of <code>angle</code>\nradians around the axis described by the unit vector <code>v</code>.", 
+      "parameters": [
+        {
+          "doc": "axis", 
+          "name": "v", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "angle", 
+          "name": "angle", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "quaternion representing the axis-angle rotation", 
+          "name": "q", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a quaternion to rotate around a unit vector", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">axis</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_axis_angle</span><span class=\"p\">(</span><span class=\"n\">axis</span><span class=\"p\">,</span> <span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">rotate</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"n\">vec</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(1, -1, -8.7422776573476e-08)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.quat_axis_angle"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting quaternion describes the rotation from the\nidentity quaternion (no rotation) to the coordinate system\nas described by the given x, y and z base unit vectors.", 
+      "parameters": [
+        {
+          "doc": "x base vector", 
+          "name": "x", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "y base vector", 
+          "name": "y", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "z base vector", 
+          "name": "z", 
+          "types": [
+            "vector3"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "quaternion representing the rotation of the specified base vectors", 
+          "name": "q", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a quaternion from three base unit vectors", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Axis rotated 90 degrees around z.</span>\n<span class=\"kd\">local</span> <span class=\"n\">rot_x</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">rot_y</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">z</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">rot1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_basis</span><span class=\"p\">(</span><span class=\"n\">rot_x</span><span class=\"p\">,</span> <span class=\"n\">rot_y</span><span class=\"p\">,</span> <span class=\"n\">z</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">rot2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_from_to</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">))</span>\n<span class=\"k\">if</span> <span class=\"n\">rot1</span> <span class=\"o\">==</span> <span class=\"n\">rot2</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- These quaternions are equal!</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">rot2</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.quat(0, 0, -0.70710676908493, 0.70710676908493)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.quat_basis"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting quaternion describes a rotation of <code>angle</code>\nradians around the x-axis.", 
+      "parameters": [
+        {
+          "doc": "angle in radians around x-axis", 
+          "name": "angle", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "quaternion representing the rotation around the x-axis", 
+          "name": "q", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a quaternion from rotation around x-axis", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_x</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">rotate</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"n\">vec</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(1, -1, -8.7422776573476e-08)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.quat_rotation_x"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting quaternion describes a rotation of <code>angle</code>\nradians around the y-axis.", 
+      "parameters": [
+        {
+          "doc": "angle in radians around y-axis", 
+          "name": "angle", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "quaternion representing the rotation around the y-axis", 
+          "name": "q", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a quaternion from rotation around y-axis", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_y</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">rotate</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"n\">vec</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(-1, 1, 8.7422776573476e-08)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.quat_rotation_y"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting quaternion describes a rotation of <code>angle</code>\nradians around the z-axis.", 
+      "parameters": [
+        {
+          "doc": "angle in radians around z-axis", 
+          "name": "angle", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "quaternion representing the rotation around the z-axis", 
+          "name": "q", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a quaternion from rotation around z-axis", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">rotate</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"n\">vec</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(-0.99999988079071, -1, 0)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.quat_rotation_z"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting identity matrix describes a transform with\nno translation or rotation.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "identity matrix", 
+          "name": "m", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a new identity matrix", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">mat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4</span><span class=\"p\">()</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)</span>\n<span class=\"c1\">-- get column 0:</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span><span class=\"p\">.</span><span class=\"n\">c0</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(1, 0, 0, 0)</span>\n<span class=\"c1\">-- get the value in row 3 and column 2:</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span><span class=\"p\">.</span><span class=\"n\">m32</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; 0</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.matrix4"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Creates a new matrix with all components set to the\ncorresponding values from the supplied matrix. I.e.\nthe function creates a copy of the given matrix.", 
+      "parameters": [
+        {
+          "doc": "existing matrix", 
+          "name": "m1", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "matrix which is a copy of the specified matrix", 
+          "name": "m", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a new matrix from another existing matrix", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">mat1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_x</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4</span><span class=\"p\">(</span><span class=\"n\">mat1</span><span class=\"p\">)</span>\n<span class=\"k\">if</span> <span class=\"n\">mat1</span> <span class=\"o\">==</span> <span class=\"n\">mat2</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- yes, they are equal</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat2</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4(1, 0, 0, 0, 0, -1, 8.7422776573476e-08, 0, 0, -8.7422776573476e-08, -1, 0, 0, 0, 0, 1)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.matrix4"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Constructs a frustum matrix from the given values. The left, right,\ntop and bottom coordinates of the view cone are expressed as distances\nfrom the center of the near clipping plane. The near and far coordinates\nare expressed as distances from the tip of the view frustum cone.", 
+      "parameters": [
+        {
+          "doc": "coordinate for left clipping plane", 
+          "name": "left", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "coordinate for right clipping plane", 
+          "name": "right", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "coordinate for bottom clipping plane", 
+          "name": "bottom", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "coordinate for top clipping plane", 
+          "name": "top", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "coordinate for near clipping plane", 
+          "name": "near", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "coordinate for far clipping plane", 
+          "name": "far", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "matrix representing the frustum", 
+          "name": "m", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a frustum matrix", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Construct a projection frustum with a vertical and horizontal</span>\n<span class=\"c1\">-- FOV of 45 degrees. Useful for rendering a square view.</span>\n<span class=\"kd\">local</span> <span class=\"n\">proj</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_frustum</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1000</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_projection</span><span class=\"p\">(</span><span class=\"n\">proj</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.matrix4_frustum"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting matrix is created from the supplied look-at parameters.\nThis is useful for constructing a view matrix for a camera or\nrendering in general.", 
+      "parameters": [
+        {
+          "doc": "eye position", 
+          "name": "eye", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "look-at position", 
+          "name": "look_at", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "up vector", 
+          "name": "up", 
+          "types": [
+            "vector3"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "look-at matrix", 
+          "name": "m", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a look-at view matrix", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Set up a perspective camera at z 100 with 45 degrees (pi/2) FOV</span>\n<span class=\"c1\">-- Aspect ratio 4:3</span>\n<span class=\"kd\">local</span> <span class=\"n\">eye</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">look_at</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">up</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">view</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_look_at</span><span class=\"p\">(</span><span class=\"n\">eye</span><span class=\"p\">,</span> <span class=\"n\">look_at</span><span class=\"p\">,</span> <span class=\"n\">up</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_view</span><span class=\"p\">(</span><span class=\"n\">view</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">proj</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_perspective</span><span class=\"p\">(</span><span class=\"mf\">3.141592</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"o\">/</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1000</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_projection</span><span class=\"p\">(</span><span class=\"n\">proj</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.matrix4_look_at"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Creates an orthographic projection matrix.\nThis is useful to construct a projection matrix for a camera or rendering in general.", 
+      "parameters": [
+        {
+          "doc": "coordinate for left clipping plane", 
+          "name": "left", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "coordinate for right clipping plane", 
+          "name": "right", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "coordinate for bottom clipping plane", 
+          "name": "bottom", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "coordinate for top clipping plane", 
+          "name": "top", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "coordinate for near clipping plane", 
+          "name": "near", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "coordinate for far clipping plane", 
+          "name": "far", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "orthographic projection matrix", 
+          "name": "m", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates an orthographic projection matrix", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Set up an orthographic projection based on the width and height</span>\n<span class=\"c1\">-- of the game window.</span>\n<span class=\"kd\">local</span> <span class=\"n\">w</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_width</span><span class=\"p\">()</span>\n<span class=\"kd\">local</span> <span class=\"n\">h</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">get_height</span><span class=\"p\">()</span>\n<span class=\"kd\">local</span> <span class=\"n\">proj</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_orthographic</span><span class=\"p\">(</span><span class=\"o\">-</span> <span class=\"n\">w</span> <span class=\"o\">/</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">w</span> <span class=\"o\">/</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"n\">h</span> <span class=\"o\">/</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">h</span> <span class=\"o\">/</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">1000</span><span class=\"p\">,</span> <span class=\"mi\">1000</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_projection</span><span class=\"p\">(</span><span class=\"n\">proj</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.matrix4_orthographic"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Creates a perspective projection matrix.\nThis is useful to construct a projection matrix for a camera or rendering in general.", 
+      "parameters": [
+        {
+          "doc": "angle of the full vertical field of view in radians", 
+          "name": "fov", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "aspect ratio", 
+          "name": "aspect", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "coordinate for near clipping plane", 
+          "name": "near", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "coordinate for far clipping plane", 
+          "name": "far", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "perspective projection matrix", 
+          "name": "m", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a perspective projection matrix", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Set up a perspective camera at z 100 with 45 degrees (pi/2) FOV</span>\n<span class=\"c1\">-- Aspect ratio 4:3</span>\n<span class=\"kd\">local</span> <span class=\"n\">eye</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">look_at</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">up</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">view</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_look_at</span><span class=\"p\">(</span><span class=\"n\">eye</span><span class=\"p\">,</span> <span class=\"n\">look_at</span><span class=\"p\">,</span> <span class=\"n\">up</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_view</span><span class=\"p\">(</span><span class=\"n\">view</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">proj</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_perspective</span><span class=\"p\">(</span><span class=\"mf\">3.141592</span><span class=\"o\">/</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"o\">/</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1000</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_projection</span><span class=\"p\">(</span><span class=\"n\">proj</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.matrix4_perspective"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting matrix describes the same rotation as the quaternion, but does not have any translation (also like the quaternion).", 
+      "parameters": [
+        {
+          "doc": "quaternion to create matrix from", 
+          "name": "q", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "matrix represented by quaternion", 
+          "name": "m", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a matrix from a quaternion", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">quat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_from_quat</span><span class=\"p\">(</span><span class=\"n\">quat</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span> <span class=\"o\">*</span> <span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4_frustum(-1, 1, -1, 1, 1, 1000)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.matrix4_from_quat"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting matrix describes a rotation around the axis by the specified angle.", 
+      "parameters": [
+        {
+          "doc": "axis", 
+          "name": "v", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "angle in radians", 
+          "name": "angle", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "matrix represented by axis and angle", 
+          "name": "m", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a matrix from an axis and an angle", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">axis</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"c1\">-- z-axis</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_axis_angle</span><span class=\"p\">(</span><span class=\"n\">axis</span><span class=\"p\">,</span> <span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span> <span class=\"o\">*</span> <span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(-0.99999994039536, -1.0000001192093, 0, 0)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.matrix4_axis_angle"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting matrix describes a rotation around the x-axis\nby the specified angle.", 
+      "parameters": [
+        {
+          "doc": "angle in radians around x-axis", 
+          "name": "angle", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "matrix from rotation around x-axis", 
+          "name": "m", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a matrix from rotation around x-axis", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_x</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span> <span class=\"o\">*</span> <span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(1, -1, -8.7422776573476e-08, 0)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.matrix4_rotation_x"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting matrix describes a rotation around the y-axis\nby the specified angle.", 
+      "parameters": [
+        {
+          "doc": "angle in radians around y-axis", 
+          "name": "angle", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "matrix from rotation around y-axis", 
+          "name": "m", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a matrix from rotation around y-axis", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_y</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span> <span class=\"o\">*</span> <span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(-1, 1, 8.7422776573476e-08, 0)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.matrix4_rotation_y"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting matrix describes a rotation around the z-axis\nby the specified angle.", 
+      "parameters": [
+        {
+          "doc": "angle in radians around z-axis", 
+          "name": "angle", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "matrix from rotation around z-axis", 
+          "name": "m", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a matrix from rotation around z-axis", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat</span> <span class=\"o\">*</span> <span class=\"n\">vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector4(-0.99999994039536, -1.0000001192093, 0, 0)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.matrix4_rotation_z"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting matrix describes a translation of a point\nin euclidean space.", 
+      "parameters": [
+        {
+          "doc": "position vector to create matrix from", 
+          "name": "position", 
+          "types": [
+            "vector3", 
+            "type:vector4"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "matrix from the supplied position vector", 
+          "name": "m", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a translation matrix from a position vector", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Set camera view from custom view and translation matrices</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat_trans</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_translation</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">))</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat_view</span>  <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_y</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mf\">3.141592</span><span class=\"o\">/</span><span class=\"mi\">4</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">set_view</span><span class=\"p\">(</span><span class=\"n\">mat_view</span> <span class=\"o\">*</span> <span class=\"n\">mat_trans</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.matrix4_translation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting matrix is the inverse of the supplied matrix.\n<span class=\"icon-attention\"></span> For ortho-normal matrices, e.g. regular object transformation,\nuse <code>vmath.ortho_inv()</code> instead.\nThe specialized inverse for ortho-normalized matrices is much faster\nthan the general inverse.", 
+      "parameters": [
+        {
+          "doc": "matrix to invert", 
+          "name": "m1", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "inverse of the supplied matrix", 
+          "name": "m", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "calculates the inverse matrix.", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">mat1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">inv</span><span class=\"p\">(</span><span class=\"n\">mat1</span><span class=\"p\">)</span>\n<span class=\"c1\">-- M * inv(M) = identity matrix</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat1</span> <span class=\"o\">*</span> <span class=\"n\">mat2</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.inv"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The resulting matrix is the inverse of the supplied matrix.\nThe supplied matrix has to be an ortho-normal matrix, e.g.\ndescribe a regular object transformation.\n<span class=\"icon-attention\"></span> For matrices that are not ortho-normal\nuse the general inverse <code>vmath.inv()</code> instead.", 
+      "parameters": [
+        {
+          "doc": "ortho-normalized matrix to invert", 
+          "name": "m1", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "inverse of the supplied matrix", 
+          "name": "m", 
+          "types": [
+            "matrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "calculates the inverse of an ortho-normal matrix.", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">mat1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">matrix4_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">mat2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">ortho_inv</span><span class=\"p\">(</span><span class=\"n\">mat1</span><span class=\"p\">)</span>\n<span class=\"c1\">-- M * inv(M) = identity matrix</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">mat1</span> <span class=\"o\">*</span> <span class=\"n\">mat2</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.ortho_inv"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The returned value is a scalar defined as:\n<code>P &#x22C5; Q = |P| |Q| cos &#x03B8;</code>\nwhere &#x03B8; is the angle between the vectors P and Q.\n<ul>\n<li>If the dot product is positive then the angle between the vectors is below 90 degrees.</li>\n<li>If the dot product is zero the vectors are perpendicular (at right-angles to each other).</li>\n<li>If the dot product is negative then the angle between the vectors is more than 90 degrees.</li>\n</ul>", 
+      "parameters": [
+        {
+          "doc": "first vector", 
+          "name": "v1", 
+          "types": [
+            "vector3", 
+            "vector4"
+          ]
+        }, 
+        {
+          "doc": "second vector", 
+          "name": "v2", 
+          "types": [
+            "vector3", 
+            "vector4"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "dot product", 
+          "name": "n", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "calculates the dot-product of two vectors", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">dot</span><span class=\"p\">(</span><span class=\"n\">vector1</span><span class=\"p\">,</span> <span class=\"n\">vector2</span><span class=\"p\">)</span> <span class=\"o\">==</span> <span class=\"mi\">0</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- The two vectors are perpendicular (at right-angles to each other)</span>\n    <span class=\"o\">...</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.dot"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the squared length of the supplied vector or quaternion.", 
+      "parameters": [
+        {
+          "doc": "value of which to calculate the squared length", 
+          "name": "v", 
+          "types": [
+            "vector3", 
+            "vector4", 
+            "quat"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "squared length", 
+          "name": "n", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "calculates the squared length of a vector or quaternion", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">length_sqr</span><span class=\"p\">(</span><span class=\"n\">vector1</span><span class=\"p\">)</span> <span class=\"o\">&lt;</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">length_sqr</span><span class=\"p\">(</span><span class=\"n\">vector2</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- Vector 1 has less magnitude than vector 2</span>\n    <span class=\"o\">...</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.length_sqr"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the length of the supplied vector or quaternion.\nIf you are comparing the lengths of vectors or quaternions, you should compare\nthe length squared instead as it is slightly more efficient to calculate\n(it eliminates a square root calculation).", 
+      "parameters": [
+        {
+          "doc": "value of which to calculate the length", 
+          "name": "v", 
+          "types": [
+            "vector3", 
+            "vector4", 
+            "quat"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "length", 
+          "name": "n", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "calculates the length of a vector or quaternion", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">length</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">velocity</span><span class=\"p\">)</span> <span class=\"o\">&lt;</span> <span class=\"n\">max_velocity</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- The speed (velocity vector) is below max.</span>\n\n    <span class=\"c1\">-- TODO: max_velocity can be expressed as squared</span>\n    <span class=\"c1\">-- so we can compare with length_sqr() instead.</span>\n    <span class=\"o\">...</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.length"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Normalizes a vector, i.e. returns a new vector with the same\ndirection as the input vector, but with length 1.\n<span class=\"icon-attention\"></span> The length of the vector must be above 0, otherwise a\ndivision-by-zero will occur.", 
+      "parameters": [
+        {
+          "doc": "vector to normalize", 
+          "name": "v1", 
+          "types": [
+            "vector3", 
+            "vector4", 
+            "quat"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "new normalized vector", 
+          "name": "v", 
+          "types": [
+            "vector3", 
+            "vector4", 
+            "quat"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "normalizes a vector", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">norm_vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">normalize</span><span class=\"p\">(</span><span class=\"n\">vec</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">norm_vec</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; vmath.vector3(0.26726123690605, 0.5345224738121, 0.80178368091583)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">length</span><span class=\"p\">(</span><span class=\"n\">norm_vec</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; 0.99999994039536</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.normalize"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Given two linearly independent vectors P and Q, the cross product,\nP &#x00D7; Q, is a vector that is perpendicular to both P and Q and\ntherefore normal to the plane containing them.\nIf the two vectors have the same direction (or have the exact\nopposite direction from one another, i.e. are not linearly independent)\nor if either one has zero length, then their cross product is zero.", 
+      "parameters": [
+        {
+          "doc": "first vector", 
+          "name": "v1", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "second vector", 
+          "name": "v2", 
+          "types": [
+            "vector3"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "a new vector representing the cross product", 
+          "name": "v", 
+          "types": [
+            "vector3"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "calculates the cross-product of two vectors", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">cross</span><span class=\"p\">(</span><span class=\"n\">vec1</span><span class=\"p\">,</span> <span class=\"n\">vec2</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(0, 0, 1)</span>\n<span class=\"kd\">local</span> <span class=\"n\">vec3</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">cross</span><span class=\"p\">(</span><span class=\"n\">vec1</span><span class=\"p\">,</span> <span class=\"n\">vec3</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(0, -0, 0)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.cross"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Linearly interpolate between two vectors. The function\ntreats the vectors as positions and interpolates between\nthe positions in a straight line. Lerp is useful to describe\ntransitions from one place to another over time.\n<span class=\"icon-attention\"></span> The function does not clamp t between 0 and 1.", 
+      "parameters": [
+        {
+          "doc": "interpolation parameter, 0-1", 
+          "name": "t", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "vector to lerp from", 
+          "name": "v1", 
+          "types": [
+            "vector3", 
+            "vector4"
+          ]
+        }, 
+        {
+          "doc": "vector to lerp to", 
+          "name": "v2", 
+          "types": [
+            "vector3", 
+            "vector4"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the lerped vector", 
+          "name": "v", 
+          "types": [
+            "vector3", 
+            "vector4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "lerps between two vectors", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">+</span> <span class=\"n\">dt</span>\n    <span class=\"k\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">&lt;=</span> <span class=\"mi\">1</span> <span class=\"k\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">startpos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">600</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">endpos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">600</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">pos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">lerp</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span><span class=\"p\">,</span> <span class=\"n\">startpos</span><span class=\"p\">,</span> <span class=\"n\">endpos</span><span class=\"p\">)</span>\n        <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_position</span><span class=\"p\">(</span><span class=\"n\">pos</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">go&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.lerp"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Linearly interpolate between two quaternions. Linear\ninterpolation of rotations are only useful for small\nrotations. For interpolations of arbitrary rotations,\n<a href=\"/ref/vmath#vmath.slerp\">vmath.slerp</a> yields much better results.\n<span class=\"icon-attention\"></span> The function does not clamp t between 0 and 1.", 
+      "parameters": [
+        {
+          "doc": "interpolation parameter, 0-1", 
+          "name": "t", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "quaternion to lerp from", 
+          "name": "q1", 
+          "types": [
+            "quaternion"
+          ]
+        }, 
+        {
+          "doc": "quaternion to lerp to", 
+          "name": "q2", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the lerped quaternion", 
+          "name": "q", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "lerps between two quaternions", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">+</span> <span class=\"n\">dt</span>\n    <span class=\"k\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">&lt;=</span> <span class=\"mi\">1</span> <span class=\"k\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">startrot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">endrot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">lerp</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span><span class=\"p\">,</span> <span class=\"n\">startrot</span><span class=\"p\">,</span> <span class=\"n\">endrot</span><span class=\"p\">)</span>\n        <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_rotation</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">go&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.lerp"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Linearly interpolate between two values. Lerp is useful\nto describe transitions from one value to another over time.\n<span class=\"icon-attention\"></span> The function does not clamp t between 0 and 1.", 
+      "parameters": [
+        {
+          "doc": "interpolation parameter, 0-1", 
+          "name": "t", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "number to lerp from", 
+          "name": "n1", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "number to lerp to", 
+          "name": "n2", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the lerped number", 
+          "name": "n", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "lerps between two numbers", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">+</span> <span class=\"n\">dt</span>\n    <span class=\"k\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">&lt;=</span> <span class=\"mi\">1</span> <span class=\"k\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">startx</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n        <span class=\"kd\">local</span> <span class=\"n\">endx</span> <span class=\"o\">=</span> <span class=\"mi\">600</span>\n        <span class=\"kd\">local</span> <span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">lerp</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span><span class=\"p\">,</span> <span class=\"n\">startx</span><span class=\"p\">,</span> <span class=\"n\">endx</span><span class=\"p\">)</span>\n        <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_position</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"s2\">&quot;</span><span class=\"s\">go&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.lerp"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Spherically interpolates between two vectors. The difference to\nlerp is that slerp treats the vectors as directions instead of\npositions in space.\nThe direction of the returned vector is interpolated by the angle\nand the magnitude is interpolated between the magnitudes of the\nfrom and to vectors.\n<span class=\"icon-attention\"></span> Slerp is computationally more expensive than lerp.\nThe function does not clamp t between 0 and 1.", 
+      "parameters": [
+        {
+          "doc": "interpolation parameter, 0-1", 
+          "name": "t", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "vector to slerp from", 
+          "name": "v1", 
+          "types": [
+            "vector3", 
+            "vector4"
+          ]
+        }, 
+        {
+          "doc": "vector to slerp to", 
+          "name": "v2", 
+          "types": [
+            "vector3", 
+            "vector4"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the slerped vector", 
+          "name": "v", 
+          "types": [
+            "vector3", 
+            "vector4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "slerps between two vectors", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">+</span> <span class=\"n\">dt</span>\n    <span class=\"k\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">&lt;=</span> <span class=\"mi\">1</span> <span class=\"k\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">startpos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">600</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">endpos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">600</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">pos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">slerp</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span><span class=\"p\">,</span> <span class=\"n\">startpos</span><span class=\"p\">,</span> <span class=\"n\">endpos</span><span class=\"p\">)</span>\n        <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_position</span><span class=\"p\">(</span><span class=\"n\">pos</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">go&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.slerp"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Slerp travels the torque-minimal path maintaining constant\nvelocity, which means it travels along the straightest path along\nthe rounded surface of a sphere. Slerp is useful for interpolation\nof rotations.\nSlerp travels the torque-minimal path, which means it travels\nalong the straightest path the rounded surface of a sphere.\n<span class=\"icon-attention\"></span> The function does not clamp t between 0 and 1.", 
+      "parameters": [
+        {
+          "doc": "interpolation parameter, 0-1", 
+          "name": "t", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "quaternion to slerp from", 
+          "name": "q1", 
+          "types": [
+            "quaternion"
+          ]
+        }, 
+        {
+          "doc": "quaternion to slerp to", 
+          "name": "q2", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the slerped quaternion", 
+          "name": "q", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "slerps between two quaternions", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">+</span> <span class=\"n\">dt</span>\n    <span class=\"k\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span> <span class=\"o\">&lt;=</span> <span class=\"mi\">1</span> <span class=\"k\">then</span>\n        <span class=\"kd\">local</span> <span class=\"n\">startrot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">endrot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592653</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">slerp</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">t</span><span class=\"p\">,</span> <span class=\"n\">startrot</span><span class=\"p\">,</span> <span class=\"n\">endrot</span><span class=\"p\">)</span>\n        <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set_rotation</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">go&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.slerp"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Calculates the conjugate of a quaternion. The result is a\nquaternion with the same magnitudes but with the sign of\nthe imaginary (vector) parts changed:\n<code>q<super>*</super> = [w, -v]</code>", 
+      "parameters": [
+        {
+          "doc": "quaternion of which to calculate the conjugate", 
+          "name": "q1", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the conjugate", 
+          "name": "q", 
+          "types": [
+            "quaternion"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "calculates the conjugate of a quaternion", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">quat</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">conj</span><span class=\"p\">(</span><span class=\"n\">quat</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.quat(-1, -2, -3, 4)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.conj"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns a new vector from the supplied vector that is\nrotated by the rotation described by the supplied\nquaternion.", 
+      "parameters": [
+        {
+          "doc": "quaternion", 
+          "name": "q", 
+          "types": [
+            "quaternion"
+          ]
+        }, 
+        {
+          "doc": "vector to rotate", 
+          "name": "v1", 
+          "types": [
+            "vector3"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the rotated vector", 
+          "name": "v", 
+          "types": [
+            "vector3"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "rotates a vector by a quaternion", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"mf\">3.141592563</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">rotate</span><span class=\"p\">(</span><span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"n\">vec</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; vmath.vector3(-1.0000002384186, -0.99999988079071, 0)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.rotate"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Calculates the extent the projection of the first vector onto the second.\nThe returned value is a scalar p defined as:\n<code>p = |P| cos &#x03B8; / |Q|</code>\nwhere &#x03B8; is the angle between the vectors P and Q.", 
+      "parameters": [
+        {
+          "doc": "vector to be projected on the second", 
+          "name": "v1", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "vector onto which the first will be projected, must not have zero length", 
+          "name": "v2", 
+          "types": [
+            "vector3"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the projected extent of the first vector onto the second", 
+          "name": "n", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "projects a vector onto another vector", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">v1</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">v2</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">project</span><span class=\"p\">(</span><span class=\"n\">v1</span><span class=\"p\">,</span> <span class=\"n\">v2</span><span class=\"p\">))</span> <span class=\"c1\">--&gt; 0.5</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.project"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Performs an element wise multiplication between two vectors of the same type\nThe returned value is a vector defined as (e.g. for a vector3):\n<code>v = vmath.mul_per_elem(a, b) = vmath.vector3(a.x * b.x, a.y * b.y, a.z * b.z)</code>", 
+      "parameters": [
+        {
+          "doc": "first vector", 
+          "name": "v1", 
+          "types": [
+            "vector3", 
+            "vector4"
+          ]
+        }, 
+        {
+          "doc": "second vector", 
+          "name": "v2", 
+          "types": [
+            "vector3", 
+            "vector4"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "multiplied vector", 
+          "name": "v", 
+          "types": [
+            "vector3", 
+            "vector4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "performs an element wise multiplication of two vectors", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">blend_color</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">mul_per_elem</span><span class=\"p\">(</span><span class=\"n\">color1</span><span class=\"p\">,</span> <span class=\"n\">color2</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "vmath.mul_per_elem"
     }
   ]
 }

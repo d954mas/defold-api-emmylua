@@ -1,0 +1,1239 @@
+{
+  "info": {
+    "group": "DEFOLD SDK", 
+    "description": "Socket functions.", 
+    "namespace": "dmSocket", 
+    "brief": "SDK Socket API documentation", 
+    "file": "dmsdk/dlib/socket.h", 
+    "path": "engine/dlib/src/dmsdk/dlib/socket.h", 
+    "name": "Socket"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "Socket default timeout value", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Socket default timeout value", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "SOCKET_TIMEOUT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Socket type definition", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Socket type definition", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "Socket"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Invalid socket handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Invalid socket handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "INVALID_SOCKET_HANDLE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Domain type", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "domain type", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "DOMAIN_MISSING"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "DOMAIN_IPV4"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "DOMAIN_IPV6"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "DOMAIN_UNKNOWN"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Domain"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Socket type", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "socket type", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "TYPE_STREAM"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "TYPE_DGRAM"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Type"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Network protocol", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "network protocol", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "PROTOCOL_TCP"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "PROTOCOL_UDP"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Protocol"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Socket shutdown type", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "socket shutdown type", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "SHUTDOWNTYPE_READ"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "SHUTDOWNTYPE_WRITE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "SHUTDOWNTYPE_READWRITE"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "ShutdownType"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Socket result", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "socket result", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "0", 
+          "type": "", 
+          "name": "RESULT_OK"
+        }, 
+        {
+          "doc": "-1", 
+          "type": "", 
+          "name": "RESULT_ACCES"
+        }, 
+        {
+          "doc": "-2", 
+          "type": "", 
+          "name": "RESULT_AFNOSUPPORT"
+        }, 
+        {
+          "doc": "-3", 
+          "type": "", 
+          "name": "RESULT_WOULDBLOCK"
+        }, 
+        {
+          "doc": "-4", 
+          "type": "", 
+          "name": "RESULT_BADF"
+        }, 
+        {
+          "doc": "-5", 
+          "type": "", 
+          "name": "RESULT_CONNRESET"
+        }, 
+        {
+          "doc": "-6", 
+          "type": "", 
+          "name": "RESULT_DESTADDRREQ"
+        }, 
+        {
+          "doc": "-7", 
+          "type": "", 
+          "name": "RESULT_FAULT"
+        }, 
+        {
+          "doc": "-8", 
+          "type": "", 
+          "name": "RESULT_HOSTUNREACH"
+        }, 
+        {
+          "doc": "-9", 
+          "type": "", 
+          "name": "RESULT_INTR"
+        }, 
+        {
+          "doc": "-10", 
+          "type": "", 
+          "name": "RESULT_INVAL"
+        }, 
+        {
+          "doc": "-11", 
+          "type": "", 
+          "name": "RESULT_ISCONN"
+        }, 
+        {
+          "doc": "-12", 
+          "type": "", 
+          "name": "RESULT_MFILE"
+        }, 
+        {
+          "doc": "-13", 
+          "type": "", 
+          "name": "RESULT_MSGSIZE"
+        }, 
+        {
+          "doc": "-14", 
+          "type": "", 
+          "name": "RESULT_NETDOWN"
+        }, 
+        {
+          "doc": "-15", 
+          "type": "", 
+          "name": "RESULT_NETUNREACH"
+        }, 
+        {
+          "doc": "-17", 
+          "type": "", 
+          "name": "RESULT_NOBUFS"
+        }, 
+        {
+          "doc": "-20", 
+          "type": "", 
+          "name": "RESULT_NOTCONN"
+        }, 
+        {
+          "doc": "-22", 
+          "type": "", 
+          "name": "RESULT_NOTSOCK"
+        }, 
+        {
+          "doc": "-23", 
+          "type": "", 
+          "name": "RESULT_OPNOTSUPP"
+        }, 
+        {
+          "doc": "-24", 
+          "type": "", 
+          "name": "RESULT_PIPE"
+        }, 
+        {
+          "doc": "-25", 
+          "type": "", 
+          "name": "RESULT_PROTONOSUPPORT"
+        }, 
+        {
+          "doc": "-26", 
+          "type": "", 
+          "name": "RESULT_PROTOTYPE"
+        }, 
+        {
+          "doc": "-27", 
+          "type": "", 
+          "name": "RESULT_TIMEDOUT"
+        }, 
+        {
+          "doc": "-28", 
+          "type": "", 
+          "name": "RESULT_ADDRNOTAVAIL"
+        }, 
+        {
+          "doc": "-29", 
+          "type": "", 
+          "name": "RESULT_CONNREFUSED"
+        }, 
+        {
+          "doc": "-30", 
+          "type": "", 
+          "name": "RESULT_ADDRINUSE"
+        }, 
+        {
+          "doc": "-31", 
+          "type": "", 
+          "name": "RESULT_CONNABORTED"
+        }, 
+        {
+          "doc": "-32", 
+          "type": "", 
+          "name": "RESULT_INPROGRESS"
+        }, 
+        {
+          "doc": "-100", 
+          "type": "", 
+          "name": "RESULT_HOST_NOT_FOUND"
+        }, 
+        {
+          "doc": "-101", 
+          "type": "", 
+          "name": "RESULT_TRY_AGAIN"
+        }, 
+        {
+          "doc": "-102", 
+          "type": "", 
+          "name": "RESULT_NO_RECOVERY"
+        }, 
+        {
+          "doc": "-103", 
+          "type": "", 
+          "name": "RESULT_NO_DATA"
+        }, 
+        {
+          "doc": "-1000", 
+          "type": "", 
+          "name": "RESULT_UNKNOWN"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Result"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Network addresses were previously represented as an uint32_t, but in\norder to support IPv6 the internal representation was changed to a struct.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "network address", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "Address"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Create a new socket. Corresponds to BSD socket function socket().", 
+      "parameters": [
+        {
+          "doc": "Socket type", 
+          "name": "type", 
+          "types": [
+            "Type"
+          ]
+        }, 
+        {
+          "doc": "Protocol", 
+          "name": "protocol", 
+          "types": [
+            "Protocol"
+          ]
+        }, 
+        {
+          "doc": "Pointer to socket", 
+          "name": "socket", 
+          "types": [
+            "Socket*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on succcess", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "create a socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "New"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Delete a socket. Corresponds to BSD socket function close()", 
+      "parameters": [
+        {
+          "doc": "Socket to close", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "delete a socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Delete"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Initiate a connection on a socket", 
+      "parameters": [
+        {
+          "doc": "Socket to initiate connection on", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }, 
+        {
+          "doc": "Address to connect to", 
+          "name": "address", 
+          "types": [
+            "Address"
+          ]
+        }, 
+        {
+          "doc": "Port to connect to", 
+          "name": "port", 
+          "types": [
+            "int"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "make a connection", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Connect"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Shutdown part of a socket connection", 
+      "parameters": [
+        {
+          "doc": "Socket to shutdown connection ow", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }, 
+        {
+          "doc": "Shutdown type", 
+          "name": "how", 
+          "types": [
+            "ShutdownType"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "close socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Shutdown"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get underlying file descriptor", 
+      "parameters": [
+        {
+          "doc": "socket to get fd for", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "file-descriptor", 
+          "name": "", 
+          "types": [
+            "int"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get underlying file descriptor", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetFD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set reuse socket address option on socket. Socket option SO_REUSEADDR on most platforms", 
+      "parameters": [
+        {
+          "doc": "Socket to set reuse address to", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }, 
+        {
+          "doc": "True if reuse", 
+          "name": "reuse", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Set reuse socket address option on socket. Socket ...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetReuseAddress"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set broadcast address option on socket. Socket option SO_BROADCAST on most platforms.", 
+      "parameters": [
+        {
+          "doc": "Socket to set reuse address to", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }, 
+        {
+          "doc": "True if broadcast", 
+          "name": "broadcast", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Set broadcast address option on socket. Socket opt...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetBroadcast"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set blocking option on a socket", 
+      "parameters": [
+        {
+          "doc": "Socket to set blocking on", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }, 
+        {
+          "doc": "True to block", 
+          "name": "blocking", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Set blocking option on a socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetBlocking"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set TCP_NODELAY on socket", 
+      "parameters": [
+        {
+          "doc": "Socket to set TCP_NODELAY on", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }, 
+        {
+          "doc": "True for no delay", 
+          "name": "no_delay", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Set TCP_NODELAY on socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetNoDelay"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set TCP_QUICKACK on socket", 
+      "parameters": [
+        {
+          "doc": "Socket to set TCP_QUICKACK on", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }, 
+        {
+          "doc": "False to disable quick ack", 
+          "name": "use_quick_ack", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Set TCP_QUICKACK on socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetQuickAck"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set socket send timeout", 
+      "parameters": [
+        {
+          "doc": "socket", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }, 
+        {
+          "doc": "timeout in microseconds", 
+          "name": "timeout", 
+          "types": [
+            "uint64_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Set socket send timeout", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetSendTimeout"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set socket receive timeout", 
+      "parameters": [
+        {
+          "doc": "socket", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }, 
+        {
+          "doc": "timeout in microseconds", 
+          "name": "timeout", 
+          "types": [
+            "uint64_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Set socket receive timeout", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetReceiveTimeout"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Send a message on a socket", 
+      "parameters": [
+        {
+          "doc": "Socket to send a message on", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }, 
+        {
+          "doc": "Buffer to send", 
+          "name": "buffer", 
+          "types": [
+            "void*"
+          ]
+        }, 
+        {
+          "doc": "Length of buffer to send", 
+          "name": "length", 
+          "types": [
+            "int"
+          ]
+        }, 
+        {
+          "doc": "Number of bytes sent (result)", 
+          "name": "sent_bytes[out]", 
+          "types": [
+            "int*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Send a message on a socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Send"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Receive data on a socket", 
+      "parameters": [
+        {
+          "doc": "Socket to receive data on", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }, 
+        {
+          "doc": "Buffer to receive to", 
+          "name": "buffer[out]", 
+          "types": [
+            "void*"
+          ]
+        }, 
+        {
+          "doc": "Receive buffer length", 
+          "name": "length", 
+          "types": [
+            "int"
+          ]
+        }, 
+        {
+          "doc": "Number of received bytes (result)", 
+          "name": "received_bytes[out]", 
+          "types": [
+            "int*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Receive data on a socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Receive"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get host by name", 
+      "parameters": [
+        {
+          "doc": "Hostname to resolve", 
+          "name": "name", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "Host address result", 
+          "name": "address", 
+          "types": [
+            "Address*"
+          ]
+        }, 
+        {
+          "doc": "Whether or not to search for IPv4 addresses", 
+          "name": "ipv4", 
+          "types": [
+            "bool"
+          ]
+        }, 
+        {
+          "doc": "Whether or not to search for IPv6 addresses", 
+          "name": "ipv6", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get host by name", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetHostByName"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Convert result value to string", 
+      "parameters": [
+        {
+          "doc": "Result to convert", 
+          "name": "result", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Result as string", 
+          "name": "", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Convert result value to string", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ResultToString"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Selector kind", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Selector kind", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "SELECTOR_KIND_READ"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "SELECTOR_KIND_WRITE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "SELECTOR_KIND_EXCEPT"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "SelectorKind"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Selector", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Selector", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "Selector"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Clear selector for socket. Similar to FD_CLR", 
+      "parameters": [
+        {
+          "doc": "Selector", 
+          "name": "selector", 
+          "types": [
+            "Selector*"
+          ]
+        }, 
+        {
+          "doc": "Kind to clear", 
+          "name": "selector_kind", 
+          "types": [
+            "SelectorKind"
+          ]
+        }, 
+        {
+          "doc": "Socket to clear", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            "void"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Clear selector for socket. Similar to FD_CLR", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SelectorClear"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set selector for socket. Similar to FD_SET", 
+      "parameters": [
+        {
+          "doc": "Selector", 
+          "name": "selector", 
+          "types": [
+            "Selector*"
+          ]
+        }, 
+        {
+          "doc": "Kind to clear", 
+          "name": "selector_kind", 
+          "types": [
+            "SelectorKind"
+          ]
+        }, 
+        {
+          "doc": "Socket to set", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            "void"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Set selector for socket. Similar to FD_SET", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SelectorSet"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Check if selector is set. Similar to FD_ISSET", 
+      "parameters": [
+        {
+          "doc": "Selector", 
+          "name": "selector", 
+          "types": [
+            "Selector*"
+          ]
+        }, 
+        {
+          "doc": "Selector kind", 
+          "name": "selector_kind", 
+          "types": [
+            "SelectorKind"
+          ]
+        }, 
+        {
+          "doc": "Socket to check for", 
+          "name": "socket", 
+          "types": [
+            "Socket"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "True if set.", 
+          "name": "", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Check if selector is set. Similar to FD_ISSET", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SelectorIsSet"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Clear selector (all kinds). Similar to FD_ZERO", 
+      "parameters": [
+        {
+          "doc": "Selector", 
+          "name": "selector", 
+          "types": [
+            "Selector*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            "void"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Clear selector (all kinds). Similar to FD_ZERO", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SelectorZero"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Select for pending data", 
+      "parameters": [
+        {
+          "doc": "Selector", 
+          "name": "selector", 
+          "types": [
+            "Selector*"
+          ]
+        }, 
+        {
+          "doc": "Timeout. For blocking pass -1. (microseconds)", 
+          "name": "timeout", 
+          "types": [
+            "int"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Select for pending data", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Select"
+    }
+  ]
+}

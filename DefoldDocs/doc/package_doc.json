@@ -1,107 +1,132 @@
 {
   "info": {
     "group": "LUA STANDARD LIBS", 
-    "description": "<p>Documentation for the Lua package standard library.</p>\n<p>From <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.</p>\n<p>Copyright &copy; 2006-2012 Lua.org, PUC-Rio.</p>\n<p>Freely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.</p>", 
+    "description": "Documentation for the Lua package standard library.\nFrom <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.\nCopyright &copy; 2006-2012 Lua.org, PUC-Rio.\nFreely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.", 
     "namespace": "package", 
-    "name": "Package", 
-    "brief": "<p>Lua package standard library</p>"
+    "brief": "Lua package standard library", 
+    "file": "", 
+    "path": "", 
+    "name": "Package"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>The path used by require to search for a C loader.</p>\n<p>Lua initializes the C path package.cpath in the same way\nit initializes the Lua path package.path,\nusing the environment variable LUA_CPATH\nor a default path defined in luaconf.h.</p>", 
+      "description": "The path used by require to search for a C loader.\nLua initializes the C path package.cpath in the same way\nit initializes the Lua path package.path,\nusing the environment variable LUA_CPATH\nor a default path defined in luaconf.h.", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>search path used for loading DLLs using the <code>require</code> function</p>", 
+      "notes": [], 
+      "brief": "search path used for loading DLLs using the <code>require</code> function", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "package.cpath"
     }, 
     {
       "replaces": "", 
-      "description": "<p>A table used by require to control which\nmodules are already loaded.\nWhen you require a module modname and\n<code>package.loaded[modname]</code> is not false,\nrequire simply returns the value stored there.</p>", 
+      "description": "A table used by require to control which\nmodules are already loaded.\nWhen you require a module modname and\n<code>package.loaded[modname]</code> is not false,\nrequire simply returns the value stored there.", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>table of loaded packages</p>", 
+      "notes": [], 
+      "brief": "table of loaded packages", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "package.loaded"
     }, 
     {
       "replaces": "", 
-      "description": "<p>A table used by require to control how to load modules.</p>\n<p>Each entry in this table is a searcher function.\nWhen looking for a module,\nrequire calls each of these searchers in ascending order,\nwith the module name (the argument given to require) as its\nsole parameter.\nThe function can return another function (the module loader)\nor a string explaining why it did not find that module\n(or <span class=\"type\"> nil</span> if it has nothing to say).\nLua initializes this table with four functions.</p>\n<p>The first searcher simply looks for a loader in the\npackage.preload table.</p>\n<p>The second searcher looks for a loader as a Lua library,\nusing the path stored at package.path.\nA path is a sequence of <em>templates</em> separated by semicolons.\nFor each template,\nthe searcher will change each interrogation\nmark in the template by filename,\nwhich is the module name with each dot replaced by a\n\"directory separator\" (such as \"/\" in Unix);\nthen it will try to open the resulting file name.\nSo, for instance, if the Lua path is the string</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"s2\">&quot;</span><span class=\"s\">./?.lua;./?.lc;/usr/local/?/init.lua&quot;</span>\n</pre></div>\n\n\n<p>the search for a Lua file for module foo\nwill try to open the files\n<code>./foo.lua</code>, <code>./foo.lc</code>, and\n<code>/usr/local/foo/init.lua</code>, in that order.</p>\n<p>The third searcher looks for a loader as a C library,\nusing the path given by the variable package.cpath.\nFor instance,\nif the C path is the string</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"s2\">&quot;</span><span class=\"s\">./?.so;./?.dll;/usr/local/?/init.so&quot;</span>\n</pre></div>\n\n\n<p>the searcher for module foo\nwill try to open the files <code>./foo.so</code>, <code>./foo.dll</code>,\nand <code>/usr/local/foo/init.so</code>, in that order.\nOnce it finds a C library,\nthis searcher first uses a dynamic link facility to link the\napplication with the library.\nThen it tries to find a C function inside the library to\nbe used as the loader.\nThe name of this C function is the string \"luaopen_\"\nconcatenated with a copy of the module name where each dot\nis replaced by an underscore.\nMoreover, if the module name has a hyphen,\nits prefix up to (and including) the first hyphen is removed.\nFor instance, if the module name is a.v1-b.c,\nthe function name will be luaopen_b_c.</p>\n<p>The fourth searcher tries an all-in-one loader.\nIt searches the C path for a library for\nthe root name of the given module.\nFor instance, when requiring a.b.c,\nit will search for a C library for a.\nIf found, it looks into it for an open function for\nthe submodule;\nin our example, that would be luaopen_a_b_c.\nWith this facility, a package can pack several C submodules\ninto one single library,\nwith each submodule keeping its original open function.</p>", 
+      "description": "A table used by require to control how to load modules.\nEach entry in this table is a searcher function.\nWhen looking for a module,\nrequire calls each of these searchers in ascending order,\nwith the module name (the argument given to require) as its\nsole parameter.\nThe function can return another function (the module loader)\nor a string explaining why it did not find that module\n(or <span class=\"type\"> nil</span> if it has nothing to say).\nLua initializes this table with four functions.\nThe first searcher simply looks for a loader in the\npackage.preload table.\nThe second searcher looks for a loader as a Lua library,\nusing the path stored at package.path.\nA path is a sequence of <em>templates</em> separated by semicolons.\nFor each template,\nthe searcher will change each interrogation\nmark in the template by filename,\nwhich is the module name with each dot replaced by a\n\"directory separator\" (such as \"/\" in Unix);\nthen it will try to open the resulting file name.\nSo, for instance, if the Lua path is the string\n<div class=\"codehilite\"><pre><span></span><span class=\"s2\">&quot;</span><span class=\"s\">./?.lua;./?.lc;/usr/local/?/init.lua&quot;</span>\n</pre></div>\n\n\nthe search for a Lua file for module foo\nwill try to open the files\n<code>./foo.lua</code>, <code>./foo.lc</code>, and\n<code>/usr/local/foo/init.lua</code>, in that order.\nThe third searcher looks for a loader as a C library,\nusing the path given by the variable package.cpath.\nFor instance,\nif the C path is the string\n<div class=\"codehilite\"><pre><span></span><span class=\"s2\">&quot;</span><span class=\"s\">./?.so;./?.dll;/usr/local/?/init.so&quot;</span>\n</pre></div>\n\n\nthe searcher for module foo\nwill try to open the files <code>./foo.so</code>, <code>./foo.dll</code>,\nand <code>/usr/local/foo/init.so</code>, in that order.\nOnce it finds a C library,\nthis searcher first uses a dynamic link facility to link the\napplication with the library.\nThen it tries to find a C function inside the library to\nbe used as the loader.\nThe name of this C function is the string \"luaopen_\"\nconcatenated with a copy of the module name where each dot\nis replaced by an underscore.\nMoreover, if the module name has a hyphen,\nits prefix up to (and including) the first hyphen is removed.\nFor instance, if the module name is a.v1-b.c,\nthe function name will be luaopen_b_c.\nThe fourth searcher tries an all-in-one loader.\nIt searches the C path for a library for\nthe root name of the given module.\nFor instance, when requiring a.b.c,\nit will search for a C library for a.\nIf found, it looks into it for an open function for\nthe submodule;\nin our example, that would be luaopen_a_b_c.\nWith this facility, a package can pack several C submodules\ninto one single library,\nwith each submodule keeping its original open function.", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>table of package loaders</p>", 
+      "notes": [], 
+      "brief": "table of package loaders", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "package.loaders"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Dynamically links the host program with the C library libname.\nInside this library, looks for a function funcname\nand returns this function as a C function.\n(So, funcname must follow the protocol ).</p>\n<p>This is a low-level function.\nIt completely bypasses the package and module system.\nUnlike require,\nit does not perform any path searching and\ndoes not automatically adds extensions.\nlibname must be the complete file name of the C library,\nincluding if necessary a path and extension.\nfuncname must be the exact name exported by the C library\n(which may depend on the C compiler and linker used).</p>\n<p>This function is not supported by ANSI C.\nAs such, it is only available on some platforms\n(Windows, Linux, Mac OS X, Solaris, BSD,\nplus other Unix systems that support the dlfcn standard).</p>", 
+      "description": "Dynamically links the host program with the C library libname.\nInside this library, looks for a function funcname\nand returns this function as a C function.\n(So, funcname must follow the protocol ).\nThis is a low-level function.\nIt completely bypasses the package and module system.\nUnlike require,\nit does not perform any path searching and\ndoes not automatically adds extensions.\nlibname must be the complete file name of the C library,\nincluding if necessary a path and extension.\nfuncname must be the exact name exported by the C library\n(which may depend on the C compiler and linker used).\nThis function is not supported by ANSI C.\nAs such, it is only available on some platforms\n(Windows, Linux, Mac OS X, Solaris, BSD,\nplus other Unix systems that support the dlfcn standard).", 
       "parameters": [
         {
           "doc": "", 
-          "name": "libname"
+          "name": "libname", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "funcname"
+          "name": "funcname", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>loads a dynamic link library (DLL)</p>", 
+      "notes": [], 
+      "brief": "loads a dynamic link library (DLL)", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "package.loadlib"
     }, 
     {
       "replaces": "", 
-      "description": "<p>The path used by require to search for a Lua loader.</p>\n<p>At start-up, Lua initializes this variable with\nthe value of the environment variable LUA_PATH or\nwith a default path defined in luaconf.h,\nif the environment variable is not defined.\nAny \";;\" in the value of the environment variable\nis replaced by the default path.</p>", 
+      "description": "The path used by require to search for a Lua loader.\nAt start-up, Lua initializes this variable with\nthe value of the environment variable LUA_PATH or\nwith a default path defined in luaconf.h,\nif the environment variable is not defined.\nAny \";;\" in the value of the environment variable\nis replaced by the default path.", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>search path used for loading Lua code using the <code>require</code> function</p>", 
+      "notes": [], 
+      "brief": "search path used for loading Lua code using the <code>require</code> function", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "package.path"
     }, 
     {
       "replaces": "", 
-      "description": "<p>A table to store loaders for specific modules\n.</p>", 
+      "description": "A table to store loaders for specific modules\n.", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>a table of special function loaders</p>", 
+      "notes": [], 
+      "brief": "a table of special function loaders", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "package.preload"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Sets a metatable for module with\nits __index field referring to the global environment,\nso that this module inherits values\nfrom the global environment.\nTo be used as an option to function module.</p>", 
+      "description": "Sets a metatable for module with\nits __index field referring to the global environment,\nso that this module inherits values\nfrom the global environment.\nTo be used as an option to function module.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "module"
+          "name": "module", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>sets a metatable for the module so it can see global variables</p>", 
+      "notes": [], 
+      "brief": "sets a metatable for the module so it can see global variables", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "package.seeall"
     }

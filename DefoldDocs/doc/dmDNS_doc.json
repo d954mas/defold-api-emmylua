@@ -1,0 +1,171 @@
+{
+  "info": {
+    "group": "DEFOLD SDK", 
+    "description": "Dns functions.", 
+    "namespace": "dmDNS", 
+    "brief": "SDK DNS API documentation", 
+    "file": "dmsdk/dlib/dns.h", 
+    "path": "engine/dlib/src/dmsdk/dlib/dns.h", 
+    "name": "Dns"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "A channel roughly translates to a socket on which to put the name lookup requests on.\nInternal implementation resides in dns.cpp.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "A channel roughly translates to a socket on which ...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "dmDNS::HChannel"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Result type", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "result type", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "0", 
+          "type": "", 
+          "name": "dmDNS::RESULT_OK"
+        }, 
+        {
+          "doc": "-1", 
+          "type": "", 
+          "name": "dmDNS::RESULT_INIT_ERROR"
+        }, 
+        {
+          "doc": "-2", 
+          "type": "", 
+          "name": "dmDNS::RESULT_HOST_NOT_FOUND"
+        }, 
+        {
+          "doc": "-3", 
+          "type": "", 
+          "name": "dmDNS::RESULT_CANCELLED"
+        }, 
+        {
+          "doc": "-4", 
+          "type": "", 
+          "name": "dmDNS::RESULT_UNKNOWN_ERROR"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "dmDNS::Result"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Creates a new channel that can be used for DNS queries.", 
+      "parameters": [
+        {
+          "doc": "Pointer to the created channel if successful, will be left alone otherwise", 
+          "name": "channel", 
+          "types": [
+            "dmDNS::HChannel*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "on succcess", 
+          "name": "RESULT_OK", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "create a new channel", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmDNS::NewChannel"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Stops the current request (if available) on a channel.", 
+      "parameters": [
+        {
+          "doc": "Handle to the channel", 
+          "name": "channel", 
+          "types": [
+            "dmDNS::HChannel"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "stop current request", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmDNS::StopChannel"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Deletes the current channel and cancels all requests.\nNote: You must always make sure to call StopChannel(channel) before calling this function.", 
+      "parameters": [
+        {
+          "doc": "Handle to the channel", 
+          "name": "channel", 
+          "types": [
+            "dmDNS::HChannel"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "delete channel", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmDNS::DeleteChannel"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Refreshes the channel configuration so that the latest DNS servers are used.", 
+      "parameters": [
+        {
+          "doc": "Handle to the channel", 
+          "name": "channel", 
+          "types": [
+            "dmDNS::HChannel"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "on succcess", 
+          "name": "RESULT_OK", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "refresh to the latest dns servers", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmDNS::RefreshChannel"
+    }
+  ]
+}

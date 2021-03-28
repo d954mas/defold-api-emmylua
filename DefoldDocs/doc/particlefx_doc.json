@@ -1,151 +1,211 @@
 {
   "info": {
     "group": "COMPONENTS", 
-    "description": "<p>Functions for controlling particle effect component playback and\nshader constants.</p>", 
+    "description": "Functions for controlling particle effect component playback and\nshader constants.", 
     "namespace": "particlefx", 
-    "name": "Particle effects", 
-    "brief": "<p>Particle effects API documentation</p>"
+    "brief": "Particle effects API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Particle effects"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>The emitter is not spawning any particles, but has particles that are still alive.</p>", 
+      "description": "The emitter does not have any living particles and will not spawn any particles in this state.", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>postspawn state</p>", 
+      "notes": [], 
+      "brief": "sleeping state", 
       "examples": "", 
       "members": [], 
       "error": "", 
-      "type": "VARIABLE", 
-      "name": "particlefx.EMITTER_STATE_POSTSPAWN"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The emitter will be in this state when it has been started but before spawning any particles. Normally the emitter is in this state for a short time, depending on if a start delay has been set for this emitter or not.</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>prespawn state</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "particlefx.EMITTER_STATE_PRESPAWN"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The emitter does not have any living particles and will not spawn any particles in this state.</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>sleeping state</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
+      "tparams": [], 
       "type": "VARIABLE", 
       "name": "particlefx.EMITTER_STATE_SLEEPING"
     }, 
     {
       "replaces": "", 
-      "description": "<p>The emitter is spawning particles.</p>", 
+      "description": "The emitter will be in this state when it has been started but before spawning any particles. Normally the emitter is in this state for a short time, depending on if a start delay has been set for this emitter or not.", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>spawning state</p>", 
+      "notes": [], 
+      "brief": "prespawn state", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "particlefx.EMITTER_STATE_PRESPAWN"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The emitter is spawning particles.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "spawning state", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
       "type": "VARIABLE", 
       "name": "particlefx.EMITTER_STATE_SPAWNING"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Starts playing a particle FX component.\nParticle FX started this way need to be manually stopped through <code>particlefx.stop()</code>.\nWhich particle FX to play is identified by the URL.</p>\n<p><span class=\"icon-attention\"></span> A particle FX will continue to emit particles even if the game object the particle FX component belonged to is deleted. You can call <code>particlefx.stop()</code> to stop it from emitting more particles.</p>", 
+      "description": "The emitter is not spawning any particles, but has particles that are still alive.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "postspawn state", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "particlefx.EMITTER_STATE_POSTSPAWN"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Starts playing a particle FX component.\nParticle FX started this way need to be manually stopped through <code>particlefx.stop()</code>.\nWhich particle FX to play is identified by the URL.\n<span class=\"icon-attention\"></span> A particle FX will continue to emit particles even if the game object the particle FX component belonged to is deleted. You can call <code>particlefx.stop()</code> to stop it from emitting more particles.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the particle fx that should start playing.</p>", 
-          "name": "url"
+          "doc": "the particle fx that should start playing.", 
+          "name": "url", 
+          "types": [
+            "string", 
+            "hash", 
+            "url"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">function(self, id, emitter, state)</span> optional callback function that will be called when an emitter attached to this particlefx changes state.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The id of the particle fx component</dd>\n<dt><code>emitter</code></dt>\n<dd><span class=\"type\">hash</span> The id of the emitter</dd>\n<dt><code>state</code></dt>\n<dd><span class=\"type\">constant</span> the new state of the emitter:</dd>\n</dl>\n<ul>\n<li><code>particlefx.EMITTER_STATE_SLEEPING</code></li>\n<li><code>particlefx.EMITTER_STATE_PRESPAWN</code></li>\n<li><code>particlefx.EMITTER_STATE_SPAWNING</code></li>\n<li><code>particlefx.EMITTER_STATE_POSTSPAWN</code></li>\n</ul>", 
-          "name": "[emitter_state_function]"
+          "doc": "optional callback function that will be called when an emitter attached to this particlefx changes state.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> The id of the particle fx component</dd>\n<dt><code>emitter</code></dt>\n<dd><span class=\"type\">hash</span> The id of the emitter</dd>\n<dt><code>state</code></dt>\n<dd><span class=\"type\">constant</span> the new state of the emitter:</dd>\n</dl>\n<ul>\n<li><code>particlefx.EMITTER_STATE_SLEEPING</code></li>\n<li><code>particlefx.EMITTER_STATE_PRESPAWN</code></li>\n<li><code>particlefx.EMITTER_STATE_SPAWNING</code></li>\n<li><code>particlefx.EMITTER_STATE_POSTSPAWN</code></li>\n</ul>", 
+          "name": "[emitter_state_function]", 
+          "types": [
+            "function(self, id, emitter, state)"
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>start playing a particle FX</p>", 
-      "examples": "<p>How to play a particle fx when a game object is created.\nThe callback receives the hash of the path to the particlefx, the hash of the id\nof the emitter, and the new state of the emitter as particlefx.EMITTER_STATE_<STATE>.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">emitter_state_change</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"n\">emitter</span><span class=\"p\">,</span> <span class=\"n\">state</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">emitter</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">exhaust&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">state</span> <span class=\"o\">==</span> <span class=\"n\">particlefx</span><span class=\"p\">.</span><span class=\"n\">EMITTER_STATE_POSTSPAWN</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- exhaust is done spawning particles...</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">particlefx</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"n\">emitter_state_change</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "notes": [], 
+      "brief": "start playing a particle FX", 
+      "examples": "How to play a particle fx when a game object is created.\nThe callback receives the hash of the path to the particlefx, the hash of the id\nof the emitter, and the new state of the emitter as particlefx.EMITTER_STATE_<STATE>.\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">emitter_state_change</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"n\">emitter</span><span class=\"p\">,</span> <span class=\"n\">state</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">emitter</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">exhaust&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">state</span> <span class=\"o\">==</span> <span class=\"n\">particlefx</span><span class=\"p\">.</span><span class=\"n\">EMITTER_STATE_POSTSPAWN</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- exhaust is done spawning particles...</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">particlefx</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"n\">emitter_state_change</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "particlefx.play"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Resets a shader constant for a particle FX component emitter.\nThe constant must be defined in the material assigned to the emitter.\nResetting a constant through this function implies that the value defined in the material will be used.\nWhich particle FX to reset a constant for is identified by the URL.</p>", 
+      "description": "Stops a particle FX component from playing.\nStopping a particle FX does not remove already spawned particles.\nWhich particle FX to stop is identified by the URL.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the particle FX that should have a constant reset</p>", 
-          "name": "url"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string | hash</span> the id of the emitter</p>", 
-          "name": "emitter"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string | hash</span> the name of the constant</p>", 
-          "name": "constant"
+          "doc": "the particle fx that should stop playing", 
+          "name": "url", 
+          "types": [
+            "string", 
+            "hash", 
+            "url"
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>reset a shader constant for a particle FX component emitter</p>", 
-      "examples": "<p>The following examples assumes that the particle FX has id \"particlefx\", it\ncontains an emitter with the id \"emitter\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the sprite, you can reset the constants defined there in the same manner.</p>\n<p>How to reset the tinting of particles from an emitter:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">particlefx</span><span class=\"p\">.</span><span class=\"n\">reset_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">emitter&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "notes": [], 
+      "brief": "stop playing a particle fx", 
+      "examples": "How to stop a particle fx when a game object is deleted:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">final</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">particlefx</span><span class=\"p\">.</span><span class=\"n\">stop</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#particlefx&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
-      "name": "particlefx.reset_constant"
+      "name": "particlefx.stop"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Sets a shader constant for a particle FX component emitter.\nThe constant must be defined in the material assigned to the emitter.\nSetting a constant through this function will override the value set for that constant in the material.\nThe value will be overridden until particlefx.reset_constant is called.\nWhich particle FX to set a constant for is identified by the URL.</p>", 
+      "description": "Sets a shader constant for a particle FX component emitter.\nThe constant must be defined in the material assigned to the emitter.\nSetting a constant through this function will override the value set for that constant in the material.\nThe value will be overridden until particlefx.reset_constant is called.\nWhich particle FX to set a constant for is identified by the URL.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the particle FX that should have a constant set</p>", 
-          "name": "url"
+          "doc": "the particle FX that should have a constant set", 
+          "name": "url", 
+          "types": [
+            "string", 
+            "hash", 
+            "url"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">string | hash</span> the id of the emitter</p>", 
-          "name": "emitter"
+          "doc": "the id of the emitter", 
+          "name": "emitter", 
+          "types": [
+            "string", 
+            "hash"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">string | hash</span> the name of the constant</p>", 
-          "name": "constant"
+          "doc": "the name of the constant", 
+          "name": "constant", 
+          "types": [
+            "string", 
+            "hash"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">vector4</span> the value of the constant</p>", 
-          "name": "value"
+          "doc": "the value of the constant", 
+          "name": "value", 
+          "types": [
+            "vector4"
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>set a shader constant for a particle FX component emitter</p>", 
-      "examples": "<p>The following examples assumes that the particle FX has id \"particlefx\", it\ncontains an emitter with the id \"emitter\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the sprite, you can reset the constants defined there in the same manner.</p>\n<p>How to tint particles from an emitter red:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">particlefx</span><span class=\"p\">.</span><span class=\"n\">set_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">emitter&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "notes": [], 
+      "brief": "set a shader constant for a particle FX component emitter", 
+      "examples": "The following examples assumes that the particle FX has id \"particlefx\", it\ncontains an emitter with the id \"emitter\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the sprite, you can reset the constants defined there in the same manner.\nHow to tint particles from an emitter red:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">particlefx</span><span class=\"p\">.</span><span class=\"n\">set_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">emitter&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "particlefx.set_constant"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Stops a particle FX component from playing.\nStopping a particle FX does not remove already spawned particles.\nWhich particle FX to stop is identified by the URL.</p>", 
+      "description": "Resets a shader constant for a particle FX component emitter.\nThe constant must be defined in the material assigned to the emitter.\nResetting a constant through this function implies that the value defined in the material will be used.\nWhich particle FX to reset a constant for is identified by the URL.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the particle fx that should stop playing</p>", 
-          "name": "url"
+          "doc": "the particle FX that should have a constant reset", 
+          "name": "url", 
+          "types": [
+            "string", 
+            "hash", 
+            "url"
+          ]
+        }, 
+        {
+          "doc": "the id of the emitter", 
+          "name": "emitter", 
+          "types": [
+            "string", 
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "the name of the constant", 
+          "name": "constant", 
+          "types": [
+            "string", 
+            "hash"
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>stop playing a particle fx</p>", 
-      "examples": "<p>How to stop a particle fx when a game object is deleted:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">final</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">particlefx</span><span class=\"p\">.</span><span class=\"n\">stop</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#particlefx&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "notes": [], 
+      "brief": "reset a shader constant for a particle FX component emitter", 
+      "examples": "The following examples assumes that the particle FX has id \"particlefx\", it\ncontains an emitter with the id \"emitter\" and that the default-material in builtins is used, which defines the constant \"tint\".\nIf you assign a custom material to the sprite, you can reset the constants defined there in the same manner.\nHow to reset the tinting of particles from an emitter:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">particlefx</span><span class=\"p\">.</span><span class=\"n\">reset_constant</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#particlefx&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">emitter&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">tint&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
-      "name": "particlefx.stop"
+      "name": "particlefx.reset_constant"
     }
   ]
 }

@@ -1,122 +1,170 @@
 {
   "info": {
     "group": "LUA STANDARD LIBS", 
-    "description": "<p>Documentation for the Lua table standard library.</p>\n<p>From <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.</p>\n<p>Copyright &copy; 2006-2012 Lua.org, PUC-Rio.</p>\n<p>Freely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.</p>", 
+    "description": "Documentation for the Lua table standard library.\nFrom <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.\nCopyright &copy; 2006-2012 Lua.org, PUC-Rio.\nFreely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.", 
     "namespace": "table", 
-    "name": "Table", 
-    "brief": "<p>Lua table standard library</p>"
+    "brief": "Lua table standard library", 
+    "file": "", 
+    "path": "", 
+    "name": "Table"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Given an array where all elements are strings or numbers,\nreturns <code>table[i]..sep..table[i+1] ... sep..table[j]</code>.\nThe default value for sep is the empty string,\nthe default for i is 1,\nand the default for j is the length of the table.\nIf i is greater than j, returns the empty string.</p>", 
+      "description": "Given an array where all elements are strings or numbers,\nreturns <code>table[i]..sep..table[i+1] ... sep..table[j]</code>.\nThe default value for sep is the empty string,\nthe default for i is 1,\nand the default for j is the length of the table.\nIf i is greater than j, returns the empty string.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "table"
+          "name": "table", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "[sep]"
+          "name": "[sep]", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "[i]"
+          "name": "[i]", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "[j]"
+          "name": "[j]", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>concatenates table items together into a string</p>", 
+      "notes": [], 
+      "brief": "concatenates table items together into a string", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "table.concat"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Inserts element value at position pos in table,\nshifting up other elements to open space, if necessary.\nThe default value for pos is <code>n+1</code>,\nwhere n is the length of the table ,\nso that a call <code>table.insert(t,x)</code> inserts x at the end\nof table t.</p>", 
+      "description": "Inserts element value at position pos in table,\nshifting up other elements to open space, if necessary.\nThe default value for pos is <code>n+1</code>,\nwhere n is the length of the table ,\nso that a call <code>table.insert(t,x)</code> inserts x at the end\nof table t.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "table"
+          "name": "table", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "[pos]"
+          "name": "[pos]", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "value"
+          "name": "value", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>inserts a new item into a numerically-keyed table</p>", 
+      "notes": [], 
+      "brief": "inserts a new item into a numerically-keyed table", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "table.insert"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the largest positive numerical index of the given table,\nor zero if the table has no positive numerical indices.\n(To do its job this function does a linear traversal of\nthe whole table.)</p>", 
+      "description": "Returns the largest positive numerical index of the given table,\nor zero if the table has no positive numerical indices.\n(To do its job this function does a linear traversal of\nthe whole table.)", 
       "parameters": [
         {
           "doc": "", 
-          "name": "table"
+          "name": "table", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>returns the highest numeric key in the table</p>", 
+      "notes": [], 
+      "brief": "returns the highest numeric key in the table", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "table.maxn"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Removes from table the element at position pos,\nshifting down other elements to close the space, if necessary.\nReturns the value of the removed element.\nThe default value for pos is n,\nwhere n is the length of the table,\nso that a call <code>table.remove(t)</code> removes the last element\nof table t.</p>", 
+      "description": "Removes from table the element at position pos,\nshifting down other elements to close the space, if necessary.\nReturns the value of the removed element.\nThe default value for pos is n,\nwhere n is the length of the table,\nso that a call <code>table.remove(t)</code> removes the last element\nof table t.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "table"
+          "name": "table", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "[pos]"
+          "name": "[pos]", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>removes an item from a numerically-keyed table</p>", 
+      "notes": [], 
+      "brief": "removes an item from a numerically-keyed table", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "table.remove"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Sorts table elements in a given order, <em>in-place</em>,\nfrom <code>table[1]</code> to <code>table[n]</code>,\nwhere n is the length of the table.\nIf comp is given,\nthen it must be a function that receives two table elements,\nand returns true\nwhen the first is less than the second\n(so that <code>not comp(a[i+1],a[i])</code> will be true after the sort).\nIf comp is not given,\nthen the standard Lua operator <code>&lt;</code> is used instead.</p>\n<p>The sort algorithm is not stable;\nthat is, elements considered equal by the given order\nmay have their relative positions changed by the sort.</p>", 
+      "description": "Sorts table elements in a given order, <em>in-place</em>,\nfrom <code>table[1]</code> to <code>table[n]</code>,\nwhere n is the length of the table.\nIf comp is given,\nthen it must be a function that receives two table elements,\nand returns true\nwhen the first is less than the second\n(so that <code>not comp(a[i+1],a[i])</code> will be true after the sort).\nIf comp is not given,\nthen the standard Lua operator <code>&lt;</code> is used instead.\nThe sort algorithm is not stable;\nthat is, elements considered equal by the given order\nmay have their relative positions changed by the sort.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "table"
+          "name": "table", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "[comp]"
+          "name": "[comp]", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>Sorts a table</p>", 
+      "notes": [], 
+      "brief": "Sorts a table", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "table.sort"
     }

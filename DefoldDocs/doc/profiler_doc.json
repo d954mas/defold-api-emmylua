@@ -1,219 +1,273 @@
 {
   "info": {
     "group": "SYSTEM", 
-    "description": "<p>Functions for getting profiling data in runtime.\nMore detailed <a href=\"https://www.defold.com/manuals/profiling/\">profiling</a> and <a href=\"http://www.defold.com/manuals/debugging/\">debugging</a> information available in the manuals.</p>", 
+    "description": "Functions for getting profiling data in runtime.\nMore detailed <a href=\"https://www.defold.com/manuals/profiling/\">profiling</a> and <a href=\"http://www.defold.com/manuals/debugging/\">debugging</a> information available in the manuals.", 
     "namespace": "profiler", 
-    "name": "Profiler", 
-    "brief": "<p>Profiler API documentation</p>"
+    "brief": "Profiler API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Profiler"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>pause on current frame</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "profiler.MODE_PAUSE"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>start recording</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "profiler.MODE_RECORD"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>continously show latest frame</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "profiler.MODE_RUN"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>pause at peak frame</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "profiler.MODE_SHOW_PEAK_FRAME"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>show full profiler ui</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "profiler.VIEW_MODE_FULL"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>show mimimal profiler ui</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "profiler.VIEW_MODE_MINIMIZED"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Creates and shows or hides and destroys the on-sceen profiler ui</p>\n<p>The profiler is a real-time tool that shows the numbers of milliseconds spent\nin each scope per frame as well as counters. The profiler is very useful for\ntracking down performance and resource problems.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">boolean</span> true to enable, false to disable</p>", 
-          "name": "enabled"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>enables or disables the on-screen profiler ui</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Show the profiler UI</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">enable_ui</span><span class=\"p\">(</span><span class=\"kc\">true</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "profiler.enable_ui"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Get the percent of CPU usage by the application, as reported by the OS.</p>\n<p><span class=\"icon-attention\"></span> This function is not available on <span class=\"icon-html5\"></span> HTML5.</p>\n<p>For some platforms (<span class=\"icon-android\"></span> Android, <span class=\"icon-linux\"></span> Linux and <span class=\"icon-windows\"></span> Windows), this information is only available\nby default in the debug version of the engine. It can be enabled in release version as well\nby checking <code>track_cpu</code> under <code>profiler</code> in the <code>game.project</code> file.\n(This means that the engine will sample the CPU usage in intervalls during execution even in release mode.)</p>", 
+      "description": "Get the amount of memory used (resident/working set) by the application in bytes, as reported by the OS.\n<span class=\"icon-attention\"></span> This function is not available on <span class=\"icon-html5\"></span> HTML5.\nThe values are gathered from internal OS functions which correspond to the following;\n<table>\n<thead>\n<tr>\n<th>OS</th>\n<th>Value</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><span class=\"icon-ios\"></span> iOS<br/><span class=\"icon-macos\"></span> MacOS<br/><span class=\"icon-android\"></span><br/>Androd<br/><span class=\"icon-linux\"></span> Linux</td>\n<td><a href=\"https://en.wikipedia.org/wiki/Resident_set_size\">Resident memory</a></td>\n</tr>\n<tr>\n<td><span class=\"icon-windows\"></span> Windows</td>\n<td><a href=\"https://en.wikipedia.org/wiki/Working_set\">Working set</a></td>\n</tr>\n<tr>\n<td><span class=\"icon-html5\"></span> HTML5</td>\n<td><span class=\"icon-attention\"></span> Not available</td>\n</tr>\n</tbody>\n</table>", 
       "parameters": [], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">number</span> of CPU used by the application</p>", 
-          "name": "percent"
+          "doc": "used by the application", 
+          "name": "bytes", 
+          "types": [
+            "number"
+          ]
         }
       ], 
-      "brief": "<p>get current CPU usage for app reported by OS</p>", 
-      "examples": "", 
+      "notes": [], 
+      "brief": "get current memory usage for app reported by OS", 
+      "examples": "Get memory usage before and after loading a collection:\n<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">get_memory_usage</span><span class=\"p\">())</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#collectionproxy&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">load&quot;</span><span class=\"p\">)</span>\n<span class=\"o\">...</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">get_memory_usage</span><span class=\"p\">())</span> <span class=\"c1\">-- will report a higher number than the initial call</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
-      "type": "FUNCTION", 
-      "name": "profiler.get_cpu_usage"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Get the amount of memory used (resident/working set) by the application in bytes, as reported by the OS.</p>\n<p><span class=\"icon-attention\"></span> This function is not available on <span class=\"icon-html5\"></span> HTML5.</p>\n<p>The values are gathered from internal OS functions which correspond to the following;</p>\n<table>\n<thead>\n<tr>\n<th>OS</th>\n<th>Value</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><span class=\"icon-ios\"></span> iOS<br/><span class=\"icon-macos\"></span> MacOS<br/><span class=\"icon-android\"></span><br/>Androd<br/><span class=\"icon-linux\"></span> Linux</td>\n<td><a href=\"https://en.wikipedia.org/wiki/Resident_set_size\">Resident memory</a></td>\n</tr>\n<tr>\n<td><span class=\"icon-windows\"></span> Windows</td>\n<td><a href=\"https://en.wikipedia.org/wiki/Working_set\">Working set</a></td>\n</tr>\n<tr>\n<td><span class=\"icon-html5\"></span> HTML5</td>\n<td><span class=\"icon-attention\"></span> Not available</td>\n</tr>\n</tbody>\n</table>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> used by the application</p>", 
-          "name": "bytes"
-        }
-      ], 
-      "brief": "<p>get current memory usage for app reported by OS</p>", 
-      "examples": "<p>Get memory usage before and after loading a collection:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">get_memory_usage</span><span class=\"p\">())</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#collectionproxy&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">load&quot;</span><span class=\"p\">)</span>\n<span class=\"o\">...</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">get_memory_usage</span><span class=\"p\">())</span> <span class=\"c1\">-- will report a higher number than the initial call</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "profiler.get_memory_usage"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Get the number of recorded frames in the on-screen profiler ui recording buffer</p>", 
+      "description": "Get the percent of CPU usage by the application, as reported by the OS.\n<span class=\"icon-attention\"></span> This function is not available on <span class=\"icon-html5\"></span> HTML5.\nFor some platforms (<span class=\"icon-android\"></span> Android, <span class=\"icon-linux\"></span> Linux and <span class=\"icon-windows\"></span> Windows), this information is only available\nby default in the debug version of the engine. It can be enabled in release version as well\nby checking <code>track_cpu</code> under <code>profiler</code> in the <code>game.project</code> file.\n(This means that the engine will sample the CPU usage in intervalls during execution even in release mode.)", 
       "parameters": [], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">number</span> the number of recorded frames, zero if on-screen profiler is disabled</p>", 
-          "name": "frame_count"
+          "doc": "of CPU used by the application", 
+          "name": "percent", 
+          "types": [
+            "number"
+          ]
         }
       ], 
-      "brief": "<p>get the number of recorded frames in the on-screen profiler ui</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Show the last recorded frame</span>\n<span class=\"kd\">local</span> <span class=\"n\">recorded_frame_count</span> <span class=\"o\">=</span> <span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">recorded_frame_count</span><span class=\"p\">()</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">view_recorded_frame</span><span class=\"p\">(</span><span class=\"n\">recorded_frame_count</span><span class=\"p\">)</span>\n</pre></div>", 
+      "notes": [], 
+      "brief": "get current CPU usage for app reported by OS", 
+      "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
-      "name": "profiler.recorded_frame_count"
+      "name": "profiler.get_cpu_usage"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Set the on-screen profile mode - run, pause, record or show peak frame</p>", 
+      "description": "Creates and shows or hides and destroys the on-sceen profiler ui\nThe profiler is a real-time tool that shows the numbers of milliseconds spent\nin each scope per frame as well as counters. The profiler is very useful for\ntracking down performance and resource problems.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">constant</span> the mode to set the ui profiler in</p>\n<ul>\n<li><code>profiler.MODE_RUN</code> This is default mode that continously shows the last frame</li>\n<li><code>profiler.MODE_PAUSE</code> Pauses on the currently displayed frame</li>\n<li><code>profiler.MODE_SHOW_PEAK_FRAME</code> Pauses on the currently displayed frame but shows a new frame if that frame is slower</li>\n<li><code>profiler.MODE_RECORD</code> Records all incoming frames to the recording buffer</li>\n</ul>\n<p>To stop recording, switch to a different mode such as <code>MODE_PAUSE</code> or <code>MODE_RUN</code>.\nYou can also use the <code>view_recorded_frame</code> function to display a recorded frame. Doing so stops the recording as well.</p>\n<p>Every time you switch to recording mode the recording buffer is cleared.\nThe recording buffer is also cleared when setting the <code>MODE_SHOW_PEAK_FRAME</code> mode.</p>", 
-          "name": "mode"
+          "doc": "true to enable, false to disable", 
+          "name": "enabled", 
+          "types": [
+            "boolean"
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>sets the the on-screen profiler ui mode</p>", 
+      "notes": [], 
+      "brief": "enables or disables the on-screen profiler ui", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Show the profiler UI</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">enable_ui</span><span class=\"p\">(</span><span class=\"kc\">true</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "profiler.enable_ui"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the on-screen profile mode - run, pause, record or show peak frame", 
+      "parameters": [
+        {
+          "doc": "the mode to set the ui profiler in\n<ul>\n<li><code>profiler.MODE_RUN</code> This is default mode that continously shows the last frame</li>\n<li><code>profiler.MODE_PAUSE</code> Pauses on the currently displayed frame</li>\n<li><code>profiler.MODE_SHOW_PEAK_FRAME</code> Pauses on the currently displayed frame but shows a new frame if that frame is slower</li>\n<li><code>profiler.MODE_RECORD</code> Records all incoming frames to the recording buffer</li>\n</ul>\nTo stop recording, switch to a different mode such as <code>MODE_PAUSE</code> or <code>MODE_RUN</code>.\nYou can also use the <code>view_recorded_frame</code> function to display a recorded frame. Doing so stops the recording as well.\nEvery time you switch to recording mode the recording buffer is cleared.\nThe recording buffer is also cleared when setting the <code>MODE_SHOW_PEAK_FRAME</code> mode.", 
+          "name": "mode", 
+          "types": [
+            "constant"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "sets the the on-screen profiler ui mode", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">start_recording</span><span class=\"p\">()</span>\n     <span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">set_ui_mode</span><span class=\"p\">(</span><span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">MODE_RECORD</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">stop_recording</span><span class=\"p\">()</span>\n     <span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">set_ui_mode</span><span class=\"p\">(</span><span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">MODE_PAUSE</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "profiler.set_ui_mode"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Set the on-screen profile view mode - minimized or expanded</p>", 
+      "description": "Set the on-screen profile view mode - minimized or expanded", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">constant</span> the view mode to set the ui profiler in</p>\n<ul>\n<li><code>profiler.VIEW_MODE_FULL</code> The default mode which displays all the ui profiler details</li>\n<li><code>profiler.VIEW_MODE_MINIMIZED</code> Minimized mode which only shows the top header (fps counters and ui profiler mode)</li>\n</ul>", 
-          "name": "mode"
+          "doc": "the view mode to set the ui profiler in\n<ul>\n<li><code>profiler.VIEW_MODE_FULL</code> The default mode which displays all the ui profiler details</li>\n<li><code>profiler.VIEW_MODE_MINIMIZED</code> Minimized mode which only shows the top header (fps counters and ui profiler mode)</li>\n</ul>", 
+          "name": "mode", 
+          "types": [
+            "constant"
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>sets the the on-screen profiler ui view mode</p>", 
+      "notes": [], 
+      "brief": "sets the the on-screen profiler ui view mode", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Minimize the profiler view</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">set_ui_view_mode</span><span class=\"p\">(</span><span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">VIEW_MODE_MINIMIZED</span><span class=\"p\">)</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "profiler.set_ui_view_mode"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Shows or hides the time the engine waits for vsync in the on-screen profiler</p>\n<p>Each frame the engine waits for vsync and depending on your vsync settings and how much time\nyour game logic takes this time can dwarf the time in the game logic making it hard to\nsee details in the on-screen profiler graph and lists.</p>\n<p>Also, by hiding this the FPS times in the header show the time spent each time excuding the\ntime spent waiting for vsync. This shows you how long time your game is spending actively\nworking each frame.</p>\n<p>This setting also effects the display of recorded frames but does not affect the actual\nrecorded frames so it is possible to toggle this on and off when viewing recorded frames.</p>\n<p>By default the vsync wait times is displayed in the profiler.</p>", 
+      "description": "Shows or hides the time the engine waits for vsync in the on-screen profiler\nEach frame the engine waits for vsync and depending on your vsync settings and how much time\nyour game logic takes this time can dwarf the time in the game logic making it hard to\nsee details in the on-screen profiler graph and lists.\nAlso, by hiding this the FPS times in the header show the time spent each time excuding the\ntime spent waiting for vsync. This shows you how long time your game is spending actively\nworking each frame.\nThis setting also effects the display of recorded frames but does not affect the actual\nrecorded frames so it is possible to toggle this on and off when viewing recorded frames.\nBy default the vsync wait times is displayed in the profiler.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">boolean</span> true to include it in the display, false to hide it.</p>", 
-          "name": "visible"
+          "doc": "true to include it in the display, false to hide it.", 
+          "name": "visible", 
+          "types": [
+            "boolean"
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>Shows or hides the vsync wait time in the on-screen profiler ui</p>", 
+      "notes": [], 
+      "brief": "Shows or hides the vsync wait time in the on-screen profiler ui", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Exclude frame wait time form the profiler ui</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">set_ui_vsync_wait_visible</span><span class=\"p\">(</span><span class=\"kc\">false</span><span class=\"p\">)</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "profiler.set_ui_vsync_wait_visible"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Pauses and displays a frame from the recording buffer in the on-screen profiler ui</p>\n<p>The frame to show can either be an absolute frame or a relative frame to the current frame.</p>", 
+      "description": "Get the number of recorded frames in the on-screen profiler ui recording buffer", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "the number of recorded frames, zero if on-screen profiler is disabled", 
+          "name": "frame_count", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get the number of recorded frames in the on-screen profiler ui", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Show the last recorded frame</span>\n<span class=\"kd\">local</span> <span class=\"n\">recorded_frame_count</span> <span class=\"o\">=</span> <span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">recorded_frame_count</span><span class=\"p\">()</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">view_recorded_frame</span><span class=\"p\">(</span><span class=\"n\">recorded_frame_count</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "profiler.recorded_frame_count"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Pauses and displays a frame from the recording buffer in the on-screen profiler ui\nThe frame to show can either be an absolute frame or a relative frame to the current frame.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">table</span> a table where you specify one of the following parameters:</p>\n<ul>\n<li><code>distance</code> The offset from the currently displayed frame (this is truncated between zero and the number of recorded frames)</li>\n<li><code>frame</code> The frame index in the recording buffer (1 is first recorded frame)</li>\n</ul>", 
-          "name": "frame_index"
+          "doc": "a table where you specify one of the following parameters:\n<ul>\n<li><code>distance</code> The offset from the currently displayed frame (this is truncated between zero and the number of recorded frames)</li>\n<li><code>frame</code> The frame index in the recording buffer (1 is first recorded frame)</li>\n</ul>", 
+          "name": "frame_index", 
+          "types": [
+            "table"
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>displays a previously recorded frame in the on-screen profiler ui</p>", 
+      "notes": [], 
+      "brief": "displays a previously recorded frame in the on-screen profiler ui", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Go back one frame</span>\n<span class=\"n\">profiler</span><span class=\"p\">.</span><span class=\"n\">view_recorded_frame</span><span class=\"p\">({</span><span class=\"n\">distance</span> <span class=\"o\">=</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">})</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "profiler.view_recorded_frame"
+    }, 
+    {
+      "replaces": "", 
+      "description": "continously show latest frame", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "continously show latest frame", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "profiler.MODE_RUN"
+    }, 
+    {
+      "replaces": "", 
+      "description": "pause on current frame", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "pause on current frame", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "profiler.MODE_PAUSE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "pause at peak frame", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "pause at peak frame", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "profiler.MODE_SHOW_PEAK_FRAME"
+    }, 
+    {
+      "replaces": "", 
+      "description": "start recording", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "start recording", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "profiler.MODE_RECORD"
+    }, 
+    {
+      "replaces": "", 
+      "description": "show full profiler ui", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "show full profiler ui", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "profiler.VIEW_MODE_FULL"
+    }, 
+    {
+      "replaces": "", 
+      "description": "show mimimal profiler ui", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "show mimimal profiler ui", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "profiler.VIEW_MODE_MINIMIZED"
     }
   ]
 }

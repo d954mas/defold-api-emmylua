@@ -1,156 +1,226 @@
 {
   "info": {
-    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/dstrings.h&gt;</span></p>\n<p>String functions.</p>", 
+    "group": "DEFOLD SDK", 
+    "description": "SDK Defold String Utils API documentation", 
     "namespace": "dmStringFunc", 
-    "name": "DStrings", 
-    "brief": "<p>SDK Defold String Utils API documentation</p>"
+    "brief": "String functions.", 
+    "file": "dmsdk/dlib/dstrings.h", 
+    "path": "engine/dlib/src/dmsdk/dlib/dstrings.h", 
+    "name": "DStrings"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Size-bounded string formating. Resulting string is guaranteed to be 0-terminated.</p>", 
+      "description": "Size-bounded string formating. Resulting string is guaranteed to be 0-terminated.", 
       "parameters": [
         {
-          "doc": "<p>Buffer to write to</p>", 
-          "name": "buffer"
+          "doc": "Buffer to write to", 
+          "name": "buffer", 
+          "types": [
+            ""
+          ]
         }, 
         {
-          "doc": "<p>Size of the buffer</p>", 
-          "name": "count"
+          "doc": "Size of the buffer", 
+          "name": "count", 
+          "types": [
+            ""
+          ]
         }, 
         {
-          "doc": "<p>String format</p>", 
-          "name": "format"
+          "doc": "String format", 
+          "name": "format", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p>of the resulting string (excl terminating 0) if it fits, -1 otherwise</p>", 
-          "name": "Size"
+          "doc": "of the resulting string (excl terminating 0) if it fits, -1 otherwise", 
+          "name": "Size", 
+          "types": [
+            ""
+          ]
         }
       ], 
-      "brief": "<p>Size-bounded string formating.</p>", 
+      "notes": [], 
+      "brief": "Size-bounded string formating.", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kt\">char</span> <span class=\"n\">path</span><span class=\"p\">[</span><span class=\"mi\">64</span><span class=\"p\">];</span>\n<span class=\"n\">dmSnPrintf</span><span class=\"p\">(</span><span class=\"n\">path</span><span class=\"p\">,</span> <span class=\"mi\">64</span><span class=\"p\">,</span> <span class=\"n\">PATH_FORMAT</span><span class=\"p\">,</span> <span class=\"n\">filename</span><span class=\"p\">);</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmSnPrintf"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Case-insensitive string comparison</p>", 
+      "description": "Tokenize strings. Equivalent to BSD strsep_r. Thread-save version of strtok.", 
       "parameters": [
         {
-          "doc": "<p>First string to compare</p>", 
-          "name": "s1"
+          "doc": "Pointer to string. For the first call string is the string to tokenize. Subsequent should pass NULL.", 
+          "name": "string", 
+          "types": [
+            ""
+          ]
         }, 
         {
-          "doc": "<p>Second string to compare</p>", 
-          "name": "s2"
+          "doc": "Delimiter string", 
+          "name": "delim", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "Internal state pointer", 
+          "name": "lasts", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p>integer greater than, equal to, or less than 0 after lexicographically comparison of s1 and s2</p>", 
-          "name": "an"
+          "doc": "call to dmStrTok() returns a pointer to a null-terminated string containing the next token. This string does not include the delimiting byte. If no more tokens are found, dmStrTok() returns NULL", 
+          "name": "Each", 
+          "types": [
+            ""
+          ]
         }
       ], 
-      "brief": "<p>Case-insensitive string comparison</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmStrCaseCmp</span><span class=\"p\">(</span><span class=\"s\">&quot;a&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;b&quot;</span><span class=\"p\">);</span> <span class=\"c1\">// &lt;0</span>\n<span class=\"n\">dmStrCaseCmp</span><span class=\"p\">(</span><span class=\"s\">&quot;b&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;a&quot;</span><span class=\"p\">);</span> <span class=\"c1\">// &gt;0</span>\n<span class=\"n\">dmStrCaseCmp</span><span class=\"p\">(</span><span class=\"s\">&quot;a&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;a&quot;</span><span class=\"p\">);</span> <span class=\"c1\">// 0</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "dmStrCaseCmp"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Tokenize strings. Equivalent to BSD strsep_r. Thread-save version of strtok.</p>", 
-      "parameters": [
-        {
-          "doc": "<p>Pointer to string. For the first call string is the string to tokenize. Subsequent should pass NULL.</p>", 
-          "name": "string"
-        }, 
-        {
-          "doc": "<p>Delimiter string</p>", 
-          "name": "delim"
-        }, 
-        {
-          "doc": "<p>Internal state pointer</p>", 
-          "name": "lasts"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p>call to dmStrTok() returns a pointer to a null-terminated string containing the next token. This string does not include the delimiting byte. If no more tokens are found, dmStrTok() returns NULL</p>", 
-          "name": "Each"
-        }
-      ], 
-      "brief": "<p>Tokenize strings.</p>", 
+      "notes": [], 
+      "brief": "Tokenize strings.", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kt\">char</span><span class=\"o\">*</span> <span class=\"n\">string</span> <span class=\"o\">=</span> <span class=\"n\">strdup</span><span class=\"p\">(</span><span class=\"s\">&quot;a b c&quot;</span><span class=\"p\">);</span>\n<span class=\"kt\">char</span><span class=\"o\">*</span> <span class=\"n\">s</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">last</span><span class=\"p\">;</span>\n<span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">dmStrTok</span><span class=\"p\">(</span><span class=\"n\">string</span><span class=\"p\">,</span> <span class=\"s\">&quot; &quot;</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">last</span><span class=\"p\">);</span> <span class=\"c1\">// a</span>\n<span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">dmStrTok</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"s\">&quot; &quot;</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">last</span><span class=\"p\">);</span> <span class=\"c1\">// b</span>\n<span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">dmStrTok</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"s\">&quot; &quot;</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">last</span><span class=\"p\">);</span> <span class=\"c1\">// c</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmStrTok"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Size-bounded string concatenation. Same as OpenBSD 2.4 <a href=\"http://www.manpagez.com/man/3/strlcat\">strlcat</a>.\nAppends src to string dst of size siz (unlike strncat, siz is the full size of dst, not space left).\nAt most siz-1 characters will be copied.  Always NUL terminates (unless siz == 0).\nReturns strlen(src); if retval &gt;= siz, truncation occurred.</p>", 
+      "description": "Size-bounded string copying. Same as OpenBSD 2.4 <a href=\"http://www.manpagez.com/man/3/strlcpy/\">strlcpy</a>.\nCopy src to string dst of size siz.  At most siz-1 characters will be copied.\nAlways NUL terminates (unless siz == 0).Returns strlen(src); if retval &gt;= siz, truncation occurred.", 
       "parameters": [
         {
-          "doc": "<p>Destination string</p>", 
-          "name": "dst"
+          "doc": "Destination string", 
+          "name": "dst", 
+          "types": [
+            ""
+          ]
         }, 
         {
-          "doc": "<p>Source string</p>", 
-          "name": "src"
+          "doc": "Source string", 
+          "name": "src", 
+          "types": [
+            ""
+          ]
         }, 
         {
-          "doc": "<p>Max size</p>", 
-          "name": "size"
+          "doc": "Max size", 
+          "name": "size", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p>length of the created string</p>", 
-          "name": "Total"
+          "doc": "length of the created string", 
+          "name": "Total", 
+          "types": [
+            ""
+          ]
         }
       ], 
-      "brief": "<p>Size-bounded string concatenation.</p>", 
+      "notes": [], 
+      "brief": "Size-bounded string copying.", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">const</span> <span class=\"kt\">char</span><span class=\"o\">*</span> <span class=\"n\">src</span> <span class=\"o\">=</span> <span class=\"s\">&quot;foo&quot;</span><span class=\"p\">;</span>\n<span class=\"kt\">char</span> <span class=\"n\">dst</span><span class=\"p\">[</span><span class=\"mi\">3</span><span class=\"p\">];</span>\n<span class=\"n\">dmStrlCpy</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">,</span> <span class=\"n\">src</span><span class=\"p\">,</span> <span class=\"k\">sizeof</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">));</span> <span class=\"c1\">// dst = &quot;fo&quot;</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmStrlCpy"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Size-bounded string concatenation. Same as OpenBSD 2.4 <a href=\"http://www.manpagez.com/man/3/strlcat\">strlcat</a>.\nAppends src to string dst of size siz (unlike strncat, siz is the full size of dst, not space left).\nAt most siz-1 characters will be copied.  Always NUL terminates (unless siz == 0).\nReturns strlen(src); if retval &gt;= siz, truncation occurred.", 
+      "parameters": [
+        {
+          "doc": "Destination string", 
+          "name": "dst", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "Source string", 
+          "name": "src", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "Max size", 
+          "name": "size", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "length of the created string", 
+          "name": "Total", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Size-bounded string concatenation.", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">const</span> <span class=\"kt\">char</span><span class=\"o\">*</span> <span class=\"n\">src</span> <span class=\"o\">=</span> <span class=\"s\">&quot;foo&quot;</span><span class=\"p\">;</span>\n<span class=\"kt\">char</span> <span class=\"n\">dst</span><span class=\"p\">[</span><span class=\"mi\">3</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"mi\">0</span> <span class=\"p\">};</span>\n<span class=\"n\">dmStrlCat</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">,</span> <span class=\"n\">src</span><span class=\"p\">,</span> <span class=\"k\">sizeof</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">));</span> <span class=\"c1\">// dst = &quot;fo&quot;</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmStrlCat"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Size-bounded string copying. Same as OpenBSD 2.4 <a href=\"http://www.manpagez.com/man/3/strlcpy/\">strlcpy</a>.\nCopy src to string dst of size siz.  At most siz-1 characters will be copied.\nAlways NUL terminates (unless siz == 0).Returns strlen(src); if retval &gt;= siz, truncation occurred.</p>", 
+      "description": "Case-insensitive string comparison", 
       "parameters": [
         {
-          "doc": "<p>Destination string</p>", 
-          "name": "dst"
+          "doc": "First string to compare", 
+          "name": "s1", 
+          "types": [
+            ""
+          ]
         }, 
         {
-          "doc": "<p>Source string</p>", 
-          "name": "src"
-        }, 
-        {
-          "doc": "<p>Max size</p>", 
-          "name": "size"
+          "doc": "Second string to compare", 
+          "name": "s2", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p>length of the created string</p>", 
-          "name": "Total"
+          "doc": "integer greater than, equal to, or less than 0 after lexicographically comparison of s1 and s2", 
+          "name": "an", 
+          "types": [
+            ""
+          ]
         }
       ], 
-      "brief": "<p>Size-bounded string copying.</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">const</span> <span class=\"kt\">char</span><span class=\"o\">*</span> <span class=\"n\">src</span> <span class=\"o\">=</span> <span class=\"s\">&quot;foo&quot;</span><span class=\"p\">;</span>\n<span class=\"kt\">char</span> <span class=\"n\">dst</span><span class=\"p\">[</span><span class=\"mi\">3</span><span class=\"p\">];</span>\n<span class=\"n\">dmStrlCpy</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">,</span> <span class=\"n\">src</span><span class=\"p\">,</span> <span class=\"k\">sizeof</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">));</span> <span class=\"c1\">// dst = &quot;fo&quot;</span>\n</pre></div>", 
+      "notes": [], 
+      "brief": "Case-insensitive string comparison", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmStrCaseCmp</span><span class=\"p\">(</span><span class=\"s\">&quot;a&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;b&quot;</span><span class=\"p\">);</span> <span class=\"c1\">// &lt;0</span>\n<span class=\"n\">dmStrCaseCmp</span><span class=\"p\">(</span><span class=\"s\">&quot;b&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;a&quot;</span><span class=\"p\">);</span> <span class=\"c1\">// &gt;0</span>\n<span class=\"n\">dmStrCaseCmp</span><span class=\"p\">(</span><span class=\"s\">&quot;a&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;a&quot;</span><span class=\"p\">);</span> <span class=\"c1\">// 0</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
-      "name": "dmStrlCpy"
+      "name": "dmStrCaseCmp"
     }
   ]
 }

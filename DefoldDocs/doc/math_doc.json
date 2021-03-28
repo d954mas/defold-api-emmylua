@@ -1,537 +1,704 @@
 {
   "info": {
     "group": "LUA STANDARD LIBS", 
-    "description": "<p>Documentation for the Lua math standard library.</p>\n<p>From <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.</p>\n<p>Copyright &copy; 2006-2012 Lua.org, PUC-Rio.</p>\n<p>Freely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.</p>", 
+    "description": "Documentation for the Lua math standard library.\nFrom <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.\nCopyright &copy; 2006-2012 Lua.org, PUC-Rio.\nFreely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.", 
     "namespace": "math", 
-    "name": "Math", 
-    "brief": "<p>Lua math standard library</p>"
+    "brief": "Lua math standard library", 
+    "file": "", 
+    "path": "", 
+    "name": "Math"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Returns the absolute value of x.</p>", 
+      "description": "Returns the absolute value of x.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>absolute value</p>", 
+      "notes": [], 
+      "brief": "absolute value", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.abs"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the arc cosine of x (in radians).</p>", 
+      "description": "Returns the arc cosine of x (in radians).", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>arc cosine</p>", 
+      "notes": [], 
+      "brief": "arc cosine", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.acos"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the arc sine of x (in radians).</p>", 
+      "description": "Returns the arc sine of x (in radians).", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>arc sine</p>", 
+      "notes": [], 
+      "brief": "arc sine", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.asin"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the arc tangent of x (in radians).</p>", 
+      "description": "Returns the arc tangent of x (in radians).", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>arc tangent</p>", 
+      "notes": [], 
+      "brief": "arc tangent", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.atan"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the arc tangent of <code>y/x</code> (in radians),\nbut uses the signs of both parameters to find the\nquadrant of the result.\n(It also handles correctly the case of x being zero.)</p>", 
+      "description": "Returns the arc tangent of <code>y/x</code> (in radians),\nbut uses the signs of both parameters to find the\nquadrant of the result.\n(It also handles correctly the case of x being zero.)", 
       "parameters": [
         {
           "doc": "", 
-          "name": "y"
+          "name": "y", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>arc tangent of v1/v2</p>", 
+      "notes": [], 
+      "brief": "arc tangent of v1/v2", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.atan2"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the smallest integer larger than or equal to x.</p>", 
+      "description": "Returns the smallest integer larger than or equal to x.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>next higher integer value</p>", 
+      "notes": [], 
+      "brief": "next higher integer value", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.ceil"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the cosine of x (assumed to be in radians).</p>", 
+      "description": "Returns the cosine of x (assumed to be in radians).", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>cosine</p>", 
+      "notes": [], 
+      "brief": "cosine", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.cos"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the hyperbolic cosine of x.</p>", 
+      "description": "Returns the hyperbolic cosine of x.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>hyperbolic cosine</p>", 
+      "notes": [], 
+      "brief": "hyperbolic cosine", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.cosh"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the angle x (given in radians) in degrees.</p>", 
+      "description": "Returns the angle x (given in radians) in degrees.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>convert from radians to degrees</p>", 
+      "notes": [], 
+      "brief": "convert from radians to degrees", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.deg"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the value e<sup>x</sup>.</p>", 
+      "description": "Returns the value e<sup>x</sup>.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>raises e to a power</p>", 
+      "notes": [], 
+      "brief": "raises e to a power", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.exp"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the largest integer smaller than or equal to x.</p>", 
+      "description": "Returns the largest integer smaller than or equal to x.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>next smaller integer value</p>", 
+      "notes": [], 
+      "brief": "next smaller integer value", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.floor"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the remainder of the division of x by y\nthat rounds the quotient towards zero.</p>", 
+      "description": "Returns the remainder of the division of x by y\nthat rounds the quotient towards zero.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "y"
+          "name": "y", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>the modulus (remainder) of doing: v1 / v2</p>", 
+      "notes": [], 
+      "brief": "the modulus (remainder) of doing: v1 / v2", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.fmod"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns m and e such that x = m2<sup>e</sup>,\ne is an integer and the absolute value of m is\nin the range [0.5, 1)\n(or zero when x is zero).</p>", 
+      "description": "Returns m and e such that x = m2<sup>e</sup>,\ne is an integer and the absolute value of m is\nin the range [0.5, 1)\n(or zero when x is zero).", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>break number into mantissa and exponent</p>", 
+      "notes": [], 
+      "brief": "break number into mantissa and exponent", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.frexp"
     }, 
     {
       "replaces": "", 
-      "description": "<p>The value HUGE_VAL,\na value larger than or equal to any other numerical value.</p>", 
+      "description": "The value HUGE_VAL,\na value larger than or equal to any other numerical value.", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>a huge value</p>", 
+      "notes": [], 
+      "brief": "a huge value", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "VARIABLE", 
       "name": "math.huge"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns m2<sup>e</sup> (e should be an integer).</p>", 
+      "description": "Returns m2<sup>e</sup> (e should be an integer).", 
       "parameters": [
         {
           "doc": "", 
-          "name": "m"
+          "name": "m", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "e"
+          "name": "e", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>compute m* 2^n</p>", 
+      "notes": [], 
+      "brief": "compute m* 2^n", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.ldexp"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the natural logarithm of x.</p>", 
+      "description": "Returns the natural logarithm of x.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>natural log</p>", 
+      "notes": [], 
+      "brief": "natural log", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.log"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the base-10 logarithm of x.</p>", 
+      "description": "Returns the base-10 logarithm of x.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>log to the base 10</p>", 
+      "notes": [], 
+      "brief": "log to the base 10", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.log10"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the maximum value among its arguments.</p>", 
+      "description": "Returns the maximum value among its arguments.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "..."
+          "name": "...", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>the highest of one or more numbers</p>", 
+      "notes": [], 
+      "brief": "the highest of one or more numbers", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.max"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the minimum value among its arguments.</p>", 
+      "description": "Returns the minimum value among its arguments.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "..."
+          "name": "...", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>the lowest of one or more numbers</p>", 
+      "notes": [], 
+      "brief": "the lowest of one or more numbers", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.min"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns two numbers,\nthe integral part of x and the fractional part of x.</p>", 
+      "description": "Returns two numbers,\nthe integral part of x and the fractional part of x.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>returns the integral and fractional part of its argument</p>", 
+      "notes": [], 
+      "brief": "returns the integral and fractional part of its argument", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.modf"
     }, 
     {
       "replaces": "", 
-      "description": "<p>The value of PI.</p>", 
+      "description": "The value of PI.", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>the value of pi</p>", 
+      "notes": [], 
+      "brief": "the value of pi", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "VARIABLE", 
       "name": "math.pi"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns x<sup>y</sup>.\n(You can also use the expression <code>x^y</code> to compute this value.)</p>", 
+      "description": "Returns x<sup>y</sup>.\n(You can also use the expression <code>x^y</code> to compute this value.)", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "y"
+          "name": "y", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>raise a number to a power</p>", 
+      "notes": [], 
+      "brief": "raise a number to a power", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.pow"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the angle x (given in degrees) in radians.</p>", 
+      "description": "Returns the angle x (given in degrees) in radians.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>convert degrees to radians</p>", 
+      "notes": [], 
+      "brief": "convert degrees to radians", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.rad"
     }, 
     {
       "replaces": "", 
-      "description": "<p>This function is an interface to the simple\npseudo-random generator function rand provided by ANSI C.\n(No guarantees can be given for its statistical properties.)</p>\n<p>When called without arguments,\nreturns a uniform pseudo-random real number\nin the range [0,1).\nWhen called with an integer number m,\nmath.random returns\na uniform pseudo-random integer in the range [1, m].\nWhen called with two integer numbers m and n,\nmath.random returns a uniform pseudo-random\ninteger in the range [m, n].</p>", 
+      "description": "This function is an interface to the simple\npseudo-random generator function rand provided by ANSI C.\n(No guarantees can be given for its statistical properties.)\nWhen called without arguments,\nreturns a uniform pseudo-random real number\nin the range [0,1).\nWhen called with an integer number m,\nmath.random returns\na uniform pseudo-random integer in the range [1, m].\nWhen called with two integer numbers m and n,\nmath.random returns a uniform pseudo-random\ninteger in the range [m, n].", 
       "parameters": [
         {
           "doc": "", 
-          "name": "[m]"
+          "name": "[m]", 
+          "types": [
+            ""
+          ]
         }, 
         {
           "doc": "", 
-          "name": "[n]"
+          "name": "[n]", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>generate a random number</p>", 
+      "notes": [], 
+      "brief": "generate a random number", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.random"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Sets x as the \"seed\"\nfor the pseudo-random generator:\nequal seeds produce equal sequences of numbers.</p>", 
+      "description": "Sets x as the \"seed\"\nfor the pseudo-random generator:\nequal seeds produce equal sequences of numbers.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>seeds the random number generator</p>", 
+      "notes": [], 
+      "brief": "seeds the random number generator", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.randomseed"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the sine of x (assumed to be in radians).</p>", 
+      "description": "Returns the sine of x (assumed to be in radians).", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>sine</p>", 
+      "notes": [], 
+      "brief": "sine", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.sin"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the hyperbolic sine of x.</p>", 
+      "description": "Returns the hyperbolic sine of x.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>hyperbolic sine</p>", 
+      "notes": [], 
+      "brief": "hyperbolic sine", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.sinh"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the square root of x.\n(You can also use the expression <code>x^0.5</code> to compute this value.)</p>", 
+      "description": "Returns the square root of x.\n(You can also use the expression <code>x^0.5</code> to compute this value.)", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>square root</p>", 
+      "notes": [], 
+      "brief": "square root", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.sqrt"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the tangent of x (assumed to be in radians).</p>", 
+      "description": "Returns the tangent of x (assumed to be in radians).", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>tangent</p>", 
+      "notes": [], 
+      "brief": "tangent", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.tan"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Returns the hyperbolic tangent of x.</p>", 
+      "description": "Returns the hyperbolic tangent of x.", 
       "parameters": [
         {
           "doc": "", 
-          "name": "x"
+          "name": "x", 
+          "types": [
+            ""
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>hyperbolic tangent</p>", 
+      "notes": [], 
+      "brief": "hyperbolic tangent", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "math.tanh"
     }

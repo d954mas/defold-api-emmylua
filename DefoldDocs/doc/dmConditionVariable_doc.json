@@ -1,112 +1,144 @@
 {
   "info": {
     "group": "DEFOLD SDK", 
-    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/condition_variable.h&gt;</span></p>\n<p>API for platform independent mutex synchronization primitive.</p>", 
+    "description": "API for platform independent mutex synchronization primitive.", 
     "namespace": "dmConditionVariable", 
-    "name": "Condition Variable", 
-    "brief": "<p>SDK Condition Variable API documentation</p>"
+    "brief": "SDK Condition Variable API documentation", 
+    "file": "dmsdk/dlib/condition_variable.h", 
+    "path": "engine/dlib/src/dmsdk/dlib/condition_variable.h", 
+    "name": "Condition Variable"
   }, 
   "elements": [
-    {
-      "replaces": "", 
-      "description": "<p>Broadcast condition variable, effectively unblocks all of the waithing threads blocked\nby the condition variable.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">dmConditionVariable::HConditionVariable</span> ConditionVariable handle.</p>", 
-          "name": "condition"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>broadcast condition variable</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "dmConditionVariable::Broadcast"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Deletes a HConditionVariable.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">dmConditionVariable::HConditionVariable</span> ConditionVariable handle to delete.</p>", 
-          "name": "mutex"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>delete condition variable</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "dmConditionVariable::Delete"
-    }, 
     {
       "replaces": "", 
       "description": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">typedef</span> <span class=\"k\">struct</span> <span class=\"n\">ConditionVariable</span><span class=\"o\">*</span> <span class=\"n\">HConditionVariable</span><span class=\"p\">;</span>\n</pre></div>", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>HConditionVariable type definition</p>", 
+      "notes": [], 
+      "brief": "HConditionVariable type definition", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "TYPEDEF", 
       "name": "dmConditionVariable::HConditionVariable"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Create a new HConditionVariable</p>", 
+      "description": "Create a new HConditionVariable", 
       "parameters": [], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">dmConditionVariable::HConditionVariable</span> A new ConditionVariable handle.</p>", 
-          "name": "condition_variable"
+          "doc": "A new ConditionVariable handle.", 
+          "name": "condition_variable", 
+          "types": [
+            "dmConditionVariable::HConditionVariable"
+          ]
         }
       ], 
-      "brief": "<p>create condition variable</p>", 
+      "notes": [], 
+      "brief": "create condition variable", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmConditionVariable::New"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Signal condition variable, effectively unblocks at least one of the waithing threads blocked\nby the condition variable.</p>", 
+      "description": "Deletes a HConditionVariable.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">dmConditionVariable::HConditionVariable</span> ConditionVariable handle.</p>", 
-          "name": "condition"
+          "doc": "ConditionVariable handle to delete.", 
+          "name": "mutex", 
+          "types": [
+            "dmConditionVariable::HConditionVariable"
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>signal condition variable</p>", 
+      "notes": [], 
+      "brief": "delete condition variable", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmConditionVariable::Delete"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Wait for condition variable. This is a blocking function, and should be called with\nthe mutex being locked.", 
+      "parameters": [
+        {
+          "doc": "ConditionVariable handle.", 
+          "name": "condition", 
+          "types": [
+            "dmConditionVariable::HConditionVariable"
+          ]
+        }, 
+        {
+          "doc": "Mutex handle.", 
+          "name": "mutex", 
+          "types": [
+            "dmMutex::HMutex"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "wait for condition variable", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmConditionVariable::Wait"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Signal condition variable, effectively unblocks at least one of the waithing threads blocked\nby the condition variable.", 
+      "parameters": [
+        {
+          "doc": "ConditionVariable handle.", 
+          "name": "condition", 
+          "types": [
+            "dmConditionVariable::HConditionVariable"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "signal condition variable", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmConditionVariable::Signal"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Wait for condition variable. This is a blocking function, and should be called with\nthe mutex being locked.</p>", 
+      "description": "Broadcast condition variable, effectively unblocks all of the waithing threads blocked\nby the condition variable.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">dmConditionVariable::HConditionVariable</span> ConditionVariable handle.</p>", 
-          "name": "condition"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">dmMutex::HMutex</span> Mutex handle.</p>", 
-          "name": "mutex"
+          "doc": "ConditionVariable handle.", 
+          "name": "condition", 
+          "types": [
+            "dmConditionVariable::HConditionVariable"
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>wait for condition variable</p>", 
+      "notes": [], 
+      "brief": "broadcast condition variable", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
-      "name": "dmConditionVariable::Wait"
+      "name": "dmConditionVariable::Broadcast"
     }
   ]
 }

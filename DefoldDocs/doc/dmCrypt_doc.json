@@ -1,0 +1,258 @@
+{
+  "info": {
+    "description": "<span class=\"file\">&lt;dmsdk/dlib/crypt.h&gt;</span>\nVarious hash and encode/decode functions.", 
+    "namespace": "dmCrypt", 
+    "brief": "SDK Crypt API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Crypt"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "Hash buffer using SHA1", 
+      "parameters": [
+        {
+          "doc": "<div class=\"codehilite\"><pre><span></span>  The source data to hash\n</pre></div>", 
+          "name": "buf", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "The length of source data in bytes", 
+          "name": "buflen", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "The destination buffer (20 bytes)", 
+          "name": "digest", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Hash buffer using SHA1", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmCrypt::HashSha1"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Hash buffer using SHA256", 
+      "parameters": [
+        {
+          "doc": "<div class=\"codehilite\"><pre><span></span>  The source data to hash\n</pre></div>", 
+          "name": "buf", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "The length of source data in bytes", 
+          "name": "buflen", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "The destination buffer (32 bytes)", 
+          "name": "digest", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Hash buffer using SHA256", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmCrypt::HashSha256"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Hash buffer using SHA512", 
+      "parameters": [
+        {
+          "doc": "<div class=\"codehilite\"><pre><span></span>  The source data to hash\n</pre></div>", 
+          "name": "buf", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "The length of source data in bytes", 
+          "name": "buflen", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "The destination buffer (64 bytes)", 
+          "name": "digest", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Hash buffer using SHA512", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmCrypt::HashSha512"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Hash buffer using MD5", 
+      "parameters": [
+        {
+          "doc": "<div class=\"codehilite\"><pre><span></span>  The source data to hash\n</pre></div>", 
+          "name": "buf", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "The length of source data in bytes", 
+          "name": "buflen", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "The destination buffer (16 bytes)", 
+          "name": "digest", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Hash buffer using MD5", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmCrypt::HashMd5"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Base64 encode a buffer", 
+      "parameters": [
+        {
+          "doc": "<div class=\"codehilite\"><pre><span></span>          The source data to encode\n</pre></div>", 
+          "name": "src", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "<div class=\"codehilite\"><pre><span></span>      The length of source data in bytes\n</pre></div>", 
+          "name": "src_len", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "<div class=\"codehilite\"><pre><span></span>          The destination buffer\n</pre></div>", 
+          "name": "dst", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "In: The length of the destination in bytes. Out: The length of the encoded string.", 
+          "name": "dst_len[in,out]", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "if the encoding went ok", 
+          "name": "true", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Base64 encode a buffer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmCrypt::Base64Encode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Base64 decode a buffer", 
+      "parameters": [
+        {
+          "doc": "<div class=\"codehilite\"><pre><span></span>          The source data to encode\n</pre></div>", 
+          "name": "src", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "<div class=\"codehilite\"><pre><span></span>      The length of source data in bytes\n</pre></div>", 
+          "name": "src_len", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "<div class=\"codehilite\"><pre><span></span>          The destination buffer\n</pre></div>", 
+          "name": "dst", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "In: The length of the destination in bytes. Out: The length of the decoded string.", 
+          "name": "dst_len[in,out]", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "if the decoding went ok", 
+          "name": "true", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Base64 decode a buffer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmCrypt::Base64Decode"
+    }
+  ]
+}

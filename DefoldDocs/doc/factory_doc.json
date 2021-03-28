@@ -1,145 +1,203 @@
 {
   "info": {
     "group": "COMPONENTS", 
-    "description": "<p>Functions for controlling factory components which are used to\ndynamically spawn game objects into the runtime.</p>", 
+    "description": "Functions for controlling factory components which are used to\ndynamically spawn game objects into the runtime.", 
     "namespace": "factory", 
-    "name": "Factory", 
-    "brief": "<p>Factory API documentation</p>"
+    "brief": "Factory API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Factory"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>loaded</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "factory.STATUS_LOADED"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>loading</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "factory.STATUS_LOADING"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>unloaded</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "factory.STATUS_UNLOADED"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The URL identifies which factory should create the game object.\nIf the game object is created inside of the frame (e.g. from an update callback), the game object will be created instantly, but none of its component will be updated in the same frame.</p>\n<p>Properties defined in scripts in the created game object can be overridden through the properties-parameter below.\nSee go.property for more information on script properties.</p>\n<p><span class=\"icon-attention\"></span> Calling <a href=\"/ref/factory#factory.create\">factory.create</a> on a factory that is marked as dynamic without having loaded resources\nusing <a href=\"/ref/factory#factory.load\">factory.load</a> will synchronously load and create resources which may affect application performance.</p>", 
+      "description": "This returns status of the factory.\nCalling this function when the factory is not marked as dynamic loading always returns\nfactory.STATUS_LOADED.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the factory that should create a game object.</p>", 
-          "name": "url"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3</span> the position of the new game object, the position of the game object calling <code>factory.create()</code> is used by default, or if the value is <code>nil</code>.</p>", 
-          "name": "[position]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> the rotation of the new game object, the rotation of the game object calling <code>factory.create()</code> is used by default, or if the value is <code>nil</code>.</p>", 
-          "name": "[rotation]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">table</span> the properties defined in a script attached to the new game object.</p>", 
-          "name": "[properties]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number | vector3</span> the scale of the new game object (must be greater than 0), the scale of the game object containing the factory is used by default, or if the value is <code>nil</code></p>", 
-          "name": "[scale]"
+          "doc": "the factory component to get status from", 
+          "name": "[url]", 
+          "types": [
+            "string", 
+            "hash", 
+            "url"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">hash</span> the global id of the spawned game object</p>", 
-          "name": "id"
+          "doc": "status of the factory component\n<ul>\n<li><code>factory.STATUS_UNLOADED</code></li>\n<li><code>factory.STATUS_LOADING</code></li>\n<li><code>factory.STATUS_LOADED</code></li>\n</ul>", 
+          "name": "status", 
+          "types": [
+            "constant"
+          ]
         }
       ], 
-      "brief": "<p>make a factory create a new game object</p>", 
-      "examples": "<p>How to create a new game object:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- create a new game object and provide property values</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_created_object</span> <span class=\"o\">=</span> <span class=\"n\">factory</span><span class=\"p\">.</span><span class=\"n\">create</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#factory&quot;</span><span class=\"p\">,</span> <span class=\"kc\">nil</span><span class=\"p\">,</span> <span class=\"kc\">nil</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">my_value</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">})</span>\n    <span class=\"c1\">-- communicate with the object</span>\n    <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_created_object</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">hello&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>And then let the new game object have a script attached:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_value&quot;</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- do something with self.my_value which is now one</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "factory.create"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>This returns status of the factory.</p>\n<p>Calling this function when the factory is not marked as dynamic loading always returns\nfactory.STATUS_LOADED.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the factory component to get status from</p>", 
-          "name": "[url]"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">constant</span> status of the factory component</p>\n<ul>\n<li><code>factory.STATUS_UNLOADED</code></li>\n<li><code>factory.STATUS_LOADING</code></li>\n<li><code>factory.STATUS_LOADED</code></li>\n</ul>", 
-          "name": "status"
-        }
-      ], 
-      "brief": "<p>Get factory status</p>", 
+      "notes": [], 
+      "brief": "Get factory status", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "factory.get_status"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Resources are referenced by the factory component until the existing (parent) collection is destroyed or factory.unload is called.</p>\n<p>Calling this function when the factory is not marked as dynamic loading does nothing.</p>", 
+      "description": "unloaded", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "unloaded", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "factory.STATUS_UNLOADED"
+    }, 
+    {
+      "replaces": "", 
+      "description": "loading", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "loading", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "factory.STATUS_LOADING"
+    }, 
+    {
+      "replaces": "", 
+      "description": "loaded", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "loaded", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "factory.STATUS_LOADED"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This decreases the reference count for each resource loaded with factory.load. If reference is zero, the resource is destroyed.\nCalling this function when the factory is not marked as dynamic loading does nothing.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the factory component to load</p>", 
-          "name": "[url]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">function(self, url, result))</span> function to call when resources are loaded.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>url</code></dt>\n<dd><span class=\"type\">url</span> url of the factory component</dd>\n<dt><code>result</code></dt>\n<dd><span class=\"type\">boolean</span> True if resources were loaded successfully</dd>\n</dl>", 
-          "name": "[complete_function]"
+          "doc": "the factory component to unload", 
+          "name": "[url]", 
+          "types": [
+            "string", 
+            "hash", 
+            "url"
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>Load resources of a factory prototype.</p>", 
-      "examples": "<p>How to load resources of a factory prototype.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">factory</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#factory&quot;</span><span class=\"p\">,</span> <span class=\"k\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"k\">end</span><span class=\"p\">)</span>\n</pre></div>", 
+      "notes": [], 
+      "brief": "Unload resources previously loaded using factory.load", 
+      "examples": "How to unload resources of a factory prototype loaded with factory.load\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">factory</span><span class=\"p\">.</span><span class=\"n\">unload</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#factory&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "factory.unload"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Resources are referenced by the factory component until the existing (parent) collection is destroyed or factory.unload is called.\nCalling this function when the factory is not marked as dynamic loading does nothing.", 
+      "parameters": [
+        {
+          "doc": "the factory component to load", 
+          "name": "[url]", 
+          "types": [
+            "string", 
+            "hash", 
+            "url"
+          ]
+        }, 
+        {
+          "doc": "function to call when resources are loaded.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>url</code></dt>\n<dd><span class=\"type\">url</span> url of the factory component</dd>\n<dt><code>result</code></dt>\n<dd><span class=\"type\">boolean</span> True if resources were loaded successfully</dd>\n</dl>", 
+          "name": "[complete_function]", 
+          "types": [
+            "function(self, url, result))"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Load resources of a factory prototype.", 
+      "examples": "How to load resources of a factory prototype.\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">factory</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#factory&quot;</span><span class=\"p\">,</span> <span class=\"k\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"k\">end</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "factory.load"
     }, 
     {
       "replaces": "", 
-      "description": "<p>This decreases the reference count for each resource loaded with factory.load. If reference is zero, the resource is destroyed.</p>\n<p>Calling this function when the factory is not marked as dynamic loading does nothing.</p>", 
+      "description": "The URL identifies which factory should create the game object.\nIf the game object is created inside of the frame (e.g. from an update callback), the game object will be created instantly, but none of its component will be updated in the same frame.\nProperties defined in scripts in the created game object can be overridden through the properties-parameter below.\nSee go.property for more information on script properties.\n<span class=\"icon-attention\"></span> Calling <a href=\"/ref/factory#factory.create\">factory.create</a> on a factory that is marked as dynamic without having loaded resources\nusing <a href=\"/ref/factory#factory.load\">factory.load</a> will synchronously load and create resources which may affect application performance.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the factory component to unload</p>", 
-          "name": "[url]"
+          "doc": "the factory that should create a game object.", 
+          "name": "url", 
+          "types": [
+            "string", 
+            "hash", 
+            "url"
+          ]
+        }, 
+        {
+          "doc": "the position of the new game object, the position of the game object calling <code>factory.create()</code> is used by default, or if the value is <code>nil</code>.", 
+          "name": "[position]", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "the rotation of the new game object, the rotation of the game object calling <code>factory.create()</code> is used by default, or if the value is <code>nil</code>.", 
+          "name": "[rotation]", 
+          "types": [
+            "quaternion"
+          ]
+        }, 
+        {
+          "doc": "the properties defined in a script attached to the new game object.", 
+          "name": "[properties]", 
+          "types": [
+            "table"
+          ]
+        }, 
+        {
+          "doc": "the scale of the new game object (must be greater than 0), the scale of the game object containing the factory is used by default, or if the value is <code>nil</code>", 
+          "name": "[scale]", 
+          "types": [
+            "number", 
+            "vector3"
+          ]
         }
       ], 
-      "returnvalues": [], 
-      "brief": "<p>Unload resources previously loaded using factory.load</p>", 
-      "examples": "<p>How to unload resources of a factory prototype loaded with factory.load</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">factory</span><span class=\"p\">.</span><span class=\"n\">unload</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#factory&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
+      "returnvalues": [
+        {
+          "doc": "the global id of the spawned game object", 
+          "name": "id", 
+          "types": [
+            "hash"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "make a factory create a new game object", 
+      "examples": "How to create a new game object:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- create a new game object and provide property values</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_created_object</span> <span class=\"o\">=</span> <span class=\"n\">factory</span><span class=\"p\">.</span><span class=\"n\">create</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#factory&quot;</span><span class=\"p\">,</span> <span class=\"kc\">nil</span><span class=\"p\">,</span> <span class=\"kc\">nil</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">my_value</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">})</span>\n    <span class=\"c1\">-- communicate with the object</span>\n    <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_created_object</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">hello&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\nAnd then let the new game object have a script attached:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_value&quot;</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- do something with self.my_value which is now one</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
-      "name": "factory.unload"
+      "name": "factory.create"
     }
   ]
 }

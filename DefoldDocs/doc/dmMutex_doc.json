@@ -1,130 +1,167 @@
 {
   "info": {
     "group": "DEFOLD SDK", 
-    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/mutex.h&gt;</span></p>\n<p>API for platform independent mutex synchronization primitive.</p>", 
+    "description": "API for platform independent mutex synchronization primitive.", 
     "namespace": "dmMutex", 
-    "name": "Mutex", 
-    "brief": "<p>SDK Mutex API documentation</p>"
+    "brief": "SDK Mutex API documentation", 
+    "file": "dmsdk/dlib/mutex.h", 
+    "path": "engine/dlib/src/dmsdk/dlib/mutex.h", 
+    "name": "Mutex"
   }, 
   "elements": [
-    {
-      "replaces": "", 
-      "description": "<p>Will lock a Mutex and automatically unlock it at the end of the scope.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">dmMutex::HMutex</span> Mutex handle to lock.</p>", 
-          "name": "mutex"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>macro for scope lifetime Mutex locking</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "MACRO", 
-      "name": "DM_MUTEX_SCOPED_LOCK"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Deletes a HMutex.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">dmMutex::HMutex</span> Mutex handle to delete.</p>", 
-          "name": "mutex"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>delete Mutex.</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "dmMutex::Delete"
-    }, 
     {
       "replaces": "", 
       "description": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">typedef</span> <span class=\"k\">struct</span> <span class=\"n\">Mutex</span><span class=\"o\">*</span> <span class=\"n\">HMutex</span><span class=\"p\">;</span>\n</pre></div>", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>HMutex type definition</p>", 
+      "notes": [], 
+      "brief": "HMutex type definition", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "TYPEDEF", 
       "name": "dmMutex::HMutex"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Lock a HMutex, will block until mutex is unlocked if already locked elsewhere.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">dmMutex::HMutex</span> Mutex handle to lock.</p>", 
-          "name": "mutex"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>lock Mutex.</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "dmMutex::Lock"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Creates a new HMutex.</p>", 
+      "description": "Creates a new HMutex.", 
       "parameters": [], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">dmMutex::HMutex</span> A new Mutex handle.</p>", 
-          "name": "mutex"
+          "doc": "A new Mutex handle.", 
+          "name": "mutex", 
+          "types": [
+            "dmMutex::HMutex"
+          ]
         }
       ], 
-      "brief": "<p>create Mutex</p>", 
+      "notes": [], 
+      "brief": "create Mutex", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmMutex::New"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Tries to lock a HMutex, if mutex is already locked it will return false and\ncontinue without locking the mutex.</p>", 
+      "description": "Deletes a HMutex.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">dmMutex::HMutex</span> Mutex handle to lock.</p>", 
-          "name": "mutex"
+          "doc": "Mutex handle to delete.", 
+          "name": "mutex", 
+          "types": [
+            "dmMutex::HMutex"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "delete Mutex.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmMutex::Delete"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Lock a HMutex, will block until mutex is unlocked if already locked elsewhere.", 
+      "parameters": [
+        {
+          "doc": "Mutex handle to lock.", 
+          "name": "mutex", 
+          "types": [
+            "dmMutex::HMutex"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "lock Mutex.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmMutex::Lock"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Tries to lock a HMutex, if mutex is already locked it will return false and\ncontinue without locking the mutex.", 
+      "parameters": [
+        {
+          "doc": "Mutex handle to lock.", 
+          "name": "mutex", 
+          "types": [
+            "dmMutex::HMutex"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">bool</span> True if mutex was successfully locked, false otherwise.</p>", 
-          "name": "result"
+          "doc": "True if mutex was successfully locked, false otherwise.", 
+          "name": "result", 
+          "types": [
+            "bool"
+          ]
         }
       ], 
-      "brief": "<p>non-blocking lock of Mutex.</p>", 
+      "notes": [], 
+      "brief": "non-blocking lock of Mutex.", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmMutex::TryLock"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Unlock a HMutex.</p>", 
+      "description": "Unlock a HMutex.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">dmMutex::HMutex</span> Mutex handle to unlock.</p>", 
-          "name": "mutex"
+          "doc": "Mutex handle to unlock.", 
+          "name": "mutex", 
+          "types": [
+            "dmMutex::HMutex"
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>unlock Mutex.</p>", 
+      "notes": [], 
+      "brief": "unlock Mutex.", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmMutex::Unlock"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Will lock a Mutex and automatically unlock it at the end of the scope.", 
+      "parameters": [
+        {
+          "doc": "Mutex handle to lock.", 
+          "name": "mutex", 
+          "types": [
+            "dmMutex::HMutex"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "macro for scope lifetime Mutex locking", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DM_MUTEX_SCOPED_LOCK"
     }
   ]
 }

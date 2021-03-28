@@ -1,71 +1,161 @@
 {
   "info": {
     "group": "DEFOLD SDK", 
-    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/hash.h&gt;</span></p>\n<p>Hash functions.</p>", 
+    "description": "Hash functions.", 
     "namespace": "dmHash", 
-    "name": "Hash", 
-    "brief": "<p>SDK Hash API documentation</p>"
+    "brief": "SDK Hash API documentation", 
+    "file": "dmsdk/dlib/hash.h", 
+    "path": "engine/dlib/src/dmsdk/dlib/hash.h", 
+    "name": "Hash"
   }, 
   "elements": [
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">const void*</span> Buffer</p>", 
-          "name": "buffer"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">uint32_t</span> Length of buffer</p>", 
-          "name": "buffer_len"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">uint64_t</span> hash value</p>", 
-          "name": "hash"
-        }
-      ], 
-      "brief": "<p>calculate 64-bit hash value from buffer</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "dmHashBuffer64"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">const char*</span> Null terminated string</p>", 
-          "name": "string"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">uint64_t</span> hash value</p>", 
-          "name": "hash"
-        }
-      ], 
-      "brief": "<p>calculate 64-bit hash value from string</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "dmHashString64"
-    }, 
     {
       "replaces": "", 
       "description": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">typedef</span> <span class=\"kt\">uint64_t</span> <span class=\"n\">dmhash_t</span>\n</pre></div>", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>dmhash_t type definition</p>", 
+      "notes": [], 
+      "brief": "dmhash_t type definition", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "TYPEDEF", 
       "name": "dmhash_t"
+    }, 
+    {
+      "replaces": "", 
+      "description": "calculate 64-bit hash value from buffer", 
+      "parameters": [
+        {
+          "doc": "Buffer", 
+          "name": "buffer", 
+          "types": [
+            "const void*"
+          ]
+        }, 
+        {
+          "doc": "Length of buffer", 
+          "name": "buffer_len", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "hash value", 
+          "name": "hash", 
+          "types": [
+            "uint64_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "calculate 64-bit hash value from buffer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashBuffer64"
+    }, 
+    {
+      "replaces": "", 
+      "description": "calculate 64-bit hash value from string", 
+      "parameters": [
+        {
+          "doc": "Null terminated string", 
+          "name": "string", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "hash value", 
+          "name": "hash", 
+          "types": [
+            "uint64_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "calculate 64-bit hash value from string", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashString64"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the original string used to produce a hash.\nAlways returns a null terminated string. Returns \"<unknown>\" if the original string wasn't found.", 
+      "parameters": [
+        {
+          "doc": "hash value", 
+          "name": "hash", 
+          "types": [
+            "uint64_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Original string value", 
+          "name": "", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get string value from hash", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashReverseSafe64"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Reverse hash lookup. Maps hash to original data. It is guaranteed that the returned\nbuffer is null-terminated. If the buffer contains a valid c-string\nit can safely be used in printf and friends.", 
+      "parameters": [
+        {
+          "doc": "hash to lookup", 
+          "name": "hash", 
+          "types": [
+            "uint64_t"
+          ]
+        }, 
+        {
+          "doc": "original data length. Optional argument and NULL-pointer is accepted.", 
+          "name": "length", 
+          "types": [
+            "uint32_t*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "pointer to buffer. 0 if no reverse exists or if reverse lookup is disabled", 
+          "name": "", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get string value from hash", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashReverseSafe64"
     }
   ]
 }

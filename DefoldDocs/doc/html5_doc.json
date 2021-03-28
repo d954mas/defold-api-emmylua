@@ -1,31 +1,41 @@
 {
   "info": {
     "group": "SCRIPT", 
-    "description": "<p>HTML5 platform specific functions.</p>\n<p><span class=\"icon-html5\"></span> The following functions are only available on HTML5 builds, the <code>html5.*</code> Lua namespace will not be available on other platforms.</p>", 
+    "description": "HTML5 platform specific functions.\n<span class=\"icon-html5\"></span> The following functions are only available on HTML5 builds, the <code>html5.*</code> Lua namespace will not be available on other platforms.", 
     "namespace": "html5", 
-    "name": "HTML5", 
-    "brief": "<p>HTML5 API documentation</p>"
+    "brief": "HTML5 API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "HTML5"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Executes the supplied string as JavaScript inside the browser.\nA call to this function is blocking, the result is returned as-is, as a string.\n(Internally this will execute the string using the <code>eval()</code> JavaScript function.)</p>", 
+      "description": "Executes the supplied string as JavaScript inside the browser.\nA call to this function is blocking, the result is returned as-is, as a string.\n(Internally this will execute the string using the <code>eval()</code> JavaScript function.)", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string</span> Javascript code to run</p>", 
-          "name": "code"
+          "doc": "Javascript code to run", 
+          "name": "code", 
+          "types": [
+            "string"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">string</span> result as string</p>", 
-          "name": "result"
+          "doc": "result as string", 
+          "name": "result", 
+          "types": [
+            "string"
+          ]
         }
       ], 
-      "brief": "<p>run JavaScript code, in the browser, from Lua</p>", 
+      "notes": [], 
+      "brief": "run JavaScript code, in the browser, from Lua", 
       "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">res</span> <span class=\"o\">=</span> <span class=\"n\">html5</span><span class=\"p\">.</span><span class=\"n\">run</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">10 + 20&quot;</span><span class=\"p\">)</span> <span class=\"c1\">-- returns the string &quot;30&quot;</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">res</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">res_num</span> <span class=\"o\">=</span> <span class=\"nb\">tonumber</span><span class=\"p\">(</span><span class=\"n\">res</span><span class=\"p\">)</span> <span class=\"c1\">-- convert to number</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">res_num</span> <span class=\"o\">-</span> <span class=\"mi\">20</span><span class=\"p\">)</span> <span class=\"c1\">-- prints 10</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "html5.run"
     }

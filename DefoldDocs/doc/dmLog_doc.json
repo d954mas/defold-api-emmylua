@@ -1,137 +1,249 @@
 {
   "info": {
     "group": "DEFOLD SDK", 
-    "description": "<p><span class=\"file\">&lt;dmsdk/dlib/log.h&gt;</span></p>\n<p>Logging functions.\nIf DLIB_LOG_DOMAIN is defined the value of the defined is printed after severity.\nOtherwise DEFAULT will be printed.\n<br/>Log functions will be omitted (NOP) for release builds.<br/></p>\n<div class=\"codehilite\"><pre><span></span><span class=\"cp\">#define DLIB_LOG_DOMAIN &quot;MyOwnDomain&quot;</span>\n<span class=\"cp\">#include</span> <span class=\"cpf\">&lt;dmsdk/dlib/log.h&gt;</span><span class=\"cp\"></span>\n</pre></div>", 
+    "description": "Logging functions.", 
     "namespace": "dmLog", 
-    "name": "Log", 
-    "brief": "<p>SDK Log API documentation</p>"
+    "brief": "logging functions", 
+    "file": "dmsdk/dlib/log.h", 
+    "path": "engine/dlib/src/dmsdk/dlib/log.h", 
+    "name": "Log"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Debug messages are temporary log instances used when debugging a certain behavior\nUse dmLogOnceDebug for one-shot logging</p>", 
+      "description": "If DLIB_LOG_DOMAIN is defined the value of the defined is printed after severity.\nOtherwise DEFAULT will be printed.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "macro for debug category logging", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"cp\">#define DLIB_LOG_DOMAIN &quot;MyOwnDomain&quot;</span>\n<span class=\"cp\">#include</span> <span class=\"cpf\">&lt;dmsdk/dlib/log.h&gt;</span><span class=\"cp\"></span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DLIB_LOG_DOMAIN"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Debug messages are temporary log instances used when debugging a certain behavior\nUse dmLogOnceDebug for one-shot logging", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">const char*</span> Format string</p>", 
-          "name": "format"
+          "doc": "Format string", 
+          "name": "format", 
+          "types": [
+            "const char*"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">...</span> Format string args (variable arg list)</p>", 
-          "name": "args"
+          "doc": "Format string args (variable arg list)", 
+          "name": "args", 
+          "types": [
+            "..."
+          ]
         }
       ], 
-      "returnvalues": [], 
-      "brief": "<p>macro for debug category logging</p>", 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            "void"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "log with \"debug\" severity", 
       "examples": "", 
       "members": [], 
       "error": "", 
-      "type": "MACRO", 
+      "tparams": [], 
+      "type": "FUNCTION", 
       "name": "dmLogDebug"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Error messages are used in cases where an recoverable error has occurred.\nUse dmLogOnceError for one-shot logging</p>", 
+      "description": "Debug messages are temporary log instances used when debugging a certain behavior\nUse dmLogOnceUserDebug for one-shot logging", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">const char*</span> Format string</p>", 
-          "name": "format"
+          "doc": "Format string", 
+          "name": "format", 
+          "types": [
+            "const char*"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">...</span> Format string args (variable arg list)</p>", 
-          "name": "args"
+          "doc": "Format string args (variable arg list)", 
+          "name": "args", 
+          "types": [
+            "..."
+          ]
         }
       ], 
-      "returnvalues": [], 
-      "brief": "<p>macro for error category logging</p>", 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            "void"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "log with \"user\" severity", 
       "examples": "", 
       "members": [], 
       "error": "", 
-      "type": "MACRO", 
-      "name": "dmLogError"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Fatal messages are used in cases where an unrecoverable error has occurred.\nUse dmLogOnceFatal for one-shot logging</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">const char*</span> Format string</p>", 
-          "name": "format"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">...</span> Format string args (variable arg list)</p>", 
-          "name": "args"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>macro for fatal category logging</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "MACRO", 
-      "name": "dmLogFatal"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Info messages are used to inform the developers of relevant information\nUse dmLogOnceInfo for one-shot logging</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">const char*</span> Format string</p>", 
-          "name": "format"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">...</span> Format string args (variable arg list)</p>", 
-          "name": "args"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>macro for info category logging</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "MACRO", 
-      "name": "dmLogInfo"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Debug messages are temporary log instances used when debugging a certain behavior\nUse dmLogOnceUserDebug for one-shot logging</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">const char*</span> Format string</p>", 
-          "name": "format"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">...</span> Format string args (variable arg list)</p>", 
-          "name": "args"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>macro for debug category logging</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "MACRO", 
+      "tparams": [], 
+      "type": "FUNCTION", 
       "name": "dmLogUserDebug"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Warning messages are used to inform the developers about potential problems which can cause errors.\nUse dmLogOnceWarning for one-shot logging</p>", 
+      "description": "Info messages are used to inform the developers of relevant information\nUse dmLogOnceInfo for one-shot logging", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">const char*</span> Format string</p>", 
-          "name": "format"
+          "doc": "Format string", 
+          "name": "format", 
+          "types": [
+            "const char*"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">...</span> Format string args (variable arg list)</p>", 
-          "name": "args"
+          "doc": "Format string args (variable arg list)", 
+          "name": "args", 
+          "types": [
+            "..."
+          ]
         }
       ], 
-      "returnvalues": [], 
-      "brief": "<p>macro for warning category logging</p>", 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            "void"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "log with \"info\" severity", 
       "examples": "", 
       "members": [], 
       "error": "", 
-      "type": "MACRO", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmLogInfo"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Warning messages are used to inform the developers about potential problems which can cause errors.\nUse dmLogOnceWarning for one-shot logging", 
+      "parameters": [
+        {
+          "doc": "Format string", 
+          "name": "format", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "Format string args (variable arg list)", 
+          "name": "args", 
+          "types": [
+            "..."
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            "void"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "log with \"warning\" severity", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
       "name": "dmLogWarning"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Error messages are used in cases where an recoverable error has occurred.\nUse dmLogOnceError for one-shot logging", 
+      "parameters": [
+        {
+          "doc": "Format string", 
+          "name": "format", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "Format string args (variable arg list)", 
+          "name": "args", 
+          "types": [
+            "..."
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            "void"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "log with \"error\" severity", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmLogError"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Fatal messages are used in cases where an unrecoverable error has occurred.\nUse dmLogOnceFatal for one-shot logging", 
+      "parameters": [
+        {
+          "doc": "Format string", 
+          "name": "format", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "Format string args (variable arg list)", 
+          "name": "args", 
+          "types": [
+            "..."
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            "void"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "log with \"fatal\" severity", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmLogFatal"
     }
   ]
 }

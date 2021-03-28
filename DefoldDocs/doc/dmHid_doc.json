@@ -1,0 +1,1563 @@
+{
+  "info": {
+    "group": "DEFOLD SDK", 
+    "description": "Used to add input to the engine", 
+    "namespace": "dmHid", 
+    "brief": "SDK Hid API documentation", 
+    "file": "dmsdk/hid/hid.h", 
+    "path": "engine/hid/src/dmsdk/hid/hid.h", 
+    "name": "Hid"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "HID context handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "HID context handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "dmHID::HContext"
+    }, 
+    {
+      "replaces": "", 
+      "description": "gamepad context handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "gamepad context handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "dmHID::HGamepad"
+    }, 
+    {
+      "replaces": "", 
+      "description": "mouse context handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "mouse context handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "dmHID::HMouse"
+    }, 
+    {
+      "replaces": "", 
+      "description": "keyboard context handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "keyboard context handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "dmHID::HKeyboard"
+    }, 
+    {
+      "replaces": "", 
+      "description": "touch device context handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "touch device context handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "dmHID::HTouchDevice"
+    }, 
+    {
+      "replaces": "", 
+      "description": "invalid gamepad handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "invalid gamepad handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHID::INVALID_GAMEPAD_HANDLE [type: dmHID::HGamepad]"
+    }, 
+    {
+      "replaces": "", 
+      "description": "invalid keyboard handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "invalid keyboard handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHID::INVALID_KEYBOARD_HANDLE [type: dmHID::HKeyboard]"
+    }, 
+    {
+      "replaces": "", 
+      "description": "invalid mouse handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "invalid mouse handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHID::INVALID_MOUSE_HANDLE [type: dmHID::HMouse]"
+    }, 
+    {
+      "replaces": "", 
+      "description": "invalid touch devicehandle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "invalid touch devicehandle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHID::INVALID_TOUCHDEVICE_HANDLE [type: dmHID::HTouchDevice]"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Maximum number of gamepads supported", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Maximum number of gamepads supported", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHID::MAX_GAMEPAD_COUNT [type: uint32_t]"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Maximum number of gamepad axis supported", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Maximum number of gamepad axis supported", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHID::MAX_GAMEPAD_AXIS_COUNT [type: uint32_t]"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Maximum number of gamepad buttons supported", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Maximum number of gamepad buttons supported", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHID::MAX_GAMEPAD_BUTTON_COUNT [type: uint32_t]"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Maximum number of gamepad hats supported", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Maximum number of gamepad hats supported", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHID::MAX_GAMEPAD_HAT_COUNT [type: uint32_t]"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Maximum number of simultaneous touches supported", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Maximum number of simultaneous touches supported", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHID::MAX_TOUCH_COUNT [type: uint32_t]"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Maximum number of keyboards supported", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Maximum number of keyboards supported", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHID::MAX_KEYBOARD_COUNT [type: uint32_t]"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Maximum number of mice supported", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Maximum number of mice supported", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHID::MAX_MOUSE_COUNT [type: uint32_t]"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Maximum number of touch devices supported", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Maximum number of touch devices supported", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHID::MAX_TOUCH_DEVICE_COUNT [type: uint32_t]"
+    }, 
+    {
+      "replaces": "", 
+      "description": "touch phase enumeration", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "touch phase enumeration", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::PHASE_BEGAN"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::PHASE_MOVED"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::PHASE_STATIONARY"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::PHASE_ENDED"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::PHASE_CANCELLED"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Phase"
+    }, 
+    {
+      "replaces": "", 
+      "description": "keyboard key enumeration", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "keyboard key enumeration", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_SPACE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_EXCLAIM"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_QUOTEDBL"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_HASH"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_DOLLAR"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_AMPERSAND"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_QUOTE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_LPAREN"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_RPAREN"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_ASTERISK"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_PLUS"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_COMMA"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_MINUS"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_PERIOD"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_SLASH"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_0"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_1"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_2"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_3"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_4"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_5"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_6"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_7"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_8"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_9"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_COLON"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_SEMICOLON"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_LESS"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_EQUALS"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_GREATER"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_QUESTION"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_AT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_A"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_B"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_C"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_D"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_E"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_F"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_G"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_H"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_I"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_J"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_K"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_L"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_M"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_N"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_O"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_P"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_Q"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_R"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_S"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_T"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_U"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_V"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_W"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_X"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_Y"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_Z"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_LBRACKET"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_BACKSLASH"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_RBRACKET"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_CARET"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_UNDERSCORE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_BACKQUOTE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_LBRACE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_PIPE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_RBRACE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_TILDE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_ESC"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_F1"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_F2"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_F3"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_F4"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_F5"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_F6"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_F7"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_F8"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_F9"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_F10"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_F11"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_F12"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_UP"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_DOWN"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_LEFT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_RIGHT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_LSHIFT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_RSHIFT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_LCTRL"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_RCTRL"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_LALT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_RALT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_TAB"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_ENTER"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_BACKSPACE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_INSERT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_DEL"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_PAGEUP"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_PAGEDOWN"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_HOME"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_END"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_0"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_1"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_2"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_3"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_4"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_5"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_6"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_7"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_8"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_9"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_DIVIDE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_MULTIPLY"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_SUBTRACT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_ADD"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_DECIMAL"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_EQUAL"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_ENTER"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_KP_NUM_LOCK"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_CAPS_LOCK"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_SCROLL_LOCK"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_PAUSE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_LSUPER"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_RSUPER"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_MENU"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::KEY_BACK"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::MAX_KEY_COUNT"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Key"
+    }, 
+    {
+      "replaces": "", 
+      "description": "mouse button enumeration", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "mouse button enumeration", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::MOUSE_BUTTON_LEFT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::MOUSE_BUTTON_MIDDLE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::MOUSE_BUTTON_RIGHT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::MOUSE_BUTTON_1"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::MOUSE_BUTTON_2"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::MOUSE_BUTTON_3"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::MOUSE_BUTTON_4"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::MOUSE_BUTTON_5"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::MOUSE_BUTTON_6"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::MOUSE_BUTTON_7"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::MOUSE_BUTTON_8"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmHID::MAX_MOUSE_BUTTON_COUNT"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "MouseButton"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Contains the current state of a keyboard", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Contains the current state of a keyboard", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "KeyboardPacket"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Contains the current state of a mouse", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Contains the current state of a mouse", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "MousePacket"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Contains the current state of a gamepad", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Contains the current state of a gamepad", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "GamepadPacket"
+    }, 
+    {
+      "replaces": "", 
+      "description": "gets a keyboard handle", 
+      "parameters": [
+        {
+          "doc": "context in which to find the gamepad", 
+          "name": "context", 
+          "types": [
+            "dmHID::HContext"
+          ]
+        }, 
+        {
+          "doc": "device index", 
+          "name": "index", 
+          "types": [
+            "uint8_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Handle to keyboard. dmHID::INVALID_KEYBOARD_HANDLE if not available", 
+          "name": "keyboard", 
+          "types": [
+            "dmHID::HKeyboard"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets a keyboard handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetKeyboard"
+    }, 
+    {
+      "replaces": "", 
+      "description": "gets a mouse handle", 
+      "parameters": [
+        {
+          "doc": "context in which to find the gamepad", 
+          "name": "context", 
+          "types": [
+            "dmHID::HContext"
+          ]
+        }, 
+        {
+          "doc": "device index", 
+          "name": "index", 
+          "types": [
+            "uint8_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Handle to mouse. dmHID::INVALID_MOUSE_HANDLE if not available", 
+          "name": "mouse", 
+          "types": [
+            "dmHID::HMouse"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets a mouse handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetMouse"
+    }, 
+    {
+      "replaces": "", 
+      "description": "gets a touch device handle", 
+      "parameters": [
+        {
+          "doc": "context in which to find the gamepad", 
+          "name": "context", 
+          "types": [
+            "dmHID::HContext"
+          ]
+        }, 
+        {
+          "doc": "device index", 
+          "name": "index", 
+          "types": [
+            "uint8_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Handle to touch device. dmHID::INVALID_TOUCH_DEVICE_HANDLE if not available", 
+          "name": "device", 
+          "types": [
+            "dmHID::HTouchDevice"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets a touch device handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetTouchDevice"
+    }, 
+    {
+      "replaces": "", 
+      "description": "gets a gamepad device handle", 
+      "parameters": [
+        {
+          "doc": "context in which to find the gamepad", 
+          "name": "context", 
+          "types": [
+            "dmHID::HContext"
+          ]
+        }, 
+        {
+          "doc": "device index", 
+          "name": "index", 
+          "types": [
+            "uint8_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Handle to gamepad. dmHID::INVALID_GAMEPAD_HANDLE if not available", 
+          "name": "gamepad", 
+          "types": [
+            "dmHID::HGamepad"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets a gamepad device handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetGamePad"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Adds a touch event touch.", 
+      "parameters": [
+        {
+          "doc": "device handle", 
+          "name": "device", 
+          "types": [
+            "dmHID::HTouchDevice"
+          ]
+        }, 
+        {
+          "doc": "x-coordinate of the position", 
+          "name": "x", 
+          "types": [
+            "int32_t"
+          ]
+        }, 
+        {
+          "doc": "y-coordinate of the position", 
+          "name": "y", 
+          "types": [
+            "int32_t"
+          ]
+        }, 
+        {
+          "doc": "identifier of touch", 
+          "name": "id", 
+          "types": [
+            "uint32_t"
+          ]
+        }, 
+        {
+          "doc": "phase of touch", 
+          "name": "phase", 
+          "types": [
+            "dmHID::Phase"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Adds a touch event touch.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "AddTouch"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets the state of a gamepad button.", 
+      "parameters": [
+        {
+          "doc": "device handle", 
+          "name": "gamepad", 
+          "types": [
+            "dmHID::HGamepad"
+          ]
+        }, 
+        {
+          "doc": "The requested button [0, dmHID::MAX_GAMEPAD_BUTTON_COUNT)", 
+          "name": "button", 
+          "types": [
+            "uint32_t"
+          ]
+        }, 
+        {
+          "doc": "Button state", 
+          "name": "value", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Sets the state of a gamepad button.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetGamepadButton"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets the state of a gamepad axis.", 
+      "parameters": [
+        {
+          "doc": "device handle", 
+          "name": "gamepad", 
+          "types": [
+            "dmHID::HGamepad"
+          ]
+        }, 
+        {
+          "doc": "The requested axis [0, dmHID::MAX_GAMEPAD_AXIS_COUNT)", 
+          "name": "axis", 
+          "types": [
+            "uint32_t"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "value", 
+          "types": [
+            "float] axis value [-1, 1"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Sets the state of a gamepad axis.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetGamepadAxis"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets the state of a mouse button.", 
+      "parameters": [
+        {
+          "doc": "device handle", 
+          "name": "mouse", 
+          "types": [
+            "dmHID::HMouse"
+          ]
+        }, 
+        {
+          "doc": "The requested button", 
+          "name": "button", 
+          "types": [
+            "dmHID::MouseButton"
+          ]
+        }, 
+        {
+          "doc": "Button state", 
+          "name": "value", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Sets the state of a mouse button.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetMouseButton"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets the position of a mouse.", 
+      "parameters": [
+        {
+          "doc": "device handle", 
+          "name": "mouse", 
+          "types": [
+            "dmHID::HMouse"
+          ]
+        }, 
+        {
+          "doc": "x-coordinate of the position", 
+          "name": "x", 
+          "types": [
+            "int32_t"
+          ]
+        }, 
+        {
+          "doc": "y-coordinate of the position", 
+          "name": "y", 
+          "types": [
+            "int32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Sets the position of a mouse.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetMousePosition"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets the mouse wheel.", 
+      "parameters": [
+        {
+          "doc": "device handle", 
+          "name": "mouse", 
+          "types": [
+            "dmHID::HMouse"
+          ]
+        }, 
+        {
+          "doc": "wheel value", 
+          "name": "value", 
+          "types": [
+            "int32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Sets the mouse wheel.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetMouseWheel"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Obtain a mouse packet reflecting the current input state of a HID context.", 
+      "parameters": [
+        {
+          "doc": "context from which to retrieve the packet", 
+          "name": "mouse", 
+          "types": [
+            "dmHID::HMouse"
+          ]
+        }, 
+        {
+          "doc": "Mouse packet out argument", 
+          "name": "out_packet", 
+          "types": [
+            "dmHID::MousePacket*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "If the packet was successfully updated or not.", 
+          "name": "result", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Obtain a mouse packet reflecting the current input...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetMousePacket"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Convenience function to retrieve the state of a mouse button from a mouse packet.", 
+      "parameters": [
+        {
+          "doc": "Mouse packet", 
+          "name": "packet", 
+          "types": [
+            "dmHID::MousePacket*"
+          ]
+        }, 
+        {
+          "doc": "The requested button", 
+          "name": "button", 
+          "types": [
+            "dmHID::MouseButton"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "If the button was pressed or not", 
+          "name": "result", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Convenience function to retrieve the state of a mo...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetMouseButton"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets the state of a key.", 
+      "parameters": [
+        {
+          "doc": "context handle", 
+          "name": "keyboard", 
+          "types": [
+            "dmHID::HKeyboard"
+          ]
+        }, 
+        {
+          "doc": "The requested key", 
+          "name": "key", 
+          "types": [
+            "dmHID::Key"
+          ]
+        }, 
+        {
+          "doc": "Key state", 
+          "name": "value", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Sets the state of a key.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetKey"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Add text input", 
+      "parameters": [
+        {
+          "doc": "context handle", 
+          "name": "keyboard", 
+          "types": [
+            "dmHID::HContext"
+          ]
+        }, 
+        {
+          "doc": "The character (unicode)", 
+          "name": "chr", 
+          "types": [
+            "int"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Add text input", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "AddKeyboardChar"
+    }
+  ]
+}

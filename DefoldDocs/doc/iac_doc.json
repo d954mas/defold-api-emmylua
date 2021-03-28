@@ -1,10 +1,11 @@
 {
   "info": {
-    "group": "EXTENSIONS", 
-    "description": "<p>The Inter-app communication module has been moved into an external extension library\navailable on <a href=\"https://defold.github.io/extension-iac/\">here</a>.</p>", 
+    "description": "The Inter-app communication module has been moved into an external extension library\navailable on <a href=\"https://defold.github.io/extension-iac/\">here</a>.", 
     "namespace": "iac", 
-    "name": "Inter-app communication", 
-    "brief": "<p>Inter-app communication API documentation</p>"
+    "brief": "Inter-app communication API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Inter-app communication"
   }, 
   "elements": []
 }

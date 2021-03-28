@@ -1,145 +1,202 @@
 {
   "info": {
     "group": "COMPONENTS", 
-    "description": "<p>Functions for controlling collection factory components which are\nused to dynamically spawn collections into the runtime.</p>", 
+    "description": "Functions for controlling collection factory components which are\nused to dynamically spawn collections into the runtime.", 
     "namespace": "collectionfactory", 
-    "name": "Collection factory", 
-    "brief": "<p>Collection factory API documentation</p>"
+    "brief": "Collection factory API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Collection factory"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>loaded</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "collectionfactory.STATUS_LOADED"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>loading</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "collectionfactory.STATUS_LOADING"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>unloaded</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "collectionfactory.STATUS_UNLOADED"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The URL identifies the collectionfactory component that should do the spawning.</p>\n<p>Spawning is instant, but spawned game objects get their first update calls the following frame. The supplied parameters for position, rotation and scale\nwill be applied to the whole collection when spawned.</p>\n<p>Script properties in the created game objects can be overridden through\na properties-parameter table. The table should contain game object ids\n(hash) as keys and property tables as values to be used when initiating each\nspawned game object.</p>\n<p>See go.property for more information on script properties.</p>\n<p>The function returns a table that contains a key for each game object\nid (hash), as addressed if the collection file was top level, and the\ncorresponding spawned instance id (hash) as value with a unique path\nprefix added to each instance.</p>\n<p><span class=\"icon-attention\"></span> Calling <a href=\"/ref/collectionfactory#collectionfactory.create\">collectionfactory.create</a> create on a collection factory that is marked as dynamic without having loaded resources\nusing <a href=\"/ref/collectionfactory#collectionfactory.load\">collectionfactory.load</a> will synchronously load and create resources which may affect application performance.</p>", 
+      "description": "This returns status of the collection factory.\nCalling this function when the factory is not marked as dynamic loading always returns COMP_COLLECTION_FACTORY_STATUS_LOADED.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the collection factory component to be used</p>", 
-          "name": "url"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">vector3</span> position to assign to the newly spawned collection</p>", 
-          "name": "[position]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">quaternion</span> rotation to assign to the newly spawned collection</p>", 
-          "name": "[rotation]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">table</span> table of script properties to propagate to any new game object instances</p>", 
-          "name": "[properties]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> uniform scaling to apply to the newly spawned collection (must be greater than 0).</p>", 
-          "name": "[scale]"
+          "doc": "the collection factory component to get status from", 
+          "name": "[url]", 
+          "types": [
+            "string", 
+            "hash", 
+            "url"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">table</span> a table mapping the id:s from the collection to the new instance id:s</p>", 
-          "name": "ids"
+          "doc": "status of the collection factory component\n<ul>\n<li><code>collectionfactory.STATUS_UNLOADED</code></li>\n<li><code>collectionfactory.STATUS_LOADING</code></li>\n<li><code>collectionfactory.STATUS_LOADED</code></li>\n</ul>", 
+          "name": "status", 
+          "types": [
+            "constant"
+          ]
         }
       ], 
-      "brief": "<p>Spawn a new instance of a collection into the existing collection.</p>", 
-      "examples": "<p>How to spawn a collection of game objects:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Spawn a small group of enemies.</span>\n  <span class=\"kd\">local</span> <span class=\"n\">pos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mf\">12.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"nb\">math.pi</span> <span class=\"o\">/</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">scale</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span>\n  <span class=\"kd\">local</span> <span class=\"n\">props</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n  <span class=\"n\">props</span><span class=\"p\">[</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/enemy_leader&quot;</span><span class=\"p\">)]</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">health</span> <span class=\"o\">=</span> <span class=\"mf\">1000.0</span> <span class=\"p\">}</span>\n  <span class=\"n\">props</span><span class=\"p\">[</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/enemy_1&quot;</span><span class=\"p\">)]</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">health</span> <span class=\"o\">=</span> <span class=\"mf\">200.0</span> <span class=\"p\">}</span>\n  <span class=\"n\">props</span><span class=\"p\">[</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/enemy_2&quot;</span><span class=\"p\">)]</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">health</span> <span class=\"o\">=</span> <span class=\"mf\">400.0</span><span class=\"p\">,</span> <span class=\"n\">color</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">green&quot;</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n\n  <span class=\"kd\">local</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">enemy_ids</span> <span class=\"o\">=</span> <span class=\"n\">collectionfactory</span><span class=\"p\">.</span><span class=\"n\">create</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#enemyfactory&quot;</span><span class=\"p\">,</span> <span class=\"n\">pos</span><span class=\"p\">,</span> <span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"n\">props</span><span class=\"p\">,</span> <span class=\"n\">scale</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- enemy_ids now map to the spawned instance ids:</span>\n  <span class=\"c1\">--</span>\n  <span class=\"c1\">-- pprint(self.enemy_ids)</span>\n  <span class=\"c1\">--</span>\n  <span class=\"c1\">-- DEBUG:SCRIPT:</span>\n  <span class=\"c1\">-- {</span>\n  <span class=\"c1\">--   hash: [/enemy_leader] = hash: [/collection0/enemy_leader],</span>\n  <span class=\"c1\">--   hash: [/enemy_1] = hash: [/collection0/enemy_1],</span>\n  <span class=\"c1\">--   hash: [/enemy_2] = hash: [/collection0/enemy_2]</span>\n  <span class=\"c1\">-- }</span>\n\n  <span class=\"c1\">-- Send &quot;attack&quot; message to the leader. First look up its instance id.</span>\n  <span class=\"kd\">local</span> <span class=\"n\">leader_id</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">enemy_ids</span><span class=\"p\">[</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/enemy_leader&quot;</span><span class=\"p\">)]</span>\n  <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">leader_id</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">attack&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<p>How to delete a spawned collection:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">delete</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">enemy_ids</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "collectionfactory.create"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>This returns status of the collection factory.</p>\n<p>Calling this function when the factory is not marked as dynamic loading always returns COMP_COLLECTION_FACTORY_STATUS_LOADED.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the collection factory component to get status from</p>", 
-          "name": "[url]"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">constant</span> status of the collection factory component</p>\n<ul>\n<li><code>collectionfactory.STATUS_UNLOADED</code></li>\n<li><code>collectionfactory.STATUS_LOADING</code></li>\n<li><code>collectionfactory.STATUS_LOADED</code></li>\n</ul>", 
-          "name": "status"
-        }
-      ], 
-      "brief": "<p>Get collection factory status</p>", 
+      "notes": [], 
+      "brief": "Get collection factory status", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "collectionfactory.get_status"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Resources loaded are referenced by the collection factory component until the existing (parent) collection is destroyed or collectionfactory.unload is called.</p>\n<p>Calling this function when the factory is not marked as dynamic loading does nothing.</p>", 
+      "description": "unloaded", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "unloaded", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "collectionfactory.STATUS_UNLOADED"
+    }, 
+    {
+      "replaces": "", 
+      "description": "loading", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "loading", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "collectionfactory.STATUS_LOADING"
+    }, 
+    {
+      "replaces": "", 
+      "description": "loaded", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "loaded", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "collectionfactory.STATUS_LOADED"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This decreases the reference count for each resource loaded with collectionfactory.load. If reference is zero, the resource is destroyed.\nCalling this function when the factory is not marked as dynamic loading does nothing.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the collection factory component to load</p>", 
-          "name": "[url]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">function(self, url, result))</span> function to call when resources are loaded.</p>\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>url</code></dt>\n<dd><span class=\"type\">url</span> url of the collection factory component</dd>\n<dt><code>result</code></dt>\n<dd><span class=\"type\">boolean</span> True if resource were loaded successfully</dd>\n</dl>", 
-          "name": "[complete_function]"
+          "doc": "the collection factory component to unload", 
+          "name": "[url]", 
+          "types": [
+            "string", 
+            "hash", 
+            "url"
+          ]
         }
       ], 
       "returnvalues": [], 
-      "brief": "<p>Load resources of a collection factory prototype.</p>", 
-      "examples": "<p>How to load resources of a collection factory prototype.</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">collectionfactory</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#factory&quot;</span><span class=\"p\">,</span> <span class=\"k\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"k\">end</span><span class=\"p\">)</span>\n</pre></div>", 
+      "notes": [], 
+      "brief": "Unload resources previously loaded using collectionfactory.load", 
+      "examples": "How to unload resources of a collection factory prototype loaded with collectionfactory.load\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">collectionfactory</span><span class=\"p\">.</span><span class=\"n\">unload</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#factory&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "collectionfactory.unload"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Resources loaded are referenced by the collection factory component until the existing (parent) collection is destroyed or collectionfactory.unload is called.\nCalling this function when the factory is not marked as dynamic loading does nothing.", 
+      "parameters": [
+        {
+          "doc": "the collection factory component to load", 
+          "name": "[url]", 
+          "types": [
+            "string", 
+            "hash", 
+            "url"
+          ]
+        }, 
+        {
+          "doc": "function to call when resources are loaded.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>url</code></dt>\n<dd><span class=\"type\">url</span> url of the collection factory component</dd>\n<dt><code>result</code></dt>\n<dd><span class=\"type\">boolean</span> True if resource were loaded successfully</dd>\n</dl>", 
+          "name": "[complete_function]", 
+          "types": [
+            "function(self, url, result))"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Load resources of a collection factory prototype.", 
+      "examples": "How to load resources of a collection factory prototype.\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">collectionfactory</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#factory&quot;</span><span class=\"p\">,</span> <span class=\"k\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">url</span><span class=\"p\">,</span> <span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"k\">end</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "collectionfactory.load"
     }, 
     {
       "replaces": "", 
-      "description": "<p>This decreases the reference count for each resource loaded with collectionfactory.load. If reference is zero, the resource is destroyed.</p>\n<p>Calling this function when the factory is not marked as dynamic loading does nothing.</p>", 
+      "description": "The URL identifies the collectionfactory component that should do the spawning.\nSpawning is instant, but spawned game objects get their first update calls the following frame. The supplied parameters for position, rotation and scale\nwill be applied to the whole collection when spawned.\nScript properties in the created game objects can be overridden through\na properties-parameter table. The table should contain game object ids\n(hash) as keys and property tables as values to be used when initiating each\nspawned game object.\nSee go.property for more information on script properties.\nThe function returns a table that contains a key for each game object\nid (hash), as addressed if the collection file was top level, and the\ncorresponding spawned instance id (hash) as value with a unique path\nprefix added to each instance.\n<span class=\"icon-attention\"></span> Calling <a href=\"/ref/collectionfactory#collectionfactory.create\">collectionfactory.create</a> create on a collection factory that is marked as dynamic without having loaded resources\nusing <a href=\"/ref/collectionfactory#collectionfactory.load\">collectionfactory.load</a> will synchronously load and create resources which may affect application performance.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string | hash | url</span> the collection factory component to unload</p>", 
-          "name": "[url]"
+          "doc": "the collection factory component to be used", 
+          "name": "url", 
+          "types": [
+            "string", 
+            "hash", 
+            "url"
+          ]
+        }, 
+        {
+          "doc": "position to assign to the newly spawned collection", 
+          "name": "[position]", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "rotation to assign to the newly spawned collection", 
+          "name": "[rotation]", 
+          "types": [
+            "quaternion"
+          ]
+        }, 
+        {
+          "doc": "table of script properties to propagate to any new game object instances", 
+          "name": "[properties]", 
+          "types": [
+            "table"
+          ]
+        }, 
+        {
+          "doc": "uniform scaling to apply to the newly spawned collection (must be greater than 0).", 
+          "name": "[scale]", 
+          "types": [
+            "number"
+          ]
         }
       ], 
-      "returnvalues": [], 
-      "brief": "<p>Unload resources previously loaded using collectionfactory.load</p>", 
-      "examples": "<p>How to unload resources of a collection factory prototype loaded with collectionfactory.load</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">collectionfactory</span><span class=\"p\">.</span><span class=\"n\">unload</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#factory&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
+      "returnvalues": [
+        {
+          "doc": "a table mapping the id:s from the collection to the new instance id:s", 
+          "name": "ids", 
+          "types": [
+            "table"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Spawn a new instance of a collection into the existing collection.", 
+      "examples": "How to spawn a collection of game objects:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- Spawn a small group of enemies.</span>\n  <span class=\"kd\">local</span> <span class=\"n\">pos</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mf\">12.5</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">rot</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat_rotation_z</span><span class=\"p\">(</span><span class=\"nb\">math.pi</span> <span class=\"o\">/</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">scale</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span>\n  <span class=\"kd\">local</span> <span class=\"n\">props</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n  <span class=\"n\">props</span><span class=\"p\">[</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/enemy_leader&quot;</span><span class=\"p\">)]</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">health</span> <span class=\"o\">=</span> <span class=\"mf\">1000.0</span> <span class=\"p\">}</span>\n  <span class=\"n\">props</span><span class=\"p\">[</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/enemy_1&quot;</span><span class=\"p\">)]</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">health</span> <span class=\"o\">=</span> <span class=\"mf\">200.0</span> <span class=\"p\">}</span>\n  <span class=\"n\">props</span><span class=\"p\">[</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/enemy_2&quot;</span><span class=\"p\">)]</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"n\">health</span> <span class=\"o\">=</span> <span class=\"mf\">400.0</span><span class=\"p\">,</span> <span class=\"n\">color</span> <span class=\"o\">=</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">green&quot;</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n\n  <span class=\"kd\">local</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">enemy_ids</span> <span class=\"o\">=</span> <span class=\"n\">collectionfactory</span><span class=\"p\">.</span><span class=\"n\">create</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#enemyfactory&quot;</span><span class=\"p\">,</span> <span class=\"n\">pos</span><span class=\"p\">,</span> <span class=\"n\">rot</span><span class=\"p\">,</span> <span class=\"n\">props</span><span class=\"p\">,</span> <span class=\"n\">scale</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- enemy_ids now map to the spawned instance ids:</span>\n  <span class=\"c1\">--</span>\n  <span class=\"c1\">-- pprint(self.enemy_ids)</span>\n  <span class=\"c1\">--</span>\n  <span class=\"c1\">-- DEBUG:SCRIPT:</span>\n  <span class=\"c1\">-- {</span>\n  <span class=\"c1\">--   hash: [/enemy_leader] = hash: [/collection0/enemy_leader],</span>\n  <span class=\"c1\">--   hash: [/enemy_1] = hash: [/collection0/enemy_1],</span>\n  <span class=\"c1\">--   hash: [/enemy_2] = hash: [/collection0/enemy_2]</span>\n  <span class=\"c1\">-- }</span>\n\n  <span class=\"c1\">-- Send &quot;attack&quot; message to the leader. First look up its instance id.</span>\n  <span class=\"kd\">local</span> <span class=\"n\">leader_id</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">enemy_ids</span><span class=\"p\">[</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/enemy_leader&quot;</span><span class=\"p\">)]</span>\n  <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"n\">leader_id</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">attack&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\nHow to delete a spawned collection:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">delete</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">enemy_ids</span><span class=\"p\">)</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
-      "name": "collectionfactory.unload"
+      "name": "collectionfactory.create"
     }
   ]
 }

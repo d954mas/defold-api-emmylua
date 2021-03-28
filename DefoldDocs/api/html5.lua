@@ -1,6 +1,5 @@
 ---HTML5 API documentation
 ---HTML5 platform specific functions.
----
 --- The following functions are only available on HTML5 builds, the html5.* Lua namespace will not be available on other platforms.
 ---@class html5
 html5 = {}
@@ -10,6 +9,7 @@ html5 = {}
 ---@param code string Javascript code to run
 ---@return string result as string
 function html5.run(code) end
+
 
 
 

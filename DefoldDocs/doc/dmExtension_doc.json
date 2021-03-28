@@ -1,403 +1,528 @@
 {
   "info": {
     "group": "DEFOLD SDK", 
-    "description": "<p><span class=\"file\">&lt;dmsdk/extension/extension.h&gt;</span></p>\n<p>Functions for creating and controlling engine native extension libraries.</p>", 
+    "description": "Functions for creating and controlling engine native extension libraries.", 
     "namespace": "dmExtension", 
-    "name": "Extension", 
-    "brief": "<p>SDK Extension API documentation</p>"
+    "brief": "SDK Extension API documentation", 
+    "file": "dmsdk/extension/extension.h", 
+    "path": "engine/dlib/src/dmsdk/extension/extension.h", 
+    "name": "Extension"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Declare and register new extension to the engine.\nThis macro is used to declare the extension callback functions used by the engine to communicate with the extension.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">symbol</span> external extension symbol description (no quotes).</p>", 
-          "name": "symbol"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">const char*</span> extension name. Human readable.</p>", 
-          "name": "name"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">function(dmExtension::AppParams* app_params)</span> app-init function. May be null.</p>\n<dl>\n<dt><code>app_params</code></dt>\n<dd><span class=\"type\">dmExtension::AppParams*</span> Pointer to an <code>AppParams</code> structure.</dd>\n</dl>", 
-          "name": "appinit"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">function(dmExtension::AppParams* app_params)</span> app-final function. May be null.</p>\n<dl>\n<dt><code>app_params</code></dt>\n<dd><span class=\"type\">dmExtension::AppParams*</span> Pointer to an <code>AppParams</code> structure.</dd>\n</dl>", 
-          "name": "appfinal"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">function(dmExtension::Params* params)</span> init function. May not be null.</p>\n<dl>\n<dt><code>params</code></dt>\n<dd><span class=\"type\">dmExtension::Params*</span> Pointer to a <code>Params</code> structure</dd>\n</dl>", 
-          "name": "init"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">function(dmExtension::Params* params)</span> update function. May be null.</p>\n<dl>\n<dt><code>params</code></dt>\n<dd><span class=\"type\">dmExtension::Params*</span> Pointer to a <code>Params</code> structure</dd>\n</dl>", 
-          "name": "update"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">function(dmExtension::Params* params, const dmExtension::Event* event)</span> event callback function. May be null.</p>\n<dl>\n<dt><code>params</code></dt>\n<dd><span class=\"type\">dmExtension::Params*</span> Pointer to a <code>Params</code> structure</dd>\n<dt><code>event</code></dt>\n<dd><span class=\"type\">dmExtension::Event*</span> const Pointer to an <code>Event</code> structure</dd>\n</dl>", 
-          "name": "on_event"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">function(dmExtension::Params* params)</span> function. May not be null.</p>\n<dl>\n<dt><code>params</code></dt>\n<dd><span class=\"type\">dmExtension::Params*</span> Pointer to an <code>Params</code> structure.</dd>\n</dl>", 
-          "name": "final"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>declare a new extension</p>", 
-      "examples": "<p>Register a new extension:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_DECLARE_EXTENSION</span><span class=\"p\">(</span><span class=\"n\">MyExt</span><span class=\"p\">,</span> <span class=\"s\">&quot;MyExt&quot;</span><span class=\"p\">,</span> <span class=\"n\">AppInitializeMyExt</span><span class=\"p\">,</span> <span class=\"n\">AppFinalizeMyExt</span><span class=\"p\">,</span> <span class=\"n\">InitializeMyExt</span><span class=\"p\">,</span> <span class=\"n\">UpdateMyExt</span><span class=\"p\">,</span> <span class=\"n\">OnEventMyExt</span><span class=\"p\">,</span> <span class=\"n\">FinalizeMyExt</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "MACRO", 
-      "name": "DM_DECLARE_EXTENSION"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Set if the platform is Android <span class=\"icon-android\"></span></p>", 
+      "description": "Result enumeration.", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>Set if the platform is Android <span class=\"icon-android\"></span></p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "MACRO", 
-      "name": "DM_PLATFORM_ANDROID"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Set if the platform is Html5 <span class=\"icon-html5\"></span></p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>Set if the platform is Html5 <span class=\"icon-html5\"></span></p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "MACRO", 
-      "name": "DM_PLATFORM_HTML5"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Set if the platform is iPhoneOS <span class=\"icon-ios\"></span></p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>Set if the platform is iPhoneOS <span class=\"icon-ios\"></span></p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "MACRO", 
-      "name": "DM_PLATFORM_IOS"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Set if the platform is Linux <span class=\"icon-linux\"></span></p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>Set if the platform is Linux <span class=\"icon-linux\"></span></p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "MACRO", 
-      "name": "DM_PLATFORM_LINUX"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Set if the platform is OSX <span class=\"icon-macos\"></span></p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>Set if the platform is OSX <span class=\"icon-macos\"></span></p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "MACRO", 
-      "name": "DM_PLATFORM_OSX"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Set if the platform is Windows <span class=\"icon-windows\"></span> (on both x86 and x86_64)</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>Set if the platform is Windows <span class=\"icon-windows\"></span> (on both x86 and x86_64)</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "MACRO", 
-      "name": "DM_PLATFORM_WINDOWS"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Activity result callback function type. Monitors events from the main activity.\nUsed with RegisterOnActivityResultListener() and UnregisterOnActivityResultListener()</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">void*</span></p>", 
-          "name": "env"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">void*</span></p>", 
-          "name": "activity"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">int32_t</span></p>", 
-          "name": "request_code"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">int32_t</span></p>", 
-          "name": "result_code"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">void*</span></p>", 
-          "name": "result"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>OnActivityResult callback typedef</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "TYPEDEF", 
-      "name": "OnActivityResult"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Registers an activity result callback. Multiple listeners are allowed.</p>", 
-      "parameters": [
-        {
-          "doc": "<p>listener</p>", 
-          "name": "[type:dmExtension::OnActivityResult]"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>register Android activity result callback</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "RegisterAndroidOnActivityResultListener"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Register extra extension callbacks.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">CallbackType</span> Callback type enum</p>", 
-          "name": "callback_type"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">extension_callback_t</span> Function to register as callback</p>", 
-          "name": "func"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p>Returns true if successfully registered the function, false otherwise.</p>", 
-          "name": "[type:bool]"
-        }
-      ], 
-      "brief": "<p>Register extra extension callbacks.</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "RegisterCallback"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">id&lt;UIApplicationDelegate&gt;</span> An UIApplicationDelegate, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc</p>", 
-          "name": "delegate"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>Register application delegate</p>", 
-      "examples": "<p>```objective-c</p>\n<p>// myextension_ios.mm</p>\n<p>id<UIApplicationDelegate> g_MyApplicationDelegate;</p>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "RegisteriOSUIApplicationDelegate"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Unregisters an activity result callback</p>", 
-      "parameters": [
-        {
-          "doc": "<p>listener</p>", 
-          "name": "[type:dmExtension::OnActivityResult]"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>unregister Android activity result callback</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "UnregisterAndroidOnActivityResultListener"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Deregister a previously registered iOS application delegate</p>\n<p>This function is only available on iOS. <span class=\"icon-ios\"></span></p>", 
-      "parameters": [
-        {
-          "doc": "<p>an id<UIApplicationDelegate></p>", 
-          "name": "delegate"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>Unregister an application delegate</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "UnregisteriOSUIApplicationDelegate"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Extension application entry callback data.\nThis is the data structure passed as parameter by extension Application entry callbacks (AppInit and AppFinalize) functions</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>application level callback data</p>", 
-      "examples": "", 
-      "members": [
-        {
-          "doc": "<p><span class=\"type\">dmConfigFile::HConfig</span></p>", 
-          "name": "m_ConfigFile"
-        }
-      ], 
-      "error": "", 
-      "type": "STRUCT", 
-      "name": "dmExtension::AppParams"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Extra callback enumeration for RegisterCallback function.</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>extra callback enumeration</p>", 
+      "notes": [], 
+      "brief": "result enumeration", 
       "examples": "", 
       "members": [
         {
           "doc": "", 
-          "name": "dmExtension::CALLBACK_PRE_RENDER"
-        }, 
-        {
-          "doc": "", 
-          "name": "dmExtension::CALLBACK_POST_RENDER"
-        }
-      ], 
-      "error": "", 
-      "type": "ENUM", 
-      "name": "dmExtension::CallbackType"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Extension event callback data.\nThis is the data structure passed as parameter by extension event callbacks (OnEvent)</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>event callback data</p>", 
-      "examples": "", 
-      "members": [
-        {
-          "doc": "<p><span class=\"type\">dmExtension::EventID</span></p>", 
-          "name": "m_Event"
-        }
-      ], 
-      "error": "", 
-      "type": "STRUCT", 
-      "name": "dmExtension::Event"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Event id enumeration.</p>\n<p>EVENT_ID_ICONIFYAPP and EVENT_ID_DEICONIFYAPP only available on <span class=\"icon-osx\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span></p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>event id enumeration</p>", 
-      "examples": "", 
-      "members": [
-        {
-          "doc": "", 
-          "name": "dmExtension::EVENT_ID_ACTIVATEAPP"
-        }, 
-        {
-          "doc": "", 
-          "name": "dmExtension::EVENT_ID_DEACTIVATEAPP"
-        }, 
-        {
-          "doc": "", 
-          "name": "dmExtension::EVENT_ID_ICONIFYAPP"
-        }, 
-        {
-          "doc": "", 
-          "name": "dmExtension::EVENT_ID_DEICONIFYAPP"
-        }
-      ], 
-      "error": "", 
-      "type": "ENUM", 
-      "name": "dmExtension::EventID"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Extension callback data.\nThis is the data structure passed as parameter by extension callbacks (Init, Finalize, Update, OnEvent)</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>extension level callback data</p>", 
-      "examples": "", 
-      "members": [
-        {
-          "doc": "<p><span class=\"type\">dmConfigFile::HConfig</span></p>", 
-          "name": "m_ConfigFile"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">lua_State*</span></p>", 
-          "name": "m_L"
-        }
-      ], 
-      "error": "", 
-      "type": "STRUCT", 
-      "name": "dmExtension::Params"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Result enumeration.</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>result enumeration</p>", 
-      "examples": "", 
-      "members": [
-        {
-          "doc": "", 
+          "type": "", 
           "name": "dmExtension::RESULT_OK"
         }, 
         {
           "doc": "", 
+          "type": "", 
           "name": "dmExtension::RESULT_INIT_ERROR"
         }
       ], 
       "error": "", 
+      "tparams": [], 
       "type": "ENUM", 
       "name": "dmExtension::Result"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Callback typedef for functions passed to RegisterCallback().</p>", 
+      "description": "Extension application entry callback data.\nThis is the data structure passed as parameter by extension Application entry callbacks (AppInit and AppFinalize) functions", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "application level callback data", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "dmConfigFile::HConfig", 
+          "name": "m_ConfigFile"
+        }, 
+        {
+          "doc": "Only valid in debug builds, where the engine service is running. 0 otherwise.", 
+          "type": "dmWebServer::HServer", 
+          "name": "m_WebServer"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "dmExtension::AppParams"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Extension callback data.\nThis is the data structure passed as parameter by extension callbacks (Init, Finalize, Update, OnEvent)", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "extension level callback data", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "dmConfigFile::HConfig", 
+          "name": "m_ConfigFile"
+        }, 
+        {
+          "doc": "", 
+          "type": "lua_State*", 
+          "name": "m_L"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "dmExtension::Params"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Event id enumeration.\nEVENT_ID_ICONIFYAPP and EVENT_ID_DEICONIFYAPP only available on <span class=\"icon-osx\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "event id enumeration", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmExtension::EVENT_ID_ACTIVATEAPP"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmExtension::EVENT_ID_DEACTIVATEAPP"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmExtension::EVENT_ID_ICONIFYAPP"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmExtension::EVENT_ID_DEICONIFYAPP"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "dmExtension::EventID"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Extra callback enumeration for RegisterCallback function.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "extra callback enumeration", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmExtension::CALLBACK_PRE_RENDER"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmExtension::CALLBACK_POST_RENDER"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "dmExtension::CallbackType"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Extension event callback data.\nThis is the data structure passed as parameter by extension event callbacks (OnEvent)", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "event callback data", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "dmExtension::EventID", 
+          "name": "m_Event"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "dmExtension::Event"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Callback typedef for functions passed to RegisterCallback().", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">Params</span></p>", 
-          "name": "params"
+          "doc": "", 
+          "name": "params", 
+          "types": [
+            "Params"
+          ]
         }
       ], 
       "returnvalues": [
         {
           "doc": "", 
-          "name": "[type:Result]"
+          "name": "", 
+          "types": [
+            "Result"
+          ]
         }
       ], 
-      "brief": "<p>Extra extension callback typedef</p>", 
+      "notes": [], 
+      "brief": "Extra extension callback typedef", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "TYPEDEF", 
       "name": "extension_callback_t"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Register extra extension callbacks.", 
+      "parameters": [
+        {
+          "doc": "Callback type enum", 
+          "name": "callback_type", 
+          "types": [
+            "CallbackType"
+          ]
+        }, 
+        {
+          "doc": "Function to register as callback", 
+          "name": "func", 
+          "types": [
+            "extension_callback_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Returns true if successfully registered the function, false otherwise.", 
+          "name": "", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Register extra extension callbacks.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "RegisterCallback"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Activity result callback function type. Monitors events from the main activity.\nUsed with RegisterOnActivityResultListener() and UnregisterOnActivityResultListener()", 
+      "parameters": [
+        {
+          "doc": "", 
+          "name": "env", 
+          "types": [
+            "void*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "activity", 
+          "types": [
+            "void*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "request_code", 
+          "types": [
+            "int32_t"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "result_code", 
+          "types": [
+            "int32_t"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "result", 
+          "types": [
+            "void*"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "OnActivityResult callback typedef", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "OnActivityResult"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Registers an activity result callback. Multiple listeners are allowed.", 
+      "parameters": [
+        {
+          "doc": "listener", 
+          "name": "[type:dmExtension::OnActivityResult]", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "register Android activity result callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "RegisterAndroidOnActivityResultListener"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Unregisters an activity result callback", 
+      "parameters": [
+        {
+          "doc": "listener", 
+          "name": "[type:dmExtension::OnActivityResult]", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "unregister Android activity result callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "UnregisterAndroidOnActivityResultListener"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Declare and register new extension to the engine.\nThis macro is used to declare the extension callback functions used by the engine to communicate with the extension.", 
+      "parameters": [
+        {
+          "doc": "external extension symbol description (no quotes).", 
+          "name": "symbol", 
+          "types": [
+            "symbol"
+          ]
+        }, 
+        {
+          "doc": "extension name. Human readable.", 
+          "name": "name", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "app-init function. May be null.\n<dl>\n<dt><code>app_params</code></dt>\n<dd><span class=\"type\">dmExtension::AppParams*</span> Pointer to an <code>AppParams</code> structure.</dd>\n</dl>", 
+          "name": "appinit", 
+          "types": [
+            "function(dmExtension::AppParams* app_params)"
+          ]
+        }, 
+        {
+          "doc": "app-final function. May be null.\n<dl>\n<dt><code>app_params</code></dt>\n<dd><span class=\"type\">dmExtension::AppParams*</span> Pointer to an <code>AppParams</code> structure.</dd>\n</dl>", 
+          "name": "appfinal", 
+          "types": [
+            "function(dmExtension::AppParams* app_params)"
+          ]
+        }, 
+        {
+          "doc": "init function. May not be null.\n<dl>\n<dt><code>params</code></dt>\n<dd><span class=\"type\">dmExtension::Params*</span> Pointer to a <code>Params</code> structure</dd>\n</dl>", 
+          "name": "init", 
+          "types": [
+            "function(dmExtension::Params* params)"
+          ]
+        }, 
+        {
+          "doc": "update function. May be null.\n<dl>\n<dt><code>params</code></dt>\n<dd><span class=\"type\">dmExtension::Params*</span> Pointer to a <code>Params</code> structure</dd>\n</dl>", 
+          "name": "update", 
+          "types": [
+            "function(dmExtension::Params* params)"
+          ]
+        }, 
+        {
+          "doc": "event callback function. May be null.\n<dl>\n<dt><code>params</code></dt>\n<dd><span class=\"type\">dmExtension::Params*</span> Pointer to a <code>Params</code> structure</dd>\n<dt><code>event</code></dt>\n<dd><span class=\"type\">dmExtension::Event*</span> const Pointer to an <code>Event</code> structure</dd>\n</dl>", 
+          "name": "on_event", 
+          "types": [
+            "function(dmExtension::Params* params, const dmExtension::Event* event)"
+          ]
+        }, 
+        {
+          "doc": "function. May not be null.\n<dl>\n<dt><code>params</code></dt>\n<dd><span class=\"type\">dmExtension::Params*</span> Pointer to an <code>Params</code> structure.</dd>\n</dl>", 
+          "name": "final", 
+          "types": [
+            "function(dmExtension::Params* params)"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "declare a new extension", 
+      "examples": "Register a new extension:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_DECLARE_EXTENSION</span><span class=\"p\">(</span><span class=\"n\">MyExt</span><span class=\"p\">,</span> <span class=\"s\">&quot;MyExt&quot;</span><span class=\"p\">,</span> <span class=\"n\">AppInitializeMyExt</span><span class=\"p\">,</span> <span class=\"n\">AppFinalizeMyExt</span><span class=\"p\">,</span> <span class=\"n\">InitializeMyExt</span><span class=\"p\">,</span> <span class=\"n\">UpdateMyExt</span><span class=\"p\">,</span> <span class=\"n\">OnEventMyExt</span><span class=\"p\">,</span> <span class=\"n\">FinalizeMyExt</span><span class=\"p\">);</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DM_DECLARE_EXTENSION"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Register an iOS application delegate to the engine. Multiple delegates are supported (Max 32)", 
+      "parameters": [
+        {
+          "doc": "An UIApplicationDelegate, see: https://developer.apple.com/documentation/uikit/uiapplicationdelegate?language=objc", 
+          "name": "delegate", 
+          "types": [
+            "id<UIApplicationDelegate>"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Register application delegate", 
+      "examples": "```objective-c\n// myextension_ios.mm\nid<UIApplicationDelegate> g_MyApplicationDelegate;", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "RegisteriOSUIApplicationDelegate"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Deregister a previously registered iOS application delegate\nThis function is only available on iOS. <span class=\"icon-ios\"></span>", 
+      "parameters": [
+        {
+          "doc": "an id<UIApplicationDelegate>", 
+          "name": "delegate", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Unregister an application delegate", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "UnregisteriOSUIApplicationDelegate"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set if the platform is iPhoneOS <span class=\"icon-ios\"></span>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Set if the platform is iPhoneOS <span class=\"icon-ios\"></span>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DM_PLATFORM_IOS"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set if the platform is Android <span class=\"icon-android\"></span>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Set if the platform is Android <span class=\"icon-android\"></span>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DM_PLATFORM_ANDROID"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set if the platform is Html5 <span class=\"icon-html5\"></span>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Set if the platform is Html5 <span class=\"icon-html5\"></span>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DM_PLATFORM_HTML5"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set if the platform is OSX <span class=\"icon-macos\"></span>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Set if the platform is OSX <span class=\"icon-macos\"></span>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DM_PLATFORM_OSX"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set if the platform is Linux <span class=\"icon-linux\"></span>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Set if the platform is Linux <span class=\"icon-linux\"></span>", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DM_PLATFORM_LINUX"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set if the platform is Windows <span class=\"icon-windows\"></span> (on both x86 and x86_64)", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Set if the platform is Windows <span class=\"icon-windows\"></span> (on both x86 and x86_64)", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DM_PLATFORM_WINDOWS"
     }
   ]
 }

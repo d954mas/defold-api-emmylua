@@ -1,71 +1,90 @@
 {
   "info": {
     "group": "SCRIPT", 
-    "description": "<p>Functions for creating image objects.</p>", 
+    "description": "Functions for creating image objects.", 
     "namespace": "image", 
-    "name": "Image", 
-    "brief": "<p>Image API documentation</p>"
+    "brief": "Image API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Image"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "", 
+      "description": "RGB image type", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>luminance image type</p>", 
+      "notes": [], 
+      "brief": "RGB image type", 
       "examples": "", 
       "members": [], 
       "error": "", 
-      "type": "VARIABLE", 
-      "name": "image.TYPE_LUMINANCE"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>RGB image type</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
+      "tparams": [], 
       "type": "VARIABLE", 
       "name": "image.TYPE_RGB"
     }, 
     {
       "replaces": "", 
-      "description": "", 
+      "description": "RGBA image type", 
       "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>RGBA image type</p>", 
+      "notes": [], 
+      "brief": "RGBA image type", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "VARIABLE", 
       "name": "image.TYPE_RGBA"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Load image (PNG or JPEG) from buffer.</p>", 
+      "description": "luminance image type", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "luminance image type", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "image.TYPE_LUMINANCE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Load image (PNG or JPEG) from buffer.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string</span> image data buffer</p>", 
-          "name": "buffer"
+          "doc": "image data buffer", 
+          "name": "buffer", 
+          "types": [
+            "string"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">boolean</span> optional flag if alpha should be premultiplied. Defaults to <code>false</code></p>", 
-          "name": "[premult]"
+          "doc": "optional flag if alpha should be premultiplied. Defaults to <code>false</code>", 
+          "name": "[premult]", 
+          "types": [
+            "boolean"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">table</span> object or <code>nil</code> if loading fails. The object is a table with the following fields:</p>\n<ul>\n<li><span class=\"type\">number</span> <code>width</code>: image width</li>\n<li><span class=\"type\">number</span> <code>height</code>: image height</li>\n<li><span class=\"type\">constant</span> <code>type</code>: image type<ul>\n<li><code>image.TYPE_RGB</code></li>\n<li><code>image.TYPE_RGBA</code></li>\n<li><code>image.TYPE_LUMINANCE</code></li>\n</ul>\n</li>\n<li><span class=\"type\">string</span> <code>buffer</code>: the raw image data</li>\n</ul>", 
-          "name": "image"
+          "doc": "object or <code>nil</code> if loading fails. The object is a table with the following fields:\n<ul>\n<li><span class=\"type\">number</span> <code>width</code>: image width</li>\n<li><span class=\"type\">number</span> <code>height</code>: image height</li>\n<li><span class=\"type\">constant</span> <code>type</code>: image type<ul>\n<li><code>image.TYPE_RGB</code></li>\n<li><code>image.TYPE_RGBA</code></li>\n<li><code>image.TYPE_LUMINANCE</code></li>\n</ul>\n</li>\n<li><span class=\"type\">string</span> <code>buffer</code>: the raw image data</li>\n</ul>", 
+          "name": "image", 
+          "types": [
+            "table"
+          ]
         }
       ], 
-      "brief": "<p>load image from buffer</p>", 
-      "examples": "<p>How to load an image from an URL and create a GUI texture from it:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">imgurl</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">http://www.site.com/image.png&quot;</span>\n<span class=\"n\">http</span><span class=\"p\">.</span><span class=\"n\">request</span><span class=\"p\">(</span><span class=\"n\">imgurl</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">GET&quot;</span><span class=\"p\">,</span> <span class=\"k\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">img</span> <span class=\"o\">=</span> <span class=\"n\">image</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">response</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">tx</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">new_texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">image_node&quot;</span><span class=\"p\">,</span> <span class=\"n\">img</span><span class=\"p\">.</span><span class=\"n\">width</span><span class=\"p\">,</span> <span class=\"n\">img</span><span class=\"p\">.</span><span class=\"n\">height</span><span class=\"p\">,</span> <span class=\"n\">img</span><span class=\"p\">.</span><span class=\"n\">type</span><span class=\"p\">,</span> <span class=\"n\">img</span><span class=\"p\">.</span><span class=\"n\">buffer</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span><span class=\"p\">)</span>\n</pre></div>", 
+      "notes": [], 
+      "brief": "load image from buffer", 
+      "examples": "How to load an image from an URL and create a GUI texture from it:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">imgurl</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">http://www.site.com/image.png&quot;</span>\n<span class=\"n\">http</span><span class=\"p\">.</span><span class=\"n\">request</span><span class=\"p\">(</span><span class=\"n\">imgurl</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">GET&quot;</span><span class=\"p\">,</span> <span class=\"k\">function</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">img</span> <span class=\"o\">=</span> <span class=\"n\">image</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">response</span><span class=\"p\">)</span>\n        <span class=\"kd\">local</span> <span class=\"n\">tx</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">new_texture</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">image_node&quot;</span><span class=\"p\">,</span> <span class=\"n\">img</span><span class=\"p\">.</span><span class=\"n\">width</span><span class=\"p\">,</span> <span class=\"n\">img</span><span class=\"p\">.</span><span class=\"n\">height</span><span class=\"p\">,</span> <span class=\"n\">img</span><span class=\"p\">.</span><span class=\"n\">type</span><span class=\"p\">,</span> <span class=\"n\">img</span><span class=\"p\">.</span><span class=\"n\">buffer</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span><span class=\"p\">)</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "image.load"
     }

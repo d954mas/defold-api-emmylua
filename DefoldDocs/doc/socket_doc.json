@@ -1,1661 +1,2319 @@
 {
   "info": {
     "group": "LUA STANDARD LIBS", 
-    "description": "<p><a href=\"https://github.com/diegonehab/luasocket\">LuaSocket</a> is a Lua extension library that provides\nsupport for the TCP and UDP transport layers. Defold provides the \"socket\" namespace in\nruntime, which contain the core C functionality. Additional LuaSocket support modules for\nSMTP, HTTP, FTP etc are not part of the core included, but can be easily added to a project\nand used.</p>\n<p>Note the included helper module \"socket.lua\" in \"builtins/scripts/socket.lua\". Require this\nmodule to add some additional functions and shortcuts to the namespace:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"nb\">require</span> <span class=\"s2\">&quot;</span><span class=\"s\">builtins.scripts.socket&quot;</span>\n</pre></div>\n\n\n<p>LuaSocket is Copyright &copy; 2004-2007 Diego Nehab. All rights reserved.\nLuaSocket is free software, released under the MIT license (same license as the Lua core).</p>", 
+    "description": "<a href=\"https://github.com/diegonehab/luasocket\">LuaSocket</a> is a Lua extension library that provides\nsupport for the TCP and UDP transport layers. Defold provides the \"socket\" namespace in\nruntime, which contain the core C functionality. Additional LuaSocket support modules for\nSMTP, HTTP, FTP etc are not part of the core included, but can be easily added to a project\nand used.\nNote the included helper module \"socket.lua\" in \"builtins/scripts/socket.lua\". Require this\nmodule to add some additional functions and shortcuts to the namespace:\n<div class=\"codehilite\"><pre><span></span><span class=\"nb\">require</span> <span class=\"s2\">&quot;</span><span class=\"s\">builtins.scripts.socket&quot;</span>\n</pre></div>\n\n\nLuaSocket is Copyright &copy; 2004-2007 Diego Nehab. All rights reserved.\nLuaSocket is free software, released under the MIT license (same license as the Lua core).", 
     "namespace": "socket", 
-    "name": "LuaSocket", 
-    "brief": "<p>LuaSocket API documentation</p>"
+    "brief": "LuaSocket API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "LuaSocket"
   }, 
   "elements": [
     {
       "replaces": "", 
-      "description": "<p>Closes the TCP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.</p>\n<p><span class=\"icon-attention\"></span> It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>closes a client TCP object</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "client:close"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Check the read buffer status.</p>\n<p><span class=\"icon-attention\"></span> This is an internal method, any use is unlikely to be portable.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">boolean</span> <code>true</code> if there is any data in the read buffer, <code>false</code> otherwise.</p>", 
-          "name": "status"
-        }
-      ], 
-      "brief": "<p>checks the read buffer status</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "client:dirty"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the underlying socket descriptor or handle associated to the object.</p>\n<p><span class=\"icon-attention\"></span> This is an internal method, any use is unlikely to be portable.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the descriptor or handle. In case the object has been closed, the return will be -1.</p>", 
-          "name": "handle"
-        }
-      ], 
-      "brief": "<p>gets the socket descriptor</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "client:getfd"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Gets options for the TCP object. See <a href=\"#client:setoption\">client:setoption</a> for description of the option names and values.</p>", 
+      "description": "The function returns a list with the sockets ready for reading, a list with the sockets ready for writing and an error message. The error message is \"timeout\" if a timeout condition was met and nil otherwise. The returned tables are doubly keyed both by integers and also by the sockets themselves, to simplify the test if a specific socket has changed status.\n<code>Recvt</code> and <code>sendt</code> parameters can be empty tables or <code>nil</code>. Non-socket values (or values with non-numeric indices) in these arrays will be silently ignored.\nThe returned tables are doubly keyed both by integers and also by the sockets themselves, to simplify the test if a specific socket has changed status.\n<span class=\"icon-attention\"></span> This function can monitor a limited number of sockets, as defined by the constant socket._SETSIZE. This number may be as high as 1024 or as low as 64 by default, depending on the system. It is usually possible to change this at compile time. Invoking select with a larger number of sockets will raise an error.\n<span class=\"icon-attention\"></span> A known bug in WinSock causes select to fail on non-blocking TCP sockets. The function may return a socket as writable even though the socket is not ready for sending.\n<span class=\"icon-attention\"></span> Calling select with a server socket in the receive parameter before a call to accept does not guarantee accept will return immediately. Use the settimeout method or accept might block forever.\n<span class=\"icon-attention\"></span> If you close a socket and pass it to select, it will be ignored.\n(Using select with non-socket objects: Any object that implements <code>getfd</code> and <code>dirty</code> can be used with select, allowing objects from other libraries to be used within a socket.select driven loop.)", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string</span> the name of the option to get:</p>\n<ul>\n<li><code>\"keepalive\"</code></li>\n<li><code>\"linger\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"tcp-nodelay\"</code></li>\n</ul>", 
-          "name": "option"
+          "doc": "array with the sockets to test for characters available for reading.", 
+          "name": "recvt", 
+          "types": [
+            "table"
+          ]
+        }, 
+        {
+          "doc": "array with sockets that are watched to see if it is OK to immediately write on them.", 
+          "name": "sendt", 
+          "types": [
+            "table"
+          ]
+        }, 
+        {
+          "doc": "the maximum amount of time (in seconds) to wait for a change in status. Nil, negative or omitted timeout value allows the function to block indefinitely.", 
+          "name": "[timeout]", 
+          "types": [
+            "number"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">any</span> the option value, or <code>nil</code> in case of error.</p>", 
-          "name": "value"
+          "doc": "a list with the sockets ready for reading.", 
+          "name": "sockets_r", 
+          "types": [
+            "table"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>gets options for the socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "client:getoption"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns information about the remote side of a connected client object.</p>\n<p><span class=\"icon-attention\"></span> It makes no sense to call this method on server objects.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> a string with the IP address of the peer, the port number that peer is using for the connection, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.</p>", 
-          "name": "info"
-        }
-      ], 
-      "brief": "<p>gets information about a client's peer</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "client:getpeername"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the local address information associated to the object.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> a string with local IP address, the local port number, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.</p>", 
-          "name": "info"
-        }
-      ], 
-      "brief": "<p>gets the local address information from client</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "client:getsockname"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns accounting information on the socket, useful for throttling of bandwidth.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> a string with the number of bytes received, the number of bytes sent, and the age of the socket object in seconds.</p>", 
-          "name": "stats"
-        }
-      ], 
-      "brief": "<p>gets accounting information on the socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "client:getstats"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Reads data from a client object, according to the specified <code>read pattern</code>. Patterns follow the Lua file I/O format, and the difference in performance between patterns is negligible.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string | number</span> the read pattern that can be any of the following:</p>\n<dl>\n<dt><code>\"*a\"</code></dt>\n<dd>reads from the socket until the connection is closed. No end-of-line translation is performed;</dd>\n<dt><code>\"*l\"</code></dt>\n<dd>reads a line of text from the socket. The line is terminated by a LF character (ASCII 10), optionally preceded by a CR character (ASCII 13). The CR and LF characters are not included in the returned line. In fact, all CR characters are ignored by the pattern. This is the default pattern;</dd>\n<dt><code>number</code></dt>\n<dd>causes the method to read a specified number of bytes from the socket.</dd>\n</dl>", 
-          "name": "[pattern]"
+          "doc": "a list with the sockets ready for writing.", 
+          "name": "sockets_w", 
+          "types": [
+            "table"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">string</span> an optional string to be concatenated to the beginning of any received data before return.</p>", 
-          "name": "[prefix]"
+          "doc": "an error message. \"timeout\" if a timeout condition was met, otherwise <code>nil</code>.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
         }
       ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> the received pattern, or <code>nil</code> in case of error.</p>", 
-          "name": "data"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred. The error message can be the string <code>\"closed\"</code> in case the connection was closed before the transmission was completed or the string <code>\"timeout\"</code> in case there was a timeout during the operation.</p>", 
-          "name": "error"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> a (possibly empty) string containing the partial that was received, or <code>nil</code> if no error occurred.</p>", 
-          "name": "partial"
-        }
-      ], 
-      "brief": "<p>receives data from a client socket</p>", 
+      "notes": [], 
+      "brief": "waits for a number of sockets to change status", 
       "examples": "", 
       "members": [], 
       "error": "", 
-      "type": "FUNCTION", 
-      "name": "client:receive"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Sends data through client object.\nThe optional arguments i and j work exactly like the standard <a href=\"/ref/string#string.sub\">string.sub</a> Lua function to allow the selection of a substring to be sent.</p>\n<p><span class=\"icon-attention\"></span> Output is not buffered. For small strings, it is always better to concatenate them in Lua (with the <code>..</code> operator) and send the result in one call instead of calling the method several times.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> the string to be sent.</p>", 
-          "name": "data"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> optional starting index of the string.</p>", 
-          "name": "[i]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> optional end index of string.</p>", 
-          "name": "[j]"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the index of the last byte within [i, j] that has been sent, or <code>nil</code> in case of error. Notice that, if <code>i</code> is 1 or absent, this is effectively the total number of bytes sent.</p>", 
-          "name": "index"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred. The error message can be <code>\"closed\"</code> in case the connection was closed before the transmission was completed or the string <code>\"timeout\"</code> in case there was a timeout during the operation.</p>", 
-          "name": "error"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> in case of error, the index of the last byte within [i, j] that has been sent. You might want to try again from the byte following that. <code>nil</code> if no error occurred.</p>", 
-          "name": "lastindex"
-        }
-      ], 
-      "brief": "<p>sends data through client socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "client:send"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Sets the underling socket descriptor or handle associated to the object. The current one is simply replaced, not closed, and no other change to the object state is made</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the descriptor or handle to set.</p>", 
-          "name": "handle"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>sets the socket descriptor</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "client:setfd"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Sets options for the TCP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> the name of the option to set. The value is provided in the <code>value</code> parameter:</p>\n<dl>\n<dt><code>\"keepalive\"</code></dt>\n<dd>Setting this option to <code>true</code> enables the periodic transmission of messages on a connected socket. Should the connected party fail to respond to these messages, the connection is considered broken and processes using the socket are notified;</dd>\n<dt><code>\"linger\"</code></dt>\n<dd>Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with the following keys:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">boolean</span> <code>on</code></li>\n<li><span class=\"type\">number</span> <code>timeout</code> (seconds)</li>\n</ul>\n<p>If the 'on' field is set to true, the system will block the process on the close attempt until it is able to transmit the data or until <code>timeout</code> has passed. If 'on' is false and a close is issued, the system will process the close in a manner that allows the process to continue as quickly as possible. It is not advised to set this to anything other than zero;</p>\n<dl>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Setting this option indicates that the rules used in validating addresses supplied in a call to <code>bind</code> should allow reuse of local addresses;</dd>\n<dt><code>\"tcp-nodelay\"</code></dt>\n<dd>Setting this option to <code>true</code> disables the Nagle's algorithm for the connection;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Setting this option to <code>true</code> restricts an inet6 socket to sending and receiving only IPv6 packets.</dd>\n</dl>", 
-          "name": "option"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">any</span> the value to set for the specified option.</p>", 
-          "name": "[value]"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code>, or <code>nil</code> in case of error.</p>", 
-          "name": "status"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>sets options for the socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "client:setoption"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Resets accounting information on the socket, useful for throttling of bandwidth.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the new number of bytes received.</p>", 
-          "name": "received"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> the new number of bytes sent.</p>", 
-          "name": "sent"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> the new age in seconds.</p>", 
-          "name": "age"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code> in case of success, or <code>nil</code> in case of error.</p>", 
-          "name": "success"
-        }
-      ], 
-      "brief": "<p>resets accounting information on the socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "client:setstats"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Changes the timeout values for the object. By default, all I/O operations are blocking. That is, any call to the methods <code>send</code>, <code>receive</code>, and <code>accept</code> will block indefinitely, until the operation completes. The <code>settimeout</code> method defines a limit on the amount of time the I/O methods can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.</p>\n<p>There are two timeout modes and both can be used together for fine tuning.</p>\n<p><span class=\"icon-attention\"></span> Although timeout values have millisecond precision in LuaSocket, large blocks can cause I/O functions not to respect timeout values due to the time the library takes to transfer blocks to and from the OS and to and from the Lua interpreter. Also, function that accept host names and perform automatic name resolution might be blocked by the resolver for longer than the specified timeout value.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.</p>", 
-          "name": "value"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> optional timeout mode to set:</p>\n<dl>\n<dt><code>\"b\"</code></dt>\n<dd>block timeout. Specifies the upper limit on the amount of time LuaSocket can be blocked by the operating system while waiting for completion of any single I/O operation. This is the default mode;</dd>\n<dt><code>\"t\"</code></dt>\n<dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>\n</dl>", 
-          "name": "[mode]"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>set the timeout values for the socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "client:settimeout"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Shuts down part of a full-duplex connection.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> which way of the connection should be shut down:</p>\n<dl>\n<dt><code>\"both\"</code></dt>\n<dd>disallow further sends and receives on the object. This is the default mode;</dd>\n<dt><code>\"send\"</code></dt>\n<dd>disallow further sends on the object;</dd>\n<dt><code>\"receive\"</code></dt>\n<dd>disallow further receives on the object.</dd>\n</dl>", 
-          "name": "mode"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code>.</p>", 
-          "name": "status"
-        }
-      ], 
-      "brief": "<p>shut down socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "client:shutdown"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Closes a UDP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.</p>\n<p><span class=\"icon-attention\"></span> It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>closes the UDP socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "connected:close"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Gets an option value from the UDP object. See <a href=\"#connected:setoption\">connected:setoption</a> for description of the option names and values.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> the name of the option to get:</p>\n<ul>\n<li><code>\"dontroute\"</code></li>\n<li><code>\"broadcast\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"reuseport\"</code></li>\n<li><code>\"ip-multicast-loop\"</code></li>\n<li><code>\"ipv6-v6only\"</code></li>\n<li><code>\"ip-multicast-if\"</code></li>\n<li><code>\"ip-multicast-ttl\"</code></li>\n<li><code>\"ip-add-membership\"</code></li>\n<li><code>\"ip-drop-membership\"</code></li>\n</ul>", 
-          "name": "option"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">any</span> the option value, or <code>nil</code> in case of error.</p>", 
-          "name": "value"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>gets options for the UDP socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "connected:getoption"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Retrieves information about the peer associated with a connected UDP object.</p>\n<p><span class=\"icon-attention\"></span> It makes no sense to call this method on unconnected objects.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> a string with the IP address of the peer, the port number that peer is using for the connection, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.</p>", 
-          "name": "info"
-        }
-      ], 
-      "brief": "<p>gets information about the UDP socket peer</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "connected:getpeername"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the local address information associated to the object.</p>\n<p><span class=\"icon-attention\"></span> UDP sockets are not bound to any address until the <code>setsockname</code> or the <code>sendto</code> method is called for the first time (in which case it is bound to an ephemeral port and the wild-card address).</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> a string with local IP address, a number with the local port, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.</p>", 
-          "name": "info"
-        }
-      ], 
-      "brief": "<p>gets the local address information associated to the socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "connected:getsockname"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Receives a datagram from the UDP object. If the UDP object is connected, only datagrams coming from the peer are accepted. Otherwise, the returned datagram can come from any host.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> optional maximum size of the datagram to be retrieved. If there are more than size bytes available in the datagram, the excess bytes are discarded. If there are less then size bytes available in the current datagram, the available bytes are returned. If size is omitted, the maximum datagram size is used (which is currently limited by the implementation to 8192 bytes).</p>", 
-          "name": "[size]"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> the received datagram, or <code>nil</code> in case of error.</p>", 
-          "name": "datagram"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>receives a datagram from the UDP socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "connected:receive"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Sends a datagram to the UDP peer of a connected object.</p>\n<p><span class=\"icon-attention\"></span> In UDP, the send method never blocks and the only way it can fail is if the underlying transport layer refuses to send a message to the specified address (i.e. no interface accepts the address).</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> a string with the datagram contents. The maximum datagram size for UDP is 64K minus IP layer overhead. However datagrams larger than the link layer packet size will be fragmented, which may deteriorate performance and/or reliability.</p>", 
-          "name": "datagram"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code> on success, or <code>nil</code> in case of error.</p>", 
-          "name": "success"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>sends a datagram through the connected UDP socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "connected:send"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Sets options for the UDP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> the name of the option to set. The value is provided in the <code>value</code> parameter:</p>\n<dl>\n<dt><code>\"dontroute\"</code></dt>\n<dd>Indicates that outgoing messages should bypass the standard routing facilities. Receives a boolean value;</dd>\n<dt><code>\"broadcast\"</code></dt>\n<dd>Requests permission to send broadcast datagrams on the socket. Receives a boolean value;</dd>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Indicates that the rules used in validating addresses supplied in a <code>bind</code> call should allow reuse of local addresses. Receives a boolean value;</dd>\n<dt><code>\"reuseport\"</code></dt>\n<dd>Allows completely duplicate bindings by multiple processes if they all set <code>\"reuseport\"</code> before binding the port. Receives a boolean value;</dd>\n<dt><code>\"ip-multicast-loop\"</code></dt>\n<dd>Specifies whether or not a copy of an outgoing multicast datagram is delivered to the sending host as long as it is a member of the multicast group. Receives a boolean value;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Specifies whether to restrict inet6 sockets to sending and receiving only IPv6 packets. Receive a boolean value;</dd>\n<dt><code>\"ip-multicast-if\"</code></dt>\n<dd>Sets the interface over which outgoing multicast datagrams are sent. Receives an IP address;</dd>\n<dt><code>\"ip-multicast-ttl\"</code></dt>\n<dd>Sets the Time To Live in the IP header for outgoing multicast datagrams. Receives a number;</dd>\n</dl>\n<p><code>\"ip-add-membership\"</code>: Joins the multicast group specified. Receives a table with fields:</p>\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>\n<dl>\n<dt>\"'ip-drop-membership\"`</dt>\n<dd>Leaves the multicast group specified. Receives a table with fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>", 
-          "name": "option"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">any</span> the value to set for the specified option.</p>", 
-          "name": "[value]"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code>, or <code>nil</code> in case of error.</p>", 
-          "name": "status"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>sets options for the UDP socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "connected:setoption"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Changes the peer of a UDP object. This method turns an unconnected UDP object into a connected UDP object or vice versa.</p>\n<p>For connected objects, outgoing datagrams will be sent to the specified peer, and datagrams received from other peers will be discarded by the OS. Connected UDP objects must use the <code>send</code> and <code>receive</code> methods instead of <code>sendto</code> and <code>receivefrom</code>.</p>\n<p><span class=\"icon-attention\"></span> Since the address of the peer does not have to be passed to and from the OS, the use of connected UDP objects is recommended when the same peer is used for several transmissions and can result in up to 30% performance gains.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> if address is \"*\" and the object is connected, the peer association is removed and the object becomes an unconnected object again.</p>", 
-          "name": "\"*\""
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code> on success, or <code>nil</code> in case of error.</p>", 
-          "name": "success"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>remove the peer of the connected UDP socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "connected:setpeername"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Changes the timeout values for the object. By default, the <code>receive</code> and <code>receivefrom</code>  operations are blocking. That is, any call to the methods will block indefinitely, until data arrives. The <code>settimeout</code> function defines a limit on the amount of time the functions can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.</p>\n<p><span class=\"icon-attention\"></span> In UDP, the <code>send</code> and <code>sendto</code> methods never block (the datagram is just passed to the OS and the call returns immediately). Therefore, the <code>settimeout</code> method has no effect on them.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.</p>", 
-          "name": "value"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>sets the timeout value for the UDP socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "connected:settimeout"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Binds a master object to address and port on the local host.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> an IP address or a host name. If address is <code>\"*\"</code>, the system binds to all local interfaces using the <code>INADDR_ANY</code> constant.</p>", 
-          "name": "address"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> the port to commect to, in the range [0..64K). If port is 0, the system automatically chooses an ephemeral port.</p>", 
-          "name": "port"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code>, or <code>nil</code> in case of error.</p>", 
-          "name": "status"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>binds a master object to address and port on the local host</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "master:bind"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Closes the TCP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.</p>\n<p><span class=\"icon-attention\"></span> It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>closes a master TCP object</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "master:close"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Attempts to connect a master object to a remote host, transforming it into a client object. Client objects support methods send, receive, getsockname, getpeername, settimeout, and close.</p>\n<p>Note that the function <code>socket.connect</code> is available and is a shortcut for the creation of client sockets.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> an IP address or a host name. If address is <code>\"*\"</code>, the system binds to all local interfaces using the <code>INADDR_ANY</code> constant.</p>", 
-          "name": "address"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> the port to commect to, in the range [0..64K). If port is 0, the system automatically chooses an ephemeral port.</p>", 
-          "name": "port"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code>, or <code>nil</code> in case of error.</p>", 
-          "name": "status"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>connects a master object to a remote host</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "master:connect"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Check the read buffer status.</p>\n<p><span class=\"icon-attention\"></span> This is an internal method, any use is unlikely to be portable.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">boolean</span> <code>true</code> if there is any data in the read buffer, <code>false</code> otherwise.</p>", 
-          "name": "status"
-        }
-      ], 
-      "brief": "<p>checks the read buffer status</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "master:dirty"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the underlying socket descriptor or handle associated to the object.</p>\n<p><span class=\"icon-attention\"></span> This is an internal method, any use is unlikely to be portable.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the descriptor or handle. In case the object has been closed, the return will be -1.</p>", 
-          "name": "handle"
-        }
-      ], 
-      "brief": "<p>gets the socket descriptor</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "master:getfd"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the local address information associated to the object.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> a string with local IP address, the local port number, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.</p>", 
-          "name": "info"
-        }
-      ], 
-      "brief": "<p>gets the local address information from master</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "master:getsockname"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns accounting information on the socket, useful for throttling of bandwidth.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> a string with the number of bytes received, the number of bytes sent, and the age of the socket object in seconds.</p>", 
-          "name": "stats"
-        }
-      ], 
-      "brief": "<p>gets accounting information on the socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "master:getstats"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Specifies the socket is willing to receive connections, transforming the object into a server object. Server objects support the <code>accept</code>, <code>getsockname</code>, <code>setoption</code>, <code>settimeout</code>, and <code>close</code> methods.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the number of client connections that can be queued waiting for service. If the queue is full and another client attempts connection, the connection is refused.</p>", 
-          "name": "backlog"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code>, or <code>nil</code> in case of error.</p>", 
-          "name": "status"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>makes the master socket listen for connections</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "master:listen"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Sets the underling socket descriptor or handle associated to the object. The current one is simply replaced, not closed, and no other change to the object state is made</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the descriptor or handle to set.</p>", 
-          "name": "handle"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>sets the socket descriptor</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "master:setfd"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Resets accounting information on the socket, useful for throttling of bandwidth.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the new number of bytes received.</p>", 
-          "name": "received"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> the new number of bytes sent.</p>", 
-          "name": "sent"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> the new age in seconds.</p>", 
-          "name": "age"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code> in case of success, or <code>nil</code> in case of error.</p>", 
-          "name": "success"
-        }
-      ], 
-      "brief": "<p>resets accounting information on the socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "master:setstats"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Changes the timeout values for the object. By default, all I/O operations are blocking. That is, any call to the methods <code>send</code>, <code>receive</code>, and <code>accept</code> will block indefinitely, until the operation completes. The <code>settimeout</code> method defines a limit on the amount of time the I/O methods can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.</p>\n<p>There are two timeout modes and both can be used together for fine tuning.</p>\n<p><span class=\"icon-attention\"></span> Although timeout values have millisecond precision in LuaSocket, large blocks can cause I/O functions not to respect timeout values due to the time the library takes to transfer blocks to and from the OS and to and from the Lua interpreter. Also, function that accept host names and perform automatic name resolution might be blocked by the resolver for longer than the specified timeout value.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.</p>", 
-          "name": "value"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> optional timeout mode to set:</p>\n<dl>\n<dt><code>\"b\"</code></dt>\n<dd>block timeout. Specifies the upper limit on the amount of time LuaSocket can be blocked by the operating system while waiting for completion of any single I/O operation. This is the default mode;</dd>\n<dt><code>\"t\"</code></dt>\n<dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>\n</dl>", 
-          "name": "[mode]"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>set the timeout values for the socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "master:settimeout"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Waits for a remote connection on the server object and returns a client object representing that connection.</p>\n<p><span class=\"icon-attention\"></span> Calling <code>socket.select</code> with a server object in the <code>recvt</code> parameter before a call to accept does not guarantee accept will return immediately. Use the <code>settimeout</code> method or accept might block until another client shows up.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">client</span> if a connection is successfully initiated, a client object is returned, or <code>nil</code> in case of error.</p>", 
-          "name": "tcp_client"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred. The error is <code>\"timeout\"</code> if a timeout condition is met.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>waits for a remote connection on the server object</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "server:accept"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Closes the TCP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.</p>\n<p><span class=\"icon-attention\"></span> It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>closes a server TCP object</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "server:close"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Check the read buffer status.</p>\n<p><span class=\"icon-attention\"></span> This is an internal method, any use is unlikely to be portable.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">boolean</span> <code>true</code> if there is any data in the read buffer, <code>false</code> otherwise.</p>", 
-          "name": "status"
-        }
-      ], 
-      "brief": "<p>checks the read buffer status</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "server:dirty"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the underlying socket descriptor or handle associated to the object.</p>\n<p><span class=\"icon-attention\"></span> This is an internal method, any use is unlikely to be portable.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the descriptor or handle. In case the object has been closed, the return will be -1.</p>", 
-          "name": "handle"
-        }
-      ], 
-      "brief": "<p>gets the socket descriptor</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "server:getfd"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Gets options for the TCP object. See <a href=\"#server:setoption\">server:setoption</a> for description of the option names and values.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> the name of the option to get:</p>\n<ul>\n<li><code>\"keepalive\"</code></li>\n<li><code>\"linger\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"tcp-nodelay\"</code></li>\n</ul>", 
-          "name": "option"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">any</span> the option value, or <code>nil</code> in case of error.</p>", 
-          "name": "value"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>gets options for the socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "server:getoption"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the local address information associated to the object.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> a string with local IP address, the local port number, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.</p>", 
-          "name": "info"
-        }
-      ], 
-      "brief": "<p>gets the local address information from server</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "server:getsockname"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns accounting information on the socket, useful for throttling of bandwidth.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> a string with the number of bytes received, the number of bytes sent, and the age of the socket object in seconds.</p>", 
-          "name": "stats"
-        }
-      ], 
-      "brief": "<p>gets accounting information on the socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "server:getstats"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Sets the underling socket descriptor or handle associated to the object. The current one is simply replaced, not closed, and no other change to the object state is made</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the descriptor or handle to set.</p>", 
-          "name": "handle"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>sets the socket descriptor</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "server:setfd"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Sets options for the TCP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> the name of the option to set. The value is provided in the <code>value</code> parameter:</p>\n<dl>\n<dt><code>\"keepalive\"</code></dt>\n<dd>Setting this option to <code>true</code> enables the periodic transmission of messages on a connected socket. Should the connected party fail to respond to these messages, the connection is considered broken and processes using the socket are notified;</dd>\n<dt><code>\"linger\"</code></dt>\n<dd>Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with the following keys:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">boolean</span> <code>on</code></li>\n<li><span class=\"type\">number</span> <code>timeout</code> (seconds)</li>\n</ul>\n<p>If the 'on' field is set to true, the system will block the process on the close attempt until it is able to transmit the data or until <code>timeout</code> has passed. If 'on' is false and a close is issued, the system will process the close in a manner that allows the process to continue as quickly as possible. It is not advised to set this to anything other than zero;</p>\n<dl>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Setting this option indicates that the rules used in validating addresses supplied in a call to <code>bind</code> should allow reuse of local addresses;</dd>\n<dt><code>\"tcp-nodelay\"</code></dt>\n<dd>Setting this option to <code>true</code> disables the Nagle's algorithm for the connection;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Setting this option to <code>true</code> restricts an inet6 socket to sending and receiving only IPv6 packets.</dd>\n</dl>", 
-          "name": "option"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">any</span> the value to set for the specified option.</p>", 
-          "name": "[value]"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code>, or <code>nil</code> in case of error.</p>", 
-          "name": "status"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>sets options for the socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "server:setoption"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Resets accounting information on the socket, useful for throttling of bandwidth.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the new number of bytes received.</p>", 
-          "name": "received"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> the new number of bytes sent.</p>", 
-          "name": "sent"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> the new age in seconds.</p>", 
-          "name": "age"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code> in case of success, or <code>nil</code> in case of error.</p>", 
-          "name": "success"
-        }
-      ], 
-      "brief": "<p>resets accounting information on the socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "server:setstats"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Changes the timeout values for the object. By default, all I/O operations are blocking. That is, any call to the methods <code>send</code>, <code>receive</code>, and <code>accept</code> will block indefinitely, until the operation completes. The <code>settimeout</code> method defines a limit on the amount of time the I/O methods can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.</p>\n<p>There are two timeout modes and both can be used together for fine tuning.</p>\n<p><span class=\"icon-attention\"></span> Although timeout values have millisecond precision in LuaSocket, large blocks can cause I/O functions not to respect timeout values due to the time the library takes to transfer blocks to and from the OS and to and from the Lua interpreter. Also, function that accept host names and perform automatic name resolution might be blocked by the resolver for longer than the specified timeout value.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.</p>", 
-          "name": "value"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> optional timeout mode to set:</p>\n<dl>\n<dt><code>\"b\"</code></dt>\n<dd>block timeout. Specifies the upper limit on the amount of time LuaSocket can be blocked by the operating system while waiting for completion of any single I/O operation. This is the default mode;</dd>\n<dt><code>\"t\"</code></dt>\n<dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>\n</dl>", 
-          "name": "[mode]"
-        }
-      ], 
-      "returnvalues": [], 
-      "brief": "<p>set the timeout values for the socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "server:settimeout"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>This constant contains the maximum number of sockets that the select function can handle.</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>max numbers of sockets the select function can handle</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "socket._SETSIZE"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>This constant has a string describing the current LuaSocket version.</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>the current LuaSocket version</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "VARIABLE", 
-      "name": "socket._VERSION"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>This function is a shortcut that creates and returns a TCP client object connected to a remote\naddress at a given port. Optionally, the user can also specify the local address and port to\nbind (<code>locaddr</code> and <code>locport</code>), or restrict the socket family to <code>\"inet\"</code> or <code>\"inet6\"</code>.\nWithout specifying family to connect, whether a tcp or tcp6 connection is created depends on\nyour system configuration.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> the address to connect to.</p>", 
-          "name": "address"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> the port to connect to.</p>", 
-          "name": "port"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> optional local address to bind to.</p>", 
-          "name": "[locaddr]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> optional local port to bind to.</p>", 
-          "name": "[locport]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> optional socket family to use, <code>\"inet\"</code> or <code>\"inet6\"</code>.</p>", 
-          "name": "[family]"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">client</span> a new IPv6 TCP client object, or <code>nil</code> in case of error.</p>", 
-          "name": "tcp_client"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>creates a new connected TCP client object</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "socket.connect"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>This function converts a host name to IPv4 or IPv6 address.\nThe supplied address can be an IPv4 or IPv6 address or host name.</p>\n<p>The function returns a table with all information returned by the resolver:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"p\">{</span>\n <span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"n\">family</span> <span class=\"o\">=</span> <span class=\"n\">family</span><span class=\"o\">-</span><span class=\"n\">name</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span>\n    <span class=\"n\">addr</span> <span class=\"o\">=</span> <span class=\"n\">address</span><span class=\"o\">-</span><span class=\"mi\">1</span>\n  <span class=\"p\">},</span>\n  <span class=\"o\">...</span>\n  <span class=\"p\">[</span><span class=\"n\">n</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"n\">family</span> <span class=\"o\">=</span> <span class=\"n\">family</span><span class=\"o\">-</span><span class=\"n\">name</span><span class=\"o\">-</span><span class=\"n\">n</span><span class=\"p\">,</span>\n    <span class=\"n\">addr</span> <span class=\"o\">=</span> <span class=\"n\">address</span><span class=\"o\">-</span><span class=\"n\">n</span>\n  <span class=\"p\">}</span>\n<span class=\"p\">}</span>\n</pre></div>\n\n\n<p>Here, family contains the string <code>\"inet\"</code> for IPv4 addresses, and <code>\"inet6\"</code> for IPv6 addresses.\nIn case of error, the function returns nil followed by an error message.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> a hostname or an IPv4 or IPv6 address.</p>", 
-          "name": "address"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">table</span> a table with all information returned by the resolver, or if an error occurs, <code>nil</code>.</p>", 
-          "name": "resolved"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>resolve to IPv4 or IPv6 address</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "socket.dns.getaddrinfo"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the standard host name for the machine as a string.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> the host name for the machine.</p>", 
-          "name": "hostname"
-        }
-      ], 
-      "brief": "<p>gets the machine host name</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "socket.dns.gethostname"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>This function converts an address to host name.\nThe supplied address can be an IPv4 or IPv6 address or host name.</p>\n<p>The function returns a table with all information returned by the resolver:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"p\">{</span>\n  <span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">host</span><span class=\"o\">-</span><span class=\"n\">name</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span>\n  <span class=\"o\">...</span>\n  <span class=\"p\">[</span><span class=\"n\">n</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">host</span><span class=\"o\">-</span><span class=\"n\">name</span><span class=\"o\">-</span><span class=\"n\">n</span><span class=\"p\">,</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> a hostname or an IPv4 or IPv6 address.</p>", 
-          "name": "address"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">table</span> a table with all information returned by the resolver, or if an error occurs, <code>nil</code>.</p>", 
-          "name": "resolved"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>resolve to hostname (IPv4 or IPv6)</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "socket.dns.getnameinfo"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>This function converts from an IPv4 address to host name.\nThe address can be an IPv4 address or a host name.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> an IPv4 address or host name.</p>", 
-          "name": "address"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> the canonic host name of the given address, or <code>nil</code> in case of an error.</p>", 
-          "name": "hostname"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">table | string</span> a table with all information returned by the resolver, or if an error occurs, the error message string.</p>", 
-          "name": "resolved"
-        }
-      ], 
-      "brief": "<p>resolve to host name (IPv4)</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "socket.dns.tohostname"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>This function converts a host name to IPv4 address.\nThe address can be an IP address or a host name.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> a hostname or an IP address.</p>", 
-          "name": "address"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">string</span> the first IP address found for the hostname, or <code>nil</code> in case of an error.</p>", 
-          "name": "ip_address"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">table | string</span> a table with all information returned by the resolver, or if an error occurs, the error message string.</p>", 
-          "name": "resolved"
-        }
-      ], 
-      "brief": "<p>resolve to IPv4 address</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "socket.dns.toip"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the time in seconds, relative to the system epoch (Unix epoch time since January 1, 1970 (UTC) or Windows file time since January 1, 1601 (UTC)).\nYou should use the values returned by this function for relative measurements only.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the number of seconds elapsed.</p>", 
-          "name": "seconds"
-        }
-      ], 
-      "brief": "<p>gets seconds since system epoch</p>", 
-      "examples": "<p>How to use the gettime() function to measure running time:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">gettime</span><span class=\"p\">()</span>\n<span class=\"c1\">-- do stuff</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">gettime</span><span class=\"p\">()</span> <span class=\"o\">-</span> <span class=\"n\">t</span> <span class=\"o\">..</span> <span class=\"s2\">&quot;</span><span class=\"s\"> seconds elapsed&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "socket.gettime"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>This function creates and returns a clean try function that allows for cleanup before the exception is raised.\nThe <code>finalizer</code> function will be called in protected mode (see <a href=\"#protect\">protect</a>).</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">function()</span> a function that will be called before the try throws the exception.</p>", 
-          "name": "finalizer"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">function</span> the customized try function.</p>", 
-          "name": "try"
-        }
-      ], 
-      "brief": "<p>creates a new try function</p>", 
-      "examples": "<p>Perform operations on an open socket <code>c</code>:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- create a try function that closes &#39;c&#39; on error</span>\n<span class=\"kd\">local</span> <span class=\"n\">try</span> <span class=\"o\">=</span> <span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">newtry</span><span class=\"p\">(</span><span class=\"k\">function</span><span class=\"p\">()</span> <span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">close</span><span class=\"p\">()</span> <span class=\"k\">end</span><span class=\"p\">)</span>\n<span class=\"c1\">-- do everything reassured c will be closed</span>\n<span class=\"n\">try</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">send</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">hello there?</span><span class=\"se\">\\r\\n</span><span class=\"s\">&quot;</span><span class=\"p\">))</span>\n<span class=\"kd\">local</span> <span class=\"n\">answer</span> <span class=\"o\">=</span> <span class=\"n\">try</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">receive</span><span class=\"p\">())</span>\n<span class=\"o\">...</span>\n<span class=\"n\">try</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">send</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">good bye</span><span class=\"se\">\\r\\n</span><span class=\"s\">&quot;</span><span class=\"p\">))</span>\n<span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">close</span><span class=\"p\">()</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "socket.newtry"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Converts a function that throws exceptions into a safe function. This function only catches exceptions thrown by try functions. It does not catch normal Lua errors.</p>\n<p><span class=\"icon-attention\"></span> Beware that if your function performs some illegal operation that raises an error, the protected function will catch the error and return it as a string. This is because try functions uses errors as the mechanism to throw exceptions.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">function</span> a function that calls a try function (or assert, or error) to throw exceptions.</p>", 
-          "name": "func"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">function(function())</span> an equivalent function that instead of throwing exceptions, returns <code>nil</code> followed by an error message.</p>", 
-          "name": "safe_func"
-        }
-      ], 
-      "brief": "<p>converts a function that throws exceptions into a safe function</p>", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">dostuff</span> <span class=\"o\">=</span> <span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">protect</span><span class=\"p\">(</span><span class=\"k\">function</span><span class=\"p\">()</span>\n    <span class=\"kd\">local</span> <span class=\"n\">try</span> <span class=\"o\">=</span> <span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">newtry</span><span class=\"p\">()</span>\n    <span class=\"kd\">local</span> <span class=\"n\">c</span> <span class=\"o\">=</span> <span class=\"n\">try</span><span class=\"p\">(</span><span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">myserver.com&quot;</span><span class=\"p\">,</span> <span class=\"mi\">80</span><span class=\"p\">))</span>\n    <span class=\"n\">try</span> <span class=\"o\">=</span> <span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">newtry</span><span class=\"p\">(</span><span class=\"k\">function</span><span class=\"p\">()</span> <span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">close</span><span class=\"p\">()</span> <span class=\"k\">end</span><span class=\"p\">)</span>\n    <span class=\"n\">try</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">send</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">hello?</span><span class=\"se\">\\r\\n</span><span class=\"s\">&quot;</span><span class=\"p\">))</span>\n    <span class=\"kd\">local</span> <span class=\"n\">answer</span> <span class=\"o\">=</span> <span class=\"n\">try</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">receive</span><span class=\"p\">())</span>\n    <span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">close</span><span class=\"p\">()</span>\n<span class=\"k\">end</span><span class=\"p\">)</span>\n\n<span class=\"kd\">local</span> <span class=\"n\">n</span><span class=\"p\">,</span> <span class=\"nb\">error</span> <span class=\"o\">=</span> <span class=\"n\">dostuff</span><span class=\"p\">()</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "socket.protect"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>The function returns a list with the sockets ready for reading, a list with the sockets ready for writing and an error message. The error message is \"timeout\" if a timeout condition was met and nil otherwise. The returned tables are doubly keyed both by integers and also by the sockets themselves, to simplify the test if a specific socket has changed status.</p>\n<p><code>Recvt</code> and <code>sendt</code> parameters can be empty tables or <code>nil</code>. Non-socket values (or values with non-numeric indices) in these arrays will be silently ignored.</p>\n<p>The returned tables are doubly keyed both by integers and also by the sockets themselves, to simplify the test if a specific socket has changed status.</p>\n<p><span class=\"icon-attention\"></span> This function can monitor a limited number of sockets, as defined by the constant socket._SETSIZE. This number may be as high as 1024 or as low as 64 by default, depending on the system. It is usually possible to change this at compile time. Invoking select with a larger number of sockets will raise an error.</p>\n<p><span class=\"icon-attention\"></span> A known bug in WinSock causes select to fail on non-blocking TCP sockets. The function may return a socket as writable even though the socket is not ready for sending.</p>\n<p><span class=\"icon-attention\"></span> Calling select with a server socket in the receive parameter before a call to accept does not guarantee accept will return immediately. Use the settimeout method or accept might block forever.</p>\n<p><span class=\"icon-attention\"></span> If you close a socket and pass it to select, it will be ignored.</p>\n<p>(Using select with non-socket objects: Any object that implements <code>getfd</code> and <code>dirty</code> can be used with select, allowing objects from other libraries to be used within a socket.select driven loop.)</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">table</span> array with the sockets to test for characters available for reading.</p>", 
-          "name": "recvt"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">table</span> array with sockets that are watched to see if it is OK to immediately write on them.</p>", 
-          "name": "sendt"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> the maximum amount of time (in seconds) to wait for a change in status. Nil, negative or omitted timeout value allows the function to block indefinitely.</p>", 
-          "name": "[timeout]"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">table</span> a list with the sockets ready for reading.</p>", 
-          "name": "sockets_r"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">table</span> a list with the sockets ready for writing.</p>", 
-          "name": "sockets_w"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> an error message. \"timeout\" if a timeout condition was met, otherwise <code>nil</code>.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>waits for a number of sockets to change status</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "socket.select"
     }, 
     {
       "replaces": "", 
-      "description": "<p>This function drops a number of arguments and returns the remaining.\nIt is useful to avoid creation of dummy variables:\n<code>D</code> is the number of arguments to drop. <code>Ret<sub>1</sub></code> to <code>ret<sub>N</sub></code> are the arguments.\nThe function returns <code>ret<sub>D+1</sub></code> to <code>ret<sub>N</sub></code>.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the number of arguments to drop.</p>", 
-          "name": "d"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">any</span> argument 1.</p>", 
-          "name": "[ret1]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">any</span> argument 2.</p>", 
-          "name": "[ret2]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">any</span> argument N.</p>", 
-          "name": "[retN]"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">any</span> argument D+1.</p>", 
-          "name": "[retD+1]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">any</span> argument D+2.</p>", 
-          "name": "[retD+2]"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">any</span> argument N.</p>", 
-          "name": "[retN]"
-        }
-      ], 
-      "brief": "<p>drops a number of arguments and returns the remaining</p>", 
-      "examples": "<p>Instead of doing the following with dummy variables:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- get the status code and separator from SMTP server reply</span>\n<span class=\"kd\">local</span> <span class=\"n\">dummy1</span><span class=\"p\">,</span> <span class=\"n\">dummy2</span><span class=\"p\">,</span> <span class=\"n\">code</span><span class=\"p\">,</span> <span class=\"n\">sep</span> <span class=\"o\">=</span> <span class=\"nb\">string.find</span><span class=\"p\">(</span><span class=\"n\">line</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">^(%d%d%d)(.?)&quot;</span><span class=\"p\">)</span>\n</pre></div>\n\n\n<p>You can skip a number of variables:</p>\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- get the status code and separator from SMTP server reply</span>\n<span class=\"kd\">local</span> <span class=\"n\">code</span><span class=\"p\">,</span> <span class=\"n\">sep</span> <span class=\"o\">=</span> <span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">skip</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"nb\">string.find</span><span class=\"p\">(</span><span class=\"n\">line</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">^(%d%d%d)(.?)&quot;</span><span class=\"p\">))</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "socket.skip"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Freezes the program execution during a given amount of time.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">number</span> the number of seconds to sleep for.</p>", 
-          "name": "time"
-        }
-      ], 
+      "description": "This constant has a string describing the current LuaSocket version.", 
+      "parameters": [], 
       "returnvalues": [], 
-      "brief": "<p>sleeps for a number of seconds</p>", 
+      "notes": [], 
+      "brief": "the current LuaSocket version", 
       "examples": "", 
       "members": [], 
       "error": "", 
-      "type": "FUNCTION", 
-      "name": "socket.sleep"
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "socket._VERSION"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Creates and returns an IPv4 TCP master object. A master object can be transformed into a server object with the method <code>listen</code> (after a call to <code>bind</code>) or into a client object with the method <code>connect</code>. The only other method supported by a master object is the <code>close</code> method.</p>", 
+      "description": "Creates and returns an IPv6 TCP master object. A master object can be transformed into a server object with the method <code>listen</code> (after a call to <code>bind</code>) or into a client object with the method connect. The only other method supported by a master object is the close method.\nNote: The TCP object returned will have the option \"ipv6-v6only\" set to true.", 
       "parameters": [], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">master</span> a new IPv4 TCP master object, or <code>nil</code> in case of error.</p>", 
-          "name": "tcp_master"
+          "doc": "a new IPv6 TCP master object, or <code>nil</code> in case of error.", 
+          "name": "tcp_master", 
+          "types": [
+            "master"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
         }
       ], 
-      "brief": "<p>creates a new IPv4 TCP master object</p>", 
+      "notes": [], 
+      "brief": "creates a new IPv6 TCP master object", 
       "examples": "", 
       "members": [], 
       "error": "", 
-      "type": "FUNCTION", 
-      "name": "socket.tcp"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Creates and returns an IPv6 TCP master object. A master object can be transformed into a server object with the method <code>listen</code> (after a call to <code>bind</code>) or into a client object with the method connect. The only other method supported by a master object is the close method.</p>\n<p>Note: The TCP object returned will have the option \"ipv6-v6only\" set to true.</p>", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">master</span> a new IPv6 TCP master object, or <code>nil</code> in case of error.</p>", 
-          "name": "tcp_master"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>creates a new IPv6 TCP master object</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "socket.tcp6"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Creates and returns an unconnected IPv4 UDP object. Unconnected objects support the <code>sendto</code>, <code>receive</code>, <code>receivefrom</code>, <code>getoption</code>, <code>getsockname</code>, <code>setoption</code>, <code>settimeout</code>, <code>setpeername</code>, <code>setsockname</code>, and <code>close</code> methods. The <code>setpeername</code> method is used to connect the object.</p>", 
+      "description": "This constant contains the maximum number of sockets that the select function can handle.", 
       "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">unconnected</span> a new unconnected IPv4 UDP object, or <code>nil</code> in case of error.</p>", 
-          "name": "udp_unconnected"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>creates a new IPv4 UDP object</p>", 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "max numbers of sockets the select function can handle", 
       "examples": "", 
       "members": [], 
       "error": "", 
-      "type": "FUNCTION", 
-      "name": "socket.udp"
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "socket._SETSIZE"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Creates and returns an unconnected IPv6 UDP object. Unconnected objects support the <code>sendto</code>, <code>receive</code>, <code>receivefrom</code>, <code>getoption</code>, <code>getsockname</code>, <code>setoption</code>, <code>settimeout</code>, <code>setpeername</code>, <code>setsockname</code>, and <code>close</code> methods. The <code>setpeername</code> method is used to connect the object.</p>\n<p>Note: The UDP object returned will have the option \"ipv6-v6only\" set to true.</p>", 
+      "description": "Creates and returns an unconnected IPv6 UDP object. Unconnected objects support the <code>sendto</code>, <code>receive</code>, <code>receivefrom</code>, <code>getoption</code>, <code>getsockname</code>, <code>setoption</code>, <code>settimeout</code>, <code>setpeername</code>, <code>setsockname</code>, and <code>close</code> methods. The <code>setpeername</code> method is used to connect the object.\nNote: The UDP object returned will have the option \"ipv6-v6only\" set to true.", 
       "parameters": [], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">unconnected</span> a new unconnected IPv6 UDP object, or <code>nil</code> in case of error.</p>", 
-          "name": "udp_unconnected"
+          "doc": "a new unconnected IPv6 UDP object, or <code>nil</code> in case of error.", 
+          "name": "udp_unconnected", 
+          "types": [
+            "unconnected"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
         }
       ], 
-      "brief": "<p>creates a new IPv6 UDP object</p>", 
+      "notes": [], 
+      "brief": "creates a new IPv6 UDP object", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "socket.udp6"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Closes a UDP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.</p>\n<p><span class=\"icon-attention\"></span> It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.</p>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "brief": "<p>closes the UDP socket</p>", 
+      "description": "This function converts from an IPv4 address to host name.\nThe address can be an IPv4 address or a host name.", 
+      "parameters": [
+        {
+          "doc": "an IPv4 address or host name.", 
+          "name": "address", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the canonic host name of the given address, or <code>nil</code> in case of an error.", 
+          "name": "hostname", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "a table with all information returned by the resolver, or if an error occurs, the error message string.", 
+          "name": "resolved", 
+          "types": [
+            "table", 
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "resolve to host name (IPv4)", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "socket.dns.tohostname"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This function converts a host name to IPv4 address.\nThe address can be an IP address or a host name.", 
+      "parameters": [
+        {
+          "doc": "a hostname or an IP address.", 
+          "name": "address", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the first IP address found for the hostname, or <code>nil</code> in case of an error.", 
+          "name": "ip_address", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "a table with all information returned by the resolver, or if an error occurs, the error message string.", 
+          "name": "resolved", 
+          "types": [
+            "table", 
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "resolve to IPv4 address", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "socket.dns.toip"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the standard host name for the machine as a string.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "the host name for the machine.", 
+          "name": "hostname", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets the machine host name", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "socket.dns.gethostname"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This function converts a host name to IPv4 or IPv6 address.\nThe supplied address can be an IPv4 or IPv6 address or host name.\nThe function returns a table with all information returned by the resolver:\n<div class=\"codehilite\"><pre><span></span><span class=\"p\">{</span>\n <span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"n\">family</span> <span class=\"o\">=</span> <span class=\"n\">family</span><span class=\"o\">-</span><span class=\"n\">name</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span>\n    <span class=\"n\">addr</span> <span class=\"o\">=</span> <span class=\"n\">address</span><span class=\"o\">-</span><span class=\"mi\">1</span>\n  <span class=\"p\">},</span>\n  <span class=\"o\">...</span>\n  <span class=\"p\">[</span><span class=\"n\">n</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"n\">family</span> <span class=\"o\">=</span> <span class=\"n\">family</span><span class=\"o\">-</span><span class=\"n\">name</span><span class=\"o\">-</span><span class=\"n\">n</span><span class=\"p\">,</span>\n    <span class=\"n\">addr</span> <span class=\"o\">=</span> <span class=\"n\">address</span><span class=\"o\">-</span><span class=\"n\">n</span>\n  <span class=\"p\">}</span>\n<span class=\"p\">}</span>\n</pre></div>\n\n\nHere, family contains the string <code>\"inet\"</code> for IPv4 addresses, and <code>\"inet6\"</code> for IPv6 addresses.\nIn case of error, the function returns nil followed by an error message.", 
+      "parameters": [
+        {
+          "doc": "a hostname or an IPv4 or IPv6 address.", 
+          "name": "address", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "a table with all information returned by the resolver, or if an error occurs, <code>nil</code>.", 
+          "name": "resolved", 
+          "types": [
+            "table"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "resolve to IPv4 or IPv6 address", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "socket.dns.getaddrinfo"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This function converts an address to host name.\nThe supplied address can be an IPv4 or IPv6 address or host name.\nThe function returns a table with all information returned by the resolver:\n<div class=\"codehilite\"><pre><span></span><span class=\"p\">{</span>\n  <span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">host</span><span class=\"o\">-</span><span class=\"n\">name</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span>\n  <span class=\"o\">...</span>\n  <span class=\"p\">[</span><span class=\"n\">n</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">host</span><span class=\"o\">-</span><span class=\"n\">name</span><span class=\"o\">-</span><span class=\"n\">n</span><span class=\"p\">,</span>\n<span class=\"p\">}</span>\n</pre></div>", 
+      "parameters": [
+        {
+          "doc": "a hostname or an IPv4 or IPv6 address.", 
+          "name": "address", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "a table with all information returned by the resolver, or if an error occurs, <code>nil</code>.", 
+          "name": "resolved", 
+          "types": [
+            "table"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "resolve to hostname (IPv4 or IPv6)", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "socket.dns.getnameinfo"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This function is a shortcut that creates and returns a TCP client object connected to a remote\naddress at a given port. Optionally, the user can also specify the local address and port to\nbind (<code>locaddr</code> and <code>locport</code>), or restrict the socket family to <code>\"inet\"</code> or <code>\"inet6\"</code>.\nWithout specifying family to connect, whether a tcp or tcp6 connection is created depends on\nyour system configuration.", 
+      "parameters": [
+        {
+          "doc": "the address to connect to.", 
+          "name": "address", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "the port to connect to.", 
+          "name": "port", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "optional local address to bind to.", 
+          "name": "[locaddr]", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "optional local port to bind to.", 
+          "name": "[locport]", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "optional socket family to use, <code>\"inet\"</code> or <code>\"inet6\"</code>.", 
+          "name": "[family]", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "a new IPv6 TCP client object, or <code>nil</code> in case of error.", 
+          "name": "tcp_client", 
+          "types": [
+            "client"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a new connected TCP client object", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "socket.connect"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Creates and returns an unconnected IPv4 UDP object. Unconnected objects support the <code>sendto</code>, <code>receive</code>, <code>receivefrom</code>, <code>getoption</code>, <code>getsockname</code>, <code>setoption</code>, <code>settimeout</code>, <code>setpeername</code>, <code>setsockname</code>, and <code>close</code> methods. The <code>setpeername</code> method is used to connect the object.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "a new unconnected IPv4 UDP object, or <code>nil</code> in case of error.", 
+          "name": "udp_unconnected", 
+          "types": [
+            "unconnected"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a new IPv4 UDP object", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "socket.udp"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This function drops a number of arguments and returns the remaining.\nIt is useful to avoid creation of dummy variables:\n<code>D</code> is the number of arguments to drop. <code>Ret<sub>1</sub></code> to <code>ret<sub>N</sub></code> are the arguments.\nThe function returns <code>ret<sub>D+1</sub></code> to <code>ret<sub>N</sub></code>.", 
+      "parameters": [
+        {
+          "doc": "the number of arguments to drop.", 
+          "name": "d", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "argument 1.", 
+          "name": "[ret1]", 
+          "types": [
+            "any"
+          ]
+        }, 
+        {
+          "doc": "argument 2.", 
+          "name": "[ret2]", 
+          "types": [
+            "any"
+          ]
+        }, 
+        {
+          "doc": "argument N.", 
+          "name": "[retN]", 
+          "types": [
+            "any"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "argument D+1.", 
+          "name": "[retD+1]", 
+          "types": [
+            "any"
+          ]
+        }, 
+        {
+          "doc": "argument D+2.", 
+          "name": "[retD+2]", 
+          "types": [
+            "any"
+          ]
+        }, 
+        {
+          "doc": "argument N.", 
+          "name": "[retN]", 
+          "types": [
+            "any"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "drops a number of arguments and returns the remaining", 
+      "examples": "Instead of doing the following with dummy variables:\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- get the status code and separator from SMTP server reply</span>\n<span class=\"kd\">local</span> <span class=\"n\">dummy1</span><span class=\"p\">,</span> <span class=\"n\">dummy2</span><span class=\"p\">,</span> <span class=\"n\">code</span><span class=\"p\">,</span> <span class=\"n\">sep</span> <span class=\"o\">=</span> <span class=\"nb\">string.find</span><span class=\"p\">(</span><span class=\"n\">line</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">^(%d%d%d)(.?)&quot;</span><span class=\"p\">)</span>\n</pre></div>\n\n\nYou can skip a number of variables:\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- get the status code and separator from SMTP server reply</span>\n<span class=\"kd\">local</span> <span class=\"n\">code</span><span class=\"p\">,</span> <span class=\"n\">sep</span> <span class=\"o\">=</span> <span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">skip</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"nb\">string.find</span><span class=\"p\">(</span><span class=\"n\">line</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">^(%d%d%d)(.?)&quot;</span><span class=\"p\">))</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "socket.skip"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Creates and returns an IPv4 TCP master object. A master object can be transformed into a server object with the method <code>listen</code> (after a call to <code>bind</code>) or into a client object with the method <code>connect</code>. The only other method supported by a master object is the <code>close</code> method.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "a new IPv4 TCP master object, or <code>nil</code> in case of error.", 
+          "name": "tcp_master", 
+          "types": [
+            "master"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a new IPv4 TCP master object", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "socket.tcp"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This function creates and returns a clean try function that allows for cleanup before the exception is raised.\nThe <code>finalizer</code> function will be called in protected mode (see <a href=\"#protect\">protect</a>).", 
+      "parameters": [
+        {
+          "doc": "a function that will be called before the try throws the exception.", 
+          "name": "finalizer", 
+          "types": [
+            "function()"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the customized try function.", 
+          "name": "try", 
+          "types": [
+            "function"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "creates a new try function", 
+      "examples": "Perform operations on an open socket <code>c</code>:\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- create a try function that closes &#39;c&#39; on error</span>\n<span class=\"kd\">local</span> <span class=\"n\">try</span> <span class=\"o\">=</span> <span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">newtry</span><span class=\"p\">(</span><span class=\"k\">function</span><span class=\"p\">()</span> <span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">close</span><span class=\"p\">()</span> <span class=\"k\">end</span><span class=\"p\">)</span>\n<span class=\"c1\">-- do everything reassured c will be closed</span>\n<span class=\"n\">try</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">send</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">hello there?</span><span class=\"se\">\\r\\n</span><span class=\"s\">&quot;</span><span class=\"p\">))</span>\n<span class=\"kd\">local</span> <span class=\"n\">answer</span> <span class=\"o\">=</span> <span class=\"n\">try</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">receive</span><span class=\"p\">())</span>\n<span class=\"o\">...</span>\n<span class=\"n\">try</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">send</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">good bye</span><span class=\"se\">\\r\\n</span><span class=\"s\">&quot;</span><span class=\"p\">))</span>\n<span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">close</span><span class=\"p\">()</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "socket.newtry"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Converts a function that throws exceptions into a safe function. This function only catches exceptions thrown by try functions. It does not catch normal Lua errors.\n<span class=\"icon-attention\"></span> Beware that if your function performs some illegal operation that raises an error, the protected function will catch the error and return it as a string. This is because try functions uses errors as the mechanism to throw exceptions.", 
+      "parameters": [
+        {
+          "doc": "a function that calls a try function (or assert, or error) to throw exceptions.", 
+          "name": "func", 
+          "types": [
+            "function"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "an equivalent function that instead of throwing exceptions, returns <code>nil</code> followed by an error message.", 
+          "name": "safe_func", 
+          "types": [
+            "function(function())"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "converts a function that throws exceptions into a safe function", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">dostuff</span> <span class=\"o\">=</span> <span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">protect</span><span class=\"p\">(</span><span class=\"k\">function</span><span class=\"p\">()</span>\n    <span class=\"kd\">local</span> <span class=\"n\">try</span> <span class=\"o\">=</span> <span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">newtry</span><span class=\"p\">()</span>\n    <span class=\"kd\">local</span> <span class=\"n\">c</span> <span class=\"o\">=</span> <span class=\"n\">try</span><span class=\"p\">(</span><span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">connect</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">myserver.com&quot;</span><span class=\"p\">,</span> <span class=\"mi\">80</span><span class=\"p\">))</span>\n    <span class=\"n\">try</span> <span class=\"o\">=</span> <span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">newtry</span><span class=\"p\">(</span><span class=\"k\">function</span><span class=\"p\">()</span> <span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">close</span><span class=\"p\">()</span> <span class=\"k\">end</span><span class=\"p\">)</span>\n    <span class=\"n\">try</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">send</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">hello?</span><span class=\"se\">\\r\\n</span><span class=\"s\">&quot;</span><span class=\"p\">))</span>\n    <span class=\"kd\">local</span> <span class=\"n\">answer</span> <span class=\"o\">=</span> <span class=\"n\">try</span><span class=\"p\">(</span><span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">receive</span><span class=\"p\">())</span>\n    <span class=\"n\">c</span><span class=\"p\">:</span><span class=\"n\">close</span><span class=\"p\">()</span>\n<span class=\"k\">end</span><span class=\"p\">)</span>\n\n<span class=\"kd\">local</span> <span class=\"n\">n</span><span class=\"p\">,</span> <span class=\"nb\">error</span> <span class=\"o\">=</span> <span class=\"n\">dostuff</span><span class=\"p\">()</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "socket.protect"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the time in seconds, relative to the system epoch (Unix epoch time since January 1, 1970 (UTC) or Windows file time since January 1, 1601 (UTC)).\nYou should use the values returned by this function for relative measurements only.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "the number of seconds elapsed.", 
+          "name": "seconds", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets seconds since system epoch", 
+      "examples": "How to use the gettime() function to measure running time:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">t</span> <span class=\"o\">=</span> <span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">gettime</span><span class=\"p\">()</span>\n<span class=\"c1\">-- do stuff</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">socket</span><span class=\"p\">.</span><span class=\"n\">gettime</span><span class=\"p\">()</span> <span class=\"o\">-</span> <span class=\"n\">t</span> <span class=\"o\">..</span> <span class=\"s2\">&quot;</span><span class=\"s\"> seconds elapsed&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "socket.gettime"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Freezes the program execution during a given amount of time.", 
+      "parameters": [
+        {
+          "doc": "the number of seconds to sleep for.", 
+          "name": "time", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "sleeps for a number of seconds", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "socket.sleep"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Waits for a remote connection on the server object and returns a client object representing that connection.\n<span class=\"icon-attention\"></span> Calling <code>socket.select</code> with a server object in the <code>recvt</code> parameter before a call to accept does not guarantee accept will return immediately. Use the <code>settimeout</code> method or accept might block until another client shows up.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "if a connection is successfully initiated, a client object is returned, or <code>nil</code> in case of error.", 
+          "name": "tcp_client", 
+          "types": [
+            "client"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred. The error is <code>\"timeout\"</code> if a timeout condition is met.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "waits for a remote connection on the server object", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "server:accept"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Binds a master object to address and port on the local host.", 
+      "parameters": [
+        {
+          "doc": "an IP address or a host name. If address is <code>\"*\"</code>, the system binds to all local interfaces using the <code>INADDR_ANY</code> constant.", 
+          "name": "address", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "the port to commect to, in the range [0..64K). If port is 0, the system automatically chooses an ephemeral port.", 
+          "name": "port", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the value <code>1</code>, or <code>nil</code> in case of error.", 
+          "name": "status", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "binds a master object to address and port on the local host", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "master:bind"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Closes the TCP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.\n<span class=\"icon-attention\"></span> It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "closes a master TCP object", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "master:close"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Closes the TCP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.\n<span class=\"icon-attention\"></span> It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "closes a client TCP object", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "client:close"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Closes the TCP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.\n<span class=\"icon-attention\"></span> It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "closes a server TCP object", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "server:close"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Attempts to connect a master object to a remote host, transforming it into a client object. Client objects support methods send, receive, getsockname, getpeername, settimeout, and close.\nNote that the function <code>socket.connect</code> is available and is a shortcut for the creation of client sockets.", 
+      "parameters": [
+        {
+          "doc": "an IP address or a host name. If address is <code>\"*\"</code>, the system binds to all local interfaces using the <code>INADDR_ANY</code> constant.", 
+          "name": "address", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "the port to commect to, in the range [0..64K). If port is 0, the system automatically chooses an ephemeral port.", 
+          "name": "port", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the value <code>1</code>, or <code>nil</code> in case of error.", 
+          "name": "status", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "connects a master object to a remote host", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "master:connect"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns information about the remote side of a connected client object.\n<span class=\"icon-attention\"></span> It makes no sense to call this method on server objects.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "a string with the IP address of the peer, the port number that peer is using for the connection, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.", 
+          "name": "info", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets information about a client's peer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "client:getpeername"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the local address information associated to the object.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "a string with local IP address, the local port number, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.", 
+          "name": "info", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets the local address information from master", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "master:getsockname"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the local address information associated to the object.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "a string with local IP address, the local port number, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.", 
+          "name": "info", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets the local address information from client", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "client:getsockname"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the local address information associated to the object.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "a string with local IP address, the local port number, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.", 
+          "name": "info", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets the local address information from server", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "server:getsockname"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns accounting information on the socket, useful for throttling of bandwidth.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "a string with the number of bytes received, the number of bytes sent, and the age of the socket object in seconds.", 
+          "name": "stats", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets accounting information on the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "master:getstats"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns accounting information on the socket, useful for throttling of bandwidth.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "a string with the number of bytes received, the number of bytes sent, and the age of the socket object in seconds.", 
+          "name": "stats", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets accounting information on the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "client:getstats"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns accounting information on the socket, useful for throttling of bandwidth.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "a string with the number of bytes received, the number of bytes sent, and the age of the socket object in seconds.", 
+          "name": "stats", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets accounting information on the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "server:getstats"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Specifies the socket is willing to receive connections, transforming the object into a server object. Server objects support the <code>accept</code>, <code>getsockname</code>, <code>setoption</code>, <code>settimeout</code>, and <code>close</code> methods.", 
+      "parameters": [
+        {
+          "doc": "the number of client connections that can be queued waiting for service. If the queue is full and another client attempts connection, the connection is refused.", 
+          "name": "backlog", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the value <code>1</code>, or <code>nil</code> in case of error.", 
+          "name": "status", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "makes the master socket listen for connections", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "master:listen"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Reads data from a client object, according to the specified <code>read pattern</code>. Patterns follow the Lua file I/O format, and the difference in performance between patterns is negligible.", 
+      "parameters": [
+        {
+          "doc": "the read pattern that can be any of the following:\n<dl>\n<dt><code>\"*a\"</code></dt>\n<dd>reads from the socket until the connection is closed. No end-of-line translation is performed;</dd>\n<dt><code>\"*l\"</code></dt>\n<dd>reads a line of text from the socket. The line is terminated by a LF character (ASCII 10), optionally preceded by a CR character (ASCII 13). The CR and LF characters are not included in the returned line. In fact, all CR characters are ignored by the pattern. This is the default pattern;</dd>\n<dt><code>number</code></dt>\n<dd>causes the method to read a specified number of bytes from the socket.</dd>\n</dl>", 
+          "name": "[pattern]", 
+          "types": [
+            "string", 
+            "number"
+          ]
+        }, 
+        {
+          "doc": "an optional string to be concatenated to the beginning of any received data before return.", 
+          "name": "[prefix]", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the received pattern, or <code>nil</code> in case of error.", 
+          "name": "data", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred. The error message can be the string <code>\"closed\"</code> in case the connection was closed before the transmission was completed or the string <code>\"timeout\"</code> in case there was a timeout during the operation.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "a (possibly empty) string containing the partial that was received, or <code>nil</code> if no error occurred.", 
+          "name": "partial", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "receives data from a client socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "client:receive"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sends data through client object.\nThe optional arguments i and j work exactly like the standard <a href=\"/ref/string#string.sub\">string.sub</a> Lua function to allow the selection of a substring to be sent.\n<span class=\"icon-attention\"></span> Output is not buffered. For small strings, it is always better to concatenate them in Lua (with the <code>..</code> operator) and send the result in one call instead of calling the method several times.", 
+      "parameters": [
+        {
+          "doc": "the string to be sent.", 
+          "name": "data", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "optional starting index of the string.", 
+          "name": "[i]", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "optional end index of string.", 
+          "name": "[j]", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "that has been sent, or <code>nil</code> in case of error. Notice that, if <code>i</code> is 1 or absent, this is effectively the total number of bytes sent.", 
+          "name": "index", 
+          "types": [
+            "number] the index of the last byte within [i, j"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred. The error message can be <code>\"closed\"</code> in case the connection was closed before the transmission was completed or the string <code>\"timeout\"</code> in case there was a timeout during the operation.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "that has been sent. You might want to try again from the byte following that. <code>nil</code> if no error occurred.", 
+          "name": "lastindex", 
+          "types": [
+            "number] in case of error, the index of the last byte within [i, j"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "sends data through client socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "client:send"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets options for the TCP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.", 
+      "parameters": [
+        {
+          "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"keepalive\"</code></dt>\n<dd>Setting this option to <code>true</code> enables the periodic transmission of messages on a connected socket. Should the connected party fail to respond to these messages, the connection is considered broken and processes using the socket are notified;</dd>\n<dt><code>\"linger\"</code></dt>\n<dd>Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with the following keys:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">boolean</span> <code>on</code></li>\n<li><span class=\"type\">number</span> <code>timeout</code> (seconds)</li>\n</ul>\nIf the 'on' field is set to true, the system will block the process on the close attempt until it is able to transmit the data or until <code>timeout</code> has passed. If 'on' is false and a close is issued, the system will process the close in a manner that allows the process to continue as quickly as possible. It is not advised to set this to anything other than zero;\n<dl>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Setting this option indicates that the rules used in validating addresses supplied in a call to <code>bind</code> should allow reuse of local addresses;</dd>\n<dt><code>\"tcp-nodelay\"</code></dt>\n<dd>Setting this option to <code>true</code> disables the Nagle's algorithm for the connection;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Setting this option to <code>true</code> restricts an inet6 socket to sending and receiving only IPv6 packets.</dd>\n</dl>", 
+          "name": "option", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "the value to set for the specified option.", 
+          "name": "[value]", 
+          "types": [
+            "any"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the value <code>1</code>, or <code>nil</code> in case of error.", 
+          "name": "status", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "sets options for the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "client:setoption"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets options for the TCP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.", 
+      "parameters": [
+        {
+          "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"keepalive\"</code></dt>\n<dd>Setting this option to <code>true</code> enables the periodic transmission of messages on a connected socket. Should the connected party fail to respond to these messages, the connection is considered broken and processes using the socket are notified;</dd>\n<dt><code>\"linger\"</code></dt>\n<dd>Controls the action taken when unsent data are queued on a socket and a close is performed. The value is a table with the following keys:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">boolean</span> <code>on</code></li>\n<li><span class=\"type\">number</span> <code>timeout</code> (seconds)</li>\n</ul>\nIf the 'on' field is set to true, the system will block the process on the close attempt until it is able to transmit the data or until <code>timeout</code> has passed. If 'on' is false and a close is issued, the system will process the close in a manner that allows the process to continue as quickly as possible. It is not advised to set this to anything other than zero;\n<dl>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Setting this option indicates that the rules used in validating addresses supplied in a call to <code>bind</code> should allow reuse of local addresses;</dd>\n<dt><code>\"tcp-nodelay\"</code></dt>\n<dd>Setting this option to <code>true</code> disables the Nagle's algorithm for the connection;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Setting this option to <code>true</code> restricts an inet6 socket to sending and receiving only IPv6 packets.</dd>\n</dl>", 
+          "name": "option", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "the value to set for the specified option.", 
+          "name": "[value]", 
+          "types": [
+            "any"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the value <code>1</code>, or <code>nil</code> in case of error.", 
+          "name": "status", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "sets options for the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "server:setoption"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets options for the TCP object. See <a href=\"#client:setoption\">client:setoption</a> for description of the option names and values.", 
+      "parameters": [
+        {
+          "doc": "the name of the option to get:\n<ul>\n<li><code>\"keepalive\"</code></li>\n<li><code>\"linger\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"tcp-nodelay\"</code></li>\n</ul>", 
+          "name": "option", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the option value, or <code>nil</code> in case of error.", 
+          "name": "value", 
+          "types": [
+            "any"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets options for the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "client:getoption"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets options for the TCP object. See <a href=\"#server:setoption\">server:setoption</a> for description of the option names and values.", 
+      "parameters": [
+        {
+          "doc": "the name of the option to get:\n<ul>\n<li><code>\"keepalive\"</code></li>\n<li><code>\"linger\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"tcp-nodelay\"</code></li>\n</ul>", 
+          "name": "option", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the option value, or <code>nil</code> in case of error.", 
+          "name": "value", 
+          "types": [
+            "any"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets options for the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "server:getoption"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Resets accounting information on the socket, useful for throttling of bandwidth.", 
+      "parameters": [
+        {
+          "doc": "the new number of bytes received.", 
+          "name": "received", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the new number of bytes sent.", 
+          "name": "sent", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the new age in seconds.", 
+          "name": "age", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the value <code>1</code> in case of success, or <code>nil</code> in case of error.", 
+          "name": "success", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "resets accounting information on the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "master:setstats"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Resets accounting information on the socket, useful for throttling of bandwidth.", 
+      "parameters": [
+        {
+          "doc": "the new number of bytes received.", 
+          "name": "received", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the new number of bytes sent.", 
+          "name": "sent", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the new age in seconds.", 
+          "name": "age", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the value <code>1</code> in case of success, or <code>nil</code> in case of error.", 
+          "name": "success", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "resets accounting information on the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "client:setstats"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Resets accounting information on the socket, useful for throttling of bandwidth.", 
+      "parameters": [
+        {
+          "doc": "the new number of bytes received.", 
+          "name": "received", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the new number of bytes sent.", 
+          "name": "sent", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the new age in seconds.", 
+          "name": "age", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the value <code>1</code> in case of success, or <code>nil</code> in case of error.", 
+          "name": "success", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "resets accounting information on the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "server:setstats"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Changes the timeout values for the object. By default, all I/O operations are blocking. That is, any call to the methods <code>send</code>, <code>receive</code>, and <code>accept</code> will block indefinitely, until the operation completes. The <code>settimeout</code> method defines a limit on the amount of time the I/O methods can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.\nThere are two timeout modes and both can be used together for fine tuning.\n<span class=\"icon-attention\"></span> Although timeout values have millisecond precision in LuaSocket, large blocks can cause I/O functions not to respect timeout values due to the time the library takes to transfer blocks to and from the OS and to and from the Lua interpreter. Also, function that accept host names and perform automatic name resolution might be blocked by the resolver for longer than the specified timeout value.", 
+      "parameters": [
+        {
+          "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.", 
+          "name": "value", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "optional timeout mode to set:\n<dl>\n<dt><code>\"b\"</code></dt>\n<dd>block timeout. Specifies the upper limit on the amount of time LuaSocket can be blocked by the operating system while waiting for completion of any single I/O operation. This is the default mode;</dd>\n<dt><code>\"t\"</code></dt>\n<dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>\n</dl>", 
+          "name": "[mode]", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the timeout values for the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "master:settimeout"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Changes the timeout values for the object. By default, all I/O operations are blocking. That is, any call to the methods <code>send</code>, <code>receive</code>, and <code>accept</code> will block indefinitely, until the operation completes. The <code>settimeout</code> method defines a limit on the amount of time the I/O methods can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.\nThere are two timeout modes and both can be used together for fine tuning.\n<span class=\"icon-attention\"></span> Although timeout values have millisecond precision in LuaSocket, large blocks can cause I/O functions not to respect timeout values due to the time the library takes to transfer blocks to and from the OS and to and from the Lua interpreter. Also, function that accept host names and perform automatic name resolution might be blocked by the resolver for longer than the specified timeout value.", 
+      "parameters": [
+        {
+          "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.", 
+          "name": "value", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "optional timeout mode to set:\n<dl>\n<dt><code>\"b\"</code></dt>\n<dd>block timeout. Specifies the upper limit on the amount of time LuaSocket can be blocked by the operating system while waiting for completion of any single I/O operation. This is the default mode;</dd>\n<dt><code>\"t\"</code></dt>\n<dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>\n</dl>", 
+          "name": "[mode]", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the timeout values for the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "client:settimeout"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Changes the timeout values for the object. By default, all I/O operations are blocking. That is, any call to the methods <code>send</code>, <code>receive</code>, and <code>accept</code> will block indefinitely, until the operation completes. The <code>settimeout</code> method defines a limit on the amount of time the I/O methods can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.\nThere are two timeout modes and both can be used together for fine tuning.\n<span class=\"icon-attention\"></span> Although timeout values have millisecond precision in LuaSocket, large blocks can cause I/O functions not to respect timeout values due to the time the library takes to transfer blocks to and from the OS and to and from the Lua interpreter. Also, function that accept host names and perform automatic name resolution might be blocked by the resolver for longer than the specified timeout value.", 
+      "parameters": [
+        {
+          "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.", 
+          "name": "value", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "optional timeout mode to set:\n<dl>\n<dt><code>\"b\"</code></dt>\n<dd>block timeout. Specifies the upper limit on the amount of time LuaSocket can be blocked by the operating system while waiting for completion of any single I/O operation. This is the default mode;</dd>\n<dt><code>\"t\"</code></dt>\n<dd>total timeout. Specifies the upper limit on the amount of time LuaSocket can block a Lua script before returning from a call.</dd>\n</dl>", 
+          "name": "[mode]", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the timeout values for the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "server:settimeout"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Shuts down part of a full-duplex connection.", 
+      "parameters": [
+        {
+          "doc": "which way of the connection should be shut down:\n<dl>\n<dt><code>\"both\"</code></dt>\n<dd>disallow further sends and receives on the object. This is the default mode;</dd>\n<dt><code>\"send\"</code></dt>\n<dd>disallow further sends on the object;</dd>\n<dt><code>\"receive\"</code></dt>\n<dd>disallow further receives on the object.</dd>\n</dl>", 
+          "name": "mode", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the value <code>1</code>.", 
+          "name": "status", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "shut down socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "client:shutdown"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Check the read buffer status.\n<span class=\"icon-attention\"></span> This is an internal method, any use is unlikely to be portable.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<code>true</code> if there is any data in the read buffer, <code>false</code> otherwise.", 
+          "name": "status", 
+          "types": [
+            "boolean"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "checks the read buffer status", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "master:dirty"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Check the read buffer status.\n<span class=\"icon-attention\"></span> This is an internal method, any use is unlikely to be portable.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<code>true</code> if there is any data in the read buffer, <code>false</code> otherwise.", 
+          "name": "status", 
+          "types": [
+            "boolean"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "checks the read buffer status", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "client:dirty"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Check the read buffer status.\n<span class=\"icon-attention\"></span> This is an internal method, any use is unlikely to be portable.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "<code>true</code> if there is any data in the read buffer, <code>false</code> otherwise.", 
+          "name": "status", 
+          "types": [
+            "boolean"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "checks the read buffer status", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "server:dirty"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the underlying socket descriptor or handle associated to the object.\n<span class=\"icon-attention\"></span> This is an internal method, any use is unlikely to be portable.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "the descriptor or handle. In case the object has been closed, the return will be -1.", 
+          "name": "handle", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets the socket descriptor", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "master:getfd"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the underlying socket descriptor or handle associated to the object.\n<span class=\"icon-attention\"></span> This is an internal method, any use is unlikely to be portable.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "the descriptor or handle. In case the object has been closed, the return will be -1.", 
+          "name": "handle", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets the socket descriptor", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "client:getfd"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the underlying socket descriptor or handle associated to the object.\n<span class=\"icon-attention\"></span> This is an internal method, any use is unlikely to be portable.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "the descriptor or handle. In case the object has been closed, the return will be -1.", 
+          "name": "handle", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets the socket descriptor", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "server:getfd"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets the underling socket descriptor or handle associated to the object. The current one is simply replaced, not closed, and no other change to the object state is made", 
+      "parameters": [
+        {
+          "doc": "the descriptor or handle to set.", 
+          "name": "handle", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "sets the socket descriptor", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "master:setfd"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets the underling socket descriptor or handle associated to the object. The current one is simply replaced, not closed, and no other change to the object state is made", 
+      "parameters": [
+        {
+          "doc": "the descriptor or handle to set.", 
+          "name": "handle", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "sets the socket descriptor", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "client:setfd"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets the underling socket descriptor or handle associated to the object. The current one is simply replaced, not closed, and no other change to the object state is made", 
+      "parameters": [
+        {
+          "doc": "the descriptor or handle to set.", 
+          "name": "handle", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "sets the socket descriptor", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "server:setfd"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Closes a UDP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.\n<span class=\"icon-attention\"></span> It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "closes the UDP socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "connected:close"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Closes a UDP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.\n<span class=\"icon-attention\"></span> It is important to close all used sockets once they are not needed, since, in many systems, each socket uses a file descriptor, which are limited system resources. Garbage-collected objects are automatically closed before destruction, though.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "closes the UDP socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "unconnected:close"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Gets an option value from the UDP object. See <a href=\"#unconnected:setoption\">unconnected:setoption</a> for description of the option names and values.</p>", 
-      "parameters": [
-        {
-          "doc": "<p><span class=\"type\">string</span> the name of the option to get:</p>\n<ul>\n<li><code>\"dontroute\"</code></li>\n<li><code>\"broadcast\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"reuseport\"</code></li>\n<li><code>\"ip-multicast-loop\"</code></li>\n<li><code>\"ipv6-v6only\"</code></li>\n<li><code>\"ip-multicast-if\"</code></li>\n<li><code>\"ip-multicast-ttl\"</code></li>\n<li><code>\"ip-add-membership\"</code></li>\n<li><code>\"ip-drop-membership\"</code></li>\n</ul>", 
-          "name": "option"
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "<p><span class=\"type\">any</span> the option value, or <code>nil</code> in case of error.</p>", 
-          "name": "value"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
-        }
-      ], 
-      "brief": "<p>gets options for the UDP socket</p>", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "type": "FUNCTION", 
-      "name": "unconnected:getoption"
-    }, 
-    {
-      "replaces": "", 
-      "description": "<p>Returns the local address information associated to the object.</p>\n<p><span class=\"icon-attention\"></span> UDP sockets are not bound to any address until the <code>setsockname</code> or the <code>sendto</code> method is called for the first time (in which case it is bound to an ephemeral port and the wild-card address).</p>", 
+      "description": "Retrieves information about the peer associated with a connected UDP object.\n<span class=\"icon-attention\"></span> It makes no sense to call this method on unconnected objects.", 
       "parameters": [], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">string</span> a string with local IP address, a number with the local port, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.</p>", 
-          "name": "info"
+          "doc": "a string with the IP address of the peer, the port number that peer is using for the connection, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.", 
+          "name": "info", 
+          "types": [
+            "string"
+          ]
         }
       ], 
-      "brief": "<p>gets the local address information associated to the socket</p>", 
+      "notes": [], 
+      "brief": "gets information about the UDP socket peer", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "connected:getpeername"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the local address information associated to the object.\n<span class=\"icon-attention\"></span> UDP sockets are not bound to any address until the <code>setsockname</code> or the <code>sendto</code> method is called for the first time (in which case it is bound to an ephemeral port and the wild-card address).", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "a string with local IP address, a number with the local port, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.", 
+          "name": "info", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets the local address information associated to the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "connected:getsockname"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Returns the local address information associated to the object.\n<span class=\"icon-attention\"></span> UDP sockets are not bound to any address until the <code>setsockname</code> or the <code>sendto</code> method is called for the first time (in which case it is bound to an ephemeral port and the wild-card address).", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "a string with local IP address, a number with the local port, and the family (\"inet\" or \"inet6\"). In case of error, the method returns <code>nil</code>.", 
+          "name": "info", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets the local address information associated to the socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "unconnected:getsockname"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Receives a datagram from the UDP object. If the UDP object is connected, only datagrams coming from the peer are accepted. Otherwise, the returned datagram can come from any host.</p>", 
+      "description": "Receives a datagram from the UDP object. If the UDP object is connected, only datagrams coming from the peer are accepted. Otherwise, the returned datagram can come from any host.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">number</span> optional maximum size of the datagram to be retrieved. If there are more than size bytes available in the datagram, the excess bytes are discarded. If there are less then size bytes available in the current datagram, the available bytes are returned. If size is omitted, the maximum datagram size is used (which is currently limited by the implementation to 8192 bytes).</p>", 
-          "name": "[size]"
+          "doc": "optional maximum size of the datagram to be retrieved. If there are more than size bytes available in the datagram, the excess bytes are discarded. If there are less then size bytes available in the current datagram, the available bytes are returned. If size is omitted, the maximum datagram size is used (which is currently limited by the implementation to 8192 bytes).", 
+          "name": "[size]", 
+          "types": [
+            "number"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">string</span> the received datagram, or <code>nil</code> in case of error.</p>", 
-          "name": "datagram"
+          "doc": "the received datagram, or <code>nil</code> in case of error.", 
+          "name": "datagram", 
+          "types": [
+            "string"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
         }
       ], 
-      "brief": "<p>receives a datagram from the UDP socket</p>", 
+      "notes": [], 
+      "brief": "receives a datagram from the UDP socket", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "connected:receive"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Receives a datagram from the UDP object. If the UDP object is connected, only datagrams coming from the peer are accepted. Otherwise, the returned datagram can come from any host.", 
+      "parameters": [
+        {
+          "doc": "optional maximum size of the datagram to be retrieved. If there are more than size bytes available in the datagram, the excess bytes are discarded. If there are less then size bytes available in the current datagram, the available bytes are returned. If size is omitted, the maximum datagram size is used (which is currently limited by the implementation to 8192 bytes).", 
+          "name": "[size]", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the received datagram, or <code>nil</code> in case of error.", 
+          "name": "datagram", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "receives a datagram from the UDP socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "unconnected:receive"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Works exactly as the receive method, except it returns the IP address and port as extra return values (and is therefore slightly less efficient).</p>", 
+      "description": "Works exactly as the receive method, except it returns the IP address and port as extra return values (and is therefore slightly less efficient).", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">number</span> optional maximum size of the datagram to be retrieved.</p>", 
-          "name": "[size]"
+          "doc": "optional maximum size of the datagram to be retrieved.", 
+          "name": "[size]", 
+          "types": [
+            "number"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">string</span> the received datagram, or <code>nil</code> in case of error.</p>", 
-          "name": "datagram"
+          "doc": "the received datagram, or <code>nil</code> in case of error.", 
+          "name": "datagram", 
+          "types": [
+            "string"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">string</span> the IP address, or the error message in case of error.</p>", 
-          "name": "ip_or_error"
+          "doc": "the IP address, or the error message in case of error.", 
+          "name": "ip_or_error", 
+          "types": [
+            "string"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">number</span> the port number, or <code>nil</code> in case of error.</p>", 
-          "name": "port"
+          "doc": "the port number, or <code>nil</code> in case of error.", 
+          "name": "port", 
+          "types": [
+            "number"
+          ]
         }
       ], 
-      "brief": "<p>receives a datagram from the UDP socket</p>", 
+      "notes": [], 
+      "brief": "receives a datagram from the UDP socket", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "unconnected:receivefrom"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Sends a datagram to the specified IP address and port number.</p>\n<p><span class=\"icon-attention\"></span> In UDP, the send method never blocks and the only way it can fail is if the underlying transport layer refuses to send a message to the specified address (i.e. no interface accepts the address).</p>", 
+      "description": "Gets an option value from the UDP object. See <a href=\"#connected:setoption\">connected:setoption</a> for description of the option names and values.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string</span> a string with the datagram contents. The maximum datagram size for UDP is 64K minus IP layer overhead. However datagrams larger than the link layer packet size will be fragmented, which may deteriorate performance and/or reliability.</p>", 
-          "name": "datagram"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">string</span> the IP address of the recipient. Host names are not allowed for performance reasons.</p>", 
-          "name": "ip"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">number</span> the port number at the recipient.</p>", 
-          "name": "port"
+          "doc": "the name of the option to get:\n<ul>\n<li><code>\"dontroute\"</code></li>\n<li><code>\"broadcast\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"reuseport\"</code></li>\n<li><code>\"ip-multicast-loop\"</code></li>\n<li><code>\"ipv6-v6only\"</code></li>\n<li><code>\"ip-multicast-if\"</code></li>\n<li><code>\"ip-multicast-ttl\"</code></li>\n<li><code>\"ip-add-membership\"</code></li>\n<li><code>\"ip-drop-membership\"</code></li>\n</ul>", 
+          "name": "option", 
+          "types": [
+            "string"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code> on success, or <code>nil</code> in case of error.</p>", 
-          "name": "success"
+          "doc": "the option value, or <code>nil</code> in case of error.", 
+          "name": "value", 
+          "types": [
+            "any"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
         }
       ], 
-      "brief": "<p>sends a datagram through the UDP socket to the specified IP address and port number</p>", 
+      "notes": [], 
+      "brief": "gets options for the UDP socket", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "connected:getoption"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets an option value from the UDP object. See <a href=\"#unconnected:setoption\">unconnected:setoption</a> for description of the option names and values.", 
+      "parameters": [
+        {
+          "doc": "the name of the option to get:\n<ul>\n<li><code>\"dontroute\"</code></li>\n<li><code>\"broadcast\"</code></li>\n<li><code>\"reuseaddr\"</code></li>\n<li><code>\"reuseport\"</code></li>\n<li><code>\"ip-multicast-loop\"</code></li>\n<li><code>\"ipv6-v6only\"</code></li>\n<li><code>\"ip-multicast-if\"</code></li>\n<li><code>\"ip-multicast-ttl\"</code></li>\n<li><code>\"ip-add-membership\"</code></li>\n<li><code>\"ip-drop-membership\"</code></li>\n</ul>", 
+          "name": "option", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the option value, or <code>nil</code> in case of error.", 
+          "name": "value", 
+          "types": [
+            "any"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets options for the UDP socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "unconnected:getoption"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sends a datagram to the UDP peer of a connected object.\n<span class=\"icon-attention\"></span> In UDP, the send method never blocks and the only way it can fail is if the underlying transport layer refuses to send a message to the specified address (i.e. no interface accepts the address).", 
+      "parameters": [
+        {
+          "doc": "a string with the datagram contents. The maximum datagram size for UDP is 64K minus IP layer overhead. However datagrams larger than the link layer packet size will be fragmented, which may deteriorate performance and/or reliability.", 
+          "name": "datagram", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the value <code>1</code> on success, or <code>nil</code> in case of error.", 
+          "name": "success", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "sends a datagram through the connected UDP socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "connected:send"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sends a datagram to the specified IP address and port number.\n<span class=\"icon-attention\"></span> In UDP, the send method never blocks and the only way it can fail is if the underlying transport layer refuses to send a message to the specified address (i.e. no interface accepts the address).", 
+      "parameters": [
+        {
+          "doc": "a string with the datagram contents. The maximum datagram size for UDP is 64K minus IP layer overhead. However datagrams larger than the link layer packet size will be fragmented, which may deteriorate performance and/or reliability.", 
+          "name": "datagram", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "the IP address of the recipient. Host names are not allowed for performance reasons.", 
+          "name": "ip", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "the port number at the recipient.", 
+          "name": "port", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the value <code>1</code> on success, or <code>nil</code> in case of error.", 
+          "name": "success", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "sends a datagram through the UDP socket to the specified IP address and port number", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "unconnected:sendto"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Sets options for the UDP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.</p>", 
+      "description": "Changes the peer of a UDP object. This method turns an unconnected UDP object into a connected UDP object or vice versa.\nFor connected objects, outgoing datagrams will be sent to the specified peer, and datagrams received from other peers will be discarded by the OS. Connected UDP objects must use the <code>send</code> and <code>receive</code> methods instead of <code>sendto</code> and <code>receivefrom</code>.\n<span class=\"icon-attention\"></span> Since the address of the peer does not have to be passed to and from the OS, the use of connected UDP objects is recommended when the same peer is used for several transmissions and can result in up to 30% performance gains.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string</span> the name of the option to set. The value is provided in the <code>value</code> parameter:</p>\n<dl>\n<dt><code>\"dontroute\"</code></dt>\n<dd>Indicates that outgoing messages should bypass the standard routing facilities. Receives a boolean value;</dd>\n<dt><code>\"broadcast\"</code></dt>\n<dd>Requests permission to send broadcast datagrams on the socket. Receives a boolean value;</dd>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Indicates that the rules used in validating addresses supplied in a <code>bind</code> call should allow reuse of local addresses. Receives a boolean value;</dd>\n<dt><code>\"reuseport\"</code></dt>\n<dd>Allows completely duplicate bindings by multiple processes if they all set <code>\"reuseport\"</code> before binding the port. Receives a boolean value;</dd>\n<dt><code>\"ip-multicast-loop\"</code></dt>\n<dd>Specifies whether or not a copy of an outgoing multicast datagram is delivered to the sending host as long as it is a member of the multicast group. Receives a boolean value;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Specifies whether to restrict inet6 sockets to sending and receiving only IPv6 packets. Receive a boolean value;</dd>\n<dt><code>\"ip-multicast-if\"</code></dt>\n<dd>Sets the interface over which outgoing multicast datagrams are sent. Receives an IP address;</dd>\n<dt><code>\"ip-multicast-ttl\"</code></dt>\n<dd>Sets the Time To Live in the IP header for outgoing multicast datagrams. Receives a number;</dd>\n</dl>\n<p><code>\"ip-add-membership\"</code>: Joins the multicast group specified. Receives a table with fields:</p>\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>\n<dl>\n<dt>\"'ip-drop-membership\"`</dt>\n<dd>Leaves the multicast group specified. Receives a table with fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>", 
-          "name": "option"
-        }, 
-        {
-          "doc": "<p><span class=\"type\">any</span> the value to set for the specified option.</p>", 
-          "name": "[value]"
+          "doc": "if address is \"*\" and the object is connected, the peer association is removed and the object becomes an unconnected object again.", 
+          "name": "\"*\"", 
+          "types": [
+            "string"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code>, or <code>nil</code> in case of error.</p>", 
-          "name": "status"
+          "doc": "the value <code>1</code> on success, or <code>nil</code> in case of error.", 
+          "name": "success", 
+          "types": [
+            "number"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
         }
       ], 
-      "brief": "<p>sets options for the UDP socket</p>", 
+      "notes": [], 
+      "brief": "remove the peer of the connected UDP socket", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
-      "name": "unconnected:setoption"
+      "name": "connected:setpeername"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Changes the peer of a UDP object. This method turns an unconnected UDP object into a connected UDP object or vice versa.</p>\n<p>For connected objects, outgoing datagrams will be sent to the specified peer, and datagrams received from other peers will be discarded by the OS. Connected UDP objects must use the <code>send</code> and <code>receive</code> methods instead of <code>sendto</code> and <code>receivefrom</code>.</p>\n<p><span class=\"icon-attention\"></span> Since the address of the peer does not have to be passed to and from the OS, the use of connected UDP objects is recommended when the same peer is used for several transmissions and can result in up to 30% performance gains.</p>", 
+      "description": "Changes the peer of a UDP object. This method turns an unconnected UDP object into a connected UDP object or vice versa.\nFor connected objects, outgoing datagrams will be sent to the specified peer, and datagrams received from other peers will be discarded by the OS. Connected UDP objects must use the <code>send</code> and <code>receive</code> methods instead of <code>sendto</code> and <code>receivefrom</code>.\n<span class=\"icon-attention\"></span> Since the address of the peer does not have to be passed to and from the OS, the use of connected UDP objects is recommended when the same peer is used for several transmissions and can result in up to 30% performance gains.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string</span> an IP address or a host name.</p>", 
-          "name": "address"
+          "doc": "an IP address or a host name.", 
+          "name": "address", 
+          "types": [
+            "string"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">number</span> the port number.</p>", 
-          "name": "port"
+          "doc": "the port number.", 
+          "name": "port", 
+          "types": [
+            "number"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code> on success, or <code>nil</code> in case of error.</p>", 
-          "name": "success"
+          "doc": "the value <code>1</code> on success, or <code>nil</code> in case of error.", 
+          "name": "success", 
+          "types": [
+            "number"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
         }
       ], 
-      "brief": "<p>set the peer of the unconnected UDP socket</p>", 
+      "notes": [], 
+      "brief": "set the peer of the unconnected UDP socket", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "unconnected:setpeername"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Binds the UDP object to a local address.</p>\n<p><span class=\"icon-attention\"></span> This method can only be called before any datagram is sent through the UDP object, and only once. Otherwise, the system automatically binds the object to all local interfaces and chooses an ephemeral port as soon as the first datagram is sent. After the local address is set, either automatically by the system or explicitly by <code>setsockname</code>, it cannot be changed.</p>", 
+      "description": "Binds the UDP object to a local address.\n<span class=\"icon-attention\"></span> This method can only be called before any datagram is sent through the UDP object, and only once. Otherwise, the system automatically binds the object to all local interfaces and chooses an ephemeral port as soon as the first datagram is sent. After the local address is set, either automatically by the system or explicitly by <code>setsockname</code>, it cannot be changed.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">string</span> an IP address or a host name. If address is \"*\" the system binds to all local interfaces using the constant <code>INADDR_ANY</code>.</p>", 
-          "name": "address"
+          "doc": "an IP address or a host name. If address is \"*\" the system binds to all local interfaces using the constant <code>INADDR_ANY</code>.", 
+          "name": "address", 
+          "types": [
+            "string"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">number</span> the port number. If port is 0, the system chooses an ephemeral port.</p>", 
-          "name": "port"
+          "doc": "the port number. If port is 0, the system chooses an ephemeral port.", 
+          "name": "port", 
+          "types": [
+            "number"
+          ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "<p><span class=\"type\">number</span> the value <code>1</code> on success, or <code>nil</code> in case of error.</p>", 
-          "name": "success"
+          "doc": "the value <code>1</code> on success, or <code>nil</code> in case of error.", 
+          "name": "success", 
+          "types": [
+            "number"
+          ]
         }, 
         {
-          "doc": "<p><span class=\"type\">string</span> the error message, or <code>nil</code> if no error occurred.</p>", 
-          "name": "error"
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
         }
       ], 
-      "brief": "<p>binds the UDP socket to a local address</p>", 
+      "notes": [], 
+      "brief": "binds the UDP socket to a local address", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "unconnected:setsockname"
     }, 
     {
       "replaces": "", 
-      "description": "<p>Changes the timeout values for the object. By default, the <code>receive</code> and <code>receivefrom</code>  operations are blocking. That is, any call to the methods will block indefinitely, until data arrives. The <code>settimeout</code> function defines a limit on the amount of time the functions can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.</p>\n<p><span class=\"icon-attention\"></span> In UDP, the <code>send</code> and <code>sendto</code> methods never block (the datagram is just passed to the OS and the call returns immediately). Therefore, the <code>settimeout</code> method has no effect on them.</p>", 
+      "description": "Sets options for the UDP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.", 
       "parameters": [
         {
-          "doc": "<p><span class=\"type\">number</span> the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.</p>", 
-          "name": "value"
+          "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"dontroute\"</code></dt>\n<dd>Indicates that outgoing messages should bypass the standard routing facilities. Receives a boolean value;</dd>\n<dt><code>\"broadcast\"</code></dt>\n<dd>Requests permission to send broadcast datagrams on the socket. Receives a boolean value;</dd>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Indicates that the rules used in validating addresses supplied in a <code>bind</code> call should allow reuse of local addresses. Receives a boolean value;</dd>\n<dt><code>\"reuseport\"</code></dt>\n<dd>Allows completely duplicate bindings by multiple processes if they all set <code>\"reuseport\"</code> before binding the port. Receives a boolean value;</dd>\n<dt><code>\"ip-multicast-loop\"</code></dt>\n<dd>Specifies whether or not a copy of an outgoing multicast datagram is delivered to the sending host as long as it is a member of the multicast group. Receives a boolean value;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Specifies whether to restrict inet6 sockets to sending and receiving only IPv6 packets. Receive a boolean value;</dd>\n<dt><code>\"ip-multicast-if\"</code></dt>\n<dd>Sets the interface over which outgoing multicast datagrams are sent. Receives an IP address;</dd>\n<dt><code>\"ip-multicast-ttl\"</code></dt>\n<dd>Sets the Time To Live in the IP header for outgoing multicast datagrams. Receives a number;</dd>\n</dl>\n<code>\"ip-add-membership\"</code>: Joins the multicast group specified. Receives a table with fields:\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>\n<dl>\n<dt>\"'ip-drop-membership\"`</dt>\n<dd>Leaves the multicast group specified. Receives a table with fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>", 
+          "name": "option", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "the value to set for the specified option.", 
+          "name": "[value]", 
+          "types": [
+            "any"
+          ]
         }
       ], 
-      "returnvalues": [], 
-      "brief": "<p>sets the timeout value for the UDP socket</p>", 
+      "returnvalues": [
+        {
+          "doc": "the value <code>1</code>, or <code>nil</code> in case of error.", 
+          "name": "status", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "sets options for the UDP socket", 
       "examples": "", 
       "members": [], 
       "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "connected:setoption"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets options for the UDP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.", 
+      "parameters": [
+        {
+          "doc": "the name of the option to set. The value is provided in the <code>value</code> parameter:\n<dl>\n<dt><code>\"dontroute\"</code></dt>\n<dd>Indicates that outgoing messages should bypass the standard routing facilities. Receives a boolean value;</dd>\n<dt><code>\"broadcast\"</code></dt>\n<dd>Requests permission to send broadcast datagrams on the socket. Receives a boolean value;</dd>\n<dt><code>\"reuseaddr\"</code></dt>\n<dd>Indicates that the rules used in validating addresses supplied in a <code>bind</code> call should allow reuse of local addresses. Receives a boolean value;</dd>\n<dt><code>\"reuseport\"</code></dt>\n<dd>Allows completely duplicate bindings by multiple processes if they all set <code>\"reuseport\"</code> before binding the port. Receives a boolean value;</dd>\n<dt><code>\"ip-multicast-loop\"</code></dt>\n<dd>Specifies whether or not a copy of an outgoing multicast datagram is delivered to the sending host as long as it is a member of the multicast group. Receives a boolean value;</dd>\n<dt><code>\"ipv6-v6only\"</code></dt>\n<dd>Specifies whether to restrict inet6 sockets to sending and receiving only IPv6 packets. Receive a boolean value;</dd>\n<dt><code>\"ip-multicast-if\"</code></dt>\n<dd>Sets the interface over which outgoing multicast datagrams are sent. Receives an IP address;</dd>\n<dt><code>\"ip-multicast-ttl\"</code></dt>\n<dd>Sets the Time To Live in the IP header for outgoing multicast datagrams. Receives a number;</dd>\n</dl>\n<code>\"ip-add-membership\"</code>: Joins the multicast group specified. Receives a table with fields:\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>\n<dl>\n<dt>\"'ip-drop-membership\"`</dt>\n<dd>Leaves the multicast group specified. Receives a table with fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">string</span> <code>multiaddr</code> (IP address)</li>\n<li><span class=\"type\">string</span> <code>interface</code> (IP address)</li>\n</ul>", 
+          "name": "option", 
+          "types": [
+            "string"
+          ]
+        }, 
+        {
+          "doc": "the value to set for the specified option.", 
+          "name": "[value]", 
+          "types": [
+            "any"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the value <code>1</code>, or <code>nil</code> in case of error.", 
+          "name": "status", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the error message, or <code>nil</code> if no error occurred.", 
+          "name": "error", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "sets options for the UDP socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "unconnected:setoption"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Changes the timeout values for the object. By default, the <code>receive</code> and <code>receivefrom</code>  operations are blocking. That is, any call to the methods will block indefinitely, until data arrives. The <code>settimeout</code> function defines a limit on the amount of time the functions can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.\n<span class=\"icon-attention\"></span> In UDP, the <code>send</code> and <code>sendto</code> methods never block (the datagram is just passed to the OS and the call returns immediately). Therefore, the <code>settimeout</code> method has no effect on them.", 
+      "parameters": [
+        {
+          "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.", 
+          "name": "value", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "sets the timeout value for the UDP socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "connected:settimeout"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Changes the timeout values for the object. By default, the <code>receive</code> and <code>receivefrom</code>  operations are blocking. That is, any call to the methods will block indefinitely, until data arrives. The <code>settimeout</code> function defines a limit on the amount of time the functions can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.\n<span class=\"icon-attention\"></span> In UDP, the <code>send</code> and <code>sendto</code> methods never block (the datagram is just passed to the OS and the call returns immediately). Therefore, the <code>settimeout</code> method has no effect on them.", 
+      "parameters": [
+        {
+          "doc": "the amount of time to wait, in seconds. The <code>nil</code> timeout value allows operations to block indefinitely. Negative timeout values have the same effect.", 
+          "name": "value", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "sets the timeout value for the UDP socket", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
       "type": "FUNCTION", 
       "name": "unconnected:settimeout"
     }

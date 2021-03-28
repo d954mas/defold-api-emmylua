@@ -1,0 +1,175 @@
+{
+  "info": {
+    "group": "DEFOLD SDK", 
+    "description": "SDK Engine extension API documentation", 
+    "namespace": "dmEngine", 
+    "brief": "SDK Engine extension API documentation", 
+    "file": "dmsdk/engine/extension.h", 
+    "path": "engine/dlib/src/dmsdk/engine/extension.h", 
+    "name": "Engine"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "define for debug builds", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "define for debug builds", 
+      "examples": "Only enable code in debug builds\n<div class=\"codehilite\"><pre><span></span><span class=\"cp\">#if defined(DM_DEBUG)</span>\n    <span class=\"c1\">// ...</span>\n<span class=\"cp\">#endif</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DM_DEBUG"
+    }, 
+    {
+      "replaces": "", 
+      "description": "define for release builds", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "define for release builds", 
+      "examples": "Only enable code in release builds\n<div class=\"codehilite\"><pre><span></span><span class=\"cp\">#if defined(DM_RELEASE)</span>\n    <span class=\"c1\">// ...</span>\n<span class=\"cp\">#endif</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DM_RELEASE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "define for headless builds", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "define for headless builds", 
+      "examples": "Only enable code in headless builds\n<div class=\"codehilite\"><pre><span></span><span class=\"cp\">#if defined(DM_HEADLESS)</span>\n    <span class=\"c1\">// ...</span>\n<span class=\"cp\">#endif</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DM_HEADLESS"
+    }, 
+    {
+      "replaces": "", 
+      "description": "get the config file", 
+      "parameters": [
+        {
+          "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize", 
+          "name": "app_params", 
+          "types": [
+            "dmExtension::AppParams*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "The game project config file", 
+          "name": "config", 
+          "types": [
+            "dmConfigFile::HConfig"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get the config file", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetConfigFile"
+    }, 
+    {
+      "replaces": "", 
+      "description": "get the web server handle", 
+      "parameters": [
+        {
+          "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize", 
+          "name": "app_params", 
+          "types": [
+            "dmExtension::AppParams*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "The web server handle", 
+          "name": "server", 
+          "types": [
+            "dmWebServer::HServer"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get the web server handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetWebServer"
+    }, 
+    {
+      "replaces": "", 
+      "description": "get the game object register", 
+      "parameters": [
+        {
+          "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize", 
+          "name": "app_params", 
+          "types": [
+            "dmExtension::AppParams*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "The game object register", 
+          "name": "register", 
+          "types": [
+            "dmGameObject::HRegister"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get the game object register", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetGameObjectRegister"
+    }, 
+    {
+      "replaces": "", 
+      "description": "get the hid context", 
+      "parameters": [
+        {
+          "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize", 
+          "name": "app_params", 
+          "types": [
+            "dmExtension::AppParams*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "The hid context", 
+          "name": "context", 
+          "types": [
+            "dmHID::HContext"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get the hid context", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetHIDContext"
+    }
+  ]
+}

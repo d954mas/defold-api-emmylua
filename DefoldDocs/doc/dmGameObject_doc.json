@@ -1,0 +1,1048 @@
+{
+  "info": {
+    "group": "DEFOLD SDK", 
+    "description": "API for manipulating game objects", 
+    "namespace": "dmGameObject", 
+    "brief": "Game object functions", 
+    "file": "dmsdk/gameobject/gameobject.h", 
+    "path": "engine/gameobject/src/dmsdk/gameobject/gameobject.h", 
+    "name": "Gameobject"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "Gameobject instance handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Gameobject instance handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HInstance"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Script handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Script handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HScript"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Script instance handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Script instance handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HScriptInstance"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Collection register.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Collection register.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HRegister"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gameobject collection handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Gameobject collection handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HCollection"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gameobject properties handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Gameobject properties handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HProperties"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Result enumeration.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "result enumeration", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::RESULT_OK"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::RESULT_OUT_OF_RESOURCES"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::RESULT_ALREADY_REGISTERED"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::RESULT_IDENTIFIER_IN_USE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::RESULT_IDENTIFIER_ALREADY_SET"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::RESULT_COMPONENT_NOT_FOUND"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::RESULT_MAXIMUM_HIEARCHICAL_DEPTH"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::RESULT_INVALID_OPERATION"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::RESULT_RESOURCE_TYPE_NOT_FOUND"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::RESULT_BUFFER_OVERFLOW"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::RESULT_UNKNOWN_ERROR"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Result"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Property types.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "property types", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_TYPE_NUMBER"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_TYPE_HASH"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_TYPE_URL"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_TYPE_VECTOR3"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_TYPE_VECTOR4"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_TYPE_QUAT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_TYPE_BOOLEAN"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_TYPE_COUNT"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "PropertyType"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Property result.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "property result", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_RESULT_OK"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_RESULT_NOT_FOUND"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_RESULT_INVALID_FORMAT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_RESULT_UNSUPPORTED_TYPE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_RESULT_TYPE_MISMATCH"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_RESULT_COMP_NOT_FOUND"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_RESULT_INVALID_INSTANCE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_RESULT_BUFFER_OVERFLOW"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_RESULT_UNSUPPORTED_VALUE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_RESULT_UNSUPPORTED_OPERATION"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::PROPERTY_RESULT_RESOURCE_NOT_FOUND"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "PropertyResult"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Property variant that holds the data for a variable", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "property variant", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "property type", 
+          "type": "dmGameObject::PropertyType", 
+          "name": "m_Type"
+        }, 
+        {
+          "doc": "A floating point value (union)", 
+          "type": "double", 
+          "name": "m_Number"
+        }, 
+        {
+          "doc": "A hash value (union)", 
+          "type": "dmhash_t", 
+          "name": "m_Hash"
+        }, 
+        {
+          "doc": "An URL value (union)", 
+          "type": "const uin8_t*", 
+          "name": "m_Url"
+        }, 
+        {
+          "doc": "A vector4 value (union)", 
+          "type": "float", 
+          "name": "m_V4"
+        }, 
+        {
+          "doc": "A boolean value (union)", 
+          "type": "bool", 
+          "name": "m_Bool"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "PropertyVar"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get instance identifier", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Identifier. dmGameObject::UNNAMED_IDENTIFIER if not set.", 
+          "name": "", 
+          "types": [
+            "dmhash_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Get instance identifier", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetIdentifier"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set gameobject instance position", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }, 
+        {
+          "doc": "New Position", 
+          "name": "position", 
+          "types": [
+            "dmGameObject::Point3"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set position", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetPosition"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get gameobject instance position", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Position", 
+          "name": "", 
+          "types": [
+            "dmGameObject::Point3"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get position", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetPosition"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set gameobject instance rotation", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }, 
+        {
+          "doc": "New Position", 
+          "name": "position", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set rotation", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetRotation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get gameobject instance rotation", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "rotation", 
+          "name": "", 
+          "types": [
+            "dmGameObject::Quat"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get rotation", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetRotation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set gameobject instance uniform scale", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }, 
+        {
+          "doc": "New uniform scale", 
+          "name": "scale", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set uniform scale", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetScale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set gameobject instance non-uniform scale", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }, 
+        {
+          "doc": "New uniform scale", 
+          "name": "scale", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set scale", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetScale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get gameobject instance uniform scale", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Uniform scale", 
+          "name": "", 
+          "types": [
+            "float"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get uniform scale", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetUniformScale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get gameobject instance scale", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Non-uniform scale", 
+          "name": "", 
+          "types": [
+            "dmGameObject::Vector3"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get scale", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetScale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get gameobject instance world position", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "World position", 
+          "name": "", 
+          "types": [
+            "dmGameObject::Point3"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get world position", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetWorldPosition"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get gameobject instance world rotation", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "World rotation", 
+          "name": "", 
+          "types": [
+            "dmGameObject::Quat"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get world rotation", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetWorldRotation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get game object instance world transform", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "World scale", 
+          "name": "", 
+          "types": [
+            "dmGameObject::Vector3"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get world scale", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetWorldScale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get game object instance uniform scale", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "World uniform scale", 
+          "name": "", 
+          "types": [
+            "float"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get world uniform scale", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetWorldUniformScale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get game object instance world transform as Matrix4.", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "World transform matrix.", 
+          "name": "", 
+          "types": [
+            "dmGameObject::MAtrix4"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get world matrix", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetWorldMatrix"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Opaque struct that holds info about the current node", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "scene graph traversal node", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "SceneNode"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Opaque struct that holds info about the current position when traversing the scene", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "scene graph traversal iterator", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "SceneNodeIterator"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets the top node of the whole game (the main collection)", 
+      "parameters": [
+        {
+          "doc": "the full gameobject register", 
+          "name": "regist", 
+          "types": [
+            "dmGameObject::HRegister"
+          ]
+        }, 
+        {
+          "doc": "the node to inspect", 
+          "name": "node", 
+          "types": [
+            "dmGameObject::HRegister"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "True if successful", 
+          "name": "result", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Gets the top node of the whole game (the main coll...", 
+      "examples": "The following examples show how to iterate over currently loaded scene graph\n<div class=\"codehilite\"><pre><span></span><span class=\"kt\">void</span> <span class=\"nf\">OutputNode</span><span class=\"p\">(</span><span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">SceneNode</span><span class=\"o\">*</span> <span class=\"n\">node</span><span class=\"p\">)</span> <span class=\"p\">{</span>\n    <span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">SceneNodeIterator</span> <span class=\"n\">it</span> <span class=\"o\">=</span> <span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">TraverseIterateChildren</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">);</span>\n    <span class=\"k\">while</span><span class=\"p\">(</span><span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">TraverseIterateNext</span><span class=\"p\">(</span><span class=\"o\">&amp;</span><span class=\"n\">it</span><span class=\"p\">))</span>\n    <span class=\"p\">{</span>\n        <span class=\"n\">OutputProperties</span><span class=\"p\">(</span><span class=\"o\">&amp;</span><span class=\"n\">it</span><span class=\"p\">.</span><span class=\"n\">m_Node</span><span class=\"p\">);</span> <span class=\"c1\">// see dmGameObject::TraverseIterateProperties()</span>\n        <span class=\"n\">OutputNode</span><span class=\"p\">(</span><span class=\"o\">&amp;</span><span class=\"n\">it</span><span class=\"p\">.</span><span class=\"n\">m_Node</span><span class=\"p\">);</span>\n    <span class=\"p\">}</span>\n<span class=\"p\">}</span>\n\n<span class=\"kt\">bool</span> <span class=\"nf\">OutputScene</span><span class=\"p\">(</span><span class=\"n\">HRegister</span> <span class=\"n\">regist</span><span class=\"p\">)</span> <span class=\"p\">{</span>\n    <span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">SceneNode</span> <span class=\"n\">root</span><span class=\"p\">;</span>\n    <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"o\">!</span><span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">TraverseGetRoot</span><span class=\"p\">(</span><span class=\"n\">regist</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">root</span><span class=\"p\">))</span>\n        <span class=\"k\">return</span> <span class=\"nb\">false</span><span class=\"p\">;</span>\n    <span class=\"n\">OutputNode</span><span class=\"p\">(</span><span class=\"o\">&amp;</span><span class=\"n\">node</span><span class=\"p\">);</span>\n<span class=\"p\">}</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "TraverseGetRoot"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get a scene node iterator for the nodes' children", 
+      "parameters": [
+        {
+          "doc": "the parent node", 
+          "name": "node", 
+          "types": [
+            "dmGameObject::SceneNode*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the iterator", 
+          "name": "iterator", 
+          "types": [
+            "dmGameObject::SceneNodeIterator"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Get a scene node iterator for the nodes' children", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "TraverseIterateChildren"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Step a scene node iterator to the next sibling", 
+      "parameters": [
+        {
+          "doc": "the iterator", 
+          "name": "it", 
+          "types": [
+            "dmGameObject::SceneNodeIterator*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "true if successful. false if the iterator is finished", 
+          "name": "result", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Step a scene node iterator to the next sibling", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "TraverseIterateNext"
+    }, 
+    {
+      "replaces": "", 
+      "description": "scene node property types", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "scene node property types", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::SCENE_NODE_PROPERTY_TYPE_NUMBER"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::SCENE_NODE_PROPERTY_TYPE_HASH"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::SCENE_NODE_PROPERTY_TYPE_URL"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::SCENE_NODE_PROPERTY_TYPE_VECTOR3"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::SCENE_NODE_PROPERTY_TYPE_VECTOR4"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::SCENE_NODE_PROPERTY_TYPE_QUAT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::SCENE_NODE_PROPERTY_TYPE_BOOLEAN"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::SCENE_NODE_PROPERTY_TYPE_TEXT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::SCENE_NODE_PROPERTY_TYPE_COUNT"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "SceneNodePropertyType"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Struct that holds info about the current position when traversing the scene", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "scene traversal node property", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "name", 
+          "type": "dmhash_t", 
+          "name": "m_NameHash"
+        }, 
+        {
+          "doc": "type", 
+          "type": "dmGameObject::SceneNodePropertyType", 
+          "name": "m_Type"
+        }, 
+        {
+          "doc": "value\n<dl>\n<dt><code>m_Number</code></dt>\n<dd><span class=\"type\">double</span> floating point number</dd>\n<dt><code>m_Hash</code></dt>\n<dd><span class=\"type\">dmhash_t</span> The hashed value.</dd>\n<dt><code>m_URL</code></dt>\n<dd><span class=\"type\">char[1024</span>] The text representation of the url (if reverse hashes are enabled)</dd>\n<dt><code>m_V4</code></dt>\n<dd><span class=\"type\">float[4</span>] Used for Vector3, Vector4 and Quat</dd>\n<dt><code>m_Bool</code></dt>\n<dd><span class=\"type\">bool</span> A boolean value</dd>\n<dt><code>m_Text</code></dt>\n<dd><span class=\"type\">const char*</span> Text from a text property</dd>\n</dl>", 
+          "type": "union", 
+          "name": "m_Value"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "SceneNodeProperty"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Holds the property", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "scene traversal node property", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "property", 
+          "type": "dmGameObject::SceneNodeProperty", 
+          "name": "m_Property"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "SceneNodePropertyIterator"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Create a scene node traversal property iterator", 
+      "parameters": [
+        {
+          "doc": "the node to inspect", 
+          "name": "node", 
+          "types": [
+            "dmGameObject::SceneNode*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the property iterator", 
+          "name": "iterator", 
+          "types": [
+            "dmGameObject::SceneNodePropertyIterator"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Create a scene node traversal property iterator", 
+      "examples": "The following examples show how to iterate over the properties of a node\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">SceneNodePropertyIterator</span> <span class=\"n\">pit</span> <span class=\"o\">=</span> <span class=\"n\">TraverseIterateProperties</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">);</span>\n<span class=\"k\">while</span><span class=\"p\">(</span><span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">TraverseIteratePropertiesNext</span><span class=\"p\">(</span><span class=\"o\">&amp;</span><span class=\"n\">pit</span><span class=\"p\">))</span>\n<span class=\"p\">{</span>\n    <span class=\"k\">const</span> <span class=\"kt\">char</span><span class=\"o\">*</span> <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"n\">dmHashReverseSafe64</span><span class=\"p\">(</span><span class=\"n\">pit</span><span class=\"p\">.</span><span class=\"n\">m_Property</span><span class=\"p\">.</span><span class=\"n\">m_NameHash</span><span class=\"p\">);</span>\n    <span class=\"k\">switch</span><span class=\"p\">(</span><span class=\"n\">pit</span><span class=\"p\">.</span><span class=\"n\">m_Property</span><span class=\"p\">.</span><span class=\"n\">m_Type</span><span class=\"p\">)</span>\n    <span class=\"p\">{</span>\n    <span class=\"k\">case</span> <span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"nl\">SCENE_NODE_PROPERTY_TYPE_NUMBER</span><span class=\"p\">:</span> <span class=\"p\">...</span>\n    <span class=\"p\">...</span>\n    <span class=\"p\">}</span>\n<span class=\"p\">}</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "TraverseIterateProperties"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Steps the scene node traversal property iterator to the next property", 
+      "parameters": [
+        {
+          "doc": "the iterator", 
+          "name": "it", 
+          "types": [
+            "dmGameObject::SceneNodePropertyIterator*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "True if the iterator it valid, false if the iterator is finished.", 
+          "name": "finished", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Steps the scene node traversal property iterator t...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "TraverseIteratePropertiesNext"
+    }
+  ]
+}
