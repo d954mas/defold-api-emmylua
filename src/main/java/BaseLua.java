@@ -26,6 +26,25 @@ public class BaseLua {
             "---@field fragment\n" +
             "\n" +
             "---@alias hash userdata\n" +
+            "---@alias constant userdata\n" +
+            "---@alias bool boolean\n" +
+            "---@alias float number\n" +
+            "---@alias object userdata\n" +
+            "---@alias matrix4 userdata\n" +
+            "---@alias node userdata\n" +
+            "\n" +
+            "--mb use number instead of vector4\n" +
+            "---@alias vector vector4\n" +
+            "\n" +
+            "--luasocket\n" +
+            "---@alias master userdata\n" +
+            "---@alias unconnected userdata\n" +
+            "---@alias client userdata\n" +
+            "\n" +
+            "--render\n" +
+            "---@alias constant_buffer userdata\n" +
+            "---@alias render_target userdata\n" +
+            "---@alias predicate userdata\n" +
             "\n" +
             "--- Calls error if the value of its argument `v` is false (i.e., **nil** or\n" +
             "--- **false**); otherwise, returns all its arguments. In case of error,\n" +

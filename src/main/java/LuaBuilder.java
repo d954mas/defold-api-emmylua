@@ -10,7 +10,31 @@ import org.jsoup.select.Elements;
 import org.jsoup.select.NodeTraversor;
 import org.jsoup.select.NodeVisitor;
 
+import java.util.Comparator;
+
 public class LuaBuilder {
+
+
+    private void buildParameterModel(ParameterModel pm, StringBuilder sb, HtmlToPlainText f) {
+        for(int i=0;i<pm.getTypes().size();i++){
+            sb.append(pm.getTypes().get(i));
+            if(i!= pm.getTypes().size()-1){
+                sb.append("|");
+            }
+        }
+        String doc = pm.getDoc();
+        if(doc.contains("<ul>")){
+            doc = doc.substring(0,doc.indexOf("<ul>"));
+        }
+        if(doc.contains("<dl>")){
+            doc = doc.substring(0,doc.indexOf("<dl>"));
+        }
+        sb.append(" ").append(f.getPlainText(doc).replaceAll("\n---" , " "));
+        while (sb.charAt(sb.length()-1) == '\n'){sb.deleteCharAt(sb.length()-1);}
+        sb.append("\n");
+    }
+
+
     public String build(DocModel docModel) {
         StringBuilder sb = new StringBuilder();
         StringBuilder inlineTables = new StringBuilder().append("\n");
@@ -19,11 +43,14 @@ public class LuaBuilder {
         sb.append("---").append(f.getPlainText(docModel.getInfoModel().getDescription())).append("\n");
         sb.append("---@class ").append(docModel.getInfoModel().getNamespace()).append("\n");
         sb.append("").append(docModel.getInfoModel().getNamespace()).append(" = {}").append("\n");
+        docModel.getElements().sort(Comparator.naturalOrder());
         for (ElementModel em : docModel.getElements()) {
             if (em.getType().equals("FUNCTION")) {
                 String funDesc = f.getPlainText(em.getDescription());
                 if (!funDesc.equals("")) {
-                    sb.append("---").append(f.getPlainText(em.getDescription())).append("\n");
+                    sb.append("---").append(f.getPlainText(em.getDescription()));
+                    while (sb.charAt(sb.length()-1) == '\n'){sb.deleteCharAt(sb.length()-1);}
+                    sb.append("\n");
                 }
                 if (em.getParameters().size() != 0) {
                     for (ParameterModel pm : em.getParameters()) {
@@ -34,27 +61,14 @@ public class LuaBuilder {
                             sb.append("--- ");
                         }
                         sb.append(pm.getFormatName()).append(" ");
-                        for(int i=0;i<pm.getTypes().size();i++){
-                            sb.append(pm.getTypes().get(i));
-                            if(i!= pm.getTypes().size()-1){
-                                sb.append("|");
-                            }
-                        }
-                        sb.append(" ").append(pm.getDoc());
-                        sb.append("\n");
+                        buildParameterModel(pm, sb, f);
+
                     }
                 }
                 if (em.getReturnvalues().size() != 0) {
                     for (ParameterModel pm : em.getReturnvalues()) {
                         sb.append("---@return ");
-                        for(int i=0;i<pm.getTypes().size();i++){
-                            sb.append(pm.getTypes().get(i));
-                            if(i!= pm.getTypes().size()-1){
-                                sb.append("|");
-                            }
-                        }
-                        sb.append(" ").append(pm.getDoc());
-                        sb.append("\n");
+                        buildParameterModel(pm, sb, f);
                     }
                 }
 
@@ -69,9 +83,9 @@ public class LuaBuilder {
             } else if (em.getType().equals("VARIABLE")) {
                 String brief = f.getPlainText(em.getBrief());
                 if (!brief.equals("")) {
-                    sb.append("---").append(brief).append("\n\n");
+                    sb.append("---").append(brief).append("\n");
                 }
-                sb.append(em.getName()).append(" = nil").append("\n\n");
+                sb.append(em.getName()).append(" = nil").append("\n");
             } else if (em.getType().equals("MESSAGE")) {
 
             }
@@ -97,7 +111,7 @@ public class LuaBuilder {
             if (result.endsWith("---")) {
                 result = result.substring(0, result.length() - 3);
             }
-            return result.replaceFirst("\\n---", "");
+            return result;
         }
 
         public String getPlainText(String str) {

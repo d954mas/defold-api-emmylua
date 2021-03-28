@@ -57,6 +57,9 @@ public class Main {
         IGNORE_DOCS.add("webview_doc.json");
         IGNORE_DOCS.add("dmCrypt_doc.json");
         IGNORE_DOCS.add("dmThread_doc.json");
+        IGNORE_DOCS.add("facebook_doc.json");
+        IGNORE_DOCS.add("iac_doc.json");
+        IGNORE_DOCS.add("push_doc.json");
     }
 
     private static void clearFolder(File folder) {
