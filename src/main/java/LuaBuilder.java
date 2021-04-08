@@ -36,13 +36,20 @@ public class LuaBuilder {
 
 
     public String build(DocModel docModel) {
+        //do not add global builtins table
+        boolean isBuiltins = docModel.getInfoModel().getNamespace().equals("builtins");
         StringBuilder sb = new StringBuilder();
         StringBuilder inlineTables = new StringBuilder().append("\n");
         HtmlToPlainText f = new HtmlToPlainText();
         sb.append("---").append(f.getPlainText(docModel.getInfoModel().getBrief())).append("\n");
         sb.append("---").append(f.getPlainText(docModel.getInfoModel().getDescription())).append("\n");
-        sb.append("---@class ").append(docModel.getInfoModel().getNamespace()).append("\n");
-        sb.append("").append(docModel.getInfoModel().getNamespace()).append(" = {}").append("\n");
+        if(!isBuiltins){
+            sb.append("---@class ").append(docModel.getInfoModel().getNamespace()).append("\n");
+            sb.append("").append(docModel.getInfoModel().getNamespace()).append(" = {}").append("\n");
+        }else{
+            sb.append("\n");
+        }
+
         docModel.getElements().sort(Comparator.naturalOrder());
         for (ElementModel em : docModel.getElements()) {
             if (em.getType().equals("FUNCTION")) {
@@ -92,8 +99,9 @@ public class LuaBuilder {
         }
 
         sb.append(inlineTables.toString()).append("\n");
-
-        sb.append("\n").append("return ").append(docModel.getInfoModel().getNamespace());
+        if(!isBuiltins){
+            sb.append("\n").append("return ").append(docModel.getInfoModel().getNamespace());
+        }
         return sb.toString();
     }
 

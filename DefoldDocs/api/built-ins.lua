@@ -1,7 +1,6 @@
 ---Built-ins API documentation
 ---Built-in scripting functions.
----@class builtins
-builtins = {}
+
 ---All ids in the engine are represented as hashes, so a string needs to be hashed
 ---before it can be compared with an id.
 ---@param s string string to hash
@@ -23,5 +22,3 @@ function pprint(v) end
 
 
 
-
-return builtins
