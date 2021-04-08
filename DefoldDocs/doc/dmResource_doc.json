@@ -1,0 +1,56 @@
+{
+  "info": {
+    "group": "DEFOLD SDK", 
+    "description": "Functions for managing resource types.", 
+    "namespace": "dmResource", 
+    "brief": "Resource", 
+    "file": "dmsdk/resource/resource.h", 
+    "path": "engine/resource/src/dmsdk/resource/resource.h", 
+    "name": "Resource"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "Declare and register new extension to the engine.\nThis macro is used to declare the extension callback functions used by the engine to communicate with the extension.", 
+      "parameters": [
+        {
+          "doc": "external extension symbol description (no quotes).", 
+          "name": "symbol", 
+          "types": [
+            "symbol"
+          ]
+        }, 
+        {
+          "doc": "The file resource suffix, without a \".\".", 
+          "name": "suffix", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "type register function\n<dl>\n<dt><code>ctx</code></dt>\n<dd><span class=\"type\">dmResource::ResourceTypeRegisterContext&amp;</span> Reference to an <code>ResourceTypeRegisterContext</code> structure.</dd>\n</dl>", 
+          "name": "register_fn", 
+          "types": [
+            "function(dmResource::ResourceTypeRegisterContext& ctx)"
+          ]
+        }, 
+        {
+          "doc": "type deregister function. May be null.\n<dl>\n<dt><code>ctx</code></dt>\n<dd><span class=\"type\">dmResource::ResourceTypeRegisterContext&amp;</span> Reference to an <code>ResourceTypeRegisterContext</code> structure.</dd>\n</dl>", 
+          "name": "deregister_fn", 
+          "types": [
+            "function(dmResource::ResourceTypeRegisterContext& ctx)"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "declare a new extension", 
+      "examples": "Register a new type:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">static</span> <span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">ResourceTypeScriptCreate</span><span class=\"p\">(...)</span> <span class=\"p\">{}</span>\n<span class=\"k\">static</span> <span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">ResourceTypeScriptDestroy</span><span class=\"p\">(...)</span> <span class=\"p\">{}</span>\n<span class=\"k\">static</span> <span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">ResourceTypeScriptRecreate</span><span class=\"p\">(...)</span> <span class=\"p\">{}</span>\n\n<span class=\"k\">struct</span> <span class=\"n\">BlobContext</span>\n<span class=\"p\">{</span>\n    <span class=\"p\">...</span>\n<span class=\"p\">};</span>\n\n<span class=\"k\">static</span> <span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">RegisterResourceTypeBlob</span><span class=\"p\">(</span><span class=\"n\">ResourceTypeRegisterContext</span><span class=\"o\">&amp;</span> <span class=\"n\">ctx</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"c1\">// The engine.cpp creates the contexts for our built in types.</span>\n    <span class=\"c1\">// Here we register a custom type</span>\n    <span class=\"n\">BlobContext</span><span class=\"o\">*</span> <span class=\"n\">context</span> <span class=\"o\">=</span> <span class=\"k\">new</span> <span class=\"n\">BlobContext</span><span class=\"p\">;</span>\n    <span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_Contexts</span><span class=\"p\">.</span><span class=\"n\">Put</span><span class=\"p\">(</span><span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_NameHash</span><span class=\"p\">,</span> <span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"o\">*</span><span class=\"p\">)</span><span class=\"n\">context</span><span class=\"p\">);</span>\n\n    <span class=\"k\">return</span> <span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">RegisterType</span><span class=\"p\">(</span><span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_Factory</span><span class=\"p\">,</span>\n                                       <span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_Name</span><span class=\"p\">,</span>\n                                       <span class=\"n\">context</span><span class=\"p\">,</span>\n                                       <span class=\"mi\">0</span><span class=\"p\">,</span>\n                                       <span class=\"n\">ResourceTypeScriptCreate</span><span class=\"p\">,</span>\n                                       <span class=\"mi\">0</span><span class=\"p\">,</span>\n                                       <span class=\"n\">ResourceTypeScriptDestroy</span><span class=\"p\">,</span>\n                                       <span class=\"n\">ResourceTypeScriptRecreate</span><span class=\"p\">);</span>\n<span class=\"p\">}</span>\n\n<span class=\"k\">static</span> <span class=\"n\">dmResource</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">DeregisterResourceTypeScript</span><span class=\"p\">(</span><span class=\"n\">ResourceTypeRegisterContext</span><span class=\"o\">&amp;</span> <span class=\"n\">ctx</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"n\">BlobContext</span><span class=\"o\">**</span> <span class=\"n\">context</span> <span class=\"o\">=</span> <span class=\"p\">(</span><span class=\"n\">BlobContext</span><span class=\"o\">**</span><span class=\"p\">)</span><span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_Contexts</span><span class=\"p\">.</span><span class=\"n\">Get</span><span class=\"p\">(</span><span class=\"n\">ctx</span><span class=\"p\">.</span><span class=\"n\">m_NameHash</span><span class=\"p\">);</span>\n    <span class=\"k\">delete</span> <span class=\"o\">*</span><span class=\"n\">context</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n\n\n<span class=\"n\">DM_DECLARE_RESOURCE_TYPE</span><span class=\"p\">(</span><span class=\"n\">ResourceTypeBlob</span><span class=\"p\">,</span> <span class=\"s\">&quot;blobc&quot;</span><span class=\"p\">,</span> <span class=\"n\">RegisterResourceTypeBlob</span><span class=\"p\">,</span> <span class=\"n\">DeregisterResourceTypeScript</span><span class=\"p\">);</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DM_DECLARE_RESOURCE_TYPE"
+    }
+  ]
+}

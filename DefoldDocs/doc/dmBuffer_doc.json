@@ -390,7 +390,7 @@
           ]
         }, 
         {
-          "doc": "Where to store the stride. The stride can be added to the value pointer. May be null.\nE.g. for a float array, the stride is (sizeof(Struct) / sizeof(float))", 
+          "doc": "Where to store the (struct) stride. The stride can be added to the value pointer. May be null.\nE.g. for a float array, the stride is (sizeof(Struct) / sizeof(float))", 
           "name": "stride", 
           "types": [
             "uint32_t*"
@@ -636,6 +636,73 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmBuffer::GetValueTypeString"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets the current update number", 
+      "parameters": [
+        {
+          "doc": "The value type", 
+          "name": "type", 
+          "types": [
+            "dmBuffer::HBuffer"
+          ]
+        }, 
+        {
+          "doc": "The current version number", 
+          "name": "version", 
+          "types": [
+            "uint32_t*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Returns BUFFER_OK if all went ok", 
+          "name": "result", 
+          "types": [
+            "dmBuffer::Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Gets the current update number", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmBuffer::GetContentVersion"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Used to know if a buffer has been updated.", 
+      "parameters": [
+        {
+          "doc": "The value type", 
+          "name": "type", 
+          "types": [
+            "dmBuffer::HBuffer"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Returns BUFFER_OK if all went ok", 
+          "name": "result", 
+          "types": [
+            "dmBuffer::Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Update the internal frame counter.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmBuffer::UpdateContentVersion"
     }
   ]
 }

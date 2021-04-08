@@ -1,0 +1,69 @@
+{
+  "info": {
+    "group": "DEFOLD SDK", 
+    "description": "Hash table", 
+    "namespace": "dmHashTable", 
+    "brief": "Hash table", 
+    "file": "dmsdk/dlib/hashtable.h", 
+    "path": "engine/dlib/src/dmsdk/dlib/hashtable.h", 
+    "name": "Hashtable"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "Hashtable with chaining for collision resolution, memcpy-copy semantics (POD types) and 32-bit indicies instead of pointers. (NUMA-friendly)", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "hashtable", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashTable"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Specialized hash table with <span class=\"type\">uint16_t</span> as keys", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Specialized hash table with <span class=\"type\">uint16_t</span> as key...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashTable16"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Specialized hash table with <span class=\"type\">uint32_t</span> as keys", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Specialized hash table with <span class=\"type\">uint32_t</span> as key...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashTable32"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Specialized hash table with <span class=\"type\">uint64_t</span> as keys", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Specialized hash table with <span class=\"type\">uint64_t</span> as key...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashTable64"
+    }
+  ]
+}

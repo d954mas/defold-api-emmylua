@@ -1,5 +1,7 @@
 ---GUI API documentation
----GUI API documentation
+---GUI core hooks, functions, messages, properties and constants for
+---creation and manipulation of GUI nodes. The "gui" namespace is
+---accessible only from gui scripts.
 ---@class gui
 gui = {}
 ---This is a callback-function, which is called by the engine when a gui component is finalized (destroyed). It can

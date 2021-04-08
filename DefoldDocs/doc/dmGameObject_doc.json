@@ -290,6 +290,56 @@
     }, 
     {
       "replaces": "", 
+      "description": "Create result enum.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Create result enum", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::CREATE_RESULT_OK"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::CREATE_RESULT_UNKNOWN_ERROR"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Result"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Update result enum.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Update result enum", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::UPDATE_RESULT_OK"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmGameObject::UPDATE_RESULT_UNKNOWN_ERROR"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Result"
+    }, 
+    {
+      "replaces": "", 
       "description": "Property variant that holds the data for a variable", 
       "parameters": [], 
       "returnvalues": [], 
