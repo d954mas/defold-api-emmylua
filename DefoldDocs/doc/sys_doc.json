@@ -525,7 +525,7 @@
           "doc": "target swap interval.", 
           "name": "swap_interval", 
           "types": [
-            ""
+            "number"
           ]
         }
       ], 
@@ -547,7 +547,7 @@
           "doc": "target frequency. 60 for 60 fps", 
           "name": "frequency", 
           "types": [
-            ""
+            "number"
           ]
         }
       ], 

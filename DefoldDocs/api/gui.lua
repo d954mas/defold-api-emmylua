@@ -304,7 +304,7 @@ function gui.get_fill_angle(node) end
 function gui.get_flipbook(node) end
 
 ---This is only useful nodes with flipbook animations. Gets the normalized cursor of the flipbook animation on a node.
----@param node  node to get the cursor for (node)
+---@param node node node to get the cursor for (node)
 ---@return  value number cursor value
 function gui.get_flipbook_cursor(node) end
 
@@ -464,7 +464,7 @@ function gui.get_spine_animation(node) end
 function gui.get_spine_bone(node, bone_id) end
 
 ---This is only useful for spine nodes. Gets the normalized cursor of the animation on a spine node.
----@param node  spine node to get the cursor for (node)
+---@param node node spine node to get the cursor for (node)
 ---@return  value number cursor value
 function gui.get_spine_cursor(node) end
 

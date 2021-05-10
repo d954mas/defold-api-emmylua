@@ -61,7 +61,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Join thread", 
+      "description": "Join thread. Waits for the thread specified by thread to terminate.  If\nthat thread has already terminated, then Join() returns immediately.  The\nthread specified by thread must be joinable (see Detach()).", 
       "parameters": [
         {
           "doc": "Thread to join", 
@@ -74,6 +74,28 @@
       "returnvalues": [], 
       "notes": [], 
       "brief": "join thread", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmThread::Join"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Detach thread. When a detached thread terminates, its resources are\nautomatically released back to the system without the need for another\nthread to join with the terminated thread.", 
+      "parameters": [
+        {
+          "doc": "Thread to detach", 
+          "name": "thread", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "detach thread", 
       "examples": "", 
       "members": [], 
       "error": "", 

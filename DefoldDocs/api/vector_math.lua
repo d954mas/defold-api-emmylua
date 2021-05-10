@@ -201,7 +201,7 @@ function vmath.matrix4_rotation_z(angle) end
 
 ---The resulting matrix describes a translation of a point
 ---in euclidean space.
----@param position vector3|type:vector4 position vector to create matrix from
+---@param position vector3|vector4 position vector to create matrix from
 ---@return matrix4 matrix from the supplied position vector
 function vmath.matrix4_translation(position) end
 

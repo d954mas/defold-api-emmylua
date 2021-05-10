@@ -525,6 +525,42 @@
     }, 
     {
       "replaces": "", 
+      "description": "The following properties are available when connecting a joint of <code>JOINT_TYPE_WELD</code> type:", 
+      "parameters": [
+        {
+          "doc": "The bodyB angle minus bodyA angle in the reference state (radians).", 
+          "name": "reference_angle", 
+          "types": [
+            "number] [mark:READ ONLY"
+          ]
+        }, 
+        {
+          "doc": "The mass-spring-damper frequency in Hertz. Rotation only. Disable softness with a value of 0.", 
+          "name": "frequency", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "The damping ratio. 0 = no damping, 1 = critical damping.", 
+          "name": "damping", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "weld joint type", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "physics.JOINT_TYPE_WELD"
+    }, 
+    {
+      "replaces": "", 
       "description": "<span class=\"mark\">READ ONLY</span> Returns the defined physical mass of the collision object component as a number.", 
       "parameters": [], 
       "returnvalues": [], 

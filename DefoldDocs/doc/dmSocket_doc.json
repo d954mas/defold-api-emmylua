@@ -964,6 +964,71 @@
     }, 
     {
       "replaces": "", 
+      "description": "Get host by name with timeout and cancelability", 
+      "parameters": [
+        {
+          "doc": "Hostname to resolve", 
+          "name": "name", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "Host address result", 
+          "name": "address", 
+          "types": [
+            "Address*"
+          ]
+        }, 
+        {
+          "doc": "Timeout in microseconds", 
+          "name": "timeout", 
+          "types": [
+            "uint64_t"
+          ]
+        }, 
+        {
+          "doc": "if non null and set, will abort the call", 
+          "name": "cancelflag", 
+          "types": [
+            "int*"
+          ]
+        }, 
+        {
+          "doc": "Whether or not to search for IPv4 addresses", 
+          "name": "ipv4", 
+          "types": [
+            "bool"
+          ]
+        }, 
+        {
+          "doc": "Whether or not to search for IPv6 addresses", 
+          "name": "ipv6", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get host by name with timeout and cancelability", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetHostByName"
+    }, 
+    {
+      "replaces": "", 
       "description": "Convert result value to string", 
       "parameters": [
         {

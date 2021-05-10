@@ -195,10 +195,75 @@
           ]
         }, 
         {
-          "doc": "The DNS channel that will be used for translating the host to an address", 
-          "name": "dns_channel", 
+          "doc": "true for ssl connection", 
+          "name": "ssl", 
           "types": [
-            "dmDNS::HChannel"
+            "bool"
+          ]
+        }, 
+        {
+          "doc": "The timeout (micro seconds) for the connection and ssl handshake", 
+          "name": "timeout", 
+          "types": [
+            "int"
+          ]
+        }, 
+        {
+          "doc": "connection (out)", 
+          "name": "connection", 
+          "types": [
+            "dmConnectionPool::HConnection*"
+          ]
+        }, 
+        {
+          "doc": "socket-result code on failure", 
+          "name": "sock_res", 
+          "types": [
+            "dmSocket::Result*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "on success", 
+          "name": "dmConnectionPool::RESULT_OK", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Connection to a host/port", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmConnectionPool::Dial"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Connection to a host/port", 
+      "parameters": [
+        {
+          "doc": "pool", 
+          "name": "pool", 
+          "types": [
+            "dmConnectionPool::HPool"
+          ]
+        }, 
+        {
+          "doc": "host", 
+          "name": "host", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "port", 
+          "name": "port", 
+          "types": [
+            "uint16_t"
           ]
         }, 
         {
@@ -213,6 +278,13 @@
           "name": "timeout", 
           "types": [
             "int"
+          ]
+        }, 
+        {
+          "doc": "If set and not null, will make the request early out", 
+          "name": "cancelflag", 
+          "types": [
+            "int*"
           ]
         }, 
         {

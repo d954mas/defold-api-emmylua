@@ -1052,7 +1052,7 @@
           "name": "position", 
           "types": [
             "vector3", 
-            "type:vector4"
+            "vector4"
           ]
         }
       ], 

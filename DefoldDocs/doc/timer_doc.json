@@ -17,14 +17,14 @@
           "doc": "time interval in seconds", 
           "name": "delay", 
           "types": [
-            ""
+            "number"
           ]
         }, 
         {
           "doc": "true = repeat timer until cancel, false = one-shot timer", 
           "name": "repeat", 
           "types": [
-            ""
+            "boolean"
           ]
         }, 
         {
@@ -37,10 +37,10 @@
       ], 
       "returnvalues": [
         {
-          "doc": "identifier for the create timer, returns timer.INVALID_TIMER_HANDLE if the timer can not be created", 
-          "name": "handle", 
+          "doc": "handle identifier for the create timer, returns timer.INVALID_TIMER_HANDLE if the timer can not be created", 
+          "name": "", 
           "types": [
-            ""
+            "hash"
           ]
         }
       ], 
@@ -61,7 +61,7 @@
           "doc": "the timer handle returned by timer.delay()", 
           "name": "handle", 
           "types": [
-            ""
+            "hash"
           ]
         }
       ], 
@@ -70,7 +70,7 @@
           "doc": "if the timer was active, false if the timer is already cancelled / complete", 
           "name": "true", 
           "types": [
-            ""
+            "boolean"
           ]
         }
       ], 

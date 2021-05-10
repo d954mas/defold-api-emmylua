@@ -1,12 +1,11 @@
 {
   "info": {
-    "group": "DEFOLD SDK", 
-    "description": "API for manipulating game objects", 
+    "description": "<span class=\"file\">&lt;dmsdk/gameobject/component.h&gt;</span>\nApi for manipulating game object components (WIP)", 
     "namespace": "dmGameObject", 
-    "brief": "Game object functions", 
-    "file": "dmsdk/gameobject/gameobject.h", 
-    "path": "engine/gameobject/src/dmsdk/gameobject/gameobject.h", 
-    "name": "Gameobject"
+    "brief": "SDK Component API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Component"
   }, 
   "elements": [
     {

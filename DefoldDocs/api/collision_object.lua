@@ -12,6 +12,8 @@ physics.JOINT_TYPE_HINGE = nil
 physics.JOINT_TYPE_SLIDER = nil
 ---spring joint type
 physics.JOINT_TYPE_SPRING = nil
+---weld joint type
+physics.JOINT_TYPE_WELD = nil
 ---Create a physics joint between two collision object components.
 ---Note: Currently only supported in 2D physics.
 ---@param joint_type number the joint type

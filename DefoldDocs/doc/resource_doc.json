@@ -288,6 +288,36 @@
     }, 
     {
       "replaces": "", 
+      "description": "Update internal sound resource (wavc/oggc) with new data", 
+      "parameters": [
+        {
+          "doc": "The path to the resource", 
+          "name": "path", 
+          "types": [
+            "hash", 
+            "string"
+          ]
+        }, 
+        {
+          "doc": "A lua string containing the binary sound data", 
+          "name": "buffer", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Update internal sound resource", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "resource.set_sound"
+    }, 
+    {
+      "replaces": "", 
       "description": "gets the buffer from a resource", 
       "parameters": [
         {

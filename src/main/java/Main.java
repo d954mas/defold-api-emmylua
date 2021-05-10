@@ -60,6 +60,7 @@ public class Main {
         IGNORE_DOCS.add("facebook_doc.json");
         IGNORE_DOCS.add("iac_doc.json");
         IGNORE_DOCS.add("push_doc.json");
+        IGNORE_DOCS.add("dmGameObject_doc.json");
     }
 
     private static void clearFolder(File folder) {
@@ -89,7 +90,7 @@ public class Main {
                     }
                 })
                 .filter(docModel -> {
-                    return  !docModel.getInfoModel().getFile().endsWith(".h");
+                    return  !docModel.getInfoModel().getFile().endsWith(".h") && !"DEFOLD SDK".equals(docModel.getInfoModel().getGroup());
                 })
                 .doOnEach(docModelNotification -> {
             if (docModelNotification.isOnComplete()) {

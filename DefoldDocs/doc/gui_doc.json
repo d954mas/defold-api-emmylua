@@ -3968,7 +3968,7 @@
           "doc": "spine node to get the cursor for (node)", 
           "name": "node", 
           "types": [
-            ""
+            "node"
           ]
         }
       ], 
@@ -3998,7 +3998,7 @@
           "doc": "node to get the cursor for (node)", 
           "name": "node", 
           "types": [
-            ""
+            "node"
           ]
         }
       ], 
