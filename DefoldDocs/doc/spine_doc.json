@@ -1,7 +1,7 @@
 {
   "info": {
     "group": "COMPONENTS", 
-    "description": "Functions and messages for interacting with the 'Spine' 2D bone\nanimation system.", 
+    "description": "Spine model API documentation", 
     "namespace": "spine", 
     "brief": "Spine model API documentation", 
     "file": "", 
@@ -9,106 +9,6 @@
     "name": "Spine"
   }, 
   "elements": [
-    {
-      "replaces": "", 
-      "description": "This message is sent when a Spine animation has finished playing back to the script\nthat started the animation.\n<span class=\"icon-attention\"></span> No message is sent if a completion callback function was supplied\nwhen the animation was started. No message is sent if the animation is cancelled with\nmodel.cancel(). This message is sent only for animations that play with\nthe following playback modes:\n<ul>\n<li><code>go.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>\n</ul>", 
-      "parameters": [
-        {
-          "doc": "the id of the completed animation", 
-          "name": "animation_id", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "the playback mode of the completed animation", 
-          "name": "playback", 
-          "types": [
-            "constant"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reports the completion of a Spine animation", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">spine_animation_done&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">animation_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">run&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">playback</span> <span class=\"o\">==</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_ONCE_FORWARD</span> <span class=\"k\">then</span>\n      <span class=\"c1\">-- The animation &quot;run&quot; has finished running forward.</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "spine_animation_done"
-    }, 
-    {
-      "replaces": "", 
-      "description": "This message is sent when Spine animation playback fires events. These events\nhas to be defined on the animation track in the Spine animation editor. An event\ncan contain custom values expressed in the fields <code>integer</code>, <code>float</code> and <code>string</code>.", 
-      "parameters": [
-        {
-          "doc": "the id of the event.", 
-          "name": "event_id", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "the id of the animation.", 
-          "name": "animation_id", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "the time of the event in seconds, relative to the start of the animation.", 
-          "name": "t", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "[type:number the blend weight (between 0.0-1.0) of the current animation at time t.", 
-          "name": "blend_weight", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "user defined integer value for the event", 
-          "name": "integer", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "user defined floating point value for the event", 
-          "name": "float", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "user defined string value (hashed) for the event", 
-          "name": "string", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "the source spine gui node if the event originated from gui, otherwise nil", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reports an incoming event from the Spine animation", 
-      "examples": "The following example assumes that an animation sends event messages with the id <code>\"footstep\"</code>\nand that the <code>integer</code> field is used to distinguish between left and right foot (values 0 and 1).\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">spine_event&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- Receiving animation event from Spine. Play footsteps.</span>\n    <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">footstep&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">integer</span> <span class=\"o\">==</span> <span class=\"mi\">0</span> <span class=\"k\">then</span>\n      <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound_footstep_right&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">play_sound&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">footstep&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">integer</span> <span class=\"o\">==</span> <span class=\"mi\">1</span> <span class=\"k\">then</span>\n      <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound_footstep_left&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">play_sound&quot;</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "spine_event"
-    }, 
     {
       "replaces": "", 
       "description": "The normalized animation cursor. The type of the property is number.\n<span class=\"icon-attention\"></span> Please note that spine events may not fire as expected when the cursor is manipulated directly.", 
@@ -447,6 +347,106 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "spine.reset_ik_target"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This message is sent when a Spine animation has finished playing back to the script\nthat started the animation.\n<span class=\"icon-attention\"></span> No message is sent if a completion callback function was supplied\nwhen the animation was started. No message is sent if the animation is cancelled with\nmodel.cancel(). This message is sent only for animations that play with\nthe following playback modes:\n<ul>\n<li><code>go.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>\n</ul>", 
+      "parameters": [
+        {
+          "doc": "the id of the completed animation", 
+          "name": "animation_id", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "the playback mode of the completed animation", 
+          "name": "playback", 
+          "types": [
+            "constant"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "reports the completion of a Spine animation", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">spine_animation_done&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">animation_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">run&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">playback</span> <span class=\"o\">==</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_ONCE_FORWARD</span> <span class=\"k\">then</span>\n      <span class=\"c1\">-- The animation &quot;run&quot; has finished running forward.</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "spine_animation_done"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This message is sent when Spine animation playback fires events. These events\nhas to be defined on the animation track in the Spine animation editor. An event\ncan contain custom values expressed in the fields <code>integer</code>, <code>float</code> and <code>string</code>.", 
+      "parameters": [
+        {
+          "doc": "the id of the event.", 
+          "name": "event_id", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "the id of the animation.", 
+          "name": "animation_id", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "the time of the event in seconds, relative to the start of the animation.", 
+          "name": "t", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "[type:number the blend weight (between 0.0-1.0) of the current animation at time t.", 
+          "name": "blend_weight", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "user defined integer value for the event", 
+          "name": "integer", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "user defined floating point value for the event", 
+          "name": "float", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "user defined string value (hashed) for the event", 
+          "name": "string", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "the source spine gui node if the event originated from gui, otherwise nil", 
+          "name": "node", 
+          "types": [
+            "node"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "reports an incoming event from the Spine animation", 
+      "examples": "The following example assumes that an animation sends event messages with the id <code>\"footstep\"</code>\nand that the <code>integer</code> field is used to distinguish between left and right foot (values 0 and 1).\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">spine_event&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"c1\">-- Receiving animation event from Spine. Play footsteps.</span>\n    <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">footstep&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">integer</span> <span class=\"o\">==</span> <span class=\"mi\">0</span> <span class=\"k\">then</span>\n      <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound_footstep_right&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">play_sound&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">elseif</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">event_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">footstep&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">integer</span> <span class=\"o\">==</span> <span class=\"mi\">1</span> <span class=\"k\">then</span>\n      <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound_footstep_left&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">play_sound&quot;</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "spine_event"
     }
   ]
 }

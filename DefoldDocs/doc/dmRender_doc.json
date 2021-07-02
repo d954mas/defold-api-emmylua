@@ -1,0 +1,717 @@
+{
+  "info": {
+    "description": "<span class=\"file\">&lt;dmsdk/render/render.h&gt;</span>\nApi for render specific data", 
+    "namespace": "dmRender", 
+    "brief": "Render API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Render"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "The render context", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "The render context", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HRenderContext"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Material instance handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Material instance handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HMaterial"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Font map handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Font map handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HFontMap"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "RESULT_OK"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "RESULT_INVALID_CONTEXT"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "RESULT_OUT_OF_RESOURCES"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "RESULT_BUFFER_IS_FULL"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "RESULT_INVALID_PARAMETER"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Result"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get the vertex space (local or world)", 
+      "parameters": [
+        {
+          "doc": "the material", 
+          "name": "material", 
+          "types": [
+            "dmRender::HMaterial"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the vertex space", 
+          "name": "vertex_space", 
+          "types": [
+            "dmRenderDDF::MaterialDesc::VertexSpace"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Get the vertex space (local or world)", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmRender::GetMaterialVertexSpace"
+    }, 
+    {
+      "replaces": "", 
+      "description": "URL specifying a sender/receiver of messages", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "URL specifying a sender/receiver of messages", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "Constant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Struct holding stencil operation setup", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Struct holding stencil operation setup", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "the compare function", 
+          "type": "dmGraphics::CompareFunc", 
+          "name": "m_Func"
+        }, 
+        {
+          "doc": "the stencil fail operation", 
+          "type": "dmGraphics::StencilOp", 
+          "name": "m_OpSFail"
+        }, 
+        {
+          "doc": "the depth pass fail operation", 
+          "type": "dmGraphics::StencilOp", 
+          "name": "m_OpDPFail"
+        }, 
+        {
+          "doc": "the depth pass pass operation", 
+          "type": "dmGraphics::StencilOp", 
+          "name": "m_OpDPPass"
+        }, 
+        {
+          "doc": "", 
+          "type": "uint8_t", 
+          "name": "m_Ref"
+        }, 
+        {
+          "doc": "", 
+          "type": "uint8_t", 
+          "name": "m_RefMask"
+        }, 
+        {
+          "doc": "", 
+          "type": "uint8_t", 
+          "name": "m_BufferMask"
+        }, 
+        {
+          "doc": "", 
+          "type": "uint8_t:4", 
+          "name": "m_ColorBufferMask"
+        }, 
+        {
+          "doc": "", 
+          "type": "uint8_t:1", 
+          "name": "m_ClearBuffer"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "StencilTestParams"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The maximum number of textures the render object can hold (currently 8)", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "The maximum number of textures the render object c...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmRender::RenderObject::MAX_TEXTURE_COUNT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The maximum number of shader constants the render object can hold (currently 16)", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "The maximum number of shader constants the render ...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmRender::RenderObject::MAX_CONSTANT_COUNT"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Render objects represent an actual draw call", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Render objects represent an actual draw call", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "the shader constants", 
+          "type": "dmRender::Constant[]", 
+          "name": "m_Constants"
+        }, 
+        {
+          "doc": "the world transform (usually identity for batched objects)", 
+          "type": "dmVMath::Matrix4", 
+          "name": "m_WorldTransform"
+        }, 
+        {
+          "doc": "the texture transform", 
+          "type": "dmVMath::Matrix4", 
+          "name": "m_TextureTransform"
+        }, 
+        {
+          "doc": "the vertex buffer", 
+          "type": "dmGraphics::HVertexBuffer", 
+          "name": "m_VertexBuffer"
+        }, 
+        {
+          "doc": "the vertex declaration", 
+          "type": "dmGraphics::HVertexDeclaration", 
+          "name": "m_VertexDeclaration"
+        }, 
+        {
+          "doc": "the index buffer", 
+          "type": "dmGraphics::HIndexBuffer", 
+          "name": "m_IndexBuffer"
+        }, 
+        {
+          "doc": "the material", 
+          "type": "dmRender::HMaterial", 
+          "name": "m_Material"
+        }, 
+        {
+          "doc": "the textures", 
+          "type": "dmGraphics::HTexture[]", 
+          "name": "m_Textures"
+        }, 
+        {
+          "doc": "the primitive type", 
+          "type": "dmGraphics::PrimitiveType", 
+          "name": "m_PrimitiveType"
+        }, 
+        {
+          "doc": "the index type (16/32 bit)", 
+          "type": "dmGraphics::Type", 
+          "name": "m_IndexType"
+        }, 
+        {
+          "doc": "the source blend factor", 
+          "type": "dmGraphics::BlendFactor", 
+          "name": "m_SourceBlendFactor"
+        }, 
+        {
+          "doc": "the destination blend factor", 
+          "type": "dmGraphics::BlendFactor", 
+          "name": "m_DestinationBlendFactor"
+        }, 
+        {
+          "doc": "the stencil test params", 
+          "type": "dmRender::StencilTestParams", 
+          "name": "m_StencilTestParams"
+        }, 
+        {
+          "doc": "the vertex start", 
+          "type": "uint32_t", 
+          "name": "m_VertexStart"
+        }, 
+        {
+          "doc": "the vertex count", 
+          "type": "uint32_t", 
+          "name": "m_VertexCount"
+        }, 
+        {
+          "doc": "use the blend factors", 
+          "type": "uint8_t:1", 
+          "name": "m_SetBlendFactors"
+        }, 
+        {
+          "doc": "use the stencil test", 
+          "type": "uint8_t:1", 
+          "name": "m_SetStencilTest"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "RenderObject"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Represents a renderable object (e.g. a single sprite)\nThe renderer will (each frame) collect all entries with the current material tag, then batch these objects together.\nBatching is done based on the batch key and Z value (or order for GUI nodes)\nThe caller will also register a callback function where the batched entries will be returned.\nEach callback then represents a draw call, and will register a RenderObject", 
+      "parameters": [
+        {
+          "doc": "the world position of the object", 
+          "name": "m_WorldPosition", 
+          "types": [
+            "dmVMath::Point3"
+          ]
+        }, 
+        {
+          "doc": "the order to sort on (used if m_MajorOrder != RENDER_ORDER_WORLD)", 
+          "name": "m_Order", 
+          "types": [
+            "uint32_t"
+          ]
+        }, 
+        {
+          "doc": "the batch key to sort on (note: only 48 bits are currently used by renderer)", 
+          "name": "m_BatchKey", 
+          "types": [
+            "uint32_t"
+          ]
+        }, 
+        {
+          "doc": "the key to the list of material tags", 
+          "name": "m_TagListKey", 
+          "types": [
+            "uint32_t"
+          ]
+        }, 
+        {
+          "doc": "user data (available in the render dispatch callback)", 
+          "name": "m_UserData", 
+          "types": [
+            "uint64_t"
+          ]
+        }, 
+        {
+          "doc": "used to sort within a batch", 
+          "name": "m_MinorOrder", 
+          "types": [
+            "uint32_t:4"
+          ]
+        }, 
+        {
+          "doc": "If RENDER_ORDER_WORLD, then sorting is done based on the world position.\nOtherwise the sorting uses the m_Order value directly.", 
+          "name": "m_MajorOrder", 
+          "types": [
+            "uint32_t:2"
+          ]
+        }, 
+        {
+          "doc": "The dispatch function callback (dmRender::HRenderListDispatch)", 
+          "name": "m_Dispatch", 
+          "types": [
+            "uint32_t:8"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Represents a renderable object (e.g. a single spri...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "RenderListEntry"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Render batch callback states", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Render batch callback states", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "RENDER_LIST_OPERATION_BEGIN"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "RENDER_LIST_OPERATION_BATCH"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "RENDER_LIST_OPERATION_END"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "RenderListOperation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Render order", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Render order", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "<div class=\"codehilite\"><pre><span></span>      Used by game objects\n</pre></div>", 
+          "type": "", 
+          "name": "RENDER_ORDER_WORLD"
+        }, 
+        {
+          "doc": "<div class=\"codehilite\"><pre><span></span>Used by gui\n</pre></div>", 
+          "type": "", 
+          "name": "RENDER_ORDER_AFTER_WORLD"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "RenderOrder"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Render dispatch function callback.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Render dispatch function callback.", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "the context", 
+          "type": "dmRender::HRenderContext", 
+          "name": "m_Context"
+        }, 
+        {
+          "doc": "the callback user data (registered with RenderListMakeDispatch())", 
+          "type": "void*", 
+          "name": "m_UserData"
+        }, 
+        {
+          "doc": "the operation", 
+          "type": "dmRender::RenderListOperation", 
+          "name": "m_Operation"
+        }, 
+        {
+          "doc": "the render entry array", 
+          "type": "dmRender::RenderListEntry", 
+          "name": "m_Buf"
+        }, 
+        {
+          "doc": "the start of the render batch. contains index into the m_Buf array", 
+          "type": "uint32_t*", 
+          "name": "m_Begin"
+        }, 
+        {
+          "doc": "the end of the render batch. Loop while \"m_Begin != m_End\"", 
+          "type": "uint32_t*", 
+          "name": "m_End"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "RenderListDispatchParams"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Render dispatch function handle.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Render dispatch function handle.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HRenderListDispatch"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Render dispatch function callback.", 
+      "parameters": [
+        {
+          "doc": "the params", 
+          "name": "params", 
+          "types": [
+            "dmRender::RenderListDispatchParams"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Render dispatch function callback.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "RenderListDispatchFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Register a render dispatch function", 
+      "parameters": [
+        {
+          "doc": "the context", 
+          "name": "context", 
+          "types": [
+            "dmRender::HRenderContext"
+          ]
+        }, 
+        {
+          "doc": "the render batch callback function", 
+          "name": "fn", 
+          "types": [
+            "dmRender::RenderListDispatchFn"
+          ]
+        }, 
+        {
+          "doc": "userdata to the callback", 
+          "name": "user_data", 
+          "types": [
+            "void*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the render dispatch function handle", 
+          "name": "dispatch", 
+          "types": [
+            "dmRender::HRenderListDispatch"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Register a render dispatch function", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "RenderListMakeDispatch"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Allocates an array of render entries", 
+      "parameters": [
+        {
+          "doc": "the context", 
+          "name": "context", 
+          "types": [
+            "dmRender::HRenderContext"
+          ]
+        }, 
+        {
+          "doc": "the number of entries to allocate", 
+          "name": "entries", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the render list entry array", 
+          "name": "array", 
+          "types": [
+            "dmRender::RenderListEntry*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Allocates an array of render entries", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "RenderListAlloc"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Adds a render object to the current render frame", 
+      "parameters": [
+        {
+          "doc": "the context", 
+          "name": "context", 
+          "types": [
+            "dmRender::HRenderContext"
+          ]
+        }, 
+        {
+          "doc": "the start of the array", 
+          "name": "begin", 
+          "types": [
+            "dmRender::RenderListEntry*"
+          ]
+        }, 
+        {
+          "doc": "the end of the array (i.e. \"while begin!=end: *begin ...\"\")", 
+          "name": "end", 
+          "types": [
+            "dmRender::RenderListEntry*"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Adds a render object to the current render frame", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "RenderListSubmit"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Adds a render object to the current render frame", 
+      "parameters": [
+        {
+          "doc": "the context", 
+          "name": "context", 
+          "types": [
+            "dmRender::HRenderContext"
+          ]
+        }, 
+        {
+          "doc": "the render object", 
+          "name": "ro", 
+          "types": [
+            "dmRender::RenderObject*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the result", 
+          "name": "result", 
+          "types": [
+            "dmRender::Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Adds a render object to the current render frame", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "AddToRender"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets the key to the material tag list", 
+      "parameters": [
+        {
+          "doc": "the material", 
+          "name": "material", 
+          "types": [
+            "dmGraphics::HMaterial"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the list key", 
+          "name": "listkey", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Gets the key to the material tag list", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetMaterialTagListKey"
+    }
+  ]
+}

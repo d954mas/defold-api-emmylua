@@ -1,7 +1,7 @@
 {
   "info": {
     "group": "COMPONENTS", 
-    "description": "Functions to manipulate a label component.", 
+    "description": "Label API documentation", 
     "namespace": "label", 
     "brief": "Label API documentation", 
     "file": "", 

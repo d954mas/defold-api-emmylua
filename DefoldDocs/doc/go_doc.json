@@ -525,7 +525,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Use <a href=\"/ref/go#go.get_position\">go.get_position</a> to retrieve the position relative to the parent.", 
+      "description": "The function will return the world position calculated at the end of the previous frame.\nUse <a href=\"/ref/go#go.get_position\">go.get_position</a> to retrieve the position relative to the parent.", 
       "parameters": [
         {
           "doc": "optional id of the game object instance to get the world position for, by default the instance of the calling script", 
@@ -557,7 +557,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Use <code>go.get_rotation</code> to retrieve the rotation relative to the parent.", 
+      "description": "The function will return the world rotation calculated at the end of the previous frame.\nUse <a href=\"/ref/go#go.get_rotation\">go.get_rotation</a> to retrieve the rotation relative to the parent.", 
       "parameters": [
         {
           "doc": "optional id of the game object instance to get the world rotation for, by default the instance of the calling script", 
@@ -589,7 +589,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Use <code>go.get_scale</code> to retrieve the 3D scale factor relative to the parent.\nThis vector is derived by decomposing the transformation matrix and should be used with care.\nFor most cases it should be fine to use <a href=\"/ref/go#go.get_world_scale_uniform\">go.get_world_scale_uniform</a> instead.", 
+      "description": "The function will return the world 3D scale factor calculated at the end of the previous frame.\nUse <a href=\"/ref/go#go.get_scale\">go.get_scale</a> to retrieve the 3D scale factor relative to the parent.\nThis vector is derived by decomposing the transformation matrix and should be used with care.\nFor most cases it should be fine to use <a href=\"/ref/go#go.get_world_scale_uniform\">go.get_world_scale_uniform</a> instead.", 
       "parameters": [
         {
           "doc": "optional id of the game object instance to get the world scale for, by default the instance of the calling script", 
@@ -621,7 +621,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Use <code>go.get_scale_uniform</code> to retrieve the scale factor relative to the parent.", 
+      "description": "The function will return the world scale factor calculated at the end of the previous frame.\nUse <a href=\"/ref/go#go.get_scale_uniform\">go.get_scale_uniform</a> to retrieve the scale factor relative to the parent.", 
       "parameters": [
         {
           "doc": "optional id of the game object instance to get the world scale for, by default the instance of the calling script", 
@@ -653,7 +653,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "gets the game object instance world transform matrix", 
+      "description": "The function will return the world transform matrix calculated at the end of the previous frame.", 
       "parameters": [
         {
           "doc": "optional id of the game object instance to get the world transform for, by default the instance of the calling script", 

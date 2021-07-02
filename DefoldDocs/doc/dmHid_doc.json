@@ -249,6 +249,20 @@
     }, 
     {
       "replaces": "", 
+      "description": "max number of characters", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "max number of characters", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHID::MAX_CHAR_COUNT"
+    }, 
+    {
+      "replaces": "", 
       "description": "touch phase enumeration", 
       "parameters": [], 
       "returnvalues": [], 
@@ -1048,6 +1062,76 @@
       "tparams": [], 
       "type": "STRUCT", 
       "name": "GamepadPacket"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Data for a single touch, e.g. finger", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Data for a single touch, e.g. finger", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "Single-click, double, etc", 
+          "type": "int32_t", 
+          "name": "m_TapCount"
+        }, 
+        {
+          "doc": "Begin, end, etc", 
+          "type": "Phase", 
+          "name": "m_Phase"
+        }, 
+        {
+          "doc": "Current x", 
+          "type": "int32_t", 
+          "name": "m_X"
+        }, 
+        {
+          "doc": "Current y", 
+          "type": "int32_t", 
+          "name": "m_Y"
+        }, 
+        {
+          "doc": "Current x, in screen space", 
+          "type": "int32_t", 
+          "name": "m_ScreenX"
+        }, 
+        {
+          "doc": "Current y, in screen space", 
+          "type": "int32_t", 
+          "name": "m_ScreenY"
+        }, 
+        {
+          "doc": "Current dx", 
+          "type": "int32_t", 
+          "name": "m_DX"
+        }, 
+        {
+          "doc": "Current dy", 
+          "type": "int32_t", 
+          "name": "m_DY"
+        }, 
+        {
+          "doc": "Current dx, in screen space", 
+          "type": "int32_t", 
+          "name": "m_ScreenDX"
+        }, 
+        {
+          "doc": "Current dy, in screen space", 
+          "type": "int32_t", 
+          "name": "m_ScreenDY"
+        }, 
+        {
+          "doc": "Touch id", 
+          "type": "int32_t", 
+          "name": "m_Id"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "Touch"
     }, 
     {
       "replaces": "", 

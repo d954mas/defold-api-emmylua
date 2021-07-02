@@ -1,0 +1,41 @@
+{
+  "info": {
+    "group": "DEFOLD SDK", 
+    "description": "Physics related structs and functions", 
+    "namespace": "dmPhysics", 
+    "brief": "Physics", 
+    "file": "dmsdk/physics/physics.h", 
+    "path": "engine/physics/src/dmsdk/physics/physics.h", 
+    "name": "Physics"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "2D Hull set handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "2D Hull set handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HHullSet2D"
+    }, 
+    {
+      "replaces": "", 
+      "description": "2D collision shape handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "2D collision shape handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HCollisionShape2D"
+    }
+  ]
+}

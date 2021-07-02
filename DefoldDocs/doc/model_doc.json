@@ -1,7 +1,7 @@
 {
   "info": {
     "group": "COMPONENTS", 
-    "description": "Functions and messages for interacting with model components.", 
+    "description": "Model API documentation", 
     "namespace": "model", 
     "brief": "Model API documentation", 
     "file": "", 
@@ -9,35 +9,6 @@
     "name": "Model"
   }, 
   "elements": [
-    {
-      "replaces": "", 
-      "description": "This message is sent when a Model animation has finished playing back to the script\nthat started the animation.\n<span class=\"icon-attention\"></span> No message is sent if a completion callback function was supplied\nwhen the animation was started. No message is sent if the animation is cancelled with\nmodel.cancel(). This message is sent only for animations that play with\nthe following playback modes:\n<ul>\n<li><code>go.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>\n</ul>", 
-      "parameters": [
-        {
-          "doc": "the id of the completed animation", 
-          "name": "animation_id", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "the playback mode of the completed animation", 
-          "name": "playback", 
-          "types": [
-            "constant"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reports the completion of a Model animation", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">model_animation_done&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">animation_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">run&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">playback</span> <span class=\"o\">==</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_ONCE_FORWARD</span> <span class=\"k\">then</span>\n      <span class=\"c1\">-- The animation &quot;run&quot; has finished running forward.</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "model_animation_done"
-    }, 
     {
       "replaces": "", 
       "description": "The normalized animation cursor. The type of the property is number.\n<span class=\"icon-attention\"></span> Please note that model events may not fire as expected when the cursor is manipulated directly.", 
@@ -224,6 +195,35 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "model.get_go"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This message is sent when a Model animation has finished playing back to the script\nthat started the animation.\n<span class=\"icon-attention\"></span> No message is sent if a completion callback function was supplied\nwhen the animation was started. No message is sent if the animation is cancelled with\nmodel.cancel(). This message is sent only for animations that play with\nthe following playback modes:\n<ul>\n<li><code>go.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>\n</ul>", 
+      "parameters": [
+        {
+          "doc": "the id of the completed animation", 
+          "name": "animation_id", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "the playback mode of the completed animation", 
+          "name": "playback", 
+          "types": [
+            "constant"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "reports the completion of a Model animation", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n  <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">model_animation_done&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n    <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">animation_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">run&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">playback</span> <span class=\"o\">==</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_ONCE_FORWARD</span> <span class=\"k\">then</span>\n      <span class=\"c1\">-- The animation &quot;run&quot; has finished running forward.</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "model_animation_done"
     }
   ]
 }

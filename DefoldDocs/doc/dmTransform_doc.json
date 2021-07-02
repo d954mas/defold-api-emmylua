@@ -1,0 +1,762 @@
+{
+  "info": {
+    "description": "<span class=\"file\">&lt;dmsdk/dlib/transform.h&gt;</span>\nApi for transforms with rotation, scale and translation", 
+    "namespace": "dmTransform", 
+    "brief": "Transform API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Transform"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "Transform with non-uniform (3-component) scale.\nTransform applied as:\nT(p) = translate(rotate(scale(p))) = p'\nThe scale is non-rotated to avoid shearing in the transform.\nTwo transforms are applied as:\nT1(T2(p)) = t1(r1(t2(r2(s1(s2(p)))))) = p'\nThis means that the transform is not associative:\nT1(T2(p)) != (T1*T2)(P)", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Transform with non-uniform (3-component) scale", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "Transform"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Constructor. Leaves the struct in an uninitialized state", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Constructor. Leaves the struct in an uninitialized...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Transform"
+    }, 
+    {
+      "replaces": "", 
+      "description": "constructor", 
+      "parameters": [
+        {
+          "doc": "", 
+          "name": "translation", 
+          "types": [
+            "dmVMath::Vector3"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "rotation", 
+          "types": [
+            "dmVMath::Quat"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "scale", 
+          "types": [
+            "dmVMath::Vector3"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "constructor", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Transform"
+    }, 
+    {
+      "replaces": "", 
+      "description": "constructor", 
+      "parameters": [
+        {
+          "doc": "", 
+          "name": "translation", 
+          "types": [
+            "dmVMath::Vector3"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "rotation", 
+          "types": [
+            "dmVMath::Quat"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "scale", 
+          "types": [
+            "dmVMath::Vector3"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "constructor", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Transform"
+    }, 
+    {
+      "replaces": "", 
+      "description": "initialize to identity transform", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "initialize to identity transform", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetIdentity"
+    }, 
+    {
+      "replaces": "", 
+      "description": "get translation", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "translation", 
+          "types": [
+            "dmVMath::Vector3"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get translation", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetTranslation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "set translation", 
+      "parameters": [
+        {
+          "doc": "", 
+          "name": "translation", 
+          "types": [
+            "dmVMath::Vector3"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set translation", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetTranslation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "get scale", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "scale", 
+          "types": [
+            "dmVMath::Vector3"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get scale", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetScale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "set scale", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "scale", 
+          "types": [
+            "dmVMath::Vector3"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "set scale", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetScale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Compute a 'uniform' scale for this transform. In the event that the\nscale applied to this transform is not uniform then the value is arbitrary:\nwe make a selection that will not introduce any floating point rounding errors.", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "the uniform scale associated with this transform.", 
+          "name": "scale", 
+          "types": [
+            "float"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Compute a 'uniform' scale for this transform. In t...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetUniformScale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "set uniform scale", 
+      "parameters": [
+        {
+          "doc": "", 
+          "name": "scale", 
+          "types": [
+            "float"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set uniform scale", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetUniformScale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "get rotatiom", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "rotation", 
+          "types": [
+            "dmVMath::Quat"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get rotatiom", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetRotation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "set rotatiom", 
+      "parameters": [
+        {
+          "doc": "", 
+          "name": "rotation", 
+          "types": [
+            "dmVMath::Quat"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set rotatiom", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetRotation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Apply the transform on a point (includes the transform translation).", 
+      "parameters": [
+        {
+          "doc": "Transform", 
+          "name": "t", 
+          "types": [
+            "dmTransform::Transform&"
+          ]
+        }, 
+        {
+          "doc": "Point", 
+          "name": "p", 
+          "types": [
+            "dmVMath::Point3&"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Transformed point", 
+          "name": "point", 
+          "types": [
+            "dmVMath::Point3"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Apply the transform on a point (includes the trans...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Apply"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Apply the transform on a point, but without scaling the Z-component of the point (includes the transform translation).", 
+      "parameters": [
+        {
+          "doc": "Transform", 
+          "name": "t", 
+          "types": [
+            "dmTransform::Transform&"
+          ]
+        }, 
+        {
+          "doc": "Point", 
+          "name": "p", 
+          "types": [
+            "dmVMath::Point3&"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Transformed point", 
+          "name": "point", 
+          "types": [
+            "dmVMath::Point3"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Apply the transform on a point, but without scalin...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ApplyNoScaleZ"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Apply the transform on a vector (excludes the transform translation).", 
+      "parameters": [
+        {
+          "doc": "Transform", 
+          "name": "t", 
+          "types": [
+            "dmTransform::Transform&"
+          ]
+        }, 
+        {
+          "doc": "Vector", 
+          "name": "v", 
+          "types": [
+            "dmVMath::Vector3&"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Transformed vector", 
+          "name": "point", 
+          "types": [
+            "dmVMath::Vector3"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Apply the transform on a vector (excludes the tran...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Apply"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Apply the transform on a vector, but without scaling the Z-component of the vector (excludes the transform translation).", 
+      "parameters": [
+        {
+          "doc": "Transform", 
+          "name": "t", 
+          "types": [
+            "dmTransform::Transform&"
+          ]
+        }, 
+        {
+          "doc": "Vector", 
+          "name": "v", 
+          "types": [
+            "dmVMath::Vector3&"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Transformed vector", 
+          "name": "point", 
+          "types": [
+            "dmVMath::Vector3"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Apply the transform on a vector, but without scali...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ApplyNoScaleZ"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Transforms the right-hand transform by the left-hand transform", 
+      "parameters": [
+        {
+          "doc": "", 
+          "name": "lhs", 
+          "types": [
+            "const dmTransform::Transform&"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "rhs", 
+          "types": [
+            "const dmTransform::Transform&"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Transformed transform", 
+          "name": "result", 
+          "types": [
+            "dmTransform::Transform"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Transforms the right-hand transform by the left-ha...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Mul"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Transforms the right-hand transform by the left-hand transform, without scaling the Z-component of the transition of the transformed transform", 
+      "parameters": [
+        {
+          "doc": "", 
+          "name": "lhs", 
+          "types": [
+            "const dmTransform::Transform&"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "rhs", 
+          "types": [
+            "const dmTransform::Transform&"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Transformed transform", 
+          "name": "result", 
+          "types": [
+            "dmTransform::Transform"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Transforms the right-hand transform by the left-ha...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "MulNoScaleZ"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Invert a transform", 
+      "parameters": [
+        {
+          "doc": "", 
+          "name": "t", 
+          "types": [
+            "const dmTransform::Transform&"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "inverted transform", 
+          "name": "result", 
+          "types": [
+            "dmTransform::Transform"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Invert a transform", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Inv"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Convert a transform into a 4-dim matrix", 
+      "parameters": [
+        {
+          "doc": "Transform to convert", 
+          "name": "t", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "representing the same transform", 
+          "name": "Matrix", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Convert a transform into a 4-dim matrix", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ToMatrix"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Extract the absolute values of the scale component from a matrix.", 
+      "parameters": [
+        {
+          "doc": "Source matrix", 
+          "name": "mtx", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "with scale values for x,y,z", 
+          "name": "Vector3", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Extract the absolute values of the scale component...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ExtractScale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Eliminate the scaling components in a matrix", 
+      "parameters": [
+        {
+          "doc": "Matrix to operate on", 
+          "name": "mtx", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "containing the scaling by component", 
+          "name": "Vector", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Eliminate the scaling components in a matrix", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ResetScale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Convert a matrix into a transform", 
+      "parameters": [
+        {
+          "doc": "Matrix4 to convert", 
+          "name": "mtx", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "representing the same transform", 
+          "name": "Transform", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Convert a matrix into a transform", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ToTransform"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Eliminate the z scaling components in a matrix", 
+      "parameters": [
+        {
+          "doc": "Matrix to operate on", 
+          "name": "mtx", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Eliminate the z scaling components in a matrix", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "NormalizeZScale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Eliminate the z scaling components in a matrix", 
+      "parameters": [
+        {
+          "doc": "Source matrix", 
+          "name": "source", 
+          "types": [
+            "const dmVMath::Matrix&"
+          ]
+        }, 
+        {
+          "doc": "Target matrix", 
+          "name": "target", 
+          "types": [
+            "dmVMath::Matrix*"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Eliminate the z scaling components in a matrix", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "NormalizeZScale"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Multiply two matrices without z-scaling the translation in m2", 
+      "parameters": [
+        {
+          "doc": "First matrix", 
+          "name": "m1", 
+          "types": [
+            "const dmVMath::Matrix&"
+          ]
+        }, 
+        {
+          "doc": "Second matrix", 
+          "name": "m2", 
+          "types": [
+            "const dmVMath::Matrix&"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "The resulting transform", 
+          "name": "result", 
+          "types": [
+            "dmVMath::Matrix"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Multiply two matrices without z-scaling the transl...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "MulNoScaleZ"
+    }
+  ]
+}

@@ -11,6 +11,41 @@
   "elements": [
     {
       "replaces": "", 
+      "description": "Resource descriptor", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Resource descriptor", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "Hash of resource name", 
+          "type": "uint64_t", 
+          "name": "m_NameHash"
+        }, 
+        {
+          "doc": "Resource pointer. Must be unique and not NULL.", 
+          "type": "void*", 
+          "name": "m_Resource"
+        }, 
+        {
+          "doc": "Resource pointer. Resource pointer to a previous version of the resource, iff it exists. Only used when recreating resources.", 
+          "type": "void*", 
+          "name": "m_PrevResource"
+        }, 
+        {
+          "doc": "Resource size in memory. I.e. the payload of m_Resource", 
+          "type": "uint32_t", 
+          "name": "m_ResourceSize"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SResourceDescriptor"
+    }, 
+    {
+      "replaces": "", 
       "description": "Declare and register new extension to the engine.\nThis macro is used to declare the extension callback functions used by the engine to communicate with the extension.", 
       "parameters": [
         {
@@ -51,6 +86,116 @@
       "tparams": [], 
       "type": "MACRO", 
       "name": "DM_DECLARE_RESOURCE_TYPE"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get a resource from factory", 
+      "parameters": [
+        {
+          "doc": "Factory handle", 
+          "name": "factory", 
+          "types": [
+            "dmResource::HFactory"
+          ]
+        }, 
+        {
+          "doc": "Resource name", 
+          "name": "name", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "Created resource", 
+          "name": "resource", 
+          "types": [
+            "void**"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "result", 
+          "types": [
+            "dmResource::Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Get a resource from factory", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Get"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Release resource", 
+      "parameters": [
+        {
+          "doc": "Factory handle", 
+          "name": "factory", 
+          "types": [
+            "dmResource::HFactory"
+          ]
+        }, 
+        {
+          "doc": "Resource pointer", 
+          "name": "resource", 
+          "types": [
+            "void*"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Release resource", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Release"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Hint the preloader what to load before Create is called on the resource.\nThe resources are not guaranteed to be loaded before Create is called.\nThis function can be called from a worker thread.", 
+      "parameters": [
+        {
+          "doc": "Preloader handle", 
+          "name": "factory", 
+          "types": [
+            "dmResource::HPreloadHintInfo"
+          ]
+        }, 
+        {
+          "doc": "Resource name", 
+          "name": "name", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "if successfully invoking preloader.", 
+          "name": "result", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Hint the preloader what to load before Create is c...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "PreloadHint"
     }
   ]
 }

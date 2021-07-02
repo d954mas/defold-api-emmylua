@@ -11,6 +11,36 @@
   "elements": [
     {
       "replaces": "", 
+      "description": "return an indexed table of missing resources for a collection proxy. Each\nentry is a hexadecimal string that represents the data of the specific\nresource. This representation corresponds with the filename for each\nindividual resource that is exported when you bundle an application with\nLiveUpdate functionality. It should be considered good practise to always\ncheck whether or not there are any missing resources in a collection proxy\nbefore attempting to load the collection proxy.", 
+      "parameters": [
+        {
+          "doc": "the collectionproxy to check for missing\nresources.", 
+          "name": "collectionproxy", 
+          "types": [
+            "url"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the missing resources", 
+          "name": "resources", 
+          "types": [
+            "table"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "return an indexed table of missing resources for a collection proxy", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">manifest</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">get_current_manifest</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">expected</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">resources</span><span class=\"p\">[</span><span class=\"n\">id</span><span class=\"p\">]</span>\n    <span class=\"k\">if</span> <span class=\"n\">response</span> <span class=\"o\">~=</span> <span class=\"kc\">nil</span> <span class=\"ow\">and</span> <span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"mi\">200</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Successfully downloaded resource: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">expected</span><span class=\"p\">)</span>\n        <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">store_resource</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">response</span><span class=\"p\">)</span>\n    <span class=\"k\">else</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Failed to download resource: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">expected</span><span class=\"p\">)</span>\n        <span class=\"c1\">-- error handling</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">download_resources</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">cproxy</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">resources</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"kd\">local</span> <span class=\"n\">resources</span> <span class=\"o\">=</span> <span class=\"n\">collectionproxy</span><span class=\"p\">.</span><span class=\"n\">missing_resources</span><span class=\"p\">(</span><span class=\"n\">cproxy</span><span class=\"p\">)</span>\n    <span class=\"k\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"k\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">resources</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Downloading resource: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">v</span><span class=\"p\">)</span>\n\n        <span class=\"kd\">local</span> <span class=\"n\">uri</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">http://example.defold.com/&quot;</span> <span class=\"o\">..</span> <span class=\"n\">v</span>\n        <span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">http</span><span class=\"p\">.</span><span class=\"n\">request</span><span class=\"p\">(</span><span class=\"n\">uri</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">GET&quot;</span><span class=\"p\">,</span> <span class=\"n\">callback</span><span class=\"p\">)</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">resources</span><span class=\"p\">[</span><span class=\"n\">id</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">v</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "collectionproxy.missing_resources"
+    }, 
+    {
+      "replaces": "", 
       "description": "Post this message to a collection-proxy-component to modify the time-step used when updating the collection controlled by the proxy.\nThe time-step is modified by a scaling <code>factor</code> and can be incremented either continuously or in discrete steps.\nThe continuous mode can be used for slow-motion or fast-forward effects.\nThe discrete mode is only useful when scaling the time-step to pass slower than real time (<code>factor</code> is below 1).\nThe time-step will then be set to 0 for as many frames as the scaling demands and then take on the full real-time-step for one frame,\nto simulate pulses. E.g. if <code>factor</code> is set to <code>0.1</code> the time-step would be 0 for 9 frames, then be 1/60 for one\nframe, 0 for 9 frames, and so on. The result in practice is that the game looks like it's updated at a much lower frequency than 60 Hz,\nwhich can be useful for debugging when each frame needs to be inspected.", 
       "parameters": [
         {
@@ -163,36 +193,6 @@
       "tparams": [], 
       "type": "MESSAGE", 
       "name": "proxy_unloaded"
-    }, 
-    {
-      "replaces": "", 
-      "description": "return an indexed table of missing resources for a collection proxy. Each\nentry is a hexadecimal string that represents the data of the specific\nresource. This representation corresponds with the filename for each\nindividual resource that is exported when you bundle an application with\nLiveUpdate functionality. It should be considered good practise to always\ncheck whether or not there are any missing resources in a collection proxy\nbefore attempting to load the collection proxy.", 
-      "parameters": [
-        {
-          "doc": "the collectionproxy to check for missing\nresources.", 
-          "name": "collectionproxy", 
-          "types": [
-            "url"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "the missing resources", 
-          "name": "resources", 
-          "types": [
-            "table"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "return an indexed table of missing resources for a collection proxy", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">manifest</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">get_current_manifest</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">callback</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">expected</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">resources</span><span class=\"p\">[</span><span class=\"n\">id</span><span class=\"p\">]</span>\n    <span class=\"k\">if</span> <span class=\"n\">response</span> <span class=\"o\">~=</span> <span class=\"kc\">nil</span> <span class=\"ow\">and</span> <span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"mi\">200</span> <span class=\"k\">then</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Successfully downloaded resource: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">expected</span><span class=\"p\">)</span>\n        <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">store_resource</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">response</span><span class=\"p\">)</span>\n    <span class=\"k\">else</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Failed to download resource: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">expected</span><span class=\"p\">)</span>\n        <span class=\"c1\">-- error handling</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">download_resources</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">cproxy</span><span class=\"p\">)</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">resources</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n    <span class=\"kd\">local</span> <span class=\"n\">resources</span> <span class=\"o\">=</span> <span class=\"n\">collectionproxy</span><span class=\"p\">.</span><span class=\"n\">missing_resources</span><span class=\"p\">(</span><span class=\"n\">cproxy</span><span class=\"p\">)</span>\n    <span class=\"k\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"k\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">resources</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Downloading resource: &quot;</span> <span class=\"o\">..</span> <span class=\"n\">v</span><span class=\"p\">)</span>\n\n        <span class=\"kd\">local</span> <span class=\"n\">uri</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">http://example.defold.com/&quot;</span> <span class=\"o\">..</span> <span class=\"n\">v</span>\n        <span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">http</span><span class=\"p\">.</span><span class=\"n\">request</span><span class=\"p\">(</span><span class=\"n\">uri</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">GET&quot;</span><span class=\"p\">,</span> <span class=\"n\">callback</span><span class=\"p\">)</span>\n        <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">resources</span><span class=\"p\">[</span><span class=\"n\">id</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">v</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "collectionproxy.missing_resources"
     }
   ]
 }

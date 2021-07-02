@@ -1,13 +1,806 @@
 {
   "info": {
-    "description": "<span class=\"file\">&lt;dmsdk/gameobject/component.h&gt;</span>\nApi for manipulating game object components (WIP)", 
+    "group": "DEFOLD SDK", 
+    "description": "API for manipulating game objects", 
     "namespace": "dmGameObject", 
-    "brief": "SDK Component API documentation", 
-    "file": "", 
-    "path": "", 
-    "name": "Component"
+    "brief": "Game object functions", 
+    "file": "dmsdk/gameobject/gameobject.h", 
+    "path": "engine/gameobject/src/dmsdk/gameobject/gameobject.h", 
+    "name": "Gameobject"
   }, 
   "elements": [
+    {
+      "replaces": "", 
+      "description": "Get component user data from a url.\nThe object referenced by the url must be in the same collection as the caller.", 
+      "parameters": [
+        {
+          "doc": "Lua state", 
+          "name": "L", 
+          "types": [
+            "lua_State*"
+          ]
+        }, 
+        {
+          "doc": "index to argument (a url)", 
+          "name": "index", 
+          "types": [
+            "lua_State*"
+          ]
+        }, 
+        {
+          "doc": "the call will fail if the found component does not have the specified extension", 
+          "name": "component_type", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "The world associated owning the component. May be 0", 
+          "name": "world", 
+          "types": [
+            "void**"
+          ]
+        }, 
+        {
+          "doc": "The component data associated with the url. May be 0", 
+          "name": "component", 
+          "types": [
+            "void**"
+          ]
+        }, 
+        {
+          "doc": "The resolved url. May be 0", 
+          "name": "url", 
+          "types": [
+            "dmMessage::URL*"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Get component user data from a url", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetComponentFromLua"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Callback when iterating over the properties for a component.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Callback when iterating over the properties for a ...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": ""
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the new world callback. Called when a collection (i.e. a \"world\") is created.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the new world callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetNewWorldFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the world destroy callback. Called when a collection (i.e. a \"world\") is destroyed.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the world destroy callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetDeleteWorldFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component create callback. Called when a component instance is created.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component create callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetCreateFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component destroy callback. Called when a component instance is destroyed.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component destroy callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetDestroyFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component init callback. Called on each gameobject's components, during a gameobject's initialization.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component init callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetInitFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component finalize callback. Called on each gameobject's components, during a gameobject's finalization.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component finalize callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetFinalFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component add-to-update callback. Called for each component instal, when the game object is spawned.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component add-to-update callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetAddToUpdateFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component get callback. Called when the scripts want to retrieve the individual component user data given an url.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component get callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetGetFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component render callback. Called when it's time to render all component instances.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component render callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetRenderFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component update callback. Called when it's time to update all component instances.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component update callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetUpdateFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component post update callback. Called for each collection after the update, before the render.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component post update callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetPostUpdateFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component on-message callback. Called multiple times per frame, to flush messages.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component on-message callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetOnMessageFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component on-input callback. Called once per frame, before the Update function.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component on-input callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetOnInputFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component on-reload callback. Called when the resource of a component instance is reloaded.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component on-reload callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetOnReloadFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component set properties callback. Called when the component instance is being spwned.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component set properties callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetSetPropertiesFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component get property callback. Called when accessing a property via <code>go.get()</code>", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component get property callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetGetPropertyFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component set property callback. Called when accessing a property via <code>go.set()</code>", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component set property callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetSetPropertyFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component type global context. Usually set when registering the component type.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component type global context", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetContext"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component type transform dependency flag.\nIf this flag is set, it might trigger an dmGameObject::UpdateTransforms() (if there are dirty transforms)", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component type transform dependency flag", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetReadsTransforms"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component type prio order. Defines the update order of the component types.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component type prio order", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetPrio"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component type need for a per component instance user data. Defaults to true.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component type need for a per component instance user data", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetHasUserData"
+    }, 
+    {
+      "replaces": "", 
+      "description": "set the component property iterator function. Called during inspection", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component property iterator function", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetChilldIteratorFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "set the component property iterator function. Called during inspection", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component property iterator function", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetPropertyIteratorFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Context used when registering a new component type", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Context used when registering a new component type", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "The config file", 
+          "type": "dmConfigFile::HConfig", 
+          "name": "m_Config"
+        }, 
+        {
+          "doc": "The resource factory", 
+          "type": "dmResource::HFactory", 
+          "name": "m_Factory"
+        }, 
+        {
+          "doc": "The game object registry", 
+          "type": "dmGameObject::HRegister", 
+          "name": "m_Register"
+        }, 
+        {
+          "doc": "The shared script context", 
+          "type": "dmScript::HContext", 
+          "name": "m_Script"
+        }, 
+        {
+          "doc": "Mappings between names and contextx", 
+          "type": "dmHashTable64<void*>", 
+          "name": "m_Contextx"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "ComponentTypeCreateCtx"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Value for an invalid instance index, this must be the same as defined in gamesys_ddf.proto for Create#index.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Value for an invalid instance index, this must be ...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "INVALID_INSTANCE_POOL_INDEX"
+    }, 
     {
       "replaces": "", 
       "description": "Gameobject instance handle", 
@@ -77,6 +870,20 @@
       "tparams": [], 
       "type": "TYPEDEF", 
       "name": "HCollection"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gameobject prototype handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Gameobject prototype handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HPrototype"
     }, 
     {
       "replaces": "", 
@@ -289,6 +1096,20 @@
     }, 
     {
       "replaces": "", 
+      "description": "Playback type enum", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Playback type enum", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Playback"
+    }, 
+    {
+      "replaces": "", 
       "description": "Create result enum.", 
       "parameters": [], 
       "returnvalues": [], 
@@ -384,6 +1205,327 @@
     }, 
     {
       "replaces": "", 
+      "description": "Description of a property.\nIf the property is externally mutable, m_ValuePtr points to the value and its length is m_ElementCount.\nm_Variant always reflects the value.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Description of a property", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "For composite properties (float arrays), these ids name each element", 
+          "type": "dmhash_t", 
+          "name": "m_ElementIds"
+        }, 
+        {
+          "doc": "Variant holding the value", 
+          "type": "PropertyVar", 
+          "name": "m_Variant"
+        }, 
+        {
+          "doc": "Pointer to the value, only set for mutable values. The actual data type is described by the variant.", 
+          "type": "float*", 
+          "name": "m_ValuePtr"
+        }, 
+        {
+          "doc": "Determines whether we are permitted to write to this property.", 
+          "type": "bool", 
+          "name": "m_ReadOnly"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "PropertyDesc"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Update context", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Update context", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "the delta time elapsed since last frame (seconds)", 
+          "type": "float", 
+          "name": "m_DT"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "UpdateContext"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Container of input related information.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Container of input related information.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "InputAction"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Input result enum", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Input result enum", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "= 0", 
+          "type": "", 
+          "name": "INPUT_RESULT_IGNORED"
+        }, 
+        {
+          "doc": "= 1", 
+          "type": "", 
+          "name": "INPUT_RESULT_CONSUMED"
+        }, 
+        {
+          "doc": "= -1000", 
+          "type": "", 
+          "name": "INPUT_RESULT_UNKNOWN_ERROR"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "InputResult"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Retrieve the message socket for the specified collection.", 
+      "parameters": [
+        {
+          "doc": "Collection handle", 
+          "name": "collection", 
+          "types": [
+            "dmGameObject::HCollection"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "The message socket of the specified collection", 
+          "name": "socket", 
+          "types": [
+            "dmMessage::HSocket"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Retrieve the message socket for the specified coll...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetMessageSocket"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Retrieve a collection from the specified instance", 
+      "parameters": [
+        {
+          "doc": "Game object instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "The collection the specified instance belongs to", 
+          "name": "collection", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Retrieve a collection from the specified instance", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetCollection"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Create a new gameobject instance", 
+      "parameters": [
+        {
+          "doc": "Gameobject collection", 
+          "name": "collection", 
+          "types": [
+            "dmGameObject::HCollection"
+          ]
+        }, 
+        {
+          "doc": "|type: const char*] Prototype file name. May be 0.", 
+          "name": "prototype_name", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "New gameobject instance. NULL if any error occured", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Create a new gameobject instance", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "New"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Delete gameobject instance", 
+      "parameters": [
+        {
+          "doc": "Gameobject collection", 
+          "name": "collection", 
+          "types": [
+            "dmGameObject::HCollection"
+          ]
+        }, 
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }, 
+        {
+          "doc": "If true, delete child hierarchy recursively in child to parent order (leaf first)", 
+          "name": "recursive", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Delete gameobject instance", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Delete"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Construct a hash of an instance id based on the index provided.", 
+      "parameters": [
+        {
+          "doc": "The index to base the id off of.", 
+          "name": "index", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "hash of the instance id constructed.", 
+          "name": "id", 
+          "types": [
+            "dmhash_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Construct a hash of an instance id based on the in...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ConstructInstanceId"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Retrieve an instance index from the index pool for the collection.", 
+      "parameters": [
+        {
+          "doc": "Collection from which to retrieve the instance index.", 
+          "name": "collection", 
+          "types": [
+            "dmGameObject::HColleciton"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "index from the index pool of collection.", 
+          "name": "instance", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Retrieve an instance index from the index pool for...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "AcquireInstanceIndex"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Assign an index to the instance, only if the instance is not null.", 
+      "parameters": [
+        {
+          "doc": "The index to assign.", 
+          "name": "index", 
+          "types": [
+            "uint32_t"
+          ]
+        }, 
+        {
+          "doc": "The instance that should be assigned the index.", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Assign an index to the instance, only if the insta...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "AssignInstanceIndex"
+    }, 
+    {
+      "replaces": "", 
       "description": "Get instance identifier", 
       "parameters": [
         {
@@ -411,6 +1553,94 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "GetIdentifier"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set instance identifier. Must be unique within the collection.", 
+      "parameters": [
+        {
+          "doc": "Collection", 
+          "name": "collection", 
+          "types": [
+            "dmGameObject::HCollection"
+          ]
+        }, 
+        {
+          "doc": "Instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }, 
+        {
+          "doc": "Identifier", 
+          "name": "identifier", 
+          "types": [
+            "dmhash_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK on success", 
+          "name": "result", 
+          "types": [
+            "dmGameObject::Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Set instance identifier. Must be unique within the...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetIdentifier"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get component id from component index.", 
+      "parameters": [
+        {
+          "doc": "Instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }, 
+        {
+          "doc": "Component index", 
+          "name": "component_index", 
+          "types": [
+            "uint16_t"
+          ]
+        }, 
+        {
+          "doc": "[type: dmhash_t* Component id as out-argument", 
+          "name": "component_id", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "RESULT_OK if the comopnent was found", 
+          "name": "result", 
+          "types": [
+            "dmGameObject::Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Get component id from component index.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetComponentId"
     }, 
     {
       "replaces": "", 
@@ -797,6 +2027,168 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "GetWorldMatrix"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get game object instance world transform", 
+      "parameters": [
+        {
+          "doc": "Gameobject instance", 
+          "name": "instance", 
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "World transform", 
+          "name": "", 
+          "types": [
+            "dmTransform::Transform"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get world transform", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetWorldTransform"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set whether the instance should be flagged as a bone.\nInstances flagged as bones can have their transforms updated in a batch through SetBoneTransforms.\nUsed for animated skeletons.", 
+      "parameters": [
+        {
+          "doc": "Instance", 
+          "name": "instance", 
+          "types": [
+            "HImstance"
+          ]
+        }, 
+        {
+          "doc": "true if the instance is a bone", 
+          "name": "bone", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Set whether the instance should be flagged as a bo...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetBone"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Check whether the instance is flagged as a bone.", 
+      "parameters": [
+        {
+          "doc": "Instance", 
+          "name": "instance", 
+          "types": [
+            "HImstance"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "True if flagged as a bone", 
+          "name": "result", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Check whether the instance is flagged as a bone.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "IsBone"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the local transforms recursively of all instances flagged as bones, starting with component with id.\nThe order of the transforms is depth-first.", 
+      "parameters": [
+        {
+          "doc": "First Instance of the hierarchy to set", 
+          "name": "instance", 
+          "types": [
+            "HImstance"
+          ]
+        }, 
+        {
+          "doc": "the transform for component root", 
+          "name": "component_transform", 
+          "types": [
+            "dmTransform::Transform"
+          ]
+        }, 
+        {
+          "doc": "Array of transforms to set depth-first for the bone instances", 
+          "name": "transforms", 
+          "types": [
+            ""
+          ]
+        }, 
+        {
+          "doc": "Size of the transforms array", 
+          "name": "transform_count", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "of instances found", 
+          "name": "Number", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Set the local transforms recursively of all instan...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetBoneTransforms"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Recursively delete all instances flagged as bones under the given parent instance.\nThe order of deletion is depth-first, so that the children are deleted before the parents.", 
+      "parameters": [
+        {
+          "doc": "Parent instance of the hierarchy", 
+          "name": "parent", 
+          "types": [
+            "HInstance"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Recursively delete all instances flagged as bones ...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "DeleteBones"
     }, 
     {
       "replaces": "", 

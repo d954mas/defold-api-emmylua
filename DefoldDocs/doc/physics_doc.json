@@ -1,7 +1,7 @@
 {
   "info": {
     "group": "SYSTEM", 
-    "description": "Functions and messages for collision object physics interaction\nwith other objects (collisions and ray-casting) and control of\nphysical behaviors.", 
+    "description": "Collision object physics API documentation", 
     "namespace": "physics", 
     "brief": "Collision object physics API documentation", 
     "file": "", 
@@ -9,299 +9,6 @@
     "name": "Collision object"
   }, 
   "elements": [
-    {
-      "replaces": "", 
-      "description": "Post this message to a collision-object-component to apply the specified force on the collision object.\nThe collision object must be dynamic.", 
-      "parameters": [
-        {
-          "doc": "the force to be applied on the collision object, measured in Newton", 
-          "name": "force", 
-          "types": [
-            "vector3"
-          ]
-        }, 
-        {
-          "doc": "the position where the force should be applied", 
-          "name": "position", 
-          "types": [
-            "vector3"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "applies a force on a collision object", 
-      "examples": "Assuming the instance of the script has a collision-object-component with id \"co\":\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- apply a force of 1 Newton towards world-x at the center of the game object instance</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#co&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">apply_force&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">force</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">position</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_position</span><span class=\"p\">()})</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "apply_force"
-    }, 
-    {
-      "replaces": "", 
-      "description": "This message is broadcasted to every component of an instance that has a collision object,\nwhen the collision object collides with another collision object. For a script to take action\nwhen such a collision happens, it should check for this message in its <code>on_message</code> callback\nfunction.\nThis message only reports that a collision actually happened and will only be sent once per\ncolliding pair and frame.\nTo retrieve more detailed information, check for the <code>contact_point_response</code> instead.", 
-      "parameters": [
-        {
-          "doc": "the id of the instance the collision object collided with", 
-          "name": "other_id", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "the world position of the instance the collision object collided with", 
-          "name": "other_position", 
-          "types": [
-            "vector3"
-          ]
-        }, 
-        {
-          "doc": "the collision group of the other collision object (hash)", 
-          "name": "other_group", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "the collision group of the own collision object (hash)", 
-          "name": "own_group", 
-          "types": [
-            "hash"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reports a collision between two collision objects", 
-      "examples": "How to take action when a collision occurs:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- check for the message</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">collision_response&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"c1\">-- take action</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "collision_response"
-    }, 
-    {
-      "replaces": "", 
-      "description": "This message is broadcasted to every component of an instance that has a collision object,\nwhen the collision object has contact points with respect to another collision object.\nFor a script to take action when such contact points occur, it should check for this message\nin its <code>on_message</code> callback function.\nSince multiple contact points can occur for two colliding objects, this message can be sent\nmultiple times in the same frame for the same two colliding objects. To only be notified once\nwhen the collision occurs, check for the <code>collision_response</code> message instead.", 
-      "parameters": [
-        {
-          "doc": "world position of the contact point", 
-          "name": "position", 
-          "types": [
-            "vector3"
-          ]
-        }, 
-        {
-          "doc": "normal in world space of the contact point, which points from the other object towards the current object", 
-          "name": "normal", 
-          "types": [
-            "vector3"
-          ]
-        }, 
-        {
-          "doc": "the relative velocity of the collision object as observed from the other object", 
-          "name": "relative_velocity", 
-          "types": [
-            "vector3"
-          ]
-        }, 
-        {
-          "doc": "the penetration distance between the objects, which is always positive", 
-          "name": "distance", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "the impulse the contact resulted in", 
-          "name": "applied_impulse", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "life time of the contact, <strong>not currently used</strong>", 
-          "name": "life_time", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "the mass of the current collision object in kg", 
-          "name": "mass", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "the mass of the other collision object in kg", 
-          "name": "other_mass", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "the id of the instance the collision object is in contact with", 
-          "name": "other_id", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "the world position of the other collision object", 
-          "name": "other_position", 
-          "types": [
-            "vector3"
-          ]
-        }, 
-        {
-          "doc": "the collision group of the other collision object (hash)", 
-          "name": "other_group", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "the collision group of the own collision object (hash)", 
-          "name": "own_group", 
-          "types": [
-            "hash"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reports a contact point between two collision objects", 
-      "examples": "How to take action when a contact point occurs:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- check for the message</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">contact_point_response&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"c1\">-- take action</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "contact_point_response"
-    }, 
-    {
-      "replaces": "", 
-      "description": "This message is broadcasted to every component of an instance that has a collision object,\nwhen the collision object interacts with another collision object and one of them is a trigger.\nFor a script to take action when such an interaction happens, it should check for this message\nin its <code>on_message</code> callback function.\nThis message only reports that an interaction actually happened and will only be sent once per\ncolliding pair and frame. To retrieve more detailed information, check for the\n<code>contact_point_response</code> instead.", 
-      "parameters": [
-        {
-          "doc": "the id of the instance the collision object collided with (hash)", 
-          "name": "other_id", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "if the interaction was an entry or not", 
-          "name": "enter", 
-          "types": [
-            "boolean"
-          ]
-        }, 
-        {
-          "doc": "the collision group of the triggering collision object (hash)", 
-          "name": "other_group", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "the collision group of the own collision object (hash)", 
-          "name": "own_group", 
-          "types": [
-            "hash"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reports interaction (enter/exit) between a trigger collision object and another collision object", 
-      "examples": "How to take action when a trigger interaction occurs:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- check for the message</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">trigger_response&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">enter</span> <span class=\"k\">then</span>\n            <span class=\"c1\">-- take action for entry</span>\n        <span class=\"k\">else</span>\n            <span class=\"c1\">-- take action for exit</span>\n        <span class=\"k\">end</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "trigger_response"
-    }, 
-    {
-      "replaces": "", 
-      "description": "This message is sent back to the sender of a <code>ray_cast_request</code>, if the ray hit a\ncollision object. See <code>physics.raycast_async</code> for examples of how to use it.", 
-      "parameters": [
-        {
-          "doc": "the fraction of the hit measured along the ray, where 0 is the start of the ray and 1 is the end", 
-          "name": "fraction", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "the world position of the hit", 
-          "name": "position", 
-          "types": [
-            "vector3"
-          ]
-        }, 
-        {
-          "doc": "the normal of the surface of the collision object where it was hit", 
-          "name": "normal", 
-          "types": [
-            "vector3"
-          ]
-        }, 
-        {
-          "doc": "the instance id of the hit collision object", 
-          "name": "id", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "the collision group of the hit collision object as a hashed name", 
-          "name": "group", 
-          "types": [
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "id supplied when the ray cast was requested", 
-          "name": "request_id", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reports a ray cast hit", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "ray_cast_response"
-    }, 
-    {
-      "replaces": "", 
-      "description": "This message is sent back to the sender of a <code>ray_cast_request</code>, if the ray didn't hit any\ncollision object. See <code>physics.raycast_async</code> for examples of how to use it.", 
-      "parameters": [
-        {
-          "doc": "id supplied when the ray cast was requested", 
-          "name": "request_id", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reports a ray cast miss", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "ray_cast_missed"
-    }, 
     {
       "replaces": "", 
       "description": "The following properties are available when connecting a joint of <code>JOINT_TYPE_SPRING</code> type:", 
@@ -1088,6 +795,323 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "physics.set_vflip"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Collision objects tend to fall asleep when inactive for a small period of time for\nefficiency reasons. This function wakes them up.", 
+      "parameters": [
+        {
+          "doc": "the collision object to wake.\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_input</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">action_id</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">action_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">test&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">action</span><span class=\"p\">.</span><span class=\"n\">pressed</span> <span class=\"k\">then</span>\n        <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">wakeup</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+          "name": "url", 
+          "types": [
+            "string", 
+            "hash", 
+            "url"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "explicitly wakeup a collision object", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "physics.wakeup"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Post this message to a collision-object-component to apply the specified force on the collision object.\nThe collision object must be dynamic.", 
+      "parameters": [
+        {
+          "doc": "the force to be applied on the collision object, measured in Newton", 
+          "name": "force", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "the position where the force should be applied", 
+          "name": "position", 
+          "types": [
+            "vector3"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "applies a force on a collision object", 
+      "examples": "Assuming the instance of the script has a collision-object-component with id \"co\":\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- apply a force of 1 Newton towards world-x at the center of the game object instance</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#co&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">apply_force&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">force</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">),</span> <span class=\"n\">position</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_position</span><span class=\"p\">()})</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "apply_force"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This message is broadcasted to every component of an instance that has a collision object,\nwhen the collision object collides with another collision object. For a script to take action\nwhen such a collision happens, it should check for this message in its <code>on_message</code> callback\nfunction.\nThis message only reports that a collision actually happened and will only be sent once per\ncolliding pair and frame.\nTo retrieve more detailed information, check for the <code>contact_point_response</code> instead.", 
+      "parameters": [
+        {
+          "doc": "the id of the instance the collision object collided with", 
+          "name": "other_id", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "the world position of the instance the collision object collided with", 
+          "name": "other_position", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "the collision group of the other collision object (hash)", 
+          "name": "other_group", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "the collision group of the own collision object (hash)", 
+          "name": "own_group", 
+          "types": [
+            "hash"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "reports a collision between two collision objects", 
+      "examples": "How to take action when a collision occurs:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- check for the message</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">collision_response&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"c1\">-- take action</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "collision_response"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This message is broadcasted to every component of an instance that has a collision object,\nwhen the collision object has contact points with respect to another collision object.\nFor a script to take action when such contact points occur, it should check for this message\nin its <code>on_message</code> callback function.\nSince multiple contact points can occur for two colliding objects, this message can be sent\nmultiple times in the same frame for the same two colliding objects. To only be notified once\nwhen the collision occurs, check for the <code>collision_response</code> message instead.", 
+      "parameters": [
+        {
+          "doc": "world position of the contact point", 
+          "name": "position", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "normal in world space of the contact point, which points from the other object towards the current object", 
+          "name": "normal", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "the relative velocity of the collision object as observed from the other object", 
+          "name": "relative_velocity", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "the penetration distance between the objects, which is always positive", 
+          "name": "distance", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the impulse the contact resulted in", 
+          "name": "applied_impulse", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "life time of the contact, <strong>not currently used</strong>", 
+          "name": "life_time", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the mass of the current collision object in kg", 
+          "name": "mass", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the mass of the other collision object in kg", 
+          "name": "other_mass", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the id of the instance the collision object is in contact with", 
+          "name": "other_id", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "the world position of the other collision object", 
+          "name": "other_position", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "the collision group of the other collision object (hash)", 
+          "name": "other_group", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "the collision group of the own collision object (hash)", 
+          "name": "own_group", 
+          "types": [
+            "hash"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "reports a contact point between two collision objects", 
+      "examples": "How to take action when a contact point occurs:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- check for the message</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">contact_point_response&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"c1\">-- take action</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "contact_point_response"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This message is broadcasted to every component of an instance that has a collision object,\nwhen the collision object interacts with another collision object and one of them is a trigger.\nFor a script to take action when such an interaction happens, it should check for this message\nin its <code>on_message</code> callback function.\nThis message only reports that an interaction actually happened and will only be sent once per\ncolliding pair and frame. To retrieve more detailed information, check for the\n<code>contact_point_response</code> instead.", 
+      "parameters": [
+        {
+          "doc": "the id of the instance the collision object collided with (hash)", 
+          "name": "other_id", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "if the interaction was an entry or not", 
+          "name": "enter", 
+          "types": [
+            "boolean"
+          ]
+        }, 
+        {
+          "doc": "the collision group of the triggering collision object (hash)", 
+          "name": "other_group", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "the collision group of the own collision object (hash)", 
+          "name": "own_group", 
+          "types": [
+            "hash"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "reports interaction (enter/exit) between a trigger collision object and another collision object", 
+      "examples": "How to take action when a trigger interaction occurs:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- check for the message</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">trigger_response&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"k\">if</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">enter</span> <span class=\"k\">then</span>\n            <span class=\"c1\">-- take action for entry</span>\n        <span class=\"k\">else</span>\n            <span class=\"c1\">-- take action for exit</span>\n        <span class=\"k\">end</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "trigger_response"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This message is sent back to the sender of a <code>ray_cast_request</code>, if the ray hit a\ncollision object. See <code>physics.raycast_async</code> for examples of how to use it.", 
+      "parameters": [
+        {
+          "doc": "the fraction of the hit measured along the ray, where 0 is the start of the ray and 1 is the end", 
+          "name": "fraction", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the world position of the hit", 
+          "name": "position", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "the normal of the surface of the collision object where it was hit", 
+          "name": "normal", 
+          "types": [
+            "vector3"
+          ]
+        }, 
+        {
+          "doc": "the instance id of the hit collision object", 
+          "name": "id", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "the collision group of the hit collision object as a hashed name", 
+          "name": "group", 
+          "types": [
+            "hash"
+          ]
+        }, 
+        {
+          "doc": "id supplied when the ray cast was requested", 
+          "name": "request_id", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "reports a ray cast hit", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "ray_cast_response"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This message is sent back to the sender of a <code>ray_cast_request</code>, if the ray didn't hit any\ncollision object. See <code>physics.raycast_async</code> for examples of how to use it.", 
+      "parameters": [
+        {
+          "doc": "id supplied when the ray cast was requested", 
+          "name": "request_id", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "reports a ray cast miss", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "ray_cast_missed"
     }
   ]
 }

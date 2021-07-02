@@ -1,7 +1,7 @@
 {
   "info": {
     "group": "COMPONENTS", 
-    "description": "Functions and messages for controlling sound components and\nmixer groups.", 
+    "description": "Sound API documentation", 
     "namespace": "sound", 
     "brief": "Sound API documentation", 
     "file": "", 
@@ -11,97 +11,59 @@
   "elements": [
     {
       "replaces": "", 
-      "description": "Post this message to a sound-component to make it play its sound. Multiple voices is supported. The limit is set to 32 voices per sound component.\n<span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.\n<span class=\"icon-attention\"></span> A sound will continue to play even if the game object the sound component belonged to is deleted. You can send a <code>stop_sound</code> to stop the sound.", 
-      "parameters": [
-        {
-          "doc": "delay in seconds before the sound starts playing, default is 0.", 
-          "name": "[delay]", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "sound gain between 0 and 1, default is 1.", 
-          "name": "[gain]", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "the identifier of the sound, can be used to distinguish between consecutive plays from the same component.", 
-          "name": "[play_id]", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "plays a sound", 
-      "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component play its sound after 1 second:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">play_sound&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">delay</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">})</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "play_sound"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Post this message to a sound-component to make it stop playing all active voices", 
+      "description": "The gain on the sound-component. Note that gain is in linear scale,\nbetween 0 and 1.", 
       "parameters": [], 
       "returnvalues": [], 
       "notes": [], 
-      "brief": "stop a playing a sound(s)", 
-      "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component stop all playing voices:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">stop_sound&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
+      "brief": "<span class=\"type\">number</span> sound gain", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">gain&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">gain&quot;</span><span class=\"p\">,</span> <span class=\"n\">gain</span> <span class=\"o\">*</span> <span class=\"mf\">1.5</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "stop_sound"
+      "type": "PROPERTY", 
+      "name": "gain"
     }, 
     {
       "replaces": "", 
-      "description": "Post this message to a sound-component to set gain on all active playing voices.\n<span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.", 
-      "parameters": [
-        {
-          "doc": "sound gain between 0 and 1, default is 1.", 
-          "name": "[gain]", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
+      "description": "The pan on the sound-component. The valid range is from -1.0 to 1.0,\nrepresenting -45 degrees left, to +45 degrees right.", 
+      "parameters": [], 
       "returnvalues": [], 
       "notes": [], 
-      "brief": "set sound gain", 
-      "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will set the gain to 0.5\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">set_gain&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">})</span>\n</pre></div>", 
+      "brief": "<span class=\"type\">number</span> sound pan", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">pan</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">pan&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">pan&quot;</span><span class=\"p\">,</span> <span class=\"n\">pan</span> <span class=\"o\">*</span> <span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "set_gain"
+      "type": "PROPERTY", 
+      "name": "pan"
     }, 
     {
       "replaces": "", 
-      "description": "This message is sent back to the sender of a <code>play_sound</code> message, if the sound\ncould be played to completion.", 
-      "parameters": [
-        {
-          "doc": "id number supplied when the message was posted.", 
-          "name": "[play_id]", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
+      "description": "The speed on the sound-component where 1.0 is normal speed, 0.5 is half\nspeed and 2.0 is double speed.", 
+      "parameters": [], 
       "returnvalues": [], 
       "notes": [], 
-      "brief": "reports when a sound has finished playing", 
-      "examples": "", 
+      "brief": "<span class=\"type\">number</span> sound speed", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">speed</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">speed&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">speed&quot;</span><span class=\"p\">,</span> <span class=\"n\">speed</span> <span class=\"o\">*</span> <span class=\"mf\">0.5</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "sound_done"
+      "type": "PROPERTY", 
+      "name": "speed"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The sound data used when playing the sound. The type of the property is hash.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "<span class=\"type\">hash</span> sound data", 
+      "examples": "How to change the sound:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- load a wav file bundled as a custom resource</span>\n  <span class=\"kd\">local</span> <span class=\"n\">wav</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load_resource</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">foo.wav&quot;</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- get resource path to the sound component</span>\n  <span class=\"kd\">local</span> <span class=\"n\">resource_path</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">sound&quot;</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- update the resource with the loaded wav file</span>\n  <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">set_sound</span><span class=\"p\">(</span><span class=\"n\">resource_path</span><span class=\"p\">,</span> <span class=\"n\">wav</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- play the updated sound</span>\n  <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "PROPERTY", 
+      "name": "sound"
     }, 
     {
       "replaces": "", 
@@ -505,6 +467,100 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "sound.set_pan"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Post this message to a sound-component to make it play its sound. Multiple voices is supported. The limit is set to 32 voices per sound component.\n<span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.\n<span class=\"icon-attention\"></span> A sound will continue to play even if the game object the sound component belonged to is deleted. You can send a <code>stop_sound</code> to stop the sound.", 
+      "parameters": [
+        {
+          "doc": "delay in seconds before the sound starts playing, default is 0.", 
+          "name": "[delay]", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "sound gain between 0 and 1, default is 1.", 
+          "name": "[gain]", 
+          "types": [
+            "number"
+          ]
+        }, 
+        {
+          "doc": "the identifier of the sound, can be used to distinguish between consecutive plays from the same component.", 
+          "name": "[play_id]", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "plays a sound", 
+      "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component play its sound after 1 second:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">play_sound&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">delay</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">})</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "play_sound"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Post this message to a sound-component to make it stop playing all active voices", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "stop a playing a sound(s)", 
+      "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component stop all playing voices:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">stop_sound&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "stop_sound"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Post this message to a sound-component to set gain on all active playing voices.\n<span class=\"icon-attention\"></span> Note that gain is in linear scale, between 0 and 1.\nTo get the dB value from the gain, use the formula <code>20 * log(gain)</code>.\nInversely, to find the linear value from a dB value, use the formula\n<code>10<sup>db/20</sup></code>.", 
+      "parameters": [
+        {
+          "doc": "sound gain between 0 and 1, default is 1.", 
+          "name": "[gain]", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set sound gain", 
+      "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will set the gain to 0.5\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">set_gain&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">})</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "set_gain"
+    }, 
+    {
+      "replaces": "", 
+      "description": "This message is sent back to the sender of a <code>play_sound</code> message, if the sound\ncould be played to completion.", 
+      "parameters": [
+        {
+          "doc": "id number supplied when the message was posted.", 
+          "name": "[play_id]", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "reports when a sound has finished playing", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MESSAGE", 
+      "name": "sound_done"
     }
   ]
 }

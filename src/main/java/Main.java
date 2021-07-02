@@ -61,6 +61,8 @@ public class Main {
         IGNORE_DOCS.add("iac_doc.json");
         IGNORE_DOCS.add("push_doc.json");
         IGNORE_DOCS.add("dmGameObject_doc.json");
+        IGNORE_DOCS.add("dmTransform_doc.json");
+        IGNORE_DOCS.add("dmGameSystem_doc.json");
     }
 
     private static void clearFolder(File folder) {

@@ -11,6 +11,20 @@
   "elements": [
     {
       "replaces": "", 
+      "description": "The script context", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "The script context", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HContext"
+    }, 
+    {
+      "replaces": "", 
       "description": "Diff is the expected difference of the stack size.\nIf luaL_error, or another function that executes a long-jump, is part of the executed code,\nthe stack guard cannot be guaranteed to execute at the end of the function.\nIn that case you should manually check the stack using <code>lua_gettop</code>.\nIn the case of luaL_error, see <a href=\"#DM_LUA_ERROR\">DM_LUA_ERROR</a>.", 
       "parameters": [
         {
@@ -732,6 +746,197 @@
     }, 
     {
       "replaces": "", 
+      "description": "Check if the value at #index is a hash", 
+      "parameters": [
+        {
+          "doc": "Lua state", 
+          "name": "L", 
+          "types": [
+            "lua_State*"
+          ]
+        }, 
+        {
+          "doc": "Index of the value", 
+          "name": "index", 
+          "types": [
+            "int"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "if the value at #index is a hash", 
+          "name": "true", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Check if the value at #index is a hash", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmScript::IsHash"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Push a hash value onto the supplied lua state, will increase the stack by 1.", 
+      "parameters": [
+        {
+          "doc": "Lua state", 
+          "name": "L", 
+          "types": [
+            "lua_State*"
+          ]
+        }, 
+        {
+          "doc": "<span class=\"tyoe\"> dmhash_t</span> Hash value to push", 
+          "name": "hash", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Push a hash value onto the supplied lua state, wil...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmScript::PushHash"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Check if the value in the supplied index on the lua stack is a hash.", 
+      "parameters": [
+        {
+          "doc": "Lua state", 
+          "name": "L", 
+          "types": [
+            "lua_State*"
+          ]
+        }, 
+        {
+          "doc": "Index of the value", 
+          "name": "index", 
+          "types": [
+            "int"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "hash value", 
+          "name": "The", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get hash value", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmScript::CheckHash"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Check if the value in the supplied index on the lua stack is a hash or string.\nIf it is a string, it gets hashed on the fly", 
+      "parameters": [
+        {
+          "doc": "Lua state", 
+          "name": "L", 
+          "types": [
+            "lua_State*"
+          ]
+        }, 
+        {
+          "doc": "Index of the value", 
+          "name": "index", 
+          "types": [
+            "int"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "hash value", 
+          "name": "The", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get hash from hash or string", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmScript::CheckHashOrString"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets as good as possible printable string from a hash or string", 
+      "parameters": [
+        {
+          "doc": "Lua state", 
+          "name": "L", 
+          "types": [
+            "lua_State*"
+          ]
+        }, 
+        {
+          "doc": "Index of the value", 
+          "name": "index", 
+          "types": [
+            "int"
+          ]
+        }, 
+        {
+          "doc": "buffer receiving the value", 
+          "name": "buffer", 
+          "types": [
+            "char*"
+          ]
+        }, 
+        {
+          "doc": "the buffer length", 
+          "name": "buffer_length", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Returns buffer. If buffer is non null, it will always contain a null terminated string. \"<unknown>\" if the hash could not be looked up.", 
+          "name": "string", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Gets as good as possible printable string from a h...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetStringFromHashOrString"
+    }, 
+    {
+      "replaces": "", 
       "description": "Convert a dmJson::Document document to Lua table.", 
       "parameters": [
         {
@@ -1008,6 +1213,87 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmScript::PCall"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Creates a reference to the value at top of stack, the ref is done in the\ncurrent instances context table.\nExpects SetInstance() to have been set with an value that has a meta table\nwith META_GET_INSTANCE_CONTEXT_TABLE_REF method.", 
+      "parameters": [
+        {
+          "doc": "Lua state", 
+          "name": "L", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "ref to value or LUA_NOREF\nLua stack on entry\n [-1] value\nLua stack on exit", 
+          "name": "lua", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Creates a reference to the value at top of stack, ...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "RefInInstance"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Resolves a url in string format into a dmMessage::URL struct.\nSpecial handling for:\n- \".\" returns the default socket + path\n- \"#\" returns default socket + path + fragment", 
+      "parameters": [
+        {
+          "doc": "Lua state", 
+          "name": "L", 
+          "types": [
+            "lua_State*"
+          ]
+        }, 
+        {
+          "doc": "url", 
+          "name": "url", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "where to store the result", 
+          "name": "out_url", 
+          "types": [
+            "dmMessage::URL*"
+          ]
+        }, 
+        {
+          "doc": "default url", 
+          "name": "default_url", 
+          "types": [
+            "dmMessage::URL*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "dmMessage::RESULT_OK if the conversion succeeded", 
+          "name": "result", 
+          "types": [
+            "dmMessage::Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Resolves a url in string format into a dmMessage::...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "RefInInstance"
     }
   ]
 }

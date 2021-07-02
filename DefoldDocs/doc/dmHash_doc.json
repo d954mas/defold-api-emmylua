@@ -25,6 +25,43 @@
     }, 
     {
       "replaces": "", 
+      "description": "Calculate 32-bit hash value from buffer", 
+      "parameters": [
+        {
+          "doc": "Buffer", 
+          "name": "buffer", 
+          "types": [
+            "const void*"
+          ]
+        }, 
+        {
+          "doc": "Length of buffer", 
+          "name": "buffer_len", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "hash value", 
+          "name": "hash", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Calculate 32-bit hash value from buffer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashBuffer32"
+    }, 
+    {
+      "replaces": "", 
       "description": "calculate 64-bit hash value from buffer", 
       "parameters": [
         {
@@ -59,6 +96,36 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmHashBuffer64"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Calculate 32-bit hash value from string", 
+      "parameters": [
+        {
+          "doc": "Null terminated string", 
+          "name": "string", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "hash value", 
+          "name": "hash", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Calculate 32-bit hash value from string", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashString32"
     }, 
     {
       "replaces": "", 
@@ -156,6 +223,340 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmHashReverseSafe64"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Hash state used for 32-bit incremental hashing", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Hash state used for 32-bit incremental hashing", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "HashState32"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Hash state used for 64-bit incremental hashing", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Hash state used for 64-bit incremental hashing", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "HashState64"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Initialize hash-state for 32-bit incremental hashing", 
+      "parameters": [
+        {
+          "doc": "Hash state", 
+          "name": "hash_state", 
+          "types": [
+            "HashState32*"
+          ]
+        }, 
+        {
+          "doc": "true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH", 
+          "name": "reverse_hash", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Initialize hash-state for 32-bit incremental hashi...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashInit32"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Clone 32-bit incremental hash state", 
+      "parameters": [
+        {
+          "doc": "Hash state", 
+          "name": "hash_state", 
+          "types": [
+            "HashState32*"
+          ]
+        }, 
+        {
+          "doc": "Source hash state", 
+          "name": "source_hash_state", 
+          "types": [
+            "HashState32*"
+          ]
+        }, 
+        {
+          "doc": "true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH. Ignored if source state reverse hashing is disabled.", 
+          "name": "reverse_hash", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Clone 32-bit incremental hash state", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashClone32"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Incremental hashing", 
+      "parameters": [
+        {
+          "doc": "Hash state", 
+          "name": "hash_state", 
+          "types": [
+            "HashState32*"
+          ]
+        }, 
+        {
+          "doc": "Buffer", 
+          "name": "buffer", 
+          "types": [
+            "const void*"
+          ]
+        }, 
+        {
+          "doc": "Length of buffer", 
+          "name": "buffer_len", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Incremental hashing", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashUpdateBuffer32"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Finalize incremental hashing and release associated resources", 
+      "parameters": [
+        {
+          "doc": "Hash state", 
+          "name": "hash_state", 
+          "types": [
+            "HashState32*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the hash value", 
+          "name": "hash", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Finalize incremental hashing and release associate...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashFinal32"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Release incremental hashing resources\nUsed to release assocciated resources for intermediate incremental hash states.", 
+      "parameters": [
+        {
+          "doc": "Hash state", 
+          "name": "hash_state", 
+          "types": [
+            "HashState32*"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Release incremental hashing resources\nUsed to rele...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashRelease32"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Initialize hash-state for 64-bit incremental hashing", 
+      "parameters": [
+        {
+          "doc": "Hash state", 
+          "name": "hash_state", 
+          "types": [
+            "HashState64*"
+          ]
+        }, 
+        {
+          "doc": "true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH", 
+          "name": "reverse_hash", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Initialize hash-state for 64-bit incremental hashi...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashInit64"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Clone 64-bit incremental hash state", 
+      "parameters": [
+        {
+          "doc": "Hash state", 
+          "name": "hash_state", 
+          "types": [
+            "HashState64*"
+          ]
+        }, 
+        {
+          "doc": "Source hash state", 
+          "name": "source_hash_state", 
+          "types": [
+            "HashState64*"
+          ]
+        }, 
+        {
+          "doc": "true <span class=\"type\"> bool</span> to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH. Ignored if source state reverse hashing is disabled.", 
+          "name": "reverse_hash", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Clone 64-bit incremental hash state", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashClone64"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Incremental hashing", 
+      "parameters": [
+        {
+          "doc": "Hash state", 
+          "name": "hash_state", 
+          "types": [
+            "HashState64*"
+          ]
+        }, 
+        {
+          "doc": "Buffer", 
+          "name": "buffer", 
+          "types": [
+            "const void*"
+          ]
+        }, 
+        {
+          "doc": "Length of buffer", 
+          "name": "buffer_len", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Incremental hashing", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashUpdateBuffer64"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Finalize incremental hashing and release associated resources", 
+      "parameters": [
+        {
+          "doc": "Hash state", 
+          "name": "hash_state", 
+          "types": [
+            "HashState64*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "The hash value", 
+          "name": "hash", 
+          "types": [
+            "uint64_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Finalize incremental hashing and release associate...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashFinal64"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Release incremental hashing resources\nUsed to release assocciated resources for intermediate incremental hash states.", 
+      "parameters": [
+        {
+          "doc": "Hash state", 
+          "name": "hash_state", 
+          "types": [
+            "HashState64*"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Release incremental hashing resources\nUsed to rele...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmHashRelease64"
     }
   ]
 }

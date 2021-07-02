@@ -39,7 +39,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Replace a tile in a tile map with a new tile.\nThe coordinates of the tiles are indexed so that the \"first\" tile just\nabove and to the right of origo has coordinates 1,1.\nTiles to the left of and below origo are indexed 0, -1, -2 and so forth.\n<pre>\n+-------+-------+------+------+\n|  0,3  |  1,3  | 2,3  | 3,3  |\n+-------+-------+------+------+\n|  0,2  |  1,2  | 2,2  | 3,2  |\n+-------+-------+------+------+\n|  0,1  |  1,1  | 2,1  | 3,1  |\n+-------O-------+------+------+\n|  0,0  |  1,0  | 2,0  | 3,0  |\n+-------+-------+------+------+\n</pre>\n\nThe coordinates must be within the bounds of the tile map as it were created.\nThat is, it is not possible to extend the size of a tile map by setting tiles outside the edges.\nTo clear a tile, set the tile to number 0. Which tile map and layer to manipulate is identified by the URL and the layer name parameters.", 
+      "description": "Replace a tile in a tile map with a new tile.\nThe coordinates of the tiles are indexed so that the \"first\" tile just\nabove and to the right of origin has coordinates 1,1.\nTiles to the left of and below origin are indexed 0, -1, -2 and so forth.\n<pre>\n+-------+-------+------+------+\n|  0,3  |  1,3  | 2,3  | 3,3  |\n+-------+-------+------+------+\n|  0,2  |  1,2  | 2,2  | 3,2  |\n+-------+-------+------+------+\n|  0,1  |  1,1  | 2,1  | 3,1  |\n+-------O-------+------+------+\n|  0,0  |  1,0  | 2,0  | 3,0  |\n+-------+-------+------+------+\n</pre>\n\nThe coordinates must be within the bounds of the tile map as it were created.\nThat is, it is not possible to extend the size of a tile map by setting tiles outside the edges.\nTo clear a tile, set the tile to number 0. Which tile map and layer to manipulate is identified by the URL and the layer name parameters.", 
       "parameters": [
         {
           "doc": "the tile map", 
@@ -73,7 +73,7 @@
           ]
         }, 
         {
-          "doc": "index of new tile to set", 
+          "doc": "index of new tile to set. 0 resets the cell", 
           "name": "tile", 
           "types": [
             "number"
@@ -106,7 +106,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Get the tile set at the specified position in the tilemap.\nThe position is identified by the tile index starting at origo\nwith index 1, 1. (see <a href=\"/ref/tilemap#tilemap.set_tile()\">tilemap.set_tile()</a>)\nWhich tile map and layer to query is identified by the URL and the\nlayer name parameters.", 
+      "description": "Get the tile set at the specified position in the tilemap.\nThe position is identified by the tile index starting at origin\nwith index 1, 1. (see <a href=\"/ref/tilemap#tilemap.set_tile()\">tilemap.set_tile()</a>)\nWhich tile map and layer to query is identified by the URL and the\nlayer name parameters.", 
       "parameters": [
         {
           "doc": "the tile map", 
