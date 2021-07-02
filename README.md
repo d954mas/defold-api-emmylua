@@ -6,6 +6,11 @@ Project for generating defold api headers for emmylua plugin.
 
 The generated headers also can be used with any lua plugin
 
+If you like that repository. You can support me on patreon.
+It will help me make more items for defold.
+
+[![](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/d954mas)
+
 # How it work
 This app download docs for last defold version and generate lua headers.
 Lua header is a valid lua files, which have all functions and variables that was described in doc.
