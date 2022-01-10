@@ -258,6 +258,10 @@ function gui.delete_texture(texture) end
 ---@return constant the current adjust mode
 function gui.get_adjust_mode(node) end
 
+---gets the node alpha
+---@param node node node from which to get alpha
+function gui.get_alpha(node) end
+
 ---Returns the blend mode of a node.
 ---Blend mode defines how the node will be blended with the background.
 ---@param node node node from which to get the blend mode
@@ -315,6 +319,11 @@ function gui.get_flipbook_playback_rate(node) end
 ---@param node node node from which to get the font
 ---@return hash font id
 function gui.get_font(node) end
+
+---This is only useful for text nodes. The font must be mapped to the gui scene in the gui editor.
+---@param font_name hash|string font of which to get the path hash
+---@return hash path hash to resource
+function gui.get_font_resource(font_name) end
 
 ---Returns the scene height.
 ---@return number scene height
@@ -488,21 +497,6 @@ function gui.get_spine_skin(node) end
 ---@return string text value
 function gui.get_text(node) end
 
----Get text metrics given the provided font, text and parameters.
----@param font string|hash font id
----@param text string text to measure
----@param width number max-width. Use for line-breaks (default=FLT_MAX)
----@param line_break boolean true to break lines accordingly to width (default=false)
----@param leading number scale value for line spacing (default=1)
----@param tracking number scale value for letter spacing (default=0)
----@return table a table with the following fields:
-function gui.get_text_metrics(font, text, width, line_break, leading, tracking) end
-
----Get the text metrics from a text node.
----@param node node text node to measure text from
----@return table a table with the following fields:
-function gui.get_text_metrics_from_node(node) end
-
 ---Returns the texture of a node.
 ---This is currently only useful for box or pie nodes.
 ---The texture must be mapped to the gui scene in the gui editor.
@@ -638,6 +632,11 @@ function gui.reset_nodes() end
 ---@param node node node to set adjust mode for
 ---@param adjust_mode constant adjust mode to set
 function gui.set_adjust_mode(node, adjust_mode) end
+
+---sets the node alpha
+---@param node node node for which to set alpha
+---@param alpha number 0..1 alpha color
+function gui.set_alpha(node, alpha) end
 
 ---Set the blend mode of a node.
 ---Blend mode defines how the node will be blended with the background.

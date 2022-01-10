@@ -52,6 +52,34 @@
     }, 
     {
       "replaces": "", 
+      "description": "Shader constant handle", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Shader constant handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HConstant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Shader constant buffer handle. Holds name and values for a constant.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Shader constant buffer handle. Holds name and valu...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "HNamedConstantBuffer"
+    }, 
+    {
+      "replaces": "", 
       "description": "", 
       "parameters": [], 
       "returnvalues": [], 
@@ -119,20 +147,6 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmRender::GetMaterialVertexSpace"
-    }, 
-    {
-      "replaces": "", 
-      "description": "URL specifying a sender/receiver of messages", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "URL specifying a sender/receiver of messages", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "STRUCT", 
-      "name": "Constant"
     }, 
     {
       "replaces": "", 
@@ -210,20 +224,6 @@
     }, 
     {
       "replaces": "", 
-      "description": "The maximum number of shader constants the render object can hold (currently 16)", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "The maximum number of shader constants the render ...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmRender::RenderObject::MAX_CONSTANT_COUNT"
-    }, 
-    {
-      "replaces": "", 
       "description": "Render objects represent an actual draw call", 
       "parameters": [], 
       "returnvalues": [], 
@@ -233,7 +233,7 @@
       "members": [
         {
           "doc": "the shader constants", 
-          "type": "dmRender::Constant[]", 
+          "type": "dmRender::HConstant[]", 
           "name": "m_Constants"
         }, 
         {
@@ -712,6 +712,571 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "GetMaterialTagListKey"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Creates a shader program constant", 
+      "parameters": [
+        {
+          "doc": "the name of the material constant", 
+          "name": "name_hash", 
+          "types": [
+            "dmhash_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the constant", 
+          "name": "constant", 
+          "types": [
+            "dmRender::HConstant"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Creates a shader program constant", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "NewConstant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Deletes a shader program constant", 
+      "parameters": [
+        {
+          "doc": "The shader constant", 
+          "name": "constant", 
+          "types": [
+            "dmRender::HConstant"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Deletes a shader program constant", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "DeleteConstant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets the shader program constant values", 
+      "parameters": [
+        {
+          "doc": "The shader constant", 
+          "name": "constant", 
+          "types": [
+            "dmRender::HConstant"
+          ]
+        }, 
+        {
+          "doc": "(out) the array num_values", 
+          "name": "num_values", 
+          "types": [
+            "uint32_t*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the uniform values", 
+          "name": "values", 
+          "types": [
+            "dmVMath::Vector4*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Gets the shader program constant values", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetConstantValues"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets the shader program constant values", 
+      "parameters": [
+        {
+          "doc": "The shader constant", 
+          "name": "constant", 
+          "types": [
+            "dmRender::HConstant"
+          ]
+        }, 
+        {
+          "doc": "the array values", 
+          "name": "values", 
+          "types": [
+            "dmVMath::Vector4*"
+          ]
+        }, 
+        {
+          "doc": "the array size (number of Vector4's)", 
+          "name": "num_values", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the result", 
+          "name": "result", 
+          "types": [
+            "dmRender::Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Sets the shader program constant values", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetConstantValues"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets the shader program constant name", 
+      "parameters": [
+        {
+          "doc": "The shader constant", 
+          "name": "constant", 
+          "types": [
+            "dmRender::HConstant"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the hash name", 
+          "name": "name", 
+          "types": [
+            "dmhash_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Gets the shader program constant name", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetConstantName"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets the shader program constant name", 
+      "parameters": [
+        {
+          "doc": "The shader constant", 
+          "name": "constant", 
+          "types": [
+            "dmRender::HConstant"
+          ]
+        }, 
+        {
+          "doc": "the hash name", 
+          "name": "name", 
+          "types": [
+            "dmhash_t"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Gets the shader program constant name", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetConstantName"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets the shader program constant location", 
+      "parameters": [
+        {
+          "doc": "The shader constant", 
+          "name": "constant", 
+          "types": [
+            "dmRender::HConstant"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the location", 
+          "name": "location", 
+          "types": [
+            "int32_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Gets the shader program constant location", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetConstantLocation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets the shader program constant location", 
+      "parameters": [
+        {
+          "doc": "The shader constant", 
+          "name": "constant", 
+          "types": [
+            "dmRender::HConstant"
+          ]
+        }, 
+        {
+          "doc": "the location", 
+          "name": "location", 
+          "types": [
+            "int32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Sets the shader program constant location", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetConstantLocation"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets the type of the constant", 
+      "parameters": [
+        {
+          "doc": "The shader constant", 
+          "name": "constant", 
+          "types": [
+            "dmRender::HConstant"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the type of the constant", 
+          "name": "type", 
+          "types": [
+            "dmRenderDDF::MaterialDesc::ConstantType"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Gets the type of the constant", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetConstantType"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets the type of the constant", 
+      "parameters": [
+        {
+          "doc": "The shader constant", 
+          "name": "constant", 
+          "types": [
+            "dmRender::HConstant"
+          ]
+        }, 
+        {
+          "doc": "the type of the constant", 
+          "name": "type", 
+          "types": [
+            "dmRenderDDF::MaterialDesc::ConstantType"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Sets the type of the constant", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetConstantType"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Allocates a named constant buffer", 
+      "parameters": [], 
+      "returnvalues": [
+        {
+          "doc": "the constants buffer", 
+          "name": "buffer", 
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Allocates a named constant buffer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "NewNamedConstantBuffer"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Deletes a named constant buffer", 
+      "parameters": [
+        {
+          "doc": "the constants buffer", 
+          "name": "buffer", 
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Deletes a named constant buffer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "DeleteNamedConstantBuffer"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Clears a named constant buffer from any constants.", 
+      "parameters": [
+        {
+          "doc": "the constants buffer", 
+          "name": "buffer", 
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Clears a named constant buffer from any constants.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ClearNamedConstantBuffer"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Removes a named constant from the buffer", 
+      "parameters": [
+        {
+          "doc": "the constants buffer", 
+          "name": "buffer", 
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        }, 
+        {
+          "doc": "the name of the constant", 
+          "name": "name_hash", 
+          "types": [
+            "dmhash_t"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Removes a named constant from the buffer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "RemoveNamedConstant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets a named constant to the buffer", 
+      "parameters": [
+        {
+          "doc": "the constants buffer", 
+          "name": "buffer", 
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        }, 
+        {
+          "doc": "the name of the constant", 
+          "name": "name_hash", 
+          "types": [
+            "dmhash_t"
+          ]
+        }, 
+        {
+          "doc": "the values", 
+          "name": "values", 
+          "types": [
+            "dmVMath::Vector4*"
+          ]
+        }, 
+        {
+          "doc": "the number of values", 
+          "name": "num_values", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Sets a named constant to the buffer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetNamedConstant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sets a list of named constants to the buffer", 
+      "parameters": [
+        {
+          "doc": "the constants buffer", 
+          "name": "buffer", 
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        }, 
+        {
+          "doc": "the constants", 
+          "name": "constants", 
+          "types": [
+            "dmRender::HConstant*"
+          ]
+        }, 
+        {
+          "doc": "the number of constants", 
+          "name": "num_constants", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Sets a list of named constants to the buffer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetNamedConstants"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets a named constant from the buffer", 
+      "parameters": [
+        {
+          "doc": "the constants buffer", 
+          "name": "buffer", 
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        }, 
+        {
+          "doc": "the name of the constant", 
+          "name": "name_hash", 
+          "types": [
+            "dmhash_t"
+          ]
+        }, 
+        {
+          "doc": "(out) the values. May not be null.", 
+          "name": "values", 
+          "types": [
+            "dmVMath::Vector4**"
+          ]
+        }, 
+        {
+          "doc": "(out) the number of values. May not be null.", 
+          "name": "num_values", 
+          "types": [
+            "uint32_t*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "true if constant existed.", 
+          "name": "ok", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Gets a named constant from the buffer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetNamedConstant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Gets number of constants in the buffer", 
+      "parameters": [
+        {
+          "doc": "the constants buffer", 
+          "name": "buffer", 
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "true if constant existed.", 
+          "name": "ok", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Gets number of constants in the buffer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetNamedConstantCount"
     }
   ]
 }

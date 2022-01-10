@@ -25,6 +25,34 @@
     }, 
     {
       "replaces": "", 
+      "description": "The textures used in the gui. The type of the property is hash.\nKey must be specified in options table.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "<span class=\"type\">hash</span> gui textures", 
+      "examples": "How to set texture using a script property (see <a href=\"/ref/resource#resource.atlas\">resource.atlas</a>)\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_atlas&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">atlas</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/atlas.atlas&quot;</span><span class=\"p\">))</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">textures&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_atlas</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_atlas&quot;</span><span class=\"p\">})</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "PROPERTY", 
+      "name": "textures"
+    }, 
+    {
+      "replaces": "", 
+      "description": "The fonts used in the gui. The type of the property is hash.\nKey must be specified in options table.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "<span class=\"type\">hash</span> gui fonts", 
+      "examples": "How to set font using a script property (see <a href=\"/ref/resource#resource.font\">resource.font</a>)\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_font&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">atlas</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/font.font&quot;</span><span class=\"p\">))</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">fonts&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_font</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_font&quot;</span><span class=\"p\">})</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "PROPERTY", 
+      "name": "fonts"
+    }, 
+    {
+      "replaces": "", 
       "description": "Retrieves the node with the specified id.", 
       "parameters": [
         {
@@ -1610,6 +1638,37 @@
     }, 
     {
       "replaces": "", 
+      "description": "This is only useful for text nodes. The font must be mapped to the gui scene in the gui editor.", 
+      "parameters": [
+        {
+          "doc": "font of which to get the path hash", 
+          "name": "font_name", 
+          "types": [
+            "hash", 
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "path hash to resource", 
+          "name": "hash", 
+          "types": [
+            "hash"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "gets the node font resource", 
+      "examples": "Get the text metrics for a text\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">node</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">name&quot;</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">font_name</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_font</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">font</span> <span class=\"o\">=</span> <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_font_resource</span><span class=\"p\">(</span><span class=\"n\">font_name</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">metrics</span> <span class=\"o\">=</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">get_text_metrics</span><span class=\"p\">(</span><span class=\"n\">font</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">The quick brown fox</span><span class=\"se\">\\n</span><span class=\"s\"> jumps over the lazy dog&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "gui.get_font_resource"
+    }, 
+    {
+      "replaces": "", 
       "description": "This is only useful for text nodes.\nThe font must be mapped to the gui scene in the gui editor.", 
       "parameters": [
         {
@@ -1896,102 +1955,6 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "gui.set_clipping_inverted"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get the text metrics from a text node.", 
-      "parameters": [
-        {
-          "doc": "text node to measure text from", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "a table with the following fields:\n<ul>\n<li>width</li>\n<li>height</li>\n<li>max_ascent</li>\n<li>max_descent</li>\n</ul>", 
-          "name": "metrics", 
-          "types": [
-            "table"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "get text metrics from node", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.get_text_metrics_from_node"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get text metrics given the provided font, text and parameters.", 
-      "parameters": [
-        {
-          "doc": "font id", 
-          "name": "font", 
-          "types": [
-            "string", 
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "text to measure", 
-          "name": "text", 
-          "types": [
-            "string"
-          ]
-        }, 
-        {
-          "doc": "max-width. Use for line-breaks (default=FLT_MAX)", 
-          "name": "width", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "true to break lines accordingly to width (default=false)", 
-          "name": "line_break", 
-          "types": [
-            "boolean"
-          ]
-        }, 
-        {
-          "doc": "scale value for line spacing (default=1)", 
-          "name": "leading", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "scale value for letter spacing (default=0)", 
-          "name": "tracking", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "a table with the following fields:\n<ul>\n<li>width</li>\n<li>height</li>\n<li>max_ascent</li>\n<li>max_descent</li>\n</ul>", 
-          "name": "metrics", 
-          "types": [
-            "table"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "get text metrics", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.get_text_metrics"
     }, 
     {
       "replaces": "", 
@@ -4345,6 +4308,57 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "gui.set_inherit_alpha"
+    }, 
+    {
+      "replaces": "", 
+      "description": "gets the node alpha", 
+      "parameters": [
+        {
+          "doc": "node from which to get alpha", 
+          "name": "node", 
+          "types": [
+            "node"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "gets the node alpha", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "gui.get_alpha"
+    }, 
+    {
+      "replaces": "", 
+      "description": "sets the node alpha", 
+      "parameters": [
+        {
+          "doc": "node for which to set alpha", 
+          "name": "node", 
+          "types": [
+            "node"
+          ]
+        }, 
+        {
+          "doc": "0..1 alpha color", 
+          "name": "alpha", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "sets the node alpha", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "gui.set_alpha"
     }, 
     {
       "replaces": "", 

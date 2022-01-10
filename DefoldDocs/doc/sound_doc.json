@@ -341,7 +341,15 @@
           ]
         }
       ], 
-      "returnvalues": [], 
+      "returnvalues": [
+        {
+          "doc": "The identifier for the sound voice", 
+          "name": "id", 
+          "types": [
+            "number"
+          ]
+        }
+      ], 
       "notes": [], 
       "brief": "plays a sound", 
       "examples": "Assuming the script belongs to an instance with a sound-component with id \"sound\", this will make the component play its sound after 1 second:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sound&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">delay</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">gain</span> <span class=\"o\">=</span> <span class=\"mf\">0.5</span><span class=\"p\">,</span> <span class=\"n\">pan</span> <span class=\"o\">=</span> <span class=\"o\">-</span><span class=\"mf\">1.0</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</pre></div>\n\n\nUsing the callback argument, you can chain several sounds together:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">sound_done</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- play &#39;boom&#39; sound fx when the countdown has completed</span>\n  <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">sound_done&quot;</span><span class=\"p\">)</span> <span class=\"ow\">and</span> <span class=\"n\">message</span><span class=\"p\">.</span><span class=\"n\">play_id</span> <span class=\"o\">==</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">countdown_id</span> <span class=\"k\">then</span>\n    <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#boom&quot;</span><span class=\"p\">,</span> <span class=\"kc\">nil</span><span class=\"p\">,</span> <span class=\"n\">sound_done</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">countdown_id</span> <span class=\"o\">=</span> <span class=\"n\">sound</span><span class=\"p\">.</span><span class=\"n\">play</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#countdown&quot;</span><span class=\"p\">,</span> <span class=\"kc\">nil</span><span class=\"p\">,</span> <span class=\"n\">sound_done</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 

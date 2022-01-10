@@ -170,6 +170,13 @@
             "string", 
             "hash"
           ]
+        }, 
+        {
+          "doc": "(optional) options table\n- index <span class=\"type\">integer</span> index into array property (1 based)\n- key <span class=\"type\">hash</span> name of internal property", 
+          "name": "options", 
+          "types": [
+            "table"
+          ]
         }
       ], 
       "returnvalues": [
@@ -183,7 +190,7 @@
       ], 
       "notes": [], 
       "brief": "gets a named property of the specified game object or component", 
-      "examples": "Get a property \"speed\" from a script \"player\", the property must be declared in the player-script:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">speed&quot;</span><span class=\"p\">,</span> <span class=\"mi\">50</span><span class=\"p\">)</span>\n</pre></div>\n\n\nThen in the calling script (assumed to belong to the same game object, but does not have to):\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">speed</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#player&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">speed&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
+      "examples": "Get a named property\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- get the resource of a certain gui font</span>\n    <span class=\"kd\">local</span> <span class=\"n\">font_hash</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">fonts&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">system_font_BIG&quot;</span><span class=\"p\">})</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "tparams": [], 
@@ -217,12 +224,19 @@
           "types": [
             "any"
           ]
+        }, 
+        {
+          "doc": "(optional) options table\n- index <span class=\"type\">integer</span> index into array property (1 based)\n- key <span class=\"type\">hash</span> name of internal property", 
+          "name": "options", 
+          "types": [
+            "table"
+          ]
         }
       ], 
       "returnvalues": [], 
       "notes": [], 
       "brief": "sets a named property of the specified game object or component, or a material constant", 
-      "examples": "Set a property \"speed\" of a script \"player\", the property must be declared in the player-script:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">speed&quot;</span><span class=\"p\">,</span> <span class=\"mi\">50</span><span class=\"p\">)</span>\n</pre></div>\n\n\nThen in the calling script (assumed to belong to the same game object, but does not have to):\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#player&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">speed&quot;</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">)</span>\n</pre></div>", 
+      "examples": "Set a named property\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">big_font&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">font</span><span class=\"p\">())</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#gui&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">fonts&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">big_font</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">system_font_BIG&quot;</span><span class=\"p\">})</span>\n<span class=\"k\">end</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "tparams": [], 
@@ -715,7 +729,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "This is only supported for numerical properties. If the node property is already being\nanimated, that animation will be canceled and replaced by the new one.\nIf a <code>complete_function</code> (lua function) is specified, that function will be called when the animation has completed.\nBy starting a new animation in that function, several animations can be sequenced together. See the examples for more information.\n<span class=\"icon-attention\"></span> If you call <code>go.animate()</code> from a game object's <code>final()</code> function,\nany passed <code>complete_function</code> will be ignored and never called upon animation completion.\nSee the <a href=\"/manuals/properties\">properties guide</a> for which properties can be animated and the <a href=\"/manuals/animation\">animation guide</a> for how to animate them.", 
+      "description": "This is only supported for numerical properties. If the node property is already being\nanimated, that animation will be canceled and replaced by the new one.\nIf a <code>complete_function</code> (lua function) is specified, that function will be called when the animation has completed.\nBy starting a new animation in that function, several animations can be sequenced together. See the examples for more information.\n<span class=\"icon-attention\"></span> If you call <code>go.animate()</code> from a game object's <code>final()</code> function,\nany passed <code>complete_function</code> will be ignored and never called upon animation completion.\nSee the <a href=\"/manuals/properties\">properties guide</a> for which properties can be animated and the <a href=\"/manuals/animation\">animation guide</a> for how\nthem.", 
       "parameters": [
         {
           "doc": "url of the game object or component having the property", 
@@ -805,7 +819,7 @@
           ]
         }, 
         {
-          "doc": "ide of the property to animate", 
+          "doc": "id of the property to cancel", 
           "name": "property", 
           "types": [
             "string", 

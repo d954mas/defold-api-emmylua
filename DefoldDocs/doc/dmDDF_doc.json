@@ -1,0 +1,427 @@
+{
+  "info": {
+    "description": "<span class=\"file\">&lt;dmsdk/ddf/ddf.h&gt;</span>", 
+    "namespace": "dmDDF", 
+    "brief": "SDK DDF (Defold Data Format) API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Ddf"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "Opaque pointer that holds info about a message type.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "descriptor handle", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "Descriptor"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Store pointers as offset from base address. Needed when serializing entire messages (copy). Value (1 &lt;&lt; 0)", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Store pointers as offset from base address. Needed...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "OPTION_OFFSET_POINTERS"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Result enumeration.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "result enumeration", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "= 0,", 
+          "type": "", 
+          "name": "dmDDF::RESULT_OK"
+        }, 
+        {
+          "doc": "= 1,", 
+          "type": "", 
+          "name": "dmDDF::RESULT_FIELDTYPE_MISMATCH"
+        }, 
+        {
+          "doc": "= 2,", 
+          "type": "", 
+          "name": "dmDDF::RESULT_WIRE_FORMAT_ERROR"
+        }, 
+        {
+          "doc": "= 3,", 
+          "type": "", 
+          "name": "dmDDF::RESULT_IO_ERROR"
+        }, 
+        {
+          "doc": "= 4,", 
+          "type": "", 
+          "name": "dmDDF::RESULT_VERSION_MISMATCH"
+        }, 
+        {
+          "doc": "= 5,", 
+          "type": "", 
+          "name": "dmDDF::RESULT_MISSING_REQUIRED"
+        }, 
+        {
+          "doc": "= 1000,", 
+          "type": "", 
+          "name": "dmDDF::RESULT_INTERNAL_ERROR"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Result"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get Descriptor from hash name", 
+      "parameters": [
+        {
+          "doc": "hash of type name", 
+          "name": "hash", 
+          "types": [
+            "dmhash_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "0 if not found", 
+          "name": "descriptor", 
+          "types": [
+            "dmDDF::Descriptor*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Get Descriptor from hash name", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetDescriptorFromHash"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Load/decode a DDF message from buffer", 
+      "parameters": [
+        {
+          "doc": "Input buffer", 
+          "name": "buffer", 
+          "types": [
+            "const void*"
+          ]
+        }, 
+        {
+          "doc": "Input buffer size in bytes", 
+          "name": "buffer_size", 
+          "types": [
+            "uint32_t"
+          ]
+        }, 
+        {
+          "doc": "DDF descriptor", 
+          "name": "desc", 
+          "types": [
+            "dmDDF::Descriptor*"
+          ]
+        }, 
+        {
+          "doc": "(out) Destination pointer to message", 
+          "name": "message", 
+          "types": [
+            "void**"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "on success", 
+          "name": "RESULT_OK", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Load/decode a DDF message from buffer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "LoadMessage"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Load/decode a DDF message from buffer", 
+      "parameters": [
+        {
+          "doc": "Input buffer", 
+          "name": "buffer", 
+          "types": [
+            "const void*"
+          ]
+        }, 
+        {
+          "doc": "Input buffer size in bytes", 
+          "name": "buffer_size", 
+          "types": [
+            "uint32_t"
+          ]
+        }, 
+        {
+          "doc": "DDF descriptor", 
+          "name": "desc", 
+          "types": [
+            "dmDDF::Descriptor*"
+          ]
+        }, 
+        {
+          "doc": "(out) Destination pointer to message", 
+          "name": "message", 
+          "types": [
+            "void**"
+          ]
+        }, 
+        {
+          "doc": "options, eg dmDDF::OPTION_OFFSET_POINTERS", 
+          "name": "options", 
+          "types": [
+            "uint32_t"
+          ]
+        }, 
+        {
+          "doc": "(out) loaded message size", 
+          "name": "size", 
+          "types": [
+            "uint32_t*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "on success", 
+          "name": "RESULT_OK", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Load/decode a DDF message from buffer", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "LoadMessage"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Save message to array", 
+      "parameters": [
+        {
+          "doc": "Message", 
+          "name": "message", 
+          "types": [
+            "const void*"
+          ]
+        }, 
+        {
+          "doc": "DDF descriptor", 
+          "name": "desc", 
+          "types": [
+            "dmDDF::Descriptor*"
+          ]
+        }, 
+        {
+          "doc": "Buffer to save to", 
+          "name": "buffer", 
+          "types": [
+            "dmArray<uint8_t>&"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "on success", 
+          "name": "RESULT_OK", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Save message to array", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SaveMessageToArray"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Load/decode a DDF message from buffer. Template variant", 
+      "parameters": [
+        {
+          "doc": "Input buffer", 
+          "name": "buffer", 
+          "types": [
+            "const void*"
+          ]
+        }, 
+        {
+          "doc": "Input buffer size in bytes", 
+          "name": "buffer_size", 
+          "types": [
+            "uint32_t"
+          ]
+        }, 
+        {
+          "doc": "(out) Destination pointer to message", 
+          "name": "message", 
+          "types": [
+            "T**"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "on success", 
+          "name": "RESULT_OK", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Load/decode a DDF message from buffer. Template va...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "LoadMessage<T>"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Load/decode a DDF message from file", 
+      "parameters": [
+        {
+          "doc": "File name", 
+          "name": "file_name", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "DDF descriptor", 
+          "name": "desc", 
+          "types": [
+            "dmDDF::Descriptor*"
+          ]
+        }, 
+        {
+          "doc": "(out) Destination pointer to message", 
+          "name": "message", 
+          "types": [
+            "void**"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "on success", 
+          "name": "RESULT_OK", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Load/decode a DDF message from file", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "LoadMessageFromFile"
+    }, 
+    {
+      "replaces": "", 
+      "description": "If the message was loaded with the flag dmDDF::OPTION_OFFSET_POINTERS, all pointers have their offset stored.\nThis function resolves those offsets into actual pointers", 
+      "parameters": [
+        {
+          "doc": "DDF descriptor", 
+          "name": "desc", 
+          "types": [
+            "dmDDF::Descriptor*"
+          ]
+        }, 
+        {
+          "doc": "(int/out) The message to patch pointers in", 
+          "name": "message", 
+          "types": [
+            "void*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "on success", 
+          "name": "RESULT_OK", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "If the message was loaded with the flag dmDDF::OPT...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ResolvePointers"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Free message", 
+      "parameters": [
+        {
+          "doc": "The message", 
+          "name": "message", 
+          "types": [
+            "void*"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Free message", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "FreeMessage"
+    }
+  ]
+}

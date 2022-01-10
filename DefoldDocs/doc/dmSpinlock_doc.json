@@ -1,0 +1,115 @@
+{
+  "info": {
+    "group": "DEFOLD SDK", 
+    "description": "API for platform independent spinlock synchronization primitive.", 
+    "namespace": "dmSpinlock", 
+    "brief": "SDK Spinlock API documentation", 
+    "file": "dmsdk/dlib/spinlock.h", 
+    "path": "engine/dlib/src/dmsdk/dlib/spinlock.h", 
+    "name": "Spinlock"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">typedef</span> <span class=\"o\">&lt;</span><span class=\"p\">..</span><span class=\"n\">native</span> <span class=\"n\">type</span><span class=\"p\">..</span><span class=\"o\">&gt;</span> <span class=\"n\">Spinlock</span><span class=\"p\">;</span>\n</pre></div>", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Spinlock type definition", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "dmSpinlock::Spinlock"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Initialize a Spinlock", 
+      "parameters": [
+        {
+          "doc": "spinlock to initialize.", 
+          "name": "spinlock", 
+          "types": [
+            "dmSpinlock::Spinlock*"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "initalize spinlock.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmSpinlock::Init"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Lock a Spinlock", 
+      "parameters": [
+        {
+          "doc": "spinlock to lock.", 
+          "name": "spinlock", 
+          "types": [
+            "dmSpinlock::Spinlock*"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "lock spinlock.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmSpinlock::Lock"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Unlock a Spinlock", 
+      "parameters": [
+        {
+          "doc": "spinlock to unlock.", 
+          "name": "spinlock", 
+          "types": [
+            "dmSpinlock::Spinlock*"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "unlock spinlock.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmSpinlock::Unlock"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Will lock a Spinlock and automatically unlock it at the end of the scope.", 
+      "parameters": [
+        {
+          "doc": "Spinlock reference to lock.", 
+          "name": "mutex", 
+          "types": [
+            "dmSpinlock::Spinlock"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "macro for using a spinlock during a scope", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DM_SPINLOCK_SCOPED_LOCK"
+    }
+  ]
+}

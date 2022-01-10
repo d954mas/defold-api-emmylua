@@ -563,6 +563,66 @@
     }, 
     {
       "replaces": "", 
+      "description": "The buffer can later deserialized by <code>sys.deserialize</code>.\nThis method has all the same limitations as <code>sys.save</code>.", 
+      "parameters": [
+        {
+          "doc": "lua table to serialize", 
+          "name": "table", 
+          "types": [
+            "table"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "serialized data buffer", 
+          "name": "buffer", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "serializes a lua table to a buffer and returns it", 
+      "examples": "Serialize table:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">my_table</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n<span class=\"nb\">table.insert</span><span class=\"p\">(</span><span class=\"n\">my_table</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_value&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">buffer</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">serialize</span><span class=\"p\">(</span><span class=\"n\">my_table</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "sys.serialize"
+    }, 
+    {
+      "replaces": "", 
+      "description": "deserializes buffer into a lua table", 
+      "parameters": [
+        {
+          "doc": "buffer to deserialize from", 
+          "name": "buffer", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "lua table with deserialized data", 
+          "name": "table", 
+          "types": [
+            "table"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "deserializes buffer into a lua table", 
+      "examples": "Deserialize a lua table that was previously serialized:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">buffer</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">serialize</span><span class=\"p\">(</span><span class=\"n\">my_table</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">table</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">deserialize</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">)</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "sys.deserialize"
+    }, 
+    {
+      "replaces": "", 
       "description": "no network connection found", 
       "parameters": [], 
       "returnvalues": [], 

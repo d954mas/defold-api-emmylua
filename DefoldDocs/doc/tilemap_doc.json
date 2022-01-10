@@ -39,7 +39,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Replace a tile in a tile map with a new tile.\nThe coordinates of the tiles are indexed so that the \"first\" tile just\nabove and to the right of origin has coordinates 1,1.\nTiles to the left of and below origin are indexed 0, -1, -2 and so forth.\n<pre>\n+-------+-------+------+------+\n|  0,3  |  1,3  | 2,3  | 3,3  |\n+-------+-------+------+------+\n|  0,2  |  1,2  | 2,2  | 3,2  |\n+-------+-------+------+------+\n|  0,1  |  1,1  | 2,1  | 3,1  |\n+-------O-------+------+------+\n|  0,0  |  1,0  | 2,0  | 3,0  |\n+-------+-------+------+------+\n</pre>\n\nThe coordinates must be within the bounds of the tile map as it were created.\nThat is, it is not possible to extend the size of a tile map by setting tiles outside the edges.\nTo clear a tile, set the tile to number 0. Which tile map and layer to manipulate is identified by the URL and the layer name parameters.", 
+      "description": "Replace a tile in a tile map with a new tile.\nThe coordinates of the tiles are indexed so that the \"first\" tile just\nabove and to the right of origin has coordinates 1,1.\nTiles to the left of and below origin are indexed 0, -1, -2 and so forth.\n<pre>\n+-------+-------+------+------+\n|  0,3  |  1,3  | 2,3  | 3,3  |\n+-------+-------+------+------+\n|  0,2  |  1,2  | 2,2  | 3,2  |\n+-------+-------+------+------+\n|  0,1  |  1,1  | 2,1  | 3,1  |\n+-------O-------+------+------+\n|  0,0  |  1,0  | 2,0  | 3,0  |\n+-------+-------+------+------+\n</pre>\n\nThe coordinates must be within the bounds of the tile map as it were created.\nThat is, it is not possible to extend the size of a tile map by setting tiles outside the edges.\nTo clear a tile, set the tile to number 0. Which tile map and layer to manipulate is identified by the URL and the layer name parameters.\nTransform bitmask is arithmetic sum of one or both FLIP constants (<code>tilemap.H_FLIP</code>, <code>tilemap.V_FLIP</code>) and/or one of ROTATION constants\n(<code>tilemap.ROTATE_90</code>, <code>tilemap.ROTATE_180</code>, <code>tilemap.ROTATE_270</code>).\nFlip always applies before rotation (clockwise).", 
       "parameters": [
         {
           "doc": "the tile map", 
@@ -80,24 +80,17 @@
           ]
         }, 
         {
-          "doc": "optional if the tile should be horizontally flipped", 
-          "name": "[h-flipped]", 
+          "doc": "optional flip and/or rotation should be applied to the tile", 
+          "name": "[transform-bitmask]", 
           "types": [
-            "boolean"
-          ]
-        }, 
-        {
-          "doc": "optional i the tile should be vertically flipped", 
-          "name": "[v-flipped]", 
-          "types": [
-            "boolean"
+            "number"
           ]
         }
       ], 
       "returnvalues": [], 
       "notes": [], 
       "brief": "set a tile in a tile map", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Clear the tile under the player.</span>\n<span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">set_tile</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/level#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">foreground&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">player_x</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">player_y</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n</pre></div>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Clear the tile under the player.</span>\n<span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">set_tile</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/level#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">foreground&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">player_x</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">player_y</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n\n<span class=\"c1\">-- Set tile with different combination of flip and rotation</span>\n<span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">set_tile</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">layer1&quot;</span><span class=\"p\">,</span> <span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"n\">y</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">H_FLIP</span> <span class=\"o\">+</span> <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">V_FLIP</span> <span class=\"o\">+</span> <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">ROTATE_90</span><span class=\"p\">)</span>\n<span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">set_tile</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">layer1&quot;</span><span class=\"p\">,</span> <span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"n\">y</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">H_FLIP</span> <span class=\"o\">+</span> <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">ROTATE_270</span><span class=\"p\">)</span>\n<span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">set_tile</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">layer1&quot;</span><span class=\"p\">,</span> <span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"n\">y</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">V_FLIP</span> <span class=\"o\">+</span> <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">H_FLIP</span><span class=\"p\">)</span>\n<span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">set_tile</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#tilemap&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">layer1&quot;</span><span class=\"p\">,</span> <span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"n\">y</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">tilemap</span><span class=\"p\">.</span><span class=\"n\">ROTATE_180</span><span class=\"p\">)</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "tparams": [], 
@@ -249,6 +242,76 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "tilemap.set_visible"
+    }, 
+    {
+      "replaces": "", 
+      "description": "flip tile horizontally", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "flip tile horizontally", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "tilemap.H_FLIP"
+    }, 
+    {
+      "replaces": "", 
+      "description": "flip tile vertically", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "flip tile vertically", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "tilemap.V_FLIP"
+    }, 
+    {
+      "replaces": "", 
+      "description": "rotate tile 90 degrees clockwise", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "rotate tile 90 degrees clockwise", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "tilemap.ROTATE_90"
+    }, 
+    {
+      "replaces": "", 
+      "description": "rotate tile 180 degrees clockwise", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "rotate tile 180 degrees clockwise", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "tilemap.ROTATE_180"
+    }, 
+    {
+      "replaces": "", 
+      "description": "rotate tile 270 degrees clockwise", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "rotate tile 270 degrees clockwise", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "tilemap.ROTATE_270"
     }
   ]
 }

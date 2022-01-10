@@ -101,7 +101,7 @@
       "error": "", 
       "tparams": [], 
       "type": "FUNCTION", 
-      "name": "dmThread::Join"
+      "name": "dmThread::Detach"
     }, 
     {
       "replaces": "", 

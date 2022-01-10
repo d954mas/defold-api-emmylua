@@ -157,16 +157,17 @@
           "types": [
             "uint32_t"
           ]
-        }, 
+        }
+      ], 
+      "returnvalues": [
         {
           "doc": "the pointer where to store the constant", 
           "name": "constant", 
           "types": [
-            "dmRender::Constant*"
+            "dmRender::HConstant"
           ]
         }
       ], 
-      "returnvalues": [], 
       "notes": [], 
       "brief": "Get a render constant by index", 
       "examples": "", 
@@ -181,14 +182,14 @@
       "description": "Set a render constant by name. The constant must exist in the material", 
       "parameters": [
         {
-          "doc": "the constants", 
+          "doc": "the render constants buffer", 
           "name": "constants", 
           "types": [
             "dmGameSystem::HComponentRenderConstants"
           ]
         }, 
         {
-          "doc": "the material", 
+          "doc": "the material to get default values from if constant didn't already exist in the render constants buffer", 
           "name": "material", 
           "types": [
             "dmRender::HMaterial"
@@ -199,6 +200,13 @@
           "name": "name_hash", 
           "types": [
             "dmhash_t"
+          ]
+        }, 
+        {
+          "doc": "index of the constant value to set, if the constant is an array", 
+          "name": "value_index", 
+          "types": [
+            "uint32_t"
           ]
         }, 
         {
@@ -213,6 +221,49 @@
           "name": "var", 
           "types": [
             "const dmGameObject::PropertyVar&"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Set a render constant by name. The constant must e...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "SetRenderConstant"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set a render constant by name. The constant must exist in the material", 
+      "parameters": [
+        {
+          "doc": "the constants", 
+          "name": "constants", 
+          "types": [
+            "dmGameSystem::HComponentRenderConstants"
+          ]
+        }, 
+        {
+          "doc": "the hashed name of the constant", 
+          "name": "name_hash", 
+          "types": [
+            "dmhash_t"
+          ]
+        }, 
+        {
+          "doc": "the values", 
+          "name": "values", 
+          "types": [
+            "dmVMath::Vector4*"
+          ]
+        }, 
+        {
+          "doc": "number of values in the array", 
+          "name": "num_values", 
+          "types": [
+            "uint32_t"
           ]
         }
       ], 

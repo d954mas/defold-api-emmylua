@@ -140,38 +140,6 @@
     }, 
     {
       "replaces": "", 
-      "description": "Gets the text metrics from a label component", 
-      "parameters": [
-        {
-          "doc": "the label to get the (unscaled) metrics from", 
-          "name": "url", 
-          "types": [
-            "string", 
-            "hash", 
-            "url"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "a table with the following fields:\n<ul>\n<li>width</li>\n<li>height</li>\n<li>max_ascent</li>\n<li>max_descent</li>\n</ul>", 
-          "name": "metrics", 
-          "types": [
-            "table"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "gets the text metrics for a label", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">metrics</span> <span class=\"o\">=</span> <span class=\"n\">label</span><span class=\"p\">.</span><span class=\"n\">get_text_metrics</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">metrics</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "label.get_text_metrics"
-    }, 
-    {
-      "replaces": "", 
       "description": "Gets the text from a label component", 
       "parameters": [
         {

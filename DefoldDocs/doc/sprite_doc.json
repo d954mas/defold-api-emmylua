@@ -95,6 +95,20 @@
     }, 
     {
       "replaces": "", 
+      "description": "<span class=\"mark\">READ ONLY</span> The current animation id. An animation that plays currently for the sprite. The type of the property is <span class=\"type\">hash</span>.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "<span class=\"type\">hash</span> sprite animation", 
+      "examples": "How to get the <code>animation</code> on component \"sprite\":\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">animation</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">animation&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "PROPERTY", 
+      "name": "animation"
+    }, 
+    {
+      "replaces": "", 
       "description": "Sets horizontal flipping of the provided sprite's animations.\nThe sprite is identified by its URL.\nIf the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.", 
       "parameters": [
         {
