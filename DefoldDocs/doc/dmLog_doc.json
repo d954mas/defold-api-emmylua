@@ -244,6 +244,153 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmLogFatal"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Log severity", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Log severity", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmLog::LOG_SEVERITY_DEBUG"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmLog::LOG_SEVERITY_USER_DEBUG"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmLog::LOG_SEVERITY_INFO"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmLog::LOG_SEVERITY_WARNING"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmLog::LOG_SEVERITY_ERROR"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmLog::LOG_SEVERITY_FATAL"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "dmLog::Severity"
+    }, 
+    {
+      "replaces": "", 
+      "description": "dmLog listener function type. Provides all logs from dmLog* functions and print/pprint Lua functions.\nUsed with dmLogRegisterListener() and dmLogUnregisterListener()", 
+      "parameters": [
+        {
+          "doc": "", 
+          "name": "severity", 
+          "types": [
+            "dmLog::Severity"
+          ]
+        }, 
+        {
+          "doc": "", 
+          "name": "domain", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "null terminated string", 
+          "name": "formatted_string", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "dmLog:LogListener callback typedef", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "dmLog:LogListener"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Registers a dmLog listener.\nThis listener recieve logs even in release bundle.", 
+      "parameters": [
+        {
+          "doc": "", 
+          "name": "listener", 
+          "types": [
+            "dmLog::LogListener"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "register dmLog listener.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmLog::RegisterLogListener"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Unregisters a dmLog listener.", 
+      "parameters": [
+        {
+          "doc": "listener", 
+          "name": "[type:dmLog::LogListener]", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "unregister dmLog listener.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmLog::UnregisterLogListener"
+    }, 
+    {
+      "replaces": "", 
+      "description": "set log system severity level.", 
+      "parameters": [
+        {
+          "doc": "severity", 
+          "name": "[type:dmLog::Severity]", 
+          "types": [
+            ""
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set log system severity level.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmLog::Setlevel"
     }
   ]
 }

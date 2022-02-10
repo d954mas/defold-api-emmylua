@@ -260,7 +260,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Get the value at index as a Vectormath::Aos::Vector3*", 
+      "description": "Get the value at index as a dmVMath::Vector3*", 
       "parameters": [
         {
           "doc": "Lua state", 
@@ -282,12 +282,12 @@
           "doc": "The pointer to the value, or 0 if not correct type", 
           "name": "v", 
           "types": [
-            "Vectormath::Aos::Vector3*"
+            "dmVMath::Vector3*"
           ]
         }
       ], 
       "notes": [], 
-      "brief": "get the value at index as a Vectormath::Aos::Vector3*", 
+      "brief": "get the value at index as a dmVMath::Vector3*", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -297,7 +297,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Check if the value at #index is a Vectormath::Aos::Vector3*", 
+      "description": "Check if the value at #index is a dmVMath::Vector3*", 
       "parameters": [
         {
           "doc": "Lua state", 
@@ -316,7 +316,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "if value at #index is a Vectormath::Aos::Vector3*", 
+          "doc": "if value at #index is a dmVMath::Vector3*", 
           "name": "true", 
           "types": [
             ""
@@ -324,7 +324,7 @@
         }
       ], 
       "notes": [], 
-      "brief": "Check if the value at #index is a Vectormath::Aos:...", 
+      "brief": "Check if the value at #index is a dmVMath::Vector3...", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -334,7 +334,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Push a Vectormath::Aos::Vector3 value onto the supplied lua state, will increase the stack by 1.", 
+      "description": "Push a dmVMath::Vector3 value onto the supplied lua state, will increase the stack by 1.", 
       "parameters": [
         {
           "doc": "Lua state", 
@@ -347,13 +347,13 @@
           "doc": "Vector3 value to push", 
           "name": "v", 
           "types": [
-            "Vectormath::Aos::Vector3"
+            "dmVMath::Vector3"
           ]
         }
       ], 
       "returnvalues": [], 
       "notes": [], 
-      "brief": "push a Vectormath::Aos::Vector3 onto the Lua stack", 
+      "brief": "push a dmVMath::Vector3 onto the Lua stack", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -363,7 +363,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Check if the value in the supplied index on the lua stack is a Vectormath::Aos::Vector3.", 
+      "description": "Check if the value in the supplied index on the lua stack is a dmVMath::Vector3.", 
       "parameters": [
         {
           "doc": "Lua state", 
@@ -385,12 +385,12 @@
           "doc": "The pointer to the value", 
           "name": "vector3", 
           "types": [
-            "Vectormath::Aos::Vector3*"
+            "dmVMath::Vector3*"
           ]
         }
       ], 
       "notes": [], 
-      "brief": "check if the value is a Vectormath::Aos::Vector3", 
+      "brief": "check if the value is a dmVMath::Vector3", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -400,7 +400,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Get the value at index as a Vectormath::Aos::Vector4*", 
+      "description": "Get the value at index as a dmVMath::Vector4*", 
       "parameters": [
         {
           "doc": "Lua state", 
@@ -422,12 +422,12 @@
           "doc": "The pointer to the value, or 0 if not correct type", 
           "name": "v", 
           "types": [
-            "Vectormath::Aos::Vector4*"
+            "dmVMath::Vector4*"
           ]
         }
       ], 
       "notes": [], 
-      "brief": "get the value at index as a Vectormath::Aos::Vector4*", 
+      "brief": "get the value at index as a dmVMath::Vector4*", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -437,7 +437,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Check if the value at #index is a Vectormath::Aos::Vector4*", 
+      "description": "Check if the value at #index is a dmVMath::Vector4*", 
       "parameters": [
         {
           "doc": "Lua state", 
@@ -456,7 +456,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "if value at #index is a Vectormath::Aos::Vector4*", 
+          "doc": "if value at #index is a dmVMath::Vector4*", 
           "name": "true", 
           "types": [
             ""
@@ -464,7 +464,7 @@
         }
       ], 
       "notes": [], 
-      "brief": "Check if the value at #index is a Vectormath::Aos:...", 
+      "brief": "Check if the value at #index is a dmVMath::Vector4...", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -474,7 +474,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Push a Vectormath::Aos::Vector4 value onto the supplied lua state, will increase the stack by 1.", 
+      "description": "Push a dmVMath::Vector4 value onto the supplied lua state, will increase the stack by 1.", 
       "parameters": [
         {
           "doc": "Lua state", 
@@ -484,16 +484,16 @@
           ]
         }, 
         {
-          "doc": "Vectormath::Aos::Vector4 value to push", 
+          "doc": "dmVMath::Vector4 value to push", 
           "name": "v", 
           "types": [
-            "Vectormath::Aos::Vector4"
+            "dmVMath::Vector4"
           ]
         }
       ], 
       "returnvalues": [], 
       "notes": [], 
-      "brief": "push a Vectormath::Aos::Vector4 on the stack", 
+      "brief": "push a dmVMath::Vector4 on the stack", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -503,7 +503,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Check if the value in the supplied index on the lua stack is a Vectormath::Aos::Vector3.", 
+      "description": "Check if the value in the supplied index on the lua stack is a dmVMath::Vector3.", 
       "parameters": [
         {
           "doc": "Lua state", 
@@ -525,12 +525,12 @@
           "doc": "The pointer to the value", 
           "name": "vector4", 
           "types": [
-            "Vectormath::Aos::Vector4*"
+            "dmVMath::Vector4*"
           ]
         }
       ], 
       "notes": [], 
-      "brief": "check if the value is a Vectormath::Aos::Vector3", 
+      "brief": "check if the value is a dmVMath::Vector3", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -540,7 +540,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Get the value at index as a Vectormath::Aos::Quat*", 
+      "description": "Get the value at index as a dmVMath::Quat*", 
       "parameters": [
         {
           "doc": "Lua state", 
@@ -562,12 +562,12 @@
           "doc": "The pointer to the value, or 0 if not correct type", 
           "name": "quat", 
           "types": [
-            "Vectormath::Aos::Quat*"
+            "dmVMath::Quat*"
           ]
         }
       ], 
       "notes": [], 
-      "brief": "get the value at index as a Vectormath::Aos::Quat*", 
+      "brief": "get the value at index as a dmVMath::Quat*", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -577,7 +577,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Check if the value at #index is a Vectormath::Aos::Quat*", 
+      "description": "Check if the value at #index is a dmVMath::Quat*", 
       "parameters": [
         {
           "doc": "Lua state", 
@@ -596,7 +596,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "if value at #index is a Vectormath::Aos::Quat*", 
+          "doc": "if value at #index is a dmVMath::Quat*", 
           "name": "true", 
           "types": [
             ""
@@ -604,7 +604,7 @@
         }
       ], 
       "notes": [], 
-      "brief": "Check if the value at #index is a Vectormath::Aos:...", 
+      "brief": "Check if the value at #index is a dmVMath::Quat*", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -624,16 +624,16 @@
           ]
         }, 
         {
-          "doc": "Vectormath::Aos::Quat value to push", 
+          "doc": "dmVMath::Quat value to push", 
           "name": "quat", 
           "types": [
-            "Vectormath::Aos::Quat"
+            "dmVMath::Quat"
           ]
         }
       ], 
       "returnvalues": [], 
       "notes": [], 
-      "brief": "push a Vectormath::Aos::Quat onto the Lua stack", 
+      "brief": "push a dmVMath::Quat onto the Lua stack", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -643,7 +643,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Check if the value in the supplied index on the lua stack is a Vectormath::Aos::Quat.", 
+      "description": "Check if the value in the supplied index on the lua stack is a dmVMath::Quat.", 
       "parameters": [
         {
           "doc": "Lua state", 
@@ -665,12 +665,12 @@
           "doc": "The pointer to the value", 
           "name": "quat", 
           "types": [
-            "Vectormath::Aos::Quat*"
+            "dmVMath::Quat*"
           ]
         }
       ], 
       "notes": [], 
-      "brief": "check if the value is a Vectormath::Aos::Vector3", 
+      "brief": "check if the value is a dmVMath::Vector3", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -680,7 +680,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Get the value at index as a Vectormath::Aos::Matrix4*", 
+      "description": "Get the value at index as a dmVMath::Matrix4*", 
       "parameters": [
         {
           "doc": "Lua state", 
@@ -702,12 +702,12 @@
           "doc": "The pointer to the value, or 0 if not correct type", 
           "name": "quat", 
           "types": [
-            "Vectormath::Aos::Matrix4*"
+            "dmVMath::Matrix4*"
           ]
         }
       ], 
       "notes": [], 
-      "brief": "get the value at index as a Vectormath::Aos::Matrix4*", 
+      "brief": "get the value at index as a dmVMath::Matrix4*", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -717,7 +717,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Check if the value at #index is a Vectormath::Aos::Matrix4*", 
+      "description": "Check if the value at #index is a dmVMath::Matrix4*", 
       "parameters": [
         {
           "doc": "Lua state", 
@@ -736,7 +736,7 @@
       ], 
       "returnvalues": [
         {
-          "doc": "if value at #index is a Vectormath::Aos::Matrix4*", 
+          "doc": "if value at #index is a dmVMath::Matrix4*", 
           "name": "true", 
           "types": [
             ""
@@ -744,7 +744,7 @@
         }
       ], 
       "notes": [], 
-      "brief": "Check if the value at #index is a Vectormath::Aos:...", 
+      "brief": "Check if the value at #index is a dmVMath::Matrix4...", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -764,16 +764,16 @@
           ]
         }, 
         {
-          "doc": "Vectormath::Aos::Matrix4 value to push", 
+          "doc": "dmVMath::Matrix4 value to push", 
           "name": "matrix", 
           "types": [
-            "Vectormath::Aos::Matrix4"
+            "dmVMath::Matrix4"
           ]
         }
       ], 
       "returnvalues": [], 
       "notes": [], 
-      "brief": "push a Vectormath::Aos::Matrix4 onto the Lua stack", 
+      "brief": "push a dmVMath::Matrix4 onto the Lua stack", 
       "examples": "", 
       "members": [], 
       "error": "", 
@@ -783,7 +783,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Check if the value in the supplied index on the lua stack is a Vectormath::Aos::Matrix4.", 
+      "description": "Check if the value in the supplied index on the lua stack is a dmVMath::Matrix4.", 
       "parameters": [
         {
           "doc": "Lua state", 
@@ -805,12 +805,12 @@
           "doc": "The pointer to the value", 
           "name": "matrix", 
           "types": [
-            "Vectormath::Aos::Matrix4*"
+            "dmVMath::Matrix4*"
           ]
         }
       ], 
       "notes": [], 
-      "brief": "check if the value is a Vectormath::Aos::Matrix4", 
+      "brief": "check if the value is a dmVMath::Matrix4", 
       "examples": "", 
       "members": [], 
       "error": "", 

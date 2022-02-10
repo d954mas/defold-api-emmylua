@@ -1,0 +1,285 @@
+{
+  "info": {
+    "group": "DEFOLD SDK", 
+    "description": "File Descriptor functions.", 
+    "namespace": "dmFileDescriptor", 
+    "brief": "SDK File Descriptor API documentation", 
+    "file": "dmsdk/dlib/file_descriptor.h", 
+    "path": "engine/dlib/src/dmsdk/dlib/file_descriptor.h", 
+    "name": "FileDescriptor"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "Poll events", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Poll events", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "EVENT_READ"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "EVENT_WRITE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "EVENT_ERROR"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "PollEvent"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Poller", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Poller", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "Poller"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set capacity of poller.", 
+      "parameters": [
+        {
+          "doc": "Poller", 
+          "name": "poller", 
+          "types": [
+            "Poller*"
+          ]
+        }, 
+        {
+          "doc": "Capacity", 
+          "name": "capacity", 
+          "types": [
+            "uint32_T"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Set capacity of poller.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "PollerSetCapacity"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Clear event from poller.", 
+      "parameters": [
+        {
+          "doc": "Poller", 
+          "name": "poller", 
+          "types": [
+            "Poller*"
+          ]
+        }, 
+        {
+          "doc": "Event to clear", 
+          "name": "event", 
+          "types": [
+            "PollEvent"
+          ]
+        }, 
+        {
+          "doc": "File descriptor to clear", 
+          "name": "fd", 
+          "types": [
+            "int"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            "void"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Clear event from poller.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "PollerClearEvent"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set file descriptor event to poll for", 
+      "parameters": [
+        {
+          "doc": "Poller", 
+          "name": "poller", 
+          "types": [
+            "Poller*"
+          ]
+        }, 
+        {
+          "doc": "Event to set", 
+          "name": "event", 
+          "types": [
+            "PollEvent"
+          ]
+        }, 
+        {
+          "doc": "File descriptor to clear", 
+          "name": "fd", 
+          "types": [
+            "int"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            "void"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Set file descriptor event to poll for", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "PollerSetEvent"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Check if event exists for file descriptor", 
+      "parameters": [
+        {
+          "doc": "Poller", 
+          "name": "poller", 
+          "types": [
+            "Poller*"
+          ]
+        }, 
+        {
+          "doc": "Event to check", 
+          "name": "event", 
+          "types": [
+            "PollEvent"
+          ]
+        }, 
+        {
+          "doc": "File descriptor to clear", 
+          "name": "fd", 
+          "types": [
+            "int"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "True if event exists.", 
+          "name": "", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Check if event exists for file descriptor", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "PollerHasEvent"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Reset poller.", 
+      "parameters": [
+        {
+          "doc": "Poller", 
+          "name": "spoller", 
+          "types": [
+            "Poller*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "", 
+          "name": "", 
+          "types": [
+            "void"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Reset poller.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "PollerReset"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Wait for event", 
+      "parameters": [
+        {
+          "doc": "Poller", 
+          "name": "poller", 
+          "types": [
+            "Poller*"
+          ]
+        }, 
+        {
+          "doc": "Timeout. For blocking pass -1. (milliseconds)", 
+          "name": "timeout", 
+          "types": [
+            "int"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "Non-negative value on success, 0 on timeout and\n-1 on error with errno set to indicate the error", 
+          "name": "", 
+          "types": [
+            "Result"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Wait for event", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "Wait"
+    }
+  ]
+}

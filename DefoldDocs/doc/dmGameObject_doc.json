@@ -1,794 +1,13 @@
 {
   "info": {
-    "description": "<span class=\"file\">&lt;dmsdk/gameobject/script.h&gt;</span>", 
+    "description": "<span class=\"file\">&lt;dmsdk/gameobject/component.h&gt;</span>\nApi for manipulating game object components (WIP)", 
     "namespace": "dmGameObject", 
-    "brief": "SDK GameObject script API documentation", 
+    "brief": "SDK Component API documentation", 
     "file": "", 
     "path": "", 
-    "name": "Script"
+    "name": "Component"
   }, 
   "elements": [
-    {
-      "replaces": "", 
-      "description": "Callback when iterating over the properties for a component.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Callback when iterating over the properties for a ...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": ""
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get the component type index. Used for with e.g. dmGameObject::GetWorld()/GetContext()", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "The type index.", 
-          "name": "type_index", 
-          "types": [
-            "uint32_t"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Get the component type index. Used for with e.g. d...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeGetTypeIndex"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the new world callback. Called when a collection (i.e. a \"world\") is created.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentNewWorld"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the new world callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetNewWorldFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the world destroy callback. Called when a collection (i.e. a \"world\") is destroyed.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentDeleteWorld"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the world destroy callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetDeleteWorldFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component create callback. Called when a component instance is created.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentCreate"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component create callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetCreateFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component destroy callback. Called when a component instance is destroyed.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentDestroy"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component destroy callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetDestroyFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component init callback. Called on each gameobject's components, during a gameobject's initialization.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentInit"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component init callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetInitFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component finalize callback. Called on each gameobject's components, during a gameobject's finalization.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentFinal"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component finalize callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetFinalFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component add-to-update callback. Called for each component instal, when the game object is spawned.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentAddToUpdate"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component add-to-update callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetAddToUpdateFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component get callback. Called when the scripts want to retrieve the individual component user data given an url.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentGet"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component get callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetGetFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component render callback. Called when it's time to render all component instances.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentsRender"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component render callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetRenderFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component update callback. Called when it's time to update all component instances.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentsUpdate"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component update callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetUpdateFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component post update callback. Called for each collection after the update, before the render.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentsPostUpdate"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component post update callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetPostUpdateFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component on-message callback. Called multiple times per frame, to flush messages.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentOnMessage"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component on-message callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetOnMessageFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component on-input callback. Called once per frame, before the Update function.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentOnInput"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component on-input callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetOnInputFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component on-reload callback. Called when the resource of a component instance is reloaded.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentOnReload"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component on-reload callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetOnReloadFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component set properties callback. Called when the component instance is being spwned.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentSetProperties"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component set properties callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetSetPropertiesFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component get property callback. Called when accessing a property via <code>go.get()</code>", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentGetProperty"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component get property callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetGetPropertyFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component set property callback. Called when accessing a property via <code>go.set()</code>", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "callback", 
-          "name": "fn", 
-          "types": [
-            "ComponentSetProperty"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component set property callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetSetPropertyFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component type global context. Usually set when registering the component type.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "component type global context", 
-          "name": "context", 
-          "types": [
-            "void*"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component type global context", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetContext"
-    }, 
-    {
-      "replaces": "", 
-      "description": "get the component type global context", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "component type global context", 
-          "name": "context", 
-          "types": [
-            "void*"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "get the component type global context", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeGetContext"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component type transform dependency flag.\nIf this flag is set, it might trigger an dmGameObject::UpdateTransforms() (if there are dirty transforms)", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "transform dependency flag", 
-          "name": "reads_transforms", 
-          "types": [
-            "bool"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component type transform dependency flag", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetReadsTransforms"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component type prio order. Defines the update order of the component types.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "prio order", 
-          "name": "prio", 
-          "types": [
-            "uint16_t"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component type prio order", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetPrio"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the component type need for a per component instance user data. Defaults to true.", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "does each component instance need user data", 
-          "name": "has_user_data", 
-          "types": [
-            "bool"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component type need for a per component instance user data", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetHasUserData"
-    }, 
-    {
-      "replaces": "", 
-      "description": "set the component child iterator function. Called during inspection", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "child iterator function", 
-          "name": "fn", 
-          "types": [
-            "FIteratorChildren"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component child iterator function", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetChildIteratorFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "set the component property iterator function. Called during inspection", 
-      "parameters": [
-        {
-          "doc": "the type", 
-          "name": "type", 
-          "types": [
-            "ComponentType*"
-          ]
-        }, 
-        {
-          "doc": "property iterator function", 
-          "name": "fn", 
-          "types": [
-            "FIteratorProperties"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the component property iterator function", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ComponentTypeSetPropertyIteratorFn"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Context used when registering a new component type", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Context used when registering a new component type", 
-      "examples": "", 
-      "members": [
-        {
-          "doc": "The config file", 
-          "type": "dmConfigFile::HConfig", 
-          "name": "m_Config"
-        }, 
-        {
-          "doc": "The resource factory", 
-          "type": "dmResource::HFactory", 
-          "name": "m_Factory"
-        }, 
-        {
-          "doc": "The game object registry", 
-          "type": "dmGameObject::HRegister", 
-          "name": "m_Register"
-        }, 
-        {
-          "doc": "The shared script context", 
-          "type": "dmScript::HContext", 
-          "name": "m_Script"
-        }, 
-        {
-          "doc": "Mappings between names and contextx", 
-          "type": "dmHashTable64<void*>", 
-          "name": "m_Contexts"
-        }
-      ], 
-      "error": "", 
-      "tparams": [], 
-      "type": "STRUCT", 
-      "name": "ComponentTypeCreateCtx"
-    }, 
     {
       "replaces": "", 
       "description": "Value for an invalid instance index, this must be the same as defined in gamesys_ddf.proto for Create#index.", 
@@ -2671,6 +1890,787 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "dmScript::PostDDF"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Callback when iterating over the properties for a component.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Callback when iterating over the properties for a ...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": ""
+    }, 
+    {
+      "replaces": "", 
+      "description": "Get the component type index. Used for with e.g. dmGameObject::GetWorld()/GetContext()", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "The type index.", 
+          "name": "type_index", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Get the component type index. Used for with e.g. d...", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeGetTypeIndex"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the new world callback. Called when a collection (i.e. a \"world\") is created.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentNewWorld"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the new world callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetNewWorldFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the world destroy callback. Called when a collection (i.e. a \"world\") is destroyed.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentDeleteWorld"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the world destroy callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetDeleteWorldFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component create callback. Called when a component instance is created.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentCreate"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component create callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetCreateFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component destroy callback. Called when a component instance is destroyed.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentDestroy"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component destroy callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetDestroyFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component init callback. Called on each gameobject's components, during a gameobject's initialization.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentInit"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component init callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetInitFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component finalize callback. Called on each gameobject's components, during a gameobject's finalization.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentFinal"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component finalize callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetFinalFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component add-to-update callback. Called for each component instal, when the game object is spawned.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentAddToUpdate"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component add-to-update callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetAddToUpdateFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component get callback. Called when the scripts want to retrieve the individual component user data given an url.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentGet"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component get callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetGetFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component render callback. Called when it's time to render all component instances.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentsRender"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component render callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetRenderFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component update callback. Called when it's time to update all component instances.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentsUpdate"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component update callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetUpdateFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component post update callback. Called for each collection after the update, before the render.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentsPostUpdate"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component post update callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetPostUpdateFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component on-message callback. Called multiple times per frame, to flush messages.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentOnMessage"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component on-message callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetOnMessageFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component on-input callback. Called once per frame, before the Update function.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentOnInput"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component on-input callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetOnInputFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component on-reload callback. Called when the resource of a component instance is reloaded.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentOnReload"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component on-reload callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetOnReloadFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component set properties callback. Called when the component instance is being spwned.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentSetProperties"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component set properties callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetSetPropertiesFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component get property callback. Called when accessing a property via <code>go.get()</code>", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentGetProperty"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component get property callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetGetPropertyFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component set property callback. Called when accessing a property via <code>go.set()</code>", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentSetProperty"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component set property callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetSetPropertyFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component type global context. Usually set when registering the component type.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "component type global context", 
+          "name": "context", 
+          "types": [
+            "void*"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component type global context", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetContext"
+    }, 
+    {
+      "replaces": "", 
+      "description": "get the component type global context", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "component type global context", 
+          "name": "context", 
+          "types": [
+            "void*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get the component type global context", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeGetContext"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component type transform dependency flag.\nIf this flag is set, it might trigger an dmGameObject::UpdateTransforms() (if there are dirty transforms)", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "transform dependency flag", 
+          "name": "reads_transforms", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component type transform dependency flag", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetReadsTransforms"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component type prio order. Defines the update order of the component types.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "prio order", 
+          "name": "prio", 
+          "types": [
+            "uint16_t"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component type prio order", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetPrio"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component type need for a per component instance user data. Defaults to true.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "does each component instance need user data", 
+          "name": "has_user_data", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component type need for a per component instance user data", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetHasUserData"
+    }, 
+    {
+      "replaces": "", 
+      "description": "set the component child iterator function. Called during inspection", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "child iterator function", 
+          "name": "fn", 
+          "types": [
+            "FIteratorChildren"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component child iterator function", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetChildIteratorFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "set the component property iterator function. Called during inspection", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "property iterator function", 
+          "name": "fn", 
+          "types": [
+            "FIteratorProperties"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component property iterator function", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetPropertyIteratorFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Context used when registering a new component type", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Context used when registering a new component type", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "The config file", 
+          "type": "dmConfigFile::HConfig", 
+          "name": "m_Config"
+        }, 
+        {
+          "doc": "The resource factory", 
+          "type": "dmResource::HFactory", 
+          "name": "m_Factory"
+        }, 
+        {
+          "doc": "The game object registry", 
+          "type": "dmGameObject::HRegister", 
+          "name": "m_Register"
+        }, 
+        {
+          "doc": "The shared script context", 
+          "type": "dmScript::HContext", 
+          "name": "m_Script"
+        }, 
+        {
+          "doc": "Mappings between names and contextx", 
+          "type": "dmHashTable64<void*>", 
+          "name": "m_Contexts"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "ComponentTypeCreateCtx"
     }
   ]
 }

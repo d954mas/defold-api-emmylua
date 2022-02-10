@@ -79,6 +79,48 @@
       "tparams": [], 
       "type": "MESSAGE", 
       "name": "release_camera_focus"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Vertical field of view of the camera.\nThe type of the property is float.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "<span class=\"type\">float</span> camera fov", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">fov</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#camera&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">fov&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">fov&quot;</span><span class=\"p\">,</span> <span class=\"n\">fov</span> <span class=\"o\">+</span> <span class=\"mf\">0.1</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#camera&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">fov&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_ONCE_PINGPONG</span><span class=\"p\">,</span> <span class=\"mf\">1.2</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_LINEAR</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "PROPERTY", 
+      "name": "fov"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Camera frustum near plane.\nThe type of the property is float.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "<span class=\"type\">float</span> camera near_z", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">near_z</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#camera&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">near_z&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">near_z&quot;</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "PROPERTY", 
+      "name": "near_z"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Camera frustum far plane.\nThe type of the property is float.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "<span class=\"type\">float</span> camera far_z", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">far_z</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#camera&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">far_z&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#sprite&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">far_z&quot;</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "PROPERTY", 
+      "name": "far_z"
     }
   ]
 }

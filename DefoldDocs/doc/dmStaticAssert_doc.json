@@ -1,0 +1,42 @@
+{
+  "info": {
+    "group": "DEFOLD SDK", 
+    "description": "<div class=\"codehilite\"><pre><span></span><span class=\"kt\">void</span> <span class=\"nf\">test</span><span class=\"p\">()</span> <span class=\"p\">{</span>\n    <span class=\"n\">DM_STATIC_ASSERT</span><span class=\"p\">(</span><span class=\"k\">sizeof</span><span class=\"p\">(</span><span class=\"kt\">int</span><span class=\"p\">)</span> <span class=\"o\">==</span> <span class=\"mi\">4</span><span class=\"p\">,</span> <span class=\"n\">Invalid_int_size</span><span class=\"p\">);</span>\n<span class=\"p\">}</span>\n</pre></div>", 
+    "namespace": "dmStaticAssert", 
+    "brief": "Static assert", 
+    "file": "dmsdk/dlib/static_assert.h", 
+    "path": "engine/dlib/src/dmsdk/dlib/static_assert.h", 
+    "name": "Static Assert"
+  }, 
+  "elements": [
+    {
+      "replaces": "", 
+      "description": "This is using C++11 <code>static_assert</code> on platforms that support it and use c++11. Otherwise\nit's using a c construct to check the condition.\nAs such, it is currently required to be used whithin a function scope.", 
+      "parameters": [
+        {
+          "doc": "expression", 
+          "name": "x", 
+          "types": [
+            "bool"
+          ]
+        }, 
+        {
+          "doc": "expression", 
+          "name": "xmsg", 
+          "types": [
+            "string"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "compile time assert", 
+      "examples": "Verify the size of a struct is within a limit\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_STATIC_ASSERT</span><span class=\"p\">(</span><span class=\"k\">sizeof</span><span class=\"p\">(</span><span class=\"n\">MyStruct</span><span class=\"p\">)</span> <span class=\"o\">&lt;=</span> <span class=\"mi\">32</span><span class=\"p\">,</span> <span class=\"n\">Invalid_Struct_Size</span><span class=\"p\">);</span>\n</pre></div>", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "MACRO", 
+      "name": "DM_STATIC_ASSERT"
+    }
+  ]
+}
