@@ -1072,45 +1072,6 @@
     }, 
     {
       "replaces": "", 
-      "description": "Dynamically create a new spine node.", 
-      "parameters": [
-        {
-          "doc": "node position", 
-          "name": "pos", 
-          "types": [
-            "vector3", 
-            "vector4"
-          ]
-        }, 
-        {
-          "doc": "spine scene id", 
-          "name": "spine_scene", 
-          "types": [
-            "string", 
-            "hash"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "new spine node", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "creates a new spine node", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.new_spine_node"
-    }, 
-    {
-      "replaces": "", 
       "description": "Returns the text value of a text node. This is only useful for text nodes.", 
       "parameters": [
         {
@@ -2761,7 +2722,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Returns the size of a node.\nThe size mode defines how the node will adjust itself in size. Automatic\nsize mode alters the node size based on the node's content. Automatic size\nmode works for Box nodes and Pie nodes which will both adjust their size\nto match the assigned image. Spine, Particle fx and Text nodes will ignore\nany size mode setting.", 
+      "description": "Returns the size of a node.\nThe size mode defines how the node will adjust itself in size. Automatic\nsize mode alters the node size based on the node's content. Automatic size\nmode works for Box nodes and Pie nodes which will both adjust their size\nto match the assigned image. Particle fx and Text nodes will ignore\nany size mode setting.", 
       "parameters": [
         {
           "doc": "node from which to get the size mode (node)", 
@@ -2791,7 +2752,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Sets the size mode of a node.\nThe size mode defines how the node will adjust itself in size. Automatic\nsize mode alters the node size based on the node's content. Automatic size\nmode works for Box nodes and Pie nodes which will both adjust their size\nto match the assigned image. Spine, Particle fx and Text nodes will ignore\nany size mode setting.", 
+      "description": "Sets the size mode of a node.\nThe size mode defines how the node will adjust itself in size. Automatic\nsize mode alters the node size based on the node's content. Automatic size\nmode works for Box nodes and Pie nodes which will both adjust their size\nto match the assigned image. Particle fx and Text nodes will ignore\nany size mode setting.", 
       "parameters": [
         {
           "doc": "node to set size mode for", 
@@ -3604,332 +3565,70 @@
       "name": "gui.get_screen_position"
     }, 
     {
-      "replaces": "gui.play_spine", 
-      "description": "Starts a spine animation.", 
+      "replaces": "", 
+      "description": "Set the screen position to the supplied node", 
       "parameters": [
         {
-          "doc": "spine node that should play the animation", 
+          "doc": "node to set the screen position to", 
           "name": "node", 
           "types": [
             "node"
           ]
         }, 
         {
-          "doc": "id of the animation to play", 
-          "name": "animation_id", 
+          "doc": "screen position", 
+          "name": "screen_position", 
           "types": [
-            "string", 
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "playback mode\n<ul>\n<li><code>gui.PLAYBACK_ONCE_FORWARD</code></li>\n<li><code>gui.PLAYBACK_ONCE_BACKWARD</code></li>\n<li><code>gui.PLAYBACK_ONCE_PINGPONG</code></li>\n<li><code>gui.PLAYBACK_LOOP_FORWARD</code></li>\n<li><code>gui.PLAYBACK_LOOP_BACKWARD</code></li>\n<li><code>gui.PLAYBACK_LOOP_PINGPONG</code></li>\n</ul>", 
-          "name": "playback", 
-          "types": [
-            "constant"
-          ]
-        }, 
-        {
-          "doc": "optional table with properties\n<dl>\n<dt><code>blend_duration</code></dt>\n<dd><span class=\"type\">number</span> The duration of a linear blend between the current and new animation</dd>\n<dt><code>offset</code></dt>\n<dd><span class=\"type\">number</span> The normalized initial value of the animation cursor when the animation starts playing</dd>\n<dt><code>playback_rate</code></dt>\n<dd><span class=\"type\">number</span> The rate with which the animation will be played. Must be positive</dd>\n</dl>", 
-          "name": "[play_properties]", 
-          "types": [
-            "table"
-          ]
-        }, 
-        {
-          "doc": "function to call when the animation has completed", 
-          "name": "[complete_function]", 
-          "types": [
-            "function(self, node)"
+            "vector3"
           ]
         }
       ], 
       "returnvalues": [], 
       "notes": [], 
-      "brief": "play a spine animation", 
+      "brief": "sets screen position to the node", 
       "examples": "", 
       "members": [], 
       "error": "", 
       "tparams": [], 
       "type": "FUNCTION", 
-      "name": "gui.play_spine_anim"
+      "name": "gui.set_screen_position"
     }, 
     {
       "replaces": "", 
-      "description": "cancel a spine animation", 
+      "description": "Convert the screen position to the local position of supplied node", 
       "parameters": [
         {
-          "doc": "spine node that should cancel its animation", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "cancel a spine animation", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.cancel_spine"
-    }, 
-    {
-      "replaces": "", 
-      "description": "The returned node can be used for parenting and transform queries.\nThis function has complexity O(n), where n is the number of bones in the spine model skeleton.", 
-      "parameters": [
-        {
-          "doc": "spine node to query for bone node", 
+          "doc": "node used for getting local transformation matrix", 
           "name": "node", 
           "types": [
             "node"
           ]
         }, 
         {
-          "doc": "id of the corresponding bone", 
-          "name": "bone_id", 
+          "doc": "screen position", 
+          "name": "screen_position", 
           "types": [
-            "string", 
-            "hash"
+            "vector3"
           ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "node corresponding to the spine bone", 
-          "name": "bone", 
+          "doc": "local position", 
+          "name": "local_position", 
           "types": [
-            "node"
+            "vector3"
           ]
         }
       ], 
       "notes": [], 
-      "brief": "retrieve the GUI node corresponding to a spine skeleton bone", 
+      "brief": "convert screen position to the local node position", 
       "examples": "", 
       "members": [], 
       "error": "", 
       "tparams": [], 
       "type": "FUNCTION", 
-      "name": "gui.get_spine_bone"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the spine scene on a spine node. The spine scene must be mapped to the gui scene in the gui editor.", 
-      "parameters": [
-        {
-          "doc": "node to set spine scene for", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }, 
-        {
-          "doc": "spine scene id", 
-          "name": "spine_scene", 
-          "types": [
-            "string", 
-            "hash"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets the spine scene of a node", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.set_spine_scene"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Returns the spine scene id of the supplied node.\nThis is currently only useful for spine nodes.\nThe returned spine scene must be mapped to the gui scene in the gui editor.", 
-      "parameters": [
-        {
-          "doc": "node to get texture from", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "spine scene id", 
-          "name": "spine_scene", 
-          "types": [
-            "hash"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "gets the spine scene of a node", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.get_spine_scene"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Sets the spine skin on a spine node.", 
-      "parameters": [
-        {
-          "doc": "node to set the spine skin on", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }, 
-        {
-          "doc": "spine skin id", 
-          "name": "spine_skin", 
-          "types": [
-            "string", 
-            "hash"
-          ]
-        }, 
-        {
-          "doc": "optional slot id to only change a specific slot", 
-          "name": "[spine_slot]", 
-          "types": [
-            "string", 
-            "hash"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets the spine skin", 
-      "examples": "Change skin of a Spine node\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_spine_skin</span><span class=\"p\">(</span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">spine_node&quot;</span><span class=\"p\">),</span> <span class=\"s2\">&quot;</span><span class=\"s\">monster&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\nChange only part of the Spine to a different skin.\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">monster_transform_arm</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"c1\">-- The player is transforming into a monster, begin with changing the arm.</span>\n  <span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_spine_skin</span><span class=\"p\">(</span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">spine_node&quot;</span><span class=\"p\">),</span> <span class=\"s2\">&quot;</span><span class=\"s\">monster&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">left_arm_slot&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.set_spine_skin"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets the playing animation on a spine node", 
-      "parameters": [
-        {
-          "doc": "node to get spine skin from", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "spine animation id, 0 if no animation is playing", 
-          "name": "id", 
-          "types": [
-            "hash"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "gets the playing animation on a spine node", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.get_spine_animation"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets the spine skin of a spine node", 
-      "parameters": [
-        {
-          "doc": "node to get spine skin from", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "spine skin id, 0 if no explicit skin is set", 
-          "name": "id", 
-          "types": [
-            "hash"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "gets the skin of a spine node", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.get_spine_skin"
-    }, 
-    {
-      "replaces": "", 
-      "description": "This is only useful for spine nodes. The cursor is normalized.", 
-      "parameters": [
-        {
-          "doc": "spine node to set the cursor for", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }, 
-        {
-          "doc": "cursor value", 
-          "name": "cursor", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets the normalized cursor of the animation on a spine node", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.set_spine_cursor"
-    }, 
-    {
-      "replaces": "", 
-      "description": "This is only useful for spine nodes. Gets the normalized cursor of the animation on a spine node.", 
-      "parameters": [
-        {
-          "doc": "spine node to get the cursor for (node)", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "value <span class=\"type\">number</span> cursor value", 
-          "name": "cursor", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "gets the normalized cursor of the animation on a spine node", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.get_spine_cursor"
+      "name": "gui.screen_to_local"
     }, 
     {
       "replaces": "", 
@@ -4048,65 +3747,6 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "gui.set_flipbook_playback_rate"
-    }, 
-    {
-      "replaces": "", 
-      "description": "This is only useful for spine nodes. Sets the playback rate of the animation on a spine node. Must be positive.", 
-      "parameters": [
-        {
-          "doc": "spine node to set the cursor for", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }, 
-        {
-          "doc": "playback rate", 
-          "name": "playback_rate", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets the playback rate of the animation on a spine node", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.set_spine_playback_rate"
-    }, 
-    {
-      "replaces": "", 
-      "description": "This is only useful for spine nodes. Gets the playback rate of the animation on a spine node.", 
-      "parameters": [
-        {
-          "doc": "spine node to set the cursor for", 
-          "name": "node", 
-          "types": [
-            "node"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "playback rate", 
-          "name": "rate", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "gets the playback rate of the animation on a spine node", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "gui.get_spine_playback_rate"
     }, 
     {
       "replaces": "", 

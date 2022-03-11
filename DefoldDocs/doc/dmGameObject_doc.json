@@ -10,6 +10,121 @@
   "elements": [
     {
       "replaces": "", 
+      "description": "Get component user data from a url.\nThe object referenced by the url must be in the same collection as the caller.", 
+      "parameters": [
+        {
+          "doc": "Lua state", 
+          "name": "L", 
+          "types": [
+            "lua_State*"
+          ]
+        }, 
+        {
+          "doc": "index to argument (a url)", 
+          "name": "index", 
+          "types": [
+            "lua_State*"
+          ]
+        }, 
+        {
+          "doc": "the call will fail if the found component does not have the specified extension", 
+          "name": "component_type", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "The world associated owning the component. May be 0", 
+          "name": "world", 
+          "types": [
+            "void**"
+          ]
+        }, 
+        {
+          "doc": "The component data associated with the url. May be 0", 
+          "name": "component", 
+          "types": [
+            "void**"
+          ]
+        }, 
+        {
+          "doc": "The resolved url. May be 0", 
+          "name": "url", 
+          "types": [
+            "dmMessage::URL*"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Get component user data from a url", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetComponentFromLua"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Sends a script message. Wraps the message in a dmGameSystemDDF::ScriptMessage struct.", 
+      "parameters": [
+        {
+          "doc": "The ddf message to send", 
+          "name": "message", 
+          "types": [
+            "TDDFType*"
+          ]
+        }, 
+        {
+          "doc": "The sender", 
+          "name": "sender", 
+          "types": [
+            "dmMessage::Message*"
+          ]
+        }, 
+        {
+          "doc": "The receiver", 
+          "name": "receiver", 
+          "types": [
+            "dmMessage::Message*"
+          ]
+        }, 
+        {
+          "doc": "The function ref. 0 wil cause the \"on_message\" to be called", 
+          "name": "function_ref", 
+          "types": [
+            "int"
+          ]
+        }, 
+        {
+          "doc": "call dmScript::UnrefInInstance on the function_ref after the dmScript::PCall is made", 
+          "name": "unref_function_after_call", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "true if successful", 
+          "name": "success", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "Sends a script message", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "dmScript::PostDDF"
+    }, 
+    {
+      "replaces": "", 
       "description": "Value for an invalid instance index, this must be the same as defined in gamesys_ddf.proto for Create#index.", 
       "parameters": [], 
       "returnvalues": [], 
@@ -1778,123 +1893,23 @@
     }, 
     {
       "replaces": "", 
-      "description": "Get component user data from a url.\nThe object referenced by the url must be in the same collection as the caller.", 
-      "parameters": [
-        {
-          "doc": "Lua state", 
-          "name": "L", 
-          "types": [
-            "lua_State*"
-          ]
-        }, 
-        {
-          "doc": "index to argument (a url)", 
-          "name": "index", 
-          "types": [
-            "lua_State*"
-          ]
-        }, 
-        {
-          "doc": "the call will fail if the found component does not have the specified extension", 
-          "name": "component_type", 
-          "types": [
-            "const char*"
-          ]
-        }, 
-        {
-          "doc": "The world associated owning the component. May be 0", 
-          "name": "world", 
-          "types": [
-            "void**"
-          ]
-        }, 
-        {
-          "doc": "The component data associated with the url. May be 0", 
-          "name": "component", 
-          "types": [
-            "void**"
-          ]
-        }, 
-        {
-          "doc": "The resolved url. May be 0", 
-          "name": "url", 
-          "types": [
-            "dmMessage::URL*"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Get component user data from a url", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetComponentFromLua"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Sends a script message. Wraps the message in a dmGameSystemDDF::ScriptMessage struct.", 
-      "parameters": [
-        {
-          "doc": "The ddf message to send", 
-          "name": "message", 
-          "types": [
-            "TDDFType*"
-          ]
-        }, 
-        {
-          "doc": "The sender", 
-          "name": "sender", 
-          "types": [
-            "dmMessage::Message*"
-          ]
-        }, 
-        {
-          "doc": "The receiver", 
-          "name": "receiver", 
-          "types": [
-            "dmMessage::Message*"
-          ]
-        }, 
-        {
-          "doc": "The function ref. 0 wil cause the \"on_message\" to be called", 
-          "name": "function_ref", 
-          "types": [
-            "int"
-          ]
-        }, 
-        {
-          "doc": "call dmScript::UnrefInInstance on the function_ref after the dmScript::PCall is made", 
-          "name": "unref_function_after_call", 
-          "types": [
-            "bool"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "true if successful", 
-          "name": "success", 
-          "types": [
-            "bool"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Sends a script message", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::PostDDF"
-    }, 
-    {
-      "replaces": "", 
       "description": "Callback when iterating over the properties for a component.", 
-      "parameters": [], 
+      "parameters": [
+        {
+          "doc": "the property iterator", 
+          "name": "pit", 
+          "types": [
+            "dmGameObject::SceneNodePropertyIterator"
+          ]
+        }, 
+        {
+          "doc": "the scene node", 
+          "name": "node", 
+          "types": [
+            "dmGameObject::SceneNode*"
+          ]
+        }
+      ], 
       "returnvalues": [], 
       "notes": [], 
       "brief": "Callback when iterating over the properties for a ...", 
@@ -1903,7 +1918,7 @@
       "error": "", 
       "tparams": [], 
       "type": "FUNCTION", 
-      "name": ""
+      "name": "ComponentIterProperties"
     }, 
     {
       "replaces": "", 

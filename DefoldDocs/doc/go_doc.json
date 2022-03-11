@@ -68,7 +68,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "This message enables the receiving component. All components are enabled by default, which means they will receive input, updates\nand be a part of the simulation. A component is disabled when it receives the <code>disable</code> message.\n<span class=\"icon-alert\"></span> Components that currently supports this message are:\n<ul>\n<li>Collection Proxy</li>\n<li>Collision Object</li>\n<li>Gui</li>\n<li>Label</li>\n<li>Spine Model</li>\n<li>Sprite</li>\n<li>Tile Grid</li>\n<li>Model</li>\n</ul>", 
+      "description": "This message enables the receiving component. All components are enabled by default, which means they will receive input, updates\nand be a part of the simulation. A component is disabled when it receives the <code>disable</code> message.\n<span class=\"icon-alert\"></span> Components that currently supports this message are:\n<ul>\n<li>Collection Proxy</li>\n<li>Collision Object</li>\n<li>Gui</li>\n<li>Label</li>\n<li>Spine Model</li>\n<li>Sprite</li>\n<li>Tile Grid</li>\n<li>Model</li>\n<li>Mesh</li>\n</ul>", 
       "parameters": [], 
       "returnvalues": [], 
       "notes": [], 
@@ -82,7 +82,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "This message disables the receiving component. All components are enabled by default, which means they will receive input, updates\nand be a part of the simulation. A component is disabled when it receives the <code>disable</code> message.\n<span class=\"icon-alert\"></span> Components that currently supports this message are:\n<ul>\n<li>Collection Proxy</li>\n<li>Collision Object</li>\n<li>Gui</li>\n<li>Label</li>\n<li>Spine Model</li>\n<li>Sprite</li>\n<li>Tile Grid</li>\n<li>Model</li>\n</ul>", 
+      "description": "This message disables the receiving component. All components are enabled by default, which means they will receive input, updates\nand be a part of the simulation. A component is disabled when it receives the <code>disable</code> message.\n<span class=\"icon-alert\"></span> Components that currently supports this message are:\n<ul>\n<li>Collection Proxy</li>\n<li>Collision Object</li>\n<li>Gui</li>\n<li>Label</li>\n<li>Spine Model</li>\n<li>Sprite</li>\n<li>Tile Grid</li>\n<li>Model</li>\n<li>Mesh</li>\n</ul>", 
       "parameters": [], 
       "returnvalues": [], 
       "notes": [], 
