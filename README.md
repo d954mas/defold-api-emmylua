@@ -17,14 +17,20 @@ Lua header is a valid lua files, which have all functions and variables that was
 
 # How to use it in any editor
 1)Install EmmyLua plugin. If editor have it.
+
 2)Download zip file with defold api from [releases](https://github.com/d954mas/IntelliJ-Defold-Api/releases).
+
 3)Extract zip file somewhere in your project. For example in headers folder.
 
 # How to use it in IntelliJ
 1)Install lua plugin. EmmyLua https://plugins.jetbrains.com/plugin/9768-emmylua
+
 2)Edit file associations. Press ctrl + shift + a. Then enter command Edit file associations. To lua language add .*script .*render_script .*gui_script.
+
 3)Download zip file with defold api from [releases](https://github.com/d954mas/IntelliJ-Defold-Api/releases).
+
 4)Add library to your project.(or you can extract zip file somewhere in your project)
+
 File/Project structure/libraries/lua zip library.
 
 ![2019-01-22_10-13-33](https://user-images.githubusercontent.com/2655263/51518291-7e6e5680-1e2e-11e9-81ad-9988cf9918ae.png)
@@ -32,11 +38,12 @@ File/Project structure/libraries/lua zip library.
 
 # How to generate headers.
 
-1)Download jar from [releases](https://github.com/d954mas/IntelliJ-Defold-Api/releases)
+1)Clone repository
 
-2)Run it. It will create a folder DefoldDocs
+2)Run main method from Main.java
+-it will download json docs and create lua files with api headers
 
-3)Compress DefoldDocs/api to zip 
+3)Compress DefoldDocs/api to zip. [OPTIONAL]
 
 
 # Example 
