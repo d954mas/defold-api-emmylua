@@ -49,7 +49,7 @@
           ]
         }, 
         {
-          "doc": "optional table with request parameters. Supported entries:\n<ul>\n<li><span class=\"type\">number</span> <code>timeout</code>: timeout in seconds</li>\n<li><span class=\"type\">string</span> <code>path</code>: path on disc where to download the file. Only overwrites the path if status is 200</li>\n<li><span class=\"type\">boolean</span> <code>ignore_cache</code>: don't return cached data if we get a 304</li>\n</ul>", 
+          "doc": "optional table with request parameters. Supported entries:\n<ul>\n<li><span class=\"type\">number</span> <code>timeout</code>: timeout in seconds</li>\n<li><span class=\"type\">string</span> <code>path</code>: path on disc where to download the file. Only overwrites the path if status is 200</li>\n<li><span class=\"type\">boolean</span> <code>ignore_cache</code>: don't return cached data if we get a 304</li>\n<li><span class=\"type\">boolean</span> <code>chunked_transfer</code>: use chunked transfer encoding for https requests larger than 16kb. Defaults to true.</li>\n</ul>", 
           "name": "[options]", 
           "types": [
             "table"

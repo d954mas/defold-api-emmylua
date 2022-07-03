@@ -450,6 +450,83 @@
     }, 
     {
       "replaces": "", 
+      "description": "Visibility status", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Visibility status", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "VISIBILITY_NONE"
+        }, 
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "VISIBILITY_FULL"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Visibility"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Visibility dispatch function callback.", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Visibility dispatch function callback.", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "the callback user data (registered with RenderListMakeDispatch())", 
+          "type": "void*", 
+          "name": "m_UserData"
+        }, 
+        {
+          "doc": "the render entry array", 
+          "type": "dmRender::RenderListEntry", 
+          "name": "m_Entries"
+        }, 
+        {
+          "doc": "the number of render entries in the array", 
+          "type": "uint32_t", 
+          "name": "m_NumEntries"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "STRUCT", 
+      "name": "RenderListVisibilityParams"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Render dispatch function callback.", 
+      "parameters": [
+        {
+          "doc": "the params", 
+          "name": "params", 
+          "types": [
+            "dmRender::RenderListDispatchParams"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Render dispatch function callback.", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "TYPEDEF", 
+      "name": "RenderListDispatchFn"
+    }, 
+    {
+      "replaces": "", 
       "description": "Render dispatch function callback.", 
       "parameters": [], 
       "returnvalues": [], 
@@ -542,9 +619,16 @@
         }, 
         {
           "doc": "the render batch callback function", 
-          "name": "fn", 
+          "name": "dispatch_fn", 
           "types": [
             "dmRender::RenderListDispatchFn"
+          ]
+        }, 
+        {
+          "doc": "the render list visibility callback function. May be 0", 
+          "name": "visibility_fn", 
+          "types": [
+            "dmRender::RenderListVisibilityFn"
           ]
         }, 
         {

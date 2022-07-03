@@ -1,7 +1,7 @@
 {
   "info": {
     "group": "SYSTEM", 
-    "description": "Rendering functions, messages and constants. The \"render\" namespace is\naccessible only from render scripts.\nThe rendering API is built on top of OpenGL ES 2.0, is a subset of the\nOpenGL computer graphics rendering API for rendering 2D and 3D computer\ngraphics. OpenGL ES 2.0 is supported on all our target platforms.\n<span class=\"icon-attention\"></span> It is possible to create materials and write shaders that\nrequire features not in OpenGL ES 2.0, but those will not work cross platform.", 
+    "description": "Rendering functions, messages and constants. The \"render\" namespace is\naccessible only from render scripts.\nThe rendering API was originally built on top of OpenGL ES 2.0, and it uses a subset of the\nOpenGL computer graphics rendering API for rendering 2D and 3D computer\ngraphics. Our current target is OpenGLES 3.0 with fallbacks to 2.0 on some platforms.\n<span class=\"icon-attention\"></span> It is possible to create materials and write shaders that\nrequire features not in OpenGL ES 2.0, but those will not work cross platform.", 
     "namespace": "render", 
     "brief": "Rendering API documentation", 
     "file": "", 
@@ -384,59 +384,115 @@
     }, 
     {
       "replaces": "", 
-      "description": "", 
+      "description": "May be nil if the format isn't supported", 
       "parameters": [], 
       "returnvalues": [], 
       "notes": [], 
-      "brief": "", 
+      "brief": "May be nil if the format isn't supported", 
       "examples": "", 
       "members": [], 
       "error": "", 
       "tparams": [], 
       "type": "VARIABLE", 
-      "name": "render.FORMAT_RGB_DXT1"
+      "name": "render.FORMAT_RGB16F"
     }, 
     {
       "replaces": "", 
-      "description": "", 
+      "description": "May be nil if the format isn't supported", 
       "parameters": [], 
       "returnvalues": [], 
       "notes": [], 
-      "brief": "", 
+      "brief": "May be nil if the format isn't supported", 
       "examples": "", 
       "members": [], 
       "error": "", 
       "tparams": [], 
       "type": "VARIABLE", 
-      "name": "render.FORMAT_RGBA_DXT1"
+      "name": "render.FORMAT_RGB32F"
     }, 
     {
       "replaces": "", 
-      "description": "", 
+      "description": "May be nil if the format isn't supported", 
       "parameters": [], 
       "returnvalues": [], 
       "notes": [], 
-      "brief": "", 
+      "brief": "May be nil if the format isn't supported", 
       "examples": "", 
       "members": [], 
       "error": "", 
       "tparams": [], 
       "type": "VARIABLE", 
-      "name": "render.FORMAT_RGBA_DXT3"
+      "name": "render.FORMAT_RGBA16F"
     }, 
     {
       "replaces": "", 
-      "description": "", 
+      "description": "May be nil if the format isn't supported", 
       "parameters": [], 
       "returnvalues": [], 
       "notes": [], 
-      "brief": "", 
+      "brief": "May be nil if the format isn't supported", 
       "examples": "", 
       "members": [], 
       "error": "", 
       "tparams": [], 
       "type": "VARIABLE", 
-      "name": "render.FORMAT_RGBA_DXT5"
+      "name": "render.FORMAT_RGBA32F"
+    }, 
+    {
+      "replaces": "", 
+      "description": "May be nil if the format isn't supported", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "May be nil if the format isn't supported", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "render.FORMAT_R16F"
+    }, 
+    {
+      "replaces": "", 
+      "description": "May be nil if the format isn't supported", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "May be nil if the format isn't supported", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "render.FORMAT_RG16F"
+    }, 
+    {
+      "replaces": "", 
+      "description": "May be nil if the format isn't supported", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "May be nil if the format isn't supported", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "render.FORMAT_R32F"
+    }, 
+    {
+      "replaces": "", 
+      "description": "May be nil if the format isn't supported", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "May be nil if the format isn't supported", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "VARIABLE", 
+      "name": "render.FORMAT_RG32F"
     }, 
     {
       "replaces": "", 
@@ -552,7 +608,7 @@
     }, 
     {
       "replaces": "", 
-      "description": "Creates a new render target according to the supplied\nspecification table.\nThe table should contain keys specifying which buffers should be created\nwith what parameters. Each buffer key should have a table value consisting\nof parameters. The following parameter keys are available:\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Values</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>format</code></td>\n<td><code>render.FORMAT_LUMINANCE</code><br/><code>render.FORMAT_RGB</code><br/><code>render.FORMAT_RGBA</code><br/> <code>render.FORMAT_RGB_DXT1</code><br/><code>render.FORMAT_RGBA_DXT1</code><br/><code>render.FORMAT_RGBA_DXT3</code><br/> <code>render.FORMAT_RGBA_DXT5</code><br/><code>render.FORMAT_DEPTH</code><br/><code>render.FORMAT_STENCIL</code><br/></td>\n</tr>\n<tr>\n<td><code>width</code></td>\n<td>number</td>\n</tr>\n<tr>\n<td><code>height</code></td>\n<td>number</td>\n</tr>\n<tr>\n<td><code>min_filter</code></td>\n<td><code>render.FILTER_LINEAR</code><br/><code>render.FILTER_NEAREST</code></td>\n</tr>\n<tr>\n<td><code>mag_filter</code></td>\n<td><code>render.FILTER_LINEAR</code><br/><code>render.FILTER_NEAREST</code></td>\n</tr>\n<tr>\n<td><code>u_wrap</code></td>\n<td><code>render.WRAP_CLAMP_TO_BORDER</code><br/><code>render.WRAP_CLAMP_TO_EDGE</code><br/><code>render.WRAP_MIRRORED_REPEAT</code><br/><code>render.WRAP_REPEAT</code><br/></td>\n</tr>\n<tr>\n<td><code>v_wrap</code></td>\n<td><code>render.WRAP_CLAMP_TO_BORDER</code><br/><code>render.WRAP_CLAMP_TO_EDGE</code><br/><code>render.WRAP_MIRRORED_REPEAT</code><br/><code>render.WRAP_REPEAT</code></td>\n</tr>\n</tbody>\n</table>", 
+      "description": "Creates a new render target according to the supplied\nspecification table.\nThe table should contain keys specifying which buffers should be created\nwith what parameters. Each buffer key should have a table value consisting\nof parameters. The following parameter keys are available:\n<table>\n<thead>\n<tr>\n<th>Key</th>\n<th>Values</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>format</code></td>\n<td><code>render.FORMAT_LUMINANCE</code><br/><code>render.FORMAT_RGB</code><br/><code>render.FORMAT_RGBA</code><br/><code>render.FORMAT_DEPTH</code><br/><code>render.FORMAT_STENCIL</code><br/><code>render.FORMAT_RGBA32F</code><br/><code>render.FORMAT_RGBA16F</code><br/></td>\n</tr>\n<tr>\n<td><code>width</code></td>\n<td>number</td>\n</tr>\n<tr>\n<td><code>height</code></td>\n<td>number</td>\n</tr>\n<tr>\n<td><code>min_filter</code></td>\n<td><code>render.FILTER_LINEAR</code><br/><code>render.FILTER_NEAREST</code></td>\n</tr>\n<tr>\n<td><code>mag_filter</code></td>\n<td><code>render.FILTER_LINEAR</code><br/><code>render.FILTER_NEAREST</code></td>\n</tr>\n<tr>\n<td><code>u_wrap</code></td>\n<td><code>render.WRAP_CLAMP_TO_BORDER</code><br/><code>render.WRAP_CLAMP_TO_EDGE</code><br/><code>render.WRAP_MIRRORED_REPEAT</code><br/><code>render.WRAP_REPEAT</code><br/></td>\n</tr>\n<tr>\n<td><code>v_wrap</code></td>\n<td><code>render.WRAP_CLAMP_TO_BORDER</code><br/><code>render.WRAP_CLAMP_TO_EDGE</code><br/><code>render.WRAP_MIRRORED_REPEAT</code><br/><code>render.WRAP_REPEAT</code></td>\n</tr>\n</tbody>\n</table>", 
       "parameters": [
         {
           "doc": "render target name", 
@@ -896,17 +952,17 @@
           ]
         }, 
         {
-          "doc": "optional constants to use while rendering", 
-          "name": "[constants]", 
+          "doc": "optional table with properties:\n<dl>\n<dt><code>frustum</code></dt>\n<dd><span class=\"type\">vmath.matrix4</span> A frustum matrix used to cull renderable items. (E.g. <code>local frustum = proj * view</code>). May be nil.</dd>\n<dt><code>constants</code></dt>\n<dd><span class=\"type\">constant_buffer</span> optional constants to use while rendering</dd>\n</dl>", 
+          "name": "[options]", 
           "types": [
-            "constant_buffer"
+            "table"
           ]
         }
       ], 
       "returnvalues": [], 
       "notes": [], 
       "brief": "draws all objects matching a predicate", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- define a predicate matching anything with material tag &quot;my_tag&quot;</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">predicate</span><span class=\"p\">({</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_tag&quot;</span><span class=\"p\">)})</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- draw everything in the my_pred predicate</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\nDraw predicate with constant:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">constant_buffer</span><span class=\"p\">()</span>\n<span class=\"n\">constants</span><span class=\"p\">.</span><span class=\"n\">tint</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">,</span> <span class=\"n\">constants</span><span class=\"p\">)</span>\n</pre></div>", 
+      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- define a predicate matching anything with material tag &quot;my_tag&quot;</span>\n    <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">predicate</span><span class=\"p\">({</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_tag&quot;</span><span class=\"p\">)})</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">dt</span><span class=\"p\">)</span>\n    <span class=\"c1\">-- draw everything in the my_pred predicate</span>\n    <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\nDraw predicate with constants:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">constant_buffer</span><span class=\"p\">()</span>\n<span class=\"n\">constants</span><span class=\"p\">.</span><span class=\"n\">tint</span> <span class=\"o\">=</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">constants</span><span class=\"p\">})</span>\n</pre></div>\n\n\nDraw with predicate and frustum culling:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">frustum</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">proj</span> <span class=\"o\">*</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">view</span>\n<span class=\"n\">render</span><span class=\"p\">.</span><span class=\"n\">draw</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_pred</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">frustum</span> <span class=\"o\">=</span> <span class=\"n\">frustum</span><span class=\"p\">,</span> <span class=\"n\">constants</span> <span class=\"o\">=</span> <span class=\"n\">constants</span><span class=\"p\">})</span>\n</pre></div>", 
       "members": [], 
       "error": "", 
       "tparams": [], 
@@ -916,7 +972,15 @@
     {
       "replaces": "render.draw_debug2d", 
       "description": "Draws all 3d debug graphics such as lines drawn with \"draw_line\" messages and physics visualization.", 
-      "parameters": [], 
+      "parameters": [
+        {
+          "doc": "optional table with properties:\n<dl>\n<dt><code>frustum</code></dt>\n<dd><span class=\"type\">vmath.matrix4</span> A frustum matrix used to cull renderable items. (E.g. <code>local frustum = proj * view</code>). May be nil.</dd>\n</dl>", 
+          "name": "[options]", 
+          "types": [
+            "table"
+          ]
+        }
+      ], 
       "returnvalues": [], 
       "notes": [], 
       "brief": "draws all 3d debug graphics", 

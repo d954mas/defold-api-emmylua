@@ -1,0 +1,12 @@
+{
+  "info": {
+    "group": "DEFOLD SDK", 
+    "description": "Functions for working with the resource archive.", 
+    "namespace": "dmResourceArchive", 
+    "brief": "Resource", 
+    "file": "dmsdk/resource/resource_archive.h", 
+    "path": "engine/resource/src/dmsdk/resource/resource_archive.h", 
+    "name": "ResourceArchive"
+  }, 
+  "elements": []
+}

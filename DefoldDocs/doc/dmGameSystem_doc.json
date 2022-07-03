@@ -1,14 +1,84 @@
 {
   "info": {
-    "group": "DEFOLD SDK", 
-    "description": "Built-in scripting functions.", 
+    "description": "<span class=\"file\">&lt;dmsdk/gamesystem/render_constants.h&gt;</span>\nApi for setting and updating component render constants", 
     "namespace": "dmGameSystem", 
-    "brief": "SDK Gui Component API documentation", 
-    "file": "dmsdk/gamesys/gui.h", 
-    "path": "engine/gamesys/src/dmsdk/gamesys/gui.h", 
-    "name": "GameSystem Gui"
+    "brief": "Component render constant API documentation", 
+    "file": "", 
+    "path": "", 
+    "name": "Component Render Constants"
   }, 
   "elements": [
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GuiNodeTypeDestroyFunction"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GuiNodeTypeDestroyFunction"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Registers a new gui node type to the Gui component", 
+      "parameters": [
+        {
+          "doc": "The unique C++ symbol name", 
+          "name": "symbol", 
+          "types": [
+            "C++ symbol name"
+          ]
+        }, 
+        {
+          "doc": "The name of the node type", 
+          "name": "name", 
+          "types": [
+            "const char*"
+          ]
+        }, 
+        {
+          "doc": "the create function", 
+          "name": "type_create_fn", 
+          "types": [
+            "GuiNodeTypeCreateFunction"
+          ]
+        }, 
+        {
+          "doc": "the destroy function. May be 0", 
+          "name": "type_destroy_fn", 
+          "types": [
+            "GuiNodeTypeDestroyFunction"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "Registers a new gui node type to the Gui component", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "DM_DECLARE_COMPGUI_TYPE"
+    }, 
     {
       "replaces": "", 
       "description": "Render constants handle", 
@@ -430,77 +500,6 @@
       "tparams": [], 
       "type": "TYPEDEF", 
       "name": "CompSetConstantCallback"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GuiNodeTypeDestroyFunction"
-    }, 
-    {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GuiNodeTypeDestroyFunction"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Registers a new gui node type to the Gui component", 
-      "parameters": [
-        {
-          "doc": "The unique C++ symbol name", 
-          "name": "symbol", 
-          "types": [
-            "C++ symbol name"
-          ]
-        }, 
-        {
-          "doc": "The name of the node type", 
-          "name": "name", 
-          "types": [
-            "const char*"
-          ]
-        }, 
-        {
-          "doc": "the create function", 
-          "name": "type_create_fn", 
-          "types": [
-            "GuiNodeTypeCreateFunction"
-          ]
-        }, 
-        {
-          "doc": "the destroy function. May be 0", 
-          "name": "type_destroy_fn", 
-          "types": [
-            "GuiNodeTypeDestroyFunction"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Registers a new gui node type to the Gui component", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "DM_DECLARE_COMPGUI_TYPE"
     }
   ]
 }

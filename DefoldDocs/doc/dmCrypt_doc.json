@@ -10,27 +10,72 @@
   "elements": [
     {
       "replaces": "", 
+      "description": "encryption algorithm enumeration", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "encryption algorithm enumeration", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "", 
+          "type": "", 
+          "name": "dmCrypt::ALGORITHM_XTEA"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Algorithm"
+    }, 
+    {
+      "replaces": "", 
+      "description": "result enumeration", 
+      "parameters": [], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "result enumeration", 
+      "examples": "", 
+      "members": [
+        {
+          "doc": "= 0", 
+          "type": "", 
+          "name": "dmCrypt::RESULT_OK"
+        }, 
+        {
+          "doc": "= 1", 
+          "type": "", 
+          "name": "dmCrypt::RESULT_ERROR"
+        }
+      ], 
+      "error": "", 
+      "tparams": [], 
+      "type": "ENUM", 
+      "name": "Result"
+    }, 
+    {
+      "replaces": "", 
       "description": "Hash buffer using SHA1", 
       "parameters": [
         {
-          "doc": "<div class=\"codehilite\"><pre><span></span>  The source data to hash\n</pre></div>", 
+          "doc": "The source data to hash", 
           "name": "buf", 
           "types": [
-            ""
+            "const uint8_t*"
           ]
         }, 
         {
           "doc": "The length of source data in bytes", 
           "name": "buflen", 
           "types": [
-            ""
+            "uint32_t"
           ]
         }, 
         {
           "doc": "The destination buffer (20 bytes)", 
           "name": "digest", 
           "types": [
-            ""
+            "uint8_t*"
           ]
         }
       ], 
@@ -49,24 +94,24 @@
       "description": "Hash buffer using SHA256", 
       "parameters": [
         {
-          "doc": "<div class=\"codehilite\"><pre><span></span>  The source data to hash\n</pre></div>", 
+          "doc": "The source data to hash", 
           "name": "buf", 
           "types": [
-            ""
+            "const uint8_t*"
           ]
         }, 
         {
-          "doc": "The length of source data in bytes", 
+          "doc": "key The length of source data in bytes", 
           "name": "buflen", 
           "types": [
-            ""
+            "uint32_t"
           ]
         }, 
         {
           "doc": "The destination buffer (32 bytes)", 
           "name": "digest", 
           "types": [
-            ""
+            "uint8_t*"
           ]
         }
       ], 
@@ -85,24 +130,24 @@
       "description": "Hash buffer using SHA512", 
       "parameters": [
         {
-          "doc": "<div class=\"codehilite\"><pre><span></span>  The source data to hash\n</pre></div>", 
+          "doc": "The source data to hash", 
           "name": "buf", 
           "types": [
-            ""
+            "const uint8_t*"
           ]
         }, 
         {
-          "doc": "The length of source data in bytes", 
+          "doc": "key The length of source data in bytes", 
           "name": "buflen", 
           "types": [
-            ""
+            "uint32_t"
           ]
         }, 
         {
           "doc": "The destination buffer (64 bytes)", 
           "name": "digest", 
           "types": [
-            ""
+            "uint8_t*"
           ]
         }
       ], 
@@ -121,24 +166,24 @@
       "description": "Hash buffer using MD5", 
       "parameters": [
         {
-          "doc": "<div class=\"codehilite\"><pre><span></span>  The source data to hash\n</pre></div>", 
+          "doc": "The source data to hash", 
           "name": "buf", 
           "types": [
-            ""
+            "const uint8_t*"
           ]
         }, 
         {
-          "doc": "The length of source data in bytes", 
+          "doc": "key The length of source data in bytes", 
           "name": "buflen", 
           "types": [
-            ""
+            "uint32_t"
           ]
         }, 
         {
           "doc": "The destination buffer (16 bytes)", 
           "name": "digest", 
           "types": [
-            ""
+            "const uint8_t*"
           ]
         }
       ], 
@@ -157,40 +202,40 @@
       "description": "Base64 encode a buffer", 
       "parameters": [
         {
-          "doc": "<div class=\"codehilite\"><pre><span></span>          The source data to encode\n</pre></div>", 
+          "doc": "The source data to encode", 
           "name": "src", 
           "types": [
-            ""
+            "const uint8_t*"
           ]
         }, 
         {
-          "doc": "<div class=\"codehilite\"><pre><span></span>      The length of source data in bytes\n</pre></div>", 
+          "doc": "key The length of source data in bytes", 
           "name": "src_len", 
           "types": [
-            ""
+            "uint32_t"
           ]
         }, 
         {
-          "doc": "<div class=\"codehilite\"><pre><span></span>          The destination buffer\n</pre></div>", 
+          "doc": "The destination buffer", 
           "name": "dst", 
           "types": [
-            ""
+            "uint8_t*"
           ]
         }, 
         {
           "doc": "In: The length of the destination in bytes. Out: The length of the encoded string.", 
           "name": "dst_len[in,out]", 
           "types": [
-            ""
+            "uint32_t*"
           ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "if the encoding went ok", 
-          "name": "true", 
+          "doc": "true if the encoding went ok", 
+          "name": "success", 
           "types": [
-            ""
+            "bool"
           ]
         }
       ], 
@@ -208,40 +253,40 @@
       "description": "Base64 decode a buffer", 
       "parameters": [
         {
-          "doc": "<div class=\"codehilite\"><pre><span></span>          The source data to encode\n</pre></div>", 
+          "doc": "The source data to encode", 
           "name": "src", 
           "types": [
-            ""
+            "const uint8_t*"
           ]
         }, 
         {
-          "doc": "<div class=\"codehilite\"><pre><span></span>      The length of source data in bytes\n</pre></div>", 
+          "doc": "key The length of source data in bytes", 
           "name": "src_len", 
           "types": [
-            ""
+            "uint32_t"
           ]
         }, 
         {
-          "doc": "<div class=\"codehilite\"><pre><span></span>          The destination buffer\n</pre></div>", 
+          "doc": "The destination buffer", 
           "name": "dst", 
           "types": [
-            ""
+            "uint8_t*"
           ]
         }, 
         {
           "doc": "In: The length of the destination in bytes. Out: The length of the decoded string.", 
           "name": "dst_len[in,out]", 
           "types": [
-            ""
+            "uint32_t*"
           ]
         }
       ], 
       "returnvalues": [
         {
-          "doc": "if the decoding went ok", 
-          "name": "true", 
+          "doc": "true if the decoding went ok", 
+          "name": "success", 
           "types": [
-            ""
+            "bool"
           ]
         }
       ], 

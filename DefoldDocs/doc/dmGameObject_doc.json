@@ -654,9 +654,19 @@
       "examples": "", 
       "members": [
         {
+          "doc": "the scaling factor what was applied on the dt (i.e. the collection update time scale)", 
+          "type": "float", 
+          "name": "m_TimeScale"
+        }, 
+        {
           "doc": "the delta time elapsed since last frame (seconds)", 
           "type": "float", 
           "name": "m_DT"
+        }, 
+        {
+          "doc": "Number of of calls per second to the FixedUpdate of each component", 
+          "type": "uint32_t", 
+          "name": "m_FixedUpdateFrequency"
         }
       ], 
       "error": "", 
@@ -2239,6 +2249,35 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "ComponentTypeSetUpdateFn"
+    }, 
+    {
+      "replaces": "", 
+      "description": "Set the component update callback. Called when it's time to update all component instances.", 
+      "parameters": [
+        {
+          "doc": "the type", 
+          "name": "type", 
+          "types": [
+            "ComponentType*"
+          ]
+        }, 
+        {
+          "doc": "callback", 
+          "name": "fn", 
+          "types": [
+            "ComponentsFixedUpdate"
+          ]
+        }
+      ], 
+      "returnvalues": [], 
+      "notes": [], 
+      "brief": "set the component update callback", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "ComponentTypeSetFixedUpdateFn"
     }, 
     {
       "replaces": "", 

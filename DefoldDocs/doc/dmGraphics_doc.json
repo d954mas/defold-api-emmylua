@@ -1430,6 +1430,110 @@
       "tparams": [], 
       "type": "FUNCTION", 
       "name": "GetMaxElementsIndices"
+    }, 
+    {
+      "replaces": "", 
+      "description": "check if an extension is supported", 
+      "parameters": [
+        {
+          "doc": "the context", 
+          "name": "context", 
+          "types": [
+            "dmGraphics::HContext"
+          ]
+        }, 
+        {
+          "doc": "the extension. Comparison is", 
+          "name": "extension", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "true if the extension was supported", 
+          "name": "result", 
+          "types": [
+            "bool"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "check if an extension is supported", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "IsExtensionSupported"
+    }, 
+    {
+      "replaces": "", 
+      "description": "", 
+      "parameters": [
+        {
+          "doc": "the context", 
+          "name": "context", 
+          "types": [
+            "dmGraphics::HContext"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the number of supported extensions", 
+          "name": "count", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetNumSupportedExtensions"
+    }, 
+    {
+      "replaces": "", 
+      "description": "get the supported extension", 
+      "parameters": [
+        {
+          "doc": "the context", 
+          "name": "context", 
+          "types": [
+            "dmGraphics::HContext"
+          ]
+        }, 
+        {
+          "doc": "the index of the extension", 
+          "name": "index", 
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ], 
+      "returnvalues": [
+        {
+          "doc": "the extension. 0 if index was out of bounds", 
+          "name": "extension", 
+          "types": [
+            "const char*"
+          ]
+        }
+      ], 
+      "notes": [], 
+      "brief": "get the supported extension", 
+      "examples": "", 
+      "members": [], 
+      "error": "", 
+      "tparams": [], 
+      "type": "FUNCTION", 
+      "name": "GetSupportedExtension"
     }
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "info": {
+    "group": "DEFOLD SDK", 
+    "description": "Intersection math structs and functions", 
+    "namespace": "dmIntersection", 
+    "brief": "Intersection math structs and functions", 
+    "file": "dmsdk/dlib/intersection.h", 
+    "path": "engine/dlib/src/dmsdk/dlib/intersection.h", 
+    "name": "Intersection structs and functions"
+  }, 
+  "elements": []
+}
