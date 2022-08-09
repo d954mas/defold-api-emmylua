@@ -11,6 +11,8 @@ It will help me make more items for defold.
 
 [![](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/d954mas)
 
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/d954mas)
+
 # How it work
 This app download docs for last defold version and generate lua headers.
 Lua header is a valid lua files, which have all functions and variables that was described in doc.
