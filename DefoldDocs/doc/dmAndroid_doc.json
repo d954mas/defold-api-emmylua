@@ -1,377 +1,386 @@
 {
-  "info": {
-    "group": "DEFOLD SDK", 
-    "description": "Android utility functions", 
-    "namespace": "dmAndroid", 
-    "brief": "SDK Android API documentation", 
-    "file": "dmsdk/dlib/android.h", 
-    "path": "engine/dlib/src/dmsdk/dlib/android.h", 
-    "name": "Android"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Struct attaching the JNI environment. Detaches the", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Struct attaching the JNI environment. Detaches the", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "CLASS", 
-      "name": "ThreadAttacher"
-    }, 
+      "type": "CLASS",
+      "name": "ThreadAttacher",
+      "brief": "Struct attaching the JNI environment. Detaches the",
+      "description": "Struct attaching the JNI environment. Detaches the",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "constructor", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "constructor", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"p\">{</span>\n  <span class=\"n\">ThreadAttacher</span> <span class=\"kr\">thread</span><span class=\"p\">;</span>\n  <span class=\"n\">SomeFunction</span><span class=\"p\">(</span> <span class=\"kr\">thread</span><span class=\"p\">.</span><span class=\"n\">GetEnv</span><span class=\"p\">()</span> <span class=\"p\">);</span>\n  <span class=\"c1\">// Automatically detaches</span>\n<span class=\"p\">}</span>\n</pre></div>\n\n\n<div class=\"codehilite\"><pre><span></span><span class=\"p\">{</span>\n  <span class=\"n\">ThreadAttacher</span> <span class=\"kr\">thread</span><span class=\"p\">;</span>\n  <span class=\"n\">JNIEnv</span><span class=\"o\">*</span> <span class=\"n\">env</span> <span class=\"o\">=</span> <span class=\"kr\">thread</span><span class=\"p\">.</span><span class=\"n\">GetEnv</span><span class=\"p\">();</span>\n  <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"o\">!</span><span class=\"n\">env</span><span class=\"p\">)</span>\n    <span class=\"k\">return</span><span class=\"p\">;</span>\n  <span class=\"p\">...</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ThreadAttacher"
-    }, 
+      "type": "FUNCTION",
+      "name": "ThreadAttacher",
+      "brief": "constructor",
+      "description": "constructor",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"n\">ThreadAttacher</span><span class=\"w\"> </span><span class=\"kr\">thread</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"n\">SomeFunction</span><span class=\"p\">(</span><span class=\"w\"> </span><span class=\"kr\">thread</span><span class=\"p\">.</span><span class=\"n\">GetEnv</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"c1\">// Automatically detaches</span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>\n\n<div class=\"codehilite\"><pre><span></span><code><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"n\">ThreadAttacher</span><span class=\"w\"> </span><span class=\"kr\">thread</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"n\">JNIEnv</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">env</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"kr\">thread</span><span class=\"p\">.</span><span class=\"n\">GetEnv</span><span class=\"p\">();</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"o\">!</span><span class=\"n\">env</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">return</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"p\">...</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Detaches the jni environment", 
-      "parameters": [], 
+      "type": "FUNCTION",
+      "name": "Detach",
+      "brief": "Detaches the jni environment",
+      "description": "Detaches the jni environment",
       "returnvalues": [
         {
-          "doc": "true if there was no java exceptions. False if there was an exception.", 
-          "name": "ok", 
+          "name": "ok",
+          "doc": "true if there was no java exceptions. False if there was an exception.",
           "types": [
             "bool"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Detaches the jni environment", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "Detach"
-    }, 
+      ],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Is the environment attached and valid?", 
-      "parameters": [], 
+      "type": "FUNCTION",
+      "name": "IsAttached",
+      "brief": "Is the environment attached and valid?",
+      "description": "Is the environment attached and valid?",
       "returnvalues": [
         {
-          "doc": "true if the environment is valid", 
-          "name": "isattached", 
+          "name": "isattached",
+          "doc": "true if the environment is valid",
           "types": [
             "bool"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Is the environment attached and valid?", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">Result</span> <span class=\"nf\">SomeFunc</span><span class=\"p\">()</span> <span class=\"p\">{</span>\n  <span class=\"n\">ThreadAttacher</span> <span class=\"kr\">thread</span><span class=\"p\">;</span>\n  <span class=\"n\">JNIEnv</span><span class=\"o\">*</span> <span class=\"n\">env</span> <span class=\"o\">=</span> <span class=\"kr\">thread</span><span class=\"p\">.</span><span class=\"n\">GetEnv</span><span class=\"p\">();</span>\n  <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"o\">!</span><span class=\"n\">env</span><span class=\"p\">)</span>\n    <span class=\"k\">return</span> <span class=\"n\">RESULT_ATTACH_FAILED</span><span class=\"p\">;</span>\n  <span class=\"p\">...</span> <span class=\"n\">calls</span> <span class=\"k\">using</span> <span class=\"n\">jni</span>\n  <span class=\"k\">return</span> <span class=\"kr\">thread</span><span class=\"p\">.</span><span class=\"n\">Detach</span><span class=\"p\">()</span> <span class=\"o\">?</span> <span class=\"nl\">RESULT_OK</span> <span class=\"p\">:</span> <span class=\"n\">RESULT_JNI_CALLS_FAILED</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "IsAttached"
-    }, 
+      ],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"nf\">SomeFunc</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"n\">ThreadAttacher</span><span class=\"w\"> </span><span class=\"kr\">thread</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"n\">JNIEnv</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">env</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"kr\">thread</span><span class=\"p\">.</span><span class=\"n\">GetEnv</span><span class=\"p\">();</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"o\">!</span><span class=\"n\">env</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">return</span><span class=\"w\"> </span><span class=\"n\">RESULT_ATTACH_FAILED</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"p\">...</span><span class=\"w\"> </span><span class=\"n\">calls</span><span class=\"w\"> </span><span class=\"k\">using</span><span class=\"w\"> </span><span class=\"n\">jni</span><span class=\"w\"></span>\n<span class=\"w\">  </span><span class=\"k\">return</span><span class=\"w\"> </span><span class=\"kr\">thread</span><span class=\"p\">.</span><span class=\"n\">Detach</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">?</span><span class=\"w\"> </span><span class=\"n\">RESULT_OK</span><span class=\"w\"> </span><span class=\"o\">:</span><span class=\"w\"> </span><span class=\"n\">RESULT_JNI_CALLS_FAILED</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Gets the JNI environment", 
-      "parameters": [], 
+      "type": "FUNCTION",
+      "name": "GetEnv",
+      "brief": "Gets the JNI environment",
+      "description": "Gets the JNI environment",
       "returnvalues": [
         {
-          "doc": "the attached environment", 
-          "name": "env", 
+          "name": "env",
+          "doc": "the attached environment",
           "types": [
             "JNIENV*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Gets the JNI environment", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetEnv"
-    }, 
+      ],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Gets the app native activity", 
-      "parameters": [], 
+      "type": "FUNCTION",
+      "name": "GetActivity",
+      "brief": "Gets the app native activity",
+      "description": "Gets the app native activity",
       "returnvalues": [
         {
-          "doc": "the app native activity", 
-          "name": "activity", 
+          "name": "activity",
+          "doc": "the app native activity",
           "types": [
             "ANativeActivity*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Gets the app native activity", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetActivity"
-    }, 
+      ],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Load a class", 
-      "parameters": [
-        {
-          "doc": "", 
-          "name": "env", 
-          "types": [
-            "JNIEnv*"
-          ]
-        }, 
-        {
-          "doc": "", 
-          "name": "class_name", 
-          "types": [
-            "const char*"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "LoadClass",
+      "brief": "Load a class",
+      "description": "Load a class",
       "returnvalues": [
         {
-          "doc": "the activity class loader", 
-          "name": "class", 
+          "name": "class",
+          "doc": "the activity class loader",
           "types": [
             "jclass"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Load a class", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "LoadClass"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Load a class", 
+      ],
       "parameters": [
         {
-          "doc": "", 
-          "name": "env", 
+          "name": "env",
+          "doc": "",
           "types": [
             "JNIEnv*"
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "activity", 
-          "types": [
-            "jobject"
-          ]
-        }, 
-        {
-          "doc": "", 
-          "name": "class_name", 
+          "name": "class_name",
+          "doc": "",
           "types": [
             "const char*"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "LoadClass",
+      "brief": "Load a class",
+      "description": "Load a class",
       "returnvalues": [
         {
-          "doc": "the activity class loader", 
-          "name": "class", 
+          "name": "class",
+          "doc": "the activity class loader",
           "types": [
             "jclass"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Load a class", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "LoadClass"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Activity result callback function type. Monitors events from the main activity.\nUsed with RegisterOnActivityResultListener() and UnregisterOnActivityResultListener()", 
+      ],
       "parameters": [
         {
-          "doc": "", 
-          "name": "env", 
+          "name": "env",
+          "doc": "",
           "types": [
             "JNIEnv*"
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "activity", 
+          "name": "activity",
+          "doc": "",
           "types": [
             "jobject"
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "request_code", 
+          "name": "class_name",
+          "doc": "",
+          "types": [
+            "const char*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "TYPEDEF",
+      "name": "OnActivityResult",
+      "brief": "OnActivityResult callback typedef",
+      "description": "Activity result callback function type. Monitors events from the main activity.\nUsed with RegisterOnActivityResultListener() and UnregisterOnActivityResultListener()",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "env",
+          "doc": "",
+          "types": [
+            "JNIEnv*"
+          ]
+        },
+        {
+          "name": "activity",
+          "doc": "",
+          "types": [
+            "jobject"
+          ]
+        },
+        {
+          "name": "request_code",
+          "doc": "",
           "types": [
             "int32_t"
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "result_code", 
+          "name": "result_code",
+          "doc": "",
           "types": [
             "int32_t"
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "result", 
+          "name": "result",
+          "doc": "",
           "types": [
             "void*"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "OnActivityResult callback typedef", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "OnActivityResult"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Registers an activity result callback. Multiple listeners are allowed.", 
+      "type": "FUNCTION",
+      "name": "RegisterOnActivityResultListener",
+      "brief": "register Android activity result callback",
+      "description": "Registers an activity result callback. Multiple listeners are allowed.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "listener", 
-          "name": "[type:dmAndroid::OnActivityResult]", 
+          "name": "[type:dmAndroid::OnActivityResult]",
+          "doc": "listener",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "register Android activity result callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "RegisterOnActivityResultListener"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "[icon:android] Only available on Android"
+      ]
+    },
     {
-      "replaces": "", 
-      "description": "Unregisters an activity result callback", 
+      "type": "FUNCTION",
+      "name": "UnregisterOnActivityResultListener",
+      "brief": "unregister Android activity result callback",
+      "description": "Unregisters an activity result callback",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "listener", 
-          "name": "[type:dmAndroid::OnActivityResult]", 
+          "name": "[type:dmAndroid::OnActivityResult]",
+          "doc": "listener",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "unregister Android activity result callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "UnregisterOnActivityResultListener"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "[icon:android] Only available on Android"
+      ]
+    },
     {
-      "replaces": "", 
-      "description": "onCreate callback function type.\nUsed with RegisterOnActivityCreateListener() and UnregisterOnActivityCreateListener()", 
+      "type": "TYPEDEF",
+      "name": "OnActivityCreate",
+      "brief": "OnActivityCreate callback typedef",
+      "description": "onCreate callback function type.\nUsed with RegisterOnActivityCreateListener() and UnregisterOnActivityCreateListener()",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "env", 
+          "name": "env",
+          "doc": "",
           "types": [
             "JNIEnv*"
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "activity", 
+          "name": "activity",
+          "doc": "",
           "types": [
             "jobject"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "OnActivityCreate callback typedef", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "OnActivityCreate"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Registers an onCreate callback. Multiple listeners are allowed.", 
+      "type": "FUNCTION",
+      "name": "RegisterOnActivityCreateListener",
+      "brief": "register Android onCreate callback",
+      "description": "Registers an onCreate callback. Multiple listeners are allowed.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "listener", 
-          "name": "[type:dmAndroid::OnActivityCreate]", 
+          "name": "[type:dmAndroid::OnActivityCreate]",
+          "doc": "listener",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "register Android onCreate callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "RegisterOnActivityCreateListener"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "[icon:android] Only available on Android"
+      ]
+    },
     {
-      "replaces": "", 
-      "description": "Unregisters an onCreate callback", 
+      "type": "FUNCTION",
+      "name": "UnregisterOnActivityCreateListener",
+      "brief": "unregister Android onCreate callback",
+      "description": "Unregisters an onCreate callback",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "listener", 
-          "name": "[type:dmAndroid::OnActivityCreate]", 
+          "name": "[type:dmAndroid::OnActivityCreate]",
+          "doc": "listener",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "unregister Android onCreate callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "UnregisterOnActivityCreateListener"
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "[icon:android] Only available on Android"
+      ]
     }
-  ]
+  ],
+  "info": {
+    "namespace": "dmAndroid",
+    "name": "Android",
+    "brief": "SDK Android API documentation",
+    "description": "Android utility functions",
+    "path": "engine/dlib/src/dmsdk/dlib/android.h",
+    "file": "dmsdk/dlib/android.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
 }

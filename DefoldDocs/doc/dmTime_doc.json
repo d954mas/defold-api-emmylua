@@ -1,57 +1,58 @@
 {
-  "info": {
-    "group": "DEFOLD SDK", 
-    "description": "Time functions.", 
-    "namespace": "dmTime", 
-    "brief": "SDK Time API documentation", 
-    "file": "dmsdk/dlib/time.h", 
-    "path": "engine/dlib/src/dmsdk/dlib/time.h", 
-    "name": "Time"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Get current time in microseconds since Jan. 1, 1970.", 
-      "parameters": [], 
+      "type": "FUNCTION",
+      "name": "dmTime::GetTime",
+      "brief": "get current time in microseconds",
+      "description": "Get current time in microseconds since Jan. 1, 1970.",
       "returnvalues": [
         {
-          "doc": "Current time in microseconds", 
-          "name": "result", 
+          "name": "result",
+          "doc": "Current time in microseconds",
           "types": [
             "uint64_t"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get current time in microseconds", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmTime::GetTime"
-    }, 
+      ],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Sleep thread with low precision (~10 milliseconds).", 
+      "type": "FUNCTION",
+      "name": "dmTime::Sleep",
+      "brief": "sleep thread with low precision (~10 milliseconds).",
+      "description": "Sleep thread with low precision (~10 milliseconds).",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "Time to sleep in microseconds", 
-          "name": "useconds", 
+          "name": "useconds",
+          "doc": "Time to sleep in microseconds",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sleep thread with low precision (~10 milliseconds).", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmTime::Sleep"
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "dmTime",
+    "name": "Time",
+    "brief": "SDK Time API documentation",
+    "description": "Time functions.",
+    "path": "engine/dlib/src/dmsdk/dlib/time.h",
+    "file": "dmsdk/dlib/time.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
 }

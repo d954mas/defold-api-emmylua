@@ -1,11 +1,12 @@
 {
+  "elements": [],
   "info": {
-    "description": "The Facebook module has been moved into an external extension library\navailable on <a href=\"https://defold.github.io/extension-facebook/\">here</a>.", 
-    "namespace": "facebook", 
-    "brief": "Facebook API documentation", 
-    "file": "", 
-    "path": "", 
-    "name": "Facebook"
-  }, 
-  "elements": []
+    "namespace": "facebook",
+    "name": "Facebook",
+    "brief": "Facebook API documentation",
+    "description": "The Facebook module has been moved into an external extension library\navailable on <a href=\"https://defold.github.io/extension-facebook/\">here</a>.",
+    "path": "",
+    "file": "",
+    "notes": []
+  }
 }

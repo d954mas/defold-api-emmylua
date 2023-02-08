@@ -1,27 +1,28 @@
 {
-  "info": {
-    "group": "DEFOLD SDK", 
-    "description": "Utility functions for shared library export/import", 
-    "namespace": "sharedlibrary", 
-    "brief": "SDK Shared library API documentation", 
-    "file": "dmsdk/dlib/shared_library.h", 
-    "path": "engine/dlib/src/dmsdk/dlib/shared_library.h", 
-    "name": "Shared Library"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Export and import functions, data, and objects to or from a DLL", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "storage-class attribute for shared library export/import", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_DLLEXPORT</span> <span class=\"kt\">uint64_t</span> <span class=\"nf\">dmHashBuffer64</span><span class=\"p\">(</span><span class=\"k\">const</span> <span class=\"kt\">void</span><span class=\"o\">*</span> <span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"kt\">uint32_t</span> <span class=\"n\">buffer_len</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_DLLEXPORT"
+      "type": "MACRO",
+      "name": "DM_DLLEXPORT",
+      "brief": "storage-class attribute for shared library export/import",
+      "description": "Export and import functions, data, and objects to or from a DLL",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_DLLEXPORT</span><span class=\"w\"> </span><span class=\"kt\">uint64_t</span><span class=\"w\"> </span><span class=\"n\">dmHashBuffer64</span><span class=\"p\">(</span><span class=\"k\">const</span><span class=\"w\"> </span><span class=\"kt\">void</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">buffer</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"kt\">uint32_t</span><span class=\"w\"> </span><span class=\"n\">buffer_len</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "sharedlibrary",
+    "name": "Shared Library",
+    "brief": "SDK Shared library API documentation",
+    "description": "Utility functions for shared library export/import",
+    "path": "engine/dlib/src/dmsdk/dlib/shared_library.h",
+    "file": "dmsdk/dlib/shared_library.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
 }

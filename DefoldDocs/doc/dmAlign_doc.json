@@ -1,64 +1,65 @@
 {
-  "info": {
-    "group": "DEFOLD SDK", 
-    "description": "Alignment macros. Use for compiler compatibility", 
-    "namespace": "dmAlign", 
-    "brief": "SDK Align API documentation", 
-    "file": "dmsdk/dlib/align.h", 
-    "path": "engine/dlib/src/dmsdk/dlib/align.h", 
-    "name": "Align"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Data structure alignment", 
+      "type": "MACRO",
+      "name": "DM_ALIGNED",
+      "brief": "data structure alignment macro",
+      "description": "Data structure alignment",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "number of bytes to align to", 
-          "name": "a", 
+          "name": "a",
+          "doc": "number of bytes to align to",
           "types": [
             "int"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "data structure alignment macro", 
-      "examples": "Align m_Data to 16 bytes alignment boundary:\n<div class=\"codehilite\"><pre><span></span><span class=\"kt\">int</span> <span class=\"nf\">DM_ALIGNED</span><span class=\"p\">(</span><span class=\"mi\">16</span><span class=\"p\">)</span> <span class=\"n\">m_Data</span><span class=\"p\">;</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_ALIGNED"
-    }, 
+      ],
+      "examples": "Align m_Data to 16 bytes alignment boundary:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"nf\">DM_ALIGNED</span><span class=\"p\">(</span><span class=\"mi\">16</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"n\">m_Data</span><span class=\"p\">;</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Align a value to a boundary", 
+      "type": "MACRO",
+      "name": "DM_ALIGN",
+      "brief": "value alignment macro",
+      "description": "Align a value to a boundary",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "value to align", 
-          "name": "x", 
+          "name": "x",
+          "doc": "value to align",
           "types": [
             "int"
           ]
-        }, 
+        },
         {
-          "doc": "alignment boundary", 
-          "name": "a", 
+          "name": "a",
+          "doc": "alignment boundary",
           "types": [
             "int"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "value alignment macro", 
-      "examples": "Align 24 to 16 alignment boundary. results is 32:\n<div class=\"codehilite\"><pre><span></span><span class=\"kt\">int</span> <span class=\"n\">result</span> <span class=\"o\">=</span> <span class=\"n\">DM_ALIGN</span><span class=\"p\">(</span><span class=\"mi\">24</span><span class=\"p\">,</span> <span class=\"mi\">16</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_ALIGN"
+      ],
+      "examples": "Align 24 to 16 alignment boundary. results is 32:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"n\">result</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">DM_ALIGN</span><span class=\"p\">(</span><span class=\"mi\">24</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">16</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "dmAlign",
+    "name": "Align",
+    "brief": "SDK Align API documentation",
+    "description": "Alignment macros. Use for compiler compatibility",
+    "path": "engine/dlib/src/dmsdk/dlib/align.h",
+    "file": "dmsdk/dlib/align.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
 }

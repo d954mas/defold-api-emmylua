@@ -1,397 +1,398 @@
 {
-  "info": {
-    "group": "LUA STANDARD LIBS", 
-    "description": "Documentation for the Lua io standard library.\nFrom <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.\nCopyright &copy; 2006-2012 Lua.org, PUC-Rio.\nFreely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.", 
-    "namespace": "io", 
-    "brief": "Lua io standard library", 
-    "file": "", 
-    "path": "", 
-    "name": "Io"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Equivalent to <code>file:close()</code>.\nWithout a file, closes the default output file.", 
+      "type": "FUNCTION",
+      "name": "io.close",
+      "brief": "closes a file",
+      "description": "Equivalent to <code>file:close()</code>.\nWithout a file, closes the default output file.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[file]", 
+          "name": "[file]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "closes a file", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "io.close"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Equivalent to <code>file:flush</code> over the default output file.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "flushes outstanding data to disk for the default output file", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "io.flush"
-    }, 
+      "type": "FUNCTION",
+      "name": "io.flush",
+      "brief": "flushes outstanding data to disk for the default output file",
+      "description": "Equivalent to <code>file:flush</code> over the default output file.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "When called with a file name, it opens the named file (in text mode),\nand sets its handle as the default input file.\nWhen called with a file handle,\nit simply sets this file handle as the default input file.\nWhen called without parameters,\nit returns the current default input file.\nIn case of errors this function raises the error,\ninstead of returning an error code.", 
+      "type": "FUNCTION",
+      "name": "io.input",
+      "brief": "opens filename for input in text mode",
+      "description": "When called with a file name, it opens the named file (in text mode),\nand sets its handle as the default input file.\nWhen called with a file handle,\nit simply sets this file handle as the default input file.\nWhen called without parameters,\nit returns the current default input file.\nIn case of errors this function raises the error,\ninstead of returning an error code.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[file]", 
+          "name": "[file]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "opens filename for input in text mode", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "io.input"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Opens the given file name in read mode\nand returns an iterator function that,\neach time it is called,\nreturns a new line from the file.\nTherefore, the construction\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">for</span> <span class=\"n\">line</span> <span class=\"k\">in</span> <span class=\"nb\">io.lines</span><span class=\"p\">(</span><span class=\"n\">filename</span><span class=\"p\">)</span> <span class=\"k\">do</span> <span class=\"n\">body</span> <span class=\"k\">end</span>\n</pre></div>\n\n\nwill iterate over all lines of the file.\nWhen the iterator function detects the end of file,\nit returns <span class=\"type\"> nil</span> (to finish the loop) and automatically closes the file.\nThe call <code>io.lines()</code> (with no file name) is equivalent\nto <code>io.input():lines()</code>;\nthat is, it iterates over the lines of the default input file.\nIn this case it does not close the file when the loop ends.", 
+      "type": "FUNCTION",
+      "name": "io.lines",
+      "brief": "returns an iterator function for reading a named file line-by-line",
+      "description": "Opens the given file name in read mode\nand returns an iterator function that,\neach time it is called,\nreturns a new line from the file.\nTherefore, the construction\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">for</span> <span class=\"n\">line</span> <span class=\"kr\">in</span> <span class=\"nb\">io.lines</span><span class=\"p\">(</span><span class=\"n\">filename</span><span class=\"p\">)</span> <span class=\"kr\">do</span> <span class=\"n\">body</span> <span class=\"kr\">end</span>\n</code></pre></div>\n\nwill iterate over all lines of the file.\nWhen the iterator function detects the end of file,\nit returns <span class=\"type\"> nil</span> (to finish the loop) and automatically closes the file.\nThe call <code>io.lines()</code> (with no file name) is equivalent\nto <code>io.input():lines()</code>;\nthat is, it iterates over the lines of the default input file.\nIn this case it does not close the file when the loop ends.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[filename]", 
+          "name": "[filename]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns an iterator function for reading a named file line-by-line", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "io.lines"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "This function opens a file,\nin the mode specified in the string mode.\nIt returns a new file handle,\nor, in case of errors, <span class=\"type\"> nil</span> plus an error message.\nThe mode string can be any of the following:\n<dl>\n<dt>\"r\"</dt>\n<dd>read mode (the default);</dd>\n<dt>\"w\"</dt>\n<dd>write mode;</dd>\n<dt>\"a\"</dt>\n<dd>append mode;</dd>\n<dt>\"r+\"</dt>\n<dd>update mode, all previous data is preserved;</dd>\n<dt>\"w+\"</dt>\n<dd>update mode, all previous data is erased;</dd>\n<dt>\"a+\"</dt>\n<dd>append update mode, previous data is preserved,\n  writing is only allowed at the end of file.</dd>\n</dl>\nThe mode string can also have a 'b' at the end,\nwhich is needed in some systems to open the file in binary mode.\nThis string is exactly what is used in the\nstandard C function fopen.", 
+      "type": "FUNCTION",
+      "name": "io.open",
+      "brief": "opens a file",
+      "description": "This function opens a file,\nin the mode specified in the string mode.\nIt returns a new file handle,\nor, in case of errors, <span class=\"type\"> nil</span> plus an error message.\nThe mode string can be any of the following:\n<dl>\n<dt>\"r\"</dt>\n<dd>read mode (the default);</dd>\n<dt>\"w\"</dt>\n<dd>write mode;</dd>\n<dt>\"a\"</dt>\n<dd>append mode;</dd>\n<dt>\"r+\"</dt>\n<dd>update mode, all previous data is preserved;</dd>\n<dt>\"w+\"</dt>\n<dd>update mode, all previous data is erased;</dd>\n<dt>\"a+\"</dt>\n<dd>append update mode, previous data is preserved,\n  writing is only allowed at the end of file.</dd>\n</dl>\nThe mode string can also have a 'b' at the end,\nwhich is needed in some systems to open the file in binary mode.\nThis string is exactly what is used in the\nstandard C function fopen.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "filename", 
+          "name": "filename",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[mode]", 
+          "name": "[mode]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "opens a file", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "io.open"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Similar to io.input, but operates over the default output file.", 
+      "type": "FUNCTION",
+      "name": "io.output",
+      "brief": "opens a file for output",
+      "description": "Similar to io.input, but operates over the default output file.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[file]", 
+          "name": "[file]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "opens a file for output", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "io.output"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Starts program prog in a separated process and returns\na file handle that you can use to read data from this program\n(if mode is <code>\"r\"</code>, the default)\nor to write data to this program\n(if mode is <code>\"w\"</code>).\nThis function is system dependent and is not available\non all platforms.", 
+      "type": "FUNCTION",
+      "name": "io.popen",
+      "brief": "creates a pipe and executes a command",
+      "description": "Starts program prog in a separated process and returns\na file handle that you can use to read data from this program\n(if mode is <code>\"r\"</code>, the default)\nor to write data to this program\n(if mode is <code>\"w\"</code>).\nThis function is system dependent and is not available\non all platforms.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "prog", 
+          "name": "prog",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[mode]", 
+          "name": "[mode]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "creates a pipe and executes a command", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "io.popen"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Equivalent to <code>io.input():read</code>.", 
+      "type": "FUNCTION",
+      "name": "io.read",
+      "brief": "reads from the default input file",
+      "description": "Equivalent to <code>io.input():read</code>.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "...", 
+          "name": "...",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reads from the default input file", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "io.read"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns a handle for a temporary file.\nThis file is opened in update mode\nand it is automatically removed when the program ends.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns a handle to a temporary file", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "io.tmpfile"
-    }, 
+      "type": "FUNCTION",
+      "name": "io.tmpfile",
+      "brief": "returns a handle to a temporary file",
+      "description": "Returns a handle for a temporary file.\nThis file is opened in update mode\nand it is automatically removed when the program ends.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Checks whether obj is a valid file handle.\nReturns the string <code>\"file\"</code> if obj is an open file handle,\n<code>\"closed file\"</code> if obj is a closed file handle,\nor <span class=\"type\"> nil</span> if obj is not a file handle.", 
+      "type": "FUNCTION",
+      "name": "io.type",
+      "brief": "returns type of file handle",
+      "description": "Checks whether obj is a valid file handle.\nReturns the string <code>\"file\"</code> if obj is an open file handle,\n<code>\"closed file\"</code> if obj is a closed file handle,\nor <span class=\"type\"> nil</span> if obj is not a file handle.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "obj", 
+          "name": "obj",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns type of file handle", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "io.type"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Equivalent to <code>io.output():write</code>.", 
+      "type": "FUNCTION",
+      "name": "io.write",
+      "brief": "writes to the default output file",
+      "description": "Equivalent to <code>io.output():write</code>.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "...", 
+          "name": "...",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "writes to the default output file", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "io.write"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Closes file.\nNote that files are automatically closed when\ntheir handles are garbage collected,\nbut that takes an unpredictable amount of time to happen.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "closes a file", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "file:close"
-    }, 
+      "type": "FUNCTION",
+      "name": "file:close",
+      "brief": "closes a file",
+      "description": "Closes file.\nNote that files are automatically closed when\ntheir handles are garbage collected,\nbut that takes an unpredictable amount of time to happen.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Saves any written data to file.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "flushes outstanding data to disk", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "file:flush"
-    }, 
+      "type": "FUNCTION",
+      "name": "file:flush",
+      "brief": "flushes outstanding data to disk",
+      "description": "Saves any written data to file.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns an iterator function that,\neach time it is called,\nreturns a new line from the file.\nTherefore, the construction\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">for</span> <span class=\"n\">line</span> <span class=\"k\">in</span> <span class=\"n\">file</span><span class=\"p\">:</span><span class=\"n\">lines</span><span class=\"p\">()</span> <span class=\"k\">do</span> <span class=\"n\">body</span> <span class=\"k\">end</span>\n</pre></div>\n\n\nwill iterate over all lines of the file.\n(Unlike io.lines, this function does not close the file\nwhen the loop ends.)", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns an iterator function for reading the file line-by-line", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "file:lines"
-    }, 
+      "type": "FUNCTION",
+      "name": "file:lines",
+      "brief": "returns an iterator function for reading the file line-by-line",
+      "description": "Returns an iterator function that,\neach time it is called,\nreturns a new line from the file.\nTherefore, the construction\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">for</span> <span class=\"n\">line</span> <span class=\"kr\">in</span> <span class=\"n\">file</span><span class=\"p\">:</span><span class=\"n\">lines</span><span class=\"p\">()</span> <span class=\"kr\">do</span> <span class=\"n\">body</span> <span class=\"kr\">end</span>\n</code></pre></div>\n\nwill iterate over all lines of the file.\n(Unlike io.lines, this function does not close the file\nwhen the loop ends.)",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Reads the file file,\naccording to the given formats, which specify what to read.\nFor each format,\nthe function returns a string (or a number) with the characters read,\nor <span class=\"type\"> nil</span> if it cannot read data with the specified format.\nWhen called without formats,\nit uses a default format that reads the entire next line\n(see below).\nThe available formats are\n<dl>\n<dt>\"*n\"</dt>\n<dd>reads a number;\nthis is the only format that returns a number instead of a string.</dd>\n<dt>\"*a\"</dt>\n<dd>reads the whole file, starting at the current position.\nOn end of file, it returns the empty string.</dd>\n<dt>\"*l\"</dt>\n<dd>reads the next line (skipping the end of line),\nreturning <span class=\"type\"> nil</span> on end of file.\nThis is the default format.</dd>\n<dt><em>number</em></dt>\n<dd>reads a string with up to this number of characters,\nreturning <span class=\"type\"> nil</span> on end of file.\nIf number is zero,\nit reads nothing and returns an empty string,\nor <span class=\"type\"> nil</span> on end of file.</dd>\n</dl>", 
+      "type": "FUNCTION",
+      "name": "file:read",
+      "brief": "reads the file according to the specified formats",
+      "description": "Reads the file file,\naccording to the given formats, which specify what to read.\nFor each format,\nthe function returns a string (or a number) with the characters read,\nor <span class=\"type\"> nil</span> if it cannot read data with the specified format.\nWhen called without formats,\nit uses a default format that reads the entire next line\n(see below).\nThe available formats are\n<dl>\n<dt>\"*n\"</dt>\n<dd>reads a number;\nthis is the only format that returns a number instead of a string.</dd>\n<dt>\"*a\"</dt>\n<dd>reads the whole file, starting at the current position.\nOn end of file, it returns the empty string.</dd>\n<dt>\"*l\"</dt>\n<dd>reads the next line (skipping the end of line),\nreturning <span class=\"type\"> nil</span> on end of file.\nThis is the default format.</dd>\n<dt><em>number</em></dt>\n<dd>reads a string with up to this number of characters,\nreturning <span class=\"type\"> nil</span> on end of file.\nIf number is zero,\nit reads nothing and returns an empty string,\nor <span class=\"type\"> nil</span> on end of file.</dd>\n</dl>",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "...", 
+          "name": "...",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reads the file according to the specified formats", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "file:read"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Sets and gets the file position,\nmeasured from the beginning of the file,\nto the position given by offset plus a base\nspecified by the string whence, as follows:\n<dl>\n<dt>\"set\"</dt>\n<dd>base is position 0 (beginning of the file);</dd>\n<dt>\"cur\"</dt>\n<dd>base is current position;</dd>\n<dt>\"end\"</dt>\n<dd>base is end of file;</dd>\n</dl>\nIn case of success, function seek returns the final file position,\nmeasured in bytes from the beginning of the file.\nIf this function fails, it returns <span class=\"type\"> nil</span>,\nplus a string describing the error.\nThe default value for whence is <code>\"cur\"</code>,\nand for offset is 0.\nTherefore, the call <code>file:seek()</code> returns the current\nfile position, without changing it;\nthe call <code>file:seek(\"set\")</code> sets the position to the\nbeginning of the file (and returns 0);\nand the call <code>file:seek(\"end\")</code> sets the position to the\nend of the file, and returns its size.", 
+      "type": "FUNCTION",
+      "name": "file:seek",
+      "brief": "sets and gets the current file position",
+      "description": "Sets and gets the file position,\nmeasured from the beginning of the file,\nto the position given by offset plus a base\nspecified by the string whence, as follows:\n<dl>\n<dt>\"set\"</dt>\n<dd>base is position 0 (beginning of the file);</dd>\n<dt>\"cur\"</dt>\n<dd>base is current position;</dd>\n<dt>\"end\"</dt>\n<dd>base is end of file;</dd>\n</dl>\nIn case of success, function seek returns the final file position,\nmeasured in bytes from the beginning of the file.\nIf this function fails, it returns <span class=\"type\"> nil</span>,\nplus a string describing the error.\nThe default value for whence is <code>\"cur\"</code>,\nand for offset is 0.\nTherefore, the call <code>file:seek()</code> returns the current\nfile position, without changing it;\nthe call <code>file:seek(\"set\")</code> sets the position to the\nbeginning of the file (and returns 0);\nand the call <code>file:seek(\"end\")</code> sets the position to the\nend of the file, and returns its size.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[whence]", 
+          "name": "[whence]",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[offset]", 
+          "name": "[offset]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets and gets the current file position", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "file:seek"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Sets the buffering mode for an output file.\nThere are three available modes:\n<dl>\n<dt>\"no\"</dt>\n<dd>no buffering; the result of any output operation appears immediately.</dd>\n<dt>\"full\"</dt>\n<dd>full buffering; output operation is performed only\nwhen the buffer is full (or when you explicitly <code>flush</code> the file\n).</dd>\n<dt>\"line\"</dt>\n<dd>line buffering; output is buffered until a newline is output\nor there is any input from some special files\n(such as a terminal device).</dd>\n</dl>\nFor the last two cases, size\nspecifies the size of the buffer, in bytes.\nThe default is an appropriate size.", 
+      "type": "FUNCTION",
+      "name": "file:setvbuf",
+      "brief": "sets the buffering mode for an output file",
+      "description": "Sets the buffering mode for an output file.\nThere are three available modes:\n<dl>\n<dt>\"no\"</dt>\n<dd>no buffering; the result of any output operation appears immediately.</dd>\n<dt>\"full\"</dt>\n<dd>full buffering; output operation is performed only\nwhen the buffer is full (or when you explicitly <code>flush</code> the file\n).</dd>\n<dt>\"line\"</dt>\n<dd>line buffering; output is buffered until a newline is output\nor there is any input from some special files\n(such as a terminal device).</dd>\n</dl>\nFor the last two cases, size\nspecifies the size of the buffer, in bytes.\nThe default is an appropriate size.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "mode", 
+          "name": "mode",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[size]", 
+          "name": "[size]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets the buffering mode for an output file", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "file:setvbuf"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Writes the value of each of its arguments to\nthe file.\nThe arguments must be strings or numbers.\nTo write other values,\nuse tostring or string.format before write.", 
+      "type": "FUNCTION",
+      "name": "file:write",
+      "brief": "writes to a file",
+      "description": "Writes the value of each of its arguments to\nthe file.\nThe arguments must be strings or numbers.\nTo write other values,\nuse tostring or string.format before write.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "...", 
+          "name": "...",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "writes to a file", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "file:write"
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "io",
+    "name": "Io",
+    "brief": "Lua io standard library",
+    "description": "Documentation for the Lua io standard library.\nFrom <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.\nCopyright &copy; 2006-2012 Lua.org, PUC-Rio.\nFreely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.",
+    "path": "",
+    "file": "",
+    "notes": [],
+    "group": "LUA STANDARD LIBS"
+  }
 }

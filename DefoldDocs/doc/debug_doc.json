@@ -1,424 +1,425 @@
 {
-  "info": {
-    "group": "LUA STANDARD LIBS", 
-    "description": "Documentation for the Lua debug standard library.\nFrom <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.\nCopyright &copy; 2006-2012 Lua.org, PUC-Rio.\nFreely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.", 
-    "namespace": "debug", 
-    "brief": "Lua debug standard library", 
-    "file": "", 
-    "path": "", 
-    "name": "Debug"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Enters an interactive mode with the user,\nrunning each string that the user enters.\nUsing simple commands and other debug facilities,\nthe user can inspect global and local variables,\nchange their values, evaluate expressions, and so on.\nA line containing only the word cont finishes this function,\nso that the caller continues its execution.\nNote that commands for debug.debug are not lexically nested\nwithin any function, and so have no direct access to local variables.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "enters interactive debugging", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "debug.debug"
-    }, 
+      "type": "FUNCTION",
+      "name": "debug.debug",
+      "brief": "enters interactive debugging",
+      "description": "Enters an interactive mode with the user,\nrunning each string that the user enters.\nUsing simple commands and other debug facilities,\nthe user can inspect global and local variables,\nchange their values, evaluate expressions, and so on.\nA line containing only the word cont finishes this function,\nso that the caller continues its execution.\nNote that commands for debug.debug are not lexically nested\nwithin any function, and so have no direct access to local variables.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns the environment of object o.", 
+      "type": "FUNCTION",
+      "name": "debug.getfenv",
+      "brief": "returns the environment of an object",
+      "description": "Returns the environment of object o.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "o", 
+          "name": "o",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns the environment of an object", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "debug.getfenv"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns the current hook settings of the thread, as three values:\nthe current hook function, the current hook mask,\nand the current hook count\n(as set by the debug.sethook function).", 
+      "type": "FUNCTION",
+      "name": "debug.gethook",
+      "brief": "returns the current hook settings",
+      "description": "Returns the current hook settings of the thread, as three values:\nthe current hook function, the current hook mask,\nand the current hook count\n(as set by the debug.sethook function).",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[thread]", 
+          "name": "[thread]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns the current hook settings", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "debug.gethook"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns a table with information about a function.\nYou can give the function directly,\nor you can give a number as the value of function,\nwhich means the function running at level function of the call stack\nof the given thread:\nlevel 0 is the current function (getinfo itself);\nlevel 1 is the function that called getinfo;\nand so on.\nIf function is a number larger than the number of active functions,\nthen getinfo returns <span class=\"type\"> nil</span>.\nThe returned table can contain all the fields returned by lua_getinfo,\nwith the string what describing which fields to fill in.\nThe default for what is to get all information available,\nexcept the table of valid lines.\nIf present,\nthe option 'f'\nadds a field named func with the function itself.\nIf present,\nthe option 'L'\nadds a field named activelines with the table of\nvalid lines.\nFor instance, the expression <code>debug.getinfo(1,\"n\").name</code> returns\na table with a name for the current function,\nif a reasonable name can be found,\nand the expression <code>debug.getinfo(print)</code>\nreturns a table with all available information\nabout the print function.", 
+      "type": "FUNCTION",
+      "name": "debug.getinfo",
+      "brief": "returns a table with information about a function",
+      "description": "Returns a table with information about a function.\nYou can give the function directly,\nor you can give a number as the value of function,\nwhich means the function running at level function of the call stack\nof the given thread:\nlevel 0 is the current function (getinfo itself);\nlevel 1 is the function that called getinfo;\nand so on.\nIf function is a number larger than the number of active functions,\nthen getinfo returns <span class=\"type\"> nil</span>.\nThe returned table can contain all the fields returned by lua_getinfo,\nwith the string what describing which fields to fill in.\nThe default for what is to get all information available,\nexcept the table of valid lines.\nIf present,\nthe option 'f'\nadds a field named func with the function itself.\nIf present,\nthe option 'L'\nadds a field named activelines with the table of\nvalid lines.\nFor instance, the expression <code>debug.getinfo(1,\"n\").name</code> returns\na table with a name for the current function,\nif a reasonable name can be found,\nand the expression <code>debug.getinfo(print)</code>\nreturns a table with all available information\nabout the print function.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[thread]", 
+          "name": "[thread]",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "function", 
+          "name": "function",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[what]", 
+          "name": "[what]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns a table with information about a function", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "debug.getinfo"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "This function returns the name and the value of the local variable\nwith index local of the function at level level of the stack.\n(The first parameter or local variable has index 1, and so on,\nuntil the last active local variable.)\nThe function returns <span class=\"type\"> nil</span> if there is no local\nvariable with the given index,\nand raises an error when called with a level out of range.\n(You can call debug.getinfo to check whether the level is valid.)\nVariable names starting with '(' (open parentheses)\nrepresent internal variables\n(loop control variables, temporaries, and C function locals).", 
+      "type": "FUNCTION",
+      "name": "debug.getlocal",
+      "brief": "returns name and value of a local variable",
+      "description": "This function returns the name and the value of the local variable\nwith index local of the function at level level of the stack.\n(The first parameter or local variable has index 1, and so on,\nuntil the last active local variable.)\nThe function returns <span class=\"type\"> nil</span> if there is no local\nvariable with the given index,\nand raises an error when called with a level out of range.\n(You can call debug.getinfo to check whether the level is valid.)\nVariable names starting with '(' (open parentheses)\nrepresent internal variables\n(loop control variables, temporaries, and C function locals).",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[thread]", 
+          "name": "[thread]",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "level", 
+          "name": "level",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "local", 
+          "name": "local",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns name and value of a local variable", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "debug.getlocal"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns the metatable of the given object\nor <span class=\"type\"> nil</span> if it does not have a metatable.", 
+      "type": "FUNCTION",
+      "name": "debug.getmetatable",
+      "brief": "returns the metatable of the given object",
+      "description": "Returns the metatable of the given object\nor <span class=\"type\"> nil</span> if it does not have a metatable.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "object", 
+          "name": "object",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns the metatable of the given object", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "debug.getmetatable"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns the registry table .", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns the registry table", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "debug.getregistry"
-    }, 
+      "type": "FUNCTION",
+      "name": "debug.getregistry",
+      "brief": "returns the registry table",
+      "description": "Returns the registry table .",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "This function returns the name and the value of the upvalue\nwith index up of the function func.\nThe function returns <span class=\"type\"> nil</span> if there is no upvalue with the given index.", 
+      "type": "FUNCTION",
+      "name": "debug.getupvalue",
+      "brief": "returns the name and value of an upvalue",
+      "description": "This function returns the name and the value of the upvalue\nwith index up of the function func.\nThe function returns <span class=\"type\"> nil</span> if there is no upvalue with the given index.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "func", 
+          "name": "func",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "up", 
+          "name": "up",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns the name and value of an upvalue", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "debug.getupvalue"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Sets the environment of the given object to the given table.\nReturns object.", 
+      "type": "FUNCTION",
+      "name": "debug.setfenv",
+      "brief": "sets the environment of an object",
+      "description": "Sets the environment of the given object to the given table.\nReturns object.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "object", 
+          "name": "object",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "table", 
+          "name": "table",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets the environment of an object", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "debug.setfenv"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Sets the given function as a hook.\nThe string mask and the number count describe\nwhen the hook will be called.\nThe string mask may have the following characters,\nwith the given meaning:\n<dl>\n<dt><code>\"c\"</code></dt>\n<dd>the hook is called every time Lua calls a function;</dd>\n<dt><code>\"r\"</code></dt>\n<dd>the hook is called every time Lua returns from a function;</dd>\n<dt><code>\"l\"</code></dt>\n<dd>the hook is called every time Lua enters a new line of code.</dd>\n</dl>\nWith a count different from zero,\nthe hook is called after every count instructions.\nWhen called without arguments,\ndebug.sethook turns off the hook.\nWhen the hook is called, its first parameter is a string\ndescribing the event that has triggered its call:\n<code>\"call\"</code>, <code>\"return\"</code> (or <code>\"tail return\"</code>,\nwhen simulating a return from a tail call),\n<code>\"line\"</code>, and <code>\"count\"</code>.\nFor line events,\nthe hook also gets the new line number as its second parameter.\nInside a hook,\nyou can call getinfo with level 2 to get more information about\nthe running function\n(level 0 is the getinfo function,\nand level 1 is the hook function),\nunless the event is <code>\"tail return\"</code>.\nIn this case, Lua is only simulating the return,\nand a call to getinfo will return invalid data.", 
+      "type": "FUNCTION",
+      "name": "debug.sethook",
+      "brief": "sets a debug hook function",
+      "description": "Sets the given function as a hook.\nThe string mask and the number count describe\nwhen the hook will be called.\nThe string mask may have the following characters,\nwith the given meaning:\n<dl>\n<dt><code>\"c\"</code></dt>\n<dd>the hook is called every time Lua calls a function;</dd>\n<dt><code>\"r\"</code></dt>\n<dd>the hook is called every time Lua returns from a function;</dd>\n<dt><code>\"l\"</code></dt>\n<dd>the hook is called every time Lua enters a new line of code.</dd>\n</dl>\nWith a count different from zero,\nthe hook is called after every count instructions.\nWhen called without arguments,\ndebug.sethook turns off the hook.\nWhen the hook is called, its first parameter is a string\ndescribing the event that has triggered its call:\n<code>\"call\"</code>, <code>\"return\"</code> (or <code>\"tail return\"</code>,\nwhen simulating a return from a tail call),\n<code>\"line\"</code>, and <code>\"count\"</code>.\nFor line events,\nthe hook also gets the new line number as its second parameter.\nInside a hook,\nyou can call getinfo with level 2 to get more information about\nthe running function\n(level 0 is the getinfo function,\nand level 1 is the hook function),\nunless the event is <code>\"tail return\"</code>.\nIn this case, Lua is only simulating the return,\nand a call to getinfo will return invalid data.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[thread]", 
+          "name": "[thread]",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "hook", 
+          "name": "hook",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "mask", 
+          "name": "mask",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[count]", 
+          "name": "[count]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets a debug hook function", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "debug.sethook"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "This function assigns the value value to the local variable\nwith index local of the function at level level of the stack.\nThe function returns <span class=\"type\"> nil</span> if there is no local\nvariable with the given index,\nand raises an error when called with a level out of range.\n(You can call getinfo to check whether the level is valid.)\nOtherwise, it returns the name of the local variable.", 
+      "type": "FUNCTION",
+      "name": "debug.setlocal",
+      "brief": "sets the value of the local variable",
+      "description": "This function assigns the value value to the local variable\nwith index local of the function at level level of the stack.\nThe function returns <span class=\"type\"> nil</span> if there is no local\nvariable with the given index,\nand raises an error when called with a level out of range.\n(You can call getinfo to check whether the level is valid.)\nOtherwise, it returns the name of the local variable.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[thread]", 
+          "name": "[thread]",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "level", 
+          "name": "level",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "local", 
+          "name": "local",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "value", 
+          "name": "value",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets the value of the local variable", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "debug.setlocal"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Sets the metatable for the given object to the given table\n(which can be <span class=\"type\"> nil</span>).", 
+      "type": "FUNCTION",
+      "name": "debug.setmetatable",
+      "brief": "sets the metatable for an object",
+      "description": "Sets the metatable for the given object to the given table\n(which can be <span class=\"type\"> nil</span>).",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "object", 
+          "name": "object",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "table", 
+          "name": "table",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets the metatable for an object", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "debug.setmetatable"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "This function assigns the value value to the upvalue\nwith index up of the function func.\nThe function returns <span class=\"type\"> nil</span> if there is no upvalue\nwith the given index.\nOtherwise, it returns the name of the upvalue.", 
+      "type": "FUNCTION",
+      "name": "debug.setupvalue",
+      "brief": "sets an upvalue for a function",
+      "description": "This function assigns the value value to the upvalue\nwith index up of the function func.\nThe function returns <span class=\"type\"> nil</span> if there is no upvalue\nwith the given index.\nOtherwise, it returns the name of the upvalue.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "func", 
+          "name": "func",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "up", 
+          "name": "up",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "value", 
+          "name": "value",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets an upvalue for a function", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "debug.setupvalue"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns a string with a traceback of the call stack.\nAn optional message string is appended\nat the beginning of the traceback.\nAn optional level number tells at which level\nto start the traceback\n(default is 1, the function calling traceback).", 
+      "type": "FUNCTION",
+      "name": "debug.traceback",
+      "brief": "returns a string with a traceback of the stack call",
+      "description": "Returns a string with a traceback of the call stack.\nAn optional message string is appended\nat the beginning of the traceback.\nAn optional level number tells at which level\nto start the traceback\n(default is 1, the function calling traceback).",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[thread]", 
+          "name": "[thread]",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[message]", 
+          "name": "[message]",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[level]", 
+          "name": "[level]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns a string with a traceback of the stack call", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "debug.traceback"
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "debug",
+    "name": "Debug",
+    "brief": "Lua debug standard library",
+    "description": "Documentation for the Lua debug standard library.\nFrom <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.\nCopyright &copy; 2006-2012 Lua.org, PUC-Rio.\nFreely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.",
+    "path": "",
+    "file": "",
+    "notes": [],
+    "group": "LUA STANDARD LIBS"
+  }
 }

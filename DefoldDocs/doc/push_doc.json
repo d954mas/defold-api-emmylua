@@ -1,11 +1,12 @@
 {
+  "elements": [],
   "info": {
-    "description": "The Push notifications module has been moved into an external extension library\navailable on <a href=\"https://defold.github.io/extension-push/\">here</a>.", 
-    "namespace": "push", 
-    "brief": "Push notifications API documentation", 
-    "file": "", 
-    "path": "", 
-    "name": "Push notifications"
-  }, 
-  "elements": []
+    "namespace": "push",
+    "name": "Push notifications",
+    "brief": "Push notifications API documentation",
+    "description": "The Push notifications module has been moved into an external extension library\navailable on <a href=\"https://defold.github.io/extension-push/\">here</a>.",
+    "path": "",
+    "file": "",
+    "notes": []
+  }
 }

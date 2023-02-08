@@ -1,175 +1,178 @@
 {
-  "info": {
-    "group": "DEFOLD SDK", 
-    "description": "SDK Engine extension API documentation", 
-    "namespace": "dmEngine", 
-    "brief": "SDK Engine extension API documentation", 
-    "file": "dmsdk/engine/extension.h", 
-    "path": "engine/dlib/src/dmsdk/engine/extension.h", 
-    "name": "Engine"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "define for debug builds", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "define for debug builds", 
-      "examples": "Only enable code in debug builds\n<div class=\"codehilite\"><pre><span></span><span class=\"cp\">#if defined(DM_DEBUG)</span>\n    <span class=\"c1\">// ...</span>\n<span class=\"cp\">#endif</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_DEBUG"
-    }, 
+      "type": "MACRO",
+      "name": "DM_DEBUG",
+      "brief": "define for debug builds",
+      "description": "define for debug builds",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "Only enable code in debug builds\n<div class=\"codehilite\"><pre><span></span><code><span class=\"cp\">#if defined(DM_DEBUG)</span>\n<span class=\"w\">    </span><span class=\"c1\">// ...</span>\n<span class=\"cp\">#endif</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "define for release builds", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "define for release builds", 
-      "examples": "Only enable code in release builds\n<div class=\"codehilite\"><pre><span></span><span class=\"cp\">#if defined(DM_RELEASE)</span>\n    <span class=\"c1\">// ...</span>\n<span class=\"cp\">#endif</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_RELEASE"
-    }, 
+      "type": "MACRO",
+      "name": "DM_RELEASE",
+      "brief": "define for release builds",
+      "description": "define for release builds",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "Only enable code in release builds\n<div class=\"codehilite\"><pre><span></span><code><span class=\"cp\">#if defined(DM_RELEASE)</span>\n<span class=\"w\">    </span><span class=\"c1\">// ...</span>\n<span class=\"cp\">#endif</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "define for headless builds", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "define for headless builds", 
-      "examples": "Only enable code in headless builds\n<div class=\"codehilite\"><pre><span></span><span class=\"cp\">#if defined(DM_HEADLESS)</span>\n    <span class=\"c1\">// ...</span>\n<span class=\"cp\">#endif</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_HEADLESS"
-    }, 
+      "type": "MACRO",
+      "name": "DM_HEADLESS",
+      "brief": "define for headless builds",
+      "description": "define for headless builds",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "Only enable code in headless builds\n<div class=\"codehilite\"><pre><span></span><code><span class=\"cp\">#if defined(DM_HEADLESS)</span>\n<span class=\"w\">    </span><span class=\"c1\">// ...</span>\n<span class=\"cp\">#endif</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "get the config file", 
-      "parameters": [
-        {
-          "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize", 
-          "name": "app_params", 
-          "types": [
-            "dmExtension::AppParams*"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "GetConfigFile",
+      "brief": "get the config file",
+      "description": "get the config file",
       "returnvalues": [
         {
-          "doc": "The game project config file", 
-          "name": "config", 
+          "name": "config",
+          "doc": "The game project config file",
           "types": [
             "dmConfigFile::HConfig"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get the config file", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetConfigFile"
-    }, 
-    {
-      "replaces": "", 
-      "description": "get the web server handle", 
+      ],
       "parameters": [
         {
-          "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize", 
-          "name": "app_params", 
+          "name": "app_params",
+          "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize",
           "types": [
             "dmExtension::AppParams*"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetWebServer",
+      "brief": "get the web server handle",
+      "description": "get the web server handle",
       "returnvalues": [
         {
-          "doc": "The web server handle", 
-          "name": "server", 
+          "name": "server",
+          "doc": "The web server handle",
           "types": [
             "dmWebServer::HServer"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get the web server handle", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetWebServer"
-    }, 
-    {
-      "replaces": "", 
-      "description": "get the game object register", 
+      ],
       "parameters": [
         {
-          "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize", 
-          "name": "app_params", 
+          "name": "app_params",
+          "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize",
           "types": [
             "dmExtension::AppParams*"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Only valid in debug builds"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetGameObjectRegister",
+      "brief": "get the game object register",
+      "description": "get the game object register",
       "returnvalues": [
         {
-          "doc": "The game object register", 
-          "name": "register", 
+          "name": "register",
+          "doc": "The game object register",
           "types": [
             "dmGameObject::HRegister"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get the game object register", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetGameObjectRegister"
-    }, 
-    {
-      "replaces": "", 
-      "description": "get the hid context", 
+      ],
       "parameters": [
         {
-          "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize", 
-          "name": "app_params", 
+          "name": "app_params",
+          "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize",
           "types": [
             "dmExtension::AppParams*"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetHIDContext",
+      "brief": "get the hid context",
+      "description": "get the hid context",
       "returnvalues": [
         {
-          "doc": "The hid context", 
-          "name": "context", 
+          "name": "context",
+          "doc": "The hid context",
           "types": [
             "dmHID::HContext"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get the hid context", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetHIDContext"
+      ],
+      "parameters": [
+        {
+          "name": "app_params",
+          "doc": "The app params sent to the extension dmExtension::AppInitialize / dmExtension::AppInitialize",
+          "types": [
+            "dmExtension::AppParams*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "dmEngine",
+    "name": "Engine",
+    "brief": "SDK Engine extension API documentation",
+    "description": "SDK Engine extension API documentation",
+    "path": "engine/dlib/src/dmsdk/engine/extension.h",
+    "file": "dmsdk/engine/extension.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
 }

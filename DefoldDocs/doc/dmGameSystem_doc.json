@@ -1,505 +1,508 @@
 {
-  "info": {
-    "description": "<span class=\"file\">&lt;dmsdk/gamesystem/render_constants.h&gt;</span>\nApi for setting and updating component render constants", 
-    "namespace": "dmGameSystem", 
-    "brief": "Component render constant API documentation", 
-    "file": "", 
-    "path": "", 
-    "name": "Component Render Constants"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GuiNodeTypeDestroyFunction"
-    }, 
+      "type": "FUNCTION",
+      "name": "GuiNodeTypeDestroyFunction",
+      "brief": "",
+      "description": "",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GuiNodeTypeDestroyFunction"
-    }, 
+      "type": "FUNCTION",
+      "name": "GuiNodeTypeDestroyFunction",
+      "brief": "",
+      "description": "",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Registers a new gui node type to the Gui component", 
+      "type": "FUNCTION",
+      "name": "DM_DECLARE_COMPGUI_TYPE",
+      "brief": "Registers a new gui node type to the Gui component",
+      "description": "Registers a new gui node type to the Gui component",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "The unique C++ symbol name", 
-          "name": "symbol", 
+          "name": "symbol",
+          "doc": "The unique C++ symbol name",
           "types": [
             "C++ symbol name"
           ]
-        }, 
+        },
         {
-          "doc": "The name of the node type", 
-          "name": "name", 
+          "name": "name",
+          "doc": "The name of the node type",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "the create function", 
-          "name": "type_create_fn", 
+          "name": "type_create_fn",
+          "doc": "the create function",
           "types": [
             "GuiNodeTypeCreateFunction"
           ]
-        }, 
+        },
         {
-          "doc": "the destroy function. May be 0", 
-          "name": "type_destroy_fn", 
+          "name": "type_destroy_fn",
+          "doc": "the destroy function. May be 0",
           "types": [
             "GuiNodeTypeDestroyFunction"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Registers a new gui node type to the Gui component", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "DM_DECLARE_COMPGUI_TYPE"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Render constants handle", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Render constants handle", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "HComponentRenderConstants"
-    }, 
+      "type": "TYPEDEF",
+      "name": "HComponentRenderConstants",
+      "brief": "Render constants handle",
+      "description": "Render constants handle",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Create a new HComponentRenderConstants container", 
-      "parameters": [], 
+      "type": "FUNCTION",
+      "name": "CreateRenderConstants",
+      "brief": "Create a new HComponentRenderConstants container",
+      "description": "Create a new HComponentRenderConstants container",
       "returnvalues": [
         {
-          "doc": "", 
-          "name": "constants", 
+          "name": "constants",
+          "doc": "",
           "types": [
             "dmGameSystem::HComponentRenderConstants"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Create a new HComponentRenderConstants container", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "CreateRenderConstants"
-    }, 
+      ],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Destroys a render constants container", 
+      "type": "FUNCTION",
+      "name": "DestroyRenderConstants",
+      "brief": "Destroys a render constants container",
+      "description": "Destroys a render constants container",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "(must not be 0)", 
-          "name": "constants", 
+          "name": "constants",
+          "doc": "(must not be 0)",
           "types": [
             "dmGameSystem::HComponentRenderConstants"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Destroys a render constants container", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "DestroyRenderConstants"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Destroys a render constants container", 
-      "parameters": [
-        {
-          "doc": "the constants", 
-          "name": "constants", 
-          "types": [
-            "dmGameSystem::HComponentRenderConstants"
-          ]
-        }, 
-        {
-          "doc": "the hashed name of the property", 
-          "name": "name_hash", 
-          "types": [
-            "dmhash_t"
-          ]
-        }, 
-        {
-          "doc": "the pointer where to store the constant", 
-          "name": "out_constant", 
-          "types": [
-            "dmRender::Constant**"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "GetRenderConstant",
+      "brief": "Destroys a render constants container",
+      "description": "Destroys a render constants container",
       "returnvalues": [
         {
-          "doc": "returns true if the constant exists", 
-          "name": "result", 
+          "name": "result",
+          "doc": "returns true if the constant exists",
           "types": [
             "bool"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Destroys a render constants container", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetRenderConstant"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get the number of render constants", 
+      ],
       "parameters": [
         {
-          "doc": "the constants", 
-          "name": "constants", 
+          "name": "constants",
+          "doc": "the constants",
           "types": [
             "dmGameSystem::HComponentRenderConstants"
           ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "the hashed name of the property",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "out_constant",
+          "doc": "the pointer where to store the constant",
+          "types": [
+            "dmRender::Constant**"
+          ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetRenderConstantCount",
+      "brief": "Get the number of render constants",
+      "description": "Get the number of render constants",
       "returnvalues": [
         {
-          "doc": "returns the number of set constants", 
-          "name": "size", 
+          "name": "size",
+          "doc": "returns the number of set constants",
           "types": [
             "uint32_t"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Get the number of render constants", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetRenderConstantCount"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get a render constant by index", 
+      ],
       "parameters": [
         {
-          "doc": "the constants", 
-          "name": "constants", 
+          "name": "constants",
+          "doc": "the constants",
           "types": [
             "dmGameSystem::HComponentRenderConstants"
           ]
-        }, 
-        {
-          "doc": "the index", 
-          "name": "index", 
-          "types": [
-            "uint32_t"
-          ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetRenderConstant",
+      "brief": "Get a render constant by index",
+      "description": "Get a render constant by index",
       "returnvalues": [
         {
-          "doc": "the pointer where to store the constant", 
-          "name": "constant", 
+          "name": "constant",
+          "doc": "the pointer where to store the constant",
           "types": [
             "dmRender::HConstant"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Get a render constant by index", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetRenderConstant"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set a render constant by name. The constant must exist in the material", 
+      ],
       "parameters": [
         {
-          "doc": "the render constants buffer", 
-          "name": "constants", 
+          "name": "constants",
+          "doc": "the constants",
           "types": [
             "dmGameSystem::HComponentRenderConstants"
           ]
-        }, 
+        },
         {
-          "doc": "the material to get default values from if constant didn't already exist in the render constants buffer", 
-          "name": "material", 
-          "types": [
-            "dmRender::HMaterial"
-          ]
-        }, 
-        {
-          "doc": "the hashed name of the constant", 
-          "name": "name_hash", 
-          "types": [
-            "dmhash_t"
-          ]
-        }, 
-        {
-          "doc": "index of the constant value to set, if the constant is an array", 
-          "name": "value_index", 
+          "name": "index",
+          "doc": "the index",
           "types": [
             "uint32_t"
           ]
-        }, 
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "SetRenderConstant",
+      "brief": "Set a render constant by name. The constant must e...",
+      "description": "Set a render constant by name. The constant must exist in the material",
+      "returnvalues": [],
+      "parameters": [
         {
-          "doc": "). May be 0", 
-          "name": "element_index", 
+          "name": "constants",
+          "doc": "the render constants buffer",
           "types": [
-            "uint32_t*] pointer to the index of the element (in range [0,3"
+            "dmGameSystem::HComponentRenderConstants"
           ]
-        }, 
+        },
         {
-          "doc": "the constant value", 
-          "name": "var", 
+          "name": "material",
+          "doc": "the material to get default values from if constant didn't already exist in the render constants buffer",
+          "types": [
+            "dmRender::HMaterial"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "the hashed name of the constant",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "value_index",
+          "doc": "index of the constant value to set, if the constant is an array",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "element_index",
+          "doc": "pointer to the index of the element (in range [0,3]). May be 0",
+          "types": [
+            "uint32_t*"
+          ]
+        },
+        {
+          "name": "var",
+          "doc": "the constant value",
           "types": [
             "const dmGameObject::PropertyVar&"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Set a render constant by name. The constant must e...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "SetRenderConstant"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Set a render constant by name. The constant must exist in the material", 
+      "type": "FUNCTION",
+      "name": "SetRenderConstant",
+      "brief": "Set a render constant by name. The constant must e...",
+      "description": "Set a render constant by name. The constant must exist in the material",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "the constants", 
-          "name": "constants", 
+          "name": "constants",
+          "doc": "the constants",
           "types": [
             "dmGameSystem::HComponentRenderConstants"
           ]
-        }, 
+        },
         {
-          "doc": "the hashed name of the constant", 
-          "name": "name_hash", 
+          "name": "name_hash",
+          "doc": "the hashed name of the constant",
           "types": [
             "dmhash_t"
           ]
-        }, 
+        },
         {
-          "doc": "the values", 
-          "name": "values", 
+          "name": "values",
+          "doc": "the values",
           "types": [
             "dmVMath::Vector4*"
           ]
-        }, 
+        },
         {
-          "doc": "number of values in the array", 
-          "name": "num_values", 
+          "name": "num_values",
+          "doc": "number of values in the array",
           "types": [
             "uint32_t"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Set a render constant by name. The constant must e...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "SetRenderConstant"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Removes a render constant from the container", 
+      "type": "FUNCTION",
+      "name": "ClearRenderConstant",
+      "brief": "Removes a render constant from the container",
+      "description": "Removes a render constant from the container",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "non zero if the constant was removed",
+          "types": [
+            "int"
+          ]
+        }
+      ],
       "parameters": [
         {
-          "doc": "the constants", 
-          "name": "constants", 
+          "name": "constants",
+          "doc": "the constants",
           "types": [
             "dmGameSystem::HComponentRenderConstants"
           ]
-        }, 
+        },
         {
-          "doc": "the hashed name of the constant", 
-          "name": "name_hash", 
+          "name": "name_hash",
+          "doc": "the hashed name of the constant",
           "types": [
             "dmhash_t"
           ]
         }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "non zero if the constant was removed", 
-          "name": "result", 
-          "types": [
-            "int"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Removes a render constant from the container", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ClearRenderConstant"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Hashes the constants", 
+      "type": "FUNCTION",
+      "name": "HashRenderConstants",
+      "brief": "Hashes the constants",
+      "description": "Hashes the constants",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "the constants", 
-          "name": "constants", 
+          "name": "constants",
+          "doc": "the constants",
           "types": [
             "dmGameSystem::HComponentRenderConstants"
           ]
-        }, 
+        },
         {
-          "doc": "the hash state to update", 
-          "name": "state", 
+          "name": "state",
+          "doc": "the hash state to update",
           "types": [
             "HashState32*"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Hashes the constants", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "HashRenderConstants"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Also updates the internal state of the constants container. After a call to this function, the `AreRenderConstantsUpdated` will always return false."
+      ]
+    },
     {
-      "replaces": "", 
-      "description": "check if the constants have changed", 
-      "parameters": [
-        {
-          "doc": "the constants", 
-          "name": "constants", 
-          "types": [
-            "dmGameSystem::HComponentRenderConstants"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "AreRenderConstantsUpdated",
+      "brief": "check if the constants have changed",
+      "description": "check if the constants have changed",
       "returnvalues": [
         {
-          "doc": "non zero if the constants were changed", 
-          "name": "result", 
+          "name": "result",
+          "doc": "non zero if the constants were changed",
           "types": [
             "int"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "check if the constants have changed", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "AreRenderConstantsUpdated"
-    }, 
-    {
-      "replaces": "", 
-      "description": "set the constants of a render object", 
+      ],
       "parameters": [
         {
-          "doc": "the render object", 
-          "name": "ro", 
-          "types": [
-            "dmRender::RenderObject*"
-          ]
-        }, 
-        {
-          "doc": "the constants", 
-          "name": "constants", 
+          "name": "constants",
+          "doc": "the constants",
           "types": [
             "dmGameSystem::HComponentRenderConstants"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the constants of a render object", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "EnableRenderObjectConstants"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Used in GetMaterialConstant to resolve a render constant's value", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Used in GetMaterialConstant to resolve a render co...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "CompGetConstantCallback"
-    }, 
+      "type": "FUNCTION",
+      "name": "EnableRenderObjectConstants",
+      "brief": "set the constants of a render object",
+      "description": "set the constants of a render object",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "ro",
+          "doc": "the render object",
+          "types": [
+            "dmRender::RenderObject*"
+          ]
+        },
+        {
+          "name": "constants",
+          "doc": "the constants",
+          "types": [
+            "dmGameSystem::HComponentRenderConstants"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Used in SetMaterialConstant to set a render constant's value", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Used in SetMaterialConstant to set a render consta...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "CompSetConstantCallback"
+      "type": "TYPEDEF",
+      "name": "CompGetConstantCallback",
+      "brief": "Used in GetMaterialConstant to resolve a render co...",
+      "description": "Used in GetMaterialConstant to resolve a render constant's value",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "TYPEDEF",
+      "name": "CompSetConstantCallback",
+      "brief": "Used in SetMaterialConstant to set a render consta...",
+      "description": "Used in SetMaterialConstant to set a render constant's value",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "dmGameSystem",
+    "name": "Component Render Constants",
+    "brief": "Component render constant API documentation",
+    "description": "<span class=\"file\"><dmsdk/gamesystem/render_constants.h></span>\nApi for setting and updating component render constants",
+    "path": "",
+    "file": "",
+    "notes": []
+  }
 }

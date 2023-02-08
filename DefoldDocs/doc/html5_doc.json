@@ -1,43 +1,66 @@
 {
-  "info": {
-    "group": "SCRIPT", 
-    "description": "HTML5 platform specific functions.\n<span class=\"icon-html5\"></span> The following functions are only available on HTML5 builds, the <code>html5.*</code> Lua namespace will not be available on other platforms.", 
-    "namespace": "html5", 
-    "brief": "HTML5 API documentation", 
-    "file": "", 
-    "path": "", 
-    "name": "HTML5"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Executes the supplied string as JavaScript inside the browser.\nA call to this function is blocking, the result is returned as-is, as a string.\n(Internally this will execute the string using the <code>eval()</code> JavaScript function.)", 
-      "parameters": [
-        {
-          "doc": "Javascript code to run", 
-          "name": "code", 
-          "types": [
-            "string"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "html5.run",
+      "brief": "run JavaScript code, in the browser, from Lua",
+      "description": "Executes the supplied string as JavaScript inside the browser.\nA call to this function is blocking, the result is returned as-is, as a string.\n(Internally this will execute the string using the <code>eval()</code> JavaScript function.)",
       "returnvalues": [
         {
-          "doc": "result as string", 
-          "name": "result", 
+          "name": "result",
+          "doc": "result as string",
           "types": [
             "string"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "run JavaScript code, in the browser, from Lua", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">res</span> <span class=\"o\">=</span> <span class=\"n\">html5</span><span class=\"p\">.</span><span class=\"n\">run</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">10 + 20&quot;</span><span class=\"p\">)</span> <span class=\"c1\">-- returns the string &quot;30&quot;</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">res</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">res_num</span> <span class=\"o\">=</span> <span class=\"nb\">tonumber</span><span class=\"p\">(</span><span class=\"n\">res</span><span class=\"p\">)</span> <span class=\"c1\">-- convert to number</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">res_num</span> <span class=\"o\">-</span> <span class=\"mi\">20</span><span class=\"p\">)</span> <span class=\"c1\">-- prints 10</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "html5.run"
+      ],
+      "parameters": [
+        {
+          "name": "code",
+          "doc": "Javascript code to run",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">res</span> <span class=\"o\">=</span> <span class=\"n\">html5</span><span class=\"p\">.</span><span class=\"n\">run</span><span class=\"p\">(</span><span class=\"s2\">&quot;10 + 20&quot;</span><span class=\"p\">)</span> <span class=\"c1\">-- returns the string &quot;30&quot;</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">res</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">res_num</span> <span class=\"o\">=</span> <span class=\"nb\">tonumber</span><span class=\"p\">(</span><span class=\"n\">res</span><span class=\"p\">)</span> <span class=\"c1\">-- convert to number</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">res_num</span> <span class=\"o\">-</span> <span class=\"mi\">20</span><span class=\"p\">)</span> <span class=\"c1\">-- prints 10</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "html5.set_interaction_listener",
+      "brief": "set a JavaScript interaction listener callback from lua",
+      "description": "Set a JavaScript interaction listener callaback from lua that will be\ninvoked when a user interacts with the web page by clicking, touching or typing.\nThe callback can then call DOM restricted actions like requesting a pointer lock,\nor start playing sounds the first time the callback is invoked.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "callback",
+          "doc": "The interaction callback. Pass an empty function or nil if you no longer wish to receive callbacks.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The calling script</dd>\n</dl>",
+          "types": [
+            "function(self"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">on_interaction</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;on_interaction called&quot;</span><span class=\"p\">)</span>\n    <span class=\"n\">html5</span><span class=\"p\">.</span><span class=\"n\">set_interaction_listener</span><span class=\"p\">(</span><span class=\"kc\">nil</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">html5</span><span class=\"p\">.</span><span class=\"n\">set_interaction_listener</span><span class=\"p\">(</span><span class=\"n\">on_interaction</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "html5",
+    "name": "HTML5",
+    "brief": "HTML5 API documentation",
+    "description": "HTML5 platform specific functions.\n<span class=\"icon-html5\"></span> The following functions are only available on HTML5 builds, the <code>html5.*</code> Lua namespace will not be available on other platforms.",
+    "path": "",
+    "file": "",
+    "notes": [],
+    "group": "SCRIPT"
+  }
 }

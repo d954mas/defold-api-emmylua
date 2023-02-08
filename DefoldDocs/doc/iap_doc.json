@@ -1,11 +1,12 @@
 {
+  "elements": [],
   "info": {
-    "description": "The In-app purchases module has been moved into an external extension library\navailable on <a href=\"https://defold.github.io/extension-iap/\">here</a>.", 
-    "namespace": "iap", 
-    "brief": "In-app purchases API documentation", 
-    "file": "", 
-    "path": "", 
-    "name": "In-app purchases"
-  }, 
-  "elements": []
+    "namespace": "iap",
+    "name": "In-app purchases",
+    "brief": "In-app purchases API documentation",
+    "description": "The In-app purchases module has been moved into an external extension library\navailable on <a href=\"https://defold.github.io/extension-iap/\">here</a>.",
+    "path": "",
+    "file": "",
+    "notes": []
+  }
 }

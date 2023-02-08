@@ -1,1713 +1,1839 @@
 {
-  "info": {
-    "group": "DEFOLD SDK", 
-    "description": "Built-in scripting functions.", 
-    "namespace": "dmScript", 
-    "brief": "SDK Script API documentation", 
-    "file": "dmsdk/gamesys/script.h", 
-    "path": "engine/gamesys/src/dmsdk/gamesys/script.h", 
-    "name": "Script"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "The script context", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "The script context", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "HContext"
-    }, 
+      "type": "TYPEDEF",
+      "name": "HContext",
+      "brief": "The script context",
+      "description": "The script context",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Diff is the expected difference of the stack size.\nIf luaL_error, or another function that executes a long-jump, is part of the executed code,\nthe stack guard cannot be guaranteed to execute at the end of the function.\nIn that case you should manually check the stack using <code>lua_gettop</code>.\nIn the case of luaL_error, see <a href=\"#DM_LUA_ERROR\">DM_LUA_ERROR</a>.", 
+      "type": "MACRO",
+      "name": "DM_LUA_STACK_CHECK",
+      "brief": "helper macro to validate the Lua stack state before leaving a function.",
+      "description": "Diff is the expected difference of the stack size.\nIf luaL_error, or another function that executes a long-jump, is part of the executed code,\nthe stack guard cannot be guaranteed to execute at the end of the function.\nIn that case you should manually check the stack using <code>lua_gettop</code>.\nIn the case of luaL_error, see <a href=\"#DM_LUA_ERROR\">DM_LUA_ERROR</a>.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "Number of expected items to be on the Lua stack once this struct goes out of scope", 
-          "name": "diff", 
+          "name": "diff",
+          "doc": "Number of expected items to be on the Lua stack once this struct goes out of scope",
           "types": [
             "int"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "helper macro to validate the Lua stack state before leaving a function.", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">);</span>\n<span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">42</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_LUA_STACK_CHECK"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">1</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">42</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "This macro will verify that the Lua stack size hasn't been changed before\nthrowing a Lua error, which will long-jump out of the current function.\nThis macro can only be used together with <a href=\"#DM_LUA_STACK_CHECK\">DM_LUA_STACK_CHECK</a> and should\nbe prefered over manual checking of the stack.", 
+      "type": "MACRO",
+      "name": "DM_LUA_ERROR",
+      "brief": "helper macro to validate the Lua stack state and throw a lua error.",
+      "description": "This macro will verify that the Lua stack size hasn't been changed before\nthrowing a Lua error, which will long-jump out of the current function.\nThis macro can only be used together with <a href=\"#DM_LUA_STACK_CHECK\">DM_LUA_STACK_CHECK</a> and should\nbe prefered over manual checking of the stack.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "Format string that contains error information.", 
-          "name": "fmt", 
+          "name": "fmt",
+          "doc": "Format string that contains error information.",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "Format string args (variable arg list)", 
-          "name": "args", 
+          "name": "args",
+          "doc": "Format string args (variable arg list)",
           "types": [
             "..."
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "helper macro to validate the Lua stack state and throw a lua error.", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">static</span> <span class=\"kt\">int</span> <span class=\"nf\">ModuleFunc</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span> <span class=\"n\">L</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">);</span>\n    <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">some_error_check</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">))</span>\n    <span class=\"p\">{</span>\n        <span class=\"k\">return</span> <span class=\"n\">DM_LUA_ERROR</span><span class=\"p\">(</span><span class=\"s\">&quot;some error message&quot;</span><span class=\"p\">);</span>\n    <span class=\"p\">}</span>\n    <span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">42</span><span class=\"p\">);</span>\n    <span class=\"k\">return</span> <span class=\"mi\">1</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MACRO", 
-      "name": "DM_LUA_ERROR"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">static</span><span class=\"w\"> </span><span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"nf\">ModuleFunc</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">L</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">1</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">some_error_check</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">))</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"k\">return</span><span class=\"w\"> </span><span class=\"n\">DM_LUA_ERROR</span><span class=\"p\">(</span><span class=\"s\">&quot;some error message&quot;</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">42</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">return</span><span class=\"w\"> </span><span class=\"mi\">1</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Creates and returns a reference, in the table at index t, for the object at the\ntop of the stack (and pops the object).\nIt also tracks number of global references kept.", 
-      "parameters": [
-        {
-          "doc": "lua state", 
-          "name": "L", 
-          "types": [
-            "lua_State*"
-          ]
-        }, 
-        {
-          "doc": "table the lua table that stores the references. E.g LUA_REGISTRYINDEX", 
-          "name": "table", 
-          "types": [
-            "int"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmScript::Ref",
+      "brief": "wrapper for luaL_ref.",
+      "description": "Creates and returns a reference, in the table at index t, for the object at the\ntop of the stack (and pops the object).\nIt also tracks number of global references kept.",
       "returnvalues": [
         {
-          "doc": "the new reference", 
-          "name": "reference", 
+          "name": "reference",
+          "doc": "the new reference",
           "types": [
             "int"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "wrapper for luaL_ref.", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::Ref"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Releases reference ref from the table at index t (see luaL_ref).\nThe entry is removed from the table, so that the referred object can be collected.\nIt also decreases the number of global references kept", 
+      ],
       "parameters": [
         {
-          "doc": "lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "table the lua table that stores the references. E.g LUA_REGISTRYINDEX", 
-          "name": "table", 
-          "types": [
-            "int"
-          ]
-        }, 
-        {
-          "doc": "the reference to the object", 
-          "name": "reference", 
+          "name": "table",
+          "doc": "table the lua table that stores the references. E.g LUA_REGISTRYINDEX",
           "types": [
             "int"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "wrapper for luaL_unref.", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::Unref"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Retrieve current script instance from the global table and place it on the top of the stack, only valid when set.\n(see <a href=\"#dmScript::GetMainThread\">dmScript::GetMainThread</a>)", 
+      "type": "FUNCTION",
+      "name": "dmScript::Unref",
+      "brief": "wrapper for luaL_unref.",
+      "description": "Releases reference ref from the table at index t (see luaL_ref).\nThe entry is removed from the table, so that the referred object can be collected.\nIt also decreases the number of global references kept",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "table",
+          "doc": "table the lua table that stores the references. E.g LUA_REGISTRYINDEX",
+          "types": [
+            "int"
+          ]
+        },
+        {
+          "name": "reference",
+          "doc": "the reference to the object",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::GetInstance",
+      "brief": "Retrieve current script instance from the global t...",
+      "description": "Retrieve current script instance from the global table and place it on the top of the stack, only valid when set.\n(see <a href=\"#dmScript::GetMainThread\">dmScript::GetMainThread</a>)",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
           "types": [
             "lua_State*"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Retrieve current script instance from the global t...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::GetInstance"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Sets the current script instance\nSet the value on the top of the stack as the instance into the global table and pops it from the stack.\n(see <a href=\"#dmScript::GetMainThread\">dmScript::GetMainThread</a>)", 
+      "type": "FUNCTION",
+      "name": "dmScript::SetInstance",
+      "brief": "Sets the current script instance\nSet the value on ...",
+      "description": "Sets the current script instance\nSet the value on the top of the stack as the instance into the global table and pops it from the stack.\n(see <a href=\"#dmScript::GetMainThread\">dmScript::GetMainThread</a>)",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "lua state",
           "types": [
             "lua_State*"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Sets the current script instance\nSet the value on ...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::SetInstance"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Check if the script instance in the lua state is valid. The instance is assumed to have been previously set by <a href=\"#dmScript::SetInstance\">dmScript::SetInstance</a>.", 
-      "parameters": [
-        {
-          "doc": "lua state", 
-          "name": "L", 
-          "types": [
-            "lua_State*"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmScript::IsInstanceValid",
+      "brief": "Check if the script instance in the lua state is v...",
+      "description": "Check if the script instance in the lua state is valid. The instance is assumed to have been previously set by <a href=\"#dmScript::SetInstance\">dmScript::SetInstance</a>.",
       "returnvalues": [
         {
-          "doc": "Returns true if the instance is valid", 
-          "name": "boolean", 
+          "name": "boolean",
+          "doc": "Returns true if the instance is valid",
           "types": [
             "bool"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Check if the script instance in the lua state is v...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::IsInstanceValid"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Retrieve the main thread lua state from any lua state (main thread or coroutine).", 
+      ],
       "parameters": [
         {
-          "doc": "lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "lua state",
           "types": [
             "lua_State*"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::GetMainThread",
+      "brief": "Retrieve the main thread lua state from any lua st...",
+      "description": "Retrieve the main thread lua state from any lua state (main thread or coroutine).",
       "returnvalues": [
         {
-          "doc": "the main thread lua state", 
-          "name": "lua_State", 
+          "name": "lua_State",
+          "doc": "the main thread lua state",
           "types": [
             "lua_State*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Retrieve the main thread lua state from any lua st...", 
-      "examples": "How to create a Lua callback\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaCallbackInfo</span><span class=\"o\">*</span> <span class=\"n\">g_MyCallbackInfo</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n\n<span class=\"k\">static</span> <span class=\"kt\">void</span> <span class=\"nf\">InvokeCallback</span><span class=\"p\">(</span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaCallbackInfo</span><span class=\"o\">*</span> <span class=\"n\">cbk</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"o\">!</span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">IsCallbackValid</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"p\">))</span>\n        <span class=\"k\">return</span><span class=\"p\">;</span>\n\n    <span class=\"n\">lua_State</span><span class=\"o\">*</span> <span class=\"n\">L</span> <span class=\"o\">=</span> <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">GetCallbackLuaContext</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"p\">);</span>\n    <span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">)</span>\n\n    <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"o\">!</span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">SetupCallback</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"p\">))</span>\n    <span class=\"p\">{</span>\n        <span class=\"n\">dmLogError</span><span class=\"p\">(</span><span class=\"s\">&quot;Failed to setup callback&quot;</span><span class=\"p\">);</span>\n        <span class=\"k\">return</span><span class=\"p\">;</span>\n    <span class=\"p\">}</span>\n\n    <span class=\"n\">lua_pushstring</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"s\">&quot;Hello from extension!&quot;</span><span class=\"p\">);</span>\n    <span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">76</span><span class=\"p\">);</span>\n\n    <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">PCall</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">);</span> <span class=\"c1\">// instance + 2</span>\n\n    <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">TeardownCallback</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"p\">);</span>\n<span class=\"p\">}</span>\n\n<span class=\"k\">static</span> <span class=\"kt\">int</span> <span class=\"nf\">Start</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span> <span class=\"n\">L</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">);</span>\n\n    <span class=\"n\">g_MyCallbackInfo</span> <span class=\"o\">=</span> <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">CreateCallback</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">);</span>\n\n    <span class=\"k\">return</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n\n<span class=\"k\">static</span> <span class=\"kt\">int</span> <span class=\"nf\">Update</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span> <span class=\"n\">L</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">);</span>\n\n    <span class=\"k\">static</span> <span class=\"kt\">int</span> <span class=\"n\">count</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n    <span class=\"k\">if</span><span class=\"p\">(</span> <span class=\"n\">count</span><span class=\"o\">++</span> <span class=\"o\">==</span> <span class=\"mi\">5</span> <span class=\"p\">)</span>\n    <span class=\"p\">{</span>\n        <span class=\"n\">InvokeCallback</span><span class=\"p\">(</span><span class=\"n\">g_MyCallbackInfo</span><span class=\"p\">);</span>\n        <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">g_MyCallbackInfo</span><span class=\"p\">)</span>\n            <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">DestroyCallback</span><span class=\"p\">(</span><span class=\"n\">g_MyCallbackInfo</span><span class=\"p\">);</span>\n        <span class=\"n\">g_MyCallbackInfo</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n    <span class=\"p\">}</span>\n    <span class=\"k\">return</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::GetMainThread"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get the value at index as a dmVMath::Vector3*", 
+      ],
       "parameters": [
         {
-          "doc": "Lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
-        {
-          "doc": "Index of the value", 
-          "name": "index", 
-          "types": [
-            "int"
-          ]
         }
-      ], 
+      ],
+      "examples": "How to create a Lua callback\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaCallbackInfo</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">g_MyCallbackInfo</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"></span>\n\n<span class=\"k\">static</span><span class=\"w\"> </span><span class=\"kt\">void</span><span class=\"w\"> </span><span class=\"nf\">InvokeCallback</span><span class=\"p\">(</span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaCallbackInfo</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">cbk</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"o\">!</span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">IsCallbackValid</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"p\">))</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"k\">return</span><span class=\"p\">;</span><span class=\"w\"></span>\n\n<span class=\"w\">    </span><span class=\"n\">lua_State</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">L</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">GetCallbackLuaContext</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">)</span><span class=\"w\"></span>\n\n<span class=\"w\">    </span><span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"o\">!</span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">SetupCallback</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"p\">))</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">dmLogError</span><span class=\"p\">(</span><span class=\"s\">&quot;Failed to setup callback&quot;</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"k\">return</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n\n<span class=\"w\">    </span><span class=\"n\">lua_pushstring</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;Hello from extension!&quot;</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">76</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"w\">    </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">PCall</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">3</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// instance + 2</span>\n\n<span class=\"w\">    </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">TeardownCallback</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n\n<span class=\"k\">static</span><span class=\"w\"> </span><span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"nf\">Start</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">L</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"w\">    </span><span class=\"n\">g_MyCallbackInfo</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">CreateCallback</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">1</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"w\">    </span><span class=\"k\">return</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n\n<span class=\"k\">static</span><span class=\"w\"> </span><span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"nf\">Update</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">L</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"w\">    </span><span class=\"k\">static</span><span class=\"w\"> </span><span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"n\">count</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">if</span><span class=\"p\">(</span><span class=\"w\"> </span><span class=\"n\">count</span><span class=\"o\">++</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"mi\">5</span><span class=\"w\"> </span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">InvokeCallback</span><span class=\"p\">(</span><span class=\"n\">g_MyCallbackInfo</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">g_MyCallbackInfo</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"w\">            </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">DestroyCallback</span><span class=\"p\">(</span><span class=\"n\">g_MyCallbackInfo</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">g_MyCallbackInfo</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">return</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::ToVector3",
+      "brief": "get the value at index as a dmVMath::Vector3*",
+      "description": "Get the value at index as a dmVMath::Vector3*",
       "returnvalues": [
         {
-          "doc": "The pointer to the value, or 0 if not correct type", 
-          "name": "v", 
+          "name": "v",
+          "doc": "The pointer to the value, or 0 if not correct type",
           "types": [
             "dmVMath::Vector3*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get the value at index as a dmVMath::Vector3*", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::ToVector3"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Check if the value at #index is a dmVMath::Vector3*", 
+      ],
       "parameters": [
         {
-          "doc": "Lua state", 
-          "name": "L", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "Index of the value", 
-          "name": "index", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "if value at #index is a dmVMath::Vector3*", 
-          "name": "true", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Check if the value at #index is a dmVMath::Vector3...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::IsVector3"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Push a dmVMath::Vector3 value onto the supplied lua state, will increase the stack by 1.", 
-      "parameters": [
-        {
-          "doc": "Lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "Lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "Vector3 value to push", 
-          "name": "v", 
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::IsVector3",
+      "brief": "Check if the value at #index is a dmVMath::Vector3...",
+      "description": "Check if the value at #index is a dmVMath::Vector3*",
+      "returnvalues": [
+        {
+          "name": "true",
+          "doc": "if value at #index is a dmVMath::Vector3*",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::PushVector3",
+      "brief": "push a dmVMath::Vector3 onto the Lua stack",
+      "description": "Push a dmVMath::Vector3 value onto the supplied lua state, will increase the stack by 1.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "v",
+          "doc": "Vector3 value to push",
           "types": [
             "dmVMath::Vector3"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "push a dmVMath::Vector3 onto the Lua stack", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::PushVector3"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Check if the value in the supplied index on the lua stack is a dmVMath::Vector3.", 
-      "parameters": [
-        {
-          "doc": "Lua state", 
-          "name": "L", 
-          "types": [
-            "lua_State*"
-          ]
-        }, 
-        {
-          "doc": "Index of the value", 
-          "name": "index", 
-          "types": [
-            "int"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmScript::CheckVector3",
+      "brief": "check if the value is a dmVMath::Vector3",
+      "description": "Check if the value in the supplied index on the lua stack is a dmVMath::Vector3.",
       "returnvalues": [
         {
-          "doc": "The pointer to the value", 
-          "name": "vector3", 
+          "name": "vector3",
+          "doc": "The pointer to the value",
           "types": [
             "dmVMath::Vector3*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "check if the value is a dmVMath::Vector3", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::CheckVector3"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get the value at index as a dmVMath::Vector4*", 
+      ],
       "parameters": [
         {
-          "doc": "Lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "Lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "Index of the value", 
-          "name": "index", 
+          "name": "index",
+          "doc": "Index of the value",
           "types": [
             "int"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "throws a luaL_error if it's not the correct type"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::ToVector4",
+      "brief": "get the value at index as a dmVMath::Vector4*",
+      "description": "Get the value at index as a dmVMath::Vector4*",
       "returnvalues": [
         {
-          "doc": "The pointer to the value, or 0 if not correct type", 
-          "name": "v", 
+          "name": "v",
+          "doc": "The pointer to the value, or 0 if not correct type",
           "types": [
             "dmVMath::Vector4*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get the value at index as a dmVMath::Vector4*", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::ToVector4"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Check if the value at #index is a dmVMath::Vector4*", 
+      ],
       "parameters": [
         {
-          "doc": "Lua state", 
-          "name": "L", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "Index of the value", 
-          "name": "index", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "if value at #index is a dmVMath::Vector4*", 
-          "name": "true", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Check if the value at #index is a dmVMath::Vector4...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::IsVector4"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Push a dmVMath::Vector4 value onto the supplied lua state, will increase the stack by 1.", 
-      "parameters": [
-        {
-          "doc": "Lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "Lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "dmVMath::Vector4 value to push", 
-          "name": "v", 
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::IsVector4",
+      "brief": "Check if the value at #index is a dmVMath::Vector4...",
+      "description": "Check if the value at #index is a dmVMath::Vector4*",
+      "returnvalues": [
+        {
+          "name": "true",
+          "doc": "if value at #index is a dmVMath::Vector4*",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::PushVector4",
+      "brief": "push a dmVMath::Vector4 on the stack",
+      "description": "Push a dmVMath::Vector4 value onto the supplied lua state, will increase the stack by 1.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "v",
+          "doc": "dmVMath::Vector4 value to push",
           "types": [
             "dmVMath::Vector4"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "push a dmVMath::Vector4 on the stack", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::PushVector4"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Check if the value in the supplied index on the lua stack is a dmVMath::Vector3.", 
-      "parameters": [
-        {
-          "doc": "Lua state", 
-          "name": "L", 
-          "types": [
-            "lua_State*"
-          ]
-        }, 
-        {
-          "doc": "Index of the value", 
-          "name": "index", 
-          "types": [
-            "int"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmScript::CheckVector4",
+      "brief": "check if the value is a dmVMath::Vector3",
+      "description": "Check if the value in the supplied index on the lua stack is a dmVMath::Vector3.",
       "returnvalues": [
         {
-          "doc": "The pointer to the value", 
-          "name": "vector4", 
+          "name": "vector4",
+          "doc": "The pointer to the value",
           "types": [
             "dmVMath::Vector4*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "check if the value is a dmVMath::Vector3", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::CheckVector4"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get the value at index as a dmVMath::Quat*", 
+      ],
       "parameters": [
         {
-          "doc": "Lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "Lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "Index of the value", 
-          "name": "index", 
+          "name": "index",
+          "doc": "Index of the value",
           "types": [
             "int"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "throws a luaL_error if it's not the correct type"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::ToQuat",
+      "brief": "get the value at index as a dmVMath::Quat*",
+      "description": "Get the value at index as a dmVMath::Quat*",
       "returnvalues": [
         {
-          "doc": "The pointer to the value, or 0 if not correct type", 
-          "name": "quat", 
+          "name": "quat",
+          "doc": "The pointer to the value, or 0 if not correct type",
           "types": [
             "dmVMath::Quat*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get the value at index as a dmVMath::Quat*", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::ToQuat"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Check if the value at #index is a dmVMath::Quat*", 
+      ],
       "parameters": [
         {
-          "doc": "Lua state", 
-          "name": "L", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "Index of the value", 
-          "name": "index", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "if value at #index is a dmVMath::Quat*", 
-          "name": "true", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Check if the value at #index is a dmVMath::Quat*", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::IsQuat"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Push a quaternion value onto Lua stack. Will increase the stack by 1.", 
-      "parameters": [
-        {
-          "doc": "Lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "Lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "dmVMath::Quat value to push", 
-          "name": "quat", 
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::IsQuat",
+      "brief": "Check if the value at #index is a dmVMath::Quat*",
+      "description": "Check if the value at #index is a dmVMath::Quat*",
+      "returnvalues": [
+        {
+          "name": "true",
+          "doc": "if value at #index is a dmVMath::Quat*",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::PushQuat",
+      "brief": "push a dmVMath::Quat onto the Lua stack",
+      "description": "Push a quaternion value onto Lua stack. Will increase the stack by 1.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "quat",
+          "doc": "dmVMath::Quat value to push",
           "types": [
             "dmVMath::Quat"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "push a dmVMath::Quat onto the Lua stack", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::PushQuat"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Check if the value in the supplied index on the lua stack is a dmVMath::Quat.", 
-      "parameters": [
-        {
-          "doc": "Lua state", 
-          "name": "L", 
-          "types": [
-            "lua_State*"
-          ]
-        }, 
-        {
-          "doc": "Index of the value", 
-          "name": "index", 
-          "types": [
-            "int"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmScript::CheckQuat",
+      "brief": "check if the value is a dmVMath::Vector3",
+      "description": "Check if the value in the supplied index on the lua stack is a dmVMath::Quat.",
       "returnvalues": [
         {
-          "doc": "The pointer to the value", 
-          "name": "quat", 
+          "name": "quat",
+          "doc": "The pointer to the value",
           "types": [
             "dmVMath::Quat*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "check if the value is a dmVMath::Vector3", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::CheckQuat"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get the value at index as a dmVMath::Matrix4*", 
+      ],
       "parameters": [
         {
-          "doc": "Lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "Lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "Index of the value", 
-          "name": "index", 
+          "name": "index",
+          "doc": "Index of the value",
           "types": [
             "int"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "throws a luaL_error if it's not the correct type"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::ToMatrix4",
+      "brief": "get the value at index as a dmVMath::Matrix4*",
+      "description": "Get the value at index as a dmVMath::Matrix4*",
       "returnvalues": [
         {
-          "doc": "The pointer to the value, or 0 if not correct type", 
-          "name": "quat", 
+          "name": "quat",
+          "doc": "The pointer to the value, or 0 if not correct type",
           "types": [
             "dmVMath::Matrix4*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get the value at index as a dmVMath::Matrix4*", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::ToMatrix4"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Check if the value at #index is a dmVMath::Matrix4*", 
+      ],
       "parameters": [
         {
-          "doc": "Lua state", 
-          "name": "L", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "Index of the value", 
-          "name": "index", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "if value at #index is a dmVMath::Matrix4*", 
-          "name": "true", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Check if the value at #index is a dmVMath::Matrix4...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::IsMatrix4"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Push a matrix4 value onto the Lua stack. Will increase the stack by 1.", 
-      "parameters": [
-        {
-          "doc": "Lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "Lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "dmVMath::Matrix4 value to push", 
-          "name": "matrix", 
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::IsMatrix4",
+      "brief": "Check if the value at #index is a dmVMath::Matrix4...",
+      "description": "Check if the value at #index is a dmVMath::Matrix4*",
+      "returnvalues": [
+        {
+          "name": "true",
+          "doc": "if value at #index is a dmVMath::Matrix4*",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::PushMatrix4",
+      "brief": "push a dmVMath::Matrix4 onto the Lua stack",
+      "description": "Push a matrix4 value onto the Lua stack. Will increase the stack by 1.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "matrix",
+          "doc": "dmVMath::Matrix4 value to push",
           "types": [
             "dmVMath::Matrix4"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "push a dmVMath::Matrix4 onto the Lua stack", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::PushMatrix4"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Check if the value in the supplied index on the lua stack is a dmVMath::Matrix4.", 
-      "parameters": [
-        {
-          "doc": "Lua state", 
-          "name": "L", 
-          "types": [
-            "lua_State*"
-          ]
-        }, 
-        {
-          "doc": "Index of the value", 
-          "name": "index", 
-          "types": [
-            "int"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmScript::CheckMatrix4",
+      "brief": "check if the value is a dmVMath::Matrix4",
+      "description": "Check if the value in the supplied index on the lua stack is a dmVMath::Matrix4.",
       "returnvalues": [
         {
-          "doc": "The pointer to the value", 
-          "name": "matrix", 
+          "name": "matrix",
+          "doc": "The pointer to the value",
           "types": [
             "dmVMath::Matrix4*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "check if the value is a dmVMath::Matrix4", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::CheckMatrix4"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Check if the value at #index is a hash", 
+      ],
       "parameters": [
         {
-          "doc": "Lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "Lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "Index of the value", 
-          "name": "index", 
+          "name": "index",
+          "doc": "Index of the value",
           "types": [
             "int"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "throws a luaL_error if it's not the correct type"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::IsHash",
+      "brief": "Check if the value at #index is a hash",
+      "description": "Check if the value at #index is a hash",
       "returnvalues": [
         {
-          "doc": "if the value at #index is a hash", 
-          "name": "true", 
+          "name": "true",
+          "doc": "if the value at #index is a hash",
           "types": [
             ""
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Check if the value at #index is a hash", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::IsHash"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Push a hash value onto the supplied lua state, will increase the stack by 1.", 
+      ],
       "parameters": [
         {
-          "doc": "Lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "Lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "<span class=\"tyoe\"> dmhash_t</span> Hash value to push", 
-          "name": "hash", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Push a hash value onto the supplied lua state, wil...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::PushHash"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Check if the value in the supplied index on the lua stack is a hash.", 
-      "parameters": [
-        {
-          "doc": "Lua state", 
-          "name": "L", 
-          "types": [
-            "lua_State*"
-          ]
-        }, 
-        {
-          "doc": "Index of the value", 
-          "name": "index", 
+          "name": "index",
+          "doc": "Index of the value",
           "types": [
             "int"
           ]
         }
-      ], 
-      "returnvalues": [
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::PushHash",
+      "brief": "Push a hash value onto the supplied lua state, wil...",
+      "description": "Push a hash value onto the supplied lua state, will increase the stack by 1.",
+      "returnvalues": [],
+      "parameters": [
         {
-          "doc": "hash value", 
-          "name": "The", 
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "hash",
+          "doc": "<span class=\"tyoe\"> dmhash_t</span> Hash value to push",
           "types": [
             ""
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get hash value", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::CheckHash"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Check if the value in the supplied index on the lua stack is a hash or string.\nIf it is a string, it gets hashed on the fly", 
-      "parameters": [
-        {
-          "doc": "Lua state", 
-          "name": "L", 
-          "types": [
-            "lua_State*"
-          ]
-        }, 
-        {
-          "doc": "Index of the value", 
-          "name": "index", 
-          "types": [
-            "int"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmScript::CheckHash",
+      "brief": "get hash value",
+      "description": "Check if the value in the supplied index on the lua stack is a hash.",
       "returnvalues": [
         {
-          "doc": "hash value", 
-          "name": "The", 
+          "name": "The",
+          "doc": "hash value",
           "types": [
             ""
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get hash from hash or string", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::CheckHashOrString"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets as good as possible printable string from a hash or string", 
+      ],
       "parameters": [
         {
-          "doc": "Lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "Lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "Index of the value", 
-          "name": "index", 
+          "name": "index",
+          "doc": "Index of the value",
           "types": [
             "int"
           ]
-        }, 
-        {
-          "doc": "buffer receiving the value", 
-          "name": "buffer", 
-          "types": [
-            "char*"
-          ]
-        }, 
-        {
-          "doc": "the buffer length", 
-          "name": "buffer_length", 
-          "types": [
-            "uint32_t"
-          ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::CheckHashOrString",
+      "brief": "get hash from hash or string",
+      "description": "Check if the value in the supplied index on the lua stack is a hash or string.\nIf it is a string, it gets hashed on the fly",
       "returnvalues": [
         {
-          "doc": "Returns buffer. If buffer is non null, it will always contain a null terminated string. \"<unknown>\" if the hash could not be looked up.", 
-          "name": "string", 
+          "name": "The",
+          "doc": "hash value",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetStringFromHashOrString",
+      "brief": "Gets as good as possible printable string from a h...",
+      "description": "Gets as good as possible printable string from a hash or string",
+      "returnvalues": [
+        {
+          "name": "string",
+          "doc": "Returns buffer. If buffer is non null, it will always contain a null terminated string. \"<unknown>\" if the hash could not be looked up.",
           "types": [
             "const char*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Gets as good as possible printable string from a h...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetStringFromHashOrString"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Convert a dmJson::Document document to Lua table.", 
+      ],
       "parameters": [
         {
-          "doc": "lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "Lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "JSON document", 
-          "name": "doc", 
-          "types": [
-            "dmJson::Document"
-          ]
-        }, 
-        {
-          "doc": "index of JSON node", 
-          "name": "index", 
+          "name": "index",
+          "doc": "Index of the value",
           "types": [
             "int"
           ]
-        }, 
+        },
         {
-          "doc": "if an error is encountered, the error string is written to this argument", 
-          "name": "error_str_out", 
+          "name": "buffer",
+          "doc": "buffer receiving the value",
           "types": [
             "char*"
           ]
-        }, 
+        },
         {
-          "doc": "size of error_str_out", 
-          "name": "error_str_size", 
+          "name": "buffer_length",
+          "doc": "the buffer length",
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::JsonToLua",
+      "brief": "convert a Json string to a Lua table",
+      "description": "Convert a Json string to Lua table.",
+      "returnvalues": [
+        {
+          "name": "int",
+          "doc": "1 if it succeeds. Throws a Lua error if it fails",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "json",
+          "doc": "json string",
+          "types": [
+            "const char*"
+          ]
+        },
+        {
+          "name": "json_len",
+          "doc": "length of json string",
           "types": [
             "size_t"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Throws Lua error if it fails to parser the json"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::LuaToJson",
+      "brief": "convert a Lua table to a Json string",
+      "description": "Convert a Lua table to a Json string",
       "returnvalues": [
         {
-          "doc": "&lt;0 if it fails. &gt;=0 if it succeeds.", 
-          "name": "int", 
+          "name": "int",
+          "doc": "&lt;0 if it fails. &gt;=0 if it succeeds.",
           "types": [
             "int"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "convert a dmJson::Document to a Lua table", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmJson::Type"
-    }, 
-    {
-      "replaces": "", 
-      "description": "callback info struct that will hold the relevant info needed to make a callback into Lua", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "callback info struct", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "STRUCT", 
-      "name": "dmScript::LuaCallbackInfo"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Stores the current Lua state plus references to the script instance (self) and the callback.\nExpects SetInstance() to have been called prior to using this method.\nThe allocated data is created on the Lua stack and references are made against the\ninstances own context table.\nIf the callback is not explicitly deleted with DestroyCallback() the references and\ndata will stay around until the script instance is deleted.", 
+      ],
       "parameters": [
         {
-          "doc": "Lua state", 
-          "name": "L", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "Lua stack index of the function", 
-          "name": "index", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "callback struct if successful, 0 otherwise", 
-          "name": "Lua", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Register a Lua callback.", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">static</span> <span class=\"kt\">int</span> <span class=\"nf\">SomeFunction</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span> <span class=\"n\">L</span><span class=\"p\">)</span> <span class=\"c1\">// called from Lua</span>\n<span class=\"p\">{</span>\n    <span class=\"n\">LuaCallbackInfo</span><span class=\"o\">*</span> <span class=\"n\">cbk</span> <span class=\"o\">=</span> <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">CreateCallback</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">);</span>\n    <span class=\"p\">...</span> <span class=\"n\">store</span> <span class=\"n\">the</span> <span class=\"n\">callback</span> <span class=\"k\">for</span> <span class=\"n\">later</span>\n<span class=\"p\">}</span>\n\n<span class=\"k\">static</span> <span class=\"kt\">void</span> <span class=\"nf\">InvokeCallback</span><span class=\"p\">(</span><span class=\"n\">LuaCallbackInfo</span><span class=\"o\">*</span> <span class=\"n\">cbk</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"n\">lua_State</span><span class=\"o\">*</span> <span class=\"n\">L</span> <span class=\"o\">=</span> <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">GetCallbackLuaContext</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"p\">);</span>\n    <span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">);</span>\n\n    <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"o\">!</span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">SetupCallback</span><span class=\"p\">(</span><span class=\"n\">callback</span><span class=\"p\">))</span>\n    <span class=\"p\">{</span>\n        <span class=\"k\">return</span><span class=\"p\">;</span>\n    <span class=\"p\">}</span>\n\n    <span class=\"n\">lua_pushstring</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"s\">&quot;hello&quot;</span><span class=\"p\">);</span>\n\n    <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">PCall</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">);</span> <span class=\"c1\">// self + # user arguments</span>\n\n    <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">TeardownCallback</span><span class=\"p\">(</span><span class=\"n\">callback</span><span class=\"p\">);</span>\n    <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">DestroyCallback</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"p\">);</span> <span class=\"c1\">// only do this if you&#39;re not using the callback again</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::CreateCallback"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Check if Lua callback is valid.", 
-      "parameters": [
-        {
-          "doc": "Lua callback struct", 
-          "name": "cbk", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Check if Lua callback is valid.", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::IsCallbackValid"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Deletes the Lua callback", 
-      "parameters": [
-        {
-          "doc": "Lua callback struct", 
-          "name": "cbk", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Deletes the Lua callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::DestroyCallback"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets the Lua context from a callback struct", 
-      "parameters": [
-        {
-          "doc": "Lua callback struct", 
-          "name": "cbk", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "Lua state", 
-          "name": "L", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Gets the Lua context from a callback struct", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::GetCallbackLuaContext"
-    }, 
-    {
-      "replaces": "", 
-      "description": "The Lua stack after a successful call:\n<div class=\"codehilite\"><pre><span></span>   [-4] old instance\n   [-3] context table\n   [-2] callback\n   [-1] self\n</pre></div>\n\n\nIn the event of an unsuccessful call, the Lua stack is unchanged", 
-      "parameters": [
-        {
-          "doc": "Lua callback struct", 
-          "name": "cbk", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "if the setup was successful", 
-          "name": "true", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Setups up the Lua callback prior to a call to dmScript::PCall()", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::SetupCallback"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Sets the previous instance\nExpects Lua stack:\n<div class=\"codehilite\"><pre><span></span>   [-2] old instance\n   [-1] context table\n</pre></div>\n\n\nBoth values are removed from the stack", 
-      "parameters": [
-        {
-          "doc": "Lua callback struct", 
-          "name": "cbk", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Cleans up the stack after SetupCallback+PCall calls", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::TeardownCallback"
-    }, 
-    {
-      "replaces": "", 
-      "description": "This function wraps lua_pcall with the addition of specifying an error handler which produces a backtrace.\nIn the case of an error, the error is logged and popped from the stack.", 
-      "parameters": [
-        {
-          "doc": "lua state", 
-          "name": "L", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "number of arguments", 
-          "name": "nargs", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "number of results", 
-          "name": "nresult", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "code from pcall", 
-          "name": "error", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "This function wraps lua_pcall with the addition of...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::PCall"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Creates a reference to the value at top of stack, the ref is done in the\ncurrent instances context table.\nExpects SetInstance() to have been set with an value that has a meta table\nwith META_GET_INSTANCE_CONTEXT_TABLE_REF method.", 
-      "parameters": [
-        {
-          "doc": "Lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "lua state",
           "types": [
             "lua_State*"
           ]
+        },
+        {
+          "name": "json",
+          "doc": "[out] Pointer to char*, which will receive a newly allocated string. Use free().",
+          "types": [
+            "char**"
+          ]
+        },
+        {
+          "name": "json_len",
+          "doc": "length of json string",
+          "types": [
+            "size_t*"
+          ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "STRUCT",
+      "name": "dmScript::LuaCallbackInfo",
+      "brief": "callback info struct",
+      "description": "callback info struct that will hold the relevant info needed to make a callback into Lua",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::CreateCallback",
+      "brief": "Register a Lua callback.",
+      "description": "Stores the current Lua state plus references to the script instance (self) and the callback.\nExpects SetInstance() to have been called prior to using this method.\nThe allocated data is created on the Lua stack and references are made against the\ninstances own context table.\nIf the callback is not explicitly deleted with DestroyCallback() the references and\ndata will stay around until the script instance is deleted.",
       "returnvalues": [
         {
-          "doc": "ref to value or LUA_NOREF\nLua stack on entry\n [-1] value\nLua stack on exit", 
-          "name": "lua", 
+          "name": "Lua",
+          "doc": "callback struct if successful, 0 otherwise",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Lua stack index of the function",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">static</span><span class=\"w\"> </span><span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"nf\">SomeFunction</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">L</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"c1\">// called from Lua</span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">LuaCallbackInfo</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">cbk</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">CreateCallback</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">1</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">...</span><span class=\"w\"> </span><span class=\"n\">store</span><span class=\"w\"> </span><span class=\"n\">the</span><span class=\"w\"> </span><span class=\"n\">callback</span><span class=\"w\"> </span><span class=\"k\">for</span><span class=\"w\"> </span><span class=\"n\">later</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n\n<span class=\"k\">static</span><span class=\"w\"> </span><span class=\"kt\">void</span><span class=\"w\"> </span><span class=\"nf\">InvokeCallback</span><span class=\"p\">(</span><span class=\"n\">LuaCallbackInfo</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">cbk</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">lua_State</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">L</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">GetCallbackLuaContext</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"w\">    </span><span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"o\">!</span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">SetupCallback</span><span class=\"p\">(</span><span class=\"n\">callback</span><span class=\"p\">))</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"k\">return</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n\n<span class=\"w\">    </span><span class=\"n\">lua_pushstring</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;hello&quot;</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"w\">    </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">PCall</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// self + # user arguments</span>\n\n<span class=\"w\">    </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">TeardownCallback</span><span class=\"p\">(</span><span class=\"n\">callback</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">DestroyCallback</span><span class=\"p\">(</span><span class=\"n\">cbk</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// only do this if you&#39;re not using the callback again</span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::IsCallbackValid",
+      "brief": "Check if Lua callback is valid.",
+      "description": "Check if Lua callback is valid.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "cbk",
+          "doc": "Lua callback struct",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::DestroyCallback",
+      "brief": "Deletes the Lua callback",
+      "description": "Deletes the Lua callback",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "cbk",
+          "doc": "Lua callback struct",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::GetCallbackLuaContext",
+      "brief": "Gets the Lua context from a callback struct",
+      "description": "Gets the Lua context from a callback struct",
+      "returnvalues": [
+        {
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "cbk",
+          "doc": "Lua callback struct",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::SetupCallback",
+      "brief": "Setups up the Lua callback prior to a call to dmScript::PCall()",
+      "description": "The Lua stack after a successful call:\n<div class=\"codehilite\"><pre><span></span><code>   [-4] old instance\n   [-3] context table\n   [-2] callback\n   [-1] self\n</code></pre></div>\n\nIn the event of an unsuccessful call, the Lua stack is unchanged",
+      "returnvalues": [
+        {
+          "name": "true",
+          "doc": "if the setup was successful",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "cbk",
+          "doc": "Lua callback struct",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::TeardownCallback",
+      "brief": "Cleans up the stack after SetupCallback+PCall calls",
+      "description": "Sets the previous instance\nExpects Lua stack:\n<div class=\"codehilite\"><pre><span></span><code>   [-2] old instance\n   [-1] context table\n</code></pre></div>\n\nBoth values are removed from the stack",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "cbk",
+          "doc": "Lua callback struct",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::PCall",
+      "brief": "This function wraps lua_pcall with the addition of...",
+      "description": "This function wraps lua_pcall with the addition of specifying an error handler which produces a backtrace.\nIn the case of an error, the error is logged and popped from the stack.",
+      "returnvalues": [
+        {
+          "name": "error",
+          "doc": "code from pcall",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "nargs",
+          "doc": "number of arguments",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "nresult",
+          "doc": "number of results",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "RefInInstance",
+      "brief": "Creates a reference to the value at top of stack, ...",
+      "description": "Creates a reference to the value at top of stack, the ref is done in the\ncurrent instances context table.\nExpects SetInstance() to have been set with an value that has a meta table\nwith META_GET_INSTANCE_CONTEXT_TABLE_REF method.",
+      "returnvalues": [
+        {
+          "name": "lua",
+          "doc": "ref to value or LUA_NOREF\nLua stack on entry\n [-1] value\nLua stack on exit",
           "types": [
             "int"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Creates a reference to the value at top of stack, ...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "RefInInstance"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Deletes the instance local lua reference\nExpects SetInstance() to have been set with an value that has a meta table\nwith META_GET_INSTANCE_CONTEXT_TABLE_REF method.", 
+      ],
       "parameters": [
         {
-          "doc": "Lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "Lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "UnrefInInstance",
+      "brief": "Deletes the instance local lua reference\nExpects ...",
+      "description": "Deletes the instance local lua reference\nExpects SetInstance() to have been set with an value that has a meta table\nwith META_GET_INSTANCE_CONTEXT_TABLE_REF method.",
+      "returnvalues": [],
+      "parameters": [
         {
-          "doc": "ref to value or LUA_NOREF\nLua stack on entry\nLua stack on exit", 
-          "name": "ref", 
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "ref",
+          "doc": "ref to value or LUA_NOREF\nLua stack on entry\nLua stack on exit",
           "types": [
             "int"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Deletes the instance local lua reference\nExpects ...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "UnrefInInstance"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Resolves a url in string format into a dmMessage::URL struct.\nSpecial handling for:\n- \".\" returns the default socket + path\n- \"#\" returns default socket + path + fragment", 
-      "parameters": [
-        {
-          "doc": "Lua state", 
-          "name": "L", 
-          "types": [
-            "lua_State*"
-          ]
-        }, 
-        {
-          "doc": "url", 
-          "name": "url", 
-          "types": [
-            "const char*"
-          ]
-        }, 
-        {
-          "doc": "where to store the result", 
-          "name": "out_url", 
-          "types": [
-            "dmMessage::URL*"
-          ]
-        }, 
-        {
-          "doc": "default url", 
-          "name": "default_url", 
-          "types": [
-            "dmMessage::URL*"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "RefInInstance",
+      "brief": "Resolves a url in string format into a dmMessage::...",
+      "description": "Resolves a url in string format into a dmMessage::URL struct.\nSpecial handling for:\n- \".\" returns the default socket + path\n- \"#\" returns default socket + path + fragment",
       "returnvalues": [
         {
-          "doc": "dmMessage::RESULT_OK if the conversion succeeded", 
-          "name": "result", 
+          "name": "result",
+          "doc": "dmMessage::RESULT_OK if the conversion succeeded",
           "types": [
             "dmMessage::Result"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Resolves a url in string format into a dmMessage::...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "RefInInstance"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Converts a URL into a readable string. Useful for e.g. error messages", 
+      ],
       "parameters": [
         {
-          "doc": "url", 
-          "name": "url", 
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "url",
+          "doc": "url",
+          "types": [
+            "const char*"
+          ]
+        },
+        {
+          "name": "out_url",
+          "doc": "where to store the result",
           "types": [
             "dmMessage::URL*"
           ]
-        }, 
+        },
         {
-          "doc": "the output buffer", 
-          "name": "buffer", 
+          "name": "default_url",
+          "doc": "default url",
           "types": [
-            "char*"
-          ]
-        }, 
-        {
-          "doc": "the output buffer size", 
-          "name": "buffer_size", 
-          "types": [
-            "uint32_t"
+            "dmMessage::URL*"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "UrlToString",
+      "brief": "Converts a URL into a readable string. Useful for ...",
+      "description": "Converts a URL into a readable string. Useful for e.g. error messages",
       "returnvalues": [
         {
-          "doc": "returns the passed in buffer", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "returns the passed in buffer",
           "types": [
             "const char*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Converts a URL into a readable string. Useful for ...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "UrlToString"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get current game object instance\nWorks in both gameobjects and gui scripts", 
+      ],
       "parameters": [
         {
-          "doc": "lua state", 
-          "name": "L", 
+          "name": "url",
+          "doc": "url",
           "types": [
-            "lua_State*"
+            "dmMessage::URL*"
+          ]
+        },
+        {
+          "name": "buffer",
+          "doc": "the output buffer",
+          "types": [
+            "char*"
+          ]
+        },
+        {
+          "name": "buffer_size",
+          "doc": "the output buffer size",
+          "types": [
+            "uint32_t"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "CheckGOInstance",
+      "brief": "Get current game object instance\nWorks in both gam...",
+      "description": "Get current game object instance\nWorks in both gameobjects and gui scripts",
       "returnvalues": [
         {
-          "doc": "", 
-          "name": "instance", 
+          "name": "instance",
+          "doc": "",
           "types": [
             "dmGameObject::HInstance"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Get current game object instance\nWorks in both gam...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "CheckGOInstance"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get gameobject instance\nThe instance reference (url) at stack index \"index\" will be resolved to an instance.", 
+      ],
       "parameters": [
         {
-          "doc": "lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "CheckGOInstance",
+      "brief": "Get gameobject instance\nThe instance reference (u...",
+      "description": "Get gameobject instance\nThe instance reference (url) at stack index \"index\" will be resolved to an instance.",
+      "returnvalues": [
         {
-          "doc": "lua-arg", 
-          "name": "index", 
+          "name": "instance",
+          "doc": "gameobject instance",
+          "types": [
+            "lua_State*"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "lua-arg",
           "types": [
             "int"
           ]
         }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "gameobject instance", 
-          "name": "instance", 
-          "types": [
-            "lua_State*"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Get gameobject instance\nThe instance reference (u...", 
-      "examples": "How to get the position of a gameobject in a script extension\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">static</span> <span class=\"kt\">int</span> <span class=\"nf\">get_position</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span> <span class=\"n\">L</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">);</span>\n    <span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">HInstance</span> <span class=\"n\">instance</span> <span class=\"o\">=</span> <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">CheckGOInstance</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">);</span>\n    <span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Point3</span> <span class=\"n\">position</span> <span class=\"o\">=</span> <span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">GetPosition</span><span class=\"p\">(</span><span class=\"n\">instance</span><span class=\"p\">);</span>\n    <span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">position</span><span class=\"p\">.</span><span class=\"n\">getX</span><span class=\"p\">());</span>\n    <span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">position</span><span class=\"p\">.</span><span class=\"n\">getY</span><span class=\"p\">());</span>\n    <span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">position</span><span class=\"p\">.</span><span class=\"n\">getZ</span><span class=\"p\">());</span>\n    <span class=\"k\">return</span> <span class=\"mi\">3</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "CheckGOInstance"
-    }, 
+      ],
+      "examples": "How to get the position of a gameobject in a script extension\n<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">static</span><span class=\"w\"> </span><span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"nf\">get_position</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">L</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">3</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">HInstance</span><span class=\"w\"> </span><span class=\"n\">instance</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">CheckGOInstance</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">1</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Point3</span><span class=\"w\"> </span><span class=\"n\">position</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">GetPosition</span><span class=\"p\">(</span><span class=\"n\">instance</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">position</span><span class=\"p\">.</span><span class=\"n\">getX</span><span class=\"p\">());</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">position</span><span class=\"p\">.</span><span class=\"n\">getY</span><span class=\"p\">());</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">position</span><span class=\"p\">.</span><span class=\"n\">getZ</span><span class=\"p\">());</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">return</span><span class=\"w\"> </span><span class=\"mi\">3</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "The function only accepts instances in \"this\" collection. Otherwise a lua-error will be raised."
+      ]
+    },
     {
-      "replaces": "", 
-      "description": "Buffer ownership.\n - OWNER_C   - m_Buffer is owned by C side, should not be destroyed when GCed\n - OWNER_LUA - m_Buffer is owned by Lua side, will be destroyed when GCed\n - OWNER_RES - m_Buffer not used, has a reference to a buffer resource instead. m_BufferRes is owned by C side, will be released when GCed", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "buffer ownership", 
-      "examples": "", 
+      "type": "ENUM",
+      "name": "LuaBufferOwnership",
+      "brief": "buffer ownership",
+      "description": "Buffer ownership.\n - OWNER_C   - m_Buffer is owned by C side, should not be destroyed when GCed\n - OWNER_LUA - m_Buffer is owned by Lua side, will be destroyed when GCed\n - OWNER_RES - m_Buffer not used, has a reference to a buffer resource instead. m_BufferRes is owned by C side, will be released when GCed",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
       "members": [
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmScript::OWNER_C"
-        }, 
+          "name": "dmScript::OWNER_C",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmScript::OWNER_LUA"
-        }, 
+          "name": "dmScript::OWNER_LUA",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmScript::OWNER_RES"
+          "name": "dmScript::OWNER_RES",
+          "doc": "",
+          "type": ""
         }
-      ], 
-      "error": "", 
-      "tparams": [], 
-      "type": "ENUM", 
-      "name": "LuaBufferOwnership"
-    }, 
+      ],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Holds info about the buffer and who owns it.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Lua wrapper for a dmBuffer::HBuffer", 
-      "examples": "See examples for dmScript::PushBuffer()", 
+      "type": "STRUCT",
+      "name": "dmScript::LuaHBuffer",
+      "brief": "Lua wrapper for a dmBuffer::HBuffer",
+      "description": "Holds info about the buffer and who owns it.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "See examples for dmScript::PushBuffer()",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
       "members": [
         {
-          "doc": "of\n    - m_BufferRes <span class=\"type\">void*</span>                       A buffer resource\n    - m_Buffer    <span class=\"type\">dmBuffer::HBuffer</span>           A buffer", 
-          "type": "", 
-          "name": "Union"
-        }, 
+          "name": "Union",
+          "doc": "of\n    - m_BufferRes <span class=\"type\">void*</span>                       A buffer resource\n    - m_Buffer    <span class=\"type\">dmBuffer::HBuffer</span>           A buffer",
+          "type": ""
+        },
         {
-          "doc": "The buffer (or resource)", 
-          "type": "dmBuffer::HBuffer", 
-          "name": "m_Buffer"
-        }, 
+          "name": "m_Buffer",
+          "doc": "The buffer (or resource)",
+          "type": "dmBuffer::HBuffer"
+        },
         {
-          "doc": "What ownership the pointer has", 
-          "type": "dmScript::LuaBufferOwnership", 
-          "name": "m_Owner"
+          "name": "m_Owner",
+          "doc": "What ownership the pointer has",
+          "type": "dmScript::LuaBufferOwnership"
         }
-      ], 
-      "error": "", 
-      "tparams": [], 
-      "type": "STRUCT", 
-      "name": "dmScript::LuaHBuffer"
-    }, 
+      ],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Check if the value is a dmScript::LuaHBuffer", 
-      "parameters": [
-        {
-          "doc": "lua state", 
-          "name": "L", 
-          "types": [
-            "lua_State*"
-          ]
-        }, 
-        {
-          "doc": "Index of the value", 
-          "name": "index", 
-          "types": [
-            "int"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmScript::IsBuffer",
+      "brief": "check if the value is a dmScript::LuaHBuffer",
+      "description": "Check if the value is a dmScript::LuaHBuffer",
       "returnvalues": [
         {
-          "doc": "True if value at index is a LuaHBuffer", 
-          "name": "boolean", 
+          "name": "boolean",
+          "doc": "True if value at index is a LuaHBuffer",
           "types": [
             "boolean"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "check if the value is a dmScript::LuaHBuffer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::IsBuffer"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Will increase the stack by 1.", 
+      ],
       "parameters": [
         {
-          "doc": "lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "buffer to push", 
-          "name": "buffer", 
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::PushBuffer",
+      "brief": "push a LuaHBuffer onto the supplied lua state",
+      "description": "Will increase the stack by 1.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "buffer",
+          "doc": "buffer to push",
           "types": [
             "dmScript::LuaHBuffer"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "push a LuaHBuffer onto the supplied lua state", 
-      "examples": "How to push a buffer and give Lua ownership of the buffer (GC)\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span> <span class=\"n\">luabuf</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">OWNER_LUA</span><span class=\"p\">);</span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">luabuf</span><span class=\"p\">);</span>\n</pre></div>\n\n\nHow to push a buffer and keep ownership in C++\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span> <span class=\"n\">luabuf</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">OWNER_C</span><span class=\"p\">);</span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span> <span class=\"n\">luabuf</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::PushBuffer"
-    }, 
+      ],
+      "examples": "How to push a buffer and give Lua ownership of the buffer (GC)\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span><span class=\"w\"> </span><span class=\"nf\">luabuf</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">OWNER_LUA</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">luabuf</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>\n\nHow to push a buffer and keep ownership in C++\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span><span class=\"w\"> </span><span class=\"nf\">luabuf</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">OWNER_C</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">luabuf</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Check if the value in the supplied index on the lua stack is a HBuffer and returns it.", 
-      "parameters": [
-        {
-          "doc": "lua state", 
-          "name": "L", 
-          "types": [
-            "lua_State*"
-          ]
-        }, 
-        {
-          "doc": "Index of the value", 
-          "name": "index", 
-          "types": [
-            "int"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmScript::CheckBuffer",
+      "brief": "retrieve a LuaHBuffer from the supplied lua state",
+      "description": "Retrieve a LuaHBuffer from the supplied lua state.\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and returns it.",
       "returnvalues": [
         {
-          "doc": "pointer to dmScript::LuaHBuffer", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "pointer to dmScript::LuaHBuffer",
           "types": [
             "LuaHBuffer*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "retrieve a HBuffer from the supplied lua state", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::CheckBuffer"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Retrieve a HBuffer from the supplied lua state.\nCheck if the value in the supplied index on the lua stack is a HBuffer and returns it.", 
+      ],
       "parameters": [
         {
-          "doc": "lua state", 
-          "name": "L", 
+          "name": "L",
+          "doc": "lua state",
           "types": [
             "lua_State*"
           ]
-        }, 
+        },
         {
-          "doc": "Index of the value", 
-          "name": "index", 
+          "name": "index",
+          "doc": "Index of the value",
           "types": [
             "int"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "The dmBuffer::IsBufferValid is already called on the returned buffer"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::CheckBufferNoError",
+      "brief": "retrieve a LuaHBuffer from the supplied lua state.",
+      "description": "Retrieve a LuaHBuffer from the supplied lua state.\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and returns it.",
       "returnvalues": [
         {
-          "doc": "pointer to dmScript::LuaHBuffer", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "pointer to dmScript::LuaHBuffer or 0 if not valid",
           "types": [
             "LuaHBuffer*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "retrieve a HBuffer from the supplied lua state.", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmScript::CheckBufferNoError"
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Returns 0 on error. Does not invoke lua_error.",
+        "The dmBuffer::IsBufferValid is already called on the returned buffer"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::CheckBufferUnpack",
+      "brief": "retrieve a HBuffer from the supplied lua state",
+      "description": "Retrieve a HBuffer from the supplied lua state\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and it's valid, returns the HBuffer.",
+      "returnvalues": [
+        {
+          "name": "buffer",
+          "doc": "buffer if valid, 0 otherwise",
+          "types": [
+            "dmBuffer::HBuffer"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "The dmBuffer::IsBufferValid is already called on the returned buffer"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::CheckBufferUnpackNoError",
+      "brief": "retrieve a HBuffer from the supplied lua state",
+      "description": "Retrieve a HBuffer from the supplied lua state\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and it's valid, returns the HBuffer.",
+      "returnvalues": [
+        {
+          "name": "buffer",
+          "doc": "buffer if valid, 0 otherwise",
+          "types": [
+            "dmBuffer::HBuffer"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "The dmBuffer::IsBufferValid is already called on the returned buffer"
+      ]
     }
-  ]
+  ],
+  "info": {
+    "namespace": "dmScript",
+    "name": "Script",
+    "brief": "SDK Script API documentation",
+    "description": "Built-in scripting functions.",
+    "path": "engine/gamesys/src/dmsdk/gamesys/script.h",
+    "file": "dmsdk/gamesys/script.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
 }

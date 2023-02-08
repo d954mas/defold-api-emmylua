@@ -1,124 +1,125 @@
 {
-  "info": {
-    "group": "DEFOLD SDK", 
-    "description": "Math functions.", 
-    "namespace": "dmMath", 
-    "brief": "SDK Math API documentation", 
-    "file": "dmsdk/dlib/math.h", 
-    "path": "engine/dlib/src/dmsdk/dlib/math.h", 
-    "name": "Math"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Min function", 
-      "parameters": [
-        {
-          "doc": "T] a Value a", 
-          "name": "[type:class", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "T] b Value b", 
-          "name": "[type:class", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "Min",
+      "brief": "Min function",
+      "description": "Min function",
       "returnvalues": [
         {
-          "doc": "Min of a and b", 
-          "name": "v", 
+          "name": "v",
+          "doc": "Min of a and b",
           "types": [
             "class T"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Min function", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "Min"
-    }, 
+      ],
+      "parameters": [
+        {
+          "name": "[type:class",
+          "doc": "T] a Value a",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "[type:class",
+          "doc": "T] b Value b",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Select one of two values depending on the sign of another.", 
-      "parameters": [
-        {
-          "doc": "T] x Value to test for positiveness", 
-          "name": "[type:class", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "T] a Result if test succeeded", 
-          "name": "[type:class", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "T] b Result if test failed", 
-          "name": "[type:class", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "Select",
+      "brief": "Select one of two values",
+      "description": "Select one of two values depending on the sign of another.",
       "returnvalues": [
         {
-          "doc": "a when x &gt;= 0, b otherwise", 
-          "name": "v", 
+          "name": "v",
+          "doc": "a when x &gt;= 0, b otherwise",
           "types": [
             "class T"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Select one of two values", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "Select"
-    }, 
+      ],
+      "parameters": [
+        {
+          "name": "[type:class",
+          "doc": "T] x Value to test for positiveness",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "[type:class",
+          "doc": "T] a Result if test succeeded",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "[type:class",
+          "doc": "T] b Result if test failed",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Abs function", 
-      "parameters": [
-        {
-          "doc": "T] x", 
-          "name": "[type:class", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "Abs",
+      "brief": "Abs function",
+      "description": "Abs function",
       "returnvalues": [
         {
-          "doc": "Absolute value of x", 
-          "name": "v", 
+          "name": "v",
+          "doc": "Absolute value of x",
           "types": [
             "class T"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Abs function", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "Abs"
+      ],
+      "parameters": [
+        {
+          "name": "[type:class",
+          "doc": "T] x",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "dmMath",
+    "name": "Math",
+    "brief": "SDK Math API documentation",
+    "description": "Math functions.",
+    "path": "engine/dlib/src/dmsdk/dlib/math.h",
+    "file": "dmsdk/dlib/math.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
 }

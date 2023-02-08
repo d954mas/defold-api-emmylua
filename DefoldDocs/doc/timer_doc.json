@@ -1,131 +1,132 @@
 {
-  "info": {
-    "group": "SCRIPT", 
-    "description": "Timers allow you to set a delay and a callback to be called when the timer completes.\nThe timers created with this API are updated with the collection timer where they\nare created. If you pause or speed up the collection (using <code>set_time_step</code>) it will\nalso affect the new timer.", 
-    "namespace": "timer", 
-    "brief": "Timer API documentation", 
-    "file": "", 
-    "path": "", 
-    "name": "Timer"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Adds a timer and returns a unique handle\nYou may create more timers from inside a timer callback.\nUsing a delay of 0 will result in a timer that triggers at the next frame just before\nscript update functions.\nIf you want a timer that triggers on each frame, set delay to 0.0f and repeat to true.\nTimers created within a script will automatically die when the script is deleted.", 
+      "type": "FUNCTION",
+      "name": "timer.delay",
+      "brief": "create a timer",
+      "description": "Adds a timer and returns a unique handle\nYou may create more timers from inside a timer callback.\nUsing a delay of 0 will result in a timer that triggers at the next frame just before\nscript update functions.\nIf you want a timer that triggers on each frame, set delay to 0.0f and repeat to true.\nTimers created within a script will automatically die when the script is deleted.",
+      "returnvalues": [
+        {
+          "name": "",
+          "doc": "handle identifier for the create timer, returns timer.INVALID_TIMER_HANDLE if the timer can not be created",
+          "types": [
+            "hash"
+          ]
+        }
+      ],
       "parameters": [
         {
-          "doc": "time interval in seconds", 
-          "name": "delay", 
+          "name": "delay",
+          "doc": "time interval in seconds",
           "types": [
             "number"
           ]
-        }, 
+        },
         {
-          "doc": "true = repeat timer until cancel, false = one-shot timer", 
-          "name": "repeat", 
+          "name": "repeat",
+          "doc": "true = repeat timer until cancel, false = one-shot timer",
           "types": [
             "boolean"
           ]
-        }, 
+        },
         {
-          "doc": "timer callback function\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>handle</code></dt>\n<dd><span class=\"type\">number</span> The handle of the timer</dd>\n<dt><code>time_elapsed</code></dt>\n<dd><span class=\"type\">number</span> The elapsed time - on first trigger it is time since timer.delay call, otherwise time since last trigger</dd>\n</dl>", 
-          "name": "callback", 
+          "name": "callback",
+          "doc": "timer callback function\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object</dd>\n<dt><code>handle</code></dt>\n<dd><span class=\"type\">number</span> The handle of the timer</dd>\n<dt><code>time_elapsed</code></dt>\n<dd><span class=\"type\">number</span> The elapsed time - on first trigger it is time since timer.delay call, otherwise time since last trigger</dd>\n</dl>",
           "types": [
             "function(self, handle, time_elapsed)"
           ]
         }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "handle identifier for the create timer, returns timer.INVALID_TIMER_HANDLE if the timer can not be created", 
-          "name": "", 
-          "types": [
-            "hash"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "create a timer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "timer.delay"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "You may cancel a timer from inside a timer callback.\nCancelling a timer that is already executed or cancelled is safe.", 
-      "parameters": [
-        {
-          "doc": "the timer handle returned by timer.delay()", 
-          "name": "handle", 
-          "types": [
-            "hash"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "timer.cancel",
+      "brief": "cancel a timer",
+      "description": "You may cancel a timer from inside a timer callback.\nCancelling a timer that is already executed or cancelled is safe.",
       "returnvalues": [
         {
-          "doc": "if the timer was active, false if the timer is already cancelled / complete", 
-          "name": "true", 
+          "name": "true",
+          "doc": "if the timer was active, false if the timer is already cancelled / complete",
           "types": [
             "boolean"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "cancel a timer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "timer.cancel"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Manual triggering a callback for a timer.", 
+      ],
       "parameters": [
         {
-          "doc": "the timer handle returned by timer.delay()", 
-          "name": "handle", 
+          "name": "handle",
+          "doc": "the timer handle returned by timer.delay()",
           "types": [
             "hash"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "timer.trigger",
+      "brief": "trigger a callback",
+      "description": "Manual triggering a callback for a timer.",
       "returnvalues": [
         {
-          "doc": "if the timer was active, false if the timer is already cancelled / complete", 
-          "name": "true", 
+          "name": "true",
+          "doc": "if the timer was active, false if the timer is already cancelled / complete",
           "types": [
             "boolean"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "trigger a callback", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "timer.trigger"
-    }, 
+      ],
+      "parameters": [
+        {
+          "name": "handle",
+          "doc": "the timer handle returned by timer.delay()",
+          "types": [
+            "hash"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Indicates an invalid timer handle", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Indicates an invalid timer handle", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "timer.INVALID_TIMER_HANDLE"
+      "type": "VARIABLE",
+      "name": "timer.INVALID_TIMER_HANDLE",
+      "brief": "Indicates an invalid timer handle",
+      "description": "Indicates an invalid timer handle",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "timer",
+    "name": "Timer",
+    "brief": "Timer API documentation",
+    "description": "Timers allow you to set a delay and a callback to be called when the timer completes.\nThe timers created with this API are updated with the collection timer where they\nare created. If you pause or speed up the collection (using <code>set_time_step</code>) it will\nalso affect the new timer.",
+    "path": "",
+    "file": "",
+    "notes": [],
+    "group": "SCRIPT"
+  }
 }

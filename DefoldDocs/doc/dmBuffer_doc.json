@@ -1,708 +1,827 @@
 {
-  "info": {
-    "group": "DEFOLD SDK", 
-    "description": "Buffer API for data buffers as the main way to communicate between systems.", 
-    "namespace": "dmBuffer", 
-    "brief": "SDK Buffer API documentation", 
-    "file": "dmsdk/dlib/buffer.h", 
-    "path": "engine/dlib/src/dmsdk/dlib/buffer.h", 
-    "name": "Buffer"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">typedef</span> <span class=\"kt\">uint32_t</span> <span class=\"n\">HBuffer</span><span class=\"p\">;</span>\n</pre></div>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "HBuffer type definition", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "dmBuffer::HBuffer"
-    }, 
+      "type": "TYPEDEF",
+      "name": "dmBuffer::HBuffer",
+      "brief": "HBuffer type definition",
+      "description": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">typedef</span><span class=\"w\"> </span><span class=\"kt\">uint32_t</span><span class=\"w\"> </span><span class=\"n\">HBuffer</span><span class=\"p\">;</span><span class=\"w\"></span>\n</code></pre></div>",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "ValueType enumeration.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "valueType enumeration", 
-      "examples": "", 
+      "type": "ENUM",
+      "name": "ValueType",
+      "brief": "valueType enumeration",
+      "description": "ValueType enumeration.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
       "members": [
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::VALUE_TYPE_UINT8"
-        }, 
+          "name": "dmBuffer::VALUE_TYPE_UINT8",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::VALUE_TYPE_UINT16"
-        }, 
+          "name": "dmBuffer::VALUE_TYPE_UINT16",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::VALUE_TYPE_UINT32"
-        }, 
+          "name": "dmBuffer::VALUE_TYPE_UINT32",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::VALUE_TYPE_UINT64"
-        }, 
+          "name": "dmBuffer::VALUE_TYPE_UINT64",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::VALUE_TYPE_INT8"
-        }, 
+          "name": "dmBuffer::VALUE_TYPE_INT8",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::VALUE_TYPE_INT16"
-        }, 
+          "name": "dmBuffer::VALUE_TYPE_INT16",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::VALUE_TYPE_INT32"
-        }, 
+          "name": "dmBuffer::VALUE_TYPE_INT32",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::VALUE_TYPE_INT64"
-        }, 
+          "name": "dmBuffer::VALUE_TYPE_INT64",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::VALUE_TYPE_FLOAT32"
-        }, 
+          "name": "dmBuffer::VALUE_TYPE_FLOAT32",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::MAX_VALUE_TYPE_COUNT"
+          "name": "dmBuffer::MAX_VALUE_TYPE_COUNT",
+          "doc": "",
+          "type": ""
         }
-      ], 
-      "error": "", 
-      "tparams": [], 
-      "type": "ENUM", 
-      "name": "ValueType"
-    }, 
+      ],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Result enumeration.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "result enumeration", 
-      "examples": "", 
+      "type": "ENUM",
+      "name": "Result",
+      "brief": "result enumeration",
+      "description": "Result enumeration.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
       "members": [
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::RESULT_OK"
-        }, 
+          "name": "dmBuffer::RESULT_OK",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::RESULT_GUARD_INVALID"
-        }, 
+          "name": "dmBuffer::RESULT_GUARD_INVALID",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::RESULT_ALLOCATION_ERROR"
-        }, 
+          "name": "dmBuffer::RESULT_ALLOCATION_ERROR",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::RESULT_BUFFER_INVALID"
-        }, 
+          "name": "dmBuffer::RESULT_BUFFER_INVALID",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::RESULT_BUFFER_SIZE_ERROR"
-        }, 
+          "name": "dmBuffer::RESULT_BUFFER_SIZE_ERROR",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::RESULT_STREAM_SIZE_ERROR"
-        }, 
+          "name": "dmBuffer::RESULT_STREAM_SIZE_ERROR",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::RESULT_STREAM_MISSING"
-        }, 
+          "name": "dmBuffer::RESULT_STREAM_MISSING",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::RESULT_STREAM_TYPE_MISMATCH"
-        }, 
+          "name": "dmBuffer::RESULT_STREAM_TYPE_MISMATCH",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "dmBuffer::RESULT_STREAM_COUNT_MISMATCH"
+          "name": "dmBuffer::RESULT_STREAM_COUNT_MISMATCH",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "dmBuffer::RESULT_METADATA_INVALID",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "dmBuffer::RESULT_METADATA_MISSING",
+          "doc": "",
+          "type": ""
         }
-      ], 
-      "error": "", 
-      "tparams": [], 
-      "type": "ENUM", 
-      "name": "Result"
-    }, 
+      ],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Buffer stream declaration structure", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "StreamDeclaration struct", 
-      "examples": "Declare a typical position stream:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">const</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">StreamDeclaration</span> <span class=\"n\">streams_decl</span><span class=\"p\">[]</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"p\">{</span><span class=\"n\">dmHashString64</span><span class=\"p\">(</span><span class=\"s\">&quot;position&quot;</span><span class=\"p\">),</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">VALUE_TYPE_FLOAT32</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">}</span>\n<span class=\"p\">};</span>\n</pre></div>", 
+      "type": "STRUCT",
+      "name": "dmBuffer::StreamDeclaration",
+      "brief": "StreamDeclaration struct",
+      "description": "Buffer stream declaration structure",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "Declare a typical position stream:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">const</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">StreamDeclaration</span><span class=\"w\"> </span><span class=\"n\">streams_decl</span><span class=\"p\">[]</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"n\">dmHashString64</span><span class=\"p\">(</span><span class=\"s\">&quot;position&quot;</span><span class=\"p\">),</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">VALUE_TYPE_FLOAT32</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">3</span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"p\">};</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
       "members": [
         {
-          "doc": "Hash of stream name", 
-          "type": "dmhash_t", 
-          "name": "m_Name"
-        }, 
+          "name": "m_Name",
+          "doc": "Hash of stream name",
+          "type": "dmhash_t"
+        },
         {
-          "doc": "Stream ValueType type", 
-          "type": "dmBuffer::ValueType", 
-          "name": "m_Type"
-        }, 
+          "name": "m_Type",
+          "doc": "Stream ValueType type",
+          "type": "dmBuffer::ValueType"
+        },
         {
-          "doc": "Component count of stream type. E.g. 3 for a Vector3", 
-          "type": "uint8_t", 
-          "name": "m_Count"
-        }, 
+          "name": "m_Count",
+          "doc": "Component count of stream type. E.g. 3 for a Vector3",
+          "type": "uint8_t"
+        },
         {
-          "doc": "Flags for a stream.", 
-          "type": "uint32_t", 
-          "name": "m_Flags"
-        }, 
+          "name": "m_Flags",
+          "doc": "Flags for a stream.",
+          "type": "uint32_t"
+        },
         {
-          "doc": "Reserved for future use.", 
-          "type": "uint32_t", 
-          "name": "m_Reserved"
+          "name": "m_Reserved",
+          "doc": "Reserved for future use.",
+          "type": "uint32_t"
         }
-      ], 
-      "error": "", 
-      "tparams": [], 
-      "type": "STRUCT", 
-      "name": "dmBuffer::StreamDeclaration"
-    }, 
+      ],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Creates a new HBuffer with a number of different streams.", 
+      "type": "FUNCTION",
+      "name": "dmBuffer::Create",
+      "brief": "create Buffer",
+      "description": "Creates a new HBuffer with a number of different streams.",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "BUFFER_OK if buffer was allocated successfully",
+          "types": [
+            "dmBuffer::Result"
+          ]
+        }
+      ],
       "parameters": [
         {
-          "doc": "The number of \"structs\" the buffer should hold (e.g. vertex count)", 
-          "name": "count", 
+          "name": "count",
+          "doc": "The number of \"structs\" the buffer should hold (e.g. vertex count)",
           "types": [
             "uint32_t"
           ]
-        }, 
+        },
         {
-          "doc": "Array of stream declarations", 
-          "name": "streams_decl", 
+          "name": "streams_decl",
+          "doc": "Array of stream declarations",
           "types": [
             "const dmBuffer::StreamDeclaration*"
           ]
-        }, 
+        },
         {
-          "doc": "Number of stream declarations inside the decl array (max 256)", 
-          "name": "streams_decl_count", 
+          "name": "streams_decl_count",
+          "doc": "Number of stream declarations inside the decl array (max 256)",
           "types": [
             "uint8_t"
           ]
-        }, 
+        },
         {
-          "doc": "Pointer to HBuffer where to store the newly allocated buffer", 
-          "name": "out_buffer", 
+          "name": "out_buffer",
+          "doc": "Pointer to HBuffer where to store the newly allocated buffer",
           "types": [
             "dmBuffer::HBuffer*"
           ]
         }
-      ], 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">const</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">StreamDeclaration</span><span class=\"w\"> </span><span class=\"n\">streams_decl</span><span class=\"p\">[]</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"n\">dmHashString64</span><span class=\"p\">(</span><span class=\"s\">&quot;position&quot;</span><span class=\"p\">),</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">VALUE_TYPE_FLOAT32</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">3</span><span class=\"p\">},</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"n\">dmHashString64</span><span class=\"p\">(</span><span class=\"s\">&quot;texcoord0&quot;</span><span class=\"p\">),</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">VALUE_TYPE_UINT16</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">2</span><span class=\"p\">},</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"n\">dmHashString64</span><span class=\"p\">(</span><span class=\"s\">&quot;color&quot;</span><span class=\"p\">),</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">VALUE_TYPE_UINT8</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">4</span><span class=\"p\">},</span><span class=\"w\"></span>\n<span class=\"p\">};</span><span class=\"w\"></span>\n<span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">HBuffer</span><span class=\"w\"> </span><span class=\"n\">buffer</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mh\">0x0</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"n\">r</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Create</span><span class=\"p\">(</span><span class=\"mi\">1024</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">streams_decl</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">3</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">buffer</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">r</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// success</span>\n<span class=\"p\">}</span><span class=\"w\"> </span><span class=\"k\">else</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// handle error</span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmBuffer::Copy",
+      "brief": "copy a Buffer",
+      "description": "Copies the data from one buffer to another buffer. The stream declaration needs to be the same in both buffers.",
       "returnvalues": [
         {
-          "doc": "BUFFER_OK if buffer was allocated successfully", 
-          "name": "result", 
+          "name": "result",
+          "doc": "BUFFER_OK if buffer was copied successfully",
           "types": [
             "dmBuffer::Result"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "create Buffer", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">const</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">StreamDeclaration</span> <span class=\"n\">streams_decl</span><span class=\"p\">[]</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"p\">{</span><span class=\"n\">dmHashString64</span><span class=\"p\">(</span><span class=\"s\">&quot;position&quot;</span><span class=\"p\">),</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">VALUE_TYPE_FLOAT32</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">},</span>\n    <span class=\"p\">{</span><span class=\"n\">dmHashString64</span><span class=\"p\">(</span><span class=\"s\">&quot;texcoord0&quot;</span><span class=\"p\">),</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">VALUE_TYPE_UINT16</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">},</span>\n    <span class=\"p\">{</span><span class=\"n\">dmHashString64</span><span class=\"p\">(</span><span class=\"s\">&quot;color&quot;</span><span class=\"p\">),</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">VALUE_TYPE_UINT8</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">},</span>\n<span class=\"p\">};</span>\n<span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">HBuffer</span> <span class=\"n\">buffer</span> <span class=\"o\">=</span> <span class=\"mh\">0x0</span><span class=\"p\">;</span>\n<span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">r</span> <span class=\"o\">=</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Create</span><span class=\"p\">(</span><span class=\"mi\">1024</span><span class=\"p\">,</span> <span class=\"n\">streams_decl</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">buffer</span><span class=\"p\">);</span>\n\n<span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">r</span> <span class=\"o\">==</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span> <span class=\"p\">{</span>\n    <span class=\"c1\">// success</span>\n<span class=\"p\">}</span> <span class=\"k\">else</span> <span class=\"p\">{</span>\n    <span class=\"c1\">// handle error</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmBuffer::Create"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Copies the data from one buffer to another buffer. The stream declaration needs to be the same in both buffers.", 
+      ],
       "parameters": [
         {
-          "doc": "Pointer to HBuffer from where to copy buffer data.", 
-          "name": "dst_buffer_handle", 
+          "name": "dst_buffer_handle",
+          "doc": "Pointer to HBuffer from where to copy buffer data.",
           "types": [
             "dmBuffer::HBuffer*"
           ]
-        }, 
+        },
         {
-          "doc": "Pointer to HBuffer where to copy the buffer data.", 
-          "name": "src_buffer_handle", 
+          "name": "src_buffer_handle",
+          "doc": "Pointer to HBuffer where to copy the buffer data.",
           "types": [
             "dmBuffer::HBuffer*"
           ]
         }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "BUFFER_OK if buffer was copied successfully", 
-          "name": "result", 
-          "types": [
-            "dmBuffer::Result"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "copy a Buffer", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">r</span> <span class=\"o\">=</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Copy</span><span class=\"p\">(</span><span class=\"n\">buffer_a</span><span class=\"p\">,</span> <span class=\"n\">buffer_b</span><span class=\"p\">);</span>\n\n<span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">r</span> <span class=\"o\">==</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span> <span class=\"p\">{</span>\n    <span class=\"c1\">// success</span>\n<span class=\"p\">}</span> <span class=\"k\">else</span> <span class=\"p\">{</span>\n    <span class=\"c1\">// handle error</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmBuffer::Copy"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"n\">r</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Copy</span><span class=\"p\">(</span><span class=\"n\">buffer_a</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">buffer_b</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">r</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// success</span>\n<span class=\"p\">}</span><span class=\"w\"> </span><span class=\"k\">else</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// handle error</span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Destroys a HBuffer and it's streams.", 
+      "type": "FUNCTION",
+      "name": "dmBuffer::Destroy",
+      "brief": "destroy Buffer.",
+      "description": "Destroys a HBuffer and it's streams.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "Buffer handle to the buffer to free", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "Buffer handle to the buffer to free",
           "types": [
             "dmBuffer::HBuffer"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "destroy Buffer.", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">const</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">StreamDeclaration</span> <span class=\"n\">streams_decl</span><span class=\"p\">[]</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n    <span class=\"p\">{</span><span class=\"n\">dmHashString64</span><span class=\"p\">(</span><span class=\"s\">&quot;position&quot;</span><span class=\"p\">),</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">VALUE_TYPE_FLOAT32</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">},</span>\n<span class=\"p\">};</span>\n<span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">HBuffer</span> <span class=\"n\">buffer</span> <span class=\"o\">=</span> <span class=\"mh\">0x0</span><span class=\"p\">;</span>\n<span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">r</span> <span class=\"o\">=</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Create</span><span class=\"p\">(</span><span class=\"mi\">4</span><span class=\"p\">,</span> <span class=\"n\">streams_decl</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">buffer</span><span class=\"p\">);</span>\n\n<span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">r</span> <span class=\"o\">==</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span> <span class=\"p\">{</span>\n    <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Destroy</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">);</span>\n<span class=\"p\">}</span> <span class=\"k\">else</span> <span class=\"p\">{</span>\n    <span class=\"c1\">// handle error</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmBuffer::Destroy"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">const</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">StreamDeclaration</span><span class=\"w\"> </span><span class=\"n\">streams_decl</span><span class=\"p\">[]</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"n\">dmHashString64</span><span class=\"p\">(</span><span class=\"s\">&quot;position&quot;</span><span class=\"p\">),</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">VALUE_TYPE_FLOAT32</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">3</span><span class=\"p\">},</span><span class=\"w\"></span>\n<span class=\"p\">};</span><span class=\"w\"></span>\n<span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">HBuffer</span><span class=\"w\"> </span><span class=\"n\">buffer</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mh\">0x0</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"n\">r</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Create</span><span class=\"p\">(</span><span class=\"mi\">4</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">streams_decl</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">buffer</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">r</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Destroy</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"> </span><span class=\"k\">else</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// handle error</span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Checks if a handle is still valid", 
-      "parameters": [
-        {
-          "doc": "The buffer", 
-          "name": "buffer", 
-          "types": [
-            "dmBuffer::HBuffer"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmBuffer::IsBufferValid",
+      "brief": "check buffer handle",
+      "description": "Checks if a handle is still valid",
       "returnvalues": [
         {
-          "doc": "True if the handle is valid", 
-          "name": "result", 
+          "name": "result",
+          "doc": "True if the handle is valid",
           "types": [
             "bool"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "check buffer handle", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmBuffer::IsBufferValid"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Validate a buffer and it's streams.", 
+      ],
       "parameters": [
         {
-          "doc": "Buffer handle to the buffer to validate", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "The buffer",
           "types": [
             "dmBuffer::HBuffer"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "validate buffer.", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">// Pass buffer to third party library that does operations on the buffer or streams.</span>\n<span class=\"n\">ThirdPartyLib</span><span class=\"o\">::</span><span class=\"n\">PerformOperation</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">);</span>\n\n<span class=\"n\">r</span> <span class=\"o\">=</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">ValidateBuffer</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">);</span>\n<span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">r</span> <span class=\"o\">==</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span> <span class=\"p\">{</span>\n    <span class=\"c1\">// buffer and streams are valid</span>\n<span class=\"p\">}</span> <span class=\"k\">else</span> <span class=\"p\">{</span>\n    <span class=\"c1\">// the third party lib made the buffer invalid</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmBuffer::ValidateBuffer"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Get a stream from a buffer. Output stream is 16 byte aligned.", 
+      "type": "FUNCTION",
+      "name": "dmBuffer::ValidateBuffer",
+      "brief": "validate buffer.",
+      "description": "Validate a buffer and it's streams.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "buffer handle.", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "Buffer handle to the buffer to validate",
           "types": [
             "dmBuffer::HBuffer"
           ]
-        }, 
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">// Pass buffer to third party library that does operations on the buffer or streams.</span>\n<span class=\"n\">ThirdPartyLib</span><span class=\"o\">::</span><span class=\"n\">PerformOperation</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"n\">r</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">ValidateBuffer</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">r</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// buffer and streams are valid</span>\n<span class=\"p\">}</span><span class=\"w\"> </span><span class=\"k\">else</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// the third party lib made the buffer invalid</span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmBuffer::GetStream",
+      "brief": "get stream from buffer.",
+      "description": "Get a stream from a buffer. Output stream is 16 byte aligned.",
+      "returnvalues": [
         {
-          "doc": "Hash of stream name to get", 
-          "name": "stream_name", 
+          "name": "result",
+          "doc": "BUFFER_OK if the stream was successfully accessed",
+          "types": [
+            "dmBuffer::Result"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "buffer handle.",
+          "types": [
+            "dmBuffer::HBuffer"
+          ]
+        },
+        {
+          "name": "stream_name",
+          "doc": "Hash of stream name to get",
           "types": [
             "dmhash_t"
           ]
-        }, 
+        },
         {
-          "doc": "Where to store the stream", 
-          "name": "stream", 
+          "name": "stream",
+          "doc": "Where to store the stream",
           "types": [
             "void**"
           ]
-        }, 
+        },
         {
-          "doc": "Where to store the count (e.g. vertex count). May be null.", 
-          "name": "count", 
+          "name": "count",
+          "doc": "Where to store the count (e.g. vertex count). May be null.",
           "types": [
             "uint32_t*"
           ]
-        }, 
+        },
         {
-          "doc": "Where to store the number of components (e.g. 3 for a Vector3). May be null.", 
-          "name": "components", 
+          "name": "components",
+          "doc": "Where to store the number of components (e.g. 3 for a Vector3). May be null.",
           "types": [
             "uint32_t*"
           ]
-        }, 
+        },
         {
-          "doc": "Where to store the (struct) stride. The stride can be added to the value pointer. May be null.\nE.g. for a float array, the stride is (sizeof(Struct) / sizeof(float))", 
-          "name": "stride", 
+          "name": "stride",
+          "doc": "Where to store the (struct) stride. The stride can be added to the value pointer. May be null.\nE.g. for a float array, the stride is (sizeof(Struct) / sizeof(float))",
           "types": [
             "uint32_t*"
           ]
         }
-      ], 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kt\">float</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">positions</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mh\">0x0</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"kt\">uint32_t</span><span class=\"w\"> </span><span class=\"n\">size</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"kt\">uint32_t</span><span class=\"w\"> </span><span class=\"n\">components</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"kt\">uint32_t</span><span class=\"w\"> </span><span class=\"n\">stride</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"n\">r</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">GetStream</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">dmHashString64</span><span class=\"p\">(</span><span class=\"s\">&quot;position&quot;</span><span class=\"p\">),</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"o\">**</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"n\">positions</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">count</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">components</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">stride</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">r</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">for</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"n\">i</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"n\">i</span><span class=\"w\"> </span><span class=\"o\">&lt;</span><span class=\"w\"> </span><span class=\"n\">count</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"o\">++</span><span class=\"n\">i</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"k\">for</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"n\">c</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"n\">c</span><span class=\"w\"> </span><span class=\"o\">&lt;</span><span class=\"w\"> </span><span class=\"n\">components</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"o\">++</span><span class=\"n\">c</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">             </span><span class=\"n\">positions</span><span class=\"p\">[</span><span class=\"n\">c</span><span class=\"p\">]</span><span class=\"w\"> </span><span class=\"o\">*=</span><span class=\"w\"> </span><span class=\"mf\">1.1f</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">positions</span><span class=\"w\"> </span><span class=\"o\">+=</span><span class=\"w\"> </span><span class=\"n\">stride</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"> </span><span class=\"k\">else</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// handle error</span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmBuffer::GetBytes",
+      "brief": "get buffer as a byte array.",
+      "description": "Gets the buffer as a byte array. If the buffer is interleaved (default), a pointer to the whole memory is returned.",
       "returnvalues": [
         {
-          "doc": "BUFFER_OK if the stream was successfully accessed", 
-          "name": "result", 
+          "name": "result",
+          "doc": "BUFFER_OK if the buffer was successfully accessed",
           "types": [
             "dmBuffer::Result"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get stream from buffer.", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kt\">float</span><span class=\"o\">*</span> <span class=\"n\">positions</span> <span class=\"o\">=</span> <span class=\"mh\">0x0</span><span class=\"p\">;</span>\n<span class=\"kt\">uint32_t</span> <span class=\"n\">size</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n<span class=\"kt\">uint32_t</span> <span class=\"n\">components</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n<span class=\"kt\">uint32_t</span> <span class=\"n\">stride</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n<span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">r</span> <span class=\"o\">=</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">GetStream</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"n\">dmHashString64</span><span class=\"p\">(</span><span class=\"s\">&quot;position&quot;</span><span class=\"p\">),</span> <span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"o\">**</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"n\">positions</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">count</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">components</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">stride</span><span class=\"p\">);</span>\n\n<span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">r</span> <span class=\"o\">==</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span> <span class=\"p\">{</span>\n    <span class=\"k\">for</span> <span class=\"p\">(</span><span class=\"kt\">int</span> <span class=\"n\">i</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">;</span> <span class=\"n\">i</span> <span class=\"o\">&lt;</span> <span class=\"n\">count</span><span class=\"p\">;</span> <span class=\"o\">++</span><span class=\"n\">i</span><span class=\"p\">)</span>\n    <span class=\"p\">{</span>\n        <span class=\"k\">for</span> <span class=\"p\">(</span><span class=\"kt\">int</span> <span class=\"n\">c</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">;</span> <span class=\"n\">c</span> <span class=\"o\">&lt;</span> <span class=\"n\">components</span><span class=\"p\">;</span> <span class=\"o\">++</span><span class=\"n\">c</span><span class=\"p\">)</span>\n        <span class=\"p\">{</span>\n             <span class=\"n\">positions</span><span class=\"p\">[</span><span class=\"n\">c</span><span class=\"p\">]</span> <span class=\"o\">*=</span> <span class=\"mf\">1.1f</span><span class=\"p\">;</span>\n        <span class=\"p\">}</span>\n        <span class=\"n\">positions</span> <span class=\"o\">+=</span> <span class=\"n\">stride</span><span class=\"p\">;</span>\n    <span class=\"p\">}</span>\n<span class=\"p\">}</span> <span class=\"k\">else</span> <span class=\"p\">{</span>\n    <span class=\"c1\">// handle error</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmBuffer::GetStream"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets the buffer as a byte array. If the buffer is interleaved (default), a pointer to the whole memory is returned.", 
+      ],
       "parameters": [
         {
-          "doc": "buffer handle.", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "buffer handle.",
           "types": [
             "dmBuffer::HBuffer"
           ]
-        }, 
+        },
         {
-          "doc": "Pointer to void* where to store the bytes", 
-          "name": "out_bytes", 
+          "name": "out_bytes",
+          "doc": "Pointer to void* where to store the bytes",
           "types": [
             "void**"
           ]
-        }, 
+        },
         {
-          "doc": "Pointer to uint32_t where to store the array size", 
-          "name": "out_size", 
+          "name": "out_size",
+          "doc": "Pointer to uint32_t where to store the array size",
           "types": [
             "uint32_t*"
           ]
         }
-      ], 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kt\">uint8_t</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">bytes</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mh\">0x0</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"kt\">uint32_t</span><span class=\"w\"> </span><span class=\"n\">size</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"></span>\n\n<span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"n\">r</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">GetBytes</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"o\">**</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"n\">bytes</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">size</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">r</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">for</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"n\">i</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"n\">i</span><span class=\"w\"> </span><span class=\"o\">&lt;</span><span class=\"w\"> </span><span class=\"n\">size</span><span class=\"p\">;</span><span class=\"w\"> </span><span class=\"o\">++</span><span class=\"n\">i</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">        </span><span class=\"n\">stream</span><span class=\"p\">[</span><span class=\"n\">i</span><span class=\"p\">]</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"kt\">uint8_t</span><span class=\"p\">)(</span><span class=\"n\">i</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"w\"> </span><span class=\"mh\">0xFF</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"p\">}</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"> </span><span class=\"k\">else</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// handle error</span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmBuffer::GetCount",
+      "brief": "get buffer count.",
+      "description": "Get (struct) count for a buffer.",
       "returnvalues": [
         {
-          "doc": "BUFFER_OK if the buffer was successfully accessed", 
-          "name": "result", 
+          "name": "result",
+          "doc": "BUFFER_OK if the element count was successfully accessed",
           "types": [
             "dmBuffer::Result"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get buffer as a byte array.", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kt\">uint8_t</span><span class=\"o\">*</span> <span class=\"n\">bytes</span> <span class=\"o\">=</span> <span class=\"mh\">0x0</span><span class=\"p\">;</span>\n<span class=\"kt\">uint32_t</span> <span class=\"n\">size</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n\n<span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">r</span> <span class=\"o\">=</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">GetBytes</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"p\">(</span><span class=\"kt\">void</span><span class=\"o\">**</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"n\">bytes</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">size</span><span class=\"p\">);</span>\n\n<span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">r</span> <span class=\"o\">==</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span> <span class=\"p\">{</span>\n    <span class=\"k\">for</span> <span class=\"p\">(</span><span class=\"kt\">int</span> <span class=\"n\">i</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">;</span> <span class=\"n\">i</span> <span class=\"o\">&lt;</span> <span class=\"n\">size</span><span class=\"p\">;</span> <span class=\"o\">++</span><span class=\"n\">i</span><span class=\"p\">)</span>\n    <span class=\"p\">{</span>\n        <span class=\"n\">stream</span><span class=\"p\">[</span><span class=\"n\">i</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">(</span><span class=\"kt\">uint8_t</span><span class=\"p\">)(</span><span class=\"n\">i</span> <span class=\"o\">&amp;</span> <span class=\"mh\">0xFF</span><span class=\"p\">);</span>\n    <span class=\"p\">}</span>\n<span class=\"p\">}</span> <span class=\"k\">else</span> <span class=\"p\">{</span>\n    <span class=\"c1\">// handle error</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmBuffer::GetBytes"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get (struct) count for a buffer.", 
+      ],
       "parameters": [
         {
-          "doc": "buffer handle.", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "buffer handle.",
           "types": [
             "dmBuffer::HBuffer"
           ]
-        }, 
+        },
         {
-          "doc": "Pointer to uint32_t where to store the element count", 
-          "name": "count", 
+          "name": "count",
+          "doc": "Pointer to uint32_t where to store the element count",
           "types": [
             "uint32_t*"
           ]
         }
-      ], 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kt\">uint32_t</span><span class=\"w\"> </span><span class=\"n\">count</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"n\">r</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">GetCount</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">count</span><span class=\"p\">);</span><span class=\"w\"></span>\n\n<span class=\"k\">if</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"n\">r</span><span class=\"w\"> </span><span class=\"o\">==</span><span class=\"w\"> </span><span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">printf</span><span class=\"p\">(</span><span class=\"s\">&quot;buffer %p has %d number of elements&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">buffer</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">count</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"> </span><span class=\"k\">else</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"c1\">// handle error</span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmBuffer::GetStreamType",
+      "brief": "get stream type and type count",
+      "description": "Gets the stream type",
       "returnvalues": [
         {
-          "doc": "BUFFER_OK if the element count was successfully accessed", 
-          "name": "result", 
+          "name": "result",
+          "doc": "Returns BUFFER_OK if all went ok",
           "types": [
             "dmBuffer::Result"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get buffer count.", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kt\">uint32_t</span> <span class=\"n\">count</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">;</span>\n<span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">r</span> <span class=\"o\">=</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">GetCount</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">count</span><span class=\"p\">);</span>\n\n<span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">r</span> <span class=\"o\">==</span> <span class=\"n\">dmBuffer</span><span class=\"o\">::</span><span class=\"n\">RESULT_OK</span><span class=\"p\">)</span> <span class=\"p\">{</span>\n    <span class=\"n\">printf</span><span class=\"p\">(</span><span class=\"s\">&quot;buffer %p has %d number of elements&quot;</span><span class=\"p\">,</span> <span class=\"n\">buffer</span><span class=\"p\">,</span> <span class=\"n\">count</span><span class=\"p\">);</span>\n<span class=\"p\">}</span> <span class=\"k\">else</span> <span class=\"p\">{</span>\n    <span class=\"c1\">// handle error</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmBuffer::GetCount"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets the stream type", 
+      ],
       "parameters": [
         {
-          "doc": "Pointer to a buffer.", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "Pointer to a buffer.",
           "types": [
             "dmBuffer::HBuffer"
           ]
-        }, 
+        },
         {
-          "doc": "Hash of stream name to get", 
-          "name": "stream_name", 
+          "name": "stream_name",
+          "doc": "Hash of stream name to get",
           "types": [
             "dmhash_t"
           ]
-        }, 
+        },
         {
-          "doc": "The value type", 
-          "name": "type", 
+          "name": "type",
+          "doc": "The value type",
           "types": [
             "dmBuffer::ValueType*"
           ]
-        }, 
+        },
         {
-          "doc": "The number of values (E.g. 3 for a Vector3)", 
-          "name": "components", 
+          "name": "components",
+          "doc": "The number of values (E.g. 3 for a Vector3)",
           "types": [
             "uint32_t*"
           ]
         }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "Returns BUFFER_OK if all went ok", 
-          "name": "result", 
-          "types": [
-            "dmBuffer::Result"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "get stream type and type count", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmBuffer::GetStreamType"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Gets the size of a value type", 
-      "parameters": [
-        {
-          "doc": "The value type", 
-          "name": "type", 
-          "types": [
-            "dmBuffer::ValueType"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmBuffer::GetSizeForValueType",
+      "brief": "get size of a value type",
+      "description": "Gets the size of a value type",
       "returnvalues": [
         {
-          "doc": "The size in bytes", 
-          "name": "size", 
+          "name": "size",
+          "doc": "The size in bytes",
           "types": [
             "uint32_t"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get size of a value type", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmBuffer::GetSizeForValueType"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Converts result to string", 
+      ],
       "parameters": [
         {
-          "doc": "The result", 
-          "name": "result", 
-          "types": [
-            "dmBuffer::Result"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "The result as a string", 
-          "name": "result", 
-          "types": [
-            "const char*"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "result to string", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmBuffer::GetResultString"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Converts a value type to string", 
-      "parameters": [
-        {
-          "doc": "The value type", 
-          "name": "result", 
+          "name": "type",
+          "doc": "The value type",
           "types": [
             "dmBuffer::ValueType"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmBuffer::GetResultString",
+      "brief": "result to string",
+      "description": "Converts result to string",
       "returnvalues": [
         {
-          "doc": "The value type as a string", 
-          "name": "result", 
+          "name": "result",
+          "doc": "The result as a string",
           "types": [
             "const char*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "value type to string", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmBuffer::GetValueTypeString"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets the current update number", 
+      ],
       "parameters": [
         {
-          "doc": "The value type", 
-          "name": "type", 
+          "name": "result",
+          "doc": "The result",
+          "types": [
+            "dmBuffer::Result"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmBuffer::GetValueTypeString",
+      "brief": "value type to string",
+      "description": "Converts a value type to string",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "The value type as a string",
+          "types": [
+            "const char*"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "result",
+          "doc": "The value type",
+          "types": [
+            "dmBuffer::ValueType"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmBuffer::GetContentVersion",
+      "brief": "Gets the current update number",
+      "description": "Gets the current update number",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "Returns BUFFER_OK if all went ok",
+          "types": [
+            "dmBuffer::Result"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "type",
+          "doc": "The value type",
           "types": [
             "dmBuffer::HBuffer"
           ]
-        }, 
+        },
         {
-          "doc": "The current version number", 
-          "name": "version", 
+          "name": "version",
+          "doc": "The current version number",
           "types": [
             "uint32_t*"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmBuffer::UpdateContentVersion",
+      "brief": "Update the internal frame counter.",
+      "description": "Used to know if a buffer has been updated.",
       "returnvalues": [
         {
-          "doc": "Returns BUFFER_OK if all went ok", 
-          "name": "result", 
+          "name": "result",
+          "doc": "Returns BUFFER_OK if all went ok",
           "types": [
             "dmBuffer::Result"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Gets the current update number", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmBuffer::GetContentVersion"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Used to know if a buffer has been updated.", 
+      ],
       "parameters": [
         {
-          "doc": "The value type", 
-          "name": "type", 
+          "name": "type",
+          "doc": "The value type",
           "types": [
             "dmBuffer::HBuffer"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmBuffer::SetMetaData",
+      "brief": "set a metadata entry",
+      "description": "Create or update a new metadata entry with a number of values of a specific type.\nIt will allocate space to store these values.",
       "returnvalues": [
         {
-          "doc": "Returns BUFFER_OK if all went ok", 
-          "name": "result", 
+          "name": "result",
+          "doc": "RESULT_OK if the metadata entry was successfully stored",
           "types": [
             "dmBuffer::Result"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Update the internal frame counter.", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmBuffer::UpdateContentVersion"
+      ],
+      "parameters": [
+        {
+          "name": "hbuffer",
+          "doc": "A buffer handle",
+          "types": [
+            "dmBuffer::HBuffer"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "The entry name as a hash",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "data",
+          "doc": "A pointer to an array of the values",
+          "types": [
+            "void*"
+          ]
+        },
+        {
+          "name": "count",
+          "doc": "Number of values in the array",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "type",
+          "doc": "The type of the values",
+          "types": [
+            "dmBuffer::ValueType"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmBuffer::GetMetaData",
+      "brief": "retrieve a metadata entry",
+      "description": "Retrieve metadata entry information",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "hbuffer",
+          "doc": "A buffer handle",
+          "types": [
+            "dmBuffer::HBuffer"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "The entry name as a hash",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "data",
+          "doc": "Gets the internal address of metadata values",
+          "types": [
+            "void**"
+          ]
+        },
+        {
+          "name": "count",
+          "doc": "Gets the number of metadata values stored",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "type",
+          "doc": "Gets the type of values of the metadata",
+          "types": [
+            "dmBuffer::ValueType"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "dmBuffer",
+    "name": "Buffer",
+    "brief": "SDK Buffer API documentation",
+    "description": "Buffer API for data buffers as the main way to communicate between systems.",
+    "path": "engine/dlib/src/dmsdk/dlib/buffer.h",
+    "file": "dmsdk/dlib/buffer.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
 }

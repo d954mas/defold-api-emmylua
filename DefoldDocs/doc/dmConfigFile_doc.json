@@ -1,159 +1,217 @@
 {
-  "info": {
-    "group": "DEFOLD SDK", 
-    "description": "Configuration file access functions.\nThe configuration file is compiled version of the <span class=\"file\">game.project</span> file.", 
-    "namespace": "dmConfigFile", 
-    "brief": "SDK ConfigFile API documentation", 
-    "file": "dmsdk/dlib/configfile.h", 
-    "path": "engine/dlib/src/dmsdk/dlib/configfile.h", 
-    "name": "ConfigFile"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">typedef</span> <span class=\"k\">struct</span> <span class=\"n\">Config</span><span class=\"o\">*</span> <span class=\"n\">HConfig</span><span class=\"p\">;</span>\n</pre></div>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "HConfig type definition", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "dmConfigFile::HConfig"
-    }, 
+      "type": "TYPEDEF",
+      "name": "dmConfigFile::HConfig",
+      "brief": "HConfig type definition",
+      "description": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">typedef</span><span class=\"w\"> </span><span class=\"k\">struct</span><span class=\"w\"> </span><span class=\"nc\">Config</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">HConfig</span><span class=\"p\">;</span><span class=\"w\"></span>\n</code></pre></div>",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Get config value as string, returns default if the key isn't found", 
-      "parameters": [
-        {
-          "doc": "Config file handle", 
-          "name": "config", 
-          "types": [
-            "dmConfigFile::HConfig"
-          ]
-        }, 
-        {
-          "doc": "Key in format section.key (.key for no section)", 
-          "name": "key", 
-          "types": [
-            "const char*"
-          ]
-        }, 
-        {
-          "doc": "Default value to return if key isn't found", 
-          "name": "default_value", 
-          "types": [
-            "const char*"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmConfigFile::GetString",
+      "brief": "get config value as string",
+      "description": "Get config value as string, returns default if the key isn't found",
       "returnvalues": [
         {
-          "doc": "found value or default value", 
-          "name": "value", 
+          "name": "value",
+          "doc": "found value or default value",
           "types": [
             "const char*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get config value as string", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">static</span> <span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">AppInitialize</span><span class=\"p\">(</span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">AppParams</span><span class=\"o\">*</span> <span class=\"n\">params</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"k\">const</span> <span class=\"kt\">char</span><span class=\"o\">*</span> <span class=\"n\">projectTitle</span> <span class=\"o\">=</span> <span class=\"n\">dmConfigFile</span><span class=\"o\">::</span><span class=\"n\">GetString</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"o\">-&gt;</span><span class=\"n\">m_ConfigFile</span><span class=\"p\">,</span> <span class=\"s\">&quot;project.title&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;Untitled&quot;</span><span class=\"p\">);</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmConfigFile::GetString"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get config value as int, returns default if the key isn't found\nNote: default_value is returned for invalid integer values", 
+      ],
       "parameters": [
         {
-          "doc": "Config file handle", 
-          "name": "config", 
+          "name": "config",
+          "doc": "Config file handle",
           "types": [
             "dmConfigFile::HConfig"
           ]
-        }, 
+        },
         {
-          "doc": "Key in format section.key (.key for no section)", 
-          "name": "key", 
+          "name": "key",
+          "doc": "Key in format section.key (.key for no section)",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "Default value to return if key isn't found", 
-          "name": "default_value", 
+          "name": "default_value",
+          "doc": "Default value to return if key isn't found",
+          "types": [
+            "const char*"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">static</span><span class=\"w\"> </span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"nf\">AppInitialize</span><span class=\"p\">(</span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">AppParams</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">params</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">const</span><span class=\"w\"> </span><span class=\"kt\">char</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">projectTitle</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmConfigFile</span><span class=\"o\">::</span><span class=\"n\">GetString</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"o\">-&gt;</span><span class=\"n\">m_ConfigFile</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;project.title&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;Untitled&quot;</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmConfigFile::GetInt",
+      "brief": "get config value as int",
+      "description": "Get config value as int, returns default if the key isn't found\nNote: default_value is returned for invalid integer values",
+      "returnvalues": [
+        {
+          "name": "value",
+          "doc": "found value or default value",
           "types": [
             "int32_t"
           ]
         }
-      ], 
-      "returnvalues": [
+      ],
+      "parameters": [
         {
-          "doc": "found value or default value", 
-          "name": "value", 
+          "name": "config",
+          "doc": "Config file handle",
+          "types": [
+            "dmConfigFile::HConfig"
+          ]
+        },
+        {
+          "name": "key",
+          "doc": "Key in format section.key (.key for no section)",
+          "types": [
+            "const char*"
+          ]
+        },
+        {
+          "name": "default_value",
+          "doc": "Default value to return if key isn't found",
           "types": [
             "int32_t"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get config value as int", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">static</span> <span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">AppInitialize</span><span class=\"p\">(</span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">AppParams</span><span class=\"o\">*</span> <span class=\"n\">params</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"kt\">int32_t</span> <span class=\"n\">displayWidth</span> <span class=\"o\">=</span> <span class=\"n\">dmConfigFile</span><span class=\"o\">::</span><span class=\"n\">GetInt</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"o\">-&gt;</span><span class=\"n\">m_ConfigFile</span><span class=\"p\">,</span> <span class=\"s\">&quot;display.width&quot;</span><span class=\"p\">,</span> <span class=\"mi\">640</span><span class=\"p\">);</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmConfigFile::GetInt"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">static</span><span class=\"w\"> </span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"nf\">AppInitialize</span><span class=\"p\">(</span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">AppParams</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">params</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"kt\">int32_t</span><span class=\"w\"> </span><span class=\"n\">displayWidth</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmConfigFile</span><span class=\"o\">::</span><span class=\"n\">GetInt</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"o\">-&gt;</span><span class=\"n\">m_ConfigFile</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;display.width&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">640</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Get config value as float, returns default if the key isn't found\nNote: default_value is returned for invalid float values", 
+      "type": "FUNCTION",
+      "name": "dmConfigFile::GetFloat",
+      "brief": "get config value as float",
+      "description": "Get config value as float, returns default if the key isn't found\nNote: default_value is returned for invalid float values",
+      "returnvalues": [
+        {
+          "name": "value",
+          "doc": "found value or default value",
+          "types": [
+            "float"
+          ]
+        }
+      ],
       "parameters": [
         {
-          "doc": "Config file handle", 
-          "name": "config", 
+          "name": "config",
+          "doc": "Config file handle",
           "types": [
             "dmConfigFile::HConfig"
           ]
-        }, 
+        },
         {
-          "doc": "Key in format section.key (.key for no section)", 
-          "name": "key", 
+          "name": "key",
+          "doc": "Key in format section.key (.key for no section)",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "Default value to return if key isn't found", 
-          "name": "default_value", 
+          "name": "default_value",
+          "doc": "Default value to return if key isn't found",
           "types": [
             "float"
           ]
         }
-      ], 
-      "returnvalues": [
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">static</span><span class=\"w\"> </span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">Result</span><span class=\"w\"> </span><span class=\"nf\">AppInitialize</span><span class=\"p\">(</span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">AppParams</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">params</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"kt\">float</span><span class=\"w\"> </span><span class=\"n\">gravity</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmConfigFile</span><span class=\"o\">::</span><span class=\"n\">GetFloat</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"o\">-&gt;</span><span class=\"n\">m_ConfigFile</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;physics.gravity_y&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mf\">-9.8f</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "MACRO",
+      "name": "DM_DECLARE_CONFIGFILE_EXTENSION",
+      "brief": "declare a new config file extension",
+      "description": "Declare and register new config file extension to the engine.\nEach get function should return true if it sets a proper value. Otherwise return false.",
+      "returnvalues": [],
+      "parameters": [
         {
-          "doc": "found value or default value", 
-          "name": "value", 
+          "name": "symbol",
+          "doc": "external extension symbol description (no quotes).",
           "types": [
-            "float"
+            "symbol"
+          ]
+        },
+        {
+          "name": "name",
+          "doc": "extension name. Human readable.",
+          "types": [
+            "const char*"
+          ]
+        },
+        {
+          "name": "init",
+          "doc": "init function. May be null.",
+          "types": [
+            "function(dmConfigFile::HConfig)"
+          ]
+        },
+        {
+          "name": "get_string",
+          "doc": "Gets a string property. May be null.",
+          "types": [
+            "function(const char* section_plus_name, const char* default, const char** out)"
+          ]
+        },
+        {
+          "name": "get_int",
+          "doc": "Gets an int property. May be null.",
+          "types": [
+            "function(const char* section_plus_name, int default, int* out)"
+          ]
+        },
+        {
+          "name": "get_float",
+          "doc": "Gets a float property. May be null.",
+          "types": [
+            "function(const char* section_plus_name, float default, float* out)"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get config value as float", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">static</span> <span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">Result</span> <span class=\"n\">AppInitialize</span><span class=\"p\">(</span><span class=\"n\">dmExtension</span><span class=\"o\">::</span><span class=\"n\">AppParams</span><span class=\"o\">*</span> <span class=\"n\">params</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"kt\">float</span> <span class=\"n\">gravity</span> <span class=\"o\">=</span> <span class=\"n\">dmConfigFile</span><span class=\"o\">::</span><span class=\"n\">GetFloat</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"o\">-&gt;</span><span class=\"n\">m_ConfigFile</span><span class=\"p\">,</span> <span class=\"s\">&quot;physics.gravity_y&quot;</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mf\">9.8f</span><span class=\"p\">);</span>\n<span class=\"p\">}</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmConfigFile::GetFloat"
+      ],
+      "examples": "Register a new config file extension:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">DM_DECLARE_CONFIGFILE_EXTENSION</span><span class=\"p\">(</span><span class=\"n\">MyConfigfileExtension</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;MyConfigfileExtension&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">create</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">destroy</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">get_string</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">get_int</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">get_float</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "dmConfigFile",
+    "name": "ConfigFile",
+    "brief": "SDK ConfigFile API documentation",
+    "description": "Configuration file access functions.\nThe configuration file is compiled version of the <span class=\"file\">game.project</span> file.",
+    "path": "engine/dlib/src/dmsdk/dlib/configfile.h",
+    "file": "dmsdk/dlib/configfile.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
 }

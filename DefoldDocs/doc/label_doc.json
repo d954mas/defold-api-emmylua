@@ -1,174 +1,175 @@
 {
-  "info": {
-    "group": "COMPONENTS", 
-    "description": "Label API documentation", 
-    "namespace": "label", 
-    "brief": "Label API documentation", 
-    "file": "", 
-    "path": "", 
-    "name": "Label"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "The color of the label. The type of the property is vector4.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "<span class=\"type\">vector4</span> label color", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n   <span class=\"c1\">-- Get the current color&#39;s y component</span>\n   <span class=\"kd\">local</span> <span class=\"n\">red_component</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">color.y&quot;</span><span class=\"p\">)</span>\n   <span class=\"c1\">-- Animate the color</span>\n   <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">color&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_PINGPONG</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_INOUTSINE</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "PROPERTY", 
-      "name": "color"
-    }, 
+      "type": "PROPERTY",
+      "name": "color",
+      "brief": "<span class=\"type\">vector4</span> label color",
+      "description": "The color of the label. The type of the property is vector4.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n   <span class=\"c1\">-- Get the current color&#39;s y component</span>\n   <span class=\"kd\">local</span> <span class=\"n\">red_component</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;color.y&quot;</span><span class=\"p\">)</span>\n   <span class=\"c1\">-- Animate the color</span>\n   <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;color&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_PINGPONG</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_INOUTSINE</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "The outline color of the label. The type of the property is vector4.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "<span class=\"type\">vector4</span> label outline", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n   <span class=\"c1\">-- Get the current outline color</span>\n   <span class=\"kd\">local</span> <span class=\"n\">outline</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">outline&quot;</span><span class=\"p\">)</span>\n   <span class=\"c1\">-- Animate the property</span>\n   <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">outline&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_PINGPONG</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_INOUTSINE</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "PROPERTY", 
-      "name": "outline"
-    }, 
+      "type": "PROPERTY",
+      "name": "outline",
+      "brief": "<span class=\"type\">vector4</span> label outline",
+      "description": "The outline color of the label. The type of the property is vector4.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n   <span class=\"c1\">-- Get the current outline color</span>\n   <span class=\"kd\">local</span> <span class=\"n\">outline</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;outline&quot;</span><span class=\"p\">)</span>\n   <span class=\"c1\">-- Animate the property</span>\n   <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;outline&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_PINGPONG</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_INOUTSINE</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "The shadow color of the label. The type of the property is vector4.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "<span class=\"type\">vector4</span> label shadow", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n <span class=\"c1\">-- Get the current shadow color</span>\n <span class=\"kd\">local</span> <span class=\"n\">shadow</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">shadow&quot;</span><span class=\"p\">)</span>\n <span class=\"c1\">-- Animate the property</span>\n <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">shadow&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_PINGPONG</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_INOUTSINE</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "PROPERTY", 
-      "name": "shadow"
-    }, 
+      "type": "PROPERTY",
+      "name": "shadow",
+      "brief": "<span class=\"type\">vector4</span> label shadow",
+      "description": "The shadow color of the label. The type of the property is vector4.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n <span class=\"c1\">-- Get the current shadow color</span>\n <span class=\"kd\">local</span> <span class=\"n\">shadow</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;shadow&quot;</span><span class=\"p\">)</span>\n <span class=\"c1\">-- Animate the property</span>\n <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;shadow&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_PINGPONG</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector4</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_INOUTSINE</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "The scale of the label. The type of the property is number (uniform)\nor vector3 (non uniform).", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "<span class=\"type\">number | vector3</span> label scale", 
-      "examples": "How to scale a label independently along the X and Y axis:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n   <span class=\"c1\">-- Double the y-axis scaling on component &quot;label&quot;</span>\n   <span class=\"kd\">local</span> <span class=\"n\">yscale</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">scale.y&quot;</span><span class=\"p\">)</span>\n   <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">scale.y&quot;</span><span class=\"p\">,</span> <span class=\"n\">yscale</span> <span class=\"o\">*</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n   <span class=\"c1\">-- Set the new scale altogether</span>\n   <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">scale&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">))</span>\n   <span class=\"c1\">-- Animate the scale</span>\n   <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">scale&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_PINGPONG</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">),</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_INOUTSINE</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "PROPERTY", 
-      "name": "scale"
-    }, 
+      "type": "PROPERTY",
+      "name": "scale",
+      "brief": "<span class=\"type\">number | vector3</span> label scale",
+      "description": "The scale of the label. The type of the property is number (uniform)\nor vector3 (non uniform).",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "How to scale a label independently along the X and Y axis:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n   <span class=\"c1\">-- Double the y-axis scaling on component &quot;label&quot;</span>\n   <span class=\"kd\">local</span> <span class=\"n\">yscale</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;scale.y&quot;</span><span class=\"p\">)</span>\n   <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;scale.y&quot;</span><span class=\"p\">,</span> <span class=\"n\">yscale</span> <span class=\"o\">*</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n   <span class=\"c1\">-- Set the new scale altogether</span>\n   <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;scale&quot;</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">))</span>\n   <span class=\"c1\">-- Animate the scale</span>\n   <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">animate</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;scale&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">PLAYBACK_LOOP_PINGPONG</span><span class=\"p\">,</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">vector3</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">),</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">EASING_INOUTSINE</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns the size of the label. The size will constrain the text if line break is enabled.\nThe type of the property is vector3.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "<span class=\"type\">vector3</span> label size", 
-      "examples": "How to query a label's size, either as a vector or selecting a specific dimension:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n <span class=\"c1\">-- get size from component &quot;label&quot;</span>\n <span class=\"kd\">local</span> <span class=\"n\">size</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">size&quot;</span><span class=\"p\">)</span>\n <span class=\"kd\">local</span> <span class=\"n\">sizex</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">size.x&quot;</span><span class=\"p\">)</span>\n <span class=\"c1\">-- do something useful</span>\n <span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">size</span><span class=\"p\">.</span><span class=\"n\">x</span> <span class=\"o\">==</span> <span class=\"n\">sizex</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "PROPERTY", 
-      "name": "size"
-    }, 
+      "type": "PROPERTY",
+      "name": "size",
+      "brief": "<span class=\"type\">vector3</span> label size",
+      "description": "Returns the size of the label. The size will constrain the text if line break is enabled.\nThe type of the property is vector3.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "How to query a label's size, either as a vector or selecting a specific dimension:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n <span class=\"c1\">-- get size from component &quot;label&quot;</span>\n <span class=\"kd\">local</span> <span class=\"n\">size</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;size&quot;</span><span class=\"p\">)</span>\n <span class=\"kd\">local</span> <span class=\"n\">sizex</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;size.x&quot;</span><span class=\"p\">)</span>\n <span class=\"c1\">-- do something useful</span>\n <span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">size</span><span class=\"p\">.</span><span class=\"n\">x</span> <span class=\"o\">==</span> <span class=\"n\">sizex</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "The material used when rendering the label. The type of the property is hash.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "<span class=\"type\">hash</span> label material", 
-      "examples": "How to set material using a script property (see <a href=\"/ref/resource#resource.material\">resource.material</a>)\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_material&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">material</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/material.material&quot;</span><span class=\"p\">))</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">material&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_material</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "PROPERTY", 
-      "name": "material"
-    }, 
+      "type": "PROPERTY",
+      "name": "material",
+      "brief": "<span class=\"type\">hash</span> label material",
+      "description": "The material used when rendering the label. The type of the property is hash.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "How to set material using a script property (see <a href=\"/ref/resource#resource.material\">resource.material</a>)\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_material&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">material</span><span class=\"p\">(</span><span class=\"s2\">&quot;/material.material&quot;</span><span class=\"p\">))</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;material&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_material</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "The font used when rendering the label. The type of the property is hash.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "<span class=\"type\">hash</span> label font", 
-      "examples": "How to set font using a script property (see <a href=\"/ref/resource#resource.font\">resource.font</a>)\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_font&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">font</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/font.font&quot;</span><span class=\"p\">))</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">font&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_font</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "PROPERTY", 
-      "name": "font"
-    }, 
+      "type": "PROPERTY",
+      "name": "font",
+      "brief": "<span class=\"type\">hash</span> label font",
+      "description": "The font used when rendering the label. The type of the property is hash.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "How to set font using a script property (see <a href=\"/ref/resource#resource.font\">resource.font</a>)\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">property</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_font&quot;</span><span class=\"p\">,</span> <span class=\"n\">resource</span><span class=\"p\">.</span><span class=\"n\">font</span><span class=\"p\">(</span><span class=\"s2\">&quot;/font.font&quot;</span><span class=\"p\">))</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;font&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">my_font</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Sets the text of a label component\n<span class=\"icon-attention\"></span> This method uses the message passing that means the value will be set after <code>dispatch messages</code> step.\nMore information is available in the <a href=\"/manuals/application-lifecycle\">Application Lifecycle manual</a>.", 
+      "type": "FUNCTION",
+      "name": "label.set_text",
+      "brief": "set the text for a label",
+      "description": "Sets the text of a label component\n<span class=\"icon-attention\"></span> This method uses the message passing that means the value will be set after <code>dispatch messages</code> step.\nMore information is available in the <a href=\"/manuals/application-lifecycle\">Application Lifecycle manual</a>.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "the label that should have a constant set", 
-          "name": "url", 
+          "name": "url",
+          "doc": "the label that should have a constant set",
           "types": [
-            "string", 
-            "hash", 
+            "string",
+            "hash",
             "url"
           ]
-        }, 
+        },
         {
-          "doc": "the text", 
-          "name": "text", 
+          "name": "text",
+          "doc": "the text",
           "types": [
             "string"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the text for a label", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">label</span><span class=\"p\">.</span><span class=\"n\">set_text</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">Hello World!&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "label.set_text"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">label</span><span class=\"p\">.</span><span class=\"n\">set_text</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;Hello World!&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Gets the text from a label component", 
-      "parameters": [
-        {
-          "doc": "the label to get the text from", 
-          "name": "url", 
-          "types": [
-            "string", 
-            "hash", 
-            "url"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "label.get_text",
+      "brief": "gets the text for a label",
+      "description": "Gets the text from a label component",
       "returnvalues": [
         {
-          "doc": "the label text", 
-          "name": "metrics", 
+          "name": "metrics",
+          "doc": "the label text",
           "types": [
             "string"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "gets the text for a label", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"n\">label</span><span class=\"p\">.</span><span class=\"n\">get_text</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">#label&quot;</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">text</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "label.get_text"
+      ],
+      "parameters": [
+        {
+          "name": "url",
+          "doc": "the label to get the text from",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"n\">label</span><span class=\"p\">.</span><span class=\"n\">get_text</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">text</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "label",
+    "name": "Label",
+    "brief": "Label API documentation",
+    "description": "Label API documentation",
+    "path": "",
+    "file": "",
+    "notes": [],
+    "group": "COMPONENTS"
+  }
 }

@@ -1,12 +1,13 @@
 {
+  "elements": [],
   "info": {
-    "group": "DEFOLD SDK", 
-    "description": "Vector Math functions.", 
-    "namespace": "dmVMath", 
-    "brief": "SDK Vector Math API documentation", 
-    "file": "dmsdk/dlib/vmath.h", 
-    "path": "engine/dlib/src/dmsdk/dlib/vmath.h", 
-    "name": "Vector Math"
-  }, 
-  "elements": []
+    "namespace": "dmVMath",
+    "name": "Vector Math",
+    "brief": "SDK Vector Math API documentation",
+    "description": "Vector Math functions.",
+    "path": "engine/dlib/src/dmsdk/dlib/vmath.h",
+    "file": "dmsdk/dlib/vmath.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
 }

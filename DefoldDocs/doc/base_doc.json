@@ -1,775 +1,776 @@
 {
-  "info": {
-    "group": "LUA STANDARD LIBS", 
-    "description": "Documentation for the Lua base standard library.\nFrom <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.\nCopyright &copy; 2006-2012 Lua.org, PUC-Rio.\nFreely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.", 
-    "namespace": "base", 
-    "brief": "Lua base standard library", 
-    "file": "", 
-    "path": "", 
-    "name": "Base"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Issues an  error when\nthe value of its argument v is false (i.e., <span class=\"type\"> nil</span> or <span class=\"type\"> false</span>);\notherwise, returns all its arguments.\nmessage is an error message;\nwhen absent, it defaults to \"assertion failed!\"", 
+      "type": "FUNCTION",
+      "name": "assert",
+      "brief": "asserts that condition is not nil and not false",
+      "description": "Issues an  error when\nthe value of its argument v is false (i.e., <span class=\"type\"> nil</span> or <span class=\"type\"> false</span>);\notherwise, returns all its arguments.\nmessage is an error message;\nwhen absent, it defaults to \"assertion failed!\"",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "v", 
+          "name": "v",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[message]", 
+          "name": "[message]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "asserts that condition is not nil and not false", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "assert"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "This function is a generic interface to the garbage collector.\nIt performs different functions according to its first argument, opt:\n<dl>\n<dt>\"collect\"</dt>\n<dd>performs a full garbage-collection cycle.\nThis is the default option.</dd>\n<dt>\"stop\"</dt>\n<dd>stops the garbage collector.</dd>\n<dt>\"restart\"</dt>\n<dd>restarts the garbage collector.</dd>\n<dt>\"count\"</dt>\n<dd>returns the total memory in use by Lua (in Kbytes).</dd>\n<dt>\"step\"</dt>\n<dd>performs a garbage-collection step.\nThe step \"size\" is controlled by arg\n(larger values mean more steps) in a non-specified way.\nIf you want to control the step size\nyou must experimentally tune the value of arg.\nReturns true if the step finished a collection cycle.</dd>\n<dt>\"setpause\"</dt>\n<dd>sets arg as the new value for the <em>pause</em> of\nthe collector .\nReturns the previous value for <em>pause</em>.</dd>\n<dt>\"setstepmul\"</dt>\n<dd>sets arg as the new value for the <em>step multiplier</em> of\nthe collector .\nReturns the previous value for <em>step</em>.</dd>\n</dl>", 
+      "type": "FUNCTION",
+      "name": "collectgarbage",
+      "brief": "collects garbage",
+      "description": "This function is a generic interface to the garbage collector.\nIt performs different functions according to its first argument, opt:\n<dl>\n<dt>\"collect\"</dt>\n<dd>performs a full garbage-collection cycle.\nThis is the default option.</dd>\n<dt>\"stop\"</dt>\n<dd>stops the garbage collector.</dd>\n<dt>\"restart\"</dt>\n<dd>restarts the garbage collector.</dd>\n<dt>\"count\"</dt>\n<dd>returns the total memory in use by Lua (in Kbytes).</dd>\n<dt>\"step\"</dt>\n<dd>performs a garbage-collection step.\nThe step \"size\" is controlled by arg\n(larger values mean more steps) in a non-specified way.\nIf you want to control the step size\nyou must experimentally tune the value of arg.\nReturns true if the step finished a collection cycle.</dd>\n<dt>\"setpause\"</dt>\n<dd>sets arg as the new value for the <em>pause</em> of\nthe collector .\nReturns the previous value for <em>pause</em>.</dd>\n<dt>\"setstepmul\"</dt>\n<dd>sets arg as the new value for the <em>step multiplier</em> of\nthe collector .\nReturns the previous value for <em>step</em>.</dd>\n</dl>",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[opt]", 
+          "name": "[opt]",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[arg]", 
+          "name": "[arg]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "collects garbage", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "collectgarbage"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Opens the named file and executes its contents as a Lua chunk.\nWhen called without arguments,\ndofile executes the contents of the standard input (stdin).\nReturns all values returned by the chunk.\nIn case of errors, dofile propagates the error\nto its caller (that is, dofile does not run in protected mode).", 
+      "type": "FUNCTION",
+      "name": "dofile",
+      "brief": "executes a Lua file",
+      "description": "Opens the named file and executes its contents as a Lua chunk.\nWhen called without arguments,\ndofile executes the contents of the standard input (stdin).\nReturns all values returned by the chunk.\nIn case of errors, dofile propagates the error\nto its caller (that is, dofile does not run in protected mode).",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[filename]", 
+          "name": "[filename]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "executes a Lua file", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dofile"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Terminates the last protected function called\nand returns message as the error message.\nFunction error never returns.\nUsually, error adds some information about the error position\nat the beginning of the message.\nThe level argument specifies how to get the error position.\nWith level 1 (the default), the error position is where the\nerror function was called.\nLevel 2 points the error to where the function\nthat called error was called; and so on.\nPassing a level 0 avoids the addition of error position information\nto the message.", 
+      "type": "FUNCTION",
+      "name": "error",
+      "brief": "raises an error message",
+      "description": "Terminates the last protected function called\nand returns message as the error message.\nFunction error never returns.\nUsually, error adds some information about the error position\nat the beginning of the message.\nThe level argument specifies how to get the error position.\nWith level 1 (the default), the error position is where the\nerror function was called.\nLevel 2 points the error to where the function\nthat called error was called; and so on.\nPassing a level 0 avoids the addition of error position information\nto the message.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "message", 
+          "name": "message",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[level]", 
+          "name": "[level]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "raises an error message", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "error"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "A global variable (not a function) that\nholds the global environment (that is, <code>_G._G = _G</code>).\nLua itself does not use this variable;\nchanging its value does not affect any environment,\nnor vice-versa.\n(Use setfenv to change environments.)", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "global variable that holds the global environment", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "_G"
-    }, 
+      "type": "VARIABLE",
+      "name": "_G",
+      "brief": "global variable that holds the global environment",
+      "description": "A global variable (not a function) that\nholds the global environment (that is, <code>_G._G = _G</code>).\nLua itself does not use this variable;\nchanging its value does not affect any environment,\nnor vice-versa.\n(Use setfenv to change environments.)",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns the current environment in use by the function.\nf can be a Lua function or a number\nthat specifies the function at that stack level:\nLevel 1 is the function calling getfenv.\nIf the given function is not a Lua function,\nor if f is 0,\ngetfenv returns the global environment.\nThe default for f is 1.", 
+      "type": "FUNCTION",
+      "name": "getfenv",
+      "brief": "returns the current environment table",
+      "description": "Returns the current environment in use by the function.\nf can be a Lua function or a number\nthat specifies the function at that stack level:\nLevel 1 is the function calling getfenv.\nIf the given function is not a Lua function,\nor if f is 0,\ngetfenv returns the global environment.\nThe default for f is 1.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[f]", 
+          "name": "[f]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns the current environment table", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "getfenv"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "If object does not have a metatable, returns <span class=\"type\"> nil</span>.\nOtherwise,\nif the object's metatable has a <code>\"__metatable\"</code> field,\nreturns the associated value.\nOtherwise, returns the metatable of the given object.", 
+      "type": "FUNCTION",
+      "name": "getmetatable",
+      "brief": "returns the metatable for the object",
+      "description": "If object does not have a metatable, returns <span class=\"type\"> nil</span>.\nOtherwise,\nif the object's metatable has a <code>\"__metatable\"</code> field,\nreturns the associated value.\nOtherwise, returns the metatable of the given object.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "object", 
+          "name": "object",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns the metatable for the object", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "getmetatable"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns three values: an iterator function, the table t, and 0,\nso that the construction\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">for</span> <span class=\"n\">i</span><span class=\"p\">,</span><span class=\"n\">v</span> <span class=\"k\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">t</span><span class=\"p\">)</span> <span class=\"k\">do</span> <span class=\"n\">body</span> <span class=\"k\">end</span>\n</pre></div>\n\n\nwill iterate over the pairs (<code>1,t[1]</code>), (<code>2,t[2]</code>), ...,\nup to the first integer key absent from the table.", 
+      "type": "FUNCTION",
+      "name": "ipairs",
+      "brief": "iterates over a numerically keyed table",
+      "description": "Returns three values: an iterator function, the table t, and 0,\nso that the construction\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">for</span> <span class=\"n\">i</span><span class=\"p\">,</span><span class=\"n\">v</span> <span class=\"kr\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">t</span><span class=\"p\">)</span> <span class=\"kr\">do</span> <span class=\"n\">body</span> <span class=\"kr\">end</span>\n</code></pre></div>\n\nwill iterate over the pairs (<code>1,t[1]</code>), (<code>2,t[2]</code>), ...,\nup to the first integer key absent from the table.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "t", 
+          "name": "t",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "iterates over a numerically keyed table", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ipairs"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Loads a chunk using function func to get its pieces.\nEach call to func must return a string that concatenates\nwith previous results.\nA return of an empty string, <span class=\"type\"> nil</span>, or no value signals the end of the chunk.\nIf there are no errors,\nreturns the compiled chunk as a function;\notherwise, returns <span class=\"type\"> nil</span> plus the error message.\nThe environment of the returned function is the global environment.\nchunkname is used as the chunk name for error messages\nand debug information.\nWhen absent,\nit defaults to \"=(load)\".", 
+      "type": "FUNCTION",
+      "name": "load",
+      "brief": "loads a chunk by calling a function repeatedly",
+      "description": "Loads a chunk using function func to get its pieces.\nEach call to func must return a string that concatenates\nwith previous results.\nA return of an empty string, <span class=\"type\"> nil</span>, or no value signals the end of the chunk.\nIf there are no errors,\nreturns the compiled chunk as a function;\notherwise, returns <span class=\"type\"> nil</span> plus the error message.\nThe environment of the returned function is the global environment.\nchunkname is used as the chunk name for error messages\nand debug information.\nWhen absent,\nit defaults to \"=(load)\".",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "func", 
+          "name": "func",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[chunkname]", 
+          "name": "[chunkname]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "loads a chunk by calling a function repeatedly", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "load"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Similar to load,\nbut gets the chunk from file filename\nor from the standard input,\nif no file name is given.", 
+      "type": "FUNCTION",
+      "name": "loadfile",
+      "brief": "loads a Lua file and parses it",
+      "description": "Similar to load,\nbut gets the chunk from file filename\nor from the standard input,\nif no file name is given.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "[filename]", 
+          "name": "[filename]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "loads a Lua file and parses it", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "loadfile"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Similar to load,\nbut gets the chunk from the given string.\nTo load and run a given string, use the idiom\n<div class=\"codehilite\"><pre><span></span><span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"nb\">loadstring</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">))()</span>\n</pre></div>\n\n\nWhen absent,\nchunkname defaults to the given string.", 
+      "type": "FUNCTION",
+      "name": "loadstring",
+      "brief": "compiles a string of Lua code",
+      "description": "Similar to load,\nbut gets the chunk from the given string.\nTo load and run a given string, use the idiom\n<div class=\"codehilite\"><pre><span></span><code><span class=\"nb\">assert</span><span class=\"p\">(</span><span class=\"n\">loadstring</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">))()</span>\n</code></pre></div>\n\nWhen absent,\nchunkname defaults to the given string.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "string", 
+          "name": "string",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[chunkname]", 
+          "name": "[chunkname]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "compiles a string of Lua code", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "loadstring"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Allows a program to traverse all fields of a table.\nIts first argument is a table and its second argument\nis an index in this table.\nnext returns the next index of the table\nand its associated value.\nWhen called with <span class=\"type\"> nil</span> as its second argument,\nnext returns an initial index\nand its associated value.\nWhen called with the last index,\nor with <span class=\"type\"> nil</span> in an empty table,\nnext returns <span class=\"type\"> nil</span>.\nIf the second argument is absent, then it is interpreted as <span class=\"type\"> nil</span>.\nIn particular,\nyou can use <code>next(t)</code> to check whether a table is empty.\nThe order in which the indices are enumerated is not specified,\n<em>even for numeric indices</em>.\n(To traverse a table in numeric order,\nuse a numerical for or the ipairs function.)\nThe behavior of next is <em>undefined</em> if,\nduring the traversal,\nyou assign any value to a non-existent field in the table.\nYou may however modify existing fields.\nIn particular, you may clear existing fields.", 
+      "type": "FUNCTION",
+      "name": "next",
+      "brief": "returns next key / value pair in a table",
+      "description": "Allows a program to traverse all fields of a table.\nIts first argument is a table and its second argument\nis an index in this table.\nnext returns the next index of the table\nand its associated value.\nWhen called with <span class=\"type\"> nil</span> as its second argument,\nnext returns an initial index\nand its associated value.\nWhen called with the last index,\nor with <span class=\"type\"> nil</span> in an empty table,\nnext returns <span class=\"type\"> nil</span>.\nIf the second argument is absent, then it is interpreted as <span class=\"type\"> nil</span>.\nIn particular,\nyou can use <code>next(t)</code> to check whether a table is empty.\nThe order in which the indices are enumerated is not specified,\n<em>even for numeric indices</em>.\n(To traverse a table in numeric order,\nuse a numerical for or the ipairs function.)\nThe behavior of next is <em>undefined</em> if,\nduring the traversal,\nyou assign any value to a non-existent field in the table.\nYou may however modify existing fields.\nIn particular, you may clear existing fields.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "table", 
+          "name": "table",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[index]", 
+          "name": "[index]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns next key / value pair in a table", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "next"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns three values: the next function, the table t, and <span class=\"type\"> nil</span>,\nso that the construction\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span><span class=\"n\">v</span> <span class=\"k\">in</span> <span class=\"nb\">pairs</span><span class=\"p\">(</span><span class=\"n\">t</span><span class=\"p\">)</span> <span class=\"k\">do</span> <span class=\"n\">body</span> <span class=\"k\">end</span>\n</pre></div>\n\n\nwill iterate over all key-{}value pairs of table t.\nSee function next for the caveats of modifying\nthe table during its traversal.", 
+      "type": "FUNCTION",
+      "name": "pairs",
+      "brief": "traverse all items in a table",
+      "description": "Returns three values: the next function, the table t, and <span class=\"type\"> nil</span>,\nso that the construction\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span><span class=\"n\">v</span> <span class=\"kr\">in</span> <span class=\"nb\">pairs</span><span class=\"p\">(</span><span class=\"n\">t</span><span class=\"p\">)</span> <span class=\"kr\">do</span> <span class=\"n\">body</span> <span class=\"kr\">end</span>\n</code></pre></div>\n\nwill iterate over all key-{}value pairs of table t.\nSee function next for the caveats of modifying\nthe table during its traversal.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "t", 
+          "name": "t",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "traverse all items in a table", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "pairs"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Calls function f with\nthe given arguments in <em>protected mode</em>.\nThis means that any error inside <code>f</code> is not propagated;\ninstead, pcall catches the error\nand returns a status code.\nIts first result is the status code (a boolean),\nwhich is true if the call succeeds without errors.\nIn such case, pcall also returns all results from the call,\nafter this first result.\nIn case of any error, pcall returns <span class=\"type\"> false</span> plus the error message.", 
+      "type": "FUNCTION",
+      "name": "pcall",
+      "brief": "calls a function in protected mode",
+      "description": "Calls function f with\nthe given arguments in <em>protected mode</em>.\nThis means that any error inside <code>f</code> is not propagated;\ninstead, pcall catches the error\nand returns a status code.\nIts first result is the status code (a boolean),\nwhich is true if the call succeeds without errors.\nIn such case, pcall also returns all results from the call,\nafter this first result.\nIn case of any error, pcall returns <span class=\"type\"> false</span> plus the error message.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "f", 
+          "name": "f",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "arg1", 
+          "name": "arg1",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "...", 
+          "name": "...",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "calls a function in protected mode", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "pcall"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Receives any number of arguments,\nand prints their values to stdout,\nusing the tostring function to convert them to strings.\nprint is not intended for formatted output,\nbut only as a quick way to show a value,\ntypically for debugging.\nFor formatted output, use string.format.", 
+      "type": "FUNCTION",
+      "name": "print",
+      "brief": "prints its arguments",
+      "description": "Receives any number of arguments,\nand prints their values to stdout,\nusing the tostring function to convert them to strings.\nprint is not intended for formatted output,\nbut only as a quick way to show a value,\ntypically for debugging.\nFor formatted output, use string.format.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "...", 
+          "name": "...",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "prints its arguments", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "print"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Checks whether v1 is equal to v2,\nwithout invoking any metamethod.\nReturns a boolean.", 
+      "type": "FUNCTION",
+      "name": "rawequal",
+      "brief": "compares two values for equality without invoking metamethods",
+      "description": "Checks whether v1 is equal to v2,\nwithout invoking any metamethod.\nReturns a boolean.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "v1", 
+          "name": "v1",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "v2", 
+          "name": "v2",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "compares two values for equality without invoking metamethods", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "rawequal"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Gets the real value of <code>table[index]</code>,\nwithout invoking any metamethod.\ntable must be a table;\nindex may be any value.", 
+      "type": "FUNCTION",
+      "name": "rawget",
+      "brief": "gets the value of a table item without invoking metamethods",
+      "description": "Gets the real value of <code>table[index]</code>,\nwithout invoking any metamethod.\ntable must be a table;\nindex may be any value.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "table", 
+          "name": "table",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "index", 
+          "name": "index",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "gets the value of a table item without invoking metamethods", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "rawget"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Sets the real value of <code>table[index]</code> to value,\nwithout invoking any metamethod.\ntable must be a table,\nindex any value different from <span class=\"type\"> nil</span>,\nand value any Lua value.\nThis function returns table.", 
+      "type": "FUNCTION",
+      "name": "rawset",
+      "brief": "sets the value of a table item without invoking metamethods",
+      "description": "Sets the real value of <code>table[index]</code> to value,\nwithout invoking any metamethod.\ntable must be a table,\nindex any value different from <span class=\"type\"> nil</span>,\nand value any Lua value.\nThis function returns table.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "table", 
+          "name": "table",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "index", 
+          "name": "index",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "value", 
+          "name": "value",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets the value of a table item without invoking metamethods", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "rawset"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "If index is a number,\nreturns all arguments after argument number index.\nOtherwise, index must be the string <code>\"#\"</code>,\nand select returns the total number of extra arguments it received.", 
+      "type": "FUNCTION",
+      "name": "select",
+      "brief": "returns items in a list",
+      "description": "If index is a number,\nreturns all arguments after argument number index.\nOtherwise, index must be the string <code>\"#\"</code>,\nand select returns the total number of extra arguments it received.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "index", 
+          "name": "index",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "...", 
+          "name": "...",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns items in a list", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "select"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Sets the environment to be used by the given function.\nf can be a Lua function or a number\nthat specifies the function at that stack level:\nLevel 1 is the function calling setfenv.\nsetfenv returns the given function.\nAs a special case, when f is 0 setfenv changes\nthe environment of the running thread.\nIn this case, setfenv returns no values.", 
+      "type": "FUNCTION",
+      "name": "setfenv",
+      "brief": "sets a function's environment",
+      "description": "Sets the environment to be used by the given function.\nf can be a Lua function or a number\nthat specifies the function at that stack level:\nLevel 1 is the function calling setfenv.\nsetfenv returns the given function.\nAs a special case, when f is 0 setfenv changes\nthe environment of the running thread.\nIn this case, setfenv returns no values.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "f", 
+          "name": "f",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "table", 
+          "name": "table",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets a function's environment", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "setfenv"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Sets the metatable for the given table.\n(You cannot change the metatable of other types from Lua, only from C.)\nIf metatable is <span class=\"type\"> nil</span>,\nremoves the metatable of the given table.\nIf the original metatable has a <code>\"__metatable\"</code> field,\nraises an error.\nThis function returns table.", 
+      "type": "FUNCTION",
+      "name": "setmetatable",
+      "brief": "sets the metatable for a table",
+      "description": "Sets the metatable for the given table.\n(You cannot change the metatable of other types from Lua, only from C.)\nIf metatable is <span class=\"type\"> nil</span>,\nremoves the metatable of the given table.\nIf the original metatable has a <code>\"__metatable\"</code> field,\nraises an error.\nThis function returns table.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "table", 
+          "name": "table",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "metatable", 
+          "name": "metatable",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets the metatable for a table", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "setmetatable"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Tries to convert its argument to a number.\nIf the argument is already a number or a string convertible\nto a number, then tonumber returns this number;\notherwise, it returns <span class=\"type\"> nil</span>.\nAn optional argument specifies the base to interpret the numeral.\nThe base may be any integer between 2 and 36, inclusive.\nIn bases above 10, the letter 'A' (in either upper or lower case)\nrepresents 10, 'B' represents 11, and so forth,\nwith 'Z' representing 35.\nIn base 10 (the default), the number can have a decimal part,\nas well as an optional exponent part .\nIn other bases, only unsigned integers are accepted.", 
+      "type": "FUNCTION",
+      "name": "tonumber",
+      "brief": "converts a string (of the given base) to a number",
+      "description": "Tries to convert its argument to a number.\nIf the argument is already a number or a string convertible\nto a number, then tonumber returns this number;\notherwise, it returns <span class=\"type\"> nil</span>.\nAn optional argument specifies the base to interpret the numeral.\nThe base may be any integer between 2 and 36, inclusive.\nIn bases above 10, the letter 'A' (in either upper or lower case)\nrepresents 10, 'B' represents 11, and so forth,\nwith 'Z' representing 35.\nIn base 10 (the default), the number can have a decimal part,\nas well as an optional exponent part .\nIn other bases, only unsigned integers are accepted.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "e", 
+          "name": "e",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[base]", 
+          "name": "[base]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "converts a string (of the given base) to a number", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "tonumber"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Receives an argument of any type and\nconverts it to a string in a reasonable format.\nFor complete control of how numbers are converted,\nuse string.format.\nIf the metatable of e has a <code>\"__tostring\"</code> field,\nthen tostring calls the corresponding value\nwith e as argument,\nand uses the result of the call as its result.", 
+      "type": "FUNCTION",
+      "name": "tostring",
+      "brief": "converts its argument to a string",
+      "description": "Receives an argument of any type and\nconverts it to a string in a reasonable format.\nFor complete control of how numbers are converted,\nuse string.format.\nIf the metatable of e has a <code>\"__tostring\"</code> field,\nthen tostring calls the corresponding value\nwith e as argument,\nand uses the result of the call as its result.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "e", 
+          "name": "e",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "converts its argument to a string", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "tostring"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns the type of its only argument, coded as a string.\nThe possible results of this function are\n\"nil\" (a string, not the value <span class=\"type\"> nil</span>),\n\"number\",\n\"string\",\n\"boolean\",\n\"table\",\n\"function\",\n\"thread\",\nand \"userdata\".", 
+      "type": "FUNCTION",
+      "name": "type",
+      "brief": "returns the type of a variable",
+      "description": "Returns the type of its only argument, coded as a string.\nThe possible results of this function are\n\"nil\" (a string, not the value <span class=\"type\"> nil</span>),\n\"number\",\n\"string\",\n\"boolean\",\n\"table\",\n\"function\",\n\"thread\",\nand \"userdata\".",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "v", 
+          "name": "v",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns the type of a variable", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "type"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns the elements from the given table.\nThis function is equivalent to\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">return</span> <span class=\"n\">list</span><span class=\"p\">[</span><span class=\"n\">i</span><span class=\"p\">],</span> <span class=\"n\">list</span><span class=\"p\">[</span><span class=\"n\">i</span><span class=\"o\">+</span><span class=\"mi\">1</span><span class=\"p\">],</span> <span class=\"o\">...</span><span class=\"p\">,</span> <span class=\"n\">list</span><span class=\"p\">[</span><span class=\"n\">j</span><span class=\"p\">]</span>\n</pre></div>\n\n\nexcept that the above code can be written only for a fixed number\nof elements.\nBy default, i is 1 and j is the length of the list,\nas defined by the length operator .", 
+      "type": "FUNCTION",
+      "name": "unpack",
+      "brief": "unpacks a table into individual items",
+      "description": "Returns the elements from the given table.\nThis function is equivalent to\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">return</span> <span class=\"n\">list</span><span class=\"p\">[</span><span class=\"n\">i</span><span class=\"p\">],</span> <span class=\"n\">list</span><span class=\"p\">[</span><span class=\"n\">i</span><span class=\"o\">+</span><span class=\"mi\">1</span><span class=\"p\">],</span> <span class=\"p\">...,</span> <span class=\"n\">list</span><span class=\"p\">[</span><span class=\"n\">j</span><span class=\"p\">]</span>\n</code></pre></div>\n\nexcept that the above code can be written only for a fixed number\nof elements.\nBy default, i is 1 and j is the length of the list,\nas defined by the length operator .",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "list", 
+          "name": "list",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[i]", 
+          "name": "[i]",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[j]", 
+          "name": "[j]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "unpacks a table into individual items", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "unpack"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "A global variable (not a function) that\nholds a string containing the current interpreter version.\nThe current contents of this variable is \"Lua 5.1\".", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "global variable containing the running Lua version", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "_VERSION"
-    }, 
+      "type": "VARIABLE",
+      "name": "_VERSION",
+      "brief": "global variable containing the running Lua version",
+      "description": "A global variable (not a function) that\nholds a string containing the current interpreter version.\nThe current contents of this variable is \"Lua 5.1\".",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "This function is similar to pcall,\nexcept that you can set a new error handler.\nxpcall calls function f in protected mode,\nusing err as the error handler.\nAny error inside f is not propagated;\ninstead, xpcall catches the error,\ncalls the err function with the original error object,\nand returns a status code.\nIts first result is the status code (a boolean),\nwhich is true if the call succeeds without errors.\nIn this case, xpcall also returns all results from the call,\nafter this first result.\nIn case of any error,\nxpcall returns <span class=\"type\"> false</span> plus the result from err.", 
+      "type": "FUNCTION",
+      "name": "xpcall",
+      "brief": "calls a function with a custom error handler",
+      "description": "This function is similar to pcall,\nexcept that you can set a new error handler.\nxpcall calls function f in protected mode,\nusing err as the error handler.\nAny error inside f is not propagated;\ninstead, xpcall catches the error,\ncalls the err function with the original error object,\nand returns a status code.\nIts first result is the status code (a boolean),\nwhich is true if the call succeeds without errors.\nIn this case, xpcall also returns all results from the call,\nafter this first result.\nIn case of any error,\nxpcall returns <span class=\"type\"> false</span> plus the result from err.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "f", 
+          "name": "f",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "err", 
+          "name": "err",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "calls a function with a custom error handler", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "xpcall"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Creates a module.\nIf there is a table in <code>package.loaded[name]</code>,\nthis table is the module.\nOtherwise, if there is a global table t with the given name,\nthis table is the module.\nOtherwise creates a new table t and\nsets it as the value of the global name and\nthe value of <code>package.loaded[name]</code>.\nThis function also initializes t._NAME with the given name,\nt._M with the module (t itself),\nand t._PACKAGE with the package name\n(the full module name minus last component; see below).\nFinally, module sets t as the new environment\nof the current function and the new value of <code>package.loaded[name]</code>,\nso that require returns t.\nIf name is a compound name\n(that is, one with components separated by dots),\nmodule creates (or reuses, if they already exist)\ntables for each component.\nFor instance, if name is a.b.c,\nthen module stores the module table in field c of\nfield b of global a.\nThis function can receive optional <em>options</em> after\nthe module name,\nwhere each option is a function to be applied over the module.", 
+      "type": "FUNCTION",
+      "name": "module",
+      "brief": "creates a Lua module",
+      "description": "Creates a module.\nIf there is a table in <code>package.loaded[name]</code>,\nthis table is the module.\nOtherwise, if there is a global table t with the given name,\nthis table is the module.\nOtherwise creates a new table t and\nsets it as the value of the global name and\nthe value of <code>package.loaded[name]</code>.\nThis function also initializes t._NAME with the given name,\nt._M with the module (t itself),\nand t._PACKAGE with the package name\n(the full module name minus last component; see below).\nFinally, module sets t as the new environment\nof the current function and the new value of <code>package.loaded[name]</code>,\nso that require returns t.\nIf name is a compound name\n(that is, one with components separated by dots),\nmodule creates (or reuses, if they already exist)\ntables for each component.\nFor instance, if name is a.b.c,\nthen module stores the module table in field c of\nfield b of global a.\nThis function can receive optional <em>options</em> after\nthe module name,\nwhere each option is a function to be applied over the module.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "name", 
+          "name": "name",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[...]", 
+          "name": "[...]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "creates a Lua module", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "module"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Loads the given module.\nThe function starts by looking into the package.loaded table\nto determine whether modname is already loaded.\nIf it is, then require returns the value stored\nat <code>package.loaded[modname]</code>.\nOtherwise, it tries to find a <em>loader</em> for the module.\nTo find a loader,\nrequire is guided by the package.loaders array.\nBy changing this array,\nwe can change how require looks for a module.\nThe following explanation is based on the default configuration\nfor package.loaders.\nFirst require queries <code>package.preload[modname]</code>.\nIf it has a value,\nthis value (which should be a function) is the loader.\nOtherwise require searches for a Lua loader using the\npath stored in package.path.\nIf that also fails, it searches for a C loader using the\npath stored in package.cpath.\nIf that also fails,\nit tries an <em>all-in-one</em> loader .\nOnce a loader is found,\nrequire calls the loader with a single argument, modname.\nIf the loader returns any value,\nrequire assigns the returned value to <code>package.loaded[modname]</code>.\nIf the loader returns no value and\nhas not assigned any value to <code>package.loaded[modname]</code>,\nthen require assigns true to this entry.\nIn any case, require returns the\nfinal value of <code>package.loaded[modname]</code>.\nIf there is any error loading or running the module,\nor if it cannot find any loader for the module,\nthen require signals an error.", 
+      "type": "FUNCTION",
+      "name": "require",
+      "brief": "loads a module",
+      "description": "Loads the given module.\nThe function starts by looking into the package.loaded table\nto determine whether modname is already loaded.\nIf it is, then require returns the value stored\nat <code>package.loaded[modname]</code>.\nOtherwise, it tries to find a <em>loader</em> for the module.\nTo find a loader,\nrequire is guided by the package.loaders array.\nBy changing this array,\nwe can change how require looks for a module.\nThe following explanation is based on the default configuration\nfor package.loaders.\nFirst require queries <code>package.preload[modname]</code>.\nIf it has a value,\nthis value (which should be a function) is the loader.\nOtherwise require searches for a Lua loader using the\npath stored in package.path.\nIf that also fails, it searches for a C loader using the\npath stored in package.cpath.\nIf that also fails,\nit tries an <em>all-in-one</em> loader .\nOnce a loader is found,\nrequire calls the loader with a single argument, modname.\nIf the loader returns any value,\nrequire assigns the returned value to <code>package.loaded[modname]</code>.\nIf the loader returns no value and\nhas not assigned any value to <code>package.loaded[modname]</code>,\nthen require assigns true to this entry.\nIn any case, require returns the\nfinal value of <code>package.loaded[modname]</code>.\nIf there is any error loading or running the module,\nor if it cannot find any loader for the module,\nthen require signals an error.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "modname", 
+          "name": "modname",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "loads a module", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "require"
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "base",
+    "name": "Base",
+    "brief": "Lua base standard library",
+    "description": "Documentation for the Lua base standard library.\nFrom <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.\nCopyright &copy; 2006-2012 Lua.org, PUC-Rio.\nFreely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.",
+    "path": "",
+    "file": "",
+    "notes": [],
+    "group": "LUA STANDARD LIBS"
+  }
 }

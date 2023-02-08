@@ -1,1366 +1,1568 @@
 {
-  "info": {
-    "description": "<span class=\"file\">&lt;dmsdk/render/render.h&gt;</span>\nApi for render specific data", 
-    "namespace": "dmRender", 
-    "brief": "Render API documentation", 
-    "file": "", 
-    "path": "", 
-    "name": "Render"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "The render context", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "The render context", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "HRenderContext"
-    }, 
+      "type": "TYPEDEF",
+      "name": "HRenderContext",
+      "brief": "The render context",
+      "description": "The render context",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Material instance handle", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Material instance handle", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "HMaterial"
-    }, 
+      "type": "TYPEDEF",
+      "name": "HMaterial",
+      "brief": "Material instance handle",
+      "description": "Material instance handle",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Font map handle", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Font map handle", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "HFontMap"
-    }, 
+      "type": "TYPEDEF",
+      "name": "HFontMap",
+      "brief": "Font map handle",
+      "description": "Font map handle",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Shader constant handle", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Shader constant handle", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "HConstant"
-    }, 
+      "type": "TYPEDEF",
+      "name": "HConstant",
+      "brief": "Shader constant handle",
+      "description": "Shader constant handle",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Shader constant buffer handle. Holds name and values for a constant.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Shader constant buffer handle. Holds name and valu...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "HNamedConstantBuffer"
-    }, 
+      "type": "TYPEDEF",
+      "name": "HNamedConstantBuffer",
+      "brief": "Shader constant buffer handle. Holds name and valu...",
+      "description": "Shader constant buffer handle. Holds name and values for a constant.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "", 
-      "examples": "", 
+      "type": "ENUM",
+      "name": "Result",
+      "brief": "",
+      "description": "",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
       "members": [
         {
-          "doc": "", 
-          "type": "", 
-          "name": "RESULT_OK"
-        }, 
+          "name": "RESULT_OK",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "RESULT_INVALID_CONTEXT"
-        }, 
+          "name": "RESULT_INVALID_CONTEXT",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "RESULT_OUT_OF_RESOURCES"
-        }, 
+          "name": "RESULT_OUT_OF_RESOURCES",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "RESULT_BUFFER_IS_FULL"
-        }, 
+          "name": "RESULT_BUFFER_IS_FULL",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "RESULT_INVALID_PARAMETER"
+          "name": "RESULT_INVALID_PARAMETER",
+          "doc": "",
+          "type": ""
         }
-      ], 
-      "error": "", 
-      "tparams": [], 
-      "type": "ENUM", 
-      "name": "Result"
-    }, 
+      ],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Get the vertex space (local or world)", 
-      "parameters": [
-        {
-          "doc": "the material", 
-          "name": "material", 
-          "types": [
-            "dmRender::HMaterial"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmRender::GetMaterialVertexSpace",
+      "brief": "Get the vertex space (local or world)",
+      "description": "Get the vertex space (local or world)",
       "returnvalues": [
         {
-          "doc": "the vertex space", 
-          "name": "vertex_space", 
+          "name": "vertex_space",
+          "doc": "the vertex space",
           "types": [
             "dmRenderDDF::MaterialDesc::VertexSpace"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Get the vertex space (local or world)", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmRender::GetMaterialVertexSpace"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Struct holding stencil operation setup", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Struct holding stencil operation setup", 
-      "examples": "", 
-      "members": [
-        {
-          "doc": "the compare function", 
-          "type": "dmGraphics::CompareFunc", 
-          "name": "m_Func"
-        }, 
-        {
-          "doc": "the stencil fail operation", 
-          "type": "dmGraphics::StencilOp", 
-          "name": "m_OpSFail"
-        }, 
-        {
-          "doc": "the depth pass fail operation", 
-          "type": "dmGraphics::StencilOp", 
-          "name": "m_OpDPFail"
-        }, 
-        {
-          "doc": "the depth pass pass operation", 
-          "type": "dmGraphics::StencilOp", 
-          "name": "m_OpDPPass"
-        }, 
-        {
-          "doc": "", 
-          "type": "uint8_t", 
-          "name": "m_Ref"
-        }, 
-        {
-          "doc": "", 
-          "type": "uint8_t", 
-          "name": "m_RefMask"
-        }, 
-        {
-          "doc": "", 
-          "type": "uint8_t", 
-          "name": "m_BufferMask"
-        }, 
-        {
-          "doc": "", 
-          "type": "uint8_t:4", 
-          "name": "m_ColorBufferMask"
-        }, 
-        {
-          "doc": "", 
-          "type": "uint8_t:1", 
-          "name": "m_ClearBuffer"
-        }
-      ], 
-      "error": "", 
-      "tparams": [], 
-      "type": "STRUCT", 
-      "name": "StencilTestParams"
-    }, 
-    {
-      "replaces": "", 
-      "description": "The maximum number of textures the render object can hold (currently 8)", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "The maximum number of textures the render object c...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmRender::RenderObject::MAX_TEXTURE_COUNT"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Render objects represent an actual draw call", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Render objects represent an actual draw call", 
-      "examples": "", 
-      "members": [
-        {
-          "doc": "the shader constants", 
-          "type": "dmRender::HConstant[]", 
-          "name": "m_Constants"
-        }, 
-        {
-          "doc": "the world transform (usually identity for batched objects)", 
-          "type": "dmVMath::Matrix4", 
-          "name": "m_WorldTransform"
-        }, 
-        {
-          "doc": "the texture transform", 
-          "type": "dmVMath::Matrix4", 
-          "name": "m_TextureTransform"
-        }, 
-        {
-          "doc": "the vertex buffer", 
-          "type": "dmGraphics::HVertexBuffer", 
-          "name": "m_VertexBuffer"
-        }, 
-        {
-          "doc": "the vertex declaration", 
-          "type": "dmGraphics::HVertexDeclaration", 
-          "name": "m_VertexDeclaration"
-        }, 
-        {
-          "doc": "the index buffer", 
-          "type": "dmGraphics::HIndexBuffer", 
-          "name": "m_IndexBuffer"
-        }, 
-        {
-          "doc": "the material", 
-          "type": "dmRender::HMaterial", 
-          "name": "m_Material"
-        }, 
-        {
-          "doc": "the textures", 
-          "type": "dmGraphics::HTexture[]", 
-          "name": "m_Textures"
-        }, 
-        {
-          "doc": "the primitive type", 
-          "type": "dmGraphics::PrimitiveType", 
-          "name": "m_PrimitiveType"
-        }, 
-        {
-          "doc": "the index type (16/32 bit)", 
-          "type": "dmGraphics::Type", 
-          "name": "m_IndexType"
-        }, 
-        {
-          "doc": "the source blend factor", 
-          "type": "dmGraphics::BlendFactor", 
-          "name": "m_SourceBlendFactor"
-        }, 
-        {
-          "doc": "the destination blend factor", 
-          "type": "dmGraphics::BlendFactor", 
-          "name": "m_DestinationBlendFactor"
-        }, 
-        {
-          "doc": "the stencil test params", 
-          "type": "dmRender::StencilTestParams", 
-          "name": "m_StencilTestParams"
-        }, 
-        {
-          "doc": "the vertex start", 
-          "type": "uint32_t", 
-          "name": "m_VertexStart"
-        }, 
-        {
-          "doc": "the vertex count", 
-          "type": "uint32_t", 
-          "name": "m_VertexCount"
-        }, 
-        {
-          "doc": "use the blend factors", 
-          "type": "uint8_t:1", 
-          "name": "m_SetBlendFactors"
-        }, 
-        {
-          "doc": "use the stencil test", 
-          "type": "uint8_t:1", 
-          "name": "m_SetStencilTest"
-        }
-      ], 
-      "error": "", 
-      "tparams": [], 
-      "type": "STRUCT", 
-      "name": "RenderObject"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Represents a renderable object (e.g. a single sprite)\nThe renderer will (each frame) collect all entries with the current material tag, then batch these objects together.\nBatching is done based on the batch key and Z value (or order for GUI nodes)\nThe caller will also register a callback function where the batched entries will be returned.\nEach callback then represents a draw call, and will register a RenderObject", 
+      ],
       "parameters": [
         {
-          "doc": "the world position of the object", 
-          "name": "m_WorldPosition", 
+          "name": "material",
+          "doc": "the material",
+          "types": [
+            "dmRender::HMaterial"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "STRUCT",
+      "name": "StencilTestParams",
+      "brief": "Struct holding stencil operation setup",
+      "description": "Struct holding stencil operation setup",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [
+        {
+          "name": "m_Func",
+          "doc": "the compare function",
+          "type": "dmGraphics::CompareFunc"
+        },
+        {
+          "name": "m_OpSFail",
+          "doc": "the stencil fail operation",
+          "type": "dmGraphics::StencilOp"
+        },
+        {
+          "name": "m_OpDPFail",
+          "doc": "the depth pass fail operation",
+          "type": "dmGraphics::StencilOp"
+        },
+        {
+          "name": "m_OpDPPass",
+          "doc": "the depth pass pass operation",
+          "type": "dmGraphics::StencilOp"
+        },
+        {
+          "name": "m_Ref",
+          "doc": "",
+          "type": "uint8_t"
+        },
+        {
+          "name": "m_RefMask",
+          "doc": "",
+          "type": "uint8_t"
+        },
+        {
+          "name": "m_BufferMask",
+          "doc": "",
+          "type": "uint8_t"
+        },
+        {
+          "name": "m_ColorBufferMask",
+          "doc": "",
+          "type": "uint8_t:4"
+        },
+        {
+          "name": "m_ClearBuffer",
+          "doc": "",
+          "type": "uint8_t:1"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmRender::RenderObject::MAX_TEXTURE_COUNT",
+      "brief": "The maximum number of textures the render object c...",
+      "description": "The maximum number of textures the render object can hold (currently 8)",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "STRUCT",
+      "name": "RenderObject",
+      "brief": "Render objects represent an actual draw call",
+      "description": "Render objects represent an actual draw call",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [
+        {
+          "name": "m_Constants",
+          "doc": "] the shader constants",
+          "type": "dmRender::HConstant["
+        },
+        {
+          "name": "m_WorldTransform",
+          "doc": "the world transform (usually identity for batched objects)",
+          "type": "dmVMath::Matrix4"
+        },
+        {
+          "name": "m_TextureTransform",
+          "doc": "the texture transform",
+          "type": "dmVMath::Matrix4"
+        },
+        {
+          "name": "m_VertexBuffer",
+          "doc": "the vertex buffer",
+          "type": "dmGraphics::HVertexBuffer"
+        },
+        {
+          "name": "m_VertexDeclaration",
+          "doc": "the vertex declaration",
+          "type": "dmGraphics::HVertexDeclaration"
+        },
+        {
+          "name": "m_IndexBuffer",
+          "doc": "the index buffer",
+          "type": "dmGraphics::HIndexBuffer"
+        },
+        {
+          "name": "m_Material",
+          "doc": "the material",
+          "type": "dmRender::HMaterial"
+        },
+        {
+          "name": "m_Textures",
+          "doc": "] the textures",
+          "type": "dmGraphics::HTexture["
+        },
+        {
+          "name": "m_PrimitiveType",
+          "doc": "the primitive type",
+          "type": "dmGraphics::PrimitiveType"
+        },
+        {
+          "name": "m_IndexType",
+          "doc": "the index type (16/32 bit)",
+          "type": "dmGraphics::Type"
+        },
+        {
+          "name": "m_SourceBlendFactor",
+          "doc": "the source blend factor",
+          "type": "dmGraphics::BlendFactor"
+        },
+        {
+          "name": "m_DestinationBlendFactor",
+          "doc": "the destination blend factor",
+          "type": "dmGraphics::BlendFactor"
+        },
+        {
+          "name": "m_StencilTestParams",
+          "doc": "the stencil test params",
+          "type": "dmRender::StencilTestParams"
+        },
+        {
+          "name": "m_VertexStart",
+          "doc": "the vertex start",
+          "type": "uint32_t"
+        },
+        {
+          "name": "m_VertexCount",
+          "doc": "the vertex count",
+          "type": "uint32_t"
+        },
+        {
+          "name": "m_SetBlendFactors",
+          "doc": "use the blend factors",
+          "type": "uint8_t:1"
+        },
+        {
+          "name": "m_SetStencilTest",
+          "doc": "use the stencil test",
+          "type": "uint8_t:1"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "RenderListEntry",
+      "brief": "Represents a renderable object (e.g. a single spri...",
+      "description": "Represents a renderable object (e.g. a single sprite)\nThe renderer will (each frame) collect all entries with the current material tag, then batch these objects together.\nBatching is done based on the batch key and Z value (or order for GUI nodes)\nThe caller will also register a callback function where the batched entries will be returned.\nEach callback then represents a draw call, and will register a RenderObject",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "m_WorldPosition",
+          "doc": "the world position of the object",
           "types": [
             "dmVMath::Point3"
           ]
-        }, 
+        },
         {
-          "doc": "the order to sort on (used if m_MajorOrder != RENDER_ORDER_WORLD)", 
-          "name": "m_Order", 
+          "name": "m_Order",
+          "doc": "the order to sort on (used if m_MajorOrder != RENDER_ORDER_WORLD)",
           "types": [
             "uint32_t"
           ]
-        }, 
+        },
         {
-          "doc": "the batch key to sort on (note: only 48 bits are currently used by renderer)", 
-          "name": "m_BatchKey", 
+          "name": "m_BatchKey",
+          "doc": "the batch key to sort on (note: only 48 bits are currently used by renderer)",
           "types": [
             "uint32_t"
           ]
-        }, 
+        },
         {
-          "doc": "the key to the list of material tags", 
-          "name": "m_TagListKey", 
+          "name": "m_TagListKey",
+          "doc": "the key to the list of material tags",
           "types": [
             "uint32_t"
           ]
-        }, 
+        },
         {
-          "doc": "user data (available in the render dispatch callback)", 
-          "name": "m_UserData", 
+          "name": "m_UserData",
+          "doc": "user data (available in the render dispatch callback)",
           "types": [
             "uint64_t"
           ]
-        }, 
+        },
         {
-          "doc": "used to sort within a batch", 
-          "name": "m_MinorOrder", 
+          "name": "m_MinorOrder",
+          "doc": "used to sort within a batch",
           "types": [
             "uint32_t:4"
           ]
-        }, 
+        },
         {
-          "doc": "If RENDER_ORDER_WORLD, then sorting is done based on the world position.\nOtherwise the sorting uses the m_Order value directly.", 
-          "name": "m_MajorOrder", 
+          "name": "m_MajorOrder",
+          "doc": "If RENDER_ORDER_WORLD, then sorting is done based on the world position.\nOtherwise the sorting uses the m_Order value directly.",
           "types": [
             "uint32_t:2"
           ]
-        }, 
+        },
         {
-          "doc": "The dispatch function callback (dmRender::HRenderListDispatch)", 
-          "name": "m_Dispatch", 
+          "name": "m_Dispatch",
+          "doc": "The dispatch function callback (dmRender::HRenderListDispatch)",
           "types": [
             "uint32_t:8"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Represents a renderable object (e.g. a single spri...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "RenderListEntry"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Render batch callback states", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Render batch callback states", 
-      "examples": "", 
+      "type": "ENUM",
+      "name": "RenderListOperation",
+      "brief": "Render batch callback states",
+      "description": "Render batch callback states",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
       "members": [
         {
-          "doc": "", 
-          "type": "", 
-          "name": "RENDER_LIST_OPERATION_BEGIN"
-        }, 
+          "name": "RENDER_LIST_OPERATION_BEGIN",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "RENDER_LIST_OPERATION_BATCH"
-        }, 
+          "name": "RENDER_LIST_OPERATION_BATCH",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "RENDER_LIST_OPERATION_END"
+          "name": "RENDER_LIST_OPERATION_END",
+          "doc": "",
+          "type": ""
         }
-      ], 
-      "error": "", 
-      "tparams": [], 
-      "type": "ENUM", 
-      "name": "RenderListOperation"
-    }, 
+      ],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Render order", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Render order", 
-      "examples": "", 
+      "type": "ENUM",
+      "name": "RenderOrder",
+      "brief": "Render order",
+      "description": "Render order",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
       "members": [
         {
-          "doc": "<div class=\"codehilite\"><pre><span></span>      Used by game objects\n</pre></div>", 
-          "type": "", 
-          "name": "RENDER_ORDER_WORLD"
-        }, 
+          "name": "RENDER_ORDER_WORLD",
+          "doc": "<div class=\"codehilite\"><pre><span></span><code>      Used by game objects\n</code></pre></div>",
+          "type": ""
+        },
         {
-          "doc": "<div class=\"codehilite\"><pre><span></span>Used by gui\n</pre></div>", 
-          "type": "", 
-          "name": "RENDER_ORDER_AFTER_WORLD"
+          "name": "RENDER_ORDER_AFTER_WORLD",
+          "doc": "<div class=\"codehilite\"><pre><span></span><code>Used by gui\n</code></pre></div>",
+          "type": ""
         }
-      ], 
-      "error": "", 
-      "tparams": [], 
-      "type": "ENUM", 
-      "name": "RenderOrder"
-    }, 
+      ],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Visibility status", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Visibility status", 
-      "examples": "", 
+      "type": "ENUM",
+      "name": "Visibility",
+      "brief": "Visibility status",
+      "description": "Visibility status",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
       "members": [
         {
-          "doc": "", 
-          "type": "", 
-          "name": "VISIBILITY_NONE"
-        }, 
+          "name": "VISIBILITY_NONE",
+          "doc": "",
+          "type": ""
+        },
         {
-          "doc": "", 
-          "type": "", 
-          "name": "VISIBILITY_FULL"
+          "name": "VISIBILITY_FULL",
+          "doc": "",
+          "type": ""
         }
-      ], 
-      "error": "", 
-      "tparams": [], 
-      "type": "ENUM", 
-      "name": "Visibility"
-    }, 
+      ],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Visibility dispatch function callback.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Visibility dispatch function callback.", 
-      "examples": "", 
+      "type": "STRUCT",
+      "name": "RenderListVisibilityParams",
+      "brief": "Visibility dispatch function callback.",
+      "description": "Visibility dispatch function callback.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
       "members": [
         {
-          "doc": "the callback user data (registered with RenderListMakeDispatch())", 
-          "type": "void*", 
-          "name": "m_UserData"
-        }, 
+          "name": "m_UserData",
+          "doc": "the callback user data (registered with RenderListMakeDispatch())",
+          "type": "void*"
+        },
         {
-          "doc": "the render entry array", 
-          "type": "dmRender::RenderListEntry", 
-          "name": "m_Entries"
-        }, 
+          "name": "m_Entries",
+          "doc": "the render entry array",
+          "type": "dmRender::RenderListEntry"
+        },
         {
-          "doc": "the number of render entries in the array", 
-          "type": "uint32_t", 
-          "name": "m_NumEntries"
+          "name": "m_NumEntries",
+          "doc": "the number of render entries in the array",
+          "type": "uint32_t"
         }
-      ], 
-      "error": "", 
-      "tparams": [], 
-      "type": "STRUCT", 
-      "name": "RenderListVisibilityParams"
-    }, 
+      ],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Render dispatch function callback.", 
+      "type": "TYPEDEF",
+      "name": "RenderListDispatchFn",
+      "brief": "Render dispatch function callback.",
+      "description": "Render dispatch function callback.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "the params", 
-          "name": "params", 
+          "name": "params",
+          "doc": "the params",
           "types": [
             "dmRender::RenderListDispatchParams"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Render dispatch function callback.", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "RenderListDispatchFn"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Render dispatch function callback.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Render dispatch function callback.", 
-      "examples": "", 
+      "type": "STRUCT",
+      "name": "RenderListDispatchParams",
+      "brief": "Render dispatch function callback.",
+      "description": "Render dispatch function callback.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
       "members": [
         {
-          "doc": "the context", 
-          "type": "dmRender::HRenderContext", 
-          "name": "m_Context"
-        }, 
+          "name": "m_Context",
+          "doc": "the context",
+          "type": "dmRender::HRenderContext"
+        },
         {
-          "doc": "the callback user data (registered with RenderListMakeDispatch())", 
-          "type": "void*", 
-          "name": "m_UserData"
-        }, 
+          "name": "m_UserData",
+          "doc": "the callback user data (registered with RenderListMakeDispatch())",
+          "type": "void*"
+        },
         {
-          "doc": "the operation", 
-          "type": "dmRender::RenderListOperation", 
-          "name": "m_Operation"
-        }, 
+          "name": "m_Operation",
+          "doc": "the operation",
+          "type": "dmRender::RenderListOperation"
+        },
         {
-          "doc": "the render entry array", 
-          "type": "dmRender::RenderListEntry", 
-          "name": "m_Buf"
-        }, 
+          "name": "m_Buf",
+          "doc": "the render entry array",
+          "type": "dmRender::RenderListEntry"
+        },
         {
-          "doc": "the start of the render batch. contains index into the m_Buf array", 
-          "type": "uint32_t*", 
-          "name": "m_Begin"
-        }, 
+          "name": "m_Begin",
+          "doc": "the start of the render batch. contains index into the m_Buf array",
+          "type": "uint32_t*"
+        },
         {
-          "doc": "the end of the render batch. Loop while \"m_Begin != m_End\"", 
-          "type": "uint32_t*", 
-          "name": "m_End"
+          "name": "m_End",
+          "doc": "the end of the render batch. Loop while \"m_Begin != m_End\"",
+          "type": "uint32_t*"
         }
-      ], 
-      "error": "", 
-      "tparams": [], 
-      "type": "STRUCT", 
-      "name": "RenderListDispatchParams"
-    }, 
+      ],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Render dispatch function handle.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Render dispatch function handle.", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "HRenderListDispatch"
-    }, 
+      "type": "TYPEDEF",
+      "name": "HRenderListDispatch",
+      "brief": "Render dispatch function handle.",
+      "description": "Render dispatch function handle.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Render dispatch function callback.", 
+      "type": "TYPEDEF",
+      "name": "RenderListDispatchFn",
+      "brief": "Render dispatch function callback.",
+      "description": "Render dispatch function callback.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "the params", 
-          "name": "params", 
+          "name": "params",
+          "doc": "the params",
           "types": [
             "dmRender::RenderListDispatchParams"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Render dispatch function callback.", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "RenderListDispatchFn"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Register a render dispatch function", 
-      "parameters": [
-        {
-          "doc": "the context", 
-          "name": "context", 
-          "types": [
-            "dmRender::HRenderContext"
-          ]
-        }, 
-        {
-          "doc": "the render batch callback function", 
-          "name": "dispatch_fn", 
-          "types": [
-            "dmRender::RenderListDispatchFn"
-          ]
-        }, 
-        {
-          "doc": "the render list visibility callback function. May be 0", 
-          "name": "visibility_fn", 
-          "types": [
-            "dmRender::RenderListVisibilityFn"
-          ]
-        }, 
-        {
-          "doc": "userdata to the callback", 
-          "name": "user_data", 
-          "types": [
-            "void*"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "RenderListMakeDispatch",
+      "brief": "Register a render dispatch function",
+      "description": "Register a render dispatch function",
       "returnvalues": [
         {
-          "doc": "the render dispatch function handle", 
-          "name": "dispatch", 
+          "name": "dispatch",
+          "doc": "the render dispatch function handle",
           "types": [
             "dmRender::HRenderListDispatch"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Register a render dispatch function", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "RenderListMakeDispatch"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Allocates an array of render entries", 
+      ],
       "parameters": [
         {
-          "doc": "the context", 
-          "name": "context", 
+          "name": "context",
+          "doc": "the context",
           "types": [
             "dmRender::HRenderContext"
           ]
-        }, 
+        },
         {
-          "doc": "the number of entries to allocate", 
-          "name": "entries", 
+          "name": "dispatch_fn",
+          "doc": "the render batch callback function",
+          "types": [
+            "dmRender::RenderListDispatchFn"
+          ]
+        },
+        {
+          "name": "visibility_fn",
+          "doc": "the render list visibility callback function. May be 0",
+          "types": [
+            "dmRender::RenderListVisibilityFn"
+          ]
+        },
+        {
+          "name": "user_data",
+          "doc": "userdata to the callback",
+          "types": [
+            "void*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "RenderListAlloc",
+      "brief": "Allocates an array of render entries",
+      "description": "Allocates an array of render entries",
+      "returnvalues": [
+        {
+          "name": "array",
+          "doc": "the render list entry array",
+          "types": [
+            "dmRender::RenderListEntry*"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "context",
+          "doc": "the context",
+          "types": [
+            "dmRender::HRenderContext"
+          ]
+        },
+        {
+          "name": "entries",
+          "doc": "the number of entries to allocate",
           "types": [
             "uint32_t"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Do not store a pointer into this array, as they're reused next frame"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "RenderListSubmit",
+      "brief": "Adds a render object to the current render frame",
+      "description": "Adds a render object to the current render frame",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "context",
+          "doc": "the context",
+          "types": [
+            "dmRender::HRenderContext"
+          ]
+        },
+        {
+          "name": "begin",
+          "doc": "the start of the array",
+          "types": [
+            "dmRender::RenderListEntry*"
+          ]
+        },
+        {
+          "name": "end",
+          "doc": "the end of the array (i.e. \"while begin!=end: *begin ...\"\")",
+          "types": [
+            "dmRender::RenderListEntry*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "AddToRender",
+      "brief": "Adds a render object to the current render frame",
+      "description": "Adds a render object to the current render frame",
       "returnvalues": [
         {
-          "doc": "the render list entry array", 
-          "name": "array", 
+          "name": "result",
+          "doc": "the result",
           "types": [
-            "dmRender::RenderListEntry*"
+            "dmRender::Result"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Allocates an array of render entries", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "RenderListAlloc"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Adds a render object to the current render frame", 
+      ],
       "parameters": [
         {
-          "doc": "the context", 
-          "name": "context", 
+          "name": "context",
+          "doc": "the context",
           "types": [
             "dmRender::HRenderContext"
           ]
-        }, 
+        },
         {
-          "doc": "the start of the array", 
-          "name": "begin", 
-          "types": [
-            "dmRender::RenderListEntry*"
-          ]
-        }, 
-        {
-          "doc": "the end of the array (i.e. \"while begin!=end: *begin ...\"\")", 
-          "name": "end", 
-          "types": [
-            "dmRender::RenderListEntry*"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Adds a render object to the current render frame", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "RenderListSubmit"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Adds a render object to the current render frame", 
-      "parameters": [
-        {
-          "doc": "the context", 
-          "name": "context", 
-          "types": [
-            "dmRender::HRenderContext"
-          ]
-        }, 
-        {
-          "doc": "the render object", 
-          "name": "ro", 
+          "name": "ro",
+          "doc": "the render object",
           "types": [
             "dmRender::RenderObject*"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetMaterialTagListKey",
+      "brief": "Gets the key to the material tag list",
+      "description": "Gets the key to the material tag list",
       "returnvalues": [
         {
-          "doc": "the result", 
-          "name": "result", 
+          "name": "listkey",
+          "doc": "the list key",
           "types": [
-            "dmRender::Result"
+            "uint32_t"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Adds a render object to the current render frame", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "AddToRender"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets the key to the material tag list", 
+      ],
       "parameters": [
         {
-          "doc": "the material", 
-          "name": "material", 
+          "name": "material",
+          "doc": "the material",
           "types": [
             "dmGraphics::HMaterial"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "NewConstant",
+      "brief": "Creates a shader program constant",
+      "description": "Creates a shader program constant",
       "returnvalues": [
         {
-          "doc": "the list key", 
-          "name": "listkey", 
+          "name": "constant",
+          "doc": "the constant",
           "types": [
-            "uint32_t"
+            "dmRender::HConstant"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Gets the key to the material tag list", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetMaterialTagListKey"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Creates a shader program constant", 
+      ],
       "parameters": [
         {
-          "doc": "the name of the material constant", 
-          "name": "name_hash", 
+          "name": "name_hash",
+          "doc": "the name of the material constant",
           "types": [
             "dmhash_t"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "DeleteConstant",
+      "brief": "Deletes a shader program constant",
+      "description": "Deletes a shader program constant",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "constant",
+          "doc": "The shader constant",
+          "types": [
+            "dmRender::HConstant"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetConstantValues",
+      "brief": "Gets the shader program constant values",
+      "description": "Gets the shader program constant values",
       "returnvalues": [
         {
-          "doc": "the constant", 
-          "name": "constant", 
+          "name": "values",
+          "doc": "the uniform values",
           "types": [
-            "dmRender::HConstant"
+            "dmVMath::Vector4*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Creates a shader program constant", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "NewConstant"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Deletes a shader program constant", 
+      ],
       "parameters": [
         {
-          "doc": "The shader constant", 
-          "name": "constant", 
+          "name": "constant",
+          "doc": "The shader constant",
           "types": [
             "dmRender::HConstant"
           ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Deletes a shader program constant", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "DeleteConstant"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets the shader program constant values", 
-      "parameters": [
+        },
         {
-          "doc": "The shader constant", 
-          "name": "constant", 
-          "types": [
-            "dmRender::HConstant"
-          ]
-        }, 
-        {
-          "doc": "(out) the array num_values", 
-          "name": "num_values", 
+          "name": "num_values",
+          "doc": "(out) the array num_values",
           "types": [
             "uint32_t*"
           ]
         }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "the uniform values", 
-          "name": "values", 
-          "types": [
-            "dmVMath::Vector4*"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Gets the shader program constant values", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetConstantValues"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Sets the shader program constant values", 
-      "parameters": [
-        {
-          "doc": "The shader constant", 
-          "name": "constant", 
-          "types": [
-            "dmRender::HConstant"
-          ]
-        }, 
-        {
-          "doc": "the array values", 
-          "name": "values", 
-          "types": [
-            "dmVMath::Vector4*"
-          ]
-        }, 
-        {
-          "doc": "the array size (number of Vector4's)", 
-          "name": "num_values", 
-          "types": [
-            "uint32_t"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "SetConstantValues",
+      "brief": "Sets the shader program constant values",
+      "description": "Sets the shader program constant values",
       "returnvalues": [
         {
-          "doc": "the result", 
-          "name": "result", 
+          "name": "result",
+          "doc": "the result",
           "types": [
             "dmRender::Result"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Sets the shader program constant values", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "SetConstantValues"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets the shader program constant name", 
+      ],
       "parameters": [
         {
-          "doc": "The shader constant", 
-          "name": "constant", 
+          "name": "constant",
+          "doc": "The shader constant",
           "types": [
             "dmRender::HConstant"
           ]
-        }
-      ], 
-      "returnvalues": [
+        },
         {
-          "doc": "the hash name", 
-          "name": "name", 
-          "types": [
-            "dmhash_t"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Gets the shader program constant name", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetConstantName"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets the shader program constant name", 
-      "parameters": [
-        {
-          "doc": "The shader constant", 
-          "name": "constant", 
-          "types": [
-            "dmRender::HConstant"
-          ]
-        }, 
-        {
-          "doc": "the hash name", 
-          "name": "name", 
-          "types": [
-            "dmhash_t"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Gets the shader program constant name", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetConstantName"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets the shader program constant location", 
-      "parameters": [
-        {
-          "doc": "The shader constant", 
-          "name": "constant", 
-          "types": [
-            "dmRender::HConstant"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "the location", 
-          "name": "location", 
-          "types": [
-            "int32_t"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Gets the shader program constant location", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetConstantLocation"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Sets the shader program constant location", 
-      "parameters": [
-        {
-          "doc": "The shader constant", 
-          "name": "constant", 
-          "types": [
-            "dmRender::HConstant"
-          ]
-        }, 
-        {
-          "doc": "the location", 
-          "name": "location", 
-          "types": [
-            "int32_t"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Sets the shader program constant location", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "SetConstantLocation"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets the type of the constant", 
-      "parameters": [
-        {
-          "doc": "The shader constant", 
-          "name": "constant", 
-          "types": [
-            "dmRender::HConstant"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "the type of the constant", 
-          "name": "type", 
-          "types": [
-            "dmRenderDDF::MaterialDesc::ConstantType"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Gets the type of the constant", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetConstantType"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Sets the type of the constant", 
-      "parameters": [
-        {
-          "doc": "The shader constant", 
-          "name": "constant", 
-          "types": [
-            "dmRender::HConstant"
-          ]
-        }, 
-        {
-          "doc": "the type of the constant", 
-          "name": "type", 
-          "types": [
-            "dmRenderDDF::MaterialDesc::ConstantType"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Sets the type of the constant", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "SetConstantType"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Allocates a named constant buffer", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "the constants buffer", 
-          "name": "buffer", 
-          "types": [
-            "dmRender::HNamedConstantBuffer"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "Allocates a named constant buffer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "NewNamedConstantBuffer"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Deletes a named constant buffer", 
-      "parameters": [
-        {
-          "doc": "the constants buffer", 
-          "name": "buffer", 
-          "types": [
-            "dmRender::HNamedConstantBuffer"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Deletes a named constant buffer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "DeleteNamedConstantBuffer"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Clears a named constant buffer from any constants.", 
-      "parameters": [
-        {
-          "doc": "the constants buffer", 
-          "name": "buffer", 
-          "types": [
-            "dmRender::HNamedConstantBuffer"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Clears a named constant buffer from any constants.", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "ClearNamedConstantBuffer"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Removes a named constant from the buffer", 
-      "parameters": [
-        {
-          "doc": "the constants buffer", 
-          "name": "buffer", 
-          "types": [
-            "dmRender::HNamedConstantBuffer"
-          ]
-        }, 
-        {
-          "doc": "the name of the constant", 
-          "name": "name_hash", 
-          "types": [
-            "dmhash_t"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Removes a named constant from the buffer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "RemoveNamedConstant"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Sets a named constant to the buffer", 
-      "parameters": [
-        {
-          "doc": "the constants buffer", 
-          "name": "buffer", 
-          "types": [
-            "dmRender::HNamedConstantBuffer"
-          ]
-        }, 
-        {
-          "doc": "the name of the constant", 
-          "name": "name_hash", 
-          "types": [
-            "dmhash_t"
-          ]
-        }, 
-        {
-          "doc": "the values", 
-          "name": "values", 
+          "name": "values",
+          "doc": "the array values",
           "types": [
             "dmVMath::Vector4*"
           ]
-        }, 
+        },
         {
-          "doc": "the number of values", 
-          "name": "num_values", 
+          "name": "num_values",
+          "doc": "the array size (number of Vector4's)",
           "types": [
             "uint32_t"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Sets a named constant to the buffer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "SetNamedConstant"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Sets a list of named constants to the buffer", 
-      "parameters": [
+      "type": "FUNCTION",
+      "name": "GetConstantName",
+      "brief": "Gets the shader program constant name",
+      "description": "Gets the shader program constant name",
+      "returnvalues": [
         {
-          "doc": "the constants buffer", 
-          "name": "buffer", 
-          "types": [
-            "dmRender::HNamedConstantBuffer"
-          ]
-        }, 
-        {
-          "doc": "the constants", 
-          "name": "constants", 
-          "types": [
-            "dmRender::HConstant*"
-          ]
-        }, 
-        {
-          "doc": "the number of constants", 
-          "name": "num_constants", 
-          "types": [
-            "uint32_t"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Sets a list of named constants to the buffer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "SetNamedConstants"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets a named constant from the buffer", 
-      "parameters": [
-        {
-          "doc": "the constants buffer", 
-          "name": "buffer", 
-          "types": [
-            "dmRender::HNamedConstantBuffer"
-          ]
-        }, 
-        {
-          "doc": "the name of the constant", 
-          "name": "name_hash", 
+          "name": "name",
+          "doc": "the hash name",
           "types": [
             "dmhash_t"
           ]
-        }, 
+        }
+      ],
+      "parameters": [
         {
-          "doc": "(out) the values. May not be null.", 
-          "name": "values", 
+          "name": "constant",
+          "doc": "The shader constant",
+          "types": [
+            "dmRender::HConstant"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetConstantName",
+      "brief": "Gets the shader program constant name",
+      "description": "Gets the shader program constant name",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "constant",
+          "doc": "The shader constant",
+          "types": [
+            "dmRender::HConstant"
+          ]
+        },
+        {
+          "name": "name",
+          "doc": "the hash name",
+          "types": [
+            "dmhash_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetConstantLocation",
+      "brief": "Gets the shader program constant location",
+      "description": "Gets the shader program constant location",
+      "returnvalues": [
+        {
+          "name": "location",
+          "doc": "the location",
+          "types": [
+            "int32_t"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "constant",
+          "doc": "The shader constant",
+          "types": [
+            "dmRender::HConstant"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "SetConstantLocation",
+      "brief": "Sets the shader program constant location",
+      "description": "Sets the shader program constant location",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "constant",
+          "doc": "The shader constant",
+          "types": [
+            "dmRender::HConstant"
+          ]
+        },
+        {
+          "name": "location",
+          "doc": "the location",
+          "types": [
+            "int32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetConstantType",
+      "brief": "Gets the type of the constant",
+      "description": "Gets the type of the constant",
+      "returnvalues": [
+        {
+          "name": "type",
+          "doc": "the type of the constant",
+          "types": [
+            "dmRenderDDF::MaterialDesc::ConstantType"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "constant",
+          "doc": "The shader constant",
+          "types": [
+            "dmRender::HConstant"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "SetConstantType",
+      "brief": "Sets the type of the constant",
+      "description": "Sets the type of the constant",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "constant",
+          "doc": "The shader constant",
+          "types": [
+            "dmRender::HConstant"
+          ]
+        },
+        {
+          "name": "type",
+          "doc": "the type of the constant",
+          "types": [
+            "dmRenderDDF::MaterialDesc::ConstantType"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "NewNamedConstantBuffer",
+      "brief": "Allocates a named constant buffer",
+      "description": "Allocates a named constant buffer",
+      "returnvalues": [
+        {
+          "name": "buffer",
+          "doc": "the constants buffer",
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        }
+      ],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "DeleteNamedConstantBuffer",
+      "brief": "Deletes a named constant buffer",
+      "description": "Deletes a named constant buffer",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "the constants buffer",
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "ClearNamedConstantBuffer",
+      "brief": "Clears a named constant buffer from any constants.",
+      "description": "Clears a named constant buffer from any constants.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "the constants buffer",
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "RemoveNamedConstant",
+      "brief": "Removes a named constant from the buffer",
+      "description": "Removes a named constant from the buffer",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "the constants buffer",
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "the name of the constant",
+          "types": [
+            "dmhash_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "SetNamedConstant",
+      "brief": "Sets one or more named constants to the buffer",
+      "description": "Sets one or more named constants to the buffer",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "the constants buffer",
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "the name of the constant",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "values",
+          "doc": "the values",
+          "types": [
+            "dmVMath::Vector4*"
+          ]
+        },
+        {
+          "name": "num_values",
+          "doc": "the number of values",
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "SetNamedConstant",
+      "brief": "Sets one or more named constants to the buffer wit...",
+      "description": "Sets one or more named constants to the buffer with a specified data type.\nCurrently only dmRenderDDF::MaterialDesc::CONSTANT_TYPE_USER and dmRenderDDF::MaterialDesc::CONSTANT_TYPE_USER_MATRIX4\nare supported.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "the constants buffer",
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "the name of the constant",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "values",
+          "doc": "the values",
+          "types": [
+            "dmVMath::Vector4*"
+          ]
+        },
+        {
+          "name": "num_values",
+          "doc": "the number of values",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "constant_type",
+          "doc": "The constant type",
+          "types": [
+            "dmRenderDDF::MaterialDesc::ConstantType"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "SetNamedConstants",
+      "brief": "Sets a list of named constants to the buffer",
+      "description": "Sets a list of named constants to the buffer",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "the constants buffer",
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        },
+        {
+          "name": "constants",
+          "doc": "the constants",
+          "types": [
+            "dmRender::HConstant*"
+          ]
+        },
+        {
+          "name": "num_constants",
+          "doc": "the number of constants",
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "SetNamedConstantAtIndex",
+      "brief": "Sets a named constant in the buffer at a specific ...",
+      "description": "Sets a named constant in the buffer at a specific index",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "the result",
+          "types": [
+            "Result"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "the constants buffer",
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "the name of the constant",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "value",
+          "doc": "the value",
+          "types": [
+            "dmVMath::Vector4"
+          ]
+        },
+        {
+          "name": "value_index",
+          "doc": "the index of the value to set",
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetNamedConstant",
+      "brief": "Gets a named constant from the buffer",
+      "description": "Gets a named constant from the buffer",
+      "returnvalues": [
+        {
+          "name": "ok",
+          "doc": "true if constant existed.",
+          "types": [
+            "bool"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "the constants buffer",
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "the name of the constant",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "values",
+          "doc": "(out) the values. May not be null.",
           "types": [
             "dmVMath::Vector4**"
           ]
-        }, 
+        },
         {
-          "doc": "(out) the number of values. May not be null.", 
-          "name": "num_values", 
+          "name": "num_values",
+          "doc": "(out) the number of values. May not be null.",
           "types": [
             "uint32_t*"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "This give access to the internal memory of the constant"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetNamedConstant",
+      "brief": "Gets a named constant from the buffer - with type ...",
+      "description": "Gets a named constant from the buffer - with type information",
       "returnvalues": [
         {
-          "doc": "true if constant existed.", 
-          "name": "ok", 
+          "name": "ok",
+          "doc": "true if constant existed.",
           "types": [
             "bool"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Gets a named constant from the buffer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetNamedConstant"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Gets number of constants in the buffer", 
+      ],
       "parameters": [
         {
-          "doc": "the constants buffer", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "the constants buffer",
+          "types": [
+            "dmRender::HNamedConstantBuffer"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "the name of the constant",
+          "types": [
+            "dmhash_t"
+          ]
+        },
+        {
+          "name": "values",
+          "doc": "(out) the values. May not be null.",
+          "types": [
+            "dmVMath::Vector4**"
+          ]
+        },
+        {
+          "name": "num_values",
+          "doc": "(out) the number of values. May not be null.",
+          "types": [
+            "uint32_t*"
+          ]
+        },
+        {
+          "name": "constant_type",
+          "doc": "(out) the constant type.",
+          "types": [
+            "dmRenderDDF::MaterialDesc::ConstantType*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "This give access to the internal memory of the constant"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetNamedConstantCount",
+      "brief": "Gets number of constants in the buffer",
+      "description": "Gets number of constants in the buffer",
+      "returnvalues": [
+        {
+          "name": "ok",
+          "doc": "true if constant existed.",
+          "types": [
+            "bool"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "the constants buffer",
           "types": [
             "dmRender::HNamedConstantBuffer"
           ]
         }
-      ], 
-      "returnvalues": [
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "IterateNamedConstants",
+      "brief": "Iterates over the constants",
+      "description": "Iterates over the constants",
+      "returnvalues": [],
+      "parameters": [
         {
-          "doc": "true if constant existed.", 
-          "name": "ok", 
+          "name": "buffer",
+          "doc": "the constants buffer",
           "types": [
-            "bool"
+            "dmRender::HNamedConstantBuffer"
+          ]
+        },
+        {
+          "name": "callback",
+          "doc": "the callback function void (<em>callback)(dmhash_t name_hash, void</em> ctx)",
+          "types": [
+            "void (*callback)(dmhash_t name_hash, void* ctx)"
+          ]
+        },
+        {
+          "name": "ctx",
+          "doc": "the callback context",
+          "types": [
+            "void*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Gets number of constants in the buffer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "GetNamedConstantCount"
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "dmRender",
+    "name": "Render",
+    "brief": "Render API documentation",
+    "description": "<span class=\"file\"><dmsdk/render/render.h></span>\nApi for render specific data",
+    "path": "",
+    "file": "",
+    "notes": []
+  }
 }

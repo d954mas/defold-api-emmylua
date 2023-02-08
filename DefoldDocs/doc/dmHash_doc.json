@@ -1,562 +1,638 @@
 {
-  "info": {
-    "group": "DEFOLD SDK", 
-    "description": "Hash functions.", 
-    "namespace": "dmHash", 
-    "brief": "SDK Hash API documentation", 
-    "file": "dmsdk/dlib/hash.h", 
-    "path": "engine/dlib/src/dmsdk/dlib/hash.h", 
-    "name": "Hash"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">typedef</span> <span class=\"kt\">uint64_t</span> <span class=\"n\">dmhash_t</span>\n</pre></div>", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "dmhash_t type definition", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "TYPEDEF", 
-      "name": "dmhash_t"
-    }, 
+      "type": "TYPEDEF",
+      "name": "dmhash_t",
+      "brief": "dmhash_t type definition",
+      "description": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">typedef</span><span class=\"w\"> </span><span class=\"kt\">uint64_t</span><span class=\"w\"> </span><span class=\"n\">dmhash_t</span><span class=\"w\"></span>\n</code></pre></div>",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Calculate 32-bit hash value from buffer", 
+      "type": "FUNCTION",
+      "name": "dmHashBuffer32",
+      "brief": "Calculate 32-bit hash value from buffer",
+      "description": "Calculate 32-bit hash value from buffer",
+      "returnvalues": [
+        {
+          "name": "hash",
+          "doc": "hash value",
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ],
       "parameters": [
         {
-          "doc": "Buffer", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "Buffer",
           "types": [
             "const void*"
           ]
-        }, 
+        },
         {
-          "doc": "Length of buffer", 
-          "name": "buffer_len", 
+          "name": "buffer_len",
+          "doc": "Length of buffer",
           "types": [
             "uint32_t"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmHashBuffer64",
+      "brief": "calculate 64-bit hash value from buffer",
+      "description": "calculate 64-bit hash value from buffer",
       "returnvalues": [
         {
-          "doc": "hash value", 
-          "name": "hash", 
+          "name": "hash",
+          "doc": "hash value",
           "types": [
-            "uint32_t"
+            "uint64_t"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Calculate 32-bit hash value from buffer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashBuffer32"
-    }, 
-    {
-      "replaces": "", 
-      "description": "calculate 64-bit hash value from buffer", 
+      ],
       "parameters": [
         {
-          "doc": "Buffer", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "Buffer",
           "types": [
             "const void*"
           ]
-        }, 
+        },
         {
-          "doc": "Length of buffer", 
-          "name": "buffer_len", 
+          "name": "buffer_len",
+          "doc": "Length of buffer",
           "types": [
             "uint32_t"
           ]
         }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "hash value", 
-          "name": "hash", 
-          "types": [
-            "uint64_t"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "calculate 64-bit hash value from buffer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashBuffer64"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Calculate 32-bit hash value from string", 
-      "parameters": [
-        {
-          "doc": "Null terminated string", 
-          "name": "string", 
-          "types": [
-            "const char*"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmHashString32",
+      "brief": "Calculate 32-bit hash value from string",
+      "description": "Calculate 32-bit hash value from string",
       "returnvalues": [
         {
-          "doc": "hash value", 
-          "name": "hash", 
+          "name": "hash",
+          "doc": "hash value",
           "types": [
             "uint32_t"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Calculate 32-bit hash value from string", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashString32"
-    }, 
-    {
-      "replaces": "", 
-      "description": "calculate 64-bit hash value from string", 
+      ],
       "parameters": [
         {
-          "doc": "Null terminated string", 
-          "name": "string", 
+          "name": "string",
+          "doc": "Null terminated string",
           "types": [
             "const char*"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmHashString64",
+      "brief": "calculate 64-bit hash value from string",
+      "description": "calculate 64-bit hash value from string",
       "returnvalues": [
         {
-          "doc": "hash value", 
-          "name": "hash", 
+          "name": "hash",
+          "doc": "hash value",
           "types": [
             "uint64_t"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "calculate 64-bit hash value from string", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashString64"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Returns the original string used to produce a hash.\nAlways returns a null terminated string. Returns \"<unknown>\" if the original string wasn't found.", 
+      ],
       "parameters": [
         {
-          "doc": "hash value", 
-          "name": "hash", 
-          "types": [
-            "uint64_t"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "Original string value", 
-          "name": "", 
+          "name": "string",
+          "doc": "Null terminated string",
           "types": [
             "const char*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get string value from hash", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashReverseSafe64"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Reverse hash lookup. Maps hash to original data. It is guaranteed that the returned\nbuffer is null-terminated. If the buffer contains a valid c-string\nit can safely be used in printf and friends.", 
+      "type": "FUNCTION",
+      "name": "dmHashReverseSafe64",
+      "brief": "get string value from hash",
+      "description": "Returns the original string used to produce a hash.\nAlways returns a null terminated string. Returns \"<unknown>\" if the original string wasn't found.",
+      "returnvalues": [
+        {
+          "name": "",
+          "doc": "Original string value or \"<unknown>\" if it wasn't found.",
+          "types": [
+            "const char*"
+          ]
+        }
+      ],
       "parameters": [
         {
-          "doc": "hash to lookup", 
-          "name": "hash", 
+          "name": "hash",
+          "doc": "hash value",
           "types": [
             "uint64_t"
           ]
-        }, 
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Do not store this pointer"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmHashReverseSafe64",
+      "brief": "get string value from hash",
+      "description": "Reverse hash lookup. Maps hash to original data. It is guaranteed that the returned\nbuffer is null-terminated. If the buffer contains a valid c-string\nit can safely be used in printf and friends.",
+      "returnvalues": [
         {
-          "doc": "original data length. Optional argument and NULL-pointer is accepted.", 
-          "name": "length", 
+          "name": "",
+          "doc": "pointer to buffer. 0 if no reverse exists or if reverse lookup is disabled",
+          "types": [
+            "const char*"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "hash",
+          "doc": "hash to lookup",
+          "types": [
+            "uint64_t"
+          ]
+        },
+        {
+          "name": "length",
+          "doc": "original data length. Optional argument and NULL-pointer is accepted.",
           "types": [
             "uint32_t*"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Do not store this pointer"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmHashReverseSafe32",
+      "brief": "get string value from hash",
+      "description": "Returns the original string used to produce a hash.\nAlways returns a null terminated string. Returns \"<unknown>\" if the original string wasn't found.",
       "returnvalues": [
         {
-          "doc": "pointer to buffer. 0 if no reverse exists or if reverse lookup is disabled", 
-          "name": "", 
+          "name": "",
+          "doc": "Original string value or \"<unknown>\" if it wasn't found.",
           "types": [
             "const char*"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get string value from hash", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashReverseSafe64"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Hash state used for 32-bit incremental hashing", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Hash state used for 32-bit incremental hashing", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "STRUCT", 
-      "name": "HashState32"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Hash state used for 64-bit incremental hashing", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Hash state used for 64-bit incremental hashing", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "STRUCT", 
-      "name": "HashState64"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Initialize hash-state for 32-bit incremental hashing", 
+      ],
       "parameters": [
         {
-          "doc": "Hash state", 
-          "name": "hash_state", 
+          "name": "hash",
+          "doc": "hash value",
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Do not store this pointer"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmHashReverseSafe32",
+      "brief": "get string value from hash",
+      "description": "Reverse hash lookup. Maps hash to original data. It is guaranteed that the returned\nbuffer is null-terminated. If the buffer contains a valid c-string\nit can safely be used in printf and friends.",
+      "returnvalues": [
+        {
+          "name": "",
+          "doc": "pointer to buffer. 0 if no reverse exists or if reverse lookup is disabled",
+          "types": [
+            "const char*"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "hash",
+          "doc": "hash to lookup",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "length",
+          "doc": "original data length. Optional argument and NULL-pointer is accepted.",
+          "types": [
+            "uint32_t*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Do not store this pointer"
+      ]
+    },
+    {
+      "type": "STRUCT",
+      "name": "HashState32",
+      "brief": "Hash state used for 32-bit incremental hashing",
+      "description": "Hash state used for 32-bit incremental hashing",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "STRUCT",
+      "name": "HashState64",
+      "brief": "Hash state used for 64-bit incremental hashing",
+      "description": "Hash state used for 64-bit incremental hashing",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmHashInit32",
+      "brief": "Initialize hash-state for 32-bit incremental hashi...",
+      "description": "Initialize hash-state for 32-bit incremental hashing",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "hash_state",
+          "doc": "Hash state",
           "types": [
             "HashState32*"
           ]
-        }, 
+        },
         {
-          "doc": "true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH", 
-          "name": "reverse_hash", 
+          "name": "reverse_hash",
+          "doc": "true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH",
           "types": [
             "bool"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Initialize hash-state for 32-bit incremental hashi...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashInit32"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Clone 32-bit incremental hash state", 
+      "type": "FUNCTION",
+      "name": "dmHashClone32",
+      "brief": "Clone 32-bit incremental hash state",
+      "description": "Clone 32-bit incremental hash state",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "Hash state", 
-          "name": "hash_state", 
+          "name": "hash_state",
+          "doc": "Hash state",
           "types": [
             "HashState32*"
           ]
-        }, 
+        },
         {
-          "doc": "Source hash state", 
-          "name": "source_hash_state", 
+          "name": "source_hash_state",
+          "doc": "Source hash state",
           "types": [
             "HashState32*"
           ]
-        }, 
+        },
         {
-          "doc": "true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH. Ignored if source state reverse hashing is disabled.", 
-          "name": "reverse_hash", 
+          "name": "reverse_hash",
+          "doc": "true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH. Ignored if source state reverse hashing is disabled.",
           "types": [
             "bool"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Clone 32-bit incremental hash state", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashClone32"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Incremental hashing", 
+      "type": "FUNCTION",
+      "name": "dmHashUpdateBuffer32",
+      "brief": "Incremental hashing",
+      "description": "Incremental hashing",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "Hash state", 
-          "name": "hash_state", 
+          "name": "hash_state",
+          "doc": "Hash state",
           "types": [
             "HashState32*"
           ]
-        }, 
+        },
         {
-          "doc": "Buffer", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "Buffer",
           "types": [
             "const void*"
           ]
-        }, 
+        },
         {
-          "doc": "Length of buffer", 
-          "name": "buffer_len", 
+          "name": "buffer_len",
+          "doc": "Length of buffer",
           "types": [
             "uint32_t"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Incremental hashing", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashUpdateBuffer32"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Finalize incremental hashing and release associated resources", 
-      "parameters": [
-        {
-          "doc": "Hash state", 
-          "name": "hash_state", 
-          "types": [
-            "HashState32*"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmHashFinal32",
+      "brief": "Finalize incremental hashing and release associate...",
+      "description": "Finalize incremental hashing and release associated resources",
       "returnvalues": [
         {
-          "doc": "the hash value", 
-          "name": "hash", 
+          "name": "hash",
+          "doc": "the hash value",
           "types": [
             "uint32_t"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Finalize incremental hashing and release associate...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashFinal32"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Release incremental hashing resources\nUsed to release assocciated resources for intermediate incremental hash states.", 
+      ],
       "parameters": [
         {
-          "doc": "Hash state", 
-          "name": "hash_state", 
+          "name": "hash_state",
+          "doc": "Hash state",
           "types": [
             "HashState32*"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Release incremental hashing resources\nUsed to rele...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashRelease32"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Initialize hash-state for 64-bit incremental hashing", 
+      "type": "FUNCTION",
+      "name": "dmHashRelease32",
+      "brief": "Release incremental hashing resources\nUsed to rele...",
+      "description": "Release incremental hashing resources\nUsed to release assocciated resources for intermediate incremental hash states.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "Hash state", 
-          "name": "hash_state", 
+          "name": "hash_state",
+          "doc": "Hash state",
+          "types": [
+            "HashState32*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmHashInit64",
+      "brief": "Initialize hash-state for 64-bit incremental hashi...",
+      "description": "Initialize hash-state for 64-bit incremental hashing",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "hash_state",
+          "doc": "Hash state",
           "types": [
             "HashState64*"
           ]
-        }, 
+        },
         {
-          "doc": "true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH", 
-          "name": "reverse_hash", 
+          "name": "reverse_hash",
+          "doc": "true to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Initialize hash-state for 64-bit incremental hashi...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashInit64"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Clone 64-bit incremental hash state", 
+      "type": "FUNCTION",
+      "name": "dmHashClone64",
+      "brief": "Clone 64-bit incremental hash state",
+      "description": "Clone 64-bit incremental hash state",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "Hash state", 
-          "name": "hash_state", 
+          "name": "hash_state",
+          "doc": "Hash state",
           "types": [
             "HashState64*"
           ]
-        }, 
+        },
         {
-          "doc": "Source hash state", 
-          "name": "source_hash_state", 
+          "name": "source_hash_state",
+          "doc": "Source hash state",
           "types": [
             "HashState64*"
           ]
-        }, 
+        },
         {
-          "doc": "true <span class=\"type\"> bool</span> to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH. Ignored if source state reverse hashing is disabled.", 
-          "name": "reverse_hash", 
+          "name": "reverse_hash",
+          "doc": "true <span class=\"type\"> bool</span> to enable reverse hashing of buffers up to ::DMHASH_MAX_REVERSE_LENGTH. Ignored if source state reverse hashing is disabled.",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Clone 64-bit incremental hash state", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashClone64"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Incremental hashing", 
+      "type": "FUNCTION",
+      "name": "dmHashUpdateBuffer64",
+      "brief": "Incremental hashing",
+      "description": "Incremental hashing",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "Hash state", 
-          "name": "hash_state", 
+          "name": "hash_state",
+          "doc": "Hash state",
           "types": [
             "HashState64*"
           ]
-        }, 
+        },
         {
-          "doc": "Buffer", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "Buffer",
           "types": [
             "const void*"
           ]
-        }, 
+        },
         {
-          "doc": "Length of buffer", 
-          "name": "buffer_len", 
+          "name": "buffer_len",
+          "doc": "Length of buffer",
           "types": [
             "uint32_t"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Incremental hashing", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashUpdateBuffer64"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Finalize incremental hashing and release associated resources", 
-      "parameters": [
-        {
-          "doc": "Hash state", 
-          "name": "hash_state", 
-          "types": [
-            "HashState64*"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmHashFinal64",
+      "brief": "Finalize incremental hashing and release associate...",
+      "description": "Finalize incremental hashing and release associated resources",
       "returnvalues": [
         {
-          "doc": "The hash value", 
-          "name": "hash", 
+          "name": "hash",
+          "doc": "The hash value",
           "types": [
             "uint64_t"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Finalize incremental hashing and release associate...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashFinal64"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Release incremental hashing resources\nUsed to release assocciated resources for intermediate incremental hash states.", 
+      ],
       "parameters": [
         {
-          "doc": "Hash state", 
-          "name": "hash_state", 
+          "name": "hash_state",
+          "doc": "Hash state",
           "types": [
             "HashState64*"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Release incremental hashing resources\nUsed to rele...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmHashRelease64"
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmHashRelease64",
+      "brief": "Release incremental hashing resources\nUsed to rele...",
+      "description": "Release incremental hashing resources\nUsed to release assocciated resources for intermediate incremental hash states.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "hash_state",
+          "doc": "Hash state",
+          "types": [
+            "HashState64*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "dmHash",
+    "name": "Hash",
+    "brief": "SDK Hash API documentation",
+    "description": "Hash functions.",
+    "path": "engine/dlib/src/dmsdk/dlib/hash.h",
+    "file": "dmsdk/dlib/hash.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
 }

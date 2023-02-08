@@ -1,868 +1,923 @@
 {
-  "info": {
-    "group": "SYSTEM", 
-    "description": "Functions and messages for using system resources, controlling the engine,\nerror handling and debugging.", 
-    "namespace": "sys", 
-    "brief": "System API documentation", 
-    "file": "", 
-    "path": "", 
-    "name": "System"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "The table can later be loaded by <code>sys.load</code>.\nUse <code>sys.get_save_file</code> to obtain a valid location for the file.\nInternally, this function uses a workspace buffer sized output file sized 512kb.\nThis size reflects the output file size which must not exceed this limit.\nAdditionally, the total number of rows that any one table may contain is limited to 65536\n(i.e. a 16 bit range). When tables are used to represent arrays, the values of\nkeys are permitted to fall within a 32 bit range, supporting sparse arrays, however\nthe limit on the total number of rows remains in effect.", 
-      "parameters": [
-        {
-          "doc": "file to write to", 
-          "name": "filename", 
-          "types": [
-            "string"
-          ]
-        }, 
-        {
-          "doc": "lua table to save", 
-          "name": "table", 
-          "types": [
-            "table"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "sys.save",
+      "brief": "saves a lua table to a file stored on disk",
+      "description": "The table can later be loaded by <code>sys.load</code>.\nUse <code>sys.get_save_file</code> to obtain a valid location for the file.\nInternally, this function uses a workspace buffer sized output file sized 512kb.\nThis size reflects the output file size which must not exceed this limit.\nAdditionally, the total number of rows that any one table may contain is limited to 65536\n(i.e. a 16 bit range). When tables are used to represent arrays, the values of\nkeys are permitted to fall within a 32 bit range, supporting sparse arrays, however\nthe limit on the total number of rows remains in effect.",
       "returnvalues": [
         {
-          "doc": "a boolean indicating if the table could be saved or not", 
-          "name": "success", 
+          "name": "success",
+          "doc": "a boolean indicating if the table could be saved or not",
           "types": [
             "boolean"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "saves a lua table to a file stored on disk", 
-      "examples": "Save data:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">my_table</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n<span class=\"nb\">table.insert</span><span class=\"p\">(</span><span class=\"n\">my_table</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_value&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">my_file_path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_save_file</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_game&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_file&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">save</span><span class=\"p\">(</span><span class=\"n\">my_file_path</span><span class=\"p\">,</span> <span class=\"n\">my_table</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n  <span class=\"c1\">-- Alert user that the data could not be saved</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.save"
-    }, 
-    {
-      "replaces": "", 
-      "description": "If the file exists, it must have been created by <code>sys.save</code> to be loaded.", 
+      ],
       "parameters": [
         {
-          "doc": "file to read from", 
-          "name": "filename", 
+          "name": "filename",
+          "doc": "file to write to",
           "types": [
             "string"
           ]
-        }
-      ], 
-      "returnvalues": [
+        },
         {
-          "doc": "lua table, which is empty if the file could not be found", 
-          "name": "loaded", 
+          "name": "table",
+          "doc": "lua table to save",
           "types": [
             "table"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "loads a lua table from a file on disk", 
-      "examples": "Load data that was previously saved, e.g. an earlier game session:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">my_file_path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_save_file</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_game&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_file&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">my_table</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"n\">my_file_path</span><span class=\"p\">)</span>\n<span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"nb\">next</span><span class=\"p\">(</span><span class=\"n\">my_table</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n  <span class=\"c1\">-- empty table</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.load"
-    }, 
+      ],
+      "examples": "Save data:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">my_table</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n<span class=\"nb\">table.insert</span><span class=\"p\">(</span><span class=\"n\">my_table</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_value&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">my_file_path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_save_file</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_file&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">save</span><span class=\"p\">(</span><span class=\"n\">my_file_path</span><span class=\"p\">,</span> <span class=\"n\">my_table</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n  <span class=\"c1\">-- Alert user that the data could not be saved</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "The save-file path is operating system specific and is typically located under the user's home directory.", 
-      "parameters": [
-        {
-          "doc": "user defined id of the application, which helps define the location of the save-file", 
-          "name": "application_id", 
-          "types": [
-            "string"
-          ]
-        }, 
-        {
-          "doc": "file-name to get path for", 
-          "name": "file_name", 
-          "types": [
-            "string"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "sys.load",
+      "brief": "loads a lua table from a file on disk",
+      "description": "If the file exists, it must have been created by <code>sys.save</code> to be loaded.",
       "returnvalues": [
         {
-          "doc": "path to save-file", 
-          "name": "path", 
-          "types": [
-            "string"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "gets the save-file path", 
-      "examples": "Find a path where we can store data (the example path is on the macOS platform):\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">my_file_path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_save_file</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_game&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_file&quot;</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">my_file_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; /Users/my_users/Library/Application Support/my_game/my_file</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.get_save_file"
-    }, 
-    {
-      "replaces": "", 
-      "description": "The path from which the application is run.", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "path to application executable", 
-          "name": "path", 
-          "types": [
-            "string"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "gets the application path", 
-      "examples": "Find a path where we can store data (the example path is on the macOS platform):\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- macOS: /Applications/my_game.app</span>\n<span class=\"kd\">local</span> <span class=\"n\">application_path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_application_path</span><span class=\"p\">()</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">application_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; /Applications/my_game.app</span>\n\n<span class=\"c1\">-- Windows: C:\\Program Files\\my_game\\my_game.exe</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">application_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; C:\\Program Files\\my_game</span>\n\n<span class=\"c1\">-- Linux: /home/foobar/my_game/my_game</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">application_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; /home/foobar/my_game</span>\n\n<span class=\"c1\">-- Android package name: com.foobar.my_game</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">application_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; /data/user/0/com.foobar.my_game</span>\n\n<span class=\"c1\">-- iOS: my_game.app</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">application_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; /var/containers/Bundle/Applications/123456AB-78CD-90DE-12345678ABCD/my_game.app</span>\n\n<span class=\"c1\">-- HTML5: http://www.foobar.com/my_game/</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">application_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; http://www.foobar.com/my_game</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.get_application_path"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get config value from the game.project configuration file.\nIn addition to the project file, configuration values can also be passed\nto the runtime as command line arguments with the <code>--config</code> argument.", 
-      "parameters": [
-        {
-          "doc": "key to get value for. The syntax is SECTION.KEY", 
-          "name": "key", 
-          "types": [
-            "string"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "config value as a string. nil if the config key doesn't exists", 
-          "name": "value", 
-          "types": [
-            "string"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "get config value", 
-      "examples": "Get display width\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">width</span> <span class=\"o\">=</span> <span class=\"nb\">tonumber</span><span class=\"p\">(</span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">display.width&quot;</span><span class=\"p\">))</span>\n</pre></div>\n\n\nStart the engine with a bootstrap config override and a custom config value\n<div class=\"codehilite\"><pre><span></span>$ mygame --config<span class=\"o\">=</span>bootstrap.main_collection<span class=\"o\">=</span>/mytest.collectionc --config<span class=\"o\">=</span>mygame.testmode<span class=\"o\">=</span>1\n</pre></div>\n\n\nSet and read a custom config value\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">testmode</span> <span class=\"o\">=</span> <span class=\"nb\">tonumber</span><span class=\"p\">(</span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">mygame.testmode&quot;</span><span class=\"p\">))</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.get_config"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get config value from the game.project configuration file with default value", 
-      "parameters": [
-        {
-          "doc": "key to get value for. The syntax is SECTION.KEY", 
-          "name": "key", 
-          "types": [
-            "string"
-          ]
-        }, 
-        {
-          "doc": "default value to return if the value does not exist", 
-          "name": "default_value", 
-          "types": [
-            "string"
-          ]
-        }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "config value as a string. default_value if the config key does not exist", 
-          "name": "value", 
-          "types": [
-            "string"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "get config value with default value", 
-      "examples": "Get user config value\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">speed</span> <span class=\"o\">=</span> <span class=\"nb\">tonumber</span><span class=\"p\">(</span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">my_game.speed&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">10.23&quot;</span><span class=\"p\">))</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.get_config"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Open URL in default application, typically a browser", 
-      "parameters": [
-        {
-          "doc": "url to open", 
-          "name": "url", 
-          "types": [
-            "string"
-          ]
-        }, 
-        {
-          "doc": "table with attributes\n<code>target</code>\n- <span class=\"type\">string</span> <span class=\"icon-html5\"></span>: Optional. Specifies the target attribute or the name of the window. The following values are supported:\n- <code>_self</code> - URL replaces the current page. This is default.\n- <code>_blank</code> - URL is loaded into a new window, or tab.\n- <code>_parent</code> - URL is loaded into the parent frame.\n- <code>_top</code> - URL replaces any framesets that may be loaded.\n- <code>name</code> - The name of the window (Note: the name does not specify the title of the new window).", 
-          "name": "[attributes]", 
+          "name": "loaded",
+          "doc": "lua table, which is empty if the file could not be found",
           "types": [
             "table"
           ]
         }
-      ], 
+      ],
+      "parameters": [
+        {
+          "name": "filename",
+          "doc": "file to read from",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "examples": "Load data that was previously saved, e.g. an earlier game session:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">my_file_path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_save_file</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_file&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">my_table</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"n\">my_file_path</span><span class=\"p\">)</span>\n<span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"nb\">next</span><span class=\"p\">(</span><span class=\"n\">my_table</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n  <span class=\"c1\">-- empty table</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "sys.get_save_file",
+      "brief": "gets the save-file path",
+      "description": "The save-file path is operating system specific and is typically located under the user's home directory.",
       "returnvalues": [
         {
-          "doc": "a boolean indicating if the url could be opened or not", 
-          "name": "success", 
+          "name": "path",
+          "doc": "path to save-file",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "application_id",
+          "doc": "user defined id of the application, which helps define the location of the save-file",
+          "types": [
+            "string"
+          ]
+        },
+        {
+          "name": "file_name",
+          "doc": "file-name to get path for",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "examples": "Find a path where we can store data (the example path is on the macOS platform):\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">my_file_path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_save_file</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_file&quot;</span><span class=\"p\">)</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">my_file_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; /Users/my_users/Library/Application Support/my_game/my_file</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Setting the environment variable `DM_SAVE_HOME` overrides the default application support path."
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "sys.get_application_path",
+      "brief": "gets the application path",
+      "description": "The path from which the application is run.",
+      "returnvalues": [
+        {
+          "name": "path",
+          "doc": "path to application executable",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "parameters": [],
+      "examples": "Find a path where we can store data (the example path is on the macOS platform):\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- macOS: /Applications/my_game.app</span>\n<span class=\"kd\">local</span> <span class=\"n\">application_path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_application_path</span><span class=\"p\">()</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">application_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; /Applications/my_game.app</span>\n\n<span class=\"c1\">-- Windows: C:\\Program Files\\my_game\\my_game.exe</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">application_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; C:\\Program Files\\my_game</span>\n\n<span class=\"c1\">-- Linux: /home/foobar/my_game/my_game</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">application_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; /home/foobar/my_game</span>\n\n<span class=\"c1\">-- Android package name: com.foobar.my_game</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">application_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; /data/user/0/com.foobar.my_game</span>\n\n<span class=\"c1\">-- iOS: my_game.app</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">application_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; /var/containers/Bundle/Applications/123456AB-78CD-90DE-12345678ABCD/my_game.app</span>\n\n<span class=\"c1\">-- HTML5: http://www.foobar.com/my_game/</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">application_path</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; http://www.foobar.com/my_game</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "sys.get_config_string",
+      "brief": "get string config value with optional default value",
+      "description": "Get string config value from the game.project configuration file with optional default value",
+      "returnvalues": [
+        {
+          "name": "value",
+          "doc": "config value as a string. default_value if the config key does not exist. nil if no default value was supplied.",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "doc": "key to get value for. The syntax is SECTION.KEY",
+          "types": [
+            "string"
+          ]
+        },
+        {
+          "name": "[default_value]",
+          "doc": "(optional) default value to return if the value does not exist",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "examples": "Get user config value\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config_string</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game.text&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;default text&quot;</span><span class=\"p\">))</span>\n</code></pre></div>\n\nStart the engine with a bootstrap config override and add a custom config value\n<div class=\"codehilite\"><pre><span></span><code>$ dmengine --config<span class=\"o\">=</span>bootstrap.main_collection<span class=\"o\">=</span>/mytest.collectionc --config<span class=\"o\">=</span>mygame.testmode<span class=\"o\">=</span><span class=\"m\">1</span>\n</code></pre></div>\n\nRead the custom config value from the command line\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">testmode</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config_int</span><span class=\"p\">(</span><span class=\"s2\">&quot;mygame.testmode&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "sys.get_config_int",
+      "brief": "get integer config value with optional default value",
+      "description": "Get integer config value from the game.project configuration file with optional default value",
+      "returnvalues": [
+        {
+          "name": "value",
+          "doc": "config value as an integer. default_value if the config key does not exist. 0 if no default value was supplied.",
+          "types": [
+            "integer"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "doc": "key to get value for. The syntax is SECTION.KEY",
+          "types": [
+            "string"
+          ]
+        },
+        {
+          "name": "[default_value]",
+          "doc": "(optional) default value to return if the value does not exist",
+          "types": [
+            "integer"
+          ]
+        }
+      ],
+      "examples": "Get user config value\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">speed</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config_int</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game.speed&quot;</span><span class=\"p\">,</span> <span class=\"mi\">20</span><span class=\"p\">)</span> <span class=\"c1\">-- with default value</span>\n</code></pre></div>\n\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">testmode</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config_int</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game.testmode&quot;</span><span class=\"p\">)</span> <span class=\"c1\">-- without default value</span>\n<span class=\"kr\">if</span> <span class=\"n\">testmode</span> <span class=\"o\">~=</span> <span class=\"kc\">nil</span> <span class=\"kr\">then</span>\n    <span class=\"c1\">-- do stuff</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "sys.get_config_number",
+      "brief": "get number config value with optional default value",
+      "description": "Get number config value from the game.project configuration file with optional default value",
+      "returnvalues": [
+        {
+          "name": "value",
+          "doc": "config value as an number. default_value if the config key does not exist. 0 if no default value was supplied.",
+          "types": [
+            "number"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "doc": "key to get value for. The syntax is SECTION.KEY",
+          "types": [
+            "string"
+          ]
+        },
+        {
+          "name": "[default_value]",
+          "doc": "(optional) default value to return if the value does not exist",
+          "types": [
+            "number"
+          ]
+        }
+      ],
+      "examples": "Get user config value\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">speed</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config_float</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game.speed&quot;</span><span class=\"p\">,</span> <span class=\"mf\">20.0</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "sys.open_url",
+      "brief": "open url in default application",
+      "description": "Open URL in default application, typically a browser",
+      "returnvalues": [
+        {
+          "name": "success",
+          "doc": "a boolean indicating if the url could be opened or not",
           "types": [
             "boolean"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "open url in default application", 
-      "examples": "Open an URL:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">success</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">open_url</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">http://www.defold.com&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">target</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">_blank&quot;</span><span class=\"p\">})</span>\n<span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">success</span> <span class=\"k\">then</span>\n  <span class=\"c1\">-- could not open the url...</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.open_url"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Loads a custom resource. Specify the full filename of the resource that you want\nto load. When loaded, the file data is returned as a string.\nIf loading fails, the function returns nil plus the error message.\nIn order for the engine to include custom resources in the build process, you need\nto specify them in the \"custom_resources\" key in your \"game.project\" settings file.\nYou can specify single resource files or directories. If a directory is included\nin the resource list, all files and directories in that directory is recursively\nincluded:\nFor example \"main/data/,assets/level_data.json\".", 
+      ],
       "parameters": [
         {
-          "doc": "resource to load, full path", 
-          "name": "filename", 
+          "name": "url",
+          "doc": "url to open",
           "types": [
             "string"
           ]
-        }
-      ], 
-      "returnvalues": [
+        },
         {
-          "doc": "loaded data, or <code>nil</code> if the resource could not be loaded", 
-          "name": "data", 
-          "types": [
-            "string"
-          ]
-        }, 
-        {
-          "doc": "the error message, or <code>nil</code> if no error occurred", 
-          "name": "error", 
-          "types": [
-            "string"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "loads resource from game data", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Load level data into a string</span>\n<span class=\"kd\">local</span> <span class=\"n\">data</span><span class=\"p\">,</span> <span class=\"nb\">error</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load_resource</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">/assets/level_data.json&quot;</span><span class=\"p\">)</span>\n<span class=\"c1\">-- Decode json string to a Lua table</span>\n<span class=\"k\">if</span> <span class=\"n\">data</span> <span class=\"k\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">data_table</span> <span class=\"o\">=</span> <span class=\"n\">json</span><span class=\"p\">.</span><span class=\"n\">decode</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n  <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data_table</span><span class=\"p\">)</span>\n<span class=\"k\">else</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"nb\">error</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.load_resource"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Returns a table with system information.", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "table with system information in the following fields:\n<dl>\n<dt><code>device_model</code></dt>\n<dd><span class=\"type\">string</span> <span class=\"icon-ios\"></span><span class=\"icon-android\"></span> Only available on iOS and Android.</dd>\n<dt><code>manufacturer</code></dt>\n<dd><span class=\"type\">string</span> <span class=\"icon-ios\"></span><span class=\"icon-android\"></span> Only available on iOS and Android.</dd>\n<dt><code>system_name</code></dt>\n<dd><span class=\"type\">string</span> The system name: \"Darwin\", \"Linux\", \"Windows\", \"HTML5\", \"Android\" or \"iPhone OS\"</dd>\n<dt><code>system_version</code></dt>\n<dd><span class=\"type\">string</span> The system OS version.</dd>\n<dt><code>api_version</code></dt>\n<dd><span class=\"type\">string</span> The API version on the system.</dd>\n<dt><code>language</code></dt>\n<dd><span class=\"type\">string</span> Two character ISO-639 format, i.e. \"en\".</dd>\n<dt><code>device_language</code></dt>\n<dd><span class=\"type\">string</span> Two character ISO-639 format (i.e. \"sr\") and, if applicable, followed by a dash (-) and an ISO 15924 script code (i.e. \"sr-Cyrl\" or \"sr-Latn\"). Reflects the device preferred language.</dd>\n<dt><code>territory</code></dt>\n<dd><span class=\"type\">string</span> Two character ISO-3166 format, i.e. \"US\".</dd>\n<dt><code>gmt_offset</code></dt>\n<dd><span class=\"type\">number</span> The current offset from GMT (Greenwich Mean Time), in minutes.</dd>\n<dt><code>device_ident</code></dt>\n<dd><span class=\"type\">string</span> <span class=\"icon-ios\"></span> \"identifierForVendor\" on iOS. <span class=\"icon-android\"></span> \"android_id\" on Android. On Android, you need to add <code>READ_PHONE_STATE</code> permission to be able to get this data. We don't use this permission in Defold.</dd>\n<dt><code>user_agent</code></dt>\n<dd><span class=\"type\">string</span> <span class=\"icon-html5\"></span> The HTTP user agent, i.e. \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8\"</dd>\n</dl>", 
-          "name": "sys_info", 
+          "name": "[attributes]",
+          "doc": "table with attributes\n<code>target</code>\n- <span class=\"type\">string</span> <span class=\"icon-html5\"></span>: Optional. Specifies the target attribute or the name of the window. The following values are supported:\n- <code>_self</code> - (default value) URL replaces the current page.\n- <code>_blank</code> - URL is loaded into a new window, or tab.\n- <code>_parent</code> - URL is loaded into the parent frame.\n- <code>_top</code> - URL replaces any framesets that may be loaded.\n- <code>name</code> - The name of the window (Note: the name does not specify the title of the new window).",
           "types": [
             "table"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get system information", 
-      "examples": "How to get system information:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">info</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_sys_info</span><span class=\"p\">()</span>\n<span class=\"k\">if</span> <span class=\"n\">info</span><span class=\"p\">.</span><span class=\"n\">system_name</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;</span><span class=\"s\">HTML5&quot;</span> <span class=\"k\">then</span>\n  <span class=\"c1\">-- We are running in a browser.</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.get_sys_info"
-    }, 
+      ],
+      "examples": "Open an URL:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">success</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">open_url</span><span class=\"p\">(</span><span class=\"s2\">&quot;http://www.defold.com&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">target</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;_blank&quot;</span><span class=\"p\">})</span>\n<span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"n\">success</span> <span class=\"kr\">then</span>\n  <span class=\"c1\">-- could not open the url...</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns a table with engine information.", 
-      "parameters": [], 
+      "type": "FUNCTION",
+      "name": "sys.load_resource",
+      "brief": "loads resource from game data",
+      "description": "Loads a custom resource. Specify the full filename of the resource that you want\nto load. When loaded, the file data is returned as a string.\nIf loading fails, the function returns nil plus the error message.\nIn order for the engine to include custom resources in the build process, you need\nto specify them in the \"custom_resources\" key in your \"game.project\" settings file.\nYou can specify single resource files or directories. If a directory is included\nin the resource list, all files and directories in that directory is recursively\nincluded:\nFor example \"main/data/,assets/level_data.json\".",
       "returnvalues": [
         {
-          "doc": "table with engine information in the following fields:\n<dl>\n<dt><code>version</code></dt>\n<dd><span class=\"type\">string</span> The current Defold engine version, i.e. \"1.2.96\"</dd>\n<dt><code>version_sha1</code></dt>\n<dd><span class=\"type\">string</span> The SHA1 for the current engine build, i.e. \"0060183cce2e29dbd09c85ece83cbb72068ee050\"</dd>\n<dt><code>is_debug</code></dt>\n<dd><span class=\"type\">boolean</span> If the engine is a debug or release version</dd>\n</dl>", 
-          "name": "engine_info", 
+          "name": "data",
+          "doc": "loaded data, or <code>nil</code> if the resource could not be loaded",
           "types": [
-            "table"
+            "string"
+          ]
+        },
+        {
+          "name": "error",
+          "doc": "the error message, or <code>nil</code> if no error occurred",
+          "types": [
+            "string"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get engine information", 
-      "examples": "How to retrieve engine information:\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- Update version text label so our testers know what version we&#39;re running</span>\n<span class=\"kd\">local</span> <span class=\"n\">engine_info</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_engine_info</span><span class=\"p\">()</span>\n<span class=\"kd\">local</span> <span class=\"n\">version_str</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">Defold &quot;</span> <span class=\"o\">..</span> <span class=\"n\">engine_info</span><span class=\"p\">.</span><span class=\"n\">version</span> <span class=\"o\">..</span> <span class=\"s2\">&quot;</span><span class=\"se\">\\n</span><span class=\"s\">&quot;</span> <span class=\"o\">..</span> <span class=\"n\">engine_info</span><span class=\"p\">.</span><span class=\"n\">version_sha1</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_text</span><span class=\"p\">(</span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">version&quot;</span><span class=\"p\">),</span> <span class=\"n\">version_str</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.get_engine_info"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Returns a table with application information for the requested app.\n<span class=\"icon-ios\"></span> On iOS, the <code>app_string</code> is an url scheme for the app that is queried. Your\ngame needs to list the schemes that are queried in an <code>LSApplicationQueriesSchemes</code> array\nin a custom \"Info.plist\".\n<span class=\"icon-android\"></span> On Android, the <code>app_string</code> is the package identifier for the app.", 
+      ],
       "parameters": [
         {
-          "doc": "platform specific string with application package or query, see above for details.", 
-          "name": "app_string", 
+          "name": "filename",
+          "doc": "resource to load, full path",
           "types": [
             "string"
           ]
         }
-      ], 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- Load level data into a string</span>\n<span class=\"kd\">local</span> <span class=\"n\">data</span><span class=\"p\">,</span> <span class=\"nb\">error</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load_resource</span><span class=\"p\">(</span><span class=\"s2\">&quot;/assets/level_data.json&quot;</span><span class=\"p\">)</span>\n<span class=\"c1\">-- Decode json string to a Lua table</span>\n<span class=\"kr\">if</span> <span class=\"n\">data</span> <span class=\"kr\">then</span>\n  <span class=\"kd\">local</span> <span class=\"n\">data_table</span> <span class=\"o\">=</span> <span class=\"n\">json</span><span class=\"p\">.</span><span class=\"n\">decode</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n  <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data_table</span><span class=\"p\">)</span>\n<span class=\"kr\">else</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"nb\">error</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "sys.get_sys_info",
+      "brief": "get system information",
+      "description": "Returns a table with system information.",
       "returnvalues": [
         {
-          "doc": "table with application information in the following fields:\n<dl>\n<dt><code>installed</code></dt>\n<dd><span class=\"type\">boolean</span> <code>true</code> if the application is installed, <code>false</code> otherwise.</dd>\n</dl>", 
-          "name": "app_info", 
+          "name": "sys_info",
+          "doc": "table with system information in the following fields:\n<dl>\n<dt><code>device_model</code></dt>\n<dd><span class=\"type\">string</span> <span class=\"icon-ios\"></span><span class=\"icon-android\"></span> Only available on iOS and Android.</dd>\n<dt><code>manufacturer</code></dt>\n<dd><span class=\"type\">string</span> <span class=\"icon-ios\"></span><span class=\"icon-android\"></span> Only available on iOS and Android.</dd>\n<dt><code>system_name</code></dt>\n<dd><span class=\"type\">string</span> The system name: \"Darwin\", \"Linux\", \"Windows\", \"HTML5\", \"Android\" or \"iPhone OS\"</dd>\n<dt><code>system_version</code></dt>\n<dd><span class=\"type\">string</span> The system OS version.</dd>\n<dt><code>api_version</code></dt>\n<dd><span class=\"type\">string</span> The API version on the system.</dd>\n<dt><code>language</code></dt>\n<dd><span class=\"type\">string</span> Two character ISO-639 format, i.e. \"en\".</dd>\n<dt><code>device_language</code></dt>\n<dd><span class=\"type\">string</span> Two character ISO-639 format (i.e. \"sr\") and, if applicable, followed by a dash (-) and an ISO 15924 script code (i.e. \"sr-Cyrl\" or \"sr-Latn\"). Reflects the device preferred language.</dd>\n<dt><code>territory</code></dt>\n<dd><span class=\"type\">string</span> Two character ISO-3166 format, i.e. \"US\".</dd>\n<dt><code>gmt_offset</code></dt>\n<dd><span class=\"type\">number</span> The current offset from GMT (Greenwich Mean Time), in minutes.</dd>\n<dt><code>device_ident</code></dt>\n<dd><span class=\"type\">string</span> This value secured by OS. <span class=\"icon-ios\"></span> \"identifierForVendor\" on iOS. <span class=\"icon-android\"></span> \"android_id\" on Android. On Android, you need to add <code>READ_PHONE_STATE</code> permission to be able to get this data. We don't use this permission in Defold.</dd>\n<dt><code>user_agent</code></dt>\n<dd><span class=\"type\">string</span> <span class=\"icon-html5\"></span> The HTTP user agent, i.e. \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8\"</dd>\n</dl>",
           "types": [
             "table"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get application information", 
-      "examples": "Check if twitter is installed:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sysinfo</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_sys_info</span><span class=\"p\">()</span>\n<span class=\"n\">twitter</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n\n<span class=\"k\">if</span> <span class=\"n\">sysinfo</span><span class=\"p\">.</span><span class=\"n\">system_name</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;</span><span class=\"s\">Android&quot;</span> <span class=\"k\">then</span>\n  <span class=\"n\">twitter</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_application_info</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">com.twitter.android&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">elseif</span> <span class=\"n\">sysinfo</span><span class=\"p\">.</span><span class=\"n\">system_name</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;</span><span class=\"s\">iPhone OS&quot;</span> <span class=\"k\">then</span>\n  <span class=\"n\">twitter</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_application_info</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">twitter:&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">if</span> <span class=\"n\">twitter</span><span class=\"p\">.</span><span class=\"n\">installed</span> <span class=\"k\">then</span>\n  <span class=\"c1\">-- twitter is installed!</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\n<span class=\"icon-ios\"></span> Info.plist for the iOS app needs to list the schemes that are queried:\n<div class=\"codehilite\"><pre><span></span>...\n<span class=\"nt\">&lt;key&gt;</span>LSApplicationQueriesSchemes<span class=\"nt\">&lt;/key&gt;</span>\n <span class=\"nt\">&lt;array&gt;</span>\n   <span class=\"nt\">&lt;string&gt;</span>twitter<span class=\"nt\">&lt;/string&gt;</span>\n <span class=\"nt\">&lt;/array&gt;</span>\n...\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.get_application_info"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Returns an array of tables with information on network interfaces.", 
-      "parameters": [], 
-      "returnvalues": [
-        {
-          "doc": "an array of tables. Each table entry contain the following fields:\n<dl>\n<dt><code>name</code></dt>\n<dd><span class=\"type\">string</span> Interface name</dd>\n<dt><code>address</code></dt>\n<dd><span class=\"type\">string</span> IP address. <span class=\"icon-attention\"></span> might be <code>nil</code> if not available.</dd>\n<dt><code>mac</code></dt>\n<dd><span class=\"type\">string</span> Hardware MAC address. <span class=\"icon-attention\"></span> might be nil if not available.</dd>\n<dt><code>up</code></dt>\n<dd><span class=\"type\">boolean</span> <code>true</code> if the interface is up (available to transmit and receive data), <code>false</code> otherwise.</dd>\n<dt><code>running</code></dt>\n<dd><span class=\"type\">boolean</span> <code>true</code> if the interface is running, <code>false</code> otherwise.</dd>\n</dl>", 
-          "name": "ifaddrs", 
-          "types": [
-            "table"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "enumerate network interfaces", 
-      "examples": "How to get the IP address of interface \"en0\":\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">ifaddrs</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_ifaddrs</span><span class=\"p\">()</span>\n<span class=\"k\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span><span class=\"n\">interface</span> <span class=\"k\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">ifaddrs</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"k\">if</span> <span class=\"n\">interface</span><span class=\"p\">.</span><span class=\"n\">name</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;</span><span class=\"s\">en0&quot;</span> <span class=\"k\">then</span>\n    <span class=\"kd\">local</span> <span class=\"n\">ip</span> <span class=\"o\">=</span> <span class=\"n\">interface</span><span class=\"p\">.</span><span class=\"n\">address</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.get_ifaddrs"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Set the Lua error handler function.\nThe error handler is a function which is called whenever a lua runtime error occurs.", 
+      ],
       "parameters": [
         {
-          "doc": "the function to be called on error\n<dl>\n<dt><code>source</code></dt>\n<dd><span class=\"type\">string</span> The runtime context of the error. Currently, this is always <code>\"lua\"</code>.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">string</span> The source file, line number and error message.</dd>\n<dt><code>traceback</code></dt>\n<dd><span class=\"type\">string</span> The stack traceback.</dd>\n</dl>", 
-          "name": "error_handler", 
+          "name": "[options]",
+          "doc": "optional options table\n- ignore_secure <span class=\"type\">boolean</span> this flag ignores values might be secured by OS e.g. <code>device_ident</code>",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "examples": "How to get system information:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">info</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_sys_info</span><span class=\"p\">()</span>\n<span class=\"kr\">if</span> <span class=\"n\">info</span><span class=\"p\">.</span><span class=\"n\">system_name</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;HTML5&quot;</span> <span class=\"kr\">then</span>\n  <span class=\"c1\">-- We are running in a browser.</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "sys.get_engine_info",
+      "brief": "get engine information",
+      "description": "Returns a table with engine information.",
+      "returnvalues": [
+        {
+          "name": "engine_info",
+          "doc": "table with engine information in the following fields:\n<dl>\n<dt><code>version</code></dt>\n<dd><span class=\"type\">string</span> The current Defold engine version, i.e. \"1.2.96\"</dd>\n<dt><code>version_sha1</code></dt>\n<dd><span class=\"type\">string</span> The SHA1 for the current engine build, i.e. \"0060183cce2e29dbd09c85ece83cbb72068ee050\"</dd>\n<dt><code>is_debug</code></dt>\n<dd><span class=\"type\">boolean</span> If the engine is a debug or release version</dd>\n</dl>",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "parameters": [],
+      "examples": "How to retrieve engine information:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- Update version text label so our testers know what version we&#39;re running</span>\n<span class=\"kd\">local</span> <span class=\"n\">engine_info</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_engine_info</span><span class=\"p\">()</span>\n<span class=\"kd\">local</span> <span class=\"n\">version_str</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;Defold &quot;</span> <span class=\"o\">..</span> <span class=\"n\">engine_info</span><span class=\"p\">.</span><span class=\"n\">version</span> <span class=\"o\">..</span> <span class=\"s2\">&quot;</span><span class=\"se\">\\n</span><span class=\"s2\">&quot;</span> <span class=\"o\">..</span> <span class=\"n\">engine_info</span><span class=\"p\">.</span><span class=\"n\">version_sha1</span>\n<span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">set_text</span><span class=\"p\">(</span><span class=\"n\">gui</span><span class=\"p\">.</span><span class=\"n\">get_node</span><span class=\"p\">(</span><span class=\"s2\">&quot;version&quot;</span><span class=\"p\">),</span> <span class=\"n\">version_str</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "sys.get_application_info",
+      "brief": "get application information",
+      "description": "Returns a table with application information for the requested app.\n<span class=\"icon-ios\"></span> On iOS, the <code>app_string</code> is an url scheme for the app that is queried. Your\ngame needs to list the schemes that are queried in an <code>LSApplicationQueriesSchemes</code> array\nin a custom \"Info.plist\".\n<span class=\"icon-android\"></span> On Android, the <code>app_string</code> is the package identifier for the app.",
+      "returnvalues": [
+        {
+          "name": "app_info",
+          "doc": "table with application information in the following fields:\n<dl>\n<dt><code>installed</code></dt>\n<dd><span class=\"type\">boolean</span> <code>true</code> if the application is installed, <code>false</code> otherwise.</dd>\n</dl>",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "app_string",
+          "doc": "platform specific string with application package or query, see above for details.",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "examples": "Check if twitter is installed:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sysinfo</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_sys_info</span><span class=\"p\">()</span>\n<span class=\"n\">twitter</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n\n<span class=\"kr\">if</span> <span class=\"n\">sysinfo</span><span class=\"p\">.</span><span class=\"n\">system_name</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;Android&quot;</span> <span class=\"kr\">then</span>\n  <span class=\"n\">twitter</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_application_info</span><span class=\"p\">(</span><span class=\"s2\">&quot;com.twitter.android&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">elseif</span> <span class=\"n\">sysinfo</span><span class=\"p\">.</span><span class=\"n\">system_name</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;iPhone OS&quot;</span> <span class=\"kr\">then</span>\n  <span class=\"n\">twitter</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_application_info</span><span class=\"p\">(</span><span class=\"s2\">&quot;twitter:&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">if</span> <span class=\"n\">twitter</span><span class=\"p\">.</span><span class=\"n\">installed</span> <span class=\"kr\">then</span>\n  <span class=\"c1\">-- twitter is installed!</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\n<span class=\"icon-ios\"></span> Info.plist for the iOS app needs to list the schemes that are queried:\n<div class=\"codehilite\"><pre><span></span><code>...\n<span class=\"nt\">&lt;key&gt;</span>LSApplicationQueriesSchemes<span class=\"nt\">&lt;/key&gt;</span>\n <span class=\"nt\">&lt;array&gt;</span>\n   <span class=\"nt\">&lt;string&gt;</span>twitter<span class=\"nt\">&lt;/string&gt;</span>\n <span class=\"nt\">&lt;/array&gt;</span>\n...\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "sys.get_ifaddrs",
+      "brief": "enumerate network interfaces",
+      "description": "Returns an array of tables with information on network interfaces.",
+      "returnvalues": [
+        {
+          "name": "ifaddrs",
+          "doc": "an array of tables. Each table entry contain the following fields:\n<dl>\n<dt><code>name</code></dt>\n<dd><span class=\"type\">string</span> Interface name</dd>\n<dt><code>address</code></dt>\n<dd><span class=\"type\">string</span> IP address. <span class=\"icon-attention\"></span> might be <code>nil</code> if not available.</dd>\n<dt><code>mac</code></dt>\n<dd><span class=\"type\">string</span> Hardware MAC address. <span class=\"icon-attention\"></span> might be nil if not available.</dd>\n<dt><code>up</code></dt>\n<dd><span class=\"type\">boolean</span> <code>true</code> if the interface is up (available to transmit and receive data), <code>false</code> otherwise.</dd>\n<dt><code>running</code></dt>\n<dd><span class=\"type\">boolean</span> <code>true</code> if the interface is running, <code>false</code> otherwise.</dd>\n</dl>",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "parameters": [],
+      "examples": "How to get the IP address of interface \"en0\":\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">ifaddrs</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_ifaddrs</span><span class=\"p\">()</span>\n<span class=\"kr\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span><span class=\"n\">interface</span> <span class=\"kr\">in</span> <span class=\"nb\">ipairs</span><span class=\"p\">(</span><span class=\"n\">ifaddrs</span><span class=\"p\">)</span> <span class=\"kr\">do</span>\n  <span class=\"kr\">if</span> <span class=\"n\">interface</span><span class=\"p\">.</span><span class=\"n\">name</span> <span class=\"o\">==</span> <span class=\"s2\">&quot;en0&quot;</span> <span class=\"kr\">then</span>\n    <span class=\"kd\">local</span> <span class=\"n\">ip</span> <span class=\"o\">=</span> <span class=\"n\">interface</span><span class=\"p\">.</span><span class=\"n\">address</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "sys.set_error_handler",
+      "brief": "set the error handler",
+      "description": "Set the Lua error handler function.\nThe error handler is a function which is called whenever a lua runtime error occurs.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "error_handler",
+          "doc": "the function to be called on error\n<dl>\n<dt><code>source</code></dt>\n<dd><span class=\"type\">string</span> The runtime context of the error. Currently, this is always <code>\"lua\"</code>.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">string</span> The source file, line number and error message.</dd>\n<dt><code>traceback</code></dt>\n<dd><span class=\"type\">string</span> The stack traceback.</dd>\n</dl>",
           "types": [
             "function(source, message, traceback)"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set the error handler", 
-      "examples": "Install error handler that just prints the errors\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">my_error_handler</span><span class=\"p\">(</span><span class=\"n\">source</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">traceback</span><span class=\"p\">)</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">source</span><span class=\"p\">)</span>    <span class=\"c1\">--&gt; lua</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">message</span><span class=\"p\">)</span>   <span class=\"c1\">--&gt; main/my.script:10: attempt to perform arithmetic on a string value</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">traceback</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; stack traceback:</span>\n                   <span class=\"c1\">--&gt;         main/test.script:10: in function &#39;boom&#39;</span>\n                   <span class=\"c1\">--&gt;         main/test.script:15: in function &lt;main/my.script:13&gt;</span>\n<span class=\"k\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">boom</span><span class=\"p\">()</span>\n  <span class=\"k\">return</span> <span class=\"mi\">10</span> <span class=\"o\">+</span> <span class=\"s2\">&quot;</span><span class=\"s\">string&quot;</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_error_handler</span><span class=\"p\">(</span><span class=\"n\">my_error_handler</span><span class=\"p\">)</span>\n  <span class=\"n\">boom</span><span class=\"p\">()</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.set_error_handler"
-    }, 
+      ],
+      "examples": "Install error handler that just prints the errors\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">my_error_handler</span><span class=\"p\">(</span><span class=\"n\">source</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">traceback</span><span class=\"p\">)</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">source</span><span class=\"p\">)</span>    <span class=\"c1\">--&gt; lua</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">message</span><span class=\"p\">)</span>   <span class=\"c1\">--&gt; main/my.script:10: attempt to perform arithmetic on a string value</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">traceback</span><span class=\"p\">)</span> <span class=\"c1\">--&gt; stack traceback:</span>\n                   <span class=\"c1\">--&gt;         main/test.script:10: in function &#39;boom&#39;</span>\n                   <span class=\"c1\">--&gt;         main/test.script:15: in function &lt;main/my.script:13&gt;</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">boom</span><span class=\"p\">()</span>\n  <span class=\"kr\">return</span> <span class=\"mi\">10</span> <span class=\"o\">+</span> <span class=\"s2\">&quot;string&quot;</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_error_handler</span><span class=\"p\">(</span><span class=\"n\">my_error_handler</span><span class=\"p\">)</span>\n  <span class=\"n\">boom</span><span class=\"p\">()</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Sets the host that is used to check for network connectivity against.", 
+      "type": "FUNCTION",
+      "name": "sys.set_connectivity_host",
+      "brief": "set host to check for network connectivity against",
+      "description": "Sets the host that is used to check for network connectivity against.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "hostname to check against", 
-          "name": "host", 
+          "name": "host",
+          "doc": "hostname to check against",
           "types": [
             "string"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set host to check for network connectivity against", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_connectivity_host</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">www.google.com&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.set_connectivity_host"
-    }, 
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_connectivity_host</span><span class=\"p\">(</span><span class=\"s2\">&quot;www.google.com&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "<span class=\"icon-ios\"></span> <span class=\"icon-android\"></span> Returns the current network connectivity status\non mobile platforms.\nOn desktop, this function always return <code>sys.NETWORK_CONNECTED</code>.", 
-      "parameters": [], 
+      "type": "FUNCTION",
+      "name": "sys.get_connectivity",
+      "brief": "get current network connectivity status",
+      "description": "<span class=\"icon-ios\"></span> <span class=\"icon-android\"></span> Returns the current network connectivity status\non mobile platforms.\nOn desktop, this function always return <code>sys.NETWORK_CONNECTED</code>.",
       "returnvalues": [
         {
-          "doc": "network connectivity status:\n<ul>\n<li><code>sys.NETWORK_DISCONNECTED</code> (no network connection is found)</li>\n<li><code>sys.NETWORK_CONNECTED_CELLULAR</code> (connected through mobile cellular)</li>\n<li><code>sys.NETWORK_CONNECTED</code> (otherwise, Wifi)</li>\n</ul>", 
-          "name": "status", 
+          "name": "status",
+          "doc": "network connectivity status:\n<ul>\n<li><code>sys.NETWORK_DISCONNECTED</code> (no network connection is found)</li>\n<li><code>sys.NETWORK_CONNECTED_CELLULAR</code> (connected through mobile cellular)</li>\n<li><code>sys.NETWORK_CONNECTED</code> (otherwise, Wifi)</li>\n</ul>",
           "types": [
             "constant"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get current network connectivity status", 
-      "examples": "Check if we are connected through a cellular connection\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">NETWORK_CONNECTED_CELLULAR</span> <span class=\"o\">==</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_connectivity</span><span class=\"p\">())</span> <span class=\"k\">then</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">Connected via cellular, avoid downloading big files!&quot;</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.get_connectivity"
-    }, 
+      ],
+      "parameters": [],
+      "examples": "Check if we are connected through a cellular connection\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"p\">(</span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">NETWORK_CONNECTED_CELLULAR</span> <span class=\"o\">==</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_connectivity</span><span class=\"p\">())</span> <span class=\"kr\">then</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Connected via cellular, avoid downloading big files!&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Terminates the game application and reports the specified <code>code</code> to the OS.", 
+      "type": "FUNCTION",
+      "name": "sys.exit",
+      "brief": "exits application",
+      "description": "Terminates the game application and reports the specified <code>code</code> to the OS.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "exit code to report to the OS, 0 means clean exit", 
-          "name": "code", 
+          "name": "code",
+          "doc": "exit code to report to the OS, 0 means clean exit",
           "types": [
             "number"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "exits application", 
-      "examples": "This examples demonstrates how to exit the application when some kind of quit messages is received (maybe from gui or similar):\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">quit&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">exit</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.exit"
-    }, 
+      ],
+      "examples": "This examples demonstrates how to exit the application when some kind of quit messages is received (maybe from gui or similar):\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;quit&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">exit</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">)</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Reboots the game engine with a specified set of arguments.\nArguments will be translated into command line arguments. Calling reboot\nfunction is equivalent to starting the engine with the same arguments.\nOn startup the engine reads configuration from \"game.project\" in the\nproject root.", 
+      "type": "FUNCTION",
+      "name": "sys.reboot",
+      "brief": "reboot engine with arguments",
+      "description": "Reboots the game engine with a specified set of arguments.\nArguments will be translated into command line arguments. Calling reboot\nfunction is equivalent to starting the engine with the same arguments.\nOn startup the engine reads configuration from \"game.project\" in the\nproject root.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "argument 1", 
-          "name": "arg1", 
+          "name": "arg1",
+          "doc": "argument 1",
           "types": [
             "string"
           ]
-        }, 
+        },
         {
-          "doc": "argument 2", 
-          "name": "arg2", 
+          "name": "arg2",
+          "doc": "argument 2",
           "types": [
             "string"
           ]
-        }, 
+        },
         {
-          "doc": "argument 3", 
-          "name": "arg3", 
+          "name": "arg3",
+          "doc": "argument 3",
           "types": [
             "string"
           ]
-        }, 
+        },
         {
-          "doc": "argument 4", 
-          "name": "arg4", 
+          "name": "arg4",
+          "doc": "argument 4",
           "types": [
             "string"
           ]
-        }, 
+        },
         {
-          "doc": "argument 5", 
-          "name": "arg5", 
+          "name": "arg5",
+          "doc": "argument 5",
           "types": [
             "string"
           ]
-        }, 
+        },
         {
-          "doc": "argument 6", 
-          "name": "arg6", 
+          "name": "arg6",
+          "doc": "argument 6",
           "types": [
             "string"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reboot engine with arguments", 
-      "examples": "How to reboot engine with a specific bootstrap collection.\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;</span><span class=\"s\">--config=bootstrap.main_collection=/my.collectionc&#39;</span>\n<span class=\"kd\">local</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;</span><span class=\"s\">build/default/game.projectc&#39;</span>\n<span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">reboot</span><span class=\"p\">(</span><span class=\"n\">arg1</span><span class=\"p\">,</span> <span class=\"n\">arg2</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.reboot"
-    }, 
+      ],
+      "examples": "How to reboot engine with a specific bootstrap collection.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;--config=bootstrap.main_collection=/my.collectionc&#39;</span>\n<span class=\"kd\">local</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;build/game.projectc&#39;</span>\n<span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">reboot</span><span class=\"p\">(</span><span class=\"n\">arg1</span><span class=\"p\">,</span> <span class=\"n\">arg2</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Set the vsync swap interval. The interval with which to swap the front and back buffers\nin sync with vertical blanks (v-blank), the hardware event where the screen image is updated\nwith data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of\n2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank\nbefore swapping the buffers. Default value is 1.\nWhen setting the swap interval to 0 and having <code>vsync</code> disabled in\n\"game.project\", the engine will try to respect the set frame cap value from\n\"game.project\" in software instead.\nThis setting may be overridden by driver settings.", 
+      "type": "FUNCTION",
+      "name": "sys.set_vsync_swap_interval",
+      "brief": "set vsync swap interval",
+      "description": "Set the vsync swap interval. The interval with which to swap the front and back buffers\nin sync with vertical blanks (v-blank), the hardware event where the screen image is updated\nwith data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of\n2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank\nbefore swapping the buffers. Default value is 1.\nWhen setting the swap interval to 0 and having <code>vsync</code> disabled in\n\"game.project\", the engine will try to respect the set frame cap value from\n\"game.project\" in software instead.\nThis setting may be overridden by driver settings.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "target swap interval.", 
-          "name": "swap_interval", 
+          "name": "swap_interval",
+          "doc": "target swap interval.",
           "types": [
             "number"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set vsync swap interval", 
-      "examples": "Setting the swap intervall to swap every v-blank\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_vsync_swap_interval</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.set_vsync_swap_interval"
-    }, 
+      ],
+      "examples": "Setting the swap intervall to swap every v-blank\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_vsync_swap_interval</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.", 
+      "type": "FUNCTION",
+      "name": "sys.set_update_frequency",
+      "brief": "set update frequency",
+      "description": "Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "target frequency. 60 for 60 fps", 
-          "name": "frequency", 
+          "name": "frequency",
+          "doc": "target frequency. 60 for 60 fps",
           "types": [
             "number"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set update frequency", 
-      "examples": "Setting the update frequency to 60 frames per second\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_update_frequency</span><span class=\"p\">(</span><span class=\"mi\">60</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.set_update_frequency"
-    }, 
+      ],
+      "examples": "Setting the update frequency to 60 frames per second\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">set_update_frequency</span><span class=\"p\">(</span><span class=\"mi\">60</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "The buffer can later deserialized by <code>sys.deserialize</code>.\nThis method has all the same limitations as <code>sys.save</code>.", 
+      "type": "FUNCTION",
+      "name": "sys.serialize",
+      "brief": "serializes a lua table to a buffer and returns it",
+      "description": "The buffer can later deserialized by <code>sys.deserialize</code>.\nThis method has all the same limitations as <code>sys.save</code>.",
+      "returnvalues": [
+        {
+          "name": "buffer",
+          "doc": "serialized data buffer",
+          "types": [
+            "string"
+          ]
+        }
+      ],
       "parameters": [
         {
-          "doc": "lua table to serialize", 
-          "name": "table", 
+          "name": "table",
+          "doc": "lua table to serialize",
           "types": [
             "table"
           ]
         }
-      ], 
-      "returnvalues": [
-        {
-          "doc": "serialized data buffer", 
-          "name": "buffer", 
-          "types": [
-            "string"
-          ]
-        }
-      ], 
-      "notes": [], 
-      "brief": "serializes a lua table to a buffer and returns it", 
-      "examples": "Serialize table:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">my_table</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n<span class=\"nb\">table.insert</span><span class=\"p\">(</span><span class=\"n\">my_table</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">my_value&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">buffer</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">serialize</span><span class=\"p\">(</span><span class=\"n\">my_table</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.serialize"
-    }, 
+      ],
+      "examples": "Serialize table:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">my_table</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n<span class=\"nb\">table.insert</span><span class=\"p\">(</span><span class=\"n\">my_table</span><span class=\"p\">,</span> <span class=\"s2\">&quot;my_value&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">buffer</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">serialize</span><span class=\"p\">(</span><span class=\"n\">my_table</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "deserializes buffer into a lua table", 
-      "parameters": [
-        {
-          "doc": "buffer to deserialize from", 
-          "name": "buffer", 
-          "types": [
-            "string"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "sys.deserialize",
+      "brief": "deserializes buffer into a lua table",
+      "description": "deserializes buffer into a lua table",
       "returnvalues": [
         {
-          "doc": "lua table with deserialized data", 
-          "name": "table", 
+          "name": "table",
+          "doc": "lua table with deserialized data",
           "types": [
             "table"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "deserializes buffer into a lua table", 
-      "examples": "Deserialize a lua table that was previously serialized:\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">buffer</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">serialize</span><span class=\"p\">(</span><span class=\"n\">my_table</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">table</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">deserialize</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "sys.deserialize"
-    }, 
-    {
-      "replaces": "", 
-      "description": "no network connection found", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "no network connection found", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "sys.NETWORK_DISCONNECTED"
-    }, 
-    {
-      "replaces": "", 
-      "description": "network connected through mobile cellular", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "network connected through mobile cellular", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "sys.NETWORK_CONNECTED_CELLULAR"
-    }, 
-    {
-      "replaces": "", 
-      "description": "network connected through other, non cellular, connection", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "network connected through other, non cellular, connection", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "sys.NETWORK_CONNECTED"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Terminates the game application and reports the specified <code>code</code> to the OS.\nThis message can only be sent to the designated <code>@system</code> socket.", 
+      ],
       "parameters": [
         {
-          "doc": "exit code to report to the OS, 0 means clean exit", 
-          "name": "code", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "exits application", 
-      "examples": "This examples demonstrates how to exit the application when some kind of quit messages is received (maybe from gui or similar):\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">quit&quot;</span><span class=\"p\">)</span> <span class=\"k\">then</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">exit&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">code</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">})</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "exit"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Toggles the on-screen profiler.\nThe profiler is a real-time tool that shows the numbers of milliseconds spent\nin each scope per frame as well as counters. The profiler is very useful for\ntracking down performance and resource problems.\nIn addition to the on-screen profiler, Defold includes a web-based profiler that\nallows you to sample a series of data points and then analyze them in detail.\nThe web profiler is available at <code>http://&lt;device IP&gt;:8002</code> where <device IP> is\nthe IP address of the device you are running your game on.\nThis message can only be sent to the designated <code>@system</code> socket.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "shows/hides the on-screen profiler", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">toggle_profile&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "toggle_profile"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Toggles the on-screen physics visual debugging mode which is very useful for\ntracking down issues related to physics. This mode visualizes\nall collision object shapes and normals at detected contact points. Toggling\nthis mode on is equal to setting <code>physics.debug</code> in the \"game.project\" settings,\nbut set in run-time.\nThis message can only be sent to the designated <code>@system</code> socket.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "shows/hides the on-screen physics visual debugging", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">toggle_physics_debug&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "toggle_physics_debug"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Starts video recording of the game frame-buffer to file. Current video format is the\nopen vp8 codec in the ivf container. It's possible to upload this format directly\nto YouTube. The VLC video player has native support but with the known issue that\nnot the entire file is played back. It's probably an issue with VLC.\nThe Miro Video Converter has support for vp8/ivf.\n<span class=\"icon-macos\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span> Video recording is only supported on desktop platforms.\n<span class=\"icon-attention\"></span> Audio is currently not supported\n<span class=\"icon-attention\"></span> Window width and height must be a multiple of 8 to be able to record video.\nThis message can only be sent to the designated <code>@system</code> socket.", 
-      "parameters": [
-        {
-          "doc": "file name to write the video to", 
-          "name": "file_name", 
-          "types": [
-            "string"
-          ]
-        }, 
-        {
-          "doc": "frame period to record, ie write every nth frame. Default value is <code>2</code>", 
-          "name": "frame_period", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "frames per second. Playback speed for the video. Default value is <code>30</code>. The fps value doens't affect the recording. It's only meta-data in the written video file.", 
-          "name": "fps", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "starts video recording", 
-      "examples": "Record a video in 30 fps given that the native game fps is 60:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">start_record&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">file_name</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">test_rec.ivf&quot;</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</pre></div>\n\n\nTo write a video in 60 fps given that the native game fps is 60:\n<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">start_record&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">file_name</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;</span><span class=\"s\">test_rec.ivf&quot;</span><span class=\"p\">,</span> <span class=\"n\">frame_period</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">fps</span> <span class=\"o\">=</span> <span class=\"mi\">60</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "start_record"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Stops the currently active video recording.\n<span class=\"icon-macos\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span> Video recording is only supported on desktop platforms.\nThis message can only be sent to the designated <code>@system</code> socket.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "stop current video recording", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">stop_record&quot;</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "stop_record"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Reboots the game engine with a specified set of arguments.\nArguments will be translated into command line arguments. Sending the reboot\ncommand is equivalent to starting the engine with the same arguments.\nOn startup the engine reads configuration from \"game.project\" in the\nproject root.\nThis message can only be sent to the designated <code>@system</code> socket.", 
-      "parameters": [
-        {
-          "doc": "argument 1", 
-          "name": "arg1", 
-          "types": [
-            "string"
-          ]
-        }, 
-        {
-          "doc": "argument 2", 
-          "name": "arg2", 
-          "types": [
-            "string"
-          ]
-        }, 
-        {
-          "doc": "argument 3", 
-          "name": "arg3", 
-          "types": [
-            "string"
-          ]
-        }, 
-        {
-          "doc": "argument 4", 
-          "name": "arg4", 
-          "types": [
-            "string"
-          ]
-        }, 
-        {
-          "doc": "argument 5", 
-          "name": "arg5", 
-          "types": [
-            "string"
-          ]
-        }, 
-        {
-          "doc": "argument 6", 
-          "name": "arg6", 
+          "name": "buffer",
+          "doc": "buffer to deserialize from",
           "types": [
             "string"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "reboot engine with arguments", 
-      "examples": "How to reboot engine with a specific bootstrap collection.\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;</span><span class=\"s\">--config=bootstrap.main_collection=/my.collectionc&#39;</span>\n<span class=\"kd\">local</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;</span><span class=\"s\">build/default/game.projectc&#39;</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">reboot&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"n\">arg1</span><span class=\"p\">,</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"n\">arg2</span><span class=\"p\">})</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "reboot"
-    }, 
+      ],
+      "examples": "Deserialize a lua table that was previously serialized:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">buffer</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">serialize</span><span class=\"p\">(</span><span class=\"n\">my_table</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">table</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">deserialize</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Set the vsync swap interval. The interval with which to swap the front and back buffers\nin sync with vertical blanks (v-blank), the hardware event where the screen image is updated\nwith data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of\n2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank\nbefore swapping the buffers. Default value is 1.\nWhen setting the swap interval to 0 and having <code>vsync</code> disabled in\n\"game.project\", the engine will try to respect the set frame cap value from\n\"game.project\" in software instead.\nThis setting may be overridden by driver settings.\nThis message can only be sent to the designated <code>@system</code> socket.", 
+      "type": "VARIABLE",
+      "name": "sys.NETWORK_DISCONNECTED",
+      "brief": "no network connection found",
+      "description": "no network connection found",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "sys.NETWORK_CONNECTED_CELLULAR",
+      "brief": "network connected through mobile cellular",
+      "description": "network connected through mobile cellular",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "sys.NETWORK_CONNECTED",
+      "brief": "network connected through other, non cellular, connection",
+      "description": "network connected through other, non cellular, connection",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "MESSAGE",
+      "name": "exit",
+      "brief": "exits application",
+      "description": "Terminates the game application and reports the specified <code>code</code> to the OS.\nThis message can only be sent to the designated <code>@system</code> socket.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "target swap interval.", 
-          "name": "swap_interval", 
+          "name": "code",
+          "doc": "exit code to report to the OS, 0 means clean exit",
+          "types": [
+            "number"
+          ]
+        }
+      ],
+      "examples": "This examples demonstrates how to exit the application when some kind of quit messages is received (maybe from gui or similar):\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">on_message</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">message_id</span><span class=\"p\">,</span> <span class=\"n\">message</span><span class=\"p\">,</span> <span class=\"n\">sender</span><span class=\"p\">)</span>\n    <span class=\"kr\">if</span> <span class=\"n\">message_id</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;quit&quot;</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n        <span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;exit&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">code</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">})</span>\n    <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "MESSAGE",
+      "name": "toggle_profile",
+      "brief": "shows/hides the on-screen profiler",
+      "description": "Toggles the on-screen profiler.\nThe profiler is a real-time tool that shows the numbers of milliseconds spent\nin each scope per frame as well as counters. The profiler is very useful for\ntracking down performance and resource problems.\nIn addition to the on-screen profiler, Defold includes a web-based profiler that\nallows you to sample a series of data points and then analyze them in detail.\nThe web profiler is available at <code>http://&lt;device IP&gt;:8002</code> where <device IP> is\nthe IP address of the device you are running your game on.\nThis message can only be sent to the designated <code>@system</code> socket.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;toggle_profile&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "MESSAGE",
+      "name": "toggle_physics_debug",
+      "brief": "shows/hides the on-screen physics visual debugging",
+      "description": "Toggles the on-screen physics visual debugging mode which is very useful for\ntracking down issues related to physics. This mode visualizes\nall collision object shapes and normals at detected contact points. Toggling\nthis mode on is equal to setting <code>physics.debug</code> in the \"game.project\" settings,\nbut set in run-time.\nThis message can only be sent to the designated <code>@system</code> socket.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;toggle_physics_debug&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "MESSAGE",
+      "name": "start_record",
+      "brief": "starts video recording",
+      "description": "Starts video recording of the game frame-buffer to file. Current video format is the\nopen vp8 codec in the ivf container. It's possible to upload this format directly\nto YouTube. The VLC video player has native support but with the known issue that\nnot the entire file is played back. It's probably an issue with VLC.\nThe Miro Video Converter has support for vp8/ivf.\n<span class=\"icon-macos\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span> Video recording is only supported on desktop platforms.\n<span class=\"icon-attention\"></span> Audio is currently not supported\n<span class=\"icon-attention\"></span> Window width and height must be a multiple of 8 to be able to record video.\nThis message can only be sent to the designated <code>@system</code> socket.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "file_name",
+          "doc": "file name to write the video to",
+          "types": [
+            "string"
+          ]
+        },
+        {
+          "name": "frame_period",
+          "doc": "frame period to record, ie write every nth frame. Default value is <code>2</code>",
+          "types": [
+            "number"
+          ]
+        },
+        {
+          "name": "fps",
+          "doc": "frames per second. Playback speed for the video. Default value is <code>30</code>. The fps value doens't affect the recording. It's only meta-data in the written video file.",
+          "types": [
+            "number"
+          ]
+        }
+      ],
+      "examples": "Record a video in 30 fps given that the native game fps is 60:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;start_record&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">file_name</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;test_rec.ivf&quot;</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</code></pre></div>\n\nTo write a video in 60 fps given that the native game fps is 60:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;start_record&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"n\">file_name</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;test_rec.ivf&quot;</span><span class=\"p\">,</span> <span class=\"n\">frame_period</span> <span class=\"o\">=</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">fps</span> <span class=\"o\">=</span> <span class=\"mi\">60</span> <span class=\"p\">}</span> <span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "MESSAGE",
+      "name": "stop_record",
+      "brief": "stop current video recording",
+      "description": "Stops the currently active video recording.\n<span class=\"icon-macos\"></span> <span class=\"icon-windows\"></span> <span class=\"icon-linux\"></span> Video recording is only supported on desktop platforms.\nThis message can only be sent to the designated <code>@system</code> socket.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;stop_record&quot;</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "MESSAGE",
+      "name": "reboot",
+      "brief": "reboot engine with arguments",
+      "description": "Reboots the game engine with a specified set of arguments.\nArguments will be translated into command line arguments. Sending the reboot\ncommand is equivalent to starting the engine with the same arguments.\nOn startup the engine reads configuration from \"game.project\" in the\nproject root.\nThis message can only be sent to the designated <code>@system</code> socket.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "arg1",
+          "doc": "argument 1",
+          "types": [
+            "string"
+          ]
+        },
+        {
+          "name": "arg2",
+          "doc": "argument 2",
+          "types": [
+            "string"
+          ]
+        },
+        {
+          "name": "arg3",
+          "doc": "argument 3",
+          "types": [
+            "string"
+          ]
+        },
+        {
+          "name": "arg4",
+          "doc": "argument 4",
+          "types": [
+            "string"
+          ]
+        },
+        {
+          "name": "arg5",
+          "doc": "argument 5",
+          "types": [
+            "string"
+          ]
+        },
+        {
+          "name": "arg6",
+          "doc": "argument 6",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "examples": "How to reboot engine with a specific bootstrap collection.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;--config=bootstrap.main_collection=/my.collectionc&#39;</span>\n<span class=\"kd\">local</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;build/game.projectc&#39;</span>\n<span class=\"n\">msg</span><span class=\"p\">.</span><span class=\"n\">post</span><span class=\"p\">(</span><span class=\"s2\">&quot;@system:&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;reboot&quot;</span><span class=\"p\">,</span> <span class=\"p\">{</span><span class=\"n\">arg1</span> <span class=\"o\">=</span> <span class=\"n\">arg1</span><span class=\"p\">,</span> <span class=\"n\">arg2</span> <span class=\"o\">=</span> <span class=\"n\">arg2</span><span class=\"p\">})</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "MESSAGE",
+      "name": "set_vsync",
+      "brief": "set vsync swap interval",
+      "description": "Set the vsync swap interval. The interval with which to swap the front and back buffers\nin sync with vertical blanks (v-blank), the hardware event where the screen image is updated\nwith data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of\n2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank\nbefore swapping the buffers. Default value is 1.\nWhen setting the swap interval to 0 and having <code>vsync</code> disabled in\n\"game.project\", the engine will try to respect the set frame cap value from\n\"game.project\" in software instead.\nThis setting may be overridden by driver settings.\nThis message can only be sent to the designated <code>@system</code> socket.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "swap_interval",
+          "doc": "target swap interval.",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set vsync swap interval", 
-      "examples": "<pre>\nmsg.post(\"@system:\", \"set_vsync\", { swap_interval = 1 } )\n</pre>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "set_vsync"
-    }, 
+      ],
+      "examples": "<pre>\nmsg.post(\"@system:\", \"set_vsync\", { swap_interval = 1 } )\n</pre>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.\nThis message can only be sent to the designated <code>@system</code> socket.", 
+      "type": "MESSAGE",
+      "name": "set_update_frequency",
+      "brief": "set update frequency",
+      "description": "Set game update-frequency (frame cap). This option is equivalent to <code>display.update_frequency</code> in\nthe \"game.project\" settings but set in run-time. If <code>Vsync</code> checked in \"game.project\", the rate will\nbe clamped to a swap interval that matches any detected main monitor refresh rate. If <code>Vsync</code> is\nunchecked the engine will try to respect the rate in software using timers. There is no\nguarantee that the frame cap will be achieved depending on platform specifics and hardware settings.\nThis message can only be sent to the designated <code>@system</code> socket.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "target frequency. 60 for 60 fps", 
-          "name": "frequency", 
+          "name": "frequency",
+          "doc": "target frequency. 60 for 60 fps",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "set update frequency", 
-      "examples": "<pre>\nmsg.post(\"@system:\", \"set_update_frequency\", { frequency = 60 } )\n</pre>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "MESSAGE", 
-      "name": "set_update_frequency"
+      ],
+      "examples": "<pre>\nmsg.post(\"@system:\", \"set_update_frequency\", { frequency = 60 } )\n</pre>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "sys",
+    "name": "System",
+    "brief": "System API documentation",
+    "description": "Functions and messages for using system resources, controlling the engine,\nerror handling and debugging.",
+    "path": "",
+    "file": "",
+    "notes": [],
+    "group": "SYSTEM"
+  }
 }

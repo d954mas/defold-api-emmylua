@@ -1,151 +1,152 @@
 {
-  "info": {
-    "group": "LUA STANDARD LIBS", 
-    "description": "Documentation for the Lua coroutine standard library.\nFrom <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.\nCopyright &copy; 2006-2012 Lua.org, PUC-Rio.\nFreely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.", 
-    "namespace": "coroutine", 
-    "brief": "Lua coroutine standard library", 
-    "file": "", 
-    "path": "", 
-    "name": "Coroutine"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Creates a new coroutine, with body f.\nf must be a Lua function.\nReturns this new coroutine,\nan object with type <code>\"thread\"</code>.", 
+      "type": "FUNCTION",
+      "name": "coroutine.create",
+      "brief": "creates a new coroutine thread",
+      "description": "Creates a new coroutine, with body f.\nf must be a Lua function.\nReturns this new coroutine,\nan object with type <code>\"thread\"</code>.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "f", 
+          "name": "f",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "creates a new coroutine thread", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "coroutine.create"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Starts or continues the execution of coroutine co.\nThe first time you resume a coroutine,\nit starts running its body.\nThe values val1, ... are passed\nas the arguments to the body function.\nIf the coroutine has yielded,\nresume restarts it;\nthe values val1, ... are passed\nas the results from the yield.\nIf the coroutine runs without any errors,\nresume returns <span class=\"type\"> true</span> plus any values passed to yield\n(if the coroutine yields) or any values returned by the body function\n(if the coroutine terminates).\nIf there is any error,\nresume returns <span class=\"type\"> false</span> plus the error message.", 
+      "type": "FUNCTION",
+      "name": "coroutine.resume",
+      "brief": "start or resume a thread",
+      "description": "Starts or continues the execution of coroutine co.\nThe first time you resume a coroutine,\nit starts running its body.\nThe values val1, ... are passed\nas the arguments to the body function.\nIf the coroutine has yielded,\nresume restarts it;\nthe values val1, ... are passed\nas the results from the yield.\nIf the coroutine runs without any errors,\nresume returns <span class=\"type\"> true</span> plus any values passed to yield\n(if the coroutine yields) or any values returned by the body function\n(if the coroutine terminates).\nIf there is any error,\nresume returns <span class=\"type\"> false</span> plus the error message.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "co", 
+          "name": "co",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[val1]", 
+          "name": "[val1]",
+          "doc": "",
           "types": [
             ""
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "[...]", 
+          "name": "[...]",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "start or resume a thread", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "coroutine.resume"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns the running coroutine,\nor <span class=\"type\"> nil</span> when called by the main thread.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns the running coroutine", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "coroutine.running"
-    }, 
+      "type": "FUNCTION",
+      "name": "coroutine.running",
+      "brief": "returns the running coroutine",
+      "description": "Returns the running coroutine,\nor <span class=\"type\"> nil</span> when called by the main thread.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Returns the status of coroutine co, as a string:\n<code>\"running\"</code>,\nif the coroutine is running (that is, it called status);\n<code>\"suspended\"</code>, if the coroutine is suspended in a call to yield,\nor if it has not started running yet;\n<code>\"normal\"</code> if the coroutine is active but not running\n(that is, it has resumed another coroutine);\nand <code>\"dead\"</code> if the coroutine has finished its body function,\nor if it has stopped with an error.", 
+      "type": "FUNCTION",
+      "name": "coroutine.status",
+      "brief": "returns the status of a thread",
+      "description": "Returns the status of coroutine co, as a string:\n<code>\"running\"</code>,\nif the coroutine is running (that is, it called status);\n<code>\"suspended\"</code>, if the coroutine is suspended in a call to yield,\nor if it has not started running yet;\n<code>\"normal\"</code> if the coroutine is active but not running\n(that is, it has resumed another coroutine);\nand <code>\"dead\"</code> if the coroutine has finished its body function,\nor if it has stopped with an error.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "co", 
+          "name": "co",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "returns the status of a thread", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "coroutine.status"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Creates a new coroutine, with body f.\nf must be a Lua function.\nReturns a function that resumes the coroutine each time it is called.\nAny arguments passed to the function behave as the\nextra arguments to resume.\nReturns the same values returned by resume,\nexcept the first boolean.\nIn case of error, propagates the error.", 
+      "type": "FUNCTION",
+      "name": "coroutine.wrap",
+      "brief": "creates a thread and returns a function to resume it",
+      "description": "Creates a new coroutine, with body f.\nf must be a Lua function.\nReturns a function that resumes the coroutine each time it is called.\nAny arguments passed to the function behave as the\nextra arguments to resume.\nReturns the same values returned by resume,\nexcept the first boolean.\nIn case of error, propagates the error.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "f", 
+          "name": "f",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "creates a thread and returns a function to resume it", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "coroutine.wrap"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Suspends the execution of the calling coroutine.\nThe coroutine cannot be running a C function,\na metamethod, or an iterator.\nAny arguments to yield are passed as extra results to resume.", 
+      "type": "FUNCTION",
+      "name": "coroutine.yield",
+      "brief": "yields execution of thread back to the caller",
+      "description": "Suspends the execution of the calling coroutine.\nThe coroutine cannot be running a C function,\na metamethod, or an iterator.\nAny arguments to yield are passed as extra results to resume.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "", 
-          "name": "...", 
+          "name": "...",
+          "doc": "",
           "types": [
             ""
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "yields execution of thread back to the caller", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "coroutine.yield"
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "coroutine",
+    "name": "Coroutine",
+    "brief": "Lua coroutine standard library",
+    "description": "Documentation for the Lua coroutine standard library.\nFrom <a href=\"https://www.lua.org/manual/5.1/\">Lua 5.1 Reference Manual</a>\nby Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes.\nCopyright &copy; 2006-2012 Lua.org, PUC-Rio.\nFreely available under the terms of the <a href=\"https://www.lua.org/license.html\">Lua license</a>.",
+    "path": "",
+    "file": "",
+    "notes": [],
+    "group": "LUA STANDARD LIBS"
+  }
 }

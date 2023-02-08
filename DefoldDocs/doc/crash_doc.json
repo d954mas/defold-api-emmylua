@@ -1,498 +1,499 @@
 {
-  "info": {
-    "group": "SYSTEM", 
-    "description": "Native crash logging functions and constants.", 
-    "namespace": "crash", 
-    "brief": "Crash API documentation", 
-    "file": "", 
-    "path": "", 
-    "name": "Crash"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Performs the same steps as if a crash had just occured but\nallows the program to continue.\nThe generated dump can be read by crash.load_previous", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "writes crash dump", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "crash.write_dump"
-    }, 
+      "type": "FUNCTION",
+      "name": "crash.write_dump",
+      "brief": "writes crash dump",
+      "description": "Performs the same steps as if a crash had just occured but\nallows the program to continue.\nThe generated dump can be read by crash.load_previous",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Crashes occuring before the path is set will be stored to a default engine location.", 
+      "type": "FUNCTION",
+      "name": "crash.set_file_path",
+      "brief": "sets the file location for crash dumps",
+      "description": "Crashes occuring before the path is set will be stored to a default engine location.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "file path to use", 
-          "name": "path", 
+          "name": "path",
+          "doc": "file path to use",
           "types": [
             "string"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "sets the file location for crash dumps", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "crash.set_file_path"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "The crash dump will be removed from disk upon a successful\nload, so loading is one-shot.", 
-      "parameters": [], 
+      "type": "FUNCTION",
+      "name": "crash.load_previous",
+      "brief": "loads a previously written crash dump",
+      "description": "The crash dump will be removed from disk upon a successful\nload, so loading is one-shot.",
       "returnvalues": [
         {
-          "doc": "handle to the loaded dump, or nil if no dump was found", 
-          "name": "handle", 
+          "name": "handle",
+          "doc": "handle to the loaded dump, or nil if no dump was found",
           "types": [
             "number"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "loads a previously written crash dump", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "crash.load_previous"
-    }, 
+      ],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "releases a previously loaded crash dump", 
+      "type": "FUNCTION",
+      "name": "crash.release",
+      "brief": "releases a previously loaded crash dump",
+      "description": "releases a previously loaded crash dump",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "handle to loaded crash dump", 
-          "name": "handle", 
+          "name": "handle",
+          "doc": "handle to loaded crash dump",
           "types": [
             "number"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "releases a previously loaded crash dump", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "crash.release"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Store a user value that will get written to a crash dump when\na crash occurs. This can be user id:s, breadcrumb data etc.\nThere are 32 slots indexed from 0. Each slot stores at most 255 characters.", 
+      "type": "FUNCTION",
+      "name": "crash.set_user_field",
+      "brief": "stores user-defined string value",
+      "description": "Store a user value that will get written to a crash dump when\na crash occurs. This can be user id:s, breadcrumb data etc.\nThere are 32 slots indexed from 0. Each slot stores at most 255 characters.",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "slot index. 0-indexed", 
-          "name": "index", 
+          "name": "index",
+          "doc": "slot index. 0-indexed",
           "types": [
             "number"
           ]
-        }, 
+        },
         {
-          "doc": "string value to store", 
-          "name": "value", 
+          "name": "value",
+          "doc": "string value to store",
           "types": [
             "string"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "stores user-defined string value", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "crash.set_user_field"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "The function returns a table containing entries with sub-tables that\nhave fields 'name' and 'address' set for all loaded modules.", 
-      "parameters": [
-        {
-          "doc": "crash dump handle", 
-          "name": "handle", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "crash.get_modules",
+      "brief": "get all loaded modules from when the crash occured",
+      "description": "The function returns a table containing entries with sub-tables that\nhave fields 'name' and 'address' set for all loaded modules.",
       "returnvalues": [
         {
-          "doc": "module table", 
-          "name": "modules", 
+          "name": "modules",
+          "doc": "module table",
           "types": [
             "table"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "get all loaded modules from when the crash occured", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "crash.get_modules"
-    }, 
-    {
-      "replaces": "", 
-      "description": "reads user field from a loaded crash dump", 
+      ],
       "parameters": [
         {
-          "doc": "crash dump handle", 
-          "name": "handle", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "user data slot index", 
-          "name": "index", 
+          "name": "handle",
+          "doc": "crash dump handle",
           "types": [
             "number"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "crash.get_user_field",
+      "brief": "reads user field from a loaded crash dump",
+      "description": "reads user field from a loaded crash dump",
       "returnvalues": [
         {
-          "doc": "user data value recorded in the crash dump", 
-          "name": "value", 
+          "name": "value",
+          "doc": "user data value recorded in the crash dump",
           "types": [
             "string"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "reads user field from a loaded crash dump", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "crash.get_user_field"
-    }, 
-    {
-      "replaces": "", 
-      "description": "reads a system field from a loaded crash dump", 
+      ],
       "parameters": [
         {
-          "doc": "crash dump handle", 
-          "name": "handle", 
+          "name": "handle",
+          "doc": "crash dump handle",
           "types": [
             "number"
           ]
-        }, 
+        },
         {
-          "doc": "", 
-          "name": "index", 
+          "name": "index",
+          "doc": "user data slot index",
           "types": [
-            "number] system field enum. Must be less than [ref:crash.SYSFIELD_MAX"
+            "number"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "crash.get_sys_field",
+      "brief": "reads a system field from a loaded crash dump",
+      "description": "reads a system field from a loaded crash dump",
       "returnvalues": [
         {
-          "doc": "value recorded in the crash dump, or nil if it didn't exist", 
-          "name": "value", 
+          "name": "value",
+          "doc": "value recorded in the crash dump, or nil if it didn't exist",
           "types": [
             "string"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "reads a system field from a loaded crash dump", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "crash.get_sys_field"
-    }, 
-    {
-      "replaces": "", 
-      "description": "read signal number from a crash report", 
+      ],
       "parameters": [
         {
-          "doc": "crash dump handle", 
-          "name": "handle", 
+          "name": "handle",
+          "doc": "crash dump handle",
+          "types": [
+            "number"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "system field enum. Must be less than <a href=\"/ref/crash#crash.SYSFIELD_MAX\">crash.SYSFIELD_MAX</a>",
           "types": [
             "number"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "crash.get_signum",
+      "brief": "read signal number from a crash report",
+      "description": "read signal number from a crash report",
       "returnvalues": [
         {
-          "doc": "signal number", 
-          "name": "signal", 
+          "name": "signal",
+          "doc": "signal number",
           "types": [
             "number"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "read signal number from a crash report", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "crash.get_signum"
-    }, 
-    {
-      "replaces": "", 
-      "description": "A table is returned containing the addresses of the call stack.", 
+      ],
       "parameters": [
         {
-          "doc": "crash dump handle", 
-          "name": "handle", 
+          "name": "handle",
+          "doc": "crash dump handle",
           "types": [
             "number"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "crash.get_backtrace",
+      "brief": "read backtrace recorded in a loaded crash dump",
+      "description": "A table is returned containing the addresses of the call stack.",
       "returnvalues": [
         {
-          "doc": "table containing the backtrace", 
-          "name": "backtrace", 
+          "name": "backtrace",
+          "doc": "table containing the backtrace",
           "types": [
             "table"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "read backtrace recorded in a loaded crash dump", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "crash.get_backtrace"
-    }, 
-    {
-      "replaces": "", 
-      "description": "The format of read text blob is platform specific\nand not guaranteed\nbut can be useful for manual inspection.", 
+      ],
       "parameters": [
         {
-          "doc": "crash dump handle", 
-          "name": "handle", 
+          "name": "handle",
+          "doc": "crash dump handle",
           "types": [
             "number"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "crash.get_extra_data",
+      "brief": "read text blob recorded in a crash dump",
+      "description": "The format of read text blob is platform specific\nand not guaranteed\nbut can be useful for manual inspection.",
       "returnvalues": [
         {
-          "doc": "string with the platform specific data", 
-          "name": "blob", 
+          "name": "blob",
+          "doc": "string with the platform specific data",
           "types": [
             "string"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "read text blob recorded in a crash dump", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "crash.get_extra_data"
-    }, 
+      ],
+      "parameters": [
+        {
+          "name": "handle",
+          "doc": "crash dump handle",
+          "types": [
+            "number"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "engine version as release number", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "engine version as release number", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "crash.SYSFIELD_ENGINE_VERSION"
-    }, 
+      "type": "VARIABLE",
+      "name": "crash.SYSFIELD_ENGINE_VERSION",
+      "brief": "engine version as release number",
+      "description": "engine version as release number",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "engine version as hash", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "engine version as hash", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "crash.SYSFIELD_ENGINE_HASH"
-    }, 
+      "type": "VARIABLE",
+      "name": "crash.SYSFIELD_ENGINE_HASH",
+      "brief": "engine version as hash",
+      "description": "engine version as hash",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "device model as reported by sys.get_sys_info", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "device model as reported by sys.get_sys_info", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "crash.SYSFIELD_DEVICE_MODEL"
-    }, 
+      "type": "VARIABLE",
+      "name": "crash.SYSFIELD_DEVICE_MODEL",
+      "brief": "device model as reported by sys.get_sys_info",
+      "description": "device model as reported by sys.get_sys_info",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "device manufacturer as reported by sys.get_sys_info", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "device manufacturer as reported by sys.get_sys_info", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "crash.SYSFIELD_MANUFACTURER"
-    }, 
+      "type": "VARIABLE",
+      "name": "crash.SYSFIELD_MANUFACTURER",
+      "brief": "device manufacturer as reported by sys.get_sys_info",
+      "description": "device manufacturer as reported by sys.get_sys_info",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "system name as reported by sys.get_sys_info", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "system name as reported by sys.get_sys_info", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "crash.SYSFIELD_SYSTEM_NAME"
-    }, 
+      "type": "VARIABLE",
+      "name": "crash.SYSFIELD_SYSTEM_NAME",
+      "brief": "system name as reported by sys.get_sys_info",
+      "description": "system name as reported by sys.get_sys_info",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "system version as reported by sys.get_sys_info", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "system version as reported by sys.get_sys_info", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "crash.SYSFIELD_SYSTEM_VERSION"
-    }, 
+      "type": "VARIABLE",
+      "name": "crash.SYSFIELD_SYSTEM_VERSION",
+      "brief": "system version as reported by sys.get_sys_info",
+      "description": "system version as reported by sys.get_sys_info",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "system language as reported by sys.get_sys_info", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "system language as reported by sys.get_sys_info", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "crash.SYSFIELD_LANGUAGE"
-    }, 
+      "type": "VARIABLE",
+      "name": "crash.SYSFIELD_LANGUAGE",
+      "brief": "system language as reported by sys.get_sys_info",
+      "description": "system language as reported by sys.get_sys_info",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "system device language as reported by sys.get_sys_info", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "system device language as reported by sys.get_sys_info", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "crash.SYSFIELD_DEVICE_LANGUAGE"
-    }, 
+      "type": "VARIABLE",
+      "name": "crash.SYSFIELD_DEVICE_LANGUAGE",
+      "brief": "system device language as reported by sys.get_sys_info",
+      "description": "system device language as reported by sys.get_sys_info",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "system territory as reported by sys.get_sys_info", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "system territory as reported by sys.get_sys_info", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "crash.SYSFIELD_TERRITORY"
-    }, 
+      "type": "VARIABLE",
+      "name": "crash.SYSFIELD_TERRITORY",
+      "brief": "system territory as reported by sys.get_sys_info",
+      "description": "system territory as reported by sys.get_sys_info",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "android build fingerprint", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "android build fingerprint", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "crash.SYSFIELD_ANDROID_BUILD_FINGERPRINT"
-    }, 
+      "type": "VARIABLE",
+      "name": "crash.SYSFIELD_ANDROID_BUILD_FINGERPRINT",
+      "brief": "android build fingerprint",
+      "description": "android build fingerprint",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "The max number of sysfields.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "The max number of sysfields.", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "crash.SYSFIELD_MAX"
-    }, 
+      "type": "VARIABLE",
+      "name": "crash.SYSFIELD_MAX",
+      "brief": "The max number of sysfields.",
+      "description": "The max number of sysfields.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "The max number of user fields.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "The max number of user fields.", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "crash.USERFIELD_MAX"
-    }, 
+      "type": "VARIABLE",
+      "name": "crash.USERFIELD_MAX",
+      "brief": "The max number of user fields.",
+      "description": "The max number of user fields.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "The max size of a single user field.", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "The max size of a single user field.", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "crash.USERFIELD_SIZE"
+      "type": "VARIABLE",
+      "name": "crash.USERFIELD_SIZE",
+      "brief": "The max size of a single user field.",
+      "description": "The max size of a single user field.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "crash",
+    "name": "Crash",
+    "brief": "Crash API documentation",
+    "description": "Native crash logging functions and constants.",
+    "path": "",
+    "file": "",
+    "notes": [],
+    "group": "SYSTEM"
+  }
 }

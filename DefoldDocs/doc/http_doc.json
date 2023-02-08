@@ -1,70 +1,71 @@
 {
-  "info": {
-    "group": "SCRIPT", 
-    "description": "Functions for performing HTTP and HTTPS requests.", 
-    "namespace": "http", 
-    "brief": "HTTP API documentation", 
-    "file": "", 
-    "path": "", 
-    "name": "HTTP"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Perform a HTTP/HTTPS request.\n<span class=\"icon-attention\"></span> If no timeout value is passed, the configuration value \"network.http_timeout\" is used. If that is not set, the timeout value is <code>0</code> (which blocks indefinitely).", 
+      "type": "FUNCTION",
+      "name": "http.request",
+      "brief": "perform a HTTP/HTTPS request",
+      "description": "Perform a HTTP/HTTPS request.\n<span class=\"icon-attention\"></span> If no timeout value is passed, the configuration value \"network.http_timeout\" is used. If that is not set, the timeout value is <code>0</code> (which blocks indefinitely).",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "target url", 
-          "name": "url", 
+          "name": "url",
+          "doc": "target url",
           "types": [
             "string"
           ]
-        }, 
+        },
         {
-          "doc": "HTTP/HTTPS method, e.g. \"GET\", \"PUT\", \"POST\" etc.", 
-          "name": "method", 
+          "name": "method",
+          "doc": "HTTP/HTTPS method, e.g. \"GET\", \"PUT\", \"POST\" etc.",
           "types": [
             "string"
           ]
-        }, 
+        },
         {
-          "doc": "response callback function\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The script instance</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> Internal message identifier. Do not use!</dd>\n<dt><code>response</code></dt>\n<dd><span class=\"type\">table</span> The response data. Contains the fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>status</code>: the status of the response</li>\n<li><span class=\"type\">string</span> <code>response</code>: the response data (if not saved on disc)</li>\n<li><span class=\"type\">table</span> <code>headers</code>: all the returned headers</li>\n<li><span class=\"type\">string</span> <code>path</code>: the stored path (if saved to disc)</li>\n<li><span class=\"type\">string</span> <code>error</code>: if any unforeseen errors occurred (e.g. file I/O)</li>\n</ul>", 
-          "name": "callback", 
+          "name": "callback",
+          "doc": "response callback function\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The script instance</dd>\n<dt><code>id</code></dt>\n<dd><span class=\"type\">hash</span> Internal message identifier. Do not use!</dd>\n<dt><code>response</code></dt>\n<dd><span class=\"type\">table</span> The response data. Contains the fields:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>status</code>: the status of the response</li>\n<li><span class=\"type\">string</span> <code>response</code>: the response data (if not saved on disc)</li>\n<li><span class=\"type\">table</span> <code>headers</code>: all the returned headers</li>\n<li><span class=\"type\">string</span> <code>path</code>: the stored path (if saved to disc)</li>\n<li><span class=\"type\">string</span> <code>error</code>: if any unforeseen errors occurred (e.g. file I/O)</li>\n</ul>",
           "types": [
             "function(self, id, response)"
           ]
-        }, 
+        },
         {
-          "doc": "optional table with custom headers", 
-          "name": "[headers]", 
+          "name": "[headers]",
+          "doc": "optional table with custom headers",
           "types": [
             "table"
           ]
-        }, 
+        },
         {
-          "doc": "optional data to send", 
-          "name": "[post_data]", 
+          "name": "[post_data]",
+          "doc": "optional data to send",
           "types": [
             "string"
           ]
-        }, 
+        },
         {
-          "doc": "optional table with request parameters. Supported entries:\n<ul>\n<li><span class=\"type\">number</span> <code>timeout</code>: timeout in seconds</li>\n<li><span class=\"type\">string</span> <code>path</code>: path on disc where to download the file. Only overwrites the path if status is 200</li>\n<li><span class=\"type\">boolean</span> <code>ignore_cache</code>: don't return cached data if we get a 304</li>\n<li><span class=\"type\">boolean</span> <code>chunked_transfer</code>: use chunked transfer encoding for https requests larger than 16kb. Defaults to true.</li>\n</ul>", 
-          "name": "[options]", 
+          "name": "[options]",
+          "doc": "optional table with request parameters. Supported entries:\n<ul>\n<li><span class=\"type\">number</span> <code>timeout</code>: timeout in seconds</li>\n<li><span class=\"type\">string</span> <code>path</code>: path on disc where to download the file. Only overwrites the path if status is 200</li>\n<li><span class=\"type\">boolean</span> <code>ignore_cache</code>: don't return cached data if we get a 304</li>\n<li><span class=\"type\">boolean</span> <code>chunked_transfer</code>: use chunked transfer encoding for https requests larger than 16kb. Defaults to true.</li>\n</ul>",
           "types": [
             "table"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "perform a HTTP/HTTPS request", 
-      "examples": "Basic HTTP-GET request. The callback receives a table with the response\nin the fields status, the response (the data) and headers (a table).\n<div class=\"codehilite\"><pre><span></span><span class=\"kd\">local</span> <span class=\"k\">function</span> <span class=\"nf\">http_result</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">status</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">response</span><span class=\"p\">)</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">headers</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">http</span><span class=\"p\">.</span><span class=\"n\">request</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">http://www.google.com&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;</span><span class=\"s\">GET&quot;</span><span class=\"p\">,</span> <span class=\"n\">http_result</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "http.request"
+      ],
+      "examples": "Basic HTTP-GET request. The callback receives a table with the response\nin the fields status, the response (the data) and headers (a table).\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">http_result</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">response</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">status</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">response</span><span class=\"p\">)</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">response</span><span class=\"p\">.</span><span class=\"n\">headers</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n\n<span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"n\">http</span><span class=\"p\">.</span><span class=\"n\">request</span><span class=\"p\">(</span><span class=\"s2\">&quot;http://www.google.com&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;GET&quot;</span><span class=\"p\">,</span> <span class=\"n\">http_result</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "http",
+    "name": "HTTP",
+    "brief": "HTTP API documentation",
+    "description": "Functions for performing HTTP and HTTPS requests.",
+    "path": "",
+    "file": "",
+    "notes": [],
+    "group": "SCRIPT"
+  }
 }

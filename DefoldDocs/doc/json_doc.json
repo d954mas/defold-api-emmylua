@@ -1,43 +1,88 @@
 {
-  "info": {
-    "group": "SCRIPT", 
-    "description": "Manipulation of JSON data strings.", 
-    "namespace": "json", 
-    "brief": "JSON API documentation", 
-    "file": "", 
-    "path": "", 
-    "name": "JSON"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Decode a string of JSON data into a Lua table.\nA Lua error is raised for syntax errors.", 
-      "parameters": [
-        {
-          "doc": "json data", 
-          "name": "json", 
-          "types": [
-            "string"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "json.decode",
+      "brief": "decode JSON from a string to a lua-table",
+      "description": "Decode a string of JSON data into a Lua table.\nA Lua error is raised for syntax errors.",
       "returnvalues": [
         {
-          "doc": "decoded json", 
-          "name": "data", 
+          "name": "data",
+          "doc": "decoded json",
           "types": [
             "table"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "decode JSON from a string to a lua-table", 
-      "examples": "Converting a string containing JSON data into a Lua table:\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">jsonstring</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;</span><span class=\"s\">{&quot;persons&quot;:[{&quot;name&quot;:&quot;John Doe&quot;},{&quot;name&quot;:&quot;Darth Vader&quot;}]}&#39;</span>\n    <span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"n\">json</span><span class=\"p\">.</span><span class=\"n\">decode</span><span class=\"p\">(</span><span class=\"n\">jsonstring</span><span class=\"p\">)</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</pre></div>\n\n\nResults in the following printout:\n<div class=\"codehilite\"><pre><span></span>{\n  persons = {\n    1 = {\n      name = John Doe,\n    }\n    2 = {\n      name = Darth Vader,\n    }\n  }\n}\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "json.decode"
+      ],
+      "parameters": [
+        {
+          "name": "json",
+          "doc": "json data",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "examples": "Converting a string containing JSON data into a Lua table:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n    <span class=\"kd\">local</span> <span class=\"n\">jsonstring</span> <span class=\"o\">=</span> <span class=\"s1\">&#39;{&quot;persons&quot;:[{&quot;name&quot;:&quot;John Doe&quot;},{&quot;name&quot;:&quot;Darth Vader&quot;}]}&#39;</span>\n    <span class=\"kd\">local</span> <span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"n\">json</span><span class=\"p\">.</span><span class=\"n\">decode</span><span class=\"p\">(</span><span class=\"n\">jsonstring</span><span class=\"p\">)</span>\n    <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\nResults in the following printout:\n<div class=\"codehilite\"><pre><span></span><code>{\n  persons = {\n    1 = {\n      name = John Doe,\n    }\n    2 = {\n      name = Darth Vader,\n    }\n  }\n}\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "json.encode",
+      "brief": "encode a lua table to a JSON string",
+      "description": "Encode a lua table to a JSON string.\nA Lua error is raised for syntax errors.",
+      "returnvalues": [
+        {
+          "name": "json",
+          "doc": "encoded json",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "tbl",
+          "doc": "lua table to encode",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "examples": "Convert a lua table to a JSON string:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n     <span class=\"kd\">local</span> <span class=\"n\">tbl</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n          <span class=\"n\">persons</span> <span class=\"o\">=</span> <span class=\"p\">{</span>\n               <span class=\"p\">{</span> <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;John Doe&quot;</span><span class=\"p\">},</span>\n               <span class=\"p\">{</span> <span class=\"n\">name</span> <span class=\"o\">=</span> <span class=\"s2\">&quot;Darth Vader&quot;</span><span class=\"p\">}</span>\n          <span class=\"p\">}</span>\n     <span class=\"p\">}</span>\n     <span class=\"kd\">local</span> <span class=\"n\">jsonstring</span> <span class=\"o\">=</span> <span class=\"n\">json</span><span class=\"p\">.</span><span class=\"n\">encode</span><span class=\"p\">(</span><span class=\"n\">tbl</span><span class=\"p\">)</span>\n     <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">jsonstring</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>\n\nResults in the following printout:\n<div class=\"codehilite\"><pre><span></span><code>{&quot;persons&quot;:[{&quot;name&quot;:&quot;John Doe&quot;},{&quot;name&quot;:&quot;Darth Vader&quot;}]}\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "VARIABLE",
+      "name": "json.null",
+      "brief": "null",
+      "description": "Represents the null primitive from a json file",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "json",
+    "name": "JSON",
+    "brief": "JSON API documentation",
+    "description": "Manipulation of JSON data strings.",
+    "path": "",
+    "file": "",
+    "notes": [],
+    "group": "SCRIPT"
+  }
 }

@@ -1,150 +1,158 @@
 {
-  "info": {
-    "group": "DEFOLD SDK", 
-    "description": "URI functions.", 
-    "namespace": "dmURI", 
-    "brief": "SDK URI API documentation", 
-    "file": "dmsdk/dlib/uri.h", 
-    "path": "engine/dlib/src/dmsdk/dlib/uri.h", 
-    "name": "URI"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "URI parsing result", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "URI parsing result", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmURI::Result"
-    }, 
+      "type": "FUNCTION",
+      "name": "dmURI::Result",
+      "brief": "URI parsing result",
+      "description": "URI parsing result",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "URI parsing result parts", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "URI parsing result parts", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "STRUCT", 
-      "name": "dmURI::Parts"
-    }, 
+      "type": "STRUCT",
+      "name": "dmURI::Parts",
+      "brief": "URI parsing result parts",
+      "description": "URI parsing result parts",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Parse URI and split in three parts. (scheme, location, path)", 
-      "parameters": [
-        {
-          "doc": "URI to parse", 
-          "name": "uri", 
-          "types": [
-            "const char*"
-          ]
-        }, 
-        {
-          "doc": "Result", 
-          "name": "parts", 
-          "types": [
-            "dmURI::Parts"
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmURI::Parse",
+      "brief": "Parse URI and split in three parts. (scheme, locat...",
+      "description": "Parse URI and split in three parts. (scheme, location, path)",
       "returnvalues": [
         {
-          "doc": "on success", 
-          "name": "RESULT_OK", 
+          "name": "RESULT_OK",
+          "doc": "on success",
           "types": [
             ""
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Parse URI and split in three parts. (scheme, locat...", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmURI::Parse"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Performs URL encoding of the supplied buffer", 
+      ],
       "parameters": [
         {
-          "doc": "string to encode", 
-          "name": "src", 
+          "name": "uri",
+          "doc": "URI to parse",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "the destination buffer", 
-          "name": "dst", 
+          "name": "parts",
+          "doc": "Result",
+          "types": [
+            "dmURI::Parts"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "This is a simplified URI parser and does not conform to rfc2396.\n      Missing features are: parameters, query, fragment part of URI and support for escaped sequences",
+        "For http m_Port is set to 80 if not specified in uri."
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmURI::Encode",
+      "brief": "Performs URL encoding of the supplied buffer",
+      "description": "Performs URL encoding of the supplied buffer",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "src",
+          "doc": "string to encode",
+          "types": [
+            "const char*"
+          ]
+        },
+        {
+          "name": "dst",
+          "doc": "the destination buffer",
           "types": [
             "char*"
           ]
-        }, 
+        },
         {
-          "doc": "size of the provided out buffer", 
-          "name": "dst_size", 
+          "name": "dst_size",
+          "doc": "size of the provided out buffer",
           "types": [
             "uint32_t"
           ]
-        }, 
+        },
         {
-          "doc": "number of bytes written", 
-          "name": "bytes_written[out]", 
+          "name": "bytes_written[out]",
+          "doc": "number of bytes written",
           "types": [
             "uint32_t"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Performs URL encoding of the supplied buffer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmURI::Encode"
-    }, 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "If dst=0 the bytes_written will return the number of required bytes (including null character)"
+      ]
+    },
     {
-      "replaces": "", 
-      "description": "Decodes an URL encoded buffer", 
+      "type": "FUNCTION",
+      "name": "dmURI::Decode",
+      "brief": "Decodes an URL encoded buffer",
+      "description": "Decodes an URL encoded buffer",
+      "returnvalues": [],
       "parameters": [
         {
-          "doc": "Input", 
-          "name": "src", 
+          "name": "src",
+          "doc": "Input",
           "types": [
             "const char*"
           ]
-        }, 
+        },
         {
-          "doc": "Decoded output", 
-          "name": "dst", 
+          "name": "dst",
+          "doc": "Decoded output",
           "types": [
             "char*"
           ]
         }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "Decodes an URL encoded buffer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmURI::Decode"
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "The output will never be larger than the input."
+      ]
     }
-  ]
+  ],
+  "info": {
+    "namespace": "dmURI",
+    "name": "URI",
+    "brief": "SDK URI API documentation",
+    "description": "URI functions.",
+    "path": "engine/dlib/src/dmsdk/dlib/uri.h",
+    "file": "dmsdk/dlib/uri.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
 }

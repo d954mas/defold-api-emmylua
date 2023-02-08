@@ -1,351 +1,441 @@
 {
-  "info": {
-    "group": "SCRIPT", 
-    "description": "Functions for manipulating buffers and streams", 
-    "namespace": "buffer", 
-    "brief": "Buffer API documentation", 
-    "file": "", 
-    "path": "", 
-    "name": "Buffer"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Unsigned integer, 1 byte", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "uint8", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "buffer.VALUE_TYPE_UINT8"
-    }, 
+      "type": "VARIABLE",
+      "name": "buffer.VALUE_TYPE_UINT8",
+      "brief": "uint8",
+      "description": "Unsigned integer, 1 byte",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Unsigned integer, 2 bytes", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "uint16", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "buffer.VALUE_TYPE_UINT16"
-    }, 
+      "type": "VARIABLE",
+      "name": "buffer.VALUE_TYPE_UINT16",
+      "brief": "uint16",
+      "description": "Unsigned integer, 2 bytes",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Unsigned integer, 4 bytes", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "uint32", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "buffer.VALUE_TYPE_UINT32"
-    }, 
+      "type": "VARIABLE",
+      "name": "buffer.VALUE_TYPE_UINT32",
+      "brief": "uint32",
+      "description": "Unsigned integer, 4 bytes",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Unsigned integer, 8 bytes", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "uint64", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "buffer.VALUE_TYPE_UINT64"
-    }, 
+      "type": "VARIABLE",
+      "name": "buffer.VALUE_TYPE_UINT64",
+      "brief": "uint64",
+      "description": "Unsigned integer, 8 bytes",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Signed integer, 1 byte", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "int8", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "buffer.VALUE_TYPE_INT8"
-    }, 
+      "type": "VARIABLE",
+      "name": "buffer.VALUE_TYPE_INT8",
+      "brief": "int8",
+      "description": "Signed integer, 1 byte",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Signed integer, 2 bytes", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "int16", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "buffer.VALUE_TYPE_INT16"
-    }, 
+      "type": "VARIABLE",
+      "name": "buffer.VALUE_TYPE_INT16",
+      "brief": "int16",
+      "description": "Signed integer, 2 bytes",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Signed integer, 4 bytes", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "int32", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "buffer.VALUE_TYPE_INT32"
-    }, 
+      "type": "VARIABLE",
+      "name": "buffer.VALUE_TYPE_INT32",
+      "brief": "int32",
+      "description": "Signed integer, 4 bytes",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Signed integer, 8 bytes", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "int64", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "buffer.VALUE_TYPE_INT64"
-    }, 
+      "type": "VARIABLE",
+      "name": "buffer.VALUE_TYPE_INT64",
+      "brief": "int64",
+      "description": "Signed integer, 8 bytes",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Float, single precision, 4 bytes", 
-      "parameters": [], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "float32", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "VARIABLE", 
-      "name": "buffer.VALUE_TYPE_FLOAT32"
-    }, 
+      "type": "VARIABLE",
+      "name": "buffer.VALUE_TYPE_FLOAT32",
+      "brief": "float32",
+      "description": "Float, single precision, 4 bytes",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Create a new data buffer containing a specified set of streams. A data buffer\ncan contain one or more streams with typed data. This is useful for managing\ncompound data, for instance a vertex buffer could contain separate streams for\nvertex position, color, normal etc.", 
+      "type": "FUNCTION",
+      "name": "buffer.create",
+      "brief": "creates a new buffer",
+      "description": "Create a new data buffer containing a specified set of streams. A data buffer\ncan contain one or more streams with typed data. This is useful for managing\ncompound data, for instance a vertex buffer could contain separate streams for\nvertex position, color, normal etc.",
+      "returnvalues": [
+        {
+          "name": "buffer",
+          "doc": "the new buffer",
+          "types": [
+            "buffer"
+          ]
+        }
+      ],
       "parameters": [
         {
-          "doc": "The number of elements the buffer should hold", 
-          "name": "element_count", 
+          "name": "element_count",
+          "doc": "The number of elements the buffer should hold",
           "types": [
             "number"
           ]
-        }, 
+        },
         {
-          "doc": "A table where each entry (table) describes a stream\n<ul>\n<li><span class=\"type\">hash | string</span> <code>name</code>: The name of the stream</li>\n<li><span class=\"type\">constant</span> <code>type</code>: The data type of the stream</li>\n<li><span class=\"type\">number</span> <code>count</code>: The number of values each element should hold</li>\n</ul>", 
-          "name": "declaration", 
+          "name": "declaration",
+          "doc": "A table where each entry (table) describes a stream\n<ul>\n<li><span class=\"type\">hash | string</span> <code>name</code>: The name of the stream</li>\n<li><span class=\"type\">constant</span> <code>type</code>: The data type of the stream</li>\n<li><span class=\"type\">number</span> <code>count</code>: The number of values each element should hold</li>\n</ul>",
           "types": [
             "table"
           ]
         }
-      ], 
+      ],
+      "examples": "How to create and initialize a buffer\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">size</span> <span class=\"o\">=</span> <span class=\"mi\">128</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">image</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">create</span><span class=\"p\">(</span> <span class=\"n\">size</span> <span class=\"o\">*</span> <span class=\"n\">size</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"p\">{</span><span class=\"n\">name</span><span class=\"o\">=</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;rgb&quot;</span><span class=\"p\">),</span> <span class=\"nb\">type</span><span class=\"o\">=</span><span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">VALUE_TYPE_UINT8</span><span class=\"p\">,</span> <span class=\"n\">count</span><span class=\"o\">=</span><span class=\"mi\">3</span> <span class=\"p\">}</span> <span class=\"p\">})</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">imagestream</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">get_stream</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">image</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;rgb&quot;</span><span class=\"p\">))</span>\n\n  <span class=\"kr\">for</span> <span class=\"n\">y</span><span class=\"o\">=</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">height</span><span class=\"o\">-</span><span class=\"mi\">1</span> <span class=\"kr\">do</span>\n     <span class=\"kr\">for</span> <span class=\"n\">x</span><span class=\"o\">=</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">width</span><span class=\"o\">-</span><span class=\"mi\">1</span> <span class=\"kr\">do</span>\n         <span class=\"kd\">local</span> <span class=\"n\">index</span> <span class=\"o\">=</span> <span class=\"n\">y</span> <span class=\"o\">*</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">width</span> <span class=\"o\">*</span> <span class=\"mi\">3</span> <span class=\"o\">+</span> <span class=\"n\">x</span> <span class=\"o\">*</span> <span class=\"mi\">3</span> <span class=\"o\">+</span> <span class=\"mi\">1</span>\n         <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">imagestream</span><span class=\"p\">[</span><span class=\"n\">index</span> <span class=\"o\">+</span> <span class=\"mi\">0</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">r</span>\n         <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">imagestream</span><span class=\"p\">[</span><span class=\"n\">index</span> <span class=\"o\">+</span> <span class=\"mi\">1</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">g</span>\n         <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">imagestream</span><span class=\"p\">[</span><span class=\"n\">index</span> <span class=\"o\">+</span> <span class=\"mi\">2</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">b</span>\n     <span class=\"kr\">end</span>\n  <span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "buffer.get_stream",
+      "brief": "gets a stream from a buffer",
+      "description": "Get a specified stream from a buffer.",
       "returnvalues": [
         {
-          "doc": "the new buffer", 
-          "name": "buffer", 
+          "name": "stream",
+          "doc": "the data stream",
           "types": [
-            "buffer"
+            "bufferstream"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "creates a new buffer", 
-      "examples": "How to create and initialize a buffer\n<div class=\"codehilite\"><pre><span></span><span class=\"k\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">size</span> <span class=\"o\">=</span> <span class=\"mi\">128</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">image</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">create</span><span class=\"p\">(</span> <span class=\"n\">size</span> <span class=\"o\">*</span> <span class=\"n\">size</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"p\">{</span><span class=\"n\">name</span><span class=\"o\">=</span><span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">rgb&quot;</span><span class=\"p\">),</span> <span class=\"nb\">type</span><span class=\"o\">=</span><span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">VALUE_TYPE_UINT8</span><span class=\"p\">,</span> <span class=\"n\">count</span><span class=\"o\">=</span><span class=\"mi\">3</span> <span class=\"p\">}</span> <span class=\"p\">})</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">imagestream</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">get_stream</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">image</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">rgb&quot;</span><span class=\"p\">))</span>\n\n  <span class=\"k\">for</span> <span class=\"n\">y</span><span class=\"o\">=</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">height</span><span class=\"o\">-</span><span class=\"mi\">1</span> <span class=\"k\">do</span>\n     <span class=\"k\">for</span> <span class=\"n\">x</span><span class=\"o\">=</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">width</span><span class=\"o\">-</span><span class=\"mi\">1</span> <span class=\"k\">do</span>\n         <span class=\"kd\">local</span> <span class=\"n\">index</span> <span class=\"o\">=</span> <span class=\"n\">y</span> <span class=\"o\">*</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">width</span> <span class=\"o\">*</span> <span class=\"mi\">3</span> <span class=\"o\">+</span> <span class=\"n\">x</span> <span class=\"o\">*</span> <span class=\"mi\">3</span> <span class=\"o\">+</span> <span class=\"mi\">1</span>\n         <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">imagestream</span><span class=\"p\">[</span><span class=\"n\">index</span> <span class=\"o\">+</span> <span class=\"mi\">0</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">r</span>\n         <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">imagestream</span><span class=\"p\">[</span><span class=\"n\">index</span> <span class=\"o\">+</span> <span class=\"mi\">1</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">g</span>\n         <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">imagestream</span><span class=\"p\">[</span><span class=\"n\">index</span> <span class=\"o\">+</span> <span class=\"mi\">2</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">b</span>\n     <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "buffer.create"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get a specified stream from a buffer.", 
+      ],
       "parameters": [
         {
-          "doc": "the buffer to get the stream from", 
-          "name": "buffer", 
+          "name": "buffer",
+          "doc": "the buffer to get the stream from",
           "types": [
             "buffer"
           ]
-        }, 
+        },
         {
-          "doc": "the stream name", 
-          "name": "stream_name", 
+          "name": "stream_name",
+          "doc": "the stream name",
           "types": [
-            "hash", 
+            "hash",
             "string"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "buffer.copy_stream",
+      "brief": "copies data from one stream to another",
+      "description": "Copy a specified amount of data from one stream to another.\n<span class=\"icon-attention\"></span> The value type and size must match between source and destination streams.\nThe source and destination streams can be the same.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "dst",
+          "doc": "the destination stream",
+          "types": [
+            "bufferstream"
+          ]
+        },
+        {
+          "name": "dstoffset",
+          "doc": "the offset to start copying data to (measured in value type)",
+          "types": [
+            "number"
+          ]
+        },
+        {
+          "name": "src",
+          "doc": "the source data stream",
+          "types": [
+            "bufferstream"
+          ]
+        },
+        {
+          "name": "srcoffset",
+          "doc": "the offset to start copying data from (measured in value type)",
+          "types": [
+            "number"
+          ]
+        },
+        {
+          "name": "count",
+          "doc": "the number of values to copy (measured in value type)",
+          "types": [
+            "number"
+          ]
+        }
+      ],
+      "examples": "How to update a texture of a sprite:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- copy entire stream</span>\n<span class=\"kd\">local</span> <span class=\"n\">srcstream</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">get_stream</span><span class=\"p\">(</span><span class=\"n\">srcbuffer</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;xyz&quot;</span><span class=\"p\">))</span>\n<span class=\"kd\">local</span> <span class=\"n\">dststream</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">get_stream</span><span class=\"p\">(</span><span class=\"n\">dstbuffer</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;xyz&quot;</span><span class=\"p\">))</span>\n<span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">copy_stream</span><span class=\"p\">(</span><span class=\"n\">dststream</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">srcstream</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"o\">#</span><span class=\"n\">srcstream</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "buffer.copy_buffer",
+      "brief": "copies one buffer to another",
+      "description": "Copy all data streams from one buffer to another, element wise.\n<span class=\"icon-attention\"></span> Each of the source streams must have a matching stream in the\ndestination buffer. The streams must match in both type and size.\nThe source and destination buffer can be the same.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "dst",
+          "doc": "the destination buffer",
+          "types": [
+            "buffer"
+          ]
+        },
+        {
+          "name": "dstoffset",
+          "doc": "the offset to start copying data to",
+          "types": [
+            "number"
+          ]
+        },
+        {
+          "name": "src",
+          "doc": "the source data buffer",
+          "types": [
+            "buffer"
+          ]
+        },
+        {
+          "name": "srcoffset",
+          "doc": "the offset to start copying data from",
+          "types": [
+            "number"
+          ]
+        },
+        {
+          "name": "count",
+          "doc": "the number of elements to copy",
+          "types": [
+            "number"
+          ]
+        }
+      ],
+      "examples": "How to copy elements (e.g. vertices) from one buffer to another\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- copy entire buffer</span>\n<span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">copy_buffer</span><span class=\"p\">(</span><span class=\"n\">dstbuffer</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">srcbuffer</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"o\">#</span><span class=\"n\">srcbuffer</span><span class=\"p\">)</span>\n\n<span class=\"c1\">-- copy last 10 elements to the front of another buffer</span>\n<span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">copy_buffer</span><span class=\"p\">(</span><span class=\"n\">dstbuffer</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">srcbuffer</span><span class=\"p\">,</span> <span class=\"o\">#</span><span class=\"n\">srcbuffer</span> <span class=\"o\">-</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "buffer.get_bytes",
+      "brief": "gets data from a stream",
+      "description": "Get a copy of all the bytes from a specified stream as a Lua string.",
       "returnvalues": [
         {
-          "doc": "the data stream", 
-          "name": "stream", 
+          "name": "data",
+          "doc": "the buffer data as a Lua string",
           "types": [
-            "bufferstream"
+            "string"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "gets a stream from a buffer", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "buffer.get_stream"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Copy a specified amount of data from one stream to another.\n<span class=\"icon-attention\"></span> The value type and size must match between source and destination streams.\nThe source and destination streams can be the same.", 
+      ],
       "parameters": [
         {
-          "doc": "the destination stream", 
-          "name": "dst", 
-          "types": [
-            "bufferstream"
-          ]
-        }, 
-        {
-          "doc": "the offset to start copying data to (measured in value type)", 
-          "name": "dstoffset", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "the source data stream", 
-          "name": "src", 
-          "types": [
-            "bufferstream"
-          ]
-        }, 
-        {
-          "doc": "the offset to start copying data from (measured in value type)", 
-          "name": "srcoffset", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "the number of values to copy (measured in value type)", 
-          "name": "count", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "copies data from one stream to another", 
-      "examples": "How to update a texture of a sprite:\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- copy entire stream</span>\n<span class=\"kd\">local</span> <span class=\"n\">srcstream</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">get_stream</span><span class=\"p\">(</span><span class=\"n\">srcbuffer</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">xyz&quot;</span><span class=\"p\">))</span>\n<span class=\"kd\">local</span> <span class=\"n\">dststream</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">get_stream</span><span class=\"p\">(</span><span class=\"n\">dstbuffer</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;</span><span class=\"s\">xyz&quot;</span><span class=\"p\">))</span>\n<span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">copy_stream</span><span class=\"p\">(</span><span class=\"n\">dststream</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">srcstream</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"o\">#</span><span class=\"n\">srcstream</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "buffer.copy_stream"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Copy all data streams from one buffer to another, element wise.\n<span class=\"icon-attention\"></span> Each of the source streams must have a matching stream in the\ndestination buffer. The streams must match in both type and size.\nThe source and destination buffer can be the same.", 
-      "parameters": [
-        {
-          "doc": "the destination buffer", 
-          "name": "dst", 
+          "name": "buffer",
+          "doc": "the source buffer",
           "types": [
             "buffer"
           ]
-        }, 
+        },
         {
-          "doc": "the offset to start copying data to", 
-          "name": "dstoffset", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "the source data buffer", 
-          "name": "src", 
-          "types": [
-            "buffer"
-          ]
-        }, 
-        {
-          "doc": "the offset to start copying data from", 
-          "name": "srcoffset", 
-          "types": [
-            "number"
-          ]
-        }, 
-        {
-          "doc": "the number of elements to copy", 
-          "name": "count", 
-          "types": [
-            "number"
-          ]
-        }
-      ], 
-      "returnvalues": [], 
-      "notes": [], 
-      "brief": "copies one buffer to another", 
-      "examples": "How to copy elements (e.g. vertices) from one buffer to another\n<div class=\"codehilite\"><pre><span></span><span class=\"c1\">-- copy entire buffer</span>\n<span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">copy_buffer</span><span class=\"p\">(</span><span class=\"n\">dstbuffer</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">srcbuffer</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"o\">#</span><span class=\"n\">srcbuffer</span><span class=\"p\">)</span>\n\n<span class=\"c1\">-- copy last 10 elements to the front of another buffer</span>\n<span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">copy_buffer</span><span class=\"p\">(</span><span class=\"n\">dstbuffer</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">srcbuffer</span><span class=\"p\">,</span> <span class=\"o\">#</span><span class=\"n\">srcbuffer</span> <span class=\"o\">-</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">)</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "buffer.copy_buffer"
-    }, 
-    {
-      "replaces": "", 
-      "description": "Get a copy of all the bytes from a specified stream as a Lua string.", 
-      "parameters": [
-        {
-          "doc": "the source buffer", 
-          "name": "buffer", 
-          "types": [
-            "buffer"
-          ]
-        }, 
-        {
-          "doc": "the name of the stream", 
-          "name": "stream_name", 
+          "name": "stream_name",
+          "doc": "the name of the stream",
           "types": [
             "hash"
           ]
         }
-      ], 
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "buffer.set_metadata",
+      "brief": "set a metadata entry on a buffer",
+      "description": "Creates or updates a metadata array entry on a buffer.\n<span class=\"icon-attention\"></span> The value type and count given when updating the entry should match those used when first creating it.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "buf",
+          "doc": "the buffer to set the metadata on",
+          "types": [
+            "buffer"
+          ]
+        },
+        {
+          "name": "metadata_name",
+          "doc": "name of the metadata entry",
+          "types": [
+            "hash",
+            "string"
+          ]
+        },
+        {
+          "name": "values",
+          "doc": "actual metadata, an array of numeric values",
+          "types": [
+            "table"
+          ]
+        },
+        {
+          "name": "value_type",
+          "doc": "type of values when stored",
+          "types": [
+            "constant"
+          ]
+        }
+      ],
+      "examples": "How to set a metadata entry on a buffer\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- create a new metadata entry with three floats</span>\n<span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">set_metadata</span><span class=\"p\">(</span><span class=\"n\">buf</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;somefloats&quot;</span><span class=\"p\">),</span> <span class=\"p\">{</span><span class=\"mf\">1.5</span><span class=\"p\">,</span> <span class=\"mf\">3.2</span><span class=\"p\">,</span> <span class=\"mf\">7.9</span><span class=\"p\">},</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">VALUE_TYPE_FLOAT32</span><span class=\"p\">)</span>\n<span class=\"c1\">-- ...</span>\n<span class=\"c1\">-- update to a new set of values</span>\n<span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">set_metadata</span><span class=\"p\">(</span><span class=\"n\">buf</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;somefloats&quot;</span><span class=\"p\">),</span> <span class=\"p\">{</span><span class=\"o\">-</span><span class=\"mf\">2.5</span><span class=\"p\">,</span> <span class=\"mf\">10.0</span><span class=\"p\">,</span> <span class=\"mf\">32.2</span><span class=\"p\">},</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">VALUE_TYPE_FLOAT32</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "buffer.get_metadata",
+      "brief": "retrieve a metadata entry from a buffer",
+      "description": "Get a named metadata entry from a buffer along with its type.",
       "returnvalues": [
         {
-          "doc": "the buffer data as a Lua string", 
-          "name": "data", 
+          "name": "values",
+          "doc": "table of metadata values or nil if the entry does not exist",
           "types": [
+            "table"
+          ]
+        },
+        {
+          "name": "value_type",
+          "doc": "numeric type of values or nil",
+          "types": [
+            "constant"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "buf",
+          "doc": "the buffer to get the metadata from",
+          "types": [
+            "buffer"
+          ]
+        },
+        {
+          "name": "metadata_name",
+          "doc": "name of the metadata entry",
+          "types": [
+            "hash",
             "string"
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "gets data from a stream", 
-      "examples": "", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "buffer.get_bytes"
+      ],
+      "examples": "How to get a metadata entry from a buffer\n<div class=\"codehilite\"><pre><span></span><code><span class=\"c1\">-- retrieve a metadata entry named &quot;somefloats&quot; and its nomeric type</span>\n<span class=\"kd\">local</span> <span class=\"n\">values</span><span class=\"p\">,</span> <span class=\"nb\">type</span> <span class=\"o\">=</span> <span class=\"n\">buffer</span><span class=\"p\">.</span><span class=\"n\">get_metadata</span><span class=\"p\">(</span><span class=\"n\">buf</span><span class=\"p\">,</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;somefloats&quot;</span><span class=\"p\">))</span>\n<span class=\"kr\">if</span> <span class=\"n\">metadata</span> <span class=\"kr\">then</span> <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"o\">#</span><span class=\"n\">metadata</span><span class=\"o\">..</span><span class=\"s2\">&quot; values in &#39;somefloats&#39;&quot;</span><span class=\"p\">)</span> <span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "buffer",
+    "name": "Buffer",
+    "brief": "Buffer API documentation",
+    "description": "Functions for manipulating buffers and streams",
+    "path": "",
+    "file": "",
+    "notes": [],
+    "group": "SCRIPT"
+  }
 }

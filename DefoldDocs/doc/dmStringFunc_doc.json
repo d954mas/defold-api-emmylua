@@ -1,226 +1,264 @@
 {
-  "info": {
-    "group": "DEFOLD SDK", 
-    "description": "SDK Defold String Utils API documentation", 
-    "namespace": "dmStringFunc", 
-    "brief": "String functions.", 
-    "file": "dmsdk/dlib/dstrings.h", 
-    "path": "engine/dlib/src/dmsdk/dlib/dstrings.h", 
-    "name": "DStrings"
-  }, 
   "elements": [
     {
-      "replaces": "", 
-      "description": "Size-bounded string formating. Resulting string is guaranteed to be 0-terminated.", 
-      "parameters": [
-        {
-          "doc": "Buffer to write to", 
-          "name": "buffer", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "Size of the buffer", 
-          "name": "count", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "String format", 
-          "name": "format", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmSnPrintf",
+      "brief": "Size-bounded string formating.",
+      "description": "Size-bounded string formating. Resulting string is guaranteed to be 0-terminated.",
       "returnvalues": [
         {
-          "doc": "of the resulting string (excl terminating 0) if it fits, -1 otherwise", 
-          "name": "Size", 
+          "name": "Size",
+          "doc": "of the resulting string (excl terminating 0) if it fits, -1 otherwise",
           "types": [
             ""
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Size-bounded string formating.", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kt\">char</span> <span class=\"n\">path</span><span class=\"p\">[</span><span class=\"mi\">64</span><span class=\"p\">];</span>\n<span class=\"n\">dmSnPrintf</span><span class=\"p\">(</span><span class=\"n\">path</span><span class=\"p\">,</span> <span class=\"mi\">64</span><span class=\"p\">,</span> <span class=\"n\">PATH_FORMAT</span><span class=\"p\">,</span> <span class=\"n\">filename</span><span class=\"p\">);</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmSnPrintf"
-    }, 
+      ],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "Buffer to write to",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "count",
+          "doc": "Size of the buffer",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "format",
+          "doc": "String format",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kt\">char</span><span class=\"w\"> </span><span class=\"n\">path</span><span class=\"p\">[</span><span class=\"mi\">64</span><span class=\"p\">];</span><span class=\"w\"></span>\n<span class=\"n\">dmSnPrintf</span><span class=\"p\">(</span><span class=\"n\">path</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">64</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">PATH_FORMAT</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">filename</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Tokenize strings. Equivalent to BSD strsep_r. Thread-save version of strtok.", 
-      "parameters": [
-        {
-          "doc": "Pointer to string. For the first call string is the string to tokenize. Subsequent should pass NULL.", 
-          "name": "string", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "Delimiter string", 
-          "name": "delim", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "Internal state pointer", 
-          "name": "lasts", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmStrTok",
+      "brief": "Tokenize strings.",
+      "description": "Tokenize strings. Equivalent to BSD strsep_r. Thread-save version of strtok.",
       "returnvalues": [
         {
-          "doc": "call to dmStrTok() returns a pointer to a null-terminated string containing the next token. This string does not include the delimiting byte. If no more tokens are found, dmStrTok() returns NULL", 
-          "name": "Each", 
+          "name": "Each",
+          "doc": "call to dmStrTok() returns a pointer to a null-terminated string containing the next token. This string does not include the delimiting byte. If no more tokens are found, dmStrTok() returns NULL",
           "types": [
             ""
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Tokenize strings.", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"kt\">char</span><span class=\"o\">*</span> <span class=\"n\">string</span> <span class=\"o\">=</span> <span class=\"n\">strdup</span><span class=\"p\">(</span><span class=\"s\">&quot;a b c&quot;</span><span class=\"p\">);</span>\n<span class=\"kt\">char</span><span class=\"o\">*</span> <span class=\"n\">s</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">last</span><span class=\"p\">;</span>\n<span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">dmStrTok</span><span class=\"p\">(</span><span class=\"n\">string</span><span class=\"p\">,</span> <span class=\"s\">&quot; &quot;</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">last</span><span class=\"p\">);</span> <span class=\"c1\">// a</span>\n<span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">dmStrTok</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"s\">&quot; &quot;</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">last</span><span class=\"p\">);</span> <span class=\"c1\">// b</span>\n<span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"n\">dmStrTok</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"s\">&quot; &quot;</span><span class=\"p\">,</span> <span class=\"o\">&amp;</span><span class=\"n\">last</span><span class=\"p\">);</span> <span class=\"c1\">// c</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmStrTok"
-    }, 
+      ],
+      "parameters": [
+        {
+          "name": "string",
+          "doc": "Pointer to string. For the first call string is the string to tokenize. Subsequent should pass NULL.",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "delim",
+          "doc": "Delimiter string",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "lasts",
+          "doc": "Internal state pointer",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kt\">char</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">string</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">strdup</span><span class=\"p\">(</span><span class=\"s\">&quot;a b c&quot;</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"kt\">char</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">s</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"n\">last</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"n\">s</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmStrTok</span><span class=\"p\">(</span><span class=\"n\">string</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot; &quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">last</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// a</span>\n<span class=\"n\">s</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmStrTok</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot; &quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">last</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// b</span>\n<span class=\"n\">s</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmStrTok</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot; &quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"o\">&amp;</span><span class=\"n\">last</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// c</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Size-bounded string copying. Same as OpenBSD 2.4 <a href=\"http://www.manpagez.com/man/3/strlcpy/\">strlcpy</a>.\nCopy src to string dst of size siz.  At most siz-1 characters will be copied.\nAlways NUL terminates (unless siz == 0).Returns strlen(src); if retval &gt;= siz, truncation occurred.", 
-      "parameters": [
-        {
-          "doc": "Destination string", 
-          "name": "dst", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "Source string", 
-          "name": "src", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "Max size", 
-          "name": "size", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmStrlCpy",
+      "brief": "Size-bounded string copying.",
+      "description": "Size-bounded string copying. Same as OpenBSD 2.4 <a href=\"http://www.manpagez.com/man/3/strlcpy/\">strlcpy</a>.\nCopy src to string dst of size siz.  At most siz-1 characters will be copied.\nAlways NUL terminates (unless siz == 0).Returns strlen(src); if retval &gt;= siz, truncation occurred.",
       "returnvalues": [
         {
-          "doc": "length of the created string", 
-          "name": "Total", 
+          "name": "Total",
+          "doc": "length of the created string",
           "types": [
             ""
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Size-bounded string copying.", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">const</span> <span class=\"kt\">char</span><span class=\"o\">*</span> <span class=\"n\">src</span> <span class=\"o\">=</span> <span class=\"s\">&quot;foo&quot;</span><span class=\"p\">;</span>\n<span class=\"kt\">char</span> <span class=\"n\">dst</span><span class=\"p\">[</span><span class=\"mi\">3</span><span class=\"p\">];</span>\n<span class=\"n\">dmStrlCpy</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">,</span> <span class=\"n\">src</span><span class=\"p\">,</span> <span class=\"k\">sizeof</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">));</span> <span class=\"c1\">// dst = &quot;fo&quot;</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmStrlCpy"
-    }, 
+      ],
+      "parameters": [
+        {
+          "name": "dst",
+          "doc": "Destination string",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "src",
+          "doc": "Source string",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "size",
+          "doc": "Max size",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">const</span><span class=\"w\"> </span><span class=\"kt\">char</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">src</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"s\">&quot;foo&quot;</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"kt\">char</span><span class=\"w\"> </span><span class=\"n\">dst</span><span class=\"p\">[</span><span class=\"mi\">3</span><span class=\"p\">];</span><span class=\"w\"></span>\n<span class=\"n\">dmStrlCpy</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">src</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"k\">sizeof</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">));</span><span class=\"w\"> </span><span class=\"c1\">// dst = &quot;fo&quot;</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Size-bounded string concatenation. Same as OpenBSD 2.4 <a href=\"http://www.manpagez.com/man/3/strlcat\">strlcat</a>.\nAppends src to string dst of size siz (unlike strncat, siz is the full size of dst, not space left).\nAt most siz-1 characters will be copied.  Always NUL terminates (unless siz == 0).\nReturns strlen(src); if retval &gt;= siz, truncation occurred.", 
-      "parameters": [
-        {
-          "doc": "Destination string", 
-          "name": "dst", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "Source string", 
-          "name": "src", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "Max size", 
-          "name": "size", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmStrlCat",
+      "brief": "Size-bounded string concatenation.",
+      "description": "Size-bounded string concatenation. Same as OpenBSD 2.4 <a href=\"http://www.manpagez.com/man/3/strlcat\">strlcat</a>.\nAppends src to string dst of size siz (unlike strncat, siz is the full size of dst, not space left).\nAt most siz-1 characters will be copied.  Always NUL terminates (unless siz == 0).\nReturns strlen(src); if retval &gt;= siz, truncation occurred.",
       "returnvalues": [
         {
-          "doc": "length of the created string", 
-          "name": "Total", 
+          "name": "Total",
+          "doc": "length of the created string",
           "types": [
             ""
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Size-bounded string concatenation.", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"k\">const</span> <span class=\"kt\">char</span><span class=\"o\">*</span> <span class=\"n\">src</span> <span class=\"o\">=</span> <span class=\"s\">&quot;foo&quot;</span><span class=\"p\">;</span>\n<span class=\"kt\">char</span> <span class=\"n\">dst</span><span class=\"p\">[</span><span class=\"mi\">3</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"mi\">0</span> <span class=\"p\">};</span>\n<span class=\"n\">dmStrlCat</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">,</span> <span class=\"n\">src</span><span class=\"p\">,</span> <span class=\"k\">sizeof</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">));</span> <span class=\"c1\">// dst = &quot;fo&quot;</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmStrlCat"
-    }, 
+      ],
+      "parameters": [
+        {
+          "name": "dst",
+          "doc": "Destination string",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "src",
+          "doc": "Source string",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "size",
+          "doc": "Max size",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">const</span><span class=\"w\"> </span><span class=\"kt\">char</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">src</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"s\">&quot;foo&quot;</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"kt\">char</span><span class=\"w\"> </span><span class=\"n\">dst</span><span class=\"p\">[</span><span class=\"mi\">3</span><span class=\"p\">]</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"p\">{</span><span class=\"w\"> </span><span class=\"mi\">0</span><span class=\"w\"> </span><span class=\"p\">};</span><span class=\"w\"></span>\n<span class=\"n\">dmStrlCat</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">src</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"k\">sizeof</span><span class=\"p\">(</span><span class=\"n\">dst</span><span class=\"p\">));</span><span class=\"w\"> </span><span class=\"c1\">// dst = &quot;fo&quot;</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
     {
-      "replaces": "", 
-      "description": "Case-insensitive string comparison", 
-      "parameters": [
-        {
-          "doc": "First string to compare", 
-          "name": "s1", 
-          "types": [
-            ""
-          ]
-        }, 
-        {
-          "doc": "Second string to compare", 
-          "name": "s2", 
-          "types": [
-            ""
-          ]
-        }
-      ], 
+      "type": "FUNCTION",
+      "name": "dmStrCaseCmp",
+      "brief": "Case-insensitive string comparison",
+      "description": "Case-insensitive string comparison",
       "returnvalues": [
         {
-          "doc": "integer greater than, equal to, or less than 0 after lexicographically comparison of s1 and s2", 
-          "name": "an", 
+          "name": "an",
+          "doc": "integer greater than, equal to, or less than 0 after lexicographically comparison of s1 and s2",
           "types": [
             ""
           ]
         }
-      ], 
-      "notes": [], 
-      "brief": "Case-insensitive string comparison", 
-      "examples": "<div class=\"codehilite\"><pre><span></span><span class=\"n\">dmStrCaseCmp</span><span class=\"p\">(</span><span class=\"s\">&quot;a&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;b&quot;</span><span class=\"p\">);</span> <span class=\"c1\">// &lt;0</span>\n<span class=\"n\">dmStrCaseCmp</span><span class=\"p\">(</span><span class=\"s\">&quot;b&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;a&quot;</span><span class=\"p\">);</span> <span class=\"c1\">// &gt;0</span>\n<span class=\"n\">dmStrCaseCmp</span><span class=\"p\">(</span><span class=\"s\">&quot;a&quot;</span><span class=\"p\">,</span> <span class=\"s\">&quot;a&quot;</span><span class=\"p\">);</span> <span class=\"c1\">// 0</span>\n</pre></div>", 
-      "members": [], 
-      "error": "", 
-      "tparams": [], 
-      "type": "FUNCTION", 
-      "name": "dmStrCaseCmp"
+      ],
+      "parameters": [
+        {
+          "name": "s1",
+          "doc": "First string to compare",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "s2",
+          "doc": "Second string to compare",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmStrCaseCmp</span><span class=\"p\">(</span><span class=\"s\">&quot;a&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;b&quot;</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// &lt;0</span>\n<span class=\"n\">dmStrCaseCmp</span><span class=\"p\">(</span><span class=\"s\">&quot;b&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a&quot;</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// &gt;0</span>\n<span class=\"n\">dmStrCaseCmp</span><span class=\"p\">(</span><span class=\"s\">&quot;a&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"s\">&quot;a&quot;</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// 0</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmStrError",
+      "brief": "Error code to string representation",
+      "description": "Error code to string representation. Wrapper for thread-safe strerror_s/r variants.\nIf the size of the buffer is too small, the message will be truncated to fit the buffer.\nIf the buffer is null, or if size is zero, nothing will happen.",
+      "returnvalues": [
+        {
+          "name": "a",
+          "doc": "null-terminated error message",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "dst",
+          "doc": "Destination string that carries the error message",
+          "types": [
+            ""
+          ]
+        },
+        {
+          "name": "size",
+          "doc": "Max size of destination string in bytes",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kt\">char</span><span class=\"w\"> </span><span class=\"n\">buf</span><span class=\"p\">[</span><span class=\"mi\">128</span><span class=\"p\">];</span><span class=\"w\"></span>\n<span class=\"n\">dmStrError</span><span class=\"p\">(</span><span class=\"n\">buf</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"k\">sizeof</span><span class=\"p\">(</span><span class=\"n\">buf</span><span class=\"p\">),</span><span class=\"w\"> </span><span class=\"n\">ENOENT</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// buf =&gt; &quot;No such file or directory&quot;</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
-  ]
+  ],
+  "info": {
+    "namespace": "dmStringFunc",
+    "name": "DStrings",
+    "brief": "String functions.",
+    "description": "SDK Defold String Utils API documentation",
+    "path": "engine/dlib/src/dmsdk/dlib/dstrings.h",
+    "file": "dmsdk/dlib/dstrings.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
 }
