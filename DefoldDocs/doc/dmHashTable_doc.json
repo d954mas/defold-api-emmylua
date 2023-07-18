@@ -17,6 +17,53 @@
       ]
     },
     {
+      "type": "STRUCT",
+      "name": "Iterator",
+      "brief": "Iterator to the key/value pairs of a hash table",
+      "description": "Iterator to the key/value pairs of a hash table",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [
+        {
+          "name": "GetKey()",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "GetValue()",
+          "doc": "",
+          "type": ""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetIterator",
+      "brief": "Get an iterator for the key/value pairs",
+      "description": "Get an iterator for the key/value pairs",
+      "returnvalues": [
+        {
+          "name": "iterator",
+          "doc": "the iterator",
+          "types": [
+            "dmHashTable<T>::Iterator"
+          ]
+        }
+      ],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmHashTable</span><span class=\"o\">&lt;</span><span class=\"n\">dmhash_t</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"kt\">int</span><span class=\"o\">&gt;::</span><span class=\"n\">Iterator</span><span class=\"w\"> </span><span class=\"n\">iter</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">ht</span><span class=\"p\">.</span><span class=\"n\">GetIterator</span><span class=\"p\">();</span><span class=\"w\"></span>\n<span class=\"k\">while</span><span class=\"p\">(</span><span class=\"n\">iter</span><span class=\"p\">.</span><span class=\"n\">Next</span><span class=\"p\">())</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">printf</span><span class=\"p\">(</span><span class=\"s\">&quot;%s: %d</span><span class=\"se\">\\n</span><span class=\"s\">&quot;</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">dmHashReverseSafe64</span><span class=\"p\">(</span><span class=\"n\">iter</span><span class=\"p\">.</span><span class=\"n\">GetKey</span><span class=\"p\">()),</span><span class=\"w\"> </span><span class=\"n\">iter</span><span class=\"p\">.</span><span class=\"n\">GetValue</span><span class=\"p\">());</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
       "type": "FUNCTION",
       "name": "dmHashTable16",
       "brief": "Specialized hash table with <span class=\"type\">uint16_t</span> as key...",

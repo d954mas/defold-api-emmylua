@@ -1,0 +1,333 @@
+{
+  "elements": [
+    {
+      "type": "ENUM",
+      "name": "Result",
+      "brief": "result code",
+      "description": "Result code. Similar to standard posix result codes",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [
+        {
+          "name": "dmSys::RESULT_OK",
+          "doc": "<div class=\"codehilite\"><pre><span></span><code> 0\n</code></pre></div>",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_PERM",
+          "doc": "-1",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_NOENT",
+          "doc": "-2",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_SRCH",
+          "doc": "-3",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_INTR",
+          "doc": "-4",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_IO",
+          "doc": "<div class=\"codehilite\"><pre><span></span><code>-5\n</code></pre></div>",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_NXIO",
+          "doc": "-6",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_2BIG",
+          "doc": "-7",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_NOEXEC",
+          "doc": "-8",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_BADF",
+          "doc": "-9",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_CHILD",
+          "doc": "-10",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_DEADLK",
+          "doc": "-11",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_NOMEM",
+          "doc": "-12",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_ACCES",
+          "doc": "-13",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_FAULT",
+          "doc": "-14",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_BUSY",
+          "doc": "-15",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_EXIST",
+          "doc": "-16",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_XDEV",
+          "doc": "-17",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_NODEV",
+          "doc": "-18",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_NOTDIR",
+          "doc": "-19",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_ISDIR",
+          "doc": "-20",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_INVAL",
+          "doc": "-21",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_NFILE",
+          "doc": "-22",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_MFILE",
+          "doc": "-23",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_NOTTY",
+          "doc": "-24",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_TXTBSY",
+          "doc": "-25",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_FBIG",
+          "doc": "-26",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_NOSPC",
+          "doc": "-27",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_SPIPE",
+          "doc": "-28",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_ROFS",
+          "doc": "-29",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_MLINK",
+          "doc": "-30",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_PIPE",
+          "doc": "-31",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_NOTEMPTY",
+          "doc": "-32",
+          "type": ""
+        },
+        {
+          "name": "dmSys::RESULT_UNKNOWN",
+          "doc": "-1000",
+          "type": ""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Exists",
+      "brief": "Checks if a path exists",
+      "description": "Checks if a path exists",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "true on success",
+          "types": [
+            "bool"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "path",
+          "doc": "path to directory to create",
+          "types": [
+            "const char*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Unlink",
+      "brief": "Remove file",
+      "description": "Remove file",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "RESULT_OK on success",
+          "types": [
+            "dmSys::Result"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "path",
+          "doc": "path to file to remove",
+          "types": [
+            "const char*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Rename",
+      "brief": "Move a file or directory",
+      "description": "Move a file or directory",
+      "returnvalues": [
+        {
+          "name": "RESULT_OK",
+          "doc": "on success",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "dst_path",
+          "doc": "the destination path. The file which contents is to be overwritten.",
+          "types": [
+            "const char*"
+          ]
+        },
+        {
+          "name": "src_path",
+          "doc": "the source path. The contents will be written to the destination path and the file unlinked if successful.",
+          "types": [
+            "const char*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "This operation is atomic"
+      ]
+    },
+    {
+      "type": "STRUCT",
+      "name": "StatInfo",
+      "brief": "Status info for a file or directory",
+      "description": "Status info for a file or directory",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [
+        {
+          "name": "m_Size",
+          "doc": "the file size (if it's a file)",
+          "type": "uint32_t"
+        },
+        {
+          "name": "m_Mode",
+          "doc": "the flags of the path",
+          "type": "uint32_t"
+        },
+        {
+          "name": "m_AccessTime",
+          "doc": "the last access time",
+          "type": "uint32_t"
+        },
+        {
+          "name": "m_ModifiedTime",
+          "doc": "the last modified time",
+          "type": "uint32_t"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "info": {
+    "namespace": "dmSys",
+    "name": "Sys",
+    "brief": "SDK Sys API documentation",
+    "description": "Sys allocation functions",
+    "path": "engine/dlib/src/dmsdk/dlib/sys.h",
+    "file": "dmsdk/dlib/sys.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
+}

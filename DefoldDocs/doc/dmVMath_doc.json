@@ -1,5 +1,1161 @@
 {
-  "elements": [],
+  "elements": [
+    {
+      "type": "TYPEDEF",
+      "name": "Point3",
+      "brief": "3-tuple",
+      "description": "A 3-tuple (with 4-th element always set to 1)",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Point3</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Point3</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">y</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">z</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// Create new point</span>\n<span class=\"kt\">float</span><span class=\"w\"> </span><span class=\"n\">length_squared</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getX</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getX</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">+</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getY</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getY</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">+</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getZ</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getZ</span><span class=\"p\">();</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "16 byte aligned",
+        "Always size of 4 float32",
+        "Currently scalar implementation is used on most platforms"
+      ]
+    },
+    {
+      "type": "TYPEDEF",
+      "name": "Vector3",
+      "brief": "3-tuple",
+      "description": "A 3-tuple (with 4-th element always set to 0)",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Vector3</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Vector3</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">y</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">z</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// Create new vector</span>\n<span class=\"kt\">float</span><span class=\"w\"> </span><span class=\"n\">length_squared</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getX</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getX</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">+</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getY</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getY</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">+</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getZ</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getZ</span><span class=\"p\">();</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "16 byte aligned",
+        "Always size of 4 float32",
+        "Currently scalar implementation is used on most platforms"
+      ]
+    },
+    {
+      "type": "TYPEDEF",
+      "name": "Vector4",
+      "brief": "4-tuple",
+      "description": "A 4-tuple",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Vector4</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Vector4</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">y</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">z</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">w</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// Create new vector</span>\n<span class=\"kt\">float</span><span class=\"w\"> </span><span class=\"n\">length_squared</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getX</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getX</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">+</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getY</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getY</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">+</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getZ</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getZ</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">+</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getW</span><span class=\"p\">()</span><span class=\"w\"> </span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"p\">.</span><span class=\"n\">getW</span><span class=\"p\">();</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "16 byte aligned",
+        "Always size of 4 float32",
+        "Currently scalar implementation is used on most platforms"
+      ]
+    },
+    {
+      "type": "TYPEDEF",
+      "name": "Quat",
+      "brief": "4-tuple representing a rotation",
+      "description": "A 4-tuple representing a rotation rotation. The <code>xyz</code> represents the axis, and the <code>w</code> represents the angle.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Quat</span><span class=\"w\"> </span><span class=\"n\">p</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Quat</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">y</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">z</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">w</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// Create new rotation. W is the angle</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "16 byte aligned",
+        "Always size of 4 float32",
+        "Currently scalar implementation is used on most platforms"
+      ]
+    },
+    {
+      "type": "TYPEDEF",
+      "name": "Matrix3",
+      "brief": "3x3 matrix",
+      "description": "A 3x3 matrix",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "16 byte aligned",
+        "Implemented as 3 x Vector3",
+        "Column major",
+        "Currently scalar implementation is used on most platforms"
+      ]
+    },
+    {
+      "type": "TYPEDEF",
+      "name": "Matrix4",
+      "brief": "4x4 matrix",
+      "description": "A 4x4 matrix",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "16 byte aligned",
+        "Implemented as 4 x Vector4",
+        "Column major",
+        "Currently scalar implementation is used on most platforms"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Dot",
+      "brief": "dot product between two vectors",
+      "description": "dot product between two vectors",
+      "returnvalues": [
+        {
+          "name": "dot_product",
+          "doc": "the dot product",
+          "types": [
+            "float"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "a",
+          "doc": "the first vector",
+          "types": [
+            "Vector3"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "the second vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Dot",
+      "brief": "dot product between two vectors",
+      "description": "dot product between two vectors",
+      "returnvalues": [
+        {
+          "name": "dot_product",
+          "doc": "the dot product",
+          "types": [
+            "float"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "a",
+          "doc": "the first vector",
+          "types": [
+            "Vector4"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "the second vector",
+          "types": [
+            "Vector4"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Length",
+      "brief": "calculate length of a vector",
+      "description": "calculate length of a vector",
+      "returnvalues": [
+        {
+          "name": "length",
+          "doc": "the length",
+          "types": [
+            "float"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "v",
+          "doc": "the vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Length",
+      "brief": "calculate length of a vector",
+      "description": "calculate length of a vector",
+      "returnvalues": [
+        {
+          "name": "length",
+          "doc": "the length",
+          "types": [
+            "float"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "v",
+          "doc": "the vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Length",
+      "brief": "calculate length of a quaternion",
+      "description": "calculate length of a quaternion",
+      "returnvalues": [
+        {
+          "name": "length",
+          "doc": "the length",
+          "types": [
+            "float"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "v",
+          "doc": "the quaternion",
+          "types": [
+            "Quat"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Length",
+      "brief": "calculate squared length of a vector",
+      "description": "calculate squared length of a vector",
+      "returnvalues": [
+        {
+          "name": "length",
+          "doc": "the squared length",
+          "types": [
+            "float"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "v",
+          "doc": "the vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Length",
+      "brief": "calculate squared length of a vector",
+      "description": "calculate squared length of a vector",
+      "returnvalues": [
+        {
+          "name": "length",
+          "doc": "the squared length",
+          "types": [
+            "float"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "v",
+          "doc": "the vector",
+          "types": [
+            "Vector4"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Length",
+      "brief": "calculate squared length of a quaternion",
+      "description": "calculate squared length of a quaternion",
+      "returnvalues": [
+        {
+          "name": "length",
+          "doc": "the squared length",
+          "types": [
+            "float"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "v",
+          "doc": "the vector",
+          "types": [
+            "Quat"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Normalize",
+      "brief": "normalize a vector to length 1",
+      "description": "normalize a vector to length 1",
+      "returnvalues": [
+        {
+          "name": "n",
+          "doc": "the normalized vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "v",
+          "doc": "the vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Normalize",
+      "brief": "normalize a vector to length 1",
+      "description": "normalize a vector to length 1",
+      "returnvalues": [
+        {
+          "name": "n",
+          "doc": "the normalized vector",
+          "types": [
+            "Vector4"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "v",
+          "doc": "the vector",
+          "types": [
+            "Vector4"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Normalize",
+      "brief": "normalize a quaternion to length 1",
+      "description": "normalize a quaternion to length 1",
+      "returnvalues": [
+        {
+          "name": "n",
+          "doc": "the normalized quaternion",
+          "types": [
+            "Quat"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "v",
+          "doc": "the quaternion",
+          "types": [
+            "Quat"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Lerp",
+      "brief": "linear interpolate between two vectors",
+      "description": "linear interpolate between two vectors",
+      "returnvalues": [
+        {
+          "name": "v",
+          "doc": "the result vector <code>v = a + (b - a) * t</code>",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "t",
+          "doc": "the unit time",
+          "types": [
+            "float"
+          ]
+        },
+        {
+          "name": "a",
+          "doc": "the start vector (t == 0)",
+          "types": [
+            "Vector3"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "the end vector (t == 1)",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Vector3</span><span class=\"w\"> </span><span class=\"n\">v0</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Lerp</span><span class=\"p\">(</span><span class=\"mf\">0.0f</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">a</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">b</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// v0 == a</span>\n<span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Vector3</span><span class=\"w\"> </span><span class=\"n\">v1</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Lerp</span><span class=\"p\">(</span><span class=\"mf\">1.0f</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">a</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">b</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// v1 == b</span>\n<span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Vector3</span><span class=\"w\"> </span><span class=\"n\">v2</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Lerp</span><span class=\"p\">(</span><span class=\"mf\">2.0f</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">a</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">b</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// v2 == a + (b-a) * 2.0f</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Does not clamp t to between 0 and 1"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Lerp",
+      "brief": "linear interpolate between two vectors",
+      "description": "linear interpolate between two vectors",
+      "returnvalues": [
+        {
+          "name": "v",
+          "doc": "the result vector <code>v = a + (b - a) * t</code>",
+          "types": [
+            "Vector4"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "t",
+          "doc": "the unit time",
+          "types": [
+            "float"
+          ]
+        },
+        {
+          "name": "a",
+          "doc": "the start vector (t == 0)",
+          "types": [
+            "Vector4"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "the end vector (t == 1)",
+          "types": [
+            "Vector4"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Vector4</span><span class=\"w\"> </span><span class=\"n\">v0</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Lerp</span><span class=\"p\">(</span><span class=\"mf\">0.0f</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">a</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">b</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// v0 == a</span>\n<span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Vector4</span><span class=\"w\"> </span><span class=\"n\">v1</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Lerp</span><span class=\"p\">(</span><span class=\"mf\">1.0f</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">a</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">b</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// v1 == b</span>\n<span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Vector4</span><span class=\"w\"> </span><span class=\"n\">v2</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Lerp</span><span class=\"p\">(</span><span class=\"mf\">2.0f</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">a</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">b</span><span class=\"p\">);</span><span class=\"w\"> </span><span class=\"c1\">// v2 == a + (b-a) * 2.0f</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Does not clamp t to between 0 and 1"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Slerp",
+      "brief": "spherical linear interpolate between two vectors",
+      "description": "spherical linear interpolate between two vectors",
+      "returnvalues": [
+        {
+          "name": "v",
+          "doc": "the result vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "t",
+          "doc": "the unit time",
+          "types": [
+            "float"
+          ]
+        },
+        {
+          "name": "a",
+          "doc": "the start vector (t == 0)",
+          "types": [
+            "Vector3"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "the end vector (t == 1)",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Does not clamp t to between 0 and 1",
+        "Unpredicatable results if a and b point in opposite direction"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Slerp",
+      "brief": "spherical linear interpolate between two vectors",
+      "description": "spherical linear interpolate between two vectors",
+      "returnvalues": [
+        {
+          "name": "v",
+          "doc": "the result vector",
+          "types": [
+            "Vector4"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "t",
+          "doc": "the unit time",
+          "types": [
+            "float"
+          ]
+        },
+        {
+          "name": "a",
+          "doc": "the start vector (t == 0)",
+          "types": [
+            "Vector4"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "the end vector (t == 1)",
+          "types": [
+            "Vector4"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Does not clamp t to between 0 and 1",
+        "Unpredicatable results if a and b point in opposite direction"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Slerp",
+      "brief": "spherical linear interpolate between two vectors",
+      "description": "Interpolates along the shortest path between two quaternions",
+      "returnvalues": [
+        {
+          "name": "v",
+          "doc": "the result vector",
+          "types": [
+            "Quat"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "t",
+          "doc": "the unit time",
+          "types": [
+            "float"
+          ]
+        },
+        {
+          "name": "a",
+          "doc": "the start vector (t == 0)",
+          "types": [
+            "Quat"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "the end vector (t == 1)",
+          "types": [
+            "Quat"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Does not clamp t to between 0 and 1"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "DivPerElem",
+      "brief": "divide two vectors per element",
+      "description": "Divide two vectors per element: <code>Vector3(a.x/b.x, a.y/b.y, a.z/b.z)</code>",
+      "returnvalues": [
+        {
+          "name": "v",
+          "doc": "the result vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "a",
+          "doc": "the operand",
+          "types": [
+            "Vector3"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "the dividend",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "DivPerElem",
+      "brief": "divide two vectors per element",
+      "description": "Divide two vectors per element: <code>Vector3(a.x/b.x, a.y/b.y, a.z/b.z, a.w/b.w)</code>",
+      "returnvalues": [
+        {
+          "name": "v",
+          "doc": "the result vector",
+          "types": [
+            "Vector4"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "a",
+          "doc": "the operand",
+          "types": [
+            "Vector4"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "the dividend",
+          "types": [
+            "Vector4"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Cross",
+      "brief": "cross product between two vectors",
+      "description": "cross product between two vectors",
+      "returnvalues": [
+        {
+          "name": "v",
+          "doc": "the result vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "a",
+          "doc": "the operand",
+          "types": [
+            "Vector3"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "the dividend",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "MulPerElem",
+      "brief": "multiply two vectors per element",
+      "description": "Multiply two vectors per element: <code>Vector3(a.x * b.x, a.y * b.y, a.z * b.z)</code>",
+      "returnvalues": [
+        {
+          "name": "v",
+          "doc": "the result vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "a",
+          "doc": "the first vector",
+          "types": [
+            "Vector3"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "the second vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "MulPerElem",
+      "brief": "multiply two vectors per element",
+      "description": "Multiply two vectors per element: <code>Vector3(a.x * b.x, a.y * b.y, a.z * b.z, a.w * b.w)</code>",
+      "returnvalues": [
+        {
+          "name": "v",
+          "doc": "the result vector",
+          "types": [
+            "Vector4"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "a",
+          "doc": "the first vector",
+          "types": [
+            "Vector4"
+          ]
+        },
+        {
+          "name": "b",
+          "doc": "the second vector",
+          "types": [
+            "Vector4"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "MulPerElem",
+      "brief": "abs value per element",
+      "description": "Return absolute value per element: <code>Vector3(abs(v.x), abs(v.y), abs(v.z))</code>",
+      "returnvalues": [
+        {
+          "name": "r",
+          "doc": "the result vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "v",
+          "doc": "the vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "MulPerElem",
+      "brief": "conjugate of quaternion",
+      "description": "Returns the conjugate of the quaternion: <code>conj = -q</code>",
+      "returnvalues": [
+        {
+          "name": "r",
+          "doc": "the result",
+          "types": [
+            "Quat"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "q",
+          "doc": "the quaternions",
+          "types": [
+            "Quat"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Rotate",
+      "brief": "rotate vector using quaternion",
+      "description": "rotate vector using quaternion",
+      "returnvalues": [
+        {
+          "name": "r",
+          "doc": "the rotated vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "q",
+          "doc": "the rotation",
+          "types": [
+            "Quat"
+          ]
+        },
+        {
+          "name": "v",
+          "doc": "the vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Transpose",
+      "brief": "transpose matrix",
+      "description": "transpose matrix",
+      "returnvalues": [
+        {
+          "name": "r",
+          "doc": "the transposed matrix",
+          "types": [
+            "Matrix3"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "m",
+          "doc": "the rotation",
+          "types": [
+            "Matrix3"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Transpose",
+      "brief": "transpose matrix",
+      "description": "transpose matrix",
+      "returnvalues": [
+        {
+          "name": "r",
+          "doc": "the transposed matrix",
+          "types": [
+            "Matrix4"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "m",
+          "doc": "the rotation",
+          "types": [
+            "Matrix4"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Inverse",
+      "brief": "inverse matrix",
+      "description": "inverse matrix",
+      "returnvalues": [
+        {
+          "name": "r",
+          "doc": "the transposed matrix",
+          "types": [
+            "Matrix3"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "m",
+          "doc": "the rotation",
+          "types": [
+            "Matrix3"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "Inverse",
+      "brief": "inverse matrix",
+      "description": "inverse matrix",
+      "returnvalues": [
+        {
+          "name": "r",
+          "doc": "the transposed matrix",
+          "types": [
+            "Matrix4"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "m",
+          "doc": "the rotation",
+          "types": [
+            "Matrix4"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "OrthoInverse",
+      "brief": "Compute the inverse of a 4x4 matrix, which is expe...",
+      "description": "Compute the inverse of a 4x4 matrix, which is expected to be an affine matrix with an orthogonal upper-left 3x3 submatrix",
+      "returnvalues": [
+        {
+          "name": "r",
+          "doc": "the transposed matrix",
+          "types": [
+            "Matrix4"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "m",
+          "doc": "the rotation",
+          "types": [
+            "Matrix4"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "AppendScale",
+      "brief": "post multiply scale",
+      "description": "post multiply scale",
+      "returnvalues": [
+        {
+          "name": "r",
+          "doc": "the scaled vector",
+          "types": [
+            "Matrix4"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "m",
+          "doc": "the matrix",
+          "types": [
+            "Matrix4"
+          ]
+        },
+        {
+          "name": "v",
+          "doc": "the scale vector",
+          "types": [
+            "Vector3"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    }
+  ],
   "info": {
     "namespace": "dmVMath",
     "name": "Vector Math",

@@ -7,8 +7,8 @@
       "description": "Adds a timer and returns a unique handle\nYou may create more timers from inside a timer callback.\nUsing a delay of 0 will result in a timer that triggers at the next frame just before\nscript update functions.\nIf you want a timer that triggers on each frame, set delay to 0.0f and repeat to true.\nTimers created within a script will automatically die when the script is deleted.",
       "returnvalues": [
         {
-          "name": "",
-          "doc": "handle identifier for the create timer, returns timer.INVALID_TIMER_HANDLE if the timer can not be created",
+          "name": "handle",
+          "doc": "identifier for the create timer, returns timer.INVALID_TIMER_HANDLE if the timer can not be created",
           "types": [
             "hash"
           ]
@@ -37,7 +37,7 @@
           ]
         }
       ],
-      "examples": "",
+      "examples": "A simple one-shot timer\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">delay</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">,</span> <span class=\"kr\">function</span><span class=\"p\">()</span> <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;print in one second&quot;</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span>\n</code></pre></div>\n\nRepetitive timer which canceled after 10 calls\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">call_every_second</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">,</span> <span class=\"n\">handle</span><span class=\"p\">,</span> <span class=\"n\">time_elapsed</span><span class=\"p\">)</span>\n  <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">counter</span> <span class=\"o\">=</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">counter</span> <span class=\"o\">+</span> <span class=\"mi\">1</span>\n  <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;Call #&quot;</span><span class=\"p\">,</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">counter</span><span class=\"p\">)</span>\n  <span class=\"kr\">if</span> <span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">counter</span> <span class=\"o\">==</span> <span class=\"mi\">10</span> <span class=\"kr\">then</span>\n    <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">cancel</span><span class=\"p\">(</span><span class=\"n\">handle</span><span class=\"p\">)</span> <span class=\"c1\">-- cancel timer after 100 calls</span>\n  <span class=\"kr\">end</span>\n<span class=\"kr\">end</span>\n\n<span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">counter</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n<span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">delay</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"n\">call_every_second</span><span class=\"p\">)</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],
@@ -67,7 +67,7 @@
           ]
         }
       ],
-      "examples": "",
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">handle</span> <span class=\"o\">=</span> <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">delay</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"kr\">function</span><span class=\"p\">()</span> <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;print every second&quot;</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"p\">...</span>\n<span class=\"kd\">local</span> <span class=\"n\">result</span> <span class=\"o\">=</span> <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">cancel</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">handle</span><span class=\"p\">)</span>\n<span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"n\">result</span> <span class=\"kr\">then</span>\n   <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;the timer is already cancelled&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],
@@ -97,7 +97,37 @@
           ]
         }
       ],
-      "examples": "",
+      "examples": "<code>`lua\nself.handle = timer.delay(1, true, function() print(\"print every second or manually by timer.trigger\") end)\n...\nlocal result = timer.trigger(self.handle)\nif not result then\n   print(\"the timer is already cancelled or complete\")\nend</code>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "timer.get_info",
+      "brief": "get information about timer",
+      "description": "Get information about timer.",
+      "returnvalues": [
+        {
+          "name": "data",
+          "doc": "or nil if timer is cancelled/completed. table with data in the following fields:\n<dl>\n<dt><code>time_remaining</code></dt>\n<dd><span class=\"type\">number</span> Time remaining until the next time a timer.delay() fires.</dd>\n<dt><code>delay</code></dt>\n<dd><span class=\"type\">number</span> Time interval.</dd>\n<dt><code>repeating</code></dt>\n<dd><span class=\"type\">boolean</span> true = repeat timer until cancel, false = one-shot timer.</dd>\n</dl>",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "handle",
+          "doc": "the timer handle returned by timer.delay()",
+          "types": [
+            "hash"
+          ]
+        }
+      ],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">handle</span> <span class=\"o\">=</span> <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">delay</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"kc\">true</span><span class=\"p\">,</span> <span class=\"kr\">function</span><span class=\"p\">()</span> <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;print every second&quot;</span><span class=\"p\">)</span> <span class=\"kr\">end</span><span class=\"p\">)</span>\n<span class=\"p\">...</span>\n<span class=\"kd\">local</span> <span class=\"n\">result</span> <span class=\"o\">=</span> <span class=\"n\">timer</span><span class=\"p\">.</span><span class=\"n\">get_info</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">.</span><span class=\"n\">handle</span><span class=\"p\">)</span>\n<span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"n\">result</span> <span class=\"kr\">then</span>\n   <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">&quot;the timer is already cancelled or complete&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">else</span>\n   <span class=\"n\">pprint</span><span class=\"p\">(</span><span class=\"n\">result</span><span class=\"p\">)</span> <span class=\"c1\">-- delay, time_remaining, repeating</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],

@@ -2,6 +2,20 @@
   "elements": [
     {
       "type": "FUNCTION",
+      "name": "HContext",
+      "brief": "A handle to a gui context",
+      "description": "A handle to a gui context",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "HScene",
       "brief": "A handle to a gui scene",
       "description": "A handle to a gui scene",
@@ -19,6 +33,20 @@
       "name": "HNode",
       "brief": "A handle to a gui node",
       "description": "A handle to a gui node",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "HScript",
+      "brief": "A handle to a gui script",
+      "description": "A handle to a gui script",
       "returnvalues": [],
       "parameters": [],
       "examples": "",

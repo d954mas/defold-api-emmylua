@@ -140,6 +140,11 @@ function go.cancel_animations(url, property) end
 ---@param recursive boolean optional boolean, set to true to recursively delete child hiearchy in child to parent order
 function go.delete(id, recursive) end
 
+---check if the specified game object exists
+---@param url string|hash|url url of the game object to check
+---@return bool true if the game object exists
+function go.exists(url) end
+
 ---gets a named property of the specified game object or component
 ---@param url string|hash|url url of the game object or component having the property
 ---@param property string|hash id of the property to retrieve
@@ -218,7 +223,7 @@ function go.get_world_transform(id) end
 ---The properties defined this way are automatically exposed in the editor in game objects and collections which use the script.
 ---Note that you can only use this function outside any callback-functions like init and update.
 ---@param name string the id of the property
----@param value number|hash|url|vector3|vector4|quaternion|resource default value of the property. In the case of a url, only the empty constructor msg.url() is allowed. In the case of a resource one of the resource constructors (eg resource.atlas(), resource.font() etc) is expected.
+---@param value number|hash|url|vector3|vector4|quaternion|resource|boolean default value of the property. In the case of a url, only the empty constructor msg.url() is allowed. In the case of a resource one of the resource constructors (eg resource.atlas(), resource.font() etc) is expected.
 function go.property(name, value) end
 
 ---sets a named property of the specified game object or component, or a material constant

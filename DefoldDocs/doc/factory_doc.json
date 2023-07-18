@@ -189,6 +189,40 @@
       "tparams": [],
       "members": [],
       "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "factory.set_prototype",
+      "brief": "changes the prototype for the factory",
+      "description": "Changes the prototype for the factory.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "[url]",
+          "doc": "the factory component",
+          "types": [
+            "string",
+            "hash",
+            "url"
+          ]
+        },
+        {
+          "name": "[prototype]",
+          "doc": "the path to the new prototype, or nil",
+          "types": [
+            "string",
+            "nil"
+          ]
+        }
+      ],
+      "examples": "How to unload the previous prototypes resources, and then spawn a new game object\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">factory</span><span class=\"p\">.</span><span class=\"n\">unload</span><span class=\"p\">(</span><span class=\"s2\">&quot;#factory&quot;</span><span class=\"p\">)</span> <span class=\"c1\">-- unload the previous resources</span>\n<span class=\"n\">factory</span><span class=\"p\">.</span><span class=\"n\">set_prototype</span><span class=\"p\">(</span><span class=\"s2\">&quot;#factory&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;/main/levels/enemyA.goc&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">id</span> <span class=\"o\">=</span> <span class=\"n\">factory</span><span class=\"p\">.</span><span class=\"n\">create</span><span class=\"p\">(</span><span class=\"s2\">&quot;#factory&quot;</span><span class=\"p\">,</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get_world_position</span><span class=\"p\">(),</span> <span class=\"n\">vmath</span><span class=\"p\">.</span><span class=\"n\">quat</span><span class=\"p\">())</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "- Requires the factory to have the \"Dynamic Prototype\" set\n  - Cannot be set when the state is COMP_FACTORY_STATUS_LOADING\n  - Setting the prototype to \"nil\" will revert back to the original prototype."
+      ]
     }
   ],
   "info": {

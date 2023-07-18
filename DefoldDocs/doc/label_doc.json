@@ -99,6 +99,48 @@
       "notes": []
     },
     {
+      "type": "PROPERTY",
+      "name": "leading",
+      "brief": "<span class=\"type\">number</span> label leading",
+      "description": "The leading of the label. This value is used to scale the line spacing of text.\nThe type of the property is number.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "How to query a label's leading:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n <span class=\"c1\">-- get leading from component &quot;label&quot;</span>\n <span class=\"kd\">local</span> <span class=\"n\">leading</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;leading&quot;</span><span class=\"p\">)</span>\n <span class=\"c1\">-- do something useful</span>\n <span class=\"n\">leading</span> <span class=\"o\">=</span> <span class=\"n\">leading</span> <span class=\"o\">*</span> <span class=\"mf\">1.2</span>\n <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;leading&quot;</span><span class=\"p\">,</span> <span class=\"n\">leading</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "PROPERTY",
+      "name": "tracking",
+      "brief": "<span class=\"type\">number</span> label tracking",
+      "description": "The tracking of the label.\nThis value is used to adjust the vertical spacing of characters in the text.\nThe type of the property is number.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "How to query a label's tracking:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n <span class=\"c1\">-- get tracking from component &quot;label&quot;</span>\n <span class=\"kd\">local</span> <span class=\"n\">tracking</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;tracking&quot;</span><span class=\"p\">)</span>\n <span class=\"c1\">-- do something useful</span>\n <span class=\"n\">tracking</span> <span class=\"o\">=</span> <span class=\"n\">tracking</span> <span class=\"o\">*</span> <span class=\"mf\">1.2</span>\n <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;tracking&quot;</span><span class=\"p\">,</span> <span class=\"n\">tracking</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "PROPERTY",
+      "name": "line_break",
+      "brief": "<span class=\"type\">bool</span> label line break",
+      "description": "The line break of the label.\nThis value is used to adjust the vertical spacing of characters in the text.\nThe type of the property is boolean.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "How to query a label's line break:\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n <span class=\"c1\">-- get line_break from component &quot;label&quot;</span>\n <span class=\"kd\">local</span> <span class=\"n\">line_break</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;line_break&quot;</span><span class=\"p\">)</span>\n <span class=\"c1\">-- do something useful</span>\n <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#label&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;line_break&quot;</span><span class=\"p\">,</span> <span class=\"kc\">false</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
       "type": "FUNCTION",
       "name": "label.set_text",
       "brief": "set the text for a label",

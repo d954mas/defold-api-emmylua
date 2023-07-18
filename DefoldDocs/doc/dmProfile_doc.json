@@ -881,6 +881,66 @@
       "tparams": [],
       "members": [],
       "notes": []
+    },
+    {
+      "type": "TYPEDEF",
+      "name": "HProfile",
+      "brief": "Profile snapshot handle",
+      "description": "Profile snapshot handle",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "BeginFrame",
+      "brief": "Begin profiling, eg start of frame",
+      "description": "Begin profiling, eg start of frame",
+      "returnvalues": [
+        {
+          "name": "context",
+          "doc": "The current profiling context. Must be released by #EndFrame",
+          "types": [
+            "dmProfile::HProfile"
+          ]
+        }
+      ],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "NULL is returned if profiling is disabled"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "EndFrame",
+      "brief": "Release profile returned by #Begin",
+      "description": "Release profile returned by #Begin",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "profile",
+          "doc": "Profile to release",
+          "types": [
+            "dmProfile::HProfile"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
   ],
   "info": {

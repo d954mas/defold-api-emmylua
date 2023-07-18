@@ -69,6 +69,38 @@
     },
     {
       "type": "FUNCTION",
+      "name": "sys.get_host_path",
+      "brief": "create a path to the host device for unit testing",
+      "description": "Create a path to the host device for unit testing\nUseful for saving logs etc during development",
+      "returnvalues": [
+        {
+          "name": "host_path",
+          "doc": "the path prefixed with the proper host mount",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "filename",
+          "doc": "file to read from",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "examples": "Save data on the host\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">host_path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_host_path</span><span class=\"p\">(</span><span class=\"s2\">&quot;logs/test.txt&quot;</span><span class=\"p\">)</span>\n<span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">save</span><span class=\"p\">(</span><span class=\"n\">host_path</span><span class=\"p\">,</span> <span class=\"n\">mytable</span><span class=\"p\">)</span>\n</code></pre></div>\n\nLoad data from the host\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">host_path</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_host_path</span><span class=\"p\">(</span><span class=\"s2\">&quot;logs/test.txt&quot;</span><span class=\"p\">)</span>\n<span class=\"kd\">local</span> <span class=\"n\">table</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"n\">host_path</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Only enabled in debug builds. In release builds returns the string unchanged"
+      ]
+    },
+    {
+      "type": "FUNCTION",
       "name": "sys.get_save_file",
       "brief": "gets the save-file path",
       "description": "The save-file path is operating system specific and is typically located under the user's home directory.",
@@ -232,7 +264,7 @@
           ]
         }
       ],
-      "examples": "Get user config value\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">speed</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config_float</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game.speed&quot;</span><span class=\"p\">,</span> <span class=\"mf\">20.0</span><span class=\"p\">)</span>\n</code></pre></div>",
+      "examples": "Get user config value\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"n\">speed</span> <span class=\"o\">=</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">get_config_number</span><span class=\"p\">(</span><span class=\"s2\">&quot;my_game.speed&quot;</span><span class=\"p\">,</span> <span class=\"mf\">20.0</span><span class=\"p\">)</span>\n</code></pre></div>",
       "replaces": "",
       "error": "",
       "tparams": [],

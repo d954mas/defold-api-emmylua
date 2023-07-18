@@ -360,6 +360,20 @@
     },
     {
       "type": "TYPEDEF",
+      "name": "HRenderTarget",
+      "brief": "Rendertarget handle",
+      "description": "Rendertarget handle",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "TYPEDEF",
       "name": "HVertexProgram",
       "brief": "Vertex program handle",
       "description": "Vertex program handle",
@@ -1007,6 +1021,31 @@
           "name": "TYPE_SAMPLER_CUBE",
           "doc": "",
           "type": ""
+        },
+        {
+          "name": "TYPE_SAMPLER_2D_ARRAY",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TYPE_FLOAT_VEC2",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TYPE_FLOAT_VEC3",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TYPE_FLOAT_MAT2",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "TYPE_FLOAT_MAT3",
+          "doc": "",
+          "type": ""
         }
       ],
       "notes": []
@@ -1150,6 +1189,56 @@
           "doc": "the name of the stream",
           "types": [
             "const char*"
+          ]
+        },
+        {
+          "name": "size",
+          "doc": "the size of the stream, i.e number of components",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "type",
+          "doc": "the data type of the stream",
+          "types": [
+            "dmGraphics::Type"
+          ]
+        },
+        {
+          "name": "normalize",
+          "doc": "true if the stream should be normalized in the 0..1 range",
+          "types": [
+            "bool"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "AddVertexStream",
+      "brief": "Adds a stream to a stream declaration",
+      "description": "Adds a stream to a stream declaration",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "context",
+          "doc": "the context",
+          "types": [
+            "dmGraphics::HContext"
+          ]
+        },
+        {
+          "name": "name_hash",
+          "doc": "the name hash of the stream",
+          "types": [
+            "uint64_t"
           ]
         },
         {

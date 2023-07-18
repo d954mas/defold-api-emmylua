@@ -1282,6 +1282,43 @@
     },
     {
       "type": "FUNCTION",
+      "name": "GetGamePad",
+      "brief": "gets a gamepad device handle",
+      "description": "gets a gamepad device handle",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "true if gamepad has a user id data assigned to it",
+          "types": [
+            "boolean"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "gamepad",
+          "doc": "Handle to gamepad",
+          "types": [
+            "dmHID::HGamepad"
+          ]
+        },
+        {
+          "name": "out",
+          "doc": "Platform specific user id data",
+          "types": [
+            "void**"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "AddTouch",
       "brief": "Adds a touch event touch.",
       "description": "Adds a touch event touch.",

@@ -869,8 +869,10 @@
           "name": "to",
           "doc": "target property value",
           "types": [
+            "number",
             "vector3",
-            "vector4"
+            "vector4",
+            "quaternion"
           ]
         },
         {
@@ -3003,6 +3005,36 @@
         {
           "name": "node",
           "doc": "root node to clone",
+          "types": [
+            "node"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "gui.get_tree",
+      "brief": "get a node including its children",
+      "description": "Get a node and all its children as a Lua table.",
+      "returnvalues": [
+        {
+          "name": "clones",
+          "doc": "a table mapping node ids to the corresponding nodes",
+          "types": [
+            "table"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "node",
+          "doc": "root node to get node tree from",
           "types": [
             "node"
           ]

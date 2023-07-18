@@ -140,6 +140,48 @@
       "tparams": [],
       "members": [],
       "notes": []
+    },
+    {
+      "type": "PROPERTY",
+      "name": "projection",
+      "brief": "<span class=\"type\">float</span> camera projection",
+      "description": "<span class=\"mark\">READ ONLY</span> The calculated projection matrix of the camera.\nThe type of the property is matrix4.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">projection</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#camera&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;projection&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "PROPERTY",
+      "name": "view",
+      "brief": "<span class=\"type\">float</span> camera view",
+      "description": "<span class=\"mark\">READ ONLY</span> The calculated view matrix of the camera.\nThe type of the property is matrix4.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">view</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#camera&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;view&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "PROPERTY",
+      "name": "aspect_ratio",
+      "brief": "<span class=\"type\">float</span> camera aspect ratio",
+      "description": "The ratio between the frustum width and height. Used when calculating the\nprojection of a perspective camera.\nThe type of the property is number.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">function</span> <span class=\"nf\">init</span><span class=\"p\">(</span><span class=\"n\">self</span><span class=\"p\">)</span>\n  <span class=\"kd\">local</span> <span class=\"n\">aspect_ratio</span> <span class=\"o\">=</span> <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">get</span><span class=\"p\">(</span><span class=\"s2\">&quot;#camera&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;aspect_ratio&quot;</span><span class=\"p\">)</span>\n  <span class=\"n\">go</span><span class=\"p\">.</span><span class=\"n\">set</span><span class=\"p\">(</span><span class=\"s2\">&quot;#camera&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;aspect_ratio&quot;</span><span class=\"p\">,</span> <span class=\"mf\">1.2</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
   ],
   "info": {

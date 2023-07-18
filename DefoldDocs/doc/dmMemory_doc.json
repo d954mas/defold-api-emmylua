@@ -1,0 +1,110 @@
+{
+  "elements": [
+    {
+      "type": "ENUM",
+      "name": "Result",
+      "brief": "aligned memory allocation result",
+      "description": "Aligned memory allocation result",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [
+        {
+          "name": "dmMemory::RESULT_OK",
+          "doc": "0",
+          "type": ""
+        },
+        {
+          "name": "dmMemory::RESULT_INVAL",
+          "doc": "-1",
+          "type": ""
+        },
+        {
+          "name": "dmMemory::RESULT_NOMEM",
+          "doc": "-2",
+          "type": ""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "AlignedMalloc",
+      "brief": "Allocate size bytes of uninitialized storage whose...",
+      "description": "Allocate size bytes of uninitialized storage whose alignment is specified by alignment.",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "Returns RESULT_OK on success, RESULT_INVAL if alignment is not a power of 2 and RESULT_NOMEM if out of memory.",
+          "types": [
+            "Result"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "memptr",
+          "doc": "Pointer to a void* where the allocated pointer address should be stored.",
+          "types": [
+            "void**"
+          ]
+        },
+        {
+          "name": "alignment",
+          "doc": "The alignment value, which must be an integer power of 2.",
+          "types": [
+            "uint32_t"
+          ]
+        },
+        {
+          "name": "size",
+          "doc": "Size of the requested memory allocation.",
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "AlignedFree",
+      "brief": "Frees a block of memory that was allocated with dm...",
+      "description": "Frees a block of memory that was allocated with dmMemory::AlignedMalloc",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "memptr",
+          "doc": "A pointer to the memory block that was returned by dmMemory::AlignedMalloc",
+          "types": [
+            "void*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    }
+  ],
+  "info": {
+    "namespace": "dmMemory",
+    "name": "Memory",
+    "brief": "SDK Memory API documentation",
+    "description": "Memory allocation functions",
+    "path": "engine/dlib/src/dmsdk/dlib/memory.h",
+    "file": "dmsdk/dlib/memory.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
+}

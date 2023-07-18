@@ -1,0 +1,275 @@
+{
+  "elements": [
+    {
+      "type": "TYPEDEF",
+      "name": "int32_atomic_t",
+      "brief": "32 bit signed integer atomic",
+      "description": "32 bit signed integer atomic",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmAtomicIncrement32",
+      "brief": "Atomic increment of an int32_atomic_t.",
+      "description": "Atomic increment of an int32_atomic_t.",
+      "returnvalues": [
+        {
+          "name": "prev",
+          "doc": "Previous value",
+          "types": [
+            "int32_t"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "ptr",
+          "doc": "Pointer to an int32_atomic_t to increment.",
+          "types": [
+            "int32_atomic_t*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmAtomicDecrement32",
+      "brief": "Atomic decrement of an int32_atomic_t.",
+      "description": "Atomic decrement of an int32_atomic_t.",
+      "returnvalues": [
+        {
+          "name": "prev",
+          "doc": "Previous value",
+          "types": [
+            "int32_t"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "ptr",
+          "doc": "Pointer to an int32_atomic_t to decrement.",
+          "types": [
+            "int32_atomic_t*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmAtomicAdd32",
+      "brief": "Atomic addition of an int32_atomic_t.",
+      "description": "Atomic addition of an int32_atomic_t.",
+      "returnvalues": [
+        {
+          "name": "prev",
+          "doc": "Previous value",
+          "types": [
+            "int32_t"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "ptr",
+          "doc": "Pointer to an int32_atomic_t to add to.",
+          "types": [
+            "int32_atomic_t*"
+          ]
+        },
+        {
+          "name": "value",
+          "doc": "Value to add.",
+          "types": [
+            "int32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmAtomicSub32",
+      "brief": "Atomic subtraction of an int32_atomic_t.",
+      "description": "Atomic subtraction of an int32_atomic_t.",
+      "returnvalues": [
+        {
+          "name": "prev",
+          "doc": "Previous value",
+          "types": [
+            "int32_t"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "ptr",
+          "doc": "Pointer to an int32_atomic_t to subtract from.",
+          "types": [
+            "int32_atomic_t*"
+          ]
+        },
+        {
+          "name": "value",
+          "doc": "Value to subtract.",
+          "types": [
+            "int32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmAtomicStore32",
+      "brief": "Atomic set (or exchange) of an int32_atomic_t.",
+      "description": "Atomic set (or exchange) of an int32_atomic_t.",
+      "returnvalues": [
+        {
+          "name": "prev",
+          "doc": "Previous value",
+          "types": [
+            "int32_t"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "ptr",
+          "doc": "Pointer to an int32_atomic_t to store into.",
+          "types": [
+            "int32_atomic_t*"
+          ]
+        },
+        {
+          "name": "value",
+          "doc": "Value to set.",
+          "types": [
+            "int32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmAtomicCompareStore32",
+      "brief": "Atomic set (or exchange) of an int32_atomic_t if c...",
+      "description": "Atomic set (or exchange) of an int32_atomic_t if comparand is equal to the value of ptr.",
+      "returnvalues": [
+        {
+          "name": "prev",
+          "doc": "Previous value",
+          "types": [
+            "int32_t"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "ptr",
+          "doc": "Pointer to an int32_atomic_t to store into.",
+          "types": [
+            "int32_atomic_t*"
+          ]
+        },
+        {
+          "name": "value",
+          "doc": "Value to set.",
+          "types": [
+            "int32_t"
+          ]
+        },
+        {
+          "name": "comparand",
+          "doc": "Value to compare to.",
+          "types": [
+            "int32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmAtomicGet32",
+      "brief": "Atomic get of an int32_atomic_t",
+      "description": "Atomic get of an int32_atomic_t",
+      "returnvalues": [
+        {
+          "name": "value",
+          "doc": "Current value",
+          "types": [
+            "int32_t"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "ptr",
+          "doc": "Pointer to an int32_atomic_t to get from.",
+          "types": [
+            "int32_atomic_t*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Retrieves the current value by adding 0"
+      ]
+    }
+  ],
+  "info": {
+    "namespace": "dmAtomic",
+    "name": "Atomic",
+    "brief": "Atomic functions",
+    "description": "Atomic functions",
+    "path": "engine/dlib/src/dmsdk/dlib/atomic.h",
+    "file": "dmsdk/dlib/atomic.h",
+    "notes": [],
+    "group": "DEFOLD SDK"
+  }
+}
