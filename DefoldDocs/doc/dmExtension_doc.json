@@ -66,12 +66,17 @@
       "members": [
         {
           "name": "m_ConfigFile",
-          "doc": "",
+          "doc": "the config file",
           "type": "dmConfigFile::HConfig"
         },
         {
+          "name": "m_ResourceFactory",
+          "doc": "the resource factory",
+          "type": "dmResource::HFactory"
+        },
+        {
           "name": "m_L",
-          "doc": "",
+          "doc": "the lua state",
           "type": "lua_State*"
         }
       ],

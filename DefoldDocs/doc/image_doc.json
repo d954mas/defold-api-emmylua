@@ -52,7 +52,8 @@
           "name": "image",
           "doc": "object or <code>nil</code> if loading fails. The object is a table with the following fields:\n<ul>\n<li><span class=\"type\">number</span> <code>width</code>: image width</li>\n<li><span class=\"type\">number</span> <code>height</code>: image height</li>\n<li><span class=\"type\">constant</span> <code>type</code>: image type<ul>\n<li><code>image.TYPE_RGB</code></li>\n<li><code>image.TYPE_RGBA</code></li>\n<li><code>image.TYPE_LUMINANCE</code></li>\n</ul>\n</li>\n<li><span class=\"type\">string</span> <code>buffer</code>: the raw image data</li>\n</ul>",
           "types": [
-            "table"
+            "table",
+            "nil"
           ]
         }
       ],

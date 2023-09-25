@@ -29,8 +29,8 @@ function client:getfd() end
 
 ---Gets options for the TCP object. See client:setoption <> for description of the option names and values.
 ---@param option string the name of the option to get:
----@return any the option value, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return any|nil the option value, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function client:getoption(option) end
 
 ---Returns information about the remote side of a connected client object.
@@ -49,9 +49,9 @@ function client:getstats() end
 ---Reads data from a client object, according to the specified read pattern. Patterns follow the Lua file I/O format, and the difference in performance between patterns is negligible.
 ---@param pattern string|number the read pattern that can be any of the following:
 ---@param prefix string an optional string to be concatenated to the beginning of any received data before return.
----@return string the received pattern, or nil in case of error.
----@return string the error message, or nil if no error occurred. The error message can be the string "closed" in case the connection was closed before the transmission was completed or the string "timeout" in case there was a timeout during the operation.
----@return string a (possibly empty) string containing the partial that was received, or nil if no error occurred.
+---@return string|nil the received pattern, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred. The error message can be the string "closed" in case the connection was closed before the transmission was completed or the string "timeout" in case there was a timeout during the operation.
+---@return string|nil a (possibly empty) string containing the partial that was received, or nil if no error occurred.
 function client:receive(pattern, prefix) end
 
 ---Sends data through client object.
@@ -60,9 +60,9 @@ function client:receive(pattern, prefix) end
 ---@param data string the string to be sent.
 ---@param i number optional starting index of the string.
 ---@param j number optional end index of string.
----@return number the index of the last byte within [i, j] that has been sent, or nil in case of error. Notice that, if i is 1 or absent, this is effectively the total number of bytes sent.
----@return string the error message, or nil if no error occurred. The error message can be "closed" in case the connection was closed before the transmission was completed or the string "timeout" in case there was a timeout during the operation.
----@return number in case of error, the index of the last byte within [i, j] that has been sent. You might want to try again from the byte following that. nil if no error occurred.
+---@return number|nil the index of the last byte within [i, j] that has been sent, or nil in case of error. Notice that, if i is 1 or absent, this is effectively the total number of bytes sent.
+---@return string|nil the error message, or nil if no error occurred. The error message can be "closed" in case the connection was closed before the transmission was completed or the string "timeout" in case there was a timeout during the operation.
+---@return number|nil in case of error, the index of the last byte within [i, j] that has been sent. You might want to try again from the byte following that. nil if no error occurred.
 function client:send(data, i, j) end
 
 ---Sets the underling socket descriptor or handle associated to the object. The current one is simply replaced, not closed, and no other change to the object state is made
@@ -72,15 +72,15 @@ function client:setfd(handle) end
 ---Sets options for the TCP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.
 ---@param option string the name of the option to set. The value is provided in the value parameter:
 ---@param value any the value to set for the specified option.
----@return number the value 1, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return number|nil the value 1, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function client:setoption(option, value) end
 
 ---Resets accounting information on the socket, useful for throttling of bandwidth.
 ---@param received number the new number of bytes received.
 ---@param sent number the new number of bytes sent.
 ---@param age number the new age in seconds.
----@return number the value 1 in case of success, or nil in case of error.
+---@return number|nil the value 1 in case of success, or nil in case of error.
 function client:setstats(received, sent, age) end
 
 ---Changes the timeout values for the object. By default, all I/O operations are blocking. That is, any call to the methods send, receive, and accept will block indefinitely, until the operation completes. The settimeout method defines a limit on the amount of time the I/O methods can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.
@@ -101,8 +101,8 @@ function connected:close() end
 
 ---Gets an option value from the UDP object. See connected:setoption <> for description of the option names and values.
 ---@param option string the name of the option to get:
----@return any the option value, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return any|nil the option value, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function connected:getoption(option) end
 
 ---Retrieves information about the peer associated with a connected UDP object.
@@ -117,30 +117,30 @@ function connected:getsockname() end
 
 ---Receives a datagram from the UDP object. If the UDP object is connected, only datagrams coming from the peer are accepted. Otherwise, the returned datagram can come from any host.
 ---@param size number optional maximum size of the datagram to be retrieved. If there are more than size bytes available in the datagram, the excess bytes are discarded. If there are less then size bytes available in the current datagram, the available bytes are returned. If size is omitted, the maximum datagram size is used (which is currently limited by the implementation to 8192 bytes).
----@return string the received datagram, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return string|nil the received datagram, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function connected:receive(size) end
 
 ---Sends a datagram to the UDP peer of a connected object.
 --- In UDP, the send method never blocks and the only way it can fail is if the underlying transport layer refuses to send a message to the specified address (i.e. no interface accepts the address).
 ---@param datagram string a string with the datagram contents. The maximum datagram size for UDP is 64K minus IP layer overhead. However datagrams larger than the link layer packet size will be fragmented, which may deteriorate performance and/or reliability.
----@return number the value 1 on success, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return number|nil the value 1 on success, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function connected:send(datagram) end
 
 ---Sets options for the UDP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.
 ---@param option string the name of the option to set. The value is provided in the value parameter:
 ---@param value any the value to set for the specified option.
----@return number the value 1, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return number|nil the value 1, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function connected:setoption(option, value) end
 
 ---Changes the peer of a UDP object. This method turns an unconnected UDP object into a connected UDP object or vice versa.
 ---For connected objects, outgoing datagrams will be sent to the specified peer, and datagrams received from other peers will be discarded by the OS. Connected UDP objects must use the send and receive methods instead of sendto and receivefrom.
 --- Since the address of the peer does not have to be passed to and from the OS, the use of connected UDP objects is recommended when the same peer is used for several transmissions and can result in up to 30% performance gains.
 ---@param _ string if address is "*" and the object is connected, the peer association is removed and the object becomes an unconnected object again.
----@return number the value 1 on success, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return number|nil the value 1 on success, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function connected:setpeername(_) end
 
 ---Changes the timeout values for the object. By default, the receive and receivefrom  operations are blocking. That is, any call to the methods will block indefinitely, until data arrives. The settimeout function defines a limit on the amount of time the functions can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.
@@ -151,8 +151,8 @@ function connected:settimeout(value) end
 ---Binds a master object to address and port on the local host.
 ---@param address string an IP address or a host name. If address is "*", the system binds to all local interfaces using the INADDR_ANY constant.
 ---@param port number the port to commect to, in the range [0..64K). If port is 0, the system automatically chooses an ephemeral port.
----@return number the value 1, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return number|nil the value 1, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function master:bind(address, port) end
 
 ---Closes the TCP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.
@@ -163,8 +163,8 @@ function master:close() end
 ---Note that the function socket.connect is available and is a shortcut for the creation of client sockets.
 ---@param address string an IP address or a host name. If address is "*", the system binds to all local interfaces using the INADDR_ANY constant.
 ---@param port number the port to commect to, in the range [0..64K). If port is 0, the system automatically chooses an ephemeral port.
----@return number the value 1, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return number|nil the value 1, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function master:connect(address, port) end
 
 ---Check the read buffer status.
@@ -187,8 +187,8 @@ function master:getstats() end
 
 ---Specifies the socket is willing to receive connections, transforming the object into a server object. Server objects support the accept, getsockname, setoption, settimeout, and close methods.
 ---@param backlog number the number of client connections that can be queued waiting for service. If the queue is full and another client attempts connection, the connection is refused.
----@return number the value 1, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return number|nil the value 1, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function master:listen(backlog) end
 
 ---Sets the underling socket descriptor or handle associated to the object. The current one is simply replaced, not closed, and no other change to the object state is made
@@ -199,7 +199,7 @@ function master:setfd(handle) end
 ---@param received number the new number of bytes received.
 ---@param sent number the new number of bytes sent.
 ---@param age number the new age in seconds.
----@return number the value 1 in case of success, or nil in case of error.
+---@return number|nil the value 1 in case of success, or nil in case of error.
 function master:setstats(received, sent, age) end
 
 ---Changes the timeout values for the object. By default, all I/O operations are blocking. That is, any call to the methods send, receive, and accept will block indefinitely, until the operation completes. The settimeout method defines a limit on the amount of time the I/O methods can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.
@@ -211,8 +211,8 @@ function master:settimeout(value, mode) end
 
 ---Waits for a remote connection on the server object and returns a client object representing that connection.
 --- Calling socket.select with a server object in the recvt parameter before a call to accept does not guarantee accept will return immediately. Use the settimeout method or accept might block until another client shows up.
----@return client if a connection is successfully initiated, a client object is returned, or nil in case of error.
----@return string the error message, or nil if no error occurred. The error is "timeout" if a timeout condition is met.
+---@return client|nil if a connection is successfully initiated, a client object is returned, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred. The error is "timeout" if a timeout condition is met.
 function server:accept() end
 
 ---Closes the TCP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.
@@ -231,8 +231,8 @@ function server:getfd() end
 
 ---Gets options for the TCP object. See server:setoption <> for description of the option names and values.
 ---@param option string the name of the option to get:
----@return any the option value, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return any|nil the option value, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function server:getoption(option) end
 
 ---Returns the local address information associated to the object.
@@ -250,15 +250,15 @@ function server:setfd(handle) end
 ---Sets options for the TCP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.
 ---@param option string the name of the option to set. The value is provided in the value parameter:
 ---@param value any the value to set for the specified option.
----@return number the value 1, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return number|nil the value 1, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function server:setoption(option, value) end
 
 ---Resets accounting information on the socket, useful for throttling of bandwidth.
 ---@param received number the new number of bytes received.
 ---@param sent number the new number of bytes sent.
 ---@param age number the new age in seconds.
----@return number the value 1 in case of success, or nil in case of error.
+---@return number|nil the value 1 in case of success, or nil in case of error.
 function server:setstats(received, sent, age) end
 
 ---Changes the timeout values for the object. By default, all I/O operations are blocking. That is, any call to the methods send, receive, and accept will block indefinitely, until the operation completes. The settimeout method defines a limit on the amount of time the I/O methods can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.
@@ -282,8 +282,8 @@ socket._VERSION = nil
 ---@param locaddr string optional local address to bind to.
 ---@param locport number optional local port to bind to.
 ---@param family string optional socket family to use, "inet" or "inet6".
----@return client a new IPv6 TCP client object, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return client|nil a new IPv6 TCP client object, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function socket.connect(address, port, locaddr, locport, family) end
 
 ---This function converts a host name to IPv4 or IPv6 address.
@@ -305,8 +305,8 @@ function socket.connect(address, port, locaddr, locport, family) end
 ---Here, family contains the string "inet" for IPv4 addresses, and "inet6" for IPv6 addresses.
 ---In case of error, the function returns nil followed by an error message.
 ---@param address string a hostname or an IPv4 or IPv6 address.
----@return table a table with all information returned by the resolver, or if an error occurs, nil.
----@return string the error message, or nil if no error occurred.
+---@return table|nil a table with all information returned by the resolver, or if an error occurs, nil.
+---@return string|nil the error message, or nil if no error occurred.
 function socket.dns.getaddrinfo(address) end
 
 ---Returns the standard host name for the machine as a string.
@@ -322,21 +322,21 @@ function socket.dns.gethostname() end
 ---  [n] = host-name-n,
 ---}
 ---@param address string a hostname or an IPv4 or IPv6 address.
----@return table a table with all information returned by the resolver, or if an error occurs, nil.
----@return string the error message, or nil if no error occurred.
+---@return table|nil a table with all information returned by the resolver, or if an error occurs, nil.
+---@return string|nil the error message, or nil if no error occurred.
 function socket.dns.getnameinfo(address) end
 
 ---This function converts from an IPv4 address to host name.
 ---The address can be an IPv4 address or a host name.
 ---@param address string an IPv4 address or host name.
----@return string the canonic host name of the given address, or nil in case of an error.
+---@return string|nil the canonic host name of the given address, or nil in case of an error.
 ---@return table|string a table with all information returned by the resolver, or if an error occurs, the error message string.
 function socket.dns.tohostname(address) end
 
 ---This function converts a host name to IPv4 address.
 ---The address can be an IP address or a host name.
 ---@param address string a hostname or an IP address.
----@return string the first IP address found for the hostname, or nil in case of an error.
+---@return string|nil the first IP address found for the hostname, or nil in case of an error.
 ---@return table|string a table with all information returned by the resolver, or if an error occurs, the error message string.
 function socket.dns.toip(address) end
 
@@ -370,7 +370,7 @@ function socket.protect(func) end
 ---@param timeout number the maximum amount of time (in seconds) to wait for a change in status. Nil, negative or omitted timeout value allows the function to block indefinitely.
 ---@return table a list with the sockets ready for reading.
 ---@return table a list with the sockets ready for writing.
----@return string an error message. "timeout" if a timeout condition was met, otherwise nil.
+---@return string|nil an error message. "timeout" if a timeout condition was met, otherwise nil.
 function socket.select(recvt, sendt, timeout) end
 
 ---This function drops a number of arguments and returns the remaining.
@@ -381,9 +381,9 @@ function socket.select(recvt, sendt, timeout) end
 ---@param ret1 any argument 1.
 ---@param ret2 any argument 2.
 ---@param retN any argument N.
----@return any argument D+1.
----@return any argument D+2.
----@return any argument N.
+---@return any|nil argument D+1.
+---@return any|nil argument D+2.
+---@return any|nil argument N.
 function socket.skip(d, ret1, ret2, retN) end
 
 ---Freezes the program execution during a given amount of time.
@@ -391,25 +391,25 @@ function socket.skip(d, ret1, ret2, retN) end
 function socket.sleep(time) end
 
 ---Creates and returns an IPv4 TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
----@return master a new IPv4 TCP master object, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return master|nil a new IPv4 TCP master object, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function socket.tcp() end
 
 ---Creates and returns an IPv6 TCP master object. A master object can be transformed into a server object with the method listen (after a call to bind) or into a client object with the method connect. The only other method supported by a master object is the close method.
 ---Note: The TCP object returned will have the option "ipv6-v6only" set to true.
----@return master a new IPv6 TCP master object, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return master|nil a new IPv6 TCP master object, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function socket.tcp6() end
 
 ---Creates and returns an unconnected IPv4 UDP object. Unconnected objects support the sendto, receive, receivefrom, getoption, getsockname, setoption, settimeout, setpeername, setsockname, and close methods. The setpeername method is used to connect the object.
----@return unconnected a new unconnected IPv4 UDP object, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return unconnected|nil a new unconnected IPv4 UDP object, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function socket.udp() end
 
 ---Creates and returns an unconnected IPv6 UDP object. Unconnected objects support the sendto, receive, receivefrom, getoption, getsockname, setoption, settimeout, setpeername, setsockname, and close methods. The setpeername method is used to connect the object.
 ---Note: The UDP object returned will have the option "ipv6-v6only" set to true.
----@return unconnected a new unconnected IPv6 UDP object, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return unconnected|nil a new unconnected IPv6 UDP object, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function socket.udp6() end
 
 ---Closes a UDP object. The internal socket used by the object is closed and the local address to which the object was bound is made available to other applications. No further operations (except for further calls to the close method) are allowed on a closed socket.
@@ -418,8 +418,8 @@ function unconnected:close() end
 
 ---Gets an option value from the UDP object. See unconnected:setoption <> for description of the option names and values.
 ---@param option string the name of the option to get:
----@return any the option value, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return any|nil the option value, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function unconnected:getoption(option) end
 
 ---Returns the local address information associated to the object.
@@ -429,15 +429,15 @@ function unconnected:getsockname() end
 
 ---Receives a datagram from the UDP object. If the UDP object is connected, only datagrams coming from the peer are accepted. Otherwise, the returned datagram can come from any host.
 ---@param size number optional maximum size of the datagram to be retrieved. If there are more than size bytes available in the datagram, the excess bytes are discarded. If there are less then size bytes available in the current datagram, the available bytes are returned. If size is omitted, the maximum datagram size is used (which is currently limited by the implementation to 8192 bytes).
----@return string the received datagram, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return string|nil the received datagram, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function unconnected:receive(size) end
 
 ---Works exactly as the receive method, except it returns the IP address and port as extra return values (and is therefore slightly less efficient).
 ---@param size number optional maximum size of the datagram to be retrieved.
----@return string the received datagram, or nil in case of error.
+---@return string|nil the received datagram, or nil in case of error.
 ---@return string the IP address, or the error message in case of error.
----@return number the port number, or nil in case of error.
+---@return number|nil the port number, or nil in case of error.
 function unconnected:receivefrom(size) end
 
 ---Sends a datagram to the specified IP address and port number.
@@ -445,15 +445,15 @@ function unconnected:receivefrom(size) end
 ---@param datagram string a string with the datagram contents. The maximum datagram size for UDP is 64K minus IP layer overhead. However datagrams larger than the link layer packet size will be fragmented, which may deteriorate performance and/or reliability.
 ---@param ip string the IP address of the recipient. Host names are not allowed for performance reasons.
 ---@param port number the port number at the recipient.
----@return number the value 1 on success, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return number|nil the value 1 on success, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function unconnected:sendto(datagram, ip, port) end
 
 ---Sets options for the UDP object. Options are only needed by low-level or time-critical applications. You should only modify an option if you are sure you need it.
 ---@param option string the name of the option to set. The value is provided in the value parameter:
 ---@param value any the value to set for the specified option.
----@return number the value 1, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return number|nil the value 1, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function unconnected:setoption(option, value) end
 
 ---Changes the peer of a UDP object. This method turns an unconnected UDP object into a connected UDP object or vice versa.
@@ -461,16 +461,16 @@ function unconnected:setoption(option, value) end
 --- Since the address of the peer does not have to be passed to and from the OS, the use of connected UDP objects is recommended when the same peer is used for several transmissions and can result in up to 30% performance gains.
 ---@param address string an IP address or a host name.
 ---@param port number the port number.
----@return number the value 1 on success, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return number|nil the value 1 on success, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function unconnected:setpeername(address, port) end
 
 ---Binds the UDP object to a local address.
 --- This method can only be called before any datagram is sent through the UDP object, and only once. Otherwise, the system automatically binds the object to all local interfaces and chooses an ephemeral port as soon as the first datagram is sent. After the local address is set, either automatically by the system or explicitly by setsockname, it cannot be changed.
 ---@param address string an IP address or a host name. If address is "*" the system binds to all local interfaces using the constant INADDR_ANY.
 ---@param port number the port number. If port is 0, the system chooses an ephemeral port.
----@return number the value 1 on success, or nil in case of error.
----@return string the error message, or nil if no error occurred.
+---@return number|nil the value 1 on success, or nil in case of error.
+---@return string|nil the error message, or nil if no error occurred.
 function unconnected:setsockname(address, port) end
 
 ---Changes the timeout values for the object. By default, the receive and receivefrom  operations are blocking. That is, any call to the methods will block indefinitely, until data arrives. The settimeout function defines a limit on the amount of time the functions can block. When a timeout is set and the specified amount of time has elapsed, the affected methods give up and fail with an error code.

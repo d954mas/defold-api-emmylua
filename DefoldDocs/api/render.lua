@@ -64,6 +64,8 @@ render.FORMAT_RGBA16F = nil
 ---May be nil if the format isn't supported
 render.FORMAT_RGBA32F = nil
 render.FORMAT_STENCIL = nil
+render.FRUSTUM_PLANES_ALL = nil
+render.FRUSTUM_PLANES_SIDES = nil
 render.RENDER_TARGET_DEFAULT = nil
 render.STATE_BLEND = nil
 render.STATE_CULL_FACE = nil
@@ -137,7 +139,7 @@ function render.enable_state(state) end
 ---A material shader can then use the texture to sample from.
 ---@param unit number texture unit to enable texture for
 ---@param render_target handle render target or texture from which to enable the specified texture unit
----@param buffer_type constant optional buffer type from which to enable the texture. Note that this argument only applies to render targets. Defaults to render.BUFFER_COLOR_BIT
+---@param buffer_type constant optional buffer type from which to enable the texture. Note that this argument only applies to render targets. Defaults to render.BUFFER_COLOR_BIT. These values are supported:
 function render.enable_texture(unit, render_target, buffer_type) end
 
 ---Returns the logical window height that is set in the "game.project" settings.
@@ -195,10 +197,11 @@ function render.predicate(tags) end
 ---format                        render.FORMAT_LUMINANCErender.FORMAT_RGBrender.FORMAT_RGBArender.FORMAT_DEPTHrender.FORMAT_STENCILrender.FORMAT_RGBA32Frender.FORMAT_RGBA16F
 ---width                         number
 ---height                        number
----min_filter                    render.FILTER_LINEARrender.FILTER_NEAREST
----mag_filter                    render.FILTER_LINEARrender.FILTER_NEAREST
----u_wrap                        render.WRAP_CLAMP_TO_BORDERrender.WRAP_CLAMP_TO_EDGErender.WRAP_MIRRORED_REPEATrender.WRAP_REPEAT
----v_wrap                        render.WRAP_CLAMP_TO_BORDERrender.WRAP_CLAMP_TO_EDGErender.WRAP_MIRRORED_REPEATrender.WRAP_REPEAT
+---min_filter (optional)         render.FILTER_LINEARrender.FILTER_NEAREST
+---mag_filter (optional)         render.FILTER_LINEARrender.FILTER_NEAREST
+---u_wrap     (optional)         render.WRAP_CLAMP_TO_BORDERrender.WRAP_CLAMP_TO_EDGErender.WRAP_MIRRORED_REPEATrender.WRAP_REPEAT
+---v_wrap     (optional)         render.WRAP_CLAMP_TO_BORDERrender.WRAP_CLAMP_TO_EDGErender.WRAP_MIRRORED_REPEATrender.WRAP_REPEAT
+---flags      (optional)         render.TEXTURE_BIT (only applicable to depth and stencil buffers)
 ---The render target can be created to support multiple color attachments. Each attachment can have different format settings and texture filters,
 ---but attachments must be added in sequence, meaning you cannot create a render target at slot 0 and 3.
 ---Instead it has to be created with all four buffer types ranging from [0..3] (as denoted by render.BUFFER_COLORX_BIT where 'X' is the attachment you want to create).
@@ -321,7 +324,7 @@ function render.set_depth_mask(depth) end
 ---offset for each polygon. The initial value is 0.
 ---units is multiplied by an implementation-specific value to create a
 ---constant depth offset. The initial value is 0.
----The value of the offset is computed as factor × DZ + r × units
+---The value of the offset is computed as factor ? DZ + r ? units
 ---DZ is a measurement of the depth slope of the polygon which is the change in z (depth)
 ---values divided by the change in either x or y coordinates, as you traverse a polygon.
 ---The depth values are in window coordinates, clamped to the range [0, 1].

@@ -390,16 +390,18 @@
       "returnvalues": [
         {
           "name": "values",
-          "doc": "table of metadata values or nil if the entry does not exist",
+          "doc": "table of metadata values or <code>nil</code> if the entry does not exist",
           "types": [
-            "table"
+            "table",
+            "nil"
           ]
         },
         {
           "name": "value_type",
-          "doc": "numeric type of values or nil",
+          "doc": "numeric type of values or <code>nil</code>",
           "types": [
-            "constant"
+            "constant",
+            "nil"
           ]
         }
       ],

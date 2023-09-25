@@ -39,9 +39,10 @@
       "parameters": [
         {
           "name": "callback",
-          "doc": "The interaction callback. Pass an empty function or nil if you no longer wish to receive callbacks.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The calling script</dd>\n</dl>",
+          "doc": "The interaction callback. Pass an empty function or <code>nil</code> if you no longer wish to receive callbacks.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The calling script</dd>\n</dl>",
           "types": [
-            "function(self"
+            "function(self)",
+            "nil"
           ]
         }
       ],

@@ -231,6 +231,65 @@
       "tparams": [],
       "members": [],
       "notes": []
+    },
+    {
+      "type": "TYPEDEF",
+      "name": "FDecryptResource",
+      "brief": "Returns the canonical path hash of a resource",
+      "description": "Returns the canonical path hash of a resource",
+      "returnvalues": [
+        {
+          "name": "RESULT_OK",
+          "doc": "on success",
+          "types": [
+            ""
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "buffer",
+          "doc": "The input/output buffer",
+          "types": [
+            "void*"
+          ]
+        },
+        {
+          "name": "buffer_len",
+          "doc": "The size of the buffer (in bytes)",
+          "types": [
+            "uint32_t"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "RegisterResourceDecryptionFunction",
+      "brief": "Returns the canonical path hash of a resource",
+      "description": "Returns the canonical path hash of a resource",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "decrypt_resource",
+          "doc": "The decryption function",
+          "types": [
+            "dmResource::FDecryptResource"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
     }
   ],
   "info": {

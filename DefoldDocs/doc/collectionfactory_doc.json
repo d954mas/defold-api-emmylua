@@ -118,7 +118,7 @@
           "name": "[complete_function]",
           "doc": "function to call when resources are loaded.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>url</code></dt>\n<dd><span class=\"type\">url</span> url of the collection factory component</dd>\n<dt><code>result</code></dt>\n<dd><span class=\"type\">boolean</span> True if resource were loaded successfully</dd>\n</dl>",
           "types": [
-            "function(self, url, result))"
+            "function(self, url, result)"
           ]
         }
       ],
@@ -207,7 +207,7 @@
         },
         {
           "name": "[prototype]",
-          "doc": "the path to the new prototype, or nil",
+          "doc": "the path to the new prototype, or <code>nil</code>",
           "types": [
             "string",
             "nil"

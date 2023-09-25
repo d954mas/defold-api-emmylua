@@ -40,7 +40,7 @@ function collectionfactory.get_status(url) end
 ---Resources loaded are referenced by the collection factory component until the existing (parent) collection is destroyed or collectionfactory.unload is called.
 ---Calling this function when the factory is not marked as dynamic loading does nothing.
 ---@param url string|hash|url the collection factory component to load
----@param complete_function function(self, url, result)) function to call when resources are loaded.
+`---@param complete_function function(self, url, result) function to call when resources are loaded.
 function collectionfactory.load(url, complete_function) end
 
 ---Changes the prototype for the collection factory.

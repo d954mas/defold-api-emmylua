@@ -59,8 +59,8 @@ function buffer.get_bytes(buffer, stream_name) end
 ---Get a named metadata entry from a buffer along with its type.
 ---@param buf buffer the buffer to get the metadata from
 ---@param metadata_name hash|string name of the metadata entry
----@return table table of metadata values or nil if the entry does not exist
----@return constant numeric type of values or nil
+---@return table|nil table of metadata values or nil if the entry does not exist
+---@return constant|nil numeric type of values or nil
 function buffer.get_metadata(buf, metadata_name) end
 
 ---Get a specified stream from a buffer.

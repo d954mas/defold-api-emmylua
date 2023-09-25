@@ -14,6 +14,12 @@ sys.NETWORK_DISCONNECTED = nil
 ---@return table lua table with deserialized data
 function sys.deserialize(buffer) end
 
+---Check if a path exists
+---Good for checking if a file exists before loading a large file
+---@param path string path to check
+---@return bool true if the path exists, false otherwise
+function sys.exists(path) end
+
 ---Terminates the game application and reports the specified code to the OS.
 ---@param code number exit code to report to the OS, 0 means clean exit
 function sys.exit(code) end
@@ -95,8 +101,8 @@ function sys.load(filename) end
 ---included:
 ---For example "main/data/,assets/level_data.json".
 ---@param filename string resource to load, full path
----@return string loaded data, or nil if the resource could not be loaded
----@return string the error message, or nil if no error occurred
+---@return string|nil loaded data, or nil if the resource could not be loaded
+---@return string|nil the error message, or nil if no error occurred
 function sys.load_resource(filename) end
 
 ---Open URL in default application, typically a browser

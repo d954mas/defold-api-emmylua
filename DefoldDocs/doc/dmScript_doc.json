@@ -1,456 +1,6 @@
 {
   "elements": [
     {
-      "type": "FUNCTION",
-      "name": "CheckGOInstance",
-      "brief": "Get current game object instance\nWorks in both gam...",
-      "description": "Get current game object instance\nWorks in both gameobjects and gui scripts",
-      "returnvalues": [
-        {
-          "name": "instance",
-          "doc": "",
-          "types": [
-            "dmGameObject::HInstance"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "L",
-          "doc": "lua state",
-          "types": [
-            "lua_State*"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "CheckGOInstance",
-      "brief": "Get gameobject instance\nThe instance reference (u...",
-      "description": "Get gameobject instance\nThe instance reference (url) at stack index \"index\" will be resolved to an instance.",
-      "returnvalues": [
-        {
-          "name": "instance",
-          "doc": "gameobject instance",
-          "types": [
-            "dmGameObject::HInstance"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "L",
-          "doc": "lua state",
-          "types": [
-            "lua_State*"
-          ]
-        },
-        {
-          "name": "index",
-          "doc": "lua-arg",
-          "types": [
-            "int"
-          ]
-        }
-      ],
-      "examples": "How to get the position of a gameobject in a script extension\n<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">static</span><span class=\"w\"> </span><span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"nf\">get_position</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">L</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">3</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">HInstance</span><span class=\"w\"> </span><span class=\"n\">instance</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">CheckGOInstance</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">1</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Point3</span><span class=\"w\"> </span><span class=\"n\">position</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">GetPosition</span><span class=\"p\">(</span><span class=\"n\">instance</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">position</span><span class=\"p\">.</span><span class=\"n\">getX</span><span class=\"p\">());</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">position</span><span class=\"p\">.</span><span class=\"n\">getY</span><span class=\"p\">());</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">position</span><span class=\"p\">.</span><span class=\"n\">getZ</span><span class=\"p\">());</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">return</span><span class=\"w\"> </span><span class=\"mi\">3</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": [
-        "The function only accepts instances in \"this\" collection. Otherwise a lua-error will be raised."
-      ]
-    },
-    {
-      "type": "FUNCTION",
-      "name": "CheckCollection",
-      "brief": "Get current gameobject's collection handle",
-      "description": "Get current gameobject's collection handle",
-      "returnvalues": [
-        {
-          "name": "instance",
-          "doc": "gameobject instance",
-          "types": [
-            "lua_State*"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "L",
-          "doc": "lua state",
-          "types": [
-            "lua_State*"
-          ]
-        },
-        {
-          "name": "index",
-          "doc": "lua-arg",
-          "types": [
-            "int"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": [
-        "Works from both a .script/.gui_script"
-      ]
-    },
-    {
-      "type": "FUNCTION",
-      "name": "GetComponentFromLua",
-      "brief": "Get component user data from a url.",
-      "description": "Get component user data from a url.",
-      "returnvalues": [],
-      "parameters": [
-        {
-          "name": "L",
-          "doc": "Lua state",
-          "types": [
-            "lua_State*"
-          ]
-        },
-        {
-          "name": "index",
-          "doc": "index to argument (a url)",
-          "types": [
-            "int"
-          ]
-        },
-        {
-          "name": "component_type",
-          "doc": "E.g. \"factoryc\". The call will fail if the found component does not have the specified extension",
-          "types": [
-            "const char*"
-          ]
-        },
-        {
-          "name": "world",
-          "doc": "The world associated owning the component. May be 0",
-          "types": [
-            "void**"
-          ]
-        },
-        {
-          "name": "component",
-          "doc": "The component data associated with the url. May be 0",
-          "types": [
-            "void**"
-          ]
-        },
-        {
-          "name": "url",
-          "doc": "The resolved url. May be 0",
-          "types": [
-            "dmMessage::URL*"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": [
-        "The object referenced by the url must be in the same collection as the caller."
-      ]
-    },
-    {
-      "type": "ENUM",
-      "name": "LuaBufferOwnership",
-      "brief": "buffer ownership",
-      "description": "Buffer ownership.\n - OWNER_C   - m_Buffer is owned by C side, should not be destroyed when GCed\n - OWNER_LUA - m_Buffer is owned by Lua side, will be destroyed when GCed\n - OWNER_RES - m_Buffer not used, has a reference to a buffer resource instead. m_BufferRes is owned by C side, will be released when GCed",
-      "returnvalues": [],
-      "parameters": [],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [
-        {
-          "name": "dmScript::OWNER_C",
-          "doc": "",
-          "type": ""
-        },
-        {
-          "name": "dmScript::OWNER_LUA",
-          "doc": "",
-          "type": ""
-        },
-        {
-          "name": "dmScript::OWNER_RES",
-          "doc": "",
-          "type": ""
-        }
-      ],
-      "notes": []
-    },
-    {
-      "type": "STRUCT",
-      "name": "dmScript::LuaHBuffer",
-      "brief": "Lua wrapper for a dmBuffer::HBuffer",
-      "description": "Holds info about the buffer and who owns it.",
-      "returnvalues": [],
-      "parameters": [],
-      "examples": "See examples for dmScript::PushBuffer()",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [
-        {
-          "name": "Union",
-          "doc": "of\n    - m_BufferRes <span class=\"type\">void*</span>                       A buffer resource\n    - m_Buffer    <span class=\"type\">dmBuffer::HBuffer</span>           A buffer",
-          "type": ""
-        },
-        {
-          "name": "m_Buffer",
-          "doc": "The buffer (or resource)",
-          "type": "dmBuffer::HBuffer"
-        },
-        {
-          "name": "m_Owner",
-          "doc": "What ownership the pointer has",
-          "type": "dmScript::LuaBufferOwnership"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "dmScript::IsBuffer",
-      "brief": "check if the value is a dmScript::LuaHBuffer",
-      "description": "Check if the value is a dmScript::LuaHBuffer",
-      "returnvalues": [
-        {
-          "name": "boolean",
-          "doc": "True if value at index is a LuaHBuffer",
-          "types": [
-            "boolean"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "L",
-          "doc": "lua state",
-          "types": [
-            "lua_State*"
-          ]
-        },
-        {
-          "name": "index",
-          "doc": "Index of the value",
-          "types": [
-            "int"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "dmScript::PushBuffer",
-      "brief": "push a LuaHBuffer onto the supplied lua state",
-      "description": "Will increase the stack by 1.",
-      "returnvalues": [],
-      "parameters": [
-        {
-          "name": "L",
-          "doc": "lua state",
-          "types": [
-            "lua_State*"
-          ]
-        },
-        {
-          "name": "buffer",
-          "doc": "buffer to push",
-          "types": [
-            "dmScript::LuaHBuffer"
-          ]
-        }
-      ],
-      "examples": "How to push a buffer and give Lua ownership of the buffer (GC)\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span><span class=\"w\"> </span><span class=\"nf\">luabuf</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">OWNER_LUA</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">luabuf</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>\n\nHow to push a buffer and keep ownership in C++\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span><span class=\"w\"> </span><span class=\"nf\">luabuf</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">OWNER_C</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">luabuf</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
-      "name": "dmScript::CheckBuffer",
-      "brief": "retrieve a LuaHBuffer from the supplied lua state",
-      "description": "Retrieve a LuaHBuffer from the supplied lua state.\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and returns it.",
-      "returnvalues": [
-        {
-          "name": "buffer",
-          "doc": "pointer to dmScript::LuaHBuffer",
-          "types": [
-            "LuaHBuffer*"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "L",
-          "doc": "lua state",
-          "types": [
-            "lua_State*"
-          ]
-        },
-        {
-          "name": "index",
-          "doc": "Index of the value",
-          "types": [
-            "int"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": [
-        "The dmBuffer::IsBufferValid is already called on the returned buffer"
-      ]
-    },
-    {
-      "type": "FUNCTION",
-      "name": "dmScript::CheckBufferNoError",
-      "brief": "retrieve a LuaHBuffer from the supplied lua state.",
-      "description": "Retrieve a LuaHBuffer from the supplied lua state.\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and returns it.",
-      "returnvalues": [
-        {
-          "name": "buffer",
-          "doc": "pointer to dmScript::LuaHBuffer or 0 if not valid",
-          "types": [
-            "LuaHBuffer*"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "L",
-          "doc": "lua state",
-          "types": [
-            "lua_State*"
-          ]
-        },
-        {
-          "name": "index",
-          "doc": "Index of the value",
-          "types": [
-            "int"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": [
-        "Returns 0 on error. Does not invoke lua_error.",
-        "The dmBuffer::IsBufferValid is already called on the returned buffer"
-      ]
-    },
-    {
-      "type": "FUNCTION",
-      "name": "dmScript::CheckBufferUnpack",
-      "brief": "retrieve a HBuffer from the supplied lua state",
-      "description": "Retrieve a HBuffer from the supplied lua state\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and it's valid, returns the HBuffer.",
-      "returnvalues": [
-        {
-          "name": "buffer",
-          "doc": "buffer if valid, 0 otherwise",
-          "types": [
-            "dmBuffer::HBuffer"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "L",
-          "doc": "lua state",
-          "types": [
-            "lua_State*"
-          ]
-        },
-        {
-          "name": "index",
-          "doc": "Index of the value",
-          "types": [
-            "int"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": [
-        "The dmBuffer::IsBufferValid is already called on the returned buffer"
-      ]
-    },
-    {
-      "type": "FUNCTION",
-      "name": "dmScript::CheckBufferUnpackNoError",
-      "brief": "retrieve a HBuffer from the supplied lua state",
-      "description": "Retrieve a HBuffer from the supplied lua state\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and it's valid, returns the HBuffer.",
-      "returnvalues": [
-        {
-          "name": "buffer",
-          "doc": "buffer if valid, 0 otherwise",
-          "types": [
-            "dmBuffer::HBuffer"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "L",
-          "doc": "lua state",
-          "types": [
-            "lua_State*"
-          ]
-        },
-        {
-          "name": "index",
-          "doc": "Index of the value",
-          "types": [
-            "int"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": [
-        "The dmBuffer::IsBufferValid is already called on the returned buffer"
-      ]
-    },
-    {
       "type": "TYPEDEF",
       "name": "HContext",
       "brief": "The script context",
@@ -1973,6 +1523,456 @@
       "tparams": [],
       "members": [],
       "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "CheckGOInstance",
+      "brief": "Get current game object instance\nWorks in both gam...",
+      "description": "Get current game object instance\nWorks in both gameobjects and gui scripts",
+      "returnvalues": [
+        {
+          "name": "instance",
+          "doc": "",
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "CheckGOInstance",
+      "brief": "Get gameobject instance\nThe instance reference (u...",
+      "description": "Get gameobject instance\nThe instance reference (url) at stack index \"index\" will be resolved to an instance.",
+      "returnvalues": [
+        {
+          "name": "instance",
+          "doc": "gameobject instance",
+          "types": [
+            "dmGameObject::HInstance"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "lua-arg",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "How to get the position of a gameobject in a script extension\n<div class=\"codehilite\"><pre><span></span><code><span class=\"k\">static</span><span class=\"w\"> </span><span class=\"kt\">int</span><span class=\"w\"> </span><span class=\"nf\">get_position</span><span class=\"p\">(</span><span class=\"n\">lua_State</span><span class=\"o\">*</span><span class=\"w\"> </span><span class=\"n\">L</span><span class=\"p\">)</span><span class=\"w\"></span>\n<span class=\"p\">{</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">DM_LUA_STACK_CHECK</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">3</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">HInstance</span><span class=\"w\"> </span><span class=\"n\">instance</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">CheckGOInstance</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"mi\">1</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">dmVMath</span><span class=\"o\">::</span><span class=\"n\">Point3</span><span class=\"w\"> </span><span class=\"n\">position</span><span class=\"w\"> </span><span class=\"o\">=</span><span class=\"w\"> </span><span class=\"n\">dmGameObject</span><span class=\"o\">::</span><span class=\"n\">GetPosition</span><span class=\"p\">(</span><span class=\"n\">instance</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">position</span><span class=\"p\">.</span><span class=\"n\">getX</span><span class=\"p\">());</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">position</span><span class=\"p\">.</span><span class=\"n\">getY</span><span class=\"p\">());</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"n\">lua_pushnumber</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">position</span><span class=\"p\">.</span><span class=\"n\">getZ</span><span class=\"p\">());</span><span class=\"w\"></span>\n<span class=\"w\">    </span><span class=\"k\">return</span><span class=\"w\"> </span><span class=\"mi\">3</span><span class=\"p\">;</span><span class=\"w\"></span>\n<span class=\"p\">}</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "The function only accepts instances in \"this\" collection. Otherwise a lua-error will be raised."
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "CheckCollection",
+      "brief": "Get current gameobject's collection handle",
+      "description": "Get current gameobject's collection handle",
+      "returnvalues": [
+        {
+          "name": "instance",
+          "doc": "gameobject instance",
+          "types": [
+            "lua_State*"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "lua-arg",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Works from both a .script/.gui_script"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "GetComponentFromLua",
+      "brief": "Get component user data from a url.",
+      "description": "Get component user data from a url.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "Lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "index to argument (a url)",
+          "types": [
+            "int"
+          ]
+        },
+        {
+          "name": "component_type",
+          "doc": "E.g. \"factoryc\". The call will fail if the found component does not have the specified extension",
+          "types": [
+            "const char*"
+          ]
+        },
+        {
+          "name": "world",
+          "doc": "The world associated owning the component. May be 0",
+          "types": [
+            "void**"
+          ]
+        },
+        {
+          "name": "component",
+          "doc": "The component data associated with the url. May be 0",
+          "types": [
+            "void**"
+          ]
+        },
+        {
+          "name": "url",
+          "doc": "The resolved url. May be 0",
+          "types": [
+            "dmMessage::URL*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "The object referenced by the url must be in the same collection as the caller."
+      ]
+    },
+    {
+      "type": "ENUM",
+      "name": "LuaBufferOwnership",
+      "brief": "buffer ownership",
+      "description": "Buffer ownership.\n - OWNER_C   - m_Buffer is owned by C side, should not be destroyed when GCed\n - OWNER_LUA - m_Buffer is owned by Lua side, will be destroyed when GCed\n - OWNER_RES - m_Buffer not used, has a reference to a buffer resource instead. m_BufferRes is owned by C side, will be released when GCed",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [
+        {
+          "name": "dmScript::OWNER_C",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "dmScript::OWNER_LUA",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "dmScript::OWNER_RES",
+          "doc": "",
+          "type": ""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "type": "STRUCT",
+      "name": "dmScript::LuaHBuffer",
+      "brief": "Lua wrapper for a dmBuffer::HBuffer",
+      "description": "Holds info about the buffer and who owns it.",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "See examples for dmScript::PushBuffer()",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [
+        {
+          "name": "Union",
+          "doc": "of\n    - m_BufferRes <span class=\"type\">void*</span>                       A buffer resource\n    - m_Buffer    <span class=\"type\">dmBuffer::HBuffer</span>           A buffer",
+          "type": ""
+        },
+        {
+          "name": "m_Buffer",
+          "doc": "The buffer (or resource)",
+          "type": "dmBuffer::HBuffer"
+        },
+        {
+          "name": "m_Owner",
+          "doc": "What ownership the pointer has",
+          "type": "dmScript::LuaBufferOwnership"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::IsBuffer",
+      "brief": "check if the value is a dmScript::LuaHBuffer",
+      "description": "Check if the value is a dmScript::LuaHBuffer",
+      "returnvalues": [
+        {
+          "name": "boolean",
+          "doc": "True if value at index is a LuaHBuffer",
+          "types": [
+            "boolean"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::PushBuffer",
+      "brief": "push a LuaHBuffer onto the supplied lua state",
+      "description": "Will increase the stack by 1.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "buffer",
+          "doc": "buffer to push",
+          "types": [
+            "dmScript::LuaHBuffer"
+          ]
+        }
+      ],
+      "examples": "How to push a buffer and give Lua ownership of the buffer (GC)\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span><span class=\"w\"> </span><span class=\"nf\">luabuf</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">OWNER_LUA</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">luabuf</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>\n\nHow to push a buffer and keep ownership in C++\n<div class=\"codehilite\"><pre><span></span><code><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">LuaHBuffer</span><span class=\"w\"> </span><span class=\"nf\">luabuf</span><span class=\"p\">(</span><span class=\"n\">buffer</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">dmScript</span><span class=\"o\">::</span><span class=\"n\">OWNER_C</span><span class=\"p\">);</span><span class=\"w\"></span>\n<span class=\"n\">PushBuffer</span><span class=\"p\">(</span><span class=\"n\">L</span><span class=\"p\">,</span><span class=\"w\"> </span><span class=\"n\">luabuf</span><span class=\"p\">);</span><span class=\"w\"></span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::CheckBuffer",
+      "brief": "retrieve a LuaHBuffer from the supplied lua state",
+      "description": "Retrieve a LuaHBuffer from the supplied lua state.\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and returns it.",
+      "returnvalues": [
+        {
+          "name": "buffer",
+          "doc": "pointer to dmScript::LuaHBuffer",
+          "types": [
+            "LuaHBuffer*"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "The dmBuffer::IsBufferValid is already called on the returned buffer"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::CheckBufferNoError",
+      "brief": "retrieve a LuaHBuffer from the supplied lua state.",
+      "description": "Retrieve a LuaHBuffer from the supplied lua state.\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and returns it.",
+      "returnvalues": [
+        {
+          "name": "buffer",
+          "doc": "pointer to dmScript::LuaHBuffer or 0 if not valid",
+          "types": [
+            "LuaHBuffer*"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "Returns 0 on error. Does not invoke lua_error.",
+        "The dmBuffer::IsBufferValid is already called on the returned buffer"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::CheckBufferUnpack",
+      "brief": "retrieve a HBuffer from the supplied lua state",
+      "description": "Retrieve a HBuffer from the supplied lua state\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and it's valid, returns the HBuffer.",
+      "returnvalues": [
+        {
+          "name": "buffer",
+          "doc": "buffer if valid, 0 otherwise",
+          "types": [
+            "dmBuffer::HBuffer"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "The dmBuffer::IsBufferValid is already called on the returned buffer"
+      ]
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::CheckBufferUnpackNoError",
+      "brief": "retrieve a HBuffer from the supplied lua state",
+      "description": "Retrieve a HBuffer from the supplied lua state\nCheck if the value in the supplied index on the lua stack is a LuaHBuffer and it's valid, returns the HBuffer.",
+      "returnvalues": [
+        {
+          "name": "buffer",
+          "doc": "buffer if valid, 0 otherwise",
+          "types": [
+            "dmBuffer::HBuffer"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "L",
+          "doc": "lua state",
+          "types": [
+            "lua_State*"
+          ]
+        },
+        {
+          "name": "index",
+          "doc": "Index of the value",
+          "types": [
+            "int"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": [
+        "The dmBuffer::IsBufferValid is already called on the returned buffer"
+      ]
     }
   ],
   "info": {
@@ -1980,8 +1980,8 @@
     "name": "Script",
     "brief": "SDK Script API documentation",
     "description": "Built-in scripting functions.",
-    "path": "engine/dlib/src/dmsdk/script/script.h",
-    "file": "dmsdk/script/script.h",
+    "path": "engine/gamesys/src/dmsdk/gamesys/script.h",
+    "file": "dmsdk/gamesys/script.h",
     "notes": [],
     "group": "DEFOLD SDK"
   }

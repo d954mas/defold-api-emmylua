@@ -165,7 +165,7 @@ function go.get_id(path) end
 
 ---Get the parent for a game object instance.
 ---@param id string|hash|url optional id of the game object instance to get parent for, defaults to the instance containing the calling script
----@return hash parent instance or nil
+---@return hash|nil parent instance or nil
 function go.get_parent(id) end
 
 ---The position is relative the parent (if any). Use go.get_world_position <> to retrieve the global world position.
@@ -229,7 +229,7 @@ function go.property(name, value) end
 ---sets a named property of the specified game object or component, or a material constant
 ---@param url string|hash|url url of the game object or component having the property
 ---@param property string|hash id of the property to set
----@param value any the value to set
+---@param value any|table the value to set
 ---@param options table optional options table - index integer index into array property (1 based) - key hash name of internal property
 function go.set(url, property, value, options) end
 
@@ -315,7 +315,7 @@ function init(self) end
 ---@param self object reference to the script state to be used for storing data
 ---@param action_id hash id of the received input action, as mapped in the input_binding-file
 ---@param action table a table containing the input data, see above for a description
----@return boolean optional boolean to signal if the input should be consumed (not passed on to others) or not, default is false
+---@return boolean|nil optional boolean to signal if the input should be consumed (not passed on to others) or not, default is false
 function on_input(self, action_id, action) end
 
 ---This is a callback-function, which is called by the engine whenever a message has been sent to the script component.

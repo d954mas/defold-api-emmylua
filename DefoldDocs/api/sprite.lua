@@ -7,8 +7,8 @@ sprite = {}
 ---the animation has completed playing. If no function is provided,
 ---a animation_done <> message is sent to the script that started the animation.
 ---@param url string|hash|url the sprite that should play the animation
----@param id  hash name hash of the animation to play
----@param complete_function function(self, message_id, message, sender)) function to call when the animation has completed.
+---@param id string|hash hashed id of the animation to play
+---@param complete_function function(self, message_id, message, sender) function to call when the animation has completed.
 ---@param play_properties table optional table with properties:
 function sprite.play_flipbook(url, id, complete_function, play_properties) end
 

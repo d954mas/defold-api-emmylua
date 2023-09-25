@@ -466,6 +466,56 @@
       "notes": []
     },
     {
+      "type": "ENUM",
+      "name": "FrustumPlanes",
+      "brief": "Frustum planes to use in a frustum",
+      "description": "Frustum planes to use in a frustum",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [
+        {
+          "name": "FRUSTUM_PLANES_SIDES",
+          "doc": "",
+          "type": ""
+        },
+        {
+          "name": "FRUSTUM_PLANES_ALL",
+          "doc": "",
+          "type": ""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "type": "STRUCT",
+      "name": "FrustumOptions",
+      "brief": "Frustum options used when setting up a draw call",
+      "description": "Frustum options used when setting up a draw call",
+      "returnvalues": [],
+      "parameters": [],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [
+        {
+          "name": "m_FrustumMatrix",
+          "doc": "the frustum matrix",
+          "type": "matrix4"
+        },
+        {
+          "name": "m_SkipNearFarPlanes",
+          "doc": "should the frustum culling use the near and far planes",
+          "type": "bool"
+        }
+      ],
+      "notes": []
+    },
+    {
       "type": "STRUCT",
       "name": "RenderListVisibilityParams",
       "brief": "Visibility dispatch function callback.",

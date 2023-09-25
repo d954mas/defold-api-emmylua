@@ -24,7 +24,8 @@
           "name": "error",
           "doc": "an error message. \"timeout\" if a timeout condition was met, otherwise <code>nil</code>.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -82,14 +83,16 @@
           "name": "tcp_master",
           "doc": "a new IPv6 TCP master object, or <code>nil</code> in case of error.",
           "types": [
-            "master"
+            "master",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -125,14 +128,16 @@
           "name": "udp_unconnected",
           "doc": "a new unconnected IPv6 UDP object, or <code>nil</code> in case of error.",
           "types": [
-            "unconnected"
+            "unconnected",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -154,7 +159,8 @@
           "name": "hostname",
           "doc": "the canonic host name of the given address, or <code>nil</code> in case of an error.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         },
         {
@@ -192,7 +198,8 @@
           "name": "ip_address",
           "doc": "the first IP address found for the hostname, or <code>nil</code> in case of an error.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         },
         {
@@ -252,14 +259,16 @@
           "name": "resolved",
           "doc": "a table with all information returned by the resolver, or if an error occurs, <code>nil</code>.",
           "types": [
-            "table"
+            "table",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -289,14 +298,16 @@
           "name": "resolved",
           "doc": "a table with all information returned by the resolver, or if an error occurs, <code>nil</code>.",
           "types": [
-            "table"
+            "table",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -326,14 +337,16 @@
           "name": "tcp_client",
           "doc": "a new IPv6 TCP client object, or <code>nil</code> in case of error.",
           "types": [
-            "client"
+            "client",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -391,14 +404,16 @@
           "name": "udp_unconnected",
           "doc": "a new unconnected IPv4 UDP object, or <code>nil</code> in case of error.",
           "types": [
-            "unconnected"
+            "unconnected",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -417,24 +432,27 @@
       "description": "This function drops a number of arguments and returns the remaining.\nIt is useful to avoid creation of dummy variables:\n<code>D</code> is the number of arguments to drop. <code>Ret<sub>1</sub></code> to <code>ret<sub>N</sub></code> are the arguments.\nThe function returns <code>ret<sub>D+1</sub></code> to <code>ret<sub>N</sub></code>.",
       "returnvalues": [
         {
-          "name": "[retD+1]",
+          "name": "retD+1",
           "doc": "argument D+1.",
           "types": [
-            "any"
+            "any",
+            "nil"
           ]
         },
         {
-          "name": "[retD+2]",
+          "name": "retD+2",
           "doc": "argument D+2.",
           "types": [
-            "any"
+            "any",
+            "nil"
           ]
         },
         {
-          "name": "[retN]",
+          "name": "retN",
           "doc": "argument N.",
           "types": [
-            "any"
+            "any",
+            "nil"
           ]
         }
       ],
@@ -485,14 +503,16 @@
           "name": "tcp_master",
           "doc": "a new IPv4 TCP master object, or <code>nil</code> in case of error.",
           "types": [
-            "master"
+            "master",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -618,14 +638,16 @@
           "name": "tcp_client",
           "doc": "if a connection is successfully initiated, a client object is returned, or <code>nil</code> in case of error.",
           "types": [
-            "client"
+            "client",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred. The error is <code>\"timeout\"</code> if a timeout condition is met.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -647,14 +669,16 @@
           "name": "status",
           "doc": "the value <code>1</code>, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -733,14 +757,16 @@
           "name": "status",
           "doc": "the value <code>1</code>, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -931,14 +957,16 @@
           "name": "status",
           "doc": "the value <code>1</code>, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -968,21 +996,24 @@
           "name": "data",
           "doc": "the received pattern, or <code>nil</code> in case of error.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred. The error message can be the string <code>\"closed\"</code> in case the connection was closed before the transmission was completed or the string <code>\"timeout\"</code> in case there was a timeout during the operation.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         },
         {
           "name": "partial",
           "doc": "a (possibly empty) string containing the partial that was received, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -1020,21 +1051,24 @@
           "name": "index",
           "doc": "the index of the last byte within [i, j] that has been sent, or <code>nil</code> in case of error. Notice that, if <code>i</code> is 1 or absent, this is effectively the total number of bytes sent.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred. The error message can be <code>\"closed\"</code> in case the connection was closed before the transmission was completed or the string <code>\"timeout\"</code> in case there was a timeout during the operation.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         },
         {
           "name": "lastindex",
           "doc": "in case of error, the index of the last byte within [i, j] that has been sent. You might want to try again from the byte following that. <code>nil</code> if no error occurred.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         }
       ],
@@ -1078,14 +1112,16 @@
           "name": "status",
           "doc": "the value <code>1</code>, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -1122,14 +1158,16 @@
           "name": "status",
           "doc": "the value <code>1</code>, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -1166,14 +1204,16 @@
           "name": "value",
           "doc": "the option value, or <code>nil</code> in case of error.",
           "types": [
-            "any"
+            "any",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -1203,14 +1243,16 @@
           "name": "value",
           "doc": "the option value, or <code>nil</code> in case of error.",
           "types": [
-            "any"
+            "any",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -1240,7 +1282,8 @@
           "name": "success",
           "doc": "the value <code>1</code> in case of success, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         }
       ],
@@ -1284,7 +1327,8 @@
           "name": "success",
           "doc": "the value <code>1</code> in case of success, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         }
       ],
@@ -1328,7 +1372,8 @@
           "name": "success",
           "doc": "the value <code>1</code> in case of success, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         }
       ],
@@ -1781,14 +1826,16 @@
           "name": "datagram",
           "doc": "the received datagram, or <code>nil</code> in case of error.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -1818,14 +1865,16 @@
           "name": "datagram",
           "doc": "the received datagram, or <code>nil</code> in case of error.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -1855,7 +1904,8 @@
           "name": "datagram",
           "doc": "the received datagram, or <code>nil</code> in case of error.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         },
         {
@@ -1869,7 +1919,8 @@
           "name": "port",
           "doc": "the port number, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         }
       ],
@@ -1899,14 +1950,16 @@
           "name": "value",
           "doc": "the option value, or <code>nil</code> in case of error.",
           "types": [
-            "any"
+            "any",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -1936,14 +1989,16 @@
           "name": "value",
           "doc": "the option value, or <code>nil</code> in case of error.",
           "types": [
-            "any"
+            "any",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -1973,14 +2028,16 @@
           "name": "success",
           "doc": "the value <code>1</code> on success, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -2010,14 +2067,16 @@
           "name": "success",
           "doc": "the value <code>1</code> on success, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -2061,14 +2120,16 @@
           "name": "success",
           "doc": "the value <code>1</code> on success, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -2098,14 +2159,16 @@
           "name": "success",
           "doc": "the value <code>1</code> on success, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -2142,14 +2205,16 @@
           "name": "success",
           "doc": "the value <code>1</code> on success, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -2186,14 +2251,16 @@
           "name": "status",
           "doc": "the value <code>1</code>, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
@@ -2230,14 +2297,16 @@
           "name": "status",
           "doc": "the value <code>1</code>, or <code>nil</code> in case of error.",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred.",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],

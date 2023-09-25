@@ -2,64 +2,6 @@
   "elements": [
     {
       "type": "FUNCTION",
-      "name": "dmScript::PostDDF",
-      "brief": "Sends a script message",
-      "description": "Sends a script message. Wraps the message in a dmGameSystemDDF::ScriptMessage struct.",
-      "returnvalues": [
-        {
-          "name": "success",
-          "doc": "true if successful",
-          "types": [
-            "bool"
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "name": "message",
-          "doc": "The ddf message to send",
-          "types": [
-            "TDDFType*"
-          ]
-        },
-        {
-          "name": "sender",
-          "doc": "The sender",
-          "types": [
-            "dmMessage::Message*"
-          ]
-        },
-        {
-          "name": "receiver",
-          "doc": "The receiver",
-          "types": [
-            "dmMessage::Message*"
-          ]
-        },
-        {
-          "name": "function_ref",
-          "doc": "The function ref. 0 wil cause the \"on_message\" to be called",
-          "types": [
-            "int"
-          ]
-        },
-        {
-          "name": "unref_function_after_call",
-          "doc": "call dmScript::UnrefInInstance on the function_ref after the dmScript::PCall is made",
-          "types": [
-            "bool"
-          ]
-        }
-      ],
-      "examples": "",
-      "replaces": "",
-      "error": "",
-      "tparams": [],
-      "members": [],
-      "notes": []
-    },
-    {
-      "type": "FUNCTION",
       "name": "INVALID_INSTANCE_POOL_INDEX",
       "brief": "Value for an invalid instance index, this must be ...",
       "description": "Value for an invalid instance index, this must be the same as defined in gamesys_ddf.proto for Create#index.",
@@ -574,12 +516,17 @@
         {
           "name": "m_ReadOnly",
           "doc": "Determines whether we are permitted to write to this property.",
-          "type": "bool"
+          "type": "uint16_t"
         },
         {
           "name": "m_ValueType",
-          "doc": "Indicates type of the property.",
-          "type": "uint8_t"
+          "doc": "Indicates type of the property (of type PropertyValueType).",
+          "type": "uint16_t"
+        },
+        {
+          "name": "m_ArrayLength",
+          "doc": "Number of array entries, if the property is an array and zero otherwise. Max supported length is 2^14 (16384 elements)",
+          "type": "uint16_t"
         }
       ],
       "notes": []
@@ -1843,6 +1790,64 @@
           "doc": "the iterator",
           "types": [
             "dmGameObject::SceneNodePropertyIterator*"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
+      "name": "dmScript::PostDDF",
+      "brief": "Sends a script message",
+      "description": "Sends a script message. Wraps the message in a dmGameSystemDDF::ScriptMessage struct.",
+      "returnvalues": [
+        {
+          "name": "success",
+          "doc": "true if successful",
+          "types": [
+            "bool"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "message",
+          "doc": "The ddf message to send",
+          "types": [
+            "TDDFType*"
+          ]
+        },
+        {
+          "name": "sender",
+          "doc": "The sender",
+          "types": [
+            "dmMessage::Message*"
+          ]
+        },
+        {
+          "name": "receiver",
+          "doc": "The receiver",
+          "types": [
+            "dmMessage::Message*"
+          ]
+        },
+        {
+          "name": "function_ref",
+          "doc": "The function ref. 0 wil cause the \"on_message\" to be called",
+          "types": [
+            "int"
+          ]
+        },
+        {
+          "name": "unref_function_after_call",
+          "doc": "call dmScript::UnrefInInstance on the function_ref after the dmScript::PCall is made",
+          "types": [
+            "bool"
           ]
         }
       ],

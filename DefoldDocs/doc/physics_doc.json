@@ -378,9 +378,10 @@
       "returnvalues": [
         {
           "name": "result",
-          "doc": "It returns a list. If missed it returns nil. See <code>ray_cast_response</code> for details on the returned values.",
+          "doc": "It returns a list. If missed it returns <code>nil</code>. See <code>ray_cast_response</code> for details on the returned values.",
           "types": [
-            "table"
+            "table",
+            "nil"
           ]
         }
       ],
@@ -529,7 +530,7 @@
       "description": "Get a table for properties for a connected joint. The joint has to be created before\nproperties can be retrieved.\nNote: Currently only supported in 2D physics.",
       "returnvalues": [
         {
-          "name": "",
+          "name": "properties",
           "doc": "properties table. See the joint types for what fields are available, the only field available for all types is:\n<ul>\n<li><span class=\"type\">boolean</span> <code>collide_connected</code>: Set this flag to true if the attached bodies should collide.</li>\n</ul>",
           "types": [
             "table"
@@ -710,7 +711,7 @@
       "description": "Get the gravity in runtime. The gravity returned is not global, it will return\nthe gravity for the collection that the function is called from.\nNote: For 2D physics the z component will always be zero.",
       "returnvalues": [
         {
-          "name": "",
+          "name": "gravity",
           "doc": "gravity vector of collection",
           "types": [
             "vector3"
@@ -849,7 +850,7 @@
       "description": "Returns the group name of a collision object as a hash.",
       "returnvalues": [
         {
-          "name": "",
+          "name": "group",
           "doc": "hash value of the group.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">check_is_enemy</span><span class=\"p\">()</span>\n    <span class=\"kd\">local</span> <span class=\"n\">group</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">get_group</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">return</span> <span class=\"n\">group</span> <span class=\"o\">==</span> <span class=\"n\">hash</span><span class=\"p\">(</span><span class=\"s2\">&quot;enemy&quot;</span><span class=\"p\">)</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
           "types": [
             "hash"
@@ -919,7 +920,7 @@
       "description": "Returns true if the specified group is set in the mask of a collision\nobject, false otherwise.",
       "returnvalues": [
         {
-          "name": "",
+          "name": "maskbit",
           "doc": "boolean value of the maskbit. 'true' if present, 'false' otherwise.\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kd\">local</span> <span class=\"kr\">function</span> <span class=\"nf\">is_invincible</span><span class=\"p\">()</span>\n    <span class=\"c1\">-- check if the collisionobject would collide with the &quot;bullet&quot; group</span>\n    <span class=\"kd\">local</span> <span class=\"n\">invincible</span> <span class=\"o\">=</span> <span class=\"n\">physics</span><span class=\"p\">.</span><span class=\"n\">get_maskbit</span><span class=\"p\">(</span><span class=\"s2\">&quot;#collisionobject&quot;</span><span class=\"p\">,</span> <span class=\"s2\">&quot;bullet&quot;</span><span class=\"p\">)</span>\n    <span class=\"kr\">return</span> <span class=\"n\">invincible</span>\n<span class=\"kr\">end</span>\n</code></pre></div>",
           "types": [
             "boolean"

@@ -192,16 +192,17 @@
         },
         {
           "name": "id",
-          "doc": "hash name hash of the animation to play",
+          "doc": "hashed id of the animation to play",
           "types": [
-            ""
+            "string",
+            "hash"
           ]
         },
         {
           "name": "[complete_function]",
           "doc": "function to call when the animation has completed.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>message_id</code></dt>\n<dd><span class=\"type\">hash</span> The name of the completion message, <code>\"animation_done\"</code>.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">table</span> Information about the completion:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>current_tile</code> - the current tile of the sprite.</li>\n<li><span class=\"type\">hash</span> <code>id</code> - id of the animation that was completed.</li>\n</ul>\n<dl>\n<dt><code>sender</code></dt>\n<dd><span class=\"type\">url</span> The invoker of the callback: the sprite component.</dd>\n</dl>",
           "types": [
-            "function(self, message_id, message, sender))"
+            "function(self, message_id, message, sender)"
           ]
         },
         {

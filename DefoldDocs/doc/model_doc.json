@@ -112,7 +112,7 @@
           "name": "[complete_function]",
           "doc": "function to call when the animation has completed.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>message_id</code></dt>\n<dd><span class=\"type\">hash</span> The name of the completion message, <code>\"model_animation_done\"</code>.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">table</span> Information about the completion:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">hash</span> <code>animation_id</code> - the animation that was completed.</li>\n<li><span class=\"type\">constant</span> <code>playback</code> - the playback mode for the animation.</li>\n</ul>\n<dl>\n<dt><code>sender</code></dt>\n<dd><span class=\"type\">url</span> The invoker of the callback: the model component.</dd>\n</dl>",
           "types": [
-            "function(self, message_id, message, sender))"
+            "function(self, message_id, message, sender)"
           ]
         }
       ],

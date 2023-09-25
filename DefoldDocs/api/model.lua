@@ -34,7 +34,7 @@ function model.get_go(url, bone_id) end
 ---@param anim_id string|hash id of the animation to play
 ---@param playback constant playback mode of the animation
 ---@param play_properties table optional table with properties Play properties table:
----@param complete_function function(self, message_id, message, sender)) function to call when the animation has completed.
+---@param complete_function function(self, message_id, message, sender) function to call when the animation has completed.
 function model.play_anim(url, anim_id, playback, play_properties, complete_function) end
 
 

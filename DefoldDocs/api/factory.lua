@@ -33,7 +33,7 @@ function factory.get_status(url) end
 ---Resources are referenced by the factory component until the existing (parent) collection is destroyed or factory.unload is called.
 ---Calling this function when the factory is not marked as dynamic loading does nothing.
 ---@param url string|hash|url the factory component to load
----@param complete_function function(self, url, result)) function to call when resources are loaded.
+---@param complete_function function(self, url, result) function to call when resources are loaded.
 function factory.load(url, complete_function) end
 
 ---Changes the prototype for the factory.

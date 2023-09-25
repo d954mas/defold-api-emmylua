@@ -13,7 +13,7 @@ timer.INVALID_TIMER_HANDLE = nil
 ---@return boolean if the timer was active, false if the timer is already cancelled / complete
 function timer.cancel(handle) end
 
----Adds a timer and returns a unique handle
+---Adds a timer and returns a unique handle.
 ---You may create more timers from inside a timer callback.
 ---Using a delay of 0 will result in a timer that triggers at the next frame just before
 ---script update functions.
@@ -27,7 +27,7 @@ function timer.delay(delay, _repeat, callback) end
 
 ---Get information about timer.
 ---@param handle hash the timer handle returned by timer.delay()
----@return table or nil if timer is cancelled/completed. table with data in the following fields:
+---@return table|nil table or nil if timer is cancelled/completed. table with data in the following fields:
 function timer.get_info(handle) end
 
 ---Manual triggering a callback for a timer.

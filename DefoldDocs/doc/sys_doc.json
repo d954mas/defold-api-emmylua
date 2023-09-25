@@ -69,6 +69,36 @@
     },
     {
       "type": "FUNCTION",
+      "name": "sys.exists",
+      "brief": "check if a path exists",
+      "description": "Check if a path exists\nGood for checking if a file exists before loading a large file",
+      "returnvalues": [
+        {
+          "name": "result",
+          "doc": "<code>true</code> if the path exists, <code>false</code> otherwise",
+          "types": [
+            "bool"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "name": "path",
+          "doc": "path to check",
+          "types": [
+            "string"
+          ]
+        }
+      ],
+      "examples": "Load data but return nil if path didn't exist\n<div class=\"codehilite\"><pre><span></span><code><span class=\"kr\">if</span> <span class=\"ow\">not</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">exists</span><span class=\"p\">(</span><span class=\"n\">path</span><span class=\"p\">)</span> <span class=\"kr\">then</span>\n    <span class=\"kr\">return</span> <span class=\"kc\">nil</span>\n<span class=\"kr\">end</span>\n<span class=\"kr\">return</span> <span class=\"n\">sys</span><span class=\"p\">.</span><span class=\"n\">load</span><span class=\"p\">(</span><span class=\"n\">path</span><span class=\"p\">)</span> <span class=\"c1\">-- returns {} if it failed</span>\n</code></pre></div>",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "FUNCTION",
       "name": "sys.get_host_path",
       "brief": "create a path to the host device for unit testing",
       "description": "Create a path to the host device for unit testing\nUseful for saving logs etc during development",
@@ -312,20 +342,22 @@
       "type": "FUNCTION",
       "name": "sys.load_resource",
       "brief": "loads resource from game data",
-      "description": "Loads a custom resource. Specify the full filename of the resource that you want\nto load. When loaded, the file data is returned as a string.\nIf loading fails, the function returns nil plus the error message.\nIn order for the engine to include custom resources in the build process, you need\nto specify them in the \"custom_resources\" key in your \"game.project\" settings file.\nYou can specify single resource files or directories. If a directory is included\nin the resource list, all files and directories in that directory is recursively\nincluded:\nFor example \"main/data/,assets/level_data.json\".",
+      "description": "Loads a custom resource. Specify the full filename of the resource that you want\nto load. When loaded, the file data is returned as a string.\nIf loading fails, the function returns <code>nil</code> plus the error message.\nIn order for the engine to include custom resources in the build process, you need\nto specify them in the \"custom_resources\" key in your \"game.project\" settings file.\nYou can specify single resource files or directories. If a directory is included\nin the resource list, all files and directories in that directory is recursively\nincluded:\nFor example \"main/data/,assets/level_data.json\".",
       "returnvalues": [
         {
           "name": "data",
           "doc": "loaded data, or <code>nil</code> if the resource could not be loaded",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         },
         {
           "name": "error",
           "doc": "the error message, or <code>nil</code> if no error occurred",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],

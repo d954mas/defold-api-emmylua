@@ -337,9 +337,9 @@
         },
         {
           "name": "[complete_function]",
-          "doc": "function to call when the sound has finished playing.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>message_id</code></dt>\n<dd><span class=\"type\">hash</span> The name of the completion message, <code>\"sound_done\"</code>.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">table</span> Information about the completion:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>play_id</code> - the sequential play identifier that was given by the sound.play function.</li>\n</ul>\n<dl>\n<dt><code>sender</code></dt>\n<dd><span class=\"type\">url</span> The invoker of the callback: the sound component.</dd>\n</dl>",
+          "doc": "function to call when the sound has finished playing or stopped manually via <a href=\"/ref/sound#sound.stop\">sound.stop</a>.\n<dl>\n<dt><code>self</code></dt>\n<dd><span class=\"type\">object</span> The current object.</dd>\n<dt><code>message_id</code></dt>\n<dd><span class=\"type\">hash</span> The name of the completion message, which can be either <code>\"sound_done\"</code> if the sound has finished playing, or <code>\"sound_stopped\"</code> if it was stopped manually.</dd>\n<dt><code>message</code></dt>\n<dd><span class=\"type\">table</span> Information about the completion:</dd>\n</dl>\n<ul>\n<li><span class=\"type\">number</span> <code>play_id</code> - the sequential play identifier that was given by the sound.play function.</li>\n</ul>\n<dl>\n<dt><code>sender</code></dt>\n<dd><span class=\"type\">url</span> The invoker of the callback: the sound component.</dd>\n</dl>",
           "types": [
-            "function(self, message_id, message, sender))"
+            "function(self, message_id, message, sender)"
           ]
         }
       ],
@@ -548,6 +548,28 @@
       "name": "sound_done",
       "brief": "reports when a sound has finished playing",
       "description": "This message is sent back to the sender of a <code>play_sound</code> message, if the sound\ncould be played to completion.",
+      "returnvalues": [],
+      "parameters": [
+        {
+          "name": "[play_id]",
+          "doc": "id number supplied when the message was posted.",
+          "types": [
+            "number"
+          ]
+        }
+      ],
+      "examples": "",
+      "replaces": "",
+      "error": "",
+      "tparams": [],
+      "members": [],
+      "notes": []
+    },
+    {
+      "type": "MESSAGE",
+      "name": "sound_stopped",
+      "brief": "reports when a sound has been manually stopped",
+      "description": "This message is sent back to the sender of a <code>play_sound</code> message, if the sound\nhas been manually stopped.",
       "returnvalues": [],
       "parameters": [
         {

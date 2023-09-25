@@ -41,7 +41,7 @@ function window.get_size() end
 function window.set_dim_mode(mode) end
 
 ---Sets a window event listener.
----@param callback function(self, event, data) A callback which receives info about window events. Pass an empty function or nil if you no longer wish to receive callbacks.
+---@param callback function(self, event, data)|nil A callback which receives info about window events. Pass an empty function or nil if you no longer wish to receive callbacks.
 function window.set_listener(callback) end
 
 ---Set the locking state for current mouse cursor on a PC platform.

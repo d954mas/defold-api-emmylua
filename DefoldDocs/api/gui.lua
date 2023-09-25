@@ -1,5 +1,7 @@
 ---GUI API documentation
----GUI API documentation
+---GUI core hooks, functions, messages, properties and constants for
+---creation and manipulation of GUI nodes. The "gui" namespace is
+---accessible only from gui scripts.
 ---@class gui
 gui = {}
 ---This is a callback-function, which is called by the engine when a gui component is finalized (destroyed). It can
@@ -303,7 +305,7 @@ function gui.get_flipbook(node) end
 
 ---This is only useful nodes with flipbook animations. Gets the normalized cursor of the flipbook animation on a node.
 ---@param node node node to get the cursor for (node)
----@return  value number cursor value
+---@return number cursor value
 function gui.get_flipbook_cursor(node) end
 
 ---This is only useful nodes with flipbook animations. Gets the playback rate of the flipbook animation on a node.
@@ -367,6 +369,11 @@ function gui.get_leading(node) end
 ---@return boolean true or false
 function gui.get_line_break(node) end
 
+---Returns the material of a node.
+---The material must be mapped to the gui scene in the gui editor.
+---@param node node node to get the material for
+function gui.get_material(node) end
+
 ---Retrieves the node with the specified id.
 ---@param id string|hash id of the node to retrieve
 ---@return node a new node instance
@@ -386,7 +393,7 @@ function gui.get_outline(node) end
 ---Returns the parent node of the specified node.
 ---If the supplied node does not have a parent, nil is returned.
 ---@param node node the node from which to retrieve its parent
----@return node parent instance or nil
+---@return node|nil parent instance or nil
 function gui.get_parent(node) end
 
 ---Get the paricle fx for a gui node
@@ -510,15 +517,15 @@ function gui.is_enabled(node, recursive) end
 ---above the second.
 ---If the second argument is nil the first node is moved to the top.
 ---@param node node to move
----@param node node|nil reference node above which the first node should be moved
-function gui.move_above(node, node) end
+---@param reference node|nil reference node above which the first node should be moved
+function gui.move_above(node, reference) end
 
 ---Alters the ordering of the two supplied nodes by moving the first node
 ---below the second.
 ---If the second argument is nil the first node is moved to the bottom.
 ---@param node node to move
----@param node node|nil reference node below which the first node should be moved
-function gui.move_below(node, node) end
+---@param reference node|nil reference node below which the first node should be moved
+function gui.move_below(node, reference) end
 
 ---Dynamically create a new box node.
 ---@param pos vector3|vector4 node position
@@ -579,6 +586,10 @@ function gui.play_particlefx(node, emitter_state_function) end
 
 ---Resets the input context of keyboard. This will clear marked text.
 function gui.reset_keyboard() end
+
+---Resets the node material to the material assigned in the gui scene.
+---@param node node node to reset the material for
+function gui.reset_material(node) end
 
 ---Resets all nodes in the current GUI scene to their initial state.
 ---The reset only applies to static node loaded from the scene.
@@ -700,6 +711,13 @@ function gui.set_leading(node, leading) end
 ---@param node node node to set line-break for
 ---@param line_break boolean true or false
 function gui.set_line_break(node, line_break) end
+
+---Set the material on a node. The material must be mapped to the gui scene in the gui editor,
+---and assigning a material is supported for all node types. To set the default material that
+---is assigned to the gui scene node, use gui.reset_material(node_id) instead.
+---@param node node node to set material for
+---@param material string|hash material id
+function gui.set_material(node, material) end
 
 ---Sets the outer bounds mode for a pie node.
 ---@param node node node for which to set the outer bounds mode
@@ -903,7 +921,7 @@ function init(self) end
 ---@param self object reference to the script state to be used for storing data
 ---@param action_id hash id of the received input action, as mapped in the input_binding-file
 ---@param action table a table containing the input data, see above for a description
----@return boolean optional boolean to signal if the input should be consumed (not passed on to others) or not, default is false
+---@return boolean|nil optional boolean to signal if the input should be consumed (not passed on to others) or not, default is false
 function on_input(self, action_id, action) end
 
 ---This is a callback-function, which is called by the engine whenever a message has been sent to the gui component.

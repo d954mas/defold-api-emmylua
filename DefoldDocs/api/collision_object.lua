@@ -81,7 +81,7 @@ function physics.get_maskbit(url, group) end
 ---@param to vector3 the world position of the end of the ray
 ---@param groups table a lua table containing the hashed groups for which to test collisions against
 ---@param options table a lua table containing options for the raycast.
----@return table It returns a list. If missed it returns nil. See ray_cast_response for details on the returned values.
+---@return table|nil It returns a list. If missed it returns nil. See ray_cast_response for details on the returned values.
 function physics.raycast(from, to, groups, options) end
 
 ---Ray casts are used to test for intersections against collision objects in the physics world.

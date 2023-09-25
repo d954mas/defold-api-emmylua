@@ -197,10 +197,17 @@ function resource.set(path, buffer) end
 ---@param table table A table containing info about the atlas. Supported entries:
 function resource.set_atlas(path, table) end
 
----sets the buffer of a resource
+---Sets the buffer of a resource. By default, setting the resource buffer will either copy the data from the incoming buffer object
+---to the buffer stored in the destination resource, or make a new buffer object if the sizes between the source buffer and the destination buffer
+---stored in the resource differs. In some cases, e.g performance reasons, it might be beneficial to just set the buffer object on the resource without copying or cloning.
+---To achieve this, set the transfer_ownership flag to true in the argument table. Transferring ownership from a lua buffer to a resource with this function
+---works exactly the same as resource.create_buffer <>: the destination resource will take ownership of the buffer held by the lua reference, i.e the buffer will not automatically be removed
+---when the lua reference to the buffer is garbage collected.
+---Note: When setting a buffer with transfer_ownership = true, the currently bound buffer in the resource will be destroyed.
 ---@param path hash|string The path to the resource
 ---@param buffer buffer The resource buffer
-function resource.set_buffer(path, buffer) end
+---@param table table A table containing info about how to set the buffer. Supported entries:
+function resource.set_buffer(path, buffer, table) end
 
 ---Update internal sound resource (wavc/oggc) with new data
 ---@param path hash|string The path to the resource

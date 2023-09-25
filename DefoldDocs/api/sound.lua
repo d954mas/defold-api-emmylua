@@ -88,7 +88,7 @@ function sound.pause(url, pause) end
 --- A sound will continue to play even if the game object the sound component belonged to is deleted. You can call sound.stop() to stop the sound.
 ---@param url string|hash|url the sound that should play
 ---@param play_properties table 
----@param complete_function function(self, message_id, message, sender)) function to call when the sound has finished playing.
+---@param complete_function function(self, message_id, message, sender) function to call when the sound has finished playing or stopped manually via sound.stop <>.
 ---@return number The identifier for the sound voice
 function sound.play(url, play_properties, complete_function) end
 

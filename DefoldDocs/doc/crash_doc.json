@@ -44,9 +44,10 @@
       "returnvalues": [
         {
           "name": "handle",
-          "doc": "handle to the loaded dump, or nil if no dump was found",
+          "doc": "handle to the loaded dump, or <code>nil</code> if no dump was found",
           "types": [
-            "number"
+            "number",
+            "nil"
           ]
         }
       ],
@@ -184,9 +185,10 @@
       "returnvalues": [
         {
           "name": "value",
-          "doc": "value recorded in the crash dump, or nil if it didn't exist",
+          "doc": "value recorded in the crash dump, or <code>nil</code> if it didn't exist",
           "types": [
-            "string"
+            "string",
+            "nil"
           ]
         }
       ],
